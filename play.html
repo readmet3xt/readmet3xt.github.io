@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaan Khan - Play</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+    <div class="cursor-dot"></div>
+    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
+        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+        </button>
+        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+    </header>
+    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
+    <div class="flex">
+        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
+            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
+                <div class="space-y-6">
+                    <div class="hidden lg:block">
+                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">Hyderabad-based Product Designer creating impactful, human-centered products.</p>
+                    </div>
+                    <div class="block lg:hidden">
+                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
+                        <p class="text-sm" style="color: var(--text-secondary);">Hyderabad-based Product Designer creating impactful, human-centered products.</p>
+                    </div>
+                    <nav class="space-y-3">
+                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div></a>
+                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div></a>
+                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div></a>
+                    </nav>
+                    <div>
+                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
+                        <div class="space-y-2">
+                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
+                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
+                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
+                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
+                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-6 flex-shrink-0">
+                <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
+                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
+                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
+                </div>
+                <div class="mt-4 flex justify-start items-center gap-2">
+                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
+                    <span style="color: var(--text-tertiary);">/</span>
+                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
+                </div>
+                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            </div>
+        </aside>
+        <div class="flex-1 lg:ml-80">
+            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12">
+                <h2 class="font-dm-sans text-4xl font-bold mb-2">Playground</h2>
+                <p class="text-lg mb-12" style="color: var(--text-secondary);">A collection of art, doodles, & other things I've made for fun.</p>
+                <div class="image-grid">
+                    <div class="image-grid-item"><img src="https://placehold.co/400x400/EE6352/ffffff?text=Doodle+1" alt="Doodle 1"></div>
+                    <div class="image-grid-item"><img src="https://placehold.co/400x400/6352EE/ffffff?text=Doodle+2" alt="Doodle 2"></div>
+                    <div class="image-grid-item"><img src="https://placehold.co/400x400/52EE63/ffffff?text=Doodle+3" alt="Doodle 3"></div>
+                    <div class="image-grid-item"><img src="https://placehold.co/400x400/EEB952/ffffff?text=Doodle+4" alt="Doodle 4"></div>
+                    <div class="image-grid-item"><img src="https://placehold.co/400x400/52A9EE/ffffff?text=Doodle+5" alt="Doodle 5"></div>
+                    <div class="image-grid-item"><img src="https://placehold.co/400x400/E152EE/ffffff?text=Doodle+6" alt="Doodle 6"></div>
+                    <div class="image-grid-item"><img src="https://placehold.co/400x400/EE6352/ffffff?text=Doodle+7" alt="Doodle 7"></div>
+                    <div class="image-grid-item"><img src="https://placehold.co/400x400/6352EE/ffffff?text=Doodle+8" alt="Doodle 8"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div id="imageModal" class="modal-lightbox">
+        <div class="modal-lightbox-content">
+            <span class="modal-close-btn">&times;</span>
+            <a class="modal-prev-btn">&#10094;</a>
+            <a class="modal-next-btn">&#10095;</a>
+            <img id="modalImage" class="modal-image-content">
+        </div>
+    </div>
+    <div id="copy-toast">Email Copied!</div>
+    <script src="main.js"></script>
+</body>
+</html>

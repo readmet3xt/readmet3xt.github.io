@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaan Khan - Case Study: KoinBasket</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="antialiased">
+
+    <div class="cursor-dot"></div>
+
+    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
+        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+        </button>
+        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+    </header>
+    
+    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
+
+    <div class="flex">
+        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
+            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
+                <div class="space-y-6">
+                    <div class="hidden lg:block">
+                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">
+                            Hyderabad-based Product Designer creating impactful, human-centered products.
+                        </p>
+                    </div>
+                     <div class="block lg:hidden">
+                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                           Hyderabad-based Product Designer creating impactful, human-centered products.
+                        </p>
+                    </div>
+
+                    <nav class="space-y-3">
+                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div>
+                        </a>
+                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div>
+                        </a>
+                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div>
+                        </a>
+                    </nav>
+
+                    <div>
+                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
+                        <div class="space-y-2">
+                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
+                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
+                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
+                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
+                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex-shrink-0">
+                 <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
+                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
+                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
+                </div>
+                <div class="mt-4 flex justify-start items-center gap-2">
+                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
+                    <span style="color: var(--text-tertiary);">/</span>
+                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
+                </div>
+                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            </div>
+        </aside>
+
+        <div class="flex-1 lg:ml-80">
+            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12 max-w-5xl mx-auto case-study-section">
+                
+                <h1 class="text-4xl lg:text-5xl font-bold mb-4">KoinBasket: From MVP to Market Leader</h1>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="case-study-pill">Fintech</span>
+                    <span class="case-study-pill">Mobile App</span>
+                    <span class="case-study-pill">Design System</span>
+                    <span class="case-study-pill">UX Strategy</span>
+                </div>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4">Introduction</h2>
+                    <p>As Founding Designer, I led the strategy and design of KoinBasket’s MVP, simplifying crypto investing. My core challenge was to demystify a complex market, making it accessible and engaging. Following its success, as Senior UX Designer, I led a rebrand, a sophisticated Live Trading Experience, and the innovative “BitBuddy” influencer platform.</p>
+                    <img src="https://images.unsplash.com/photo-1640459392133-82cf3b67d1d2?q=80&w=1600&auto=format&fit=crop" alt="KoinBasket app dashboard" class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1c1c1c/ffffff?text=KoinBasket+Dashboard';">
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">Phase 1: The MVP</h2>
+                    <blockquote>How can we design a platform that makes diversified crypto investing simple, secure, and engaging?</blockquote>
+                    <p>As the solo designer, I adopted a lean, agile approach, focusing on Critical User Journey Mapping and Iterative Prototyping. The solution included curated crypto "baskets" to simplify choices, a risk-free Demo Mode, and secure non-custodial exchange integration for user control.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">Phase 2: Rebrand & Live Launch</h2>
+                    <p>The decision to evolve stemmed from the need to elevate brand perception, meet user demand for real trading, and foster community. As Senior UX Designer, I mentored a junior designer, evolved the design system, and led iterative design on major new features.</p>
+                    <img src="https://images.unsplash.com/photo-1559028006-44a36b17a664?q=80&w=1600&auto=format&fit=crop" alt="A vibrant and clean design system color palette" class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1c1c1c/ffffff?text=New+Design+System';">
+                </section>
+                
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">Learnings & Impact</h2>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>Focus Delivers Value:</strong> A clear value proposition resonated strongly in a complex market.</li>
+                        <li><strong>Trust is Paramount in Fintech:</strong> The non-custodial model was critical in gaining user confidence.</li>
+                        <li><strong>Ecosystems Add Value:</strong> Features like “BitBuddy” that foster community transform a product into a dynamic ecosystem.</li>
+                    </ul>
+                </section>
+                
+                <div class="text-center mt-16">
+                    <a href="index.html" class="back-to-work-btn">Back to Work</a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+    
+    <div id="copy-toast">Email Copied!</div>
+
+    <script src="main.js"></script>
+</body>
+</html>

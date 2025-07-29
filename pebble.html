@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaan Khan - Case Study: Pebble</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="antialiased">
+
+    <div class="cursor-dot"></div>
+
+    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
+        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+        </button>
+        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+    </header>
+    
+    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
+
+    <div class="flex">
+        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
+            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
+                <div class="space-y-6">
+                    <div class="hidden lg:block">
+                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">
+                            Hyderabad-based Product Designer creating impactful, human-centered products.
+                        </p>
+                    </div>
+                     <div class="block lg:hidden">
+                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                           Hyderabad-based Product Designer creating impactful, human-centered products.
+                        </p>
+                    </div>
+
+                    <nav class="space-y-3">
+                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div>
+                        </a>
+                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div>
+                        </a>
+                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div>
+                        </a>
+                    </nav>
+
+                    <div>
+                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
+                        <div class="space-y-2">
+                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
+                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
+                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
+                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
+                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex-shrink-0">
+                 <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
+                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
+                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
+                </div>
+                <div class="mt-4 flex justify-start items-center gap-2">
+                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
+                    <span style="color: var(--text-tertiary);">/</span>
+                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
+                </div>
+                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            </div>
+        </aside>
+
+        <div class="flex-1 lg:ml-80">
+            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12 max-w-5xl mx-auto case-study-section">
+                
+                <h1 class="text-4xl lg:text-5xl font-bold mb-4">Pebble: Nurturing Workplace Happiness</h1>
+                <p class="text-lg mb-8" style="color: var(--text-secondary);">A Royal College of Art & VISA collaboration on how we designed a virtual companion to combat stress and foster connection for a thriving remote workforce.</p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="case-study-pill">Service Design</span>
+                    <span class="case-study-pill">Employee Wellbeing</span>
+                    <span class="case-study-pill">Remote Work</span>
+                    <span class="case-study-pill">Virtual Companion</span>
+                </div>
+
+                <div class="relative mb-12" style="padding-bottom: 56.25%; height: 0;">
+                    <iframe src="https://player.vimeo.com/video/561000617" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4">The Challenge</h2>
+                    <p>While remote work offers flexibility, it has also revealed a workforce grappling with stress and isolation. Our research showed a stark decline in employee wellbeing, with 43% rating their mental health as ‘fair’ to ‘very bad’. This wasn’t just about feelings; happier employees are up to 12% more productive. Our brief was to design a service that proactively fosters happiness, transforming it from an HR concern into a core part of the employee experience.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">Our Approach</h2>
+                    <p>As project lead, I guided our team through an intensive, research-driven design process. We began with surveys and 24 workshops with VISA employees to map emotional journeys and uncover core needs. This data allowed us to develop a key user persona: the "Explorer," an employee aware of their mental status but unsure how to maintain it. Our design process was built around a central question: "How Might We help the Explorer build a foundation of high wellbeing?"</p>
+                    <img src="https://placehold.co/800x450/333/fff?text=User+Segmentation+-+The+Explorer" alt="The Explorer persona description with motivations, problems, and goals." class="case-study-image">
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">The Solution</h2>
+                    <p>Pebble is a virtual assistant integrated into an employee’s workflow. It promotes happiness and productivity through personalized matchmaking, tools for deep work, and a "Virtual Café" to enhance social connection. Pebble acts as a “Happiness Assistant,” gently prompting users to set work-life boundaries and reflect on their achievements.</p>
+                    <img src="https://placehold.co/800x450/333/fff?text=Pebble's+Three+Happiness+Pillars" alt="Summary slide showing how Pebble promotes user's happiness in three ways." class="case-study-image">
+                </section>
+                
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">Results and Learnings</h2>
+                    <p>The project resulted in a deeply researched, user-validated concept. Key learnings included:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>Wellbeing is Not One-Size-Fits-All:</strong> Effective solutions must be adaptable and personalizable.</li>
+                        <li><strong>Co-creation is Non-Negotiable:</strong> Involving users directly was critical to uncovering true needs.</li>
+                        <li><strong>Small Nudges Can Create Big Shifts:</strong> Gentle prompts for breaks and reflection can significantly influence behavior.</li>
+                        <li><strong>The ROI of Happiness is Real:</strong> The link between happiness and business metrics makes investing in wellbeing a strategic imperative.</li>
+                    </ul>
+                </section>
+                
+                <div class="text-center mt-16">
+                    <a href="index.html" class="back-to-work-btn">Back to Work</a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+    
+    <div id="copy-toast">Email Copied!</div>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaan Khan - Case Study: IVI Program</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="antialiased">
+
+    <div class="cursor-dot"></div>
+
+    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
+        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+        </button>
+        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+    </header>
+    
+    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
+
+    <div class="flex">
+        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
+            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
+                <div class="space-y-6">
+                    <div class="hidden lg:block">
+                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">
+                            Hyderabad-based Product Designer creating impactful, human-centered products.
+                        </p>
+                    </div>
+                     <div class="block lg:hidden">
+                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                           Hyderabad-based Product Designer creating impactful, human-centered products.
+                        </p>
+                    </div>
+
+                    <nav class="space-y-3">
+                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div>
+                        </a>
+                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div>
+                        </a>
+                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
+                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div>
+                        </a>
+                    </nav>
+
+                    <div>
+                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
+                        <div class="space-y-2">
+                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
+                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
+                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
+                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
+                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex-shrink-0">
+                 <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
+                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
+                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
+                </div>
+                <div class="mt-4 flex justify-start items-center gap-2">
+                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
+                    <span style="color: var(--text-tertiary);">/</span>
+                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
+                </div>
+                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            </div>
+        </aside>
+
+        <div class="flex-1 lg:ml-80">
+            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12 max-w-5xl mx-auto case-study-section">
+                
+                <h1 class="text-4xl lg:text-5xl font-bold mb-4">The Hidden Workload: Improving Women’s Work-Life Balance</h1>
+                <p class="text-lg mb-8" style="color: var(--text-secondary);">An award-winning speculative design project exploring how recognizing 'invisible value' could reshape women's work-life wellbeing by 2040.</p>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="case-study-pill">Speculative Design</span>
+                    <span class="case-study-pill">Women's Wellbeing</span>
+                    <span class="case-study-pill">Invisible Labor</span>
+                    <span class="case-study-pill">Future of Work</span>
+                </div>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4">Introduction</h2>
+                    <p>The modern working woman often navigates professional ambitions, societal expectations, and the often-unseen, unpaid labor at home. Our project, "A Soul at Work," was a speculative design journey to create the "Invisible Value Income (I.V.I.) Program"—a future-facing concept for 2040 designed to support women's mental health by acknowledging their often-invisible contributions. This exploration was honored in the Speculative Design category at the Core77 Design Awards in 2021.</p>
+                    <img src="https://placehold.co/800x450/333/fff?text=A+SOUL+AT+WORK" alt="Title slide from presentation showing 'A SOUL AT WORK'" class="case-study-image">
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">The Challenge: The Weight of Invisible Burdens</h2>
+                    <p>Our initial exploration focused on the multifaceted pressures affecting working women’s mental health. A critical theme was the disproportionate burden of unpaid domestic work and childcare. This "invisible work" is economically undervalued yet crucial for societal function and directly impacts women's time, energy, and career progression.</p>
+                    <img src="https://placehold.co/800x450/333/fff?text=Working+Mom+Pain+Points" alt="Diagram showing major pain points for working mothers" class="case-study-image">
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">Our Approach: Deep Empathy and Future-Focused Speculation</h2>
+                    <p>We conducted research with 79 working women and 4 wellbeing specialists. Key insights included that stress arises from both external and internal pressures, and a sense of control significantly decreases it. To make these challenges tangible, we developed the persona of "Johanna," a 36-year-old mother juggling remote work and family. We then projected these challenges into a 2040 scenario, asking: "What if invisible value could be evaluated economically?"</p>
+                    <img src="https://placehold.co/800x450/333/fff?text=Johanna+Persona" alt="Johanna Persona description slide" class="case-study-image">
+                </section>
+                
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">The Solution: The Invisible Value Income (I.V.I.) Program</h2>
+                    <p>The I.V.I. Program is a speculative governmental public program for 2040. It aims to recognize, measure, and compensate for the "invisible value" created by individuals outside of their formal employment. The program is facilitated through a central digital platform called "Sensei," where users can track their contributions, monitor their wellbeing, and plan their life and work with data-driven reports.</p>
+                    <img src="https://placehold.co/800x450/333/fff?text=Sensei+Platform+Dashboard" alt="Dashboard mockup for the Sensei Platform" class="case-study-image">
+                </section>
+
+                <section>
+                    <h2 class="text-3xl font-bold mb-4 mt-12">Key Learnings & Impact</h2>
+                    <p>This speculative project offered profound learnings:</p>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>Making the Invisible, Visible:</strong> Quantifying unpaid labor can fundamentally shift societal valuations and power dynamics.</li>
+                        <li><strong>Wellbeing is Systemic:</strong> Individual mental health is deeply intertwined with broader social and economic systems.</li>
+                        <li><strong>Speculative Design is a Catalyst for Dialogue:</strong> Envisioning a future scenario opens up critical conversations about current inequalities.</li>
+                    </ul>
+                    <p>The foundational research from this project was utilized by B.C.G. for their internal employee affiliation workshops, demonstrating the immediate relevance of our insights.</p>
+                </section>
+                
+                <div class="text-center mt-16">
+                    <a href="index.html" class="back-to-work-btn">Back to Work</a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+    
+    <div id="copy-toast">Email Copied!</div>
+
+    <script src="main.js"></script>
+</body>
+</html>
