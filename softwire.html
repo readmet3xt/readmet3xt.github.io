@@ -5,605 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amaan Khan - Case Study: Softwire</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
     
-    <style>
-        /* CSS Variables for Dark and Light Mode */
-        :root {
-            /* Dark Mode Defaults */
-            --primary-bg-rgb: 25 25 25;
-            --secondary-bg-rgb: 35 35 35;
-            --primary-text-rgb: 255 255 255;
-            --secondary-text-rgb: 200 200 200;
-            --tertiary-text-rgb: 160 160 160;
-            --border-color-rgb: 255 255 255;
-            --accent-color-rgb: 238 99 82;
-            --accent-color-darker-rgb: 209 86 72;
-            --link-hover-bg-rgb: 40 40 40;
-            --box-shadow-color: rgba(0, 0, 0, 0.1);
-            --glow-color-strong: rgba(var(--accent-color-rgb), 1.0);
-            --glow-color-soft: rgba(var(--accent-color-rgb), 0.6);
-        }
-
-        body.light-mode {
-            /* Light Mode Overrides */
-            --primary-bg-rgb: 245 245 245;
-            --secondary-bg-rgb: 255 255 255;
-            --primary-text-rgb: 30 30 30;
-            --secondary-text-rgb: 70 70 70;
-            --tertiary-text-rgb: 100 100 100;
-            --border-color-rgb: 0 0 0;
-            --link-hover-bg-rgb: 235 235 235;
-            --box-shadow-color: rgba(0, 0, 0, 0.08);
-            --glow-color-strong: rgba(var(--accent-color-rgb), 0.9);
-            --glow-color-soft: rgba(var(--accent-color-rgb), 0.5);
-        }
-
-        /* Base styles */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: rgb(var(--primary-bg-rgb));
-            color: rgb(var(--primary-text-rgb));
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-thumb { background: rgba(var(--primary-text-rgb), 0.2); border-radius: 4px; }
-        ::-webkit-scrollbar-track { background: rgba(var(--primary-text-rgb), 0.05); }
-
-        /* Sidebar */
-        .framer-fixed-sidebar {
-            width: 300px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 50;
-            background-color: rgb(var(--primary-bg-rgb));
-            box-shadow: var(--box-shadow-color) 2px 0px 6px 0px;
-            border-right: 1px solid rgba(var(--border-color-rgb), 0.06);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 12px;
-            overflow-y: auto;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .framer-sidebar-section {
-            width: 100%;
-            padding: 12px 18px;
-            border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
-        .framer-sidebar-section:last-of-type { border-bottom: none; }
-
-        .framer-sidebar-link-button {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            background-color: transparent;
-            border: 1px solid rgba(var(--border-color-rgb), 0.06);
-            cursor: pointer;
-            text-align: left;
-            text-decoration: none;
-            color: rgb(var(--primary-text-rgb));
-        }
-        .framer-sidebar-link-button:hover,
-        .framer-sidebar-link-button.active {
-            background-color: rgb(var(--link-hover-bg-rgb));
-            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 25px var(--glow-color-strong), 0 0 15px var(--glow-color-soft);
-            border-color: rgb(var(--accent-color-rgb));
-        }
-
-        /* Main content area */
-        .framer-main-content {
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            transition: margin-left 0.3s ease-in-out;
-            background-color: rgb(var(--primary-bg-rgb));
-            color: rgb(var(--primary-text-rgb));
-        }
-
-        /* Case study specific styling */
-        .case-study-section h1, .case-study-section h2, .case-study-section h3 {
-            color: rgb(var(--primary-text-rgb));
-        }
-        .case-study-section h1 { font-family: 'DM Sans', sans-serif; }
-        .case-study-section h2, .case-study-section h3 { font-family: 'IBM Plex Mono', monospace; }
-        .case-study-section p, .case-study-section li {
-            font-family: 'Inter', sans-serif;
-            color: rgb(var(--secondary-text-rgb));
-        }
-        .case-study-section ul { list-style: disc; margin-left: 1.25rem; }
-        .case-study-image {
-            width: 100%;
-            height: auto;
-            max-width: 800px;
-            margin: 2rem auto;
-            display: block;
-            border-radius: 8px;
-            box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
-        }
-        .case-study-grid-image {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-        .case-study-grid-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
-        }
-        .case-study-pill {
-            background-color: rgba(var(--accent-color-rgb), 0.1);
-            color: rgb(var(--accent-color-rgb));
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-family: 'IBM Plex Mono', monospace;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        /* Responsive adjustments */
-        @media (min-width: 810px) {
-            .framer-main-content {
-                margin-left: 300px;
-                padding: 3rem;
-            }
-            .mobile-only { display: none; }
-        }
-
-        @media (max-width: 809px) {
-            .framer-fixed-sidebar {
-                position: relative;
-                width: 100%;
-                height: auto;
-                box-shadow: none;
-                border-right: none;
-                border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
-                padding: 18px 0;
-                flex-direction: column;
-            }
-            .framer-main-content { margin-left: 0; }
-            .desktop-only { display: none; }
-            .framer-sidebar-section { padding: 8px 18px; align-items: flex-start; text-align: left; }
-            .framer-sidebar-link-button { padding: 8px 18px; }
-        }
-
-        .text-shadow-md { text-shadow: 0px 0px 3px rgba(var(--primary-text-rgb), 0.2); }
-        
-        .theme-toggle-fixed {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            z-index: 100;
-            background-color: rgb(var(--secondary-bg-rgb));
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 10px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            border: 1px solid rgba(var(--border-color-rgb), 0.08);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .theme-toggle-btn {
-            cursor: pointer;
-            color: rgb(var(--tertiary-text-rgb));
-            transition: color 0.3s ease;
-        }
-        .theme-toggle-btn.active {
-            color: rgb(var(--primary-text-rgb));
-            text-shadow: 0px 0px 3px rgba(var(--primary-text-rgb), 0.3);
-        }
-        .theme-toggle-btn:hover { color: rgb(var(--accent-color-rgb)); }
-        .theme-toggle-separator { color: rgb(var(--tertiary-text-rgb)); }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="framer-fixed-sidebar" id="sidebar">
-        <!-- Sidebar Content - Bio Section -->
-        <div class="framer-sidebar-section flex-shrink-0">
-            <h1 class="text-xl md:text-2xl font-['DM_Sans'] font-bold uppercase mb-2 text-shadow-md">amaan khan</h1>
-            <p class="text-sm md:text-base text-[rgb(var(--secondary-text-rgb))] text-left font-mono leading-relaxed">
-                Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
-            </p>
-        </div>
+<body class="antialiased">
 
-        <!-- Sidebar Content - Main Navigation (Work, Play, About) -->
-        <div class="framer-sidebar-section flex-grow-0 desktop-only">
-            <div class="space-y-2 w-full mb-4">
-                <!-- Work Link -->
-                <a href="index.html" class="framer-sidebar-link-button" id="nav-work-link">
-                    <img src="https://framerusercontent.com/images/4tR2kkcmNDwWLyCTL6UKBxtGk.png" alt="Work Icon" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=W';">
-                    <div>
-                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Work</h2>
-                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">A selection of recent work</p>
-                    </div>
-                </a>
-                <!-- Play Link -->
-                <a href="play.html" class="framer-sidebar-link-button" id="nav-play-link">
-                    <img src="https://framerusercontent.com/images/yXhY9qS7AmyN7I9smUNLCz5VD0.png" alt="Play Icon" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=P';">
-                    <div>
-                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Play</h2>
-                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Making things for fun</p>
-                    </div>
-                </a>
-                <!-- About Link -->
-                <a href="about.html" class="framer-sidebar-link-button" id="nav-about-link">
-                    <img src="https://framerusercontent.com/images/vcG8teeyu11wOOrFCkQIhw3k.png" alt="About Icon" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=A';">
-                    <div>
-                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">About</h2>
-                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Let's get to know each other</p>
-                    </div>
-                </a>
-            </div>
-            <div class="text-xs text-[rgb(var(--tertiary-text-rgb))] uppercase tracking-widest font-['IBM_Plex_Mono'] mb-4 w-full text-left">Selected Case Studies</div>
-            <div class="space-y-2 w-full">
-                <!-- Project Nav Items -->
-                <a href="koinbasket.html" class="framer-sidebar-link-button" id="nav-koinbasket-link">
-                    <img src="https://framerusercontent.com/images/25ozRUj8UvgIufO1O7xJ2ScoU.png" alt="KoinBasket Logo" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=K';">
-                    <div>
-                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">KoinBasket</h2>
-                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile app &amp; design system</p>
-                    </div>
-                </a>
-                <a href="softwire.html" class="framer-sidebar-link-button active" id="nav-softwire-link">
-                    <img src="https://framerusercontent.com/images/X6xeHKrxVIDBEnvGc28O693kVc.png" alt="Softwire Logo" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=S';">
-                    <div>
-                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Softwire</h2>
-                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile App</p>
-                    </div>
-                </a>
-                <a href="pebble.html" class="framer-sidebar-link-button" id="nav-pebble-link">
-                    <img src="https://framerusercontent.com/images/RjmnulJqoIak9iNkv5SharVR490.png" alt="Pebble Logo" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=P';">
-                    <div>
-                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Pebble</h2>
-                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Web Platform</p>
-                    </div>
-                </a>
-                <a href="iviprogram.html" class="framer-sidebar-link-button" id="nav-iviprogram-link">
-                    <img src="https://framerusercontent.com/images/vAu8bVuQAH0aydSgX5quO59xGJA.png" alt="IVI Program Logo" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=I';">
-                    <div>
-                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">IVI Program</h2>
-                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Web Platform</p>
-                    </div>
-                </a>
-                <a href="stampede.html" class="framer-sidebar-link-button" id="nav-stampede-link">
-                    <img src="https://framerusercontent.com/images/yA0FYp600JS4JkayoqQDdwNvzI.png" alt="Stampede Logo" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=S';">
-                    <div>
-                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Stampede</h2>
-                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile App</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+    <div class="cursor-dot"></div>
+    <div id="copy-toast">Email Copied!</div>
 
-        <!-- Sidebar Content - Footer Links -->
-        <div class="framer-sidebar-section flex-grow flex flex-col justify-end items-center p-4 pt-12">
-            <div class="flex flex-col md:flex-row gap-4 text-xs font-['IBM_Plex_Mono'] uppercase text-[rgb(var(--secondary-text-rgb))]">
-                <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">EMAIL</button>
-                <a href="https://www.linkedin.com/in/amaan-khan-placeholder" target="_blank" rel="noopener" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">LINKEDIN</a>
-                <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">RESUMÉ</a>
+    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20 shadow-md">
+        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md z-50">
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+        </button>
+        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+    </header>
+    
+    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
+
+    <div class="flex">
+        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
+            <div class="flex-grow flex flex-col">
+                <div class="space-y-6">
+                    <div>
+                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider hidden lg:block">Amaan Khan</h1>
+                        <p class="mt-2 text-sm text-[var(--text-secondary)]">Hyderabad-based Product Designer...</p>
+                    </div>
+                    <nav class="space-y-3">
+                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg" id="nav-work-link">...Work</a>
+                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg" id="nav-play-link">...Play</a>
+                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg" id="nav-about-link">...About</a>
+                    </nav>
+                    <div>
+                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4 text-[var(--text-tertiary)]">Case Studies</h3>
+                        <div class="space-y-2">
+                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm" id="nav-koinbasket-link">...KoinBasket</a>
+                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm" id="nav-softwire-link">...Softwire</a>
+                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm" id="nav-pebble-link">...Pebble</a>
+                            <a href="iviprogram.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm" id="nav-iviprogram-link">...IVI Program</a>
+                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm" id="nav-stampede-link">...Stampede</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="text-[rgb(var(--tertiary-text-rgb))] text-xs mt-4 font-['IBM_Plex_Mono']" id="copyright-year"></p>
+            <div class="pt-6 flex-shrink-0">
+                <p class="mt-4 text-xs font-ibm-plex-mono text-[var(--text-tertiary)]">&copy;<span id="copyright-year"></span> Amaan Khan</p>
+            </div>
+        </aside>
+
+        <div class="flex-1 lg:ml-80">
+            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12 case-study-section">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-5xl font-bold mb-4">Designing for Speed: The Journey of LNER’s App Clip Ticket Booking at Softwire</h1>
+                    <p class="text-lg mb-8">How we tackled the stress of last-minute train travel at the station through user-centered design and Apple’s App Clip technology during a summer internship at Softwire.</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="case-study-pill">User-Centered Design</span>
+                        <span class="case-study-pill">App Clip</span>
+                        <span class="case-study-pill">Mobile Design</span>
+                        <span class="case-study-pill">Usability Testing</span>
+                        <span class="case-study-pill">LNER</span>
+                    </div>
+
+                    <div class="text-center mt-12">
+                        <a href="index.html" class="inline-block px-8 py-3 rounded-lg btn-secondary">Back to Work</a>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
 
-    <div class="framer-main-content">
-        <!-- Mobile-only header -->
-        <header class="block md:hidden mb-8 w-full bg-[rgb(var(--secondary-bg-rgb))] py-4 px-6 rounded-lg text-center">
-            <h1 class="text-lg md:text-xl font-['IBM_Plex_Mono'] font-bold uppercase">Case Study: Softwire</h1>
-        </header>
-
-        <main class="max-w-4xl mx-auto px-4 py-8 space-y-12 case-study-section">
-            <h1 class="text-5xl font-bold mb-4">Designing for Speed: The Journey of LNER’s App Clip Ticket Booking at Softwire</h1>
-            <p class="text-lg mb-8 text-[rgb(var(--secondary-text-rgb))]">How we tackled the stress of last-minute train travel at the station through user-centered design and Apple’s App Clip technology during a summer internship at Softwire.</p>
-            <div class="flex flex-wrap gap-2 mb-8">
-                <span class="case-study-pill">User-Centered Design</span>
-                <span class="case-study-pill">App Clip</span>
-                <span class="case-study-pill">Mobile Design</span>
-                <span class="case-study-pill">Usability Testing</span>
-                <span class="case-study-pill">LNER</span>
-            </div>
-
-            <!-- Section: Introduction -->
-            <section>
-                <h2 class="text-3xl font-bold mb-4">Introduction</h2>
-                <p class="mb-4">Picture this: you’re rushing to the train station, weaving through crowds, only to be met by a long queue at the ticket kiosk or a confusing app download process. The clock is ticking. Buying a train ticket, especially at the last minute, can be a stressful experience. Passengers often feel overwhelmed by information, frustrated by delays, and anxious about missing their train.</p>
-                <p class="mb-4">London North Eastern Railway (LNER), a major UK train operator, wanted to improve this experience. Could we leverage technology to create a faster, more user-centric way for passengers to buy tickets right when they need them at the station?</p>
-                <p class="mb-4">This case study explores how, during a summer internship at Softwire, our team (Design: Amaan; Developers: Sofia, Neelu, Thomas, Joshua, Jeff, Harry) tackled this challenge by designing and developing a new LNER ticket booking experience using Apple’s App Clip technology. We aimed to move beyond the traditional kiosk and app store friction, offering a seamless, glanceable solution for iPhone users.</p>
-            </section>
-
-            <!-- Section: The Challenge & Context -->
-            <section>
-                <h2 class="text-3xl font-bold mb-4">The Challenge & Context</h2>
-                <p class="mb-4">Our core problem statement was clear: “How can we enable users to purchase train tickets using LNER App Clip at the station?”.</p>
-                <div class="w-full flex justify-center mb-12">
-                    <img src="https://placehold.co/800x450/333/fff?text=LNER+App+Clip+Concept" alt="Diagram showing the LNER App Clip concept, from NFC scan to ticket purchase." class="case-study-image">
-                </div>
-                <p class="mb-4">An App Clip is a small, lightweight part of an app (under 10MB) that launches instantly, focused on a specific task — like booking a ticket — without needing a full app download. This seemed perfect for the time-sensitive station environment. But what did users actually need in that moment? Our initial research revealed some key insights:</p>
-                <ul class="list-disc list-inside space-y-2 mb-8">
-                    <li>Information Overload: While travellers generally found ticket purchasing easy (82% positive rating), they craved information that was ‘demonstrably live’. Station environments often bombard users with data they don’t need when running late.</li>
-                    <li>Key Information Needs: Through an ideation workshop with 13 participants (including LNER stakeholders, designers, developers, and project managers), we identified critical information passengers prioritize before buying: live departure/arrival times, delays, platform details, ticket prices and flexibility, and journey duration/stops. They also highlighted the need for accessibility info and help points.</li>
-                </ul>
-                <div class="case-study-grid-image">
-                    <img src="https://placehold.co/400x300/333/fff?text=Ideation+Workshop+Visual+1" alt="Sticky notes from an ideation workshop, clustered by theme." class="case-study-grid-image-item">
-                    <img src="https://placehold.co/400x300/333/fff?text=Ideation+Workshop+Visual+2" alt="A whiteboard covered in sketches and user flow diagrams." class="case-study-grid-image-item">
-                    <img src="https://placehold.co/400x300/333/fff?text=Ideation+Workshop+Visual+3" alt="Team members collaborating around a table during the workshop." class="case-study-grid-image-item">
-                </div>
-                <ul class="list-disc list-inside space-y-2 mb-8">
-                    <li>Station Pain Points: Observing passengers “fly-on-the-wall” style at St. Pancras station confirmed the stress points: long queues, uncertainty about platform announcements (often late, causing panic), and the anxiety of navigating the station itself. Losing physical tickets was also a concern.</li>
-                </ul>
-                <div class="case-study-grid-image">
-                    <img src="https://placehold.co/400x300/333/fff?text=St.+Pancras+Observation+1" alt="A photo of a long queue at a train station ticket kiosk." class="case-study-grid-image-item">
-                    <img src="https://placehold.co/400x300/333/fff?text=St.+Pancras+Observation+2" alt="A passenger looking anxiously at a departure board." class="case-study-grid-image-item">
-                    <img src="https://placehold.co/400x300/333/fff?text=St.+Pancras+Observation+3" alt="A crowded train station platform with many people." class="case-study-grid-image-item">
-                </div>
-                <p class="mb-4">This research painted a picture of a user needing speed, clarity, and reassurance. Our App Clip needed to cut through the noise and provide a direct path to purchasing a ticket.</p>
-            </section>
-
-            <!-- Section: Our Approach: Research-Driven Iteration -->
-            <section>
-                <h2 class="text-3xl font-bold mb-4">Our Approach: Research-Driven Iteration</h2>
-                <p class="mb-4">We adopted an iterative design process, constantly feeding research insights back into our designs and collaborating closely with the development team.</p>
-                <h3 class="text-2xl font-bold mb-2 mt-6">Understanding & Ideation (Week 1–2)</h3>
-                <p class="mb-4">We started with the ideation workshop, affinity mapping, and sketching exercises. A key idea emerged: a simple interface showing essential journey info with a quick buy option. Station observations and creating a user journey map helped us pinpoint exactly where the App Clip could intervene in the existing stressful flow.</p>
-                <div class="case-study-grid-image">
-                    <img src="https://placehold.co/400x300/333/fff?text=Affinity+Mapping" alt="Affinity mapping results" class="case-study-grid-image-item">
-                    <img src="https://placehold.co/400x300/333/fff?text=User+Journey+Map" alt="User journey map" class="case-study-grid-image-item">
-                </div>
-
-                <h3 class="text-2xl font-bold mb-2 mt-6">Defining the Flow & Wireframing</h3>
-                <p class="mb-4">We mapped out task flows for both the core booking experience and potential onboarding elements. We then moved from low-fidelity wireframes, focusing on layout and information hierarchy, to higher-fidelity screens incorporating LNER’s visual language.</p>
-                <div class="w-full flex justify-center mb-12">
-                    <img src="https://placehold.co/800x450/333/fff?text=Wireframe+Example" alt="Wireframe example" class="case-study-image">
-                </div>
-
-                <h3 class="text-2xl font-bold mb-2 mt-6">Prototyping & Testing (Week 3–4)</h3>
-                <p class="mb-4">We built interactive prototypes in Figma and conducted usability testing with 9 participants (friends, family, Softwire employees). We gave them a specific task: book a return ticket to Birmingham for 1 adult, 1 child with a railcard. This revealed crucial insights and pain points in our initial designs.</p>
-                 <div class="w-full flex justify-center mb-12">
-                    <img src="https://placehold.co/800x450/333/fff?text=Usability+Testing+Session" alt="Usability testing session" class="case-study-image">
-                </div>
-
-                <h3 class="text-2xl font-bold mb-2 mt-6">Iteration & Co-Creation</h3>
-                <p class="mb-4">Based on testing feedback, we iterated heavily, particularly on two key areas:</p>
-                <ul class="list-disc list-inside space-y-2 mb-4">
-                    <li><strong>Ticket Confirmation Screen:</strong> Users found the initial screen overwhelming. They needed clearer platform information and simpler ticket-saving options. We refined the hierarchy and streamlined the calls to action, balancing information density with the App Clip’s need for quick, essential functions.</li>
-                </ul>
-                <div class="w-full flex justify-center mb-12">
-                    <img src="https://placehold.co/800x450/333/fff?text=Confirmation+Screen+Iteration" alt="Ticket Confirmation Screen Iteration" class="case-study-image">
-                </div>
-                <ul class="list-disc list-inside space-y-2 mb-4">
-                    <li><strong>‘Plan Your Journey’ Screens:</strong> The initial multi-step flow felt too long and cumbersome for an App Clip. Users also couldn’t easily edit their journey details. We redesigned this flow to be quicker and more accessible, allowing edits more easily within a single overview screen.</li>
-                </ul>
-                 <div class="w-full flex justify-center mb-12">
-                    <img src="https://placehold.co/800x450/333/fff?text=Plan+Journey+Iteration" alt="Plan Your Journey Screens Iteration" class="case-study-image">
-                </div>
-                <p class="mt-4 mb-4">Throughout this, we held co-creation sessions with the development team to ensure our design decisions were feasible within the project scope and technical constraints.</p>
-            </section>
-
-            <!-- Section: The Solution: A Streamlined App Clip Experience-->
-            <section>
-                <h2 class="text-3xl font-bold mb-4">The Solution: A Streamlined App Clip Experience</h2>
-                <p class="mb-4">The result was a focused LNER App Clip booking flow, designed for speed and clarity at the station:</p>
-                <div class="case-study-grid-image">
-                    <img src="https://placehold.co/300x550/333/fff?text=App+Clip+Screen+1" alt="App Clip screen 1" class="case-study-grid-image-item">
-                    <img src="https://placehold.co/300x550/333/fff?text=App+Clip+Screen+2" alt="App Clip screen 2" class="case-study-grid-image-item">
-                    <img src="https://placehold.co/300x550/333/fff?text=App+Clip+Screen+3" alt="App Clip screen 3" class="case-study-grid-image-item">
-                    <img src="https://placehold.co/300x550/333/fff?text=App+Clip+Screen+4" alt="App Clip screen 4" class="case-study-grid-image-item">
-                    <img src="https://placehold.co/300x550/333/fff?text=App+Clip+Screen+5" alt="App Clip screen 5" class="case-study-grid-image-item">
-                    <img src="https://placehold.co/300x550/333/fff?text=App+Clip+Screen+6" alt="App Clip screen 6" class="case-study-grid-image-item">
-                </div>
-                <ul class="list-disc list-inside space-y-2 mb-4">
-                    <li><strong>Instant Access:</strong> Users could launch the App Clip via methods like NFC tags or QR codes at the station (or potentially location-based suggestions).</li>
-                    <li><strong>Quick Journey Planning:</strong> A simplified interface allows users to quickly input or confirm their destination (potentially pre-filled based on location), select dates, passengers, and railcards.</li>
-                    <li><strong>Clear Options:</strong> Users are presented with upcoming train options, highlighting key info like time, price, duration, and changes. Filters for ‘Cheapest’, ‘Fastest’, etc., are available.</li>
-                    <li><strong>Effortless Payment:</strong> Integration with Apple Pay allows for rapid checkout.</li>
-                    <li><strong>Accessible Ticket:</strong> The final screen displays the ticket with a prominent QR code for barriers, essential journey details (platform number!), and options for saving the ticket (e.g., Add to Apple Wallet) or getting notifications.</li>
-                </ul>
-                <p class="mb-4">We ensured the design complied with National Rail guidelines and prioritized clarity on essential information.</p>
-            </section>
-
-            <!-- Section: Beyond Booking: Exploring the Onboarding Opportunity-->
-            <section>
-                <h2 class="text-3xl font-bold mb-4">Beyond Booking: Exploring the Onboarding Opportunity</h2>
-                <p class="mb-4">While the core focus was booking, we also explored how the App Clip could assist passengers after purchase — an “Onboarding Experience”. A key concept here was the Seat Finder.</p>
-                <h3 class="text-2xl font-bold mb-2 mt-6">The Problem</h3>
-                <p class="mb-4">Last-minute ticket buyers often don’t have reserved seats. Finding an available seat on a busy train adds another layer of stress.</p>
-                <h3 class="text-2xl font-bold mb-2 mt-6">Our Idea</h3>
-                <p class="mb-4">A feature within the App Clip to help users find available seats. It could:</p>
-                <ul class="list-disc list-inside space-y-2 mb-4">
-                    <li>Show carriage layouts and indicate capacity based on unreserved seats.</li>
-                    <li>Direct users with reserved seats to the correct carriage.</li>
-                </ul>
-                <h3 class="text-2xl font-bold mb-2 mt-6">An Insightful Design Challenge</h3>
-                <p class="mb-4">How should we visually represent the train? We explored two options:</p>
-                 <div class="case-study-grid-image">
-                    <img src="https://placehold.co/400x300/333/fff?text=Seat+Finder+Option+A" alt="Seat Finder Option A (Side Profile)" class="case-study-grid-image-item">
-                    <img src="https://placehold.co/400x300/333/fff?text=Seat+Finder+Option+B" alt="Seat Finder Option B (Plan View)" class="case-study-grid-image-item">
-                </div>
-                <ul class="list-disc list-inside space-y-2 mb-4">
-                    <li><strong>Option A (Side Profile):</strong> Mimics the user’s view standing on the platform, potentially making orientation easier. Navigation: Scroll horizontally across the train.</li>
-                    <li><strong>Option B (Plan View):</strong> A common industry standard showing internal layout, potentially allowing more info on screen at once. Navigation: Scroll vertically through carriages.</li>
-                </ul>
-                <p class="mb-4">This presented a perfect opportunity for A/B testing to see which graphical representation users could interpret more quickly and easily in a real-world context.</p>
-                <p class="mb-4">We also designed an integrated feedback form to gather insights on new features like the Seat Finder post-launch.</p>
-                <div class="w-full flex justify-center mb-12">
-                    <img src="https://placehold.co/800x450/333/fff?text=Feedback+Form" alt="Integrated feedback form" class="case-study-image">
-                </div>
-            </section>
-
-            <!-- Section: Results and Learnings-->
-            <section>
-                <h2 class="text-3xl font-bold mb-4">Results and Learnings</h2>
-                <p class="mb-4">The core booking flow of the LNER App Clip was successfully developed and met National Rail guidelines. However, due to the time constraints of the summer internship, the full vision wasn’t implemented in the initial build. Features like multiple payment methods, editing journey details during review, and the onboarding experiences (Seat Finder, Notifications) were parked for future development.</p>
-                <div class="case-study-grid-image">
-                    <img src="https://placehold.co/400x300/333/fff?text=LNER+Result+Image+1" alt="LNER result image 1" class="case-study-grid-image-item">
-                    <img src="https://placehold.co/400x300/333/fff?text=LNER+Result+Image+2" alt="LNER result image 2" class="case-study-grid-image-item">
-                </div>
-                <h3 class="text-2xl font-bold mb-2 mt-6">Key Learnings & Bold Insights:</h3>
-                <ul class="list-disc list-inside space-y-2 mb-4">
-                    <li><strong>Context is King:</strong> Designing for a user likely rushing and stressed at a train station requires extreme simplification and prioritization of information. What works in a relaxed setting might fail under pressure.</li>
-                    <li><strong>App Clips Demand Focus:</strong> The &lt;10MB limit and ephemeral nature of App Clips force ruthless prioritization. Every screen, every interaction must serve the core task efficiently.</li>
-                    <li><strong>Visual Representation Matters:</strong> The Seat Finder exploration highlighted how seemingly small visual choices (side vs. plan view) can significantly impact usability and require testing in context. Assumptions about “logical” UX aren’t always right, especially for diverse user groups.</li>
-                    <li><strong>Iteration Isn’t Optional:</strong> Direct user feedback through usability testing was invaluable in identifying flaws (like the confusing confirmation screen and lengthy journey planning) and validating improvements.</li>
-                    <li><strong>Co-Creation Accelerates:</strong> Working closely with developers ensured technical feasibility and helped us make informed design trade-offs.</li>
-                </ul>
-            </section>
-
-            <!-- Section: The Future-->
-            <section>
-                <h2 class="text-3xl font-bold mb-4">The Future</h2>
-                <p class="mb-4">This project laid a strong foundation. The next steps involve:</p>
-                <ul class="list-disc list-inside space-y-2 mb-4">
-                    <li><strong>Further User Testing:</strong> Test the refined booking flow iterations and the proposed onboarding concepts (Seat Finder A/B test!) with real users at stations.</li>
-                    <li><strong>Onboarding Implementation:</strong> Build out the Seat Finder and notification features to create a more complete end-to-end App Clip experience.</li>
-                    <li><strong>Seat Finder Evolution:</strong> Explore basing the Seat Finder on live capacity data (not just reservations) and investigate potential benefits of a landscape mode (while being mindful of usability concerns like users having occupied hands).</li>
-                </ul>
-            </section>
-
-            <!--Conclusion-->
-            <section>
-                <h2 class="text-3xl font-bold mb-4">Conclusion</h2>
-                <p class="mb-4">Integrating App Clip technology provided a tangible solution to the friction of last-minute train ticket purchases. By grounding our design process in user research — from understanding initial pain points in workshops and station observations to iterating based on direct usability testing — we developed a streamlined booking flow tailored to the stressful station environment.</p>
-                <p class="mb-4">While time constraints meant parking some exciting features like the Seat Finder for now, the project successfully demonstrated the potential of App Clips for LNER and provided valuable learnings about designing for context-specific needs. It was a fantastic experience collaborating with a cross-functional team to take an idea from research through to a functional prototype, hopefully making future journeys a little less stressful for LNER passengers.</p>
-            </section>
-
-
-            <div class="text-center mt-12">
-                <a href="index.html" class="inline-block px-6 py-3 rounded-md bg-[rgb(var(--secondary-bg-rgb))] border border-[rgba(var(--border-color-rgb),0.06)] text-[rgb(var(--primary-text-rgb))] hover:bg-[rgb(var(--link-hover-bg-rgb))] hover:border-[rgb(var(--accent-color-rgb))] hover:shadow-[0_0_25px_rgba(var(--accent-color-rgb),1.0),0_0_15px_rgba(var(--accent-color-rgb),0.6)] transition-all ease-in-out">Back to Work</a>
-            </div>
-        </main>
-    </div>
-
-    <!-- Sticky Theme Toggle -->
-    <div class="theme-toggle-fixed" id="theme-toggle">
-        <span id="dark-mode-toggle" class="theme-toggle-btn">DARK</span>
-        <span class="theme-toggle-separator">/</span>
-        <span id="light-mode-toggle" class="theme-toggle-btn">LIGHT</span>
-    </div>
-
-    <script>
-        // --- UTILITY FUNCTIONS ---
-        function copyToClipboard(text) {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(() => {
-                    console.log('Email copied to clipboard!');
-                }).catch(err => {
-                    console.error('Could not copy text with modern API: ', err);
-                    copyToClipboardFallback(text);
-                });
-            } else {
-                copyToClipboardFallback(text);
-            }
-        }
-
-        function copyToClipboardFallback(text) {
-            const textarea = document.createElement('textarea');
-            textarea.value = text;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                console.log('Fallback: Email copied to clipboard.');
-            } catch (err) {
-                console.error('Fallback: Could not copy text: ', err);
-            }
-            document.body.removeChild(textarea);
-        }
-
-        // --- DYNAMIC CONTENT ---
-        function setCopyrightYear() {
-            const yearElement = document.getElementById('copyright-year');
-            if (yearElement) {
-                yearElement.textContent = `©${new Date().getFullYear()} amaan khan`;
-            }
-        }
-
-        // --- UI LOGIC ---
-        function manageTheme() {
-            const darkModeToggle = document.getElementById('dark-mode-toggle');
-            const lightModeToggle = document.getElementById('light-mode-toggle');
-            const body = document.body;
-
-            const applyTheme = (theme) => {
-                if (theme === 'light') {
-                    body.classList.add('light-mode');
-                    lightModeToggle.classList.add('active');
-                    darkModeToggle.classList.remove('active');
-                } else {
-                    body.classList.remove('light-mode');
-                    darkModeToggle.classList.add('active');
-                    lightModeToggle.classList.remove('active');
-                }
-            };
-
-            darkModeToggle.addEventListener('click', () => {
-                localStorage.setItem('theme', 'dark');
-                applyTheme('dark');
-            });
-
-            lightModeToggle.addEventListener('click', () => {
-                localStorage.setItem('theme', 'light');
-                applyTheme('light');
-            });
-
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            applyTheme(savedTheme);
-        }
-
-        function highlightActiveNavLink() {
-            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-            const navLinks = document.querySelectorAll('.framer-sidebar-section a[id^="nav-"]');
-
-            navLinks.forEach(link => {
-                const linkFilename = link.getAttribute('href').split('/').pop();
-                link.classList.remove('active');
-                if (linkFilename === currentPath) {
-                    link.classList.add('active');
-                    if (link.id !== 'nav-work-link' && link.id !== 'nav-play-link' && link.id !== 'nav-about-link') {
-                        document.getElementById('nav-work-link')?.classList.add('active');
-                    }
-                }
-            });
-        }
-
-        // --- INITIALIZATION ---
-        function onDOMLoaded() {
-            console.log("DOM fully loaded and parsed. Initializing scripts.");
-            manageTheme();
-            highlightActiveNavLink();
-            setCopyrightYear();
-        }
-
-        document.addEventListener('DOMContentLoaded', onDOMLoaded);
-    </script>
+    <script src="main.js" defer></script>
 </body>
 </html>
