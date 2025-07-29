@@ -4,92 +4,628 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amaan Khan - Play</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for Inter, IBM Plex Mono, and DM Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Dark and Light Mode */
+        :root {
+            /* Dark Mode Defaults */
+            --primary-bg-rgb: 25 25 25;
+            --secondary-bg-rgb: 35 35 35;
+            --primary-text-rgb: 255 255 255;
+            --secondary-text-rgb: 200 200 200;
+            --tertiary-text-rgb: 160 160 160;
+            --border-color-rgb: 255 255 255;
+            --accent-color-rgb: 238 99 82;
+            --accent-color-darker-rgb: 209 86 72;
+            --link-hover-bg-rgb: 40 40 40;
+
+            --box-shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 0.8);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.4);
+
+            /* Computed values */
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+        }
+
+        body.light-mode {
+            /* Light Mode Overrides */
+            --primary-bg-rgb: 245 245 245;
+            --secondary-bg-rgb: 255 255 255;
+            --primary-text-rgb: 30 30 30;
+            --secondary-text-rgb: 70 70 70;
+            --tertiary-text-rgb: 100 100 100;
+            --border-color-rgb: 0 0 0;
+            --link-hover-bg-rgb: 235 235 235;
+
+            --box-shadow-color: rgba(0, 0, 0, 0.08);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 0.7);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.35);
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--primary-text-rgb), 0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: rgba(var(--primary-text-rgb), 0.05); }
+
+        /* Sidebar styles */
+        .framer-fixed-sidebar {
+            width: 300px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            background-color: rgb(var(--primary-bg-rgb));
+            box-shadow: var(--box-shadow-color) 2px 0px 6px 0px;
+            border-right: 1px solid rgba(var(--border-color-rgb), 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            overflow-y: auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .framer-sidebar-section {
+            width: 100%;
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
+        }
+        .framer-sidebar-section:last-of-type { border-bottom: none; }
+
+        .framer-sidebar-link-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            color: rgb(var(--primary-text-rgb));
+        }
+        .framer-sidebar-link-button:hover {
+            background-color: rgb(var(--link-hover-bg-rgb));
+            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 8px var(--glow-color-soft);
+            border-color: rgba(var(--accent-color-rgb), 0.5);
+        }
+        .framer-sidebar-link-button.active {
+            background-color: rgb(var(--link-hover-bg-rgb));
+            border-color: rgb(var(--accent-color-rgb));
+            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 8px var(--glow-color-strong);
+        }
+
+        /* Main content area */
+        .framer-main-content {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            transition: margin-left 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+            display: flex;
+            flex-direction: column;
+        }
+        
+        main { flex-grow: 1; }
+
+        /* Main content footer */
+        .main-content-footer {
+            width: 100%;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(var(--border-color-rgb), 0.08);
+            color: rgb(var(--tertiary-text-rgb));
+            text-align: center;
+        }
+        .main-content-footer .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .main-content-footer .footer-links button,
+        .main-content-footer .footer-links a {
+            text-decoration: none;
+            color: rgb(var(--secondary-text-rgb));
+            transition: color 0.3s ease;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+        .main-content-footer .footer-links button:hover,
+        .main-content-footer .footer-links a:hover {
+            color: rgb(var(--accent-color-rgb));
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 810px) {
+            .framer-main-content { margin-left: 300px; padding: 3rem; }
+            .mobile-header { display: none; }
+        }
+
+        @media (max-width: 809px) {
+            .framer-fixed-sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                border-right: none;
+                border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
+                padding: 18px 0;
+                overflow-y: hidden;
+            }
+            .framer-main-content { margin-left: 0 !important; }
+            .framer-sidebar-section { padding: 8px 18px; }
+        }
+
+        /* Image grid styles */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .image-grid-item {
+            background-color: rgb(var(--secondary-bg-rgb));
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(var(--border-color-rgb), 0.08);
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .image-grid-item:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgb(var(--accent-color-rgb));
+            box-shadow: 0 0 25px var(--glow-color-strong), 0 0 15px var(--glow-color-soft);
+        }
+
+        .image-grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Utility classes */
+        .text-shadow-md { text-shadow: 0px 0px 5px rgba(var(--primary-text-rgb), 0.2); }
+
+        /* Theme Toggle specific styles */
+        .theme-toggle-container {
+            display: flex;
+            gap: 0.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        .theme-toggle-btn {
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            color: rgb(var(--tertiary-text-rgb));
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+        .theme-toggle-btn.active {
+            color: rgb(var(--primary-text-rgb));
+            background-color: rgba(var(--accent-color-rgb), 0.2);
+        }
+        .theme-toggle-btn:not(.active):hover { color: rgb(var(--accent-color-rgb)); }
+        .theme-toggle-separator { color: rgba(var(--tertiary-text-rgb), 0.5); }
+        
+        /* --- Modal/Lightbox Styles --- */
+        .modal-container {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-container.active { display: flex; }
+
+        .modal-content {
+            position: relative;
+            padding: 0;
+            overflow: hidden; /* Important for resize */
+            animation-name: zoom;
+            animation-duration: 0.4s;
+        }
+
+        .modal-image-content {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Maintain aspect ratio within container */
+            display: block;
+            border-radius: 8px;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0.8)}
+            to {transform: scale(1)}
+        }
+
+        .close-btn {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .close-btn:hover, .close-btn:focus { color: #bbb; }
+
+        .prev-btn, .next-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .next-btn { right: 0; border-radius: 3px 0 0 3px; }
+        .prev-btn { left: 0; border-radius: 0 3px 3px 0; }
+        .prev-btn:hover, .next-btn:hover { background-color: rgba(var(--accent-color-rgb), 0.8); }
+        
+        /* --- Resize Handle --- */
+        .resize-handle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            bottom: 0;
+            right: 0;
+            cursor: nwse-resize;
+            z-index: 10;
+        }
+        .resize-handle::after {
+            content: '';
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            width: 8px;
+            height: 8px;
+            border-bottom: 2px solid rgba(255,255,255,0.7);
+            border-right: 2px solid rgba(255,255,255,0.7);
+        }
+
+    </style>
 </head>
-<body class="antialiased">
-    <div class="cursor-dot"></div>
-    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
-        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-        </button>
-        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-    </header>
-    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
-    <div class="flex">
-        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
-            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
-                <div class="space-y-6">
-                    <div class="hidden lg:block">
-                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">Hyderabad-based Product Designer creating impactful, human-centered products.</p>
-                    </div>
-                    <div class="block lg:hidden">
-                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
-                        <p class="text-sm" style="color: var(--text-secondary);">Hyderabad-based Product Designer creating impactful, human-centered products.</p>
-                    </div>
-                    <nav class="space-y-3">
-                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div></a>
-                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div></a>
-                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div></a>
-                    </nav>
+<body class="bg-[rgb(var(--primary-bg-rgb))]">
+    <div class="framer-fixed-sidebar" id="sidebar">
+        <!-- Sidebar Content -->
+        <div class="framer-sidebar-section flex-shrink-0">
+            <h1 class="text-xl md:text-2xl font-['DM_Sans'] font-bold uppercase mb-2 text-shadow-md">amaan khan</h1>
+            <p class="text-sm md:text-base font-mono leading-relaxed" style="color: rgba(var(--secondary-text-rgb), 0.8);">
+                Hyderabad-based Product Designer creating impactful, human-centered products.
+            </p>
+        </div>
+        <div class="framer-sidebar-section">
+            <div class="space-y-2 w-full">
+                <a href="index.html" class="framer-sidebar-link-button" id="nav-work-link">
+                    <img src="https://framerusercontent.com/images/4tR2kkcmNDwWLyCTL6UKBxtGk.png" alt="Work Icon" class="w-8 h-8 rounded-sm object-cover">
                     <div>
-                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
-                        <div class="space-y-2">
-                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
-                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
-                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
-                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
-                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
-                        </div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Work</h2>
+                        <p class="text-xs font-mono" style="color: rgba(var(--secondary-text-rgb), 0.6);">A selection of recent work</p>
                     </div>
-                </div>
+                </a>
+                <a href="play.html" class="framer-sidebar-link-button" id="nav-play-link">
+                    <img src="https://framerusercontent.com/images/yXhY9qS7AmyN7I9smUNLCz5VD0.png" alt="Play Icon" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Play</h2>
+                        <p class="text-xs font-mono" style="color: rgba(var(--secondary-text-rgb), 0.6);">Making things for fun</p>
+                    </div>
+                </a>
+                <a href="about.html" class="framer-sidebar-link-button" id="nav-about-link">
+                    <img src="https://framerusercontent.com/images/vcG8teeyu11wOOrFCkQIhw3k.png" alt="About Icon" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">About</h2>
+                        <p class="text-xs font-mono" style="color: rgba(var(--secondary-text-rgb), 0.6);">Let's get to know each other</p>
+                    </div>
+                </a>
             </div>
-            <div class="pt-6 flex-shrink-0">
-                <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
-                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
-                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
-                </div>
-                <div class="mt-4 flex justify-start items-center gap-2">
-                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
-                    <span style="color: var(--text-tertiary);">/</span>
-                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
-                </div>
-                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+        </div>
+        <div class="framer-sidebar-section flex-grow">
+            <div class="text-xs uppercase tracking-widest font-['IBM_Plex_Mono'] mb-4 w-full text-left" style="color: rgba(var(--tertiary-text-rgb), 0.7);">Selected Case Studies</div>
+            <div class="space-y-2 w-full">
+                <a href="index.html#koinbasket-project" class="framer-sidebar-link-button"><img src="https://placehold.co/40x40/2d2d2d/ffffff?text=K" alt="KoinBasket Logo" class="w-8 h-8 rounded-sm object-cover"><div><h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">KoinBasket</h2><p class="text-xs font-mono" style="color: rgba(var(--secondary-text-rgb), 0.6);">Mobile app &amp; trading platform</p></div></a>
+                <a href="index.html#softwire-project" class="framer-sidebar-link-button"><img src="https://placehold.co/40x40/2d2d2d/ffffff?text=S" alt="Softwire Logo" class="w-8 h-8 rounded-sm object-cover"><div><h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Softwire</h2><p class="text-xs font-mono" style="color: rgba(var(--secondary-text-rgb), 0.6);">LNER App Clip UX</p></div></a>
+                <a href="index.html#pebble-project" class="framer-sidebar-link-button"><img src="https://placehold.co/40x40/2d2d2d/ffffff?text=P" alt="Pebble Logo" class="w-8 h-8 rounded-sm object-cover"><div><h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Pebble</h2><p class="text-xs font-mono" style="color: rgba(var(--secondary-text-rgb), 0.6);">Employee Wellbeing Service</p></div></a>
+                <a href="index.html#invisible-value-income-program-project" class="framer-sidebar-link-button"><img src="https://placehold.co/40x40/2d2d2d/ffffff?text=I" alt="IVI Program Logo" class="w-8 h-8 rounded-sm object-cover"><div><h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">IVI Program</h2><p class="text-xs font-mono" style="color: rgba(var(--secondary-text-rgb), 0.6);">Social Impact Design</p></div></a>
+                <a href="index.html#stampede-project" class="framer-sidebar-link-button"><img src="https://placehold.co/40x40/2d2d2d/ffffff?text=S" alt="Stampede Logo" class="w-8 h-8 rounded-sm object-cover"><div><h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Stampede</h2><p class="text-xs font-mono" style="color: rgba(var(--secondary-text-rgb), 0.6);">Conservation Partnerships</p></div></a>
             </div>
-        </aside>
-        <div class="flex-1 lg:ml-80">
-            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12">
-                <h2 class="font-dm-sans text-4xl font-bold mb-2">Playground</h2>
-                <p class="text-lg mb-12" style="color: var(--text-secondary);">A collection of art, doodles, & other things I've made for fun.</p>
-                <div class="image-grid">
-                    <div class="image-grid-item"><img src="https://placehold.co/400x400/EE6352/ffffff?text=Doodle+1" alt="Doodle 1"></div>
-                    <div class="image-grid-item"><img src="https://placehold.co/400x400/6352EE/ffffff?text=Doodle+2" alt="Doodle 2"></div>
-                    <div class="image-grid-item"><img src="https://placehold.co/400x400/52EE63/ffffff?text=Doodle+3" alt="Doodle 3"></div>
-                    <div class="image-grid-item"><img src="https://placehold.co/400x400/EEB952/ffffff?text=Doodle+4" alt="Doodle 4"></div>
-                    <div class="image-grid-item"><img src="https://placehold.co/400x400/52A9EE/ffffff?text=Doodle+5" alt="Doodle 5"></div>
-                    <div class="image-grid-item"><img src="https://placehold.co/400x400/E152EE/ffffff?text=Doodle+6" alt="Doodle 6"></div>
-                    <div class="image-grid-item"><img src="https://placehold.co/400x400/EE6352/ffffff?text=Doodle+7" alt="Doodle 7"></div>
-                    <div class="image-grid-item"><img src="https://placehold.co/400x400/6352EE/ffffff?text=Doodle+8" alt="Doodle 8"></div>
-                </div>
-            </main>
         </div>
     </div>
-    <div id="imageModal" class="modal-lightbox">
-        <div class="modal-lightbox-content">
-            <span class="modal-close-btn">&times;</span>
-            <a class="modal-prev-btn">&#10094;</a>
-            <a class="modal-next-btn">&#10095;</a>
+
+    <div class="framer-main-content">
+        <!-- Main Content -->
+        <header class="mobile-header text-center mb-8 md:hidden">
+            <h1 class="text-2xl font-['DM_Sans'] font-bold uppercase">Playground</h1>
+            <p class="text-sm font-mono" style="color: rgba(var(--secondary-text-rgb), 0.8);">A collection of art, doodles, & other things I've made for fun.</p>
+        </header>
+        <main class="container mx-auto px-1 md:px-3 py-4">
+            <h2 class="hidden md:block text-3xl font-['IBM_Plex_Mono'] font-bold mb-2">Playground</h2>
+            <p class="hidden md:block text-lg font-mono mb-12" style="color: rgba(var(--secondary-text-rgb), 0.8);">A collection of art, doodles, & other things I've made for fun.</p>
+            <div class="image-grid">
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/EE6352/ffffff?text=Doodle+1" alt="Placeholder Doodle 1" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/6352EE/ffffff?text=Doodle+2" alt="Placeholder Doodle 2" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/52EE63/ffffff?text=Doodle+3" alt="Placeholder Doodle 3" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/EEB952/ffffff?text=Doodle+4" alt="Placeholder Doodle 4" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/52A9EE/ffffff?text=Doodle+5" alt="Placeholder Doodle 5" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/E152EE/ffffff?text=Doodle+6" alt="Placeholder Doodle 6" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/EE6352/ffffff?text=Doodle+7" alt="Placeholder Doodle 7" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/6352EE/ffffff?text=Doodle+8" alt="Placeholder Doodle 8" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+                <div class="image-grid-item"><img src="https://placehold.co/400x400/52EE63/ffffff?text=Doodle+9" alt="Placeholder Doodle 9" onerror="this.onerror=null;this.src='https://placehold.co/400x400/2d2d2d/ffffff?text=Error';"></div>
+            </div>
+        </main>
+        <footer class="main-content-footer">
+            <div class="footer-links">
+                <button onclick="copyToClipboard('amaan@example.com', this)">Email</button>
+                <a href="https://linkedin.com/in/amaankhan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="/path/to/your/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            </div>
+            <p class="text-xs mb-4">© 2024 Amaan Khan. All Rights Reserved.</p>
+            <div class="theme-toggle-container">
+                <button id="light-mode-toggle" class="theme-toggle-btn">Light</button>
+                <span class="theme-toggle-separator">/</span>
+                <button id="dark-mode-toggle" class="theme-toggle-btn">Dark</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- The Modal/Lightbox -->
+    <div id="imageModal" class="modal-container">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <a class="prev-btn">&#10094;</a>
+            <a class="next-btn">&#10095;</a>
             <img id="modalImage" class="modal-image-content">
+            <!-- Resize handle is added via JS -->
         </div>
     </div>
-    <div id="copy-toast">Email Copied!</div>
-    <script src="main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- THEME TOGGLE LOGIC ---
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const lightModeToggle = document.getElementById('light-mode-toggle');
+            const body = document.body;
+
+            const applyTheme = (theme) => {
+                if (theme === 'light') {
+                    body.classList.add('light-mode');
+                    lightModeToggle.classList.add('active');
+                    darkModeToggle.classList.remove('active');
+                } else {
+                    body.classList.remove('light-mode');
+                    darkModeToggle.classList.add('active');
+                    lightModeToggle.classList.remove('active');
+                }
+            };
+
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+
+            darkModeToggle.addEventListener('click', () => { applyTheme('dark'); localStorage.setItem('theme', 'dark'); });
+            lightModeToggle.addEventListener('click', () => { applyTheme('light'); localStorage.setItem('theme', 'light'); });
+
+            // --- LAYOUT ADJUSTMENT ---
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.querySelector('.framer-main-content');
+            const adjustLayout = () => {
+                mainContent.style.marginLeft = (window.innerWidth > 809) ? `${sidebar.offsetWidth}px` : '0px';
+            };
+            window.addEventListener('resize', adjustLayout);
+            adjustLayout();
+
+            // --- ACTIVE NAV LINK HIGHLIGHTING ---
+            const highlightActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                document.querySelectorAll('.framer-sidebar-link-button[id^="nav-"]').forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href').endsWith(currentPath));
+                });
+            };
+            highlightActiveNavLink();
+
+            // --- MODAL/LIGHTBOX LOGIC ---
+            const modal = document.getElementById('imageModal');
+            if (modal) {
+                const modalContent = modal.querySelector('.modal-content');
+                const modalImg = document.getElementById('modalImage');
+                const gridImageItems = document.querySelectorAll('.image-grid-item');
+                const closeBtn = document.querySelector('.close-btn');
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+                let currentImageIndex;
+                let wasResizing = false; // Flag to prevent close-on-mouseup after resize
+
+                // --- RESIZE LOGIC ---
+                const resizeHandle = document.createElement('div');
+                resizeHandle.className = 'resize-handle';
+                modalContent.appendChild(resizeHandle);
+                
+                let isResizing = false;
+                let initialX, initialY, initialWidth, initialHeight;
+
+                const MIN_WIDTH = 300; // px
+                const MIN_HEIGHT = 200; // px
+
+                const resize = (e) => {
+                    if (!isResizing) return;
+                    const dx = e.clientX - initialX;
+                    const dy = e.clientY - initialY;
+
+                    const maxWidth = window.innerWidth * 0.95;
+                    const maxHeight = window.innerHeight * 0.95;
+
+                    let newWidth = Math.max(MIN_WIDTH, Math.min(initialWidth + dx, maxWidth));
+                    let newHeight = Math.max(MIN_HEIGHT, Math.min(initialHeight + dy, maxHeight));
+
+                    modalContent.style.width = `${newWidth}px`;
+                    modalContent.style.height = `${newHeight}px`;
+                };
+                
+                const stopResize = () => {
+                    if (isResizing) {
+                        wasResizing = true;
+                        // Use a timeout to reset the flag, allowing the click event to be ignored first.
+                        setTimeout(() => { wasResizing = false; }, 10);
+                    }
+                    isResizing = false;
+                    document.body.style.userSelect = 'auto';
+                    window.removeEventListener('mousemove', resize);
+                    window.removeEventListener('mouseup', stopResize);
+                };
+
+                resizeHandle.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    isResizing = true;
+                    initialX = e.clientX;
+                    initialY = e.clientY;
+                    initialWidth = modalContent.offsetWidth;
+                    initialHeight = modalContent.offsetHeight;
+                    document.body.style.userSelect = 'none';
+                    window.addEventListener('mousemove', resize);
+                    window.addEventListener('mouseup', stopResize);
+                });
+
+                // --- IMAGE MANAGEMENT LOGIC ---
+                const setImage = (index) => {
+                    currentImageIndex = index;
+                    const imgElement = gridImageItems[index]?.querySelector('img');
+                    if (imgElement) {
+                        modalImg.src = imgElement.src;
+                    }
+                };
+
+                const openModal = (index) => {
+                    modalContent.style.width = ''; // Reset size for recalculation
+                    modalContent.style.height = '';
+
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+
+                    const imgElement = gridImageItems[index]?.querySelector('img');
+                    if (!imgElement) return;
+
+                    const tempImg = new Image();
+                    tempImg.onload = () => {
+                        const maxWidth = window.innerWidth * 0.85;
+                        const maxHeight = window.innerHeight * 0.85;
+                        let w = tempImg.naturalWidth;
+                        let h = tempImg.naturalHeight;
+                        const ratio = w / h;
+
+                        if (w > maxWidth) { w = maxWidth; h = w / ratio; }
+                        if (h > maxHeight) { h = maxHeight; w = h * ratio; }
+                        
+                        modalContent.style.width = `${w}px`;
+                        modalContent.style.height = `${h}px`;
+                        
+                        setImage(index);
+                    };
+                    tempImg.src = imgElement.src;
+                };
+
+                const closeModal = () => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                };
+
+                const showNextImage = () => {
+                    setImage((currentImageIndex + 1) % gridImageItems.length);
+                };
+                const showPrevImage = () => {
+                    setImage((currentImageIndex - 1 + gridImageItems.length) % gridImageItems.length);
+                };
+
+                // Add event listeners
+                gridImageItems.forEach((item, index) => item.addEventListener('click', () => openModal(index)));
+                closeBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => {
+                    // If we just finished resizing, do nothing. The flag will be reset shortly.
+                    if (wasResizing) {
+                        return;
+                    }
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+                nextBtn.addEventListener('click', showNextImage);
+                prevBtn.addEventListener('click', showPrevImage);
+
+                document.addEventListener('keydown', (e) => {
+                    if (modal.classList.contains('active')) {
+                        if (e.key === 'ArrowRight') showNextImage();
+                        else if (e.key === 'ArrowLeft') showPrevImage();
+                        else if (e.key === 'Escape') closeModal();
+                    }
+                });
+            }
+        });
+
+        // --- GLOBAL HELPER FUNCTIONS ---
+        function copyToClipboard(text, element) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => showCopyFeedback(element, 'Copied!')).catch(() => fallbackCopy(text, element));
+            } else {
+                fallbackCopy(text, element);
+            }
+        }
+
+        function fallbackCopy(text, element) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed'; textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showCopyFeedback(element, 'Copied!');
+            } catch (err) {
+                showCopyFeedback(element, 'Error!');
+            }
+            document.body.removeChild(textArea);
+        }
+        
+        function showCopyFeedback(element, message) {
+            const originalText = element.textContent;
+            element.textContent = message;
+            setTimeout(() => { element.textContent = originalText; }, 2000);
+        }
+    </script>
 </body>
 </html>

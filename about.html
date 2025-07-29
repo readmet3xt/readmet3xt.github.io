@@ -4,105 +4,727 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amaan Khan - About</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* * =============================================
+         * CSS Variables for Theming (Dark/Light Mode)
+         * =============================================
+         */
+        :root {
+            /* Dark Mode (Default) */
+            --primary-bg-rgb: 25 25 25;
+            --secondary-bg-rgb: 35 35 35;
+            --primary-text-rgb: 255 255 255;
+            --secondary-text-rgb: 200 200 200;
+            --tertiary-text-rgb: 160 160 160;
+            --border-color-rgb: 255 255 255;
+            --accent-color-rgb: 238 99 82;
+            --accent-color-darker-rgb: 209 86 72;
+            --link-hover-bg-rgb: 40 40 40;
+            --box-shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 0.8);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.4);
+
+            /* Computed Colors */
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+        }
+
+        body.light-mode {
+            /* Light Mode Overrides */
+            --primary-bg-rgb: 245 245 245;
+            --secondary-bg-rgb: 255 255 255;
+            --primary-text-rgb: 30 30 30;
+            --secondary-text-rgb: 70 70 70;
+            --tertiary-text-rgb: 100 100 100;
+            --border-color-rgb: 0 0 0;
+            --link-hover-bg-rgb: 235 235 235;
+            --box-shadow-color: rgba(0, 0, 0, 0.08);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 0.7);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.35);
+        }
+
+        /* * =============================================
+         * Base & Global Styles
+         * =============================================
+         */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--primary-text-rgb), 0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: rgba(var(--primary-text-rgb), 0.05); }
+
+        /* * =============================================
+         * Sidebar Layout & Styling
+         * =============================================
+         */
+        .framer-fixed-sidebar {
+            width: 300px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            background-color: rgb(var(--primary-bg-rgb));
+            box-shadow: var(--box-shadow-color) 2px 0px 6px 0px;
+            border-right: 1px solid rgba(var(--border-color-rgb), 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .framer-sidebar-section {
+            width: 100%;
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
+        }
+        .framer-sidebar-section:last-of-type { border-bottom: none; }
+
+        .framer-sidebar-link-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border: 1px solid transparent; /* Start transparent to avoid layout shift */
+            cursor: pointer;
+            text-decoration: none;
+            color: rgb(var(--primary-text-rgb));
+        }
+
+        .framer-sidebar-link-button:hover,
+        .framer-sidebar-link-button.active {
+            background-color: rgb(var(--link-hover-bg-rgb));
+            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 8px var(--glow-color-soft);
+            border-color: rgba(var(--accent-color-rgb), 0.7);
+        }
+        
+        .framer-sidebar-link-button.active {
+             box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 12px var(--glow-color-strong);
+             border-color: rgb(var(--accent-color-rgb));
+        }
+
+        /* * =============================================
+         * Main Content Area
+         * =============================================
+         */
+        .framer-main-content {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            transition: margin-left 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+        }
+
+        .main-content-footer {
+            width: 100%;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(var(--border-color-rgb), 0.06);
+            text-align: center;
+            color: rgba(var(--tertiary-text-rgb), 0.7);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links button, .footer-links a {
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links button:hover, .footer-links a:hover {
+            color: rgb(var(--accent-color-rgb));
+        }
+
+        /* * =============================================
+         * Page-Specific Components & Styles
+         * =============================================
+         */
+
+        /* Text Styles */
+        .text-heading-main { font-family: 'DM Sans', sans-serif; color: rgb(var(--primary-text-rgb)); }
+        .text-heading-section { font-family: 'IBM Plex Mono', monospace; color: rgba(var(--primary-text-rgb), 0.9); }
+        .text-body { font-family: 'Inter', sans-serif; color: rgba(var(--primary-text-rgb), 0.85); }
+        .text-muted { font-family: 'Inter', sans-serif; color: rgba(var(--secondary-text-rgb), 0.6); }
+        .text-shadow-md { text-shadow: 0px 0px 8px rgba(var(--accent-color-rgb), 0.2); }
+
+        /* Timeline */
+        .timeline-container {
+            border-left: 2px solid rgba(var(--border-color-rgb), 0.1);
+            margin-left: 8px; /* Adjusted for better alignment */
+            padding-left: 2rem;
+        }
+        .timeline-item { position: relative; padding-bottom: 3rem; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem; /* Position relative to the container's padding */
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: rgb(var(--accent-color-rgb));
+            border: 3px solid rgb(var(--primary-bg-rgb));
+            z-index: 10;
+        }
+        .timeline-item h3 { color: rgb(var(--primary-text-rgb)); }
+        .timeline-item p { color: rgba(var(--secondary-text-rgb), 0.7); }
+        .timeline-item ul { color: rgba(var(--secondary-text-rgb), 0.8); }
+
+        /* Project Cards */
+        .project-card {
+            background-color: rgb(var(--secondary-bg-rgb));
+            border: 1px solid rgba(var(--border-color-rgb), 0.06);
+            color: rgb(var(--primary-text-rgb));
+            transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgb(var(--accent-color-rgb));
+            box-shadow: 0 0 20px var(--glow-color-strong), 0 0 10px var(--glow-color-soft);
+        }
+        .project-card h3 { font-family: 'Inter', sans-serif; font-weight: 700; }
+        .project-card p { color: rgba(var(--secondary-text-rgb), 0.6); }
+
+        /* Primary Button */
+        .btn-primary {
+            background-color: rgb(var(--accent-color-rgb));
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: rgb(var(--accent-color-darker-rgb));
+            transform: translateY(-2px);
+        }
+
+        /* Skills Chart */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            height: 400px;
+            max-height: 50vh;
+            background-color: rgb(var(--secondary-bg-rgb));
+            border: 1px solid rgba(var(--border-color-rgb), 0.06);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: opacity 0.3s ease;
+        }
+        .modal.open { display: flex; }
+        .modal-content-box {
+            background-color: rgb(var(--secondary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+            border: 1px solid rgba(var(--border-color-rgb), 0.1);
+        }
+        #close-modal {
+            color: rgba(var(--primary-text-rgb), 0.5);
+            transition: color 0.3s ease;
+        }
+        #close-modal:hover { color: rgb(var(--accent-color-rgb)); }
+        
+        /* Theme Toggle */
+        .theme-toggle-container {
+            margin-top: 1.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: rgba(var(--tertiary-text-rgb), 0.6);
+        }
+        .theme-toggle-btn {
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .theme-toggle-btn:hover {
+            color: rgb(var(--primary-text-rgb));
+        }
+        .theme-toggle-btn.active {
+            color: rgb(var(--accent-color-rgb));
+            font-weight: 500;
+        }
+
+        /* * =============================================
+         * Responsive Design
+         * =============================================
+         */
+        @media (min-width: 810px) {
+            .framer-main-content {
+                margin-left: 300px;
+                padding: 3rem;
+            }
+        }
+
+        @media (max-width: 809px) {
+            .framer-fixed-sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                border-right: none;
+                border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
+                padding: 18px 0;
+            }
+            .framer-main-content { margin-left: 0 !important; }
+            .framer-sidebar-section { padding: 8px 18px; }
+            .framer-sidebar-link-button { padding: 8px 18px; }
+        }
+    </style>
 </head>
 <body class="antialiased">
-    <div class="cursor-dot"></div>
-    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
-        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-        </button>
-        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-    </header>
-    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
-    <div class="flex">
-        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
-            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
-                <div class="space-y-6">
-                    <div class="hidden lg:block">
-                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">Hyderabad-based Product Designer creating impactful, human-centered products.</p>
-                    </div>
-                    <div class="block lg:hidden">
-                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
-                        <p class="text-sm" style="color: var(--text-secondary);">Hyderabad-based Product Designer creating impactful, human-centered products.</p>
-                    </div>
-                    <nav class="space-y-3">
-                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div></a>
-                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div></a>
-                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div></a>
-                    </nav>
+    <!-- 
+      =============================================
+      SIDEBAR NAVIGATION
+      =============================================
+    -->
+    <aside class="framer-fixed-sidebar" id="sidebar">
+        <!-- Bio Section -->
+        <div class="framer-sidebar-section flex-shrink-0">
+            <h1 class="text-xl md:text-2xl font-['DM_Sans'] font-bold uppercase mb-2 text-shadow-md">Amaan Khan</h1>
+            <p class="text-sm md:text-base font-mono leading-relaxed text-muted">
+                Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
+            </p>
+        </div>
+
+        <!-- Main Navigation -->
+        <div class="framer-sidebar-section flex-grow-0">
+            <div class="space-y-2 w-full mb-4">
+                <a href="index.html" class="framer-sidebar-link-button" id="nav-work-link">
+                    <img src="https://framerusercontent.com/images/4tR2kkcmNDwWLyCTL6UKBxtGk.png" alt="Work Icon" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=W';">
                     <div>
-                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
-                        <div class="space-y-2">
-                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
-                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
-                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
-                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
-                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
-                        </div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Work</h2>
+                        <p class="text-xs font-mono text-muted">A selection of recent work</p>
                     </div>
-                </div>
+                </a>
+                <a href="play.html" class="framer-sidebar-link-button" id="nav-play-link">
+                    <img src="https://framerusercontent.com/images/yXhY9qS7AmyN7I9smUNLCz5VD0.png" alt="Play Icon" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=P';">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Play</h2>
+                        <p class="text-xs font-mono text-muted">Making things for fun</p>
+                    </div>
+                </a>
+                <a href="about.html" class="framer-sidebar-link-button" id="nav-about-link">
+                    <img src="https://framerusercontent.com/images/vcG8teeyu11wOOrFCkQIhw3k.png" alt="About Icon" class="w-8 h-8 rounded-sm object-cover" onerror="this.onerror=null;this.src='https://placehold.co/32x32/ee6352/ffffff?text=A';">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">About</h2>
+                        <p class="text-xs font-mono text-muted">Let's get to know each other</p>
+                    </div>
+                </a>
             </div>
-            <div class="pt-6 flex-shrink-0">
-                <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
-                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
-                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
-                </div>
-                <div class="mt-4 flex justify-start items-center gap-2">
-                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
-                    <span style="color: var(--text-tertiary);">/</span>
-                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
-                </div>
-                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            <div class="text-xs uppercase tracking-widest font-['IBM_Plex_Mono'] mb-4 w-full text-left" style="color: rgba(var(--tertiary-text-rgb), 0.7);">Selected Case Studies</div>
+            <div class="space-y-2 w-full">
+                <!-- Project Nav Items -->
+                <a href="index.html#koinbasket-project" class="framer-sidebar-link-button">
+                    <img src="https://placehold.co/40x40/2d2d2d/ffffff?text=K" alt="KoinBasket Logo" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">KoinBasket</h2>
+                        <p class="text-xs font-mono text-muted">Mobile app &amp; trading platform</p>
+                    </div>
+                </a>
+                <a href="index.html#softwire-project" class="framer-sidebar-link-button">
+                    <img src="https://placehold.co/40x40/2d2d2d/ffffff?text=S" alt="Softwire Logo" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Softwire</h2>
+                        <p class="text-xs font-mono text-muted">LNER App Clip UX</p>
+                    </div>
+                </a>
+                <a href="index.html#pebble-project" class="framer-sidebar-link-button">
+                    <img src="https://placehold.co/40x40/2d2d2d/ffffff?text=P" alt="Pebble Logo" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Pebble</h2>
+                        <p class="text-xs font-mono text-muted">Employee Wellbeing Service</p>
+                    </div>
+                </a>
             </div>
-        </aside>
-        <div class="flex-1 lg:ml-80">
-            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12">
-                <section id="overview" class="mb-16 reveal-on-scroll">
-                    <h2 class="font-dm-sans text-4xl font-bold mb-8">About Me</h2>
-                    <p class="text-lg max-w-3xl mb-6" style="color: var(--text-secondary);">A skilled Product Designer with 4+ years of experience managing the entire design process, from research and ideation to final production. I excel at translating user data and research into intuitive, user-centric designs that solve complex problems and drive business outcomes. My unique systems-thinking perspective stems from a background in Mechanical Engineering.</p>
-                    <a href="mailto:mdamkhan.work@gmail.com" class="btn-primary inline-block font-bold py-3 px-6 rounded-lg">Get In Touch</a>
-                </section>
-                <section id="experience" class="mb-16 reveal-on-scroll">
-                    <h2 class="font-dm-sans text-3xl font-bold mb-8">Professional Experience</h2>
-                    <div class="timeline-container relative">
-                        <div class="timeline-item">
-                            <h3 class="text-xl font-bold font-dm-sans">Senior UX Designer</h3>
-                            <p class="text-md font-medium mb-2" style="color: var(--text-secondary);">KoinBasket | Remote, India (June 2024 - Present)</p>
-                            <ul class="list-disc list-inside space-y-2" style="color: var(--text-secondary);">
-                                <li>Lead the end-to-end redesign of the core trading platform, leveraging user interviews and analytics to inform a new information architecture, which improved task success rate by 20%.</li>
-                                <li>Partner closely with product managers and engineers to ship new features, translating complex requirements into intuitive user flows and high-fidelity prototypes.</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-item">
-                            <h3 class="text-xl font-bold font-dm-sans">Founding Designer</h3>
-                            <p class="text-md font-medium mb-2" style="color: var(--text-secondary);">KoinBasket | Remote, India (October 2022 - June 2023)</p>
-                            <ul class="list-disc list-inside space-y-2" style="color: var(--text-secondary);">
-                                <li>Owned the entire design process, shaping the product from initial concept to a successful market launch that scaled to over 70,000 users.</li>
-                            </ul>
+        </div>
+    </aside>
+
+    <!-- 
+      =============================================
+      MAIN CONTENT
+      =============================================
+    -->
+    <div class="framer-main-content">
+        <header class="block md:hidden mb-8 w-full bg-[rgb(var(--secondary-bg-rgb))] py-4 px-6 rounded-lg text-center shadow-md">
+            <h1 class="text-lg md:text-xl font-['IBM_Plex_Mono'] font-bold uppercase">About Me</h1>
+        </header>
+
+        <main class="container mx-auto px-1 md:px-3 py-4">
+
+            <!-- Overview Section -->
+            <section id="overview" class="mb-24 scroll-mt-24">
+                <img src="https://placehold.co/1200x400/191919/EE6352?text=Amaan+Khan" alt="Placeholder image for Amaan Khan" class="w-full h-auto rounded-lg mb-8 object-cover">
+                <p class="text-lg text-body max-w-3xl mb-6">
+                    A skilled Product Designer with 4+ years of experience managing the entire design process, from research and ideation to final production. I excel at translating user data and research into intuitive, user-centric designs that solve complex problems and drive business outcomes. My unique systems-thinking perspective stems from a background in Mechanical Engineering.
+                </p>
+                <a href="mailto:mdamkhan.work@gmail.com" class="inline-block btn-primary font-bold py-3 px-6 rounded-lg">Get In Touch</a>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="mb-24 scroll-mt-24">
+                <h2 class="text-3xl font-['IBM_Plex_Mono'] font-bold text-heading-section mb-8">Professional Experience</h2>
+                <div class="timeline-container relative">
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold">Senior UX Designer</h3>
+                        <p class="text-md font-medium text-muted mb-2">KoinBasket | Remote, India (June 2024 - Present)</p>
+                        <ul class="list-disc list-inside text-body space-y-2">
+                            <li>Lead the end-to-end redesign of the core trading platform, leveraging user interviews and analytics to inform a new information architecture, which improved task success rate by 20%.</li>
+                            <li>Partner closely with product managers and engineers to ship new features, translating complex requirements into intuitive user flows and high-fidelity prototypes.</li>
+                            <li>Champion a data-informed design culture by implementing and analyzing A/B tests, leading to a 15% increase in user engagement for key platform features.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold">Founding Designer</h3>
+                        <p class="text-md font-medium text-muted mb-2">KoinBasket | Remote, India (October 2022 - June 2023)</p>
+                        <ul class="list-disc list-inside text-body space-y-2">
+                            <li>Owned the entire design process, shaping the product from initial concept to a successful market launch that scaled to over 70,000 users.</li>
+                            <li>Developed and scaled a comprehensive design system from the ground up, which accelerated the production of new features by 30%.</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold">Design Intern</h3>
+                        <p class="text-md font-medium text-muted mb-2">Softwire | London, UK (July 2022 - August 2022)</p>
+                        <ul class="list-disc list-inside text-body space-y-2">
+                            <li>Conducted foundational user research and usability testing for an LNER App Clip, uncovering key insights that directly informed the final UI design and improved the ticket purchasing flow.</li>
+                            <li>Collaborated within a cross-functional team to successfully deliver the final prototype to the client.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Education Section -->
+            <section id="education" class="mb-24 scroll-mt-24">
+                <h2 class="text-3xl font-['IBM_Plex_Mono'] font-bold text-heading-section mb-8">Education</h2>
+                <div class="timeline-container relative">
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold">M.A. in Service Design</h3>
+                        <p class="text-md font-medium text-muted">Royal College of Art | London, UK</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3 class="text-xl font-bold">B.E. in Mechanical Engineering</h3>
+                        <p class="text-md font-medium text-muted">Osmania University | Hyderabad, India</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Academic Projects Section -->
+            <section id="projects" class="mb-24 scroll-mt-24">
+                <h2 class="text-3xl font-['IBM_Plex_Mono'] font-bold text-heading-section mb-2">Academic Projects</h2>
+                <p class="text-body mb-8 max-w-2xl">These academic projects demonstrate my ability to apply design thinking to complex, real-world challenges. Click to learn more.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="project-card rounded-lg shadow-md overflow-hidden cursor-pointer" data-project="pebble">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold">Pebble - Employee Wellbeing</h3>
+                            <p class="text-muted">VISA Innovation Centre Collaboration</p>
                         </div>
                     </div>
-                </section>
-                <section id="skills" class="mb-16 reveal-on-scroll">
-                    <h2 class="font-dm-sans text-3xl font-bold mb-8">Core Competencies</h2>
-                    <p class="max-w-2xl mb-8" style="color: var(--text-secondary);">My skills span the full product design spectrum, from high-level strategy to hands-on execution.</p>
-                    <div class="chart-container p-4 rounded-lg shadow-md">
-                        <canvas id="skillsChart"></canvas>
+                    <div class="project-card rounded-lg shadow-md overflow-hidden cursor-pointer" data-project="invisiblevalueprogram">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold">Invisible Value Income Program</h3>
+                            <p class="text-muted">BCG & RSM Collaboration</p>
+                        </div>
                     </div>
-                </section>
-            </main>
+                    <div class="project-card rounded-lg shadow-md overflow-hidden cursor-pointer" data-project="stampede">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold">Stampede</h3>
+                            <p class="text-muted">Airbnb & WWT Collaboration</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="mb-24 scroll-mt-24">
+                <h2 class="text-3xl font-['IBM_Plex_Mono'] font-bold text-heading-section mb-12">Skills & Tools</h2>
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-12 max-w-4xl mb-24">
+                    <div>
+                        <h3 class="text-xl font-['IBM_Plex_Mono'] font-semibold mb-4">Prototyping & Design Tools</h3>
+                        <ul class="list-disc list-inside grid grid-cols-2 gap-x-4 gap-y-2 text-body">
+                            <li>Figma</li><li>Adobe XD</li><li>Sketch</li><li>Webflow</li><li>Framer</li><li>Miro</li><li>Jira</li><li>LottieFiles</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-['IBM_Plex_Mono'] font-semibold mb-4">Collaboration Skills</h3>
+                        <ul class="list-disc list-inside text-body space-y-2">
+                            <li>Stakeholder Communication</li><li>Cross-Functional Team Leadership</li><li>Workshop Facilitation</li><li>Agile Methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-['IBM_Plex_Mono'] font-bold text-heading-section mb-2">Core Competencies</h2>
+                <p class="text-body mb-8 max-w-2xl">My skills span the full product design spectrum, from high-level strategy to hands-on execution. Hover over the bars for details.</p>
+                <div class="chart-container p-4 md:p-6 rounded-lg shadow-md">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="main-content-footer">
+            <div class="footer-links text-xs font-['IBM_Plex_Mono'] uppercase">
+                <button onclick="copyToClipboard('mdamkhan.work@gmail.com', this)">Email</button>
+                <a href="https://www.linkedin.com/in/amaankhan-designer" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener">Resumé</a>
+            </div>
+            <p class="text-xs mt-4 font-['IBM_Plex_Mono']" style="color: rgba(var(--tertiary-text-rgb), 0.5);">©2024 Amaan Khan</p>
+            <div class="theme-toggle-container">
+                <span id="dark-mode-toggle" class="theme-toggle-btn">DARK</span>
+                <span class="theme-toggle-separator">/</span>
+                <span id="light-mode-toggle" class="theme-toggle-btn">LIGHT</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 
+      =============================================
+      MODAL for Project Details
+      =============================================
+    -->
+    <div id="project-modal" class="modal fixed inset-0 z-50 items-center justify-center p-4">
+        <div class="modal-content-box rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 id="modal-title" class="text-2xl font-bold text-heading-main"></h3>
+                        <p id="modal-collab" class="text-muted"></p>
+                    </div>
+                    <button id="close-modal" class="text-4xl leading-none">&times;</button>
+                </div>
+                <div id="modal-content" class="space-y-4 text-body"></div>
+            </div>
         </div>
     </div>
-    <div id="copy-toast">Email Copied!</div>
-    <script src="main.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("DOM fully loaded and parsed");
+
+        // --- THEME MANAGEMENT ---
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightModeToggle = document.getElementById('light-mode-toggle');
+        const body = document.body;
+
+        const applyTheme = (theme) => {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                lightModeToggle.classList.add('active');
+                darkModeToggle.classList.remove('active');
+            } else {
+                body.classList.remove('light-mode');
+                darkModeToggle.classList.add('active');
+                lightModeToggle.classList.remove('active');
+            }
+            // We need to update the chart to reflect theme colors
+            if (window.skillsChartInstance) {
+                updateChartColors(window.skillsChartInstance);
+            }
+        };
+
+        darkModeToggle.addEventListener('click', () => {
+            localStorage.setItem('theme', 'dark');
+            applyTheme('dark');
+        });
+
+        lightModeToggle.addEventListener('click', () => {
+            localStorage.setItem('theme', 'light');
+            applyTheme('light');
+        });
+
+        // Initialize theme on load
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+
+
+        // --- NAVIGATION HIGHLIGHTING ---
+        const highlightActiveNavLink = () => {
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.framer-sidebar-link-button[id^="nav-"]');
+
+            navLinks.forEach(link => {
+                const linkFilename = link.getAttribute('href').split('/').pop();
+                link.classList.remove('active');
+                if (linkFilename === 'about.html' && currentPath === 'about.html') { // Correctly target about page
+                    link.classList.add('active');
+                } else if (linkFilename === currentPath){
+                    link.classList.add('active');
+                }
+            });
+        };
+        highlightActiveNavLink();
+
+
+        // --- SKILLS CHART ---
+        const skillsData = {
+            labels: ['Product Design', 'UX/UI Design', 'User Research', 'Info. Architecture', 'Interaction Design', 'Systems Thinking', 'Data-Informed Design'],
+            datasets: [{
+                label: 'Proficiency',
+                data: [95, 90, 85, 80, 85, 90, 85],
+                borderWidth: 1
+            }]
+        };
+
+        const getChartColors = () => {
+            const isLightMode = body.classList.contains('light-mode');
+            const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent-color-rgb').trim();
+            const text = isLightMode ? 'rgba(30, 30, 30, 0.7)' : 'rgba(255, 255, 255, 0.7)';
+            const grid = isLightMode ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
+            
+            return {
+                backgroundColor: `rgba(${accent}, 0.6)`,
+                borderColor: `rgb(${accent})`,
+                textColor: text,
+                gridColor: grid
+            };
+        };
+
+        const ctx = document.getElementById('skillsChart')?.getContext('2d');
+        if (ctx) {
+            const colors = getChartColors();
+            window.skillsChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: skillsData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true, max: 100,
+                            grid: { display: true, color: colors.gridColor },
+                            ticks: { color: colors.textColor }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: colors.textColor }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: body.classList.contains('light-mode') ? 'rgb(var(--secondary-bg-rgb))' : 'rgb(35,35,35)',
+                            titleColor: `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--accent-color-rgb').trim()})`,
+                            bodyColor: `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--primary-text-rgb').trim()})`,
+                            borderColor: `rgb(${getComputedStyle(document.documentElement).getPropertyValue('--accent-color-rgb').trim()})`,
+                            borderWidth: 1
+                        }
+                    }
+                }
+            });
+        }
+        
+        function updateChartColors(chart) {
+            const colors = getChartColors();
+            chart.data.datasets[0].backgroundColor = colors.backgroundColor;
+            chart.data.datasets[0].borderColor = colors.borderColor;
+            chart.options.scales.x.ticks.color = colors.textColor;
+            chart.options.scales.y.ticks.color = colors.textColor;
+            chart.options.scales.x.grid.color = colors.gridColor;
+            chart.update();
+        }
+
+
+        // --- PROJECT MODAL ---
+        const projectsData = {
+            pebble: {
+                title: 'Pebble - Employee Wellbeing Service',
+                collab: 'VISA Innovation Centre Collaboration',
+                content: `<p>Led a service design project focused on improving employee productivity and well-being. Utilized a human-centered design approach, including workshops and iterative prototyping, to develop a digital service concept that addressed key user challenges and business needs.</p>`
+            },
+            invisiblevalueprogram: {
+                title: 'Invisible Value Income Program',
+                collab: 'BCG & RSM Collaboration',
+                content: `<p>Co-created a program to address work-life balance disparities, leveraging systems thinking and speculative design to challenge existing norms. The project's innovative approach was recognized with a Core 77 Design Award and its findings were used by BCG for further analysis.</p>`
+            },
+            stampede: {
+                title: 'Stampede - Conservation Partnerships',
+                collab: 'Airbnb & WWT Collaboration',
+                content: `<p>Developed an innovative workshop methodology ('Stampede') to create impactful conservation partnerships using core design thinking principles.</p><p>Designed and proposed inclusive design solutions for an Airbnb-WWT collaboration to drive tangible environmental impact.</p>`
+            }
+        };
+
+        const modal = document.getElementById('project-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        const openModal = (projectId) => {
+            const data = projectsData[projectId];
+            if (!data || !modal) return;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-collab').textContent = data.collab;
+            document.getElementById('modal-content').innerHTML = data.content;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeModal = () => {
+            if (!modal) return;
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        };
+
+        projectCards.forEach(card => card.addEventListener('click', () => openModal(card.dataset.project)));
+        closeModalBtn?.addEventListener('click', closeModal);
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        
+    });
+
+    // --- GLOBAL HELPER FUNCTIONS ---
+    function copyToClipboard(text, element) {
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = element.textContent;
+            element.textContent = 'COPIED!';
+            setTimeout(() => {
+                element.textContent = originalText;
+            }, 2000);
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        });
+    }
+
+    </script>
 </body>
 </html>

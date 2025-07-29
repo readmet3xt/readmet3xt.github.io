@@ -4,14 +4,271 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amaan Khan - Portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts for Text Animation -->
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400&family=Calistoga&family=JetBrains+Mono:wght@400&family=Urbanist:wght@400&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            /* Dark Mode (Default) */
+            --bg-primary: #111111;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --text-tertiary: #6b7280;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-color: #ff4757;
+            --accent-hover: #ff6b81;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --glow-color: rgba(255, 71, 87, 0.5);
+        }
+
+        body.light-mode {
+            /* Light Mode */
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --text-tertiary: #9ca3af;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --accent-color: #ff4757;
+            --accent-hover: #ff6b81;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color: rgba(255, 71, 87, 0.3);
+        }
+
+        /* Base styles */
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Disable cursor on mobile */
+        @media (pointer: coarse), (max-width: 1023px) {
+            body {
+                cursor: default;
+            }
+            .cursor-dot {
+                display: none;
+            }
+        }
+        @media (pointer: fine) {
+             body {
+                cursor: none;
+            }
+        }
+        
+        /* Prevent content shifting when sidebar opens on mobile */
+        body.sidebar-open {
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            body.sidebar-open {
+                overflow: auto;
+            }
+        }
+
+
+        /* --- CREATIVE ADDITIONS START --- */
+
+        /* 1. Custom Cursor */
+        .cursor-dot {
+            pointer-events: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+        }
+        body:hover .cursor-dot {
+            opacity: 1;
+        }
+        .cursor-dot.cursor-hidden {
+             opacity: 0;
+        }
+        .cursor-dot.cursor-link-hover {
+            transform: translate(-50%, -50%) scale(3);
+        }
+
+        /* 2. Scroll Animations */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* 3. Interactive Sidebar Icons */
+        .sidebar-link:hover img {
+            transform: rotate(-5deg) scale(1.1);
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .sidebar-link img {
+             transition: transform 0.3s ease;
+        }
+
+        /* 4. Mouse-Aware Card Tilt */
+        .project-card {
+            will-change: transform;
+            transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* 5. Typewriter Animation Styling */
+        #text-animation-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            min-height: 150px;
+            background-color: var(--bg-primary);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        #animated-question {
+            text-align: left;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: var(--text-primary); /* Ensure text is visible */
+            transition: opacity 0.5s ease-in-out; /* Added for fade-out effect */
+        }
+        /* Blinking cursor for typewriter effect */
+        #animated-question .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.25rem; /* Match line height */
+            background-color: var(--accent-color);
+            animation: blink 1s infinite;
+            margin-left: 4px;
+            vertical-align: middle; /* Align cursor properly */
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .font-satoshi { font-family: 'Satoshi', sans-serif; }
+        .font-figtree { font-family: 'Figtree', sans-serif; }
+        .font-calistoga { font-family: 'Calistoga', cursive; }
+        .font-jetbrains-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-urbanist { font-family: 'Urbanist', sans-serif; }
+
+        /* --- CREATIVE ADDITIONS END --- */
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
+
+        /* Font families */
+        .font-dm-sans { font-family: 'DM Sans', sans-serif; }
+        .font-ibm-plex-mono { font-family: 'IBM Plex Mono', monospace; }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            box-shadow: 2px 0px 15px var(--shadow-color);
+        }
+        .sidebar-content-wrapper {
+             /* This container will not scroll */
+        }
+
+        /* Sidebar links */
+        .sidebar-link {
+            transition: all 0.2s ease-in-out;
+            border: 1px solid transparent;
+        }
+        .sidebar-link:hover {
+            background-color: var(--bg-primary);
+            border-color: var(--border-color);
+            transform: translateX(5px);
+        }
+        .sidebar-link.active {
+            background-color: var(--bg-primary);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+        .sidebar-link img {
+            object-fit: cover;
+        }
+        
+        /* Sidebar footer links */
+        .footer-link {
+            transition: color 0.2s ease;
+        }
+        .footer-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Project Cards */
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px var(--shadow-color), 0 0 20px var(--glow-color);
+        }
+        .project-card img {
+            object-fit: cover;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle-btn {
+            color: var(--text-tertiary);
+            transition: color 0.2s ease;
+        }
+        .theme-toggle-btn.active, .theme-toggle-btn:hover {
+            color: var(--text-primary);
+        }
+        
+        /* Hamburger Menu Icon Styling */
+        #hamburger-btn span {
+            transition: all 0.3s ease-in-out;
+        }
+        #hamburger-btn.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        #hamburger-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+        #hamburger-btn.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        .mobile-header {
+            background-color: var(--bg-primary);
+        }
+
+    </style>
 </head>
 <body class="antialiased">
+
+    <!-- Custom Cursor Element -->
     <div class="cursor-dot"></div>
+
+    <!-- Mobile Header -->
     <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
         <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
             <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
@@ -20,38 +277,93 @@
         </button>
         <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
     </header>
+    
+    <!-- Sidebar Overlay (Mobile) -->
     <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
+
     <div class="flex">
+        <!-- Sidebar -->
         <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
-            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
+            <div class="sidebar-content-wrapper flex-grow flex flex-col">
                 <div class="space-y-6">
+                    <!-- Bio Section (Desktop) -->
                     <div class="hidden lg:block">
                         <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">Hyderabad-based Product Designer creating impactful, human-centered products.</p>
+                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">
+                            Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
+                        </p>
                     </div>
+                     <!-- Bio Section (Mobile) -->
                     <div class="block lg:hidden">
                         <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
-                        <p class="text-sm" style="color: var(--text-secondary);">Hyderabad-based Product Designer creating impactful, human-centered products.</p>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
+                        </p>
                     </div>
+
+                    <!-- Main Navigation -->
                     <nav class="space-y-3">
-                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div></a>
-                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div></a>
-                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg"><img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md"><div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div></a>
+                        <a href="index.html" class="sidebar-link active flex items-center gap-4 p-3 rounded-lg" id="nav-work-link">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" 
+                                 onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" 
+                                 alt="Work Icon" class="w-10 h-10 rounded-md">
+                            <div>
+                                <h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2>
+                                <p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p>
+                            </div>
+                        </a>
+                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg" id="nav-play-link">
+                            <img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" 
+                                 onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';"
+                                 alt="Play Icon" class="w-10 h-10 rounded-md">
+                            <div>
+                                <h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2>
+                                <p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p>
+                            </div>
+                        </a>
+                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg" id="nav-about-link">
+                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" 
+                                 onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';"
+                                 alt="About Icon" class="w-10 h-10 rounded-md">
+                            <div>
+                                <h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2>
+                                <p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p>
+                            </div>
+                        </a>
                     </nav>
+
+                    <!-- Case Studies -->
                     <div>
                         <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
                         <div class="space-y-2">
-                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
-                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
-                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
-                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
-                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
+                            <a href="#koinbasket-project" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm">
+                                <img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm">
+                                <span class="font-ibm-plex-mono font-medium">KoinBasket</span>
+                            </a>
+                            <a href="#softwire-project" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm">
+                                <img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm">
+                                <span class="font-ibm-plex-mono font-medium">Softwire</span>
+                            </a>
+                            <a href="#pebble-project" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm">
+                                <img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm">
+                                <span class="font-ibm-plex-mono font-medium">Pebble</span>
+                            </a>
+                             <a href="#invisible-value-income-program-project" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm">
+                                <img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm">
+                                <span class="font-ibm-plex-mono font-medium">IVI Program</span>
+                            </a>
+                             <a href="#stampede-project" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm">
+                                <img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm">
+                                <span class="font-ibm-plex-mono font-medium">Stampede</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Sidebar Footer -->
             <div class="pt-6 flex-shrink-0">
-                <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
+                 <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
                     <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
                     <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
                     <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
@@ -64,22 +376,316 @@
                 <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
             </div>
         </aside>
+
+        <!-- Main Content -->
         <div class="flex-1 lg:ml-80">
             <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12">
+                
+                <!-- Text Animation Container -->
                 <div id="text-animation-container">
                     <p id="animated-question"><span class="cursor"></span></p>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    <a href="koinbasket.html" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary"><img src="https://images.unsplash.com/photo-1621452773357-0158d6b88a8d?q=80&w=600&h=400&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';" alt="A phone showing a cryptocurrency trading app interface." class="w-full h-48"><div class="p-6"><h3 class="text-xl font-bold font-dm-sans">KoinBasket</h3><p class="text-sm mt-1" style="color: var(--text-secondary);">Mobile App & Trading Platform</p></div></a>
-                    <a href="softwire.html" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary"><img src="https://images.unsplash.com/photo-1526614180703-827d26e5c654?q=80&w=600&h=400&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';" alt="A person using a mobile phone to book a train ticket." class="w-full h-48"><div class="p-6"><h3 class="text-xl font-bold font-dm-sans">Softwire</h3><p class="text-sm mt-1" style="color: var(--text-secondary);">LNER App Clip UX</p></div></a>
-                    <a href="pebble.html" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary"><img src="https://images.unsplash.com/photo-1474418397713-7e158ff971b6?q=80&w=600&h=400&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';" alt="A person meditating peacefully outdoors." class="w-full h-48"><div class="p-6"><h3 class="text-xl font-bold font-dm-sans">Pebble</h3><p class="text-sm mt-1" style="color: var(--text-secondary);">Employee Wellbeing Service</p></div></a>
-                    <a href="ivi.html" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary"><img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600&h=400&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';" alt="A group of diverse people collaborating in a workshop." class="w-full h-48"><div class="p-6"><h3 class="text-xl font-bold font-dm-sans">Invisible Value Income Program</h3><p class="text-sm mt-1" style="color: var(--text-secondary);">Social Impact Design</p></div></a>
-                    <a href="stampede.html" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary"><img src="https://images.unsplash.com/photo-1474511320723-9a568873867b5?q=80&w=600&h=400&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';" alt="A herd of elephants walking in the savanna." class="w-full h-48"><div class="p-6"><h3 class="text-xl font-bold font-dm-sans">Stampede</h3><p class="text-sm mt-1" style="color: var(--text-secondary);">Conservation Partnerships</p></div></a>
+                    
+                    <!-- Project Cards -->
+                    <a href="#koinbasket-project" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary" id="koinbasket-project">
+                        <img src="https://images.unsplash.com/photo-1621452773357-0158d6b88a8d?q=80&w=600&h=400&auto=format&fit=crop" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';"
+                             alt="A phone showing a cryptocurrency trading app interface." class="w-full h-48">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold font-dm-sans">KoinBasket</h3>
+                            <p class="text-sm mt-1" style="color: var(--text-secondary);">Mobile App & Trading Platform</p>
+                        </div>
+                    </a>
+
+                    <a href="#softwire-project" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary" id="softwire-project">
+                        <img src="https://images.unsplash.com/photo-1526614180703-827d26e5c654?q=80&w=600&h=400&auto=format&fit=crop" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';"
+                             alt="A person using a mobile phone to book a train ticket." class="w-full h-48">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold font-dm-sans">Softwire</h3>
+                            <p class="text-sm mt-1" style="color: var(--text-secondary);">LNER App Clip UX</p>
+                        </div>
+                    </a>
+
+                    <a href="#pebble-project" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary" id="pebble-project">
+                        <img src="https://images.unsplash.com/photo-1474418397713-7e158ff971b6?q=80&w=600&h=400&auto=format&fit=crop" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';"
+                             alt="A person meditating peacefully outdoors." class="w-full h-48">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold font-dm-sans">Pebble</h3>
+                            <p class="text-sm mt-1" style="color: var(--text-secondary);">Employee Wellbeing Service</p>
+                        </div>
+                    </a>
+
+                    <a href="#invisible-value-income-program-project" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary" id="invisible-value-income-program-project">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=600&h=400&auto=format&fit=crop" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';"
+                             alt="A group of diverse people collaborating in a workshop." class="w-full h-48">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold font-dm-sans">Invisible Value Income Program</h3>
+                            <p class="text-sm mt-1" style="color: var(--text-secondary);">Social Impact Design</p>
+                        </div>
+                    </a>
+
+                    <a href="#stampede-project" class="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-bg-secondary" id="stampede-project">
+                        <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?q=80&w=600&h=400&auto=format&fit=crop" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/1a1a1a/f0f0f0?text=Image+Not+Found';"
+                             alt="A herd of elephants walking in the savanna, representing wildlife conservation." class="w-full h-48">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold font-dm-sans">Stampede</h3>
+                            <p class="text-sm mt-1" style="color: var(--text-secondary);">Conservation Partnerships</p>
+                        </div>
+                    </a>
+
                 </div>
             </main>
         </div>
     </div>
-    <div id="copy-toast">Email Copied!</div>
-    <script src="main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkBtn = document.getElementById('dark-mode-toggle');
+            const lightBtn = document.getElementById('light-mode-toggle');
+            const body = document.body;
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const sidebarLinks = sidebar.querySelectorAll('a, button');
+
+            // --- RESPONSIVE SIDEBAR LOGIC ---
+            const toggleSidebar = () => {
+                body.classList.toggle('sidebar-open');
+                sidebar.classList.toggle('-translate-x-full');
+                hamburgerBtn.classList.toggle('open');
+                overlay.classList.toggle('hidden');
+            };
+
+            hamburgerBtn.addEventListener('click', toggleSidebar);
+            overlay.addEventListener('click', toggleSidebar);
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 1024 && !sidebar.classList.contains('-translate-x-full')) {
+                        // Only close if sidebar is open
+                        if (link.id.includes('mode-toggle') || link.textContent === 'Email' || (link.tagName === 'A' && !link.getAttribute('href').startsWith('#'))) {
+                            // Don't close for theme/email buttons or external links
+                            return;
+                        }
+                        toggleSidebar();
+                    }
+                });
+            });
+
+
+            // --- CREATIVE JAVASCRIPT START ---
+
+            // 1. Custom Cursor Logic
+            if(window.matchMedia("(pointer: fine)").matches) {
+                const cursorDot = document.querySelector('.cursor-dot');
+                const interactiveElements = document.querySelectorAll('a, button');
+
+                window.addEventListener('mousemove', (e) => {
+                    const { clientX, clientY } = e;
+                    cursorDot.style.left = `${clientX}px`;
+                    cursorDot.style.top = `${clientY}px`;
+                });
+
+                interactiveElements.forEach(el => {
+                    el.addEventListener('mouseenter', () => cursorDot.classList.add('cursor-link-hover'));
+                    el.addEventListener('mouseleave', () => cursorDot.classList.remove('cursor-link-hover'));
+                });
+                
+                document.addEventListener('mouseenter', () => cursorDot.classList.remove('cursor-hidden') );
+                document.addEventListener('mouseleave', () => cursorDot.classList.add('cursor-hidden') );
+            }
+
+            // 2. Scroll Animation Logic
+            const scrollElements = document.querySelectorAll('.reveal-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 }); 
+
+            scrollElements.forEach(el => observer.observe(el));
+
+            // 3. Mouse-Aware Card Tilt Logic
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                });
+            });
+
+            // 4. Typewriter Animation Logic
+            const container = document.getElementById('text-animation-container');
+            const questionEl = document.getElementById('animated-question');
+            
+            if (questionEl && container) {
+                const questions = [
+                    "How might we make it easy to see if online information is trustworthy?",
+                    "How might we design social apps that leave people feeling happy and connected, not anxious?",
+                    "How might we make choosing the sustainable option the most convenient choice every day?",
+                    "How might we help people learn new skills easily throughout their entire lives?",
+                    "How might we use technology to help neighbors with different views solve local problems together?",
+                    "How might we create services that are just as easy for an 80-year-old to use as an 18-year-old?",
+                    "How might we give people simple, honest control over how their personal data is used?"
+                ];
+
+                const fontClasses = [
+                    'font-satoshi', 'font-inter', 'font-figtree', 
+                    'font-dm-sans', 'font-calistoga', 'font-jetbrains-mono', 'font-urbanist'
+                ];
+
+                let isPaused = false;
+                let questionIndex = 0;
+
+                const pausePromise = () => new Promise(resolve => {
+                    const check = () => {
+                        if (!isPaused) resolve();
+                        else setTimeout(check, 50);
+                    };
+                    check();
+                });
+
+                const runAnimation = async () => {
+                    while (true) {
+                        await pausePromise();
+                        const question = questions[questionIndex];
+                        const font = fontClasses[questionIndex];
+                        const prefix = "How might we";
+                        const suffix = question.substring(prefix.length);
+
+                        questionEl.className = font;
+                        questionEl.style.opacity = 1; // Ensure it's visible before typing
+                        
+                        let typedText = '';
+
+                        // Type prefix
+                        for (let i = 0; i < prefix.length; i++) {
+                            await pausePromise();
+                            typedText = prefix.substring(0, i + 1);
+                            questionEl.innerHTML = `<span style="color: var(--accent-color);">${typedText}</span><span class="cursor"></span>`;
+                            await new Promise(r => setTimeout(r, 80 + (Math.random() - 0.5) * 40));
+                        }
+
+                        // Type suffix
+                        for (let i = 0; i < suffix.length; i++) {
+                             await pausePromise();
+                            typedText = prefix + suffix.substring(0, i + 1);
+                            questionEl.innerHTML = `<span style="color: var(--accent-color);">${prefix}</span>${suffix.substring(0, i + 1)}<span class="cursor"></span>`;
+                            await new Promise(r => setTimeout(r, 50 + (Math.random() - 0.5) * 30));
+                        }
+                        
+                        // Pause after typing, remove cursor
+                        await new Promise(r => setTimeout(r, 2500));
+                        await pausePromise();
+                        questionEl.innerHTML = questionEl.innerHTML.replace('<span class="cursor"></span>', '');
+
+                        // Fade Out
+                        questionEl.style.opacity = 0;
+                        await new Promise(r => setTimeout(r, 500)); // Wait for fade
+                        
+                        // Prepare for next loop
+                        await pausePromise();
+                        questionIndex = (questionIndex + 1) % questions.length;
+                        questionEl.innerHTML = `<span class="cursor"></span>`; // Reset with cursor
+                    }
+                };
+                
+                container.addEventListener('mouseenter', () => isPaused = true);
+                container.addEventListener('mouseleave', () => isPaused = false);
+                document.addEventListener('visibilitychange', () => {
+                    isPaused = document.hidden;
+                });
+
+                runAnimation();
+            }
+
+            // --- CREATIVE JAVASCRIPT END ---
+
+
+            // Function to set theme
+            const setTheme = (theme) => {
+                if (theme === 'light') {
+                    body.classList.add('light-mode');
+                    lightBtn.classList.add('active');
+                    darkBtn.classList.remove('active');
+                } else {
+                    body.classList.remove('light-mode');
+                    darkBtn.classList.add('active');
+                    lightBtn.classList.remove('active');
+                }
+                localStorage.setItem('theme', theme);
+            };
+
+            darkBtn.addEventListener('click', () => setTheme('dark'));
+            lightBtn.addEventListener('click', () => setTheme('light'));
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            setTheme(savedTheme);
+            
+            highlightActiveNavLink();
+            window.addEventListener('hashchange', highlightActiveNavLink);
+        });
+
+        // Function to copy email to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const notification = document.createElement('div');
+                notification.textContent = 'Email copied to clipboard!';
+                notification.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: var(--accent-color);
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    z-index: 1000;
+                    opacity: 0;
+                    transition: opacity 0.5s ease;
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => notification.style.opacity = '1', 10);
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => document.body.removeChild(notification), 500);
+                }, 3000);
+
+            }).catch(err => console.error('Failed to copy: ', err));
+        }
+
+        // Function to highlight active nav links
+        function highlightActiveNavLink() {
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const currentHash = window.location.hash;
+            
+            document.querySelectorAll('#sidebar nav a').forEach(link => {
+                const linkPath = link.getAttribute('href').split('#')[0].split('/').pop() || 'index.html';
+                link.classList.toggle('active', linkPath === currentPath);
+            });
+
+            document.querySelectorAll('.sidebar-content-wrapper a[href^="#"]').forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === currentHash);
+            });
+        }
+    </script>
 </body>
 </html>

@@ -5,138 +5,479 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amaan Khan - Case Study: KoinBasket</title>
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS Variables for Dark and Light Mode Theming */
+        :root {
+            /* Dark Mode Defaults */
+            --primary-bg-rgb: 17 17 17;       /* Deep, near-black for main content */
+            --secondary-bg-rgb: 28 28 28;     /* Slightly lighter for cards, sidebar */
+            --primary-text-rgb: 245 245 245;
+            --secondary-text-rgb: 180 180 180; /* For muted text like descriptions */
+            --tertiary-text-rgb: 140 140 140;   /* For even lighter text like dates */
+            --border-color-rgb: 255 255 255;   /* Used with rgba() for subtle borders */
+            --accent-color-rgb: 238 99 82;
+            --accent-color-darker-rgb: 209 86 72;
+            --link-hover-bg-rgb: 40 40 40;
+            --box-shadow-color: rgba(0, 0, 0, 0.2);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 0.8);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.5);
+        }
 
+        body.light-mode {
+            /* Light Mode Overrides */
+            --primary-bg-rgb: 248 249 250;    /* Off-white background */
+            --secondary-bg-rgb: 255 255 255;  /* White cards/elements */
+            --primary-text-rgb: 33 37 41;     /* Dark text */
+            --secondary-text-rgb: 73 80 87;
+            --tertiary-text-rgb: 108 117 125;
+            --border-color-rgb: 0 0 0;
+            --link-hover-bg-rgb: 233 236 239;
+            --box-shadow-color: rgba(0, 0, 0, 0.08);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 0.7);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.4);
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--primary-text-rgb), 0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+
+        /* Sidebar */
+        .framer-fixed-sidebar {
+            width: 300px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            background-color: rgb(var(--secondary-bg-rgb));
+            border-right: 1px solid rgba(var(--border-color-rgb), 0.08);
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            overflow-y: auto;
+            transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+        }
+        
+        .framer-sidebar-section {
+            width: 100%;
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(var(--border-color-rgb), 0.08);
+        }
+        .framer-sidebar-section:last-of-type { border-bottom: none; }
+
+        .framer-sidebar-link-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            background-color: transparent;
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            color: rgb(var(--primary-text-rgb));
+        }
+        .framer-sidebar-link-button:hover {
+            background-color: rgb(var(--link-hover-bg-rgb));
+            border-color: rgba(var(--accent-color-rgb), 0.5);
+        }
+        .framer-sidebar-link-button.active {
+            background-color: rgb(var(--link-hover-bg-rgb));
+            border-color: rgb(var(--accent-color-rgb));
+            box-shadow: 0 0 15px var(--glow-color-soft);
+        }
+        .framer-sidebar-link-button .icon {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(var(--accent-color-rgb), 0.1);
+            color: rgb(var(--accent-color-rgb));
+        }
+
+        /* Main content area */
+        .framer-main-content {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            transition: margin-left 0.3s ease-in-out;
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+        }
+        
+        .main-content-shifted { margin-left: 300px; }
+
+        /* Case study specific styling */
+        .case-study-section h1, .case-study-section h2, .case-study-section h3 { font-family: 'DM Sans', sans-serif; color: rgb(var(--primary-text-rgb)); }
+        .case-study-section h2, .case-study-section h3 { font-family: 'IBM Plex Mono', monospace; }
+        .case-study-section p, .case-study-section li { font-family: 'Inter', sans-serif; color: rgb(var(--secondary-text-rgb)); line-height: 1.7; }
+        .case-study-section ul { list-style: disc; margin-left: 1.25rem; }
+        .case-study-section li strong { color: rgb(var(--primary-text-rgb)); font-weight: 600; }
+        
+        .case-study-image {
+            width: 100%; height: auto; max-width: 800px; margin: 2rem auto; display: block; border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            border: 1px solid rgba(var(--border-color-rgb), 0.1);
+        }
+        .case-study-grid-image { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .case-study-grid-image img {
+            width: 100%; height: auto; border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            border: 1px solid rgba(var(--border-color-rgb), 0.1);
+        }
+        .case-study-pill {
+            background-color: rgba(var(--accent-color-rgb), 0.1); color: rgb(var(--accent-color-rgb));
+            padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; font-weight: 500;
+        }
+        
+        blockquote {
+            border-left: 3px solid rgb(var(--accent-color-rgb)); padding-left: 1.5rem;
+            margin: 2rem 0; font-style: italic; color: rgb(var(--secondary-text-rgb));
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 809px) {
+            .framer-fixed-sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid rgba(var(--border-color-rgb), 0.08); padding: 18px 0; }
+            .desktop-only { display: none; }
+            .framer-sidebar-section { padding: 8px 18px; }
+            .framer-sidebar-link-button { padding: 8px 18px; }
+        }
+        @media (min-width: 810px) {
+            .mobile-only { display: none; }
+            .framer-main-content { padding: 3rem; }
+        }
+
+        /* Theme Toggle */
+        .theme-toggle-fixed {
+            position: fixed; bottom: 1rem; right: 1rem; z-index: 100;
+            background-color: rgb(var(--secondary-bg-rgb)); padding: 0.5rem 1rem; border-radius: 9999px;
+            box-shadow: 0 4px 8px var(--box-shadow-color); display: flex; align-items: center; gap: 0.5rem;
+            font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; text-transform: uppercase;
+            border: 1px solid rgba(var(--border-color-rgb), 0.1); transition: all 0.3s ease;
+        }
+        .theme-toggle-btn { cursor: pointer; color: rgb(var(--tertiary-text-rgb)); transition: color 0.3s ease, text-shadow 0.3s ease; }
+        .theme-toggle-btn.active { color: rgb(var(--primary-text-rgb)); text-shadow: 0 0 5px rgba(var(--accent-color-rgb), 0.5); }
+        .theme-toggle-btn:not(.active):hover { color: rgb(var(--accent-color-rgb)); }
+        
+        /* "Copied!" notification toast */
+        #copy-toast {
+            position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%);
+            background-color: rgb(var(--accent-color-rgb)); color: white; padding: 10px 20px;
+            border-radius: 20px; font-family: 'Inter', sans-serif; font-size: 0.9rem; z-index: 101;
+            transition: bottom 0.5s ease-in-out; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        #copy-toast.show { bottom: 6rem; }
+    </style>
 </head>
-<body class="antialiased">
+<body> <!-- Theme class is now applied by JS to prevent FOUC -->
+    <!-- Sidebar -->
+    <div class="framer-fixed-sidebar" id="sidebar">
+        <!-- Bio Section -->
+        <div class="framer-sidebar-section flex-shrink-0">
+            <h1 class="text-xl md:text-2xl font-['DM_Sans'] font-bold uppercase mb-2">amaan khan</h1>
+            <p class="text-sm md:text-base text-[rgb(var(--secondary-text-rgb))] text-left font-mono leading-relaxed">
+                Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
+            </p>
+        </div>
 
-    <div class="cursor-dot"></div>
-
-    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
-        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-        </button>
-        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-    </header>
-    
-    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
-
-    <div class="flex">
-        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
-            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
-                <div class="space-y-6">
-                    <div class="hidden lg:block">
-                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">
-                            Hyderabad-based Product Designer creating impactful, human-centered products.
-                        </p>
+        <!-- Main Navigation (Desktop) -->
+        <div class="framer-sidebar-section flex-grow-0 desktop-only">
+            <div class="space-y-2 w-full mb-4">
+                <a href="index.html" class="framer-sidebar-link-button" id="nav-work-link">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                     </div>
-                     <div class="block lg:hidden">
-                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
-                        <p class="text-sm" style="color: var(--text-secondary);">
-                           Hyderabad-based Product Designer creating impactful, human-centered products.
-                        </p>
-                    </div>
-
-                    <nav class="space-y-3">
-                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div>
-                        </a>
-                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div>
-                        </a>
-                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div>
-                        </a>
-                    </nav>
-
                     <div>
-                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
-                        <div class="space-y-2">
-                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
-                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
-                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
-                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
-                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
-                        </div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Work</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">A selection of recent work</p>
                     </div>
-                </div>
+                </a>
+                <a href="play.html" class="framer-sidebar-link-button" id="nav-play-link">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.58 15.58-1.09-1.09a4 4 0 1 0-1.41 1.41l1.09 1.09ZM12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"/><path d="M12 12v6"/><path d="M21.17 8a2.5 2.5 0 0 0-3.54 0L12 13.56l-5.63-5.63a2.5 2.5 0 0 0-3.54 0s0 0 0 0a2.5 2.5 0 0 0 0 3.54L12 20.63l9.17-9.17a2.5 2.5 0 0 0 0-3.54Z"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Play</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Making things for fun</p>
+                    </div>
+                </a>
+                <a href="about.html" class="framer-sidebar-link-button" id="nav-about-link">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">About</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Let's get to know each other</p>
+                    </div>
+                </a>
             </div>
-
-            <div class="pt-6 flex-shrink-0">
-                 <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
-                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
-                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
-                </div>
-                <div class="mt-4 flex justify-start items-center gap-2">
-                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
-                    <span style="color: var(--text-tertiary);">/</span>
-                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
-                </div>
-                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            <div class="text-xs text-[rgb(var(--tertiary-text-rgb))] uppercase tracking-widest font-['IBM_Plex_Mono'] mb-4 w-full text-left">Selected Case Studies</div>
+            <div class="space-y-2 w-full">
+                <!-- Project Nav Items -->
+                <a href="koinbasket.html" class="framer-sidebar-link-button" id="nav-koinbasket-link">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.64 1.34a1 1 0 0 1 1.22 1.22l-1 4A1 1 0 0 1 9 7.4a1 1 0 0 1-1.22-1.22l1-4a1 1 0 0 1 1.86-.84Z"/><path d="M14.64 5.34a1 1 0 0 1 1.22 1.22l-1 4A1 1 0 0 1 13 11.4a1 1 0 0 1-1.22-1.22l1-4a1 1 0 0 1 1.86-.84Z"/><path d="M18.83 9.17a1 1 0 0 1 1.22 1.22l-1 4A1 1 0 0 1 17.2 15a1 1 0 0 1-1.22-1.22l1-4a1 1 0 0 1 1.85-.61Z"/><path d="M4.93 4.93a1 1 0 0 1 1.41 0l2.12 2.12a1 1 0 0 1-1.41 1.41L4.93 6.34a1 1 0 0 1 0-1.41Z"/><path d="M15 12.5a4.5 4.5 0 1 1-6.36-6.36 4.5 4.5 0 0 1 6.36 6.36Z"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">KoinBasket</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile app & design system</p>
+                    </div>
+                </a>
+                <!-- Other project links can be added here -->
             </div>
-        </aside>
+        </div>
 
-        <div class="flex-1 lg:ml-80">
-            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12 max-w-5xl mx-auto case-study-section">
-                
-                <h1 class="text-4xl lg:text-5xl font-bold mb-4">KoinBasket: From MVP to Market Leader</h1>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="case-study-pill">Fintech</span>
-                    <span class="case-study-pill">Mobile App</span>
-                    <span class="case-study-pill">Design System</span>
-                    <span class="case-study-pill">UX Strategy</span>
-                </div>
-
-                <section>
-                    <h2 class="text-3xl font-bold mb-4">Introduction</h2>
-                    <p>As Founding Designer, I led the strategy and design of KoinBasket’s MVP, simplifying crypto investing. My core challenge was to demystify a complex market, making it accessible and engaging. Following its success, as Senior UX Designer, I led a rebrand, a sophisticated Live Trading Experience, and the innovative “BitBuddy” influencer platform.</p>
-                    <img src="https://images.unsplash.com/photo-1640459392133-82cf3b67d1d2?q=80&w=1600&auto=format&fit=crop" alt="KoinBasket app dashboard" class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1c1c1c/ffffff?text=KoinBasket+Dashboard';">
-                </section>
-
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">Phase 1: The MVP</h2>
-                    <blockquote>How can we design a platform that makes diversified crypto investing simple, secure, and engaging?</blockquote>
-                    <p>As the solo designer, I adopted a lean, agile approach, focusing on Critical User Journey Mapping and Iterative Prototyping. The solution included curated crypto "baskets" to simplify choices, a risk-free Demo Mode, and secure non-custodial exchange integration for user control.</p>
-                </section>
-
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">Phase 2: Rebrand & Live Launch</h2>
-                    <p>The decision to evolve stemmed from the need to elevate brand perception, meet user demand for real trading, and foster community. As Senior UX Designer, I mentored a junior designer, evolved the design system, and led iterative design on major new features.</p>
-                    <img src="https://images.unsplash.com/photo-1559028006-44a36b17a664?q=80&w=1600&auto=format&fit=crop" alt="A vibrant and clean design system color palette" class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1c1c1c/ffffff?text=New+Design+System';">
-                </section>
-                
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">Learnings & Impact</h2>
-                    <ul class="list-disc list-inside space-y-2 mb-4">
-                        <li><strong>Focus Delivers Value:</strong> A clear value proposition resonated strongly in a complex market.</li>
-                        <li><strong>Trust is Paramount in Fintech:</strong> The non-custodial model was critical in gaining user confidence.</li>
-                        <li><strong>Ecosystems Add Value:</strong> Features like “BitBuddy” that foster community transform a product into a dynamic ecosystem.</li>
-                    </ul>
-                </section>
-                
-                <div class="text-center mt-16">
-                    <a href="index.html" class="back-to-work-btn">Back to Work</a>
-                </div>
-
-            </main>
+        <!-- Footer Links -->
+        <div class="framer-sidebar-section flex-grow flex flex-col justify-end items-center p-4 pt-12">
+            <div class="flex flex-col md:flex-row gap-4 text-xs font-['IBM_Plex_Mono'] uppercase text-[rgb(var(--secondary-text-rgb))]">
+                <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">EMAIL</button>
+                <a href="https://www.linkedin.com/in/amaan-khan-profile" target="_blank" rel="noopener" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">LINKEDIN</a>
+                <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">RESUMÉ</a>
+            </div>
+            <p class="text-[rgb(var(--tertiary-text-rgb))] text-xs mt-4 font-['IBM_Plex_Mono']">©<span id="copyright-year"></span> amaan khan</p>
         </div>
     </div>
+
+    <!-- Main Content -->
+    <div class="framer-main-content" id="main-content">
+        <!-- Mobile-only header -->
+        <header class="mobile-only mb-8 w-full bg-[rgb(var(--secondary-bg-rgb))] py-4 px-6 rounded-lg text-center">
+            <h1 class="text-lg md:text-xl font-['IBM_Plex_Mono'] font-bold uppercase">Case Study: KoinBasket</h1>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-4 py-8 space-y-12 case-study-section">
+            <h1 class="text-5xl font-bold mb-4">KoinBasket: From MVP to Market Leader</h1>
+            <div class="flex flex-wrap gap-2 mb-8">
+                <span class="case-study-pill">Fintech</span>
+                <span class="case-study-pill">Mobile App Design</span>
+                <span class="case-study-pill">Design System</span>
+                <span class="case-study-pill">UX Strategy</span>
+                <span class="case-study-pill">Rebranding</span>
+            </div>
+
+            <!-- Section: Combined Introduction -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Introduction: The Journey of KoinBasket</h2>
+                <p>As Founding Designer, I led the strategy and design of KoinBasket’s MVP, simplifying crypto investing through curated baskets and secure exchange integration. My core challenge was to demystify a complex market, making it accessible and engaging.</p>
+                <p class="mt-4">Following the MVP's success, the next imperative was to evolve the platform for a maturing user base. As Senior UX Designer, I managed a junior designer and led pivotal initiatives: a comprehensive rebrand, a sophisticated Live Trading Experience, and the innovative “BitBuddy” influencer platform. This case study details this journey of transformation, focused on enhancing trust, delivering a sophisticated trading experience, and fostering a vibrant community.</p>
+                <img src="https://images.unsplash.com/photo-1640459392133-82cf3b67d1d2?q=80&w=1600&auto=format&fit=crop" alt="KoinBasket app showing a portfolio dashboard on a smartphone" class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1c1c1c/ffffff?text=KoinBasket+Dashboard';">
+            </section>
+
+            <!-- Section: Phase 1 - The MVP -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Phase 1: The MVP - Laying the Foundation</h2>
+                <h3 class="text-2xl font-bold mb-2 mt-6">The Strategic Challenge: Lowering Barriers to Crypto Adoption</h3>
+                <p>Our primary objective was to address key user pain points and market gaps:</p>
+                <ul class="list-disc list-inside space-y-2 my-4">
+                    <li><strong>Overcoming “Analysis Paralysis”:</strong> Simplifying the overwhelming choice of individual cryptocurrencies.</li>
+                    <li><strong>Mitigating Investment Risk:</strong> Offering instant diversification through thematic baskets.</li>
+                    <li><strong>Ensuring Security & User Control:</strong> Leveraging users’ trusted exchange accounts for all transactions and asset custody. This non-custodial approach was a cornerstone of our trust strategy.</li>
+                    <li><strong>Delivering Simplicity & Speed:</strong> Catering to users who value straightforward, efficient investment processes.</li>
+                </ul>
+                <blockquote>Our guiding problem statement became: How can we design a platform that makes diversified crypto investing exceptionally simple, demonstrably secure, and genuinely engaging, thereby lowering the barrier to entry and fostering immediate user trust?</blockquote>
+
+                <h3 class="text-2xl font-bold mb-2 mt-6">Design Leadership & MVP Strategy</h3>
+                <p>As the solo founding designer, I adopted a lean, agile approach, prioritizing features that delivered core user value. My strategic design process focused on Critical User Journey Mapping, Iterative Prototyping (from wireframes to high-fidelity UI for both web and mobile), and Strategic Feature Inclusion like demo trading and rewards to encourage learning and growth.</p>
+
+                <h3 class="text-2xl font-bold mb-2 mt-6">The Solution: Key MVP Innovations</h3>
+                <p>The KoinBasket MVP was architected to provide a seamless experience. Key features included curated crypto "baskets" to simplify investment choices, a risk-free Demo Mode, secure non-custodial exchange integration for user control, and engagement features like DIY Baskets and Crypto Fantasy Leagues.</p>
+                <div class="case-study-grid-image">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1600&auto=format&fit=crop" alt="Wireframe of a mobile application screen for the MVP" class="case-study-grid-image-item" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1c1c1c/ffffff?text=MVP+Wireframe';">
+                    <img src="https://images.unsplash.com/photo-1642060299405-a6c6a0134427?q=80&w=1600&auto=format&fit=crop" alt="User interface of the MVP crypto trading dashboard" class="case-study-grid-image-item" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1c1c1c/ffffff?text=MVP+Trading+UI';">
+                </div>
+            </section>
+
+            <!-- Section: Phase 2 - Rebrand & Live Launch -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Phase 2: The Evolution - Rebrand & Live Launch</h2>
+                <h3 class="text-2xl font-bold mb-2 mt-6">The Strategic Imperative: Why Evolve?</h3>
+                <p>The decision to rebrand and introduce advanced live features stemmed from the need to elevate brand perception for a more discerning audience, meet user demand for real trading, and foster a community through our "BitBuddy" influencer platform. We also envisioned an immersive "Live Trading Experience" where users could watch live analysis and trade simultaneously.</p>
+                <blockquote>Our new mission: How can we transform KoinBasket into a market-leading platform that cultivates a trusted ecosystem of users, experts, and curated content—all wrapped in a refreshed, highly credible brand identity?</blockquote>
+
+                <h3 class="text-2xl font-bold mb-2 mt-6">Design Leadership & Process: Orchestrating Evolution</h3>
+                <p>As Senior UX Designer, my role was to define the UX vision, mentor our Junior UX Designer, and collaborate with stakeholders. The process involved deep-dive research, evolving the design system for the rebrand, and iterative design of major new features for web and mobile.</p>
+                <img src="https://images.unsplash.com/photo-1559028006-44a36b17a664?q=80&w=1600&auto=format&fit=crop" alt="A vibrant and clean design system color palette and component examples for the rebrand" class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/1c1c1c/ffffff?text=New+Design+System';">
+
+                <h3 class="text-2xl font-bold mb-2 mt-6">The Solution: A Rebranded KoinBasket with Powerful Products</h3>
+                <p>The evolved platform delivered a more sophisticated and trustworthy experience. Key deliverables included:</p>
+                <ul class="list-disc list-inside space-y-2 my-4">
+                    <li><strong>A Fresh, Modern Rebrand:</strong> A cleaner, lighter aesthetic was introduced to feel more professional and transparent.</li>
+                    <li><strong>The Immersive Live Trading Experience:</strong> A flagship dashboard where users can watch live trading streams, view market data, and execute trades in one place.</li>
+                    <li><strong>The “BitBuddy” Influencer & Content Ecosystem:</strong> A dedicated portal for influencers (“Bitpals”) to create content and curate baskets, and for users to follow their expert insights.</li>
+                    <li><strong>Enhanced & Consistent Mobile Experience:</strong> The mobile app was fully updated with the new brand identity and seamless access to all live features.</li>
+                </ul>
+                <div class="case-study-grid-image">
+                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e50?q=80&w=1600&auto=format&fit=crop" alt="A mobile app screen showing different curated crypto baskets with the new UI" class="case-study-grid-image-item" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1c1c1c/ffffff?text=New+Mobile+UI';">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e2775d2?q=80&w=1600&auto=format&fit=crop" alt="Two people collaborating over a digital interface, representing the BitBuddy influencer-user connection" class="case-study-grid-image-item" onerror="this.onerror=null;this.src='https://placehold.co/400x300/1c1c1c/ffffff?text=BitBuddy+Concept';">
+                </div>
+            </section>
+            
+            <!-- Section: Strategic Learnings & Impact -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Strategic Learnings & Impact Across the Journey</h2>
+                <p>This foundational project was rich with learnings that shaped KoinBasket’s trajectory:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Focus Delivers Value:</strong> A clear value proposition—simplified, diversified crypto investing—resonated strongly in a complex market.</li>
+                    <li><strong>Trust is Paramount in Fintech:</strong> The non-custodial model and transparent design were critical in gaining user confidence.</li>
+                    <li><strong>A Rebrand is a Strategic Business Initiative:</strong> It must be deeply aligned with evolving business goals, target audience needs, and the desired market positioning.</li>
+                    <li><strong>Integrating Content and Commerce Creates Powerful Synergies:</strong> The Live Trading Experience highlighted the potential of merging educational content directly with transactional capabilities.</li>
+                    <li><strong>Building an Ecosystem Adds Exponential Value:</strong> Features like “BitBuddy” that foster community and leverage expert knowledge can transform a product into a dynamic and sticky ecosystem.</li>
+                    <li><strong>The UX of Trust in Live Financial Products is Paramount:</strong> Every design decision in a live trading environment must prioritize security, transparency, clarity, and user control.</li>
+                </ul>
+            </section>
+
+            <!-- Conclusion -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Conclusion: KoinBasket Reimagined</h2>
+                <p class="mb-4">The KoinBasket journey, from a focused MVP to a feature-rich live platform, demonstrates a powerful evolution driven by user-centric design. As Founding Designer and later Senior UX Designer, I led the strategic design efforts that validated the core concept and later transformed the platform into a mature, competitive, and deeply engaging product.</p>
+                <p>By strategically focusing on enhancing user trust, delivering sophisticated yet accessible functionality, and building a strong foundation for community engagement, we successfully positioned KoinBasket to empower a new generation of crypto investors and solidify its place as a leader in the space.</p>
+            </section>
+
+            <div class="text-center mt-12">
+                <a href="index.html" class="inline-block px-8 py-3 rounded-lg bg-[rgb(var(--secondary-bg-rgb))] border border-[rgba(var(--border-color-rgb),0.1)] text-[rgb(var(--primary-text-rgb))] hover:bg-[rgb(var(--link-hover-bg-rgb))] hover:border-[rgb(var(--accent-color-rgb))] hover:shadow-[0_0_25px_var(--glow-color-soft)] transition-all ease-in-out">Back to Work</a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Sticky Theme Toggle -->
+    <div class="theme-toggle-fixed" id="theme-toggle">
+        <span id="dark-mode-toggle" class="theme-toggle-btn">DARK</span>
+        <span class="text-[rgb(var(--tertiary-text-rgb))]">/</span>
+        <span id="light-mode-toggle" class="theme-toggle-btn">LIGHT</span>
+    </div>
     
+    <!-- "Copied!" Toast Notification -->
     <div id="copy-toast">Email Copied!</div>
 
-    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- ELEMENTS ---
+            const mainContent = document.getElementById('main-content');
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const lightModeToggle = document.getElementById('light-mode-toggle');
+            const body = document.body;
+
+            // --- DYNAMIC CONTENT ---
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+            // --- THEME LOGIC ---
+            const applyTheme = (theme) => {
+                if (theme === 'light') {
+                    body.classList.add('light-mode');
+                    lightModeToggle.classList.add('active');
+                    darkModeToggle.classList.remove('active');
+                } else {
+                    body.classList.remove('light-mode');
+                    darkModeToggle.classList.add('active');
+                    lightModeToggle.classList.remove('active');
+                }
+            };
+
+            darkModeToggle.addEventListener('click', () => {
+                localStorage.setItem('theme', 'dark');
+                applyTheme('dark');
+            });
+
+            lightModeToggle.addEventListener('click', () => {
+                localStorage.setItem('theme', 'light');
+                applyTheme('light');
+            });
+
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(savedTheme);
+
+            // --- LAYOUT ADJUSTMENT ---
+            const adjustLayout = () => {
+                if (window.innerWidth <= 809) {
+                    mainContent.classList.remove('main-content-shifted');
+                } else {
+                    mainContent.classList.add('main-content-shifted');
+                }
+            };
+
+            window.addEventListener('resize', adjustLayout);
+            adjustLayout(); // Initial check
+
+            // --- ACTIVE NAV LINK HIGHLIGHTING ---
+            const highlightActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                const navLinks = document.querySelectorAll('.framer-sidebar-link-button');
+                let isProjectPage = false;
+                navLinks.forEach(link => {
+                    const linkPath = link.getAttribute('href').split('/').pop();
+                    link.classList.remove('active');
+                    if (linkPath === currentPath) {
+                        link.classList.add('active');
+                        if (link.id.startsWith('nav-') && !['nav-work-link', 'nav-play-link', 'nav-about-link'].includes(link.id)) {
+                            isProjectPage = true;
+                        }
+                    }
+                });
+                if (isProjectPage) {
+                    document.getElementById('nav-work-link')?.classList.add('active');
+                }
+            };
+            
+            highlightActiveNavLink();
+            window.addEventListener('popstate', highlightActiveNavLink);
+        });
+
+        // --- CLIPBOARD FUNCTION ---
+        function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(showCopyToast, () => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+        
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed'; textArea.style.top = '0'; textArea.style.left = '0'; textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                if (document.execCommand('copy')) showCopyToast();
+            } catch (err) {
+                console.error('Fallback: Unable to copy', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // --- TOAST NOTIFICATION ---
+        function showCopyToast() {
+            const toast = document.getElementById('copy-toast');
+            if (toast.classList.contains('show')) return;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 2500);
+        }
+    </script>
 </body>
 </html>

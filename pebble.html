@@ -5,144 +5,643 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amaan Khan - Case Study: Pebble</title>
     
+    <!-- Tailwind CSS for rapid UI development -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* * ==============================================
+         * CSS Variables for Theming (Dark/Light Mode)
+         * ==============================================
+         */
+        :root {
+            /* Dark Mode Defaults */
+            --primary-bg-rgb: 25 25 25;
+            --secondary-bg-rgb: 35 35 35;
+            --primary-text-rgb: 255 255 255;
+            --secondary-text-rgb: 200 200 200;
+            --tertiary-text-rgb: 160 160 160;
+            --border-color-rgb: 255 255 255;
+            --accent-color-rgb: 238 99 82;
+            --accent-color-darker-rgb: 209 86 72;
+            --link-hover-bg-rgb: 40 40 40;
+            --box-shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 1.0);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.6);
 
+            /* Computed values */
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+        }
+
+        body.light-mode {
+            /* Light Mode Overrides */
+            --primary-bg-rgb: 245 245 245;
+            --secondary-bg-rgb: 255 255 255;
+            --primary-text-rgb: 30 30 30;
+            --secondary-text-rgb: 70 70 70;
+            --tertiary-text-rgb: 100 100 100;
+            --border-color-rgb: 0 0 0;
+            --link-hover-bg-rgb: 235 235 235;
+            --box-shadow-color: rgba(0, 0, 0, 0.08);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 0.9);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.5);
+        }
+
+        /* * ==============================================
+         * Base & Global Styles
+         * ==============================================
+         */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--primary-text-rgb), 0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: rgba(var(--primary-text-rgb), 0.05); }
+
+        /* * ==============================================
+         * Sidebar & Main Content Layout
+         * ==============================================
+         */
+        .framer-fixed-sidebar {
+            width: 300px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            background-color: rgb(var(--primary-bg-rgb));
+            box-shadow: var(--box-shadow-color) 2px 0px 6px 0px;
+            border-right: 1px solid rgba(var(--border-color-rgb), 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            overflow-y: auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .framer-sidebar-section {
+            width: 100%;
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+        .framer-sidebar-section:last-of-type { border-bottom: none; }
+
+        .framer-sidebar-link-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border: 1px solid rgba(var(--border-color-rgb), 0.06);
+            cursor: pointer;
+            text-align: left;
+            text-decoration: none;
+            color: rgb(var(--primary-text-rgb));
+        }
+        .framer-sidebar-link-button:hover {
+            background-color: rgb(var(--link-hover-bg-rgb));
+            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 25px var(--glow-color-strong), 0 0 15px var(--glow-color-soft);
+            border-color: rgb(var(--accent-color-rgb));
+        }
+        .framer-sidebar-link-button.active {
+            background-color: rgb(var(--link-hover-bg-rgb));
+            border-color: rgb(var(--accent-color-rgb));
+            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 25px var(--glow-color-strong), 0 0 15px var(--glow-color-soft);
+        }
+
+        .framer-main-content {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            transition: margin-left 0.3s ease-in-out;
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+        }
+
+        /* * ==============================================
+         * Case Study Specific Typography & Elements
+         * ==============================================
+         */
+        .case-study-section h1 { font-family: 'DM Sans', sans-serif; color: rgb(var(--primary-text-rgb)); }
+        .case-study-section h2, .case-study-section h3 { font-family: 'IBM Plex Mono', monospace; color: rgb(var(--primary-text-rgb)); }
+        .case-study-section p, .case-study-section li { font-family: 'Inter', sans-serif; color: rgb(var(--secondary-text-rgb)); line-height: 1.75; }
+        .case-study-section ul { list-style: disc; margin-left: 1.25rem; }
+        
+        .case-study-image {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
+        }
+       
+        .case-study-pill {
+            background-color: rgba(var(--accent-color-rgb), 0.1);
+            color: rgb(var(--accent-color-rgb));
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .text-shadow-md { text-shadow: 0px 0px 3px rgba(var(--primary-text-rgb), 0.2); }
+
+        /* * ==============================================
+         * Theme Toggle
+         * ==============================================
+         */
+        .theme-toggle-fixed {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 100;
+            background-color: rgb(var(--secondary-bg-rgb));
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            border: 1px solid rgba(var(--border-color-rgb), 0.08);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .theme-toggle-btn {
+            cursor: pointer;
+            color: rgb(var(--tertiary-text-rgb));
+            transition: color 0.3s ease;
+        }
+        .theme-toggle-btn.active {
+            color: rgb(var(--primary-text-rgb));
+            text-shadow: 0px 0px 3px rgba(var(--primary-text-rgb), 0.3);
+        }
+        .theme-toggle-btn:hover { color: rgb(var(--accent-color-rgb)); }
+        .theme-toggle-separator { color: rgb(var(--tertiary-text-rgb)); }
+
+        /* * ==============================================
+         * Responsive Adjustments (Media Queries)
+         * ==============================================
+         */
+        /* Desktop styles (min-width 810px) - sidebar is fixed */
+        @media (min-width: 810px) {
+            .framer-main-content {
+                margin-left: 300px; /* Create space for the fixed sidebar */
+                padding: 3rem; /* More padding on desktop */
+            }
+            .framer-sidebar-section.mobile-only {
+                display: none; /* Hide mobile-specific header */
+            }
+        }
+
+        /* Tablet and Mobile styles (max-width 809px) - sidebar becomes a top bar */
+        @media (max-width: 809px) {
+            .framer-fixed-sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                border-right: none;
+                border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
+                padding: 18px 0;
+                flex-direction: column;
+            }
+            .framer-main-content {
+                margin-left: 0 !important; /* Remove desktop margin */
+            }
+            .framer-sidebar-section.desktop-only {
+                display: none; /* Hide desktop-specific elements */
+            }
+            .framer-sidebar-section {
+                padding: 8px 18px;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .framer-sidebar-link-button {
+                padding: 8px 18px;
+            }
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="framer-fixed-sidebar" id="sidebar">
+        <!-- Bio Section -->
+        <div class="framer-sidebar-section flex-shrink-0">
+            <h1 class="text-xl md:text-2xl font-['DM_Sans'] font-bold uppercase mb-2 text-shadow-md">amaan khan</h1>
+            <p class="text-sm md:text-base text-[rgb(var(--secondary-text-rgb))] text-left font-mono leading-relaxed">
+                Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
+            </p>
+        </div>
 
-    <div class="cursor-dot"></div>
-
-    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
-        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-        </button>
-        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-    </header>
-    
-    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
-
-    <div class="flex">
-        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
-            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
-                <div class="space-y-6">
-                    <div class="hidden lg:block">
-                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">
-                            Hyderabad-based Product Designer creating impactful, human-centered products.
-                        </p>
-                    </div>
-                     <div class="block lg:hidden">
-                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
-                        <p class="text-sm" style="color: var(--text-secondary);">
-                           Hyderabad-based Product Designer creating impactful, human-centered products.
-                        </p>
-                    </div>
-
-                    <nav class="space-y-3">
-                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div>
-                        </a>
-                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div>
-                        </a>
-                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div>
-                        </a>
-                    </nav>
-
+        <!-- Main Navigation (Desktop Only) -->
+        <div class="framer-sidebar-section flex-grow-0 desktop-only">
+            <div class="space-y-2 w-full mb-4">
+                <!-- Work Link -->
+                <a href="index.html" class="framer-sidebar-link-button" id="nav-work-link">
+                    <img src="https://framerusercontent.com/images/4tR2kkcmNDwWLyCTL6UKBxtGk.png" alt="Work Icon" class="w-8 h-8 rounded-sm object-cover">
                     <div>
-                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
-                        <div class="space-y-2">
-                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
-                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
-                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
-                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
-                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
-                        </div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Work</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">A selection of recent work</p>
                     </div>
-                </div>
+                </a>
+                <!-- Play Link -->
+                <a href="play.html" class="framer-sidebar-link-button" id="nav-play-link">
+                    <img src="https://framerusercontent.com/images/yXhY9qS7AmyN7I9smUNLCz5VD0.png" alt="Play Icon" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Play</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Making things for fun</p>
+                    </div>
+                </a>
+                <!-- About Link -->
+                <a href="about.html" class="framer-sidebar-link-button" id="nav-about-link">
+                    <img src="https://framerusercontent.com/images/vcG8teeyu11wOOrFCkQIhw3k.png" alt="About Icon" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">About</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Let's get to know each other</p>
+                    </div>
+                </a>
             </div>
-
-            <div class="pt-6 flex-shrink-0">
-                 <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
-                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
-                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
-                </div>
-                <div class="mt-4 flex justify-start items-center gap-2">
-                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
-                    <span style="color: var(--text-tertiary);">/</span>
-                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
-                </div>
-                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            <div class="text-xs text-[rgb(var(--tertiary-text-rgb))] uppercase tracking-widest font-['IBM_Plex_Mono'] mb-4 w-full text-left">Selected Case Studies</div>
+            <div class="space-y-2 w-full">
+                <!-- Project Nav Items -->
+                <a href="koinbasket.html" class="framer-sidebar-link-button" id="nav-koinbasket-link">
+                    <img src="https://framerusercontent.com/images/25ozRUj8UvgIufO1O7xJ2ScoU.png" alt="KoinBasket Logo" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">KoinBasket</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile app &amp; design system</p>
+                    </div>
+                </a>
+                <a href="softwire.html" class="framer-sidebar-link-button" id="nav-softwire-link">
+                    <img src="https://framerusercontent.com/images/X6xeHKrxVIDBEnvGc28O693kVc.png" alt="Softwire Logo" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Softwire</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile App</p>
+                    </div>
+                </a>
+                <a href="pebble.html" class="framer-sidebar-link-button active" id="nav-pebble-link">
+                    <img src="https://framerusercontent.com/images/RjmnulJqoIak9iNkv5SharVR490.png" alt="Pebble Logo" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Pebble</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Web Platform</p>
+                    </div>
+                </a>
+                <a href="iviprogram.html" class="framer-sidebar-link-button" id="nav-iviprogram-link">
+                    <img src="https://framerusercontent.com/images/vAu8bVuQAH0aydSgX5quO59xGJA.png" alt="IVI Program Logo" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">IVI Program</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Web Platform</p>
+                    </div>
+                </a>
+                <a href="stampede.html" class="framer-sidebar-link-button" id="nav-stampede-link">
+                    <img src="https://framerusercontent.com/images/yA0FYp600JS4JkayoqQDdwNvzI.png" alt="Stampede Logo" class="w-8 h-8 rounded-sm object-cover">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Stampede</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile App</p>
+                    </div>
+                </a>
             </div>
-        </aside>
+        </div>
 
-        <div class="flex-1 lg:ml-80">
-            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12 max-w-5xl mx-auto case-study-section">
-                
-                <h1 class="text-4xl lg:text-5xl font-bold mb-4">Pebble: Nurturing Workplace Happiness</h1>
-                <p class="text-lg mb-8" style="color: var(--text-secondary);">A Royal College of Art & VISA collaboration on how we designed a virtual companion to combat stress and foster connection for a thriving remote workforce.</p>
+        <!-- Footer Links -->
+        <div class="framer-sidebar-section flex-grow flex flex-col justify-end items-center p-4 pt-12">
+            <div class="flex flex-col md:flex-row gap-4 text-xs font-['IBM_Plex_Mono'] uppercase text-[rgb(var(--secondary-text-rgb))]">
+                <button id="email-btn" onclick="copyToClipboard('mdamkhan.work@gmail.com', this)" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">EMAIL</button>
+                <!-- UPDATE THIS LINK with your actual LinkedIn profile URL -->
+                <a href="https://www.linkedin.com/in/amaankhan-designer/" target="_blank" rel="noopener" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">LINKEDIN</a>
+                <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">RESUMÉ</a>
+            </div>
+            <p class="text-[rgb(var(--tertiary-text-rgb))] text-xs mt-4 font-['IBM_Plex_Mono']">©2025 amaan khan</p>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="framer-main-content">
+        <!-- Mobile-only header -->
+        <header class="block md:hidden mb-8 w-full bg-[rgb(var(--secondary-bg-rgb))] py-4 px-6 rounded-lg text-center">
+            <h1 class="text-lg md:text-xl font-['IBM_Plex_Mono'] font-bold uppercase">Case Study: Pebble</h1>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-4 py-8 space-y-12 case-study-section">
+            
+            <!-- Case Study Header -->
+            <section>
+                <h1 class="text-5xl font-bold mb-4">Pebble: Nurturing Workplace Happiness in the Age of Remote Work</h1>
+                <p class="text-lg text-[rgb(var(--secondary-text-rgb))] mb-8">A Royal College of Art & VISA collaboration on how we designed a virtual companion to combat stress and foster connection for a thriving workforce.</p>
                 <div class="flex flex-wrap gap-2 mb-8">
                     <span class="case-study-pill">Service Design</span>
                     <span class="case-study-pill">Employee Wellbeing</span>
                     <span class="case-study-pill">Remote Work</span>
                     <span class="case-study-pill">Virtual Companion</span>
+                    <span class="case-study-pill">VISA Collaboration</span>
+                    <span class="case-study-pill">Human-Centered Design</span>
                 </div>
+            </section>
 
-                <div class="relative mb-12" style="padding-bottom: 56.25%; height: 0;">
-                    <iframe src="https://player.vimeo.com/video/561000617" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                </div>
+            <div class="relative mb-12" style="padding-bottom: 56.25%; height: 0;">
+                <iframe src="https://player.vimeo.com/video/561000617" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
 
-                <section>
-                    <h2 class="text-3xl font-bold mb-4">The Challenge</h2>
-                    <p>While remote work offers flexibility, it has also revealed a workforce grappling with stress and isolation. Our research showed a stark decline in employee wellbeing, with 43% rating their mental health as ‘fair’ to ‘very bad’. This wasn’t just about feelings; happier employees are up to 12% more productive. Our brief was to design a service that proactively fosters happiness, transforming it from an HR concern into a core part of the employee experience.</p>
-                </section>
+            <!-- Section: Introduction -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Introduction</h2>
+                <p class="mb-4">The way we work has fundamentally changed. While remote and hybrid models offer unprecedented flexibility, they’ve also cast a long shadow, revealing a workforce increasingly grappling with stress, isolation, and the challenging blur between professional and personal lives. As a project lead and designer on a collaborative initiative between the Royal College of Art and VISA, I, Amaan Khan, along with my colleagues Jing Qian and Zhiyuan Zheng, saw an urgent need. How could we move beyond reactive measures and proactively design for genuine happiness and connection in this new, often distant, working world?</p>
+                <p>This case study details the journey of Pebble, a virtual companion designed to do just that. We’ll explore how we leveraged a human-centered design process — from in-depth research and collaborative workshops to iterative prototyping and user testing — to create a service aimed at boosting employee wellbeing and productivity. Our central mission: to cultivate a thriving, happy, and genuinely connected workforce, regardless of physical location.</p>
+            </section>
+            
+            <!-- Section: The Challenge & Context -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">The Challenge & Context</h2>
+                <p class="mb-4">Our core challenge was born from a stark observation: the silent but pervasive decline in employee wellbeing. The “spark” for this project was the overwhelming data emerging, particularly during and after the pandemic, that painted a clear picture of a workforce under strain.</p>
+                <p class="mb-4">Our initial research, including surveys of over 1200 individuals and specific insights from VISA Innovation Centre employees, highlighted several critical issues:</p>
+                <ul class="list-disc list-inside space-y-2 mb-8">
+                    <li><strong>The Emotional Toll:</strong> Employees reported significant feelings of Stress, Isolation, Distraction, and being Overwhelmed. The lack of casual, in-person interactions and the intensity of remote work were taking a heavy toll.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=Problems+in+the+workplace+-+How+did+employees+feel" alt="Word cloud showing negative feelings like stress, isolation, and being overwhelmed." class="case-study-image">
+                <ul class="list-disc list-inside space-y-2 mb-8">
+                    <li><strong>Erosion of Boundaries:</strong> The lines between work and personal life had become dangerously blurred, leading to longer working hours and a constant sense of being “on.”</li>
+                    <li><strong>Plummeting Happiness:</strong> The statistics were undeniable. 43% of employees rated their mental health between ‘very bad’ and ‘fair,’ and the number of those feeling ‘completely happy’ at work had nosedived from 26% to just 13% since February 2020.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=Key+statistics+on+plummeting+employee+happiness" alt="Statistics showing a drop in employee happiness and mental health ratings." class="case-study-image">
+                <p class="mb-4">But this wasn’t just about feelings; it had a tangible business impact. We found compelling evidence that:</p>
+                <ul class="list-disc list-inside space-y-2 mb-8">
+                    <li>Happier employees are up to 12% more productive.</li>
+                    <li>They demonstrate 3 times more creativity.</li>
+                    <li>Crucially, engaged and happy employees can enhance business profitability by up to 147%.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=Business+Impact+of+Happiness+(Productivity,+Creativity,+Profitability)" alt="Statistics showing the positive business impact of employee happiness." class="case-study-image">
+                <p class="mb-4">This context defined our brief: How might we leverage design to proactively foster happiness and wellbeing in the workplace, transforming it from a reactive HR concern into a core, integrated part of the employee experience? We needed a solution that understood diverse employee needs and could adapt to the evolving landscape of work.</p>
+            </section>
 
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">Our Approach</h2>
-                    <p>As project lead, I guided our team through an intensive, research-driven design process. We began with surveys and 24 workshops with VISA employees to map emotional journeys and uncover core needs. This data allowed us to develop a key user persona: the "Explorer," an employee aware of their mental status but unsure how to maintain it. Our design process was built around a central question: "How Might We help the Explorer build a foundation of high wellbeing?"</p>
-                    <img src="https://placehold.co/800x450/333/fff?text=User+Segmentation+-+The+Explorer" alt="The Explorer persona description with motivations, problems, and goals." class="case-study-image">
-                </section>
+            <!-- Section: Our Approach -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Our Approach: Research-Driven Iteration</h2>
+                <p class="mb-4">As the project lead, I guided our team through an intensive, research-driven design process. My responsibilities included facilitating and designing workshops, conducting research interviews, shaping the design strategy, and leading the UI design and user prototyping efforts. We believed that to create a truly impactful solution, we needed to deeply understand the nuances of employee experiences and co-create with our users and stakeholders every step of the way.</p>
 
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">The Solution</h2>
-                    <p>Pebble is a virtual assistant integrated into an employee’s workflow. It promotes happiness and productivity through personalized matchmaking, tools for deep work, and a "Virtual Café" to enhance social connection. Pebble acts as a “Happiness Assistant,” gently prompting users to set work-life boundaries and reflect on their achievements.</p>
-                    <img src="https://placehold.co/800x450/333/fff?text=Pebble's+Three+Happiness+Pillars" alt="Summary slide showing how Pebble promotes user's happiness in three ways." class="case-study-image">
-                </section>
+                <h3 class="text-2xl font-bold mb-2 mt-8">1. Understanding & Ideation (Initial Research & Workshops)</h3>
+                <p class="mb-4">Our journey began with a broad exploration of “happiness” itself, particularly within the workplace context. We conducted initial surveys (gathering 70 responses) and then dove deep with a series of 24 workshops involving both the general public and employees from the VISA Innovation Centre (VIC). These workshops were crucial for:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Mapping Emotional Journeys:</strong> We used tools like “How was your week?” journey maps to understand the daily and weekly emotional ebbs and flows of employees, identifying key moments of stress and joy.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=Design+Process+-+Emotional+Journey+Maps+and+Workshop+Stats" alt="Visual of emotional journey maps and stats on surveys and workshops." class="case-study-image">
+                <ul class="list-disc list-inside space-y-2 mb-8">
+                    <li><strong>Uncovering Core Needs:</strong> We identified critical insights, such as the deep-seated need for regular, informal catch-ups (often lost in remote settings), the varying ways individuals regulated stress, and a strong desire for personalized wellbeing support rather than generic programs.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=Key+Insights+on+Core+Employee+Needs" alt="Montage of slides showing insights on catch-ups, stress regulation, and personalized wellbeing." class="case-study-image">
+
+                <h3 class="text-2xl font-bold mb-2 mt-8">2. Defining Personas (Who Are We Designing For?)</h3>
+                <p class="mb-4">The rich qualitative data from our workshops and surveys allowed us to move beyond assumptions and develop data-backed personas. We explored several archetypes based on factors like emotional susceptibility to work content, influence by others, and self-management of emotions.</p>
+                <p class="mb-4">A key strategic decision emerged from a user segmentation validation workshop with the VIC team and the public:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>The “Explorer” as a Primary Focus:</strong> We discovered that the majority of individuals identified with or had characteristics of the “Explorer” persona — someone aware of their mental status, open to trying wellbeing activities, but unsure what works best or how to stick with it.</li>
+                    <li><strong>A Foundational Experience:</strong> Critically, we found that other user groups often transitioned through an “Explorer” phase. This meant that designing for the Explorer wasn’t just targeting the largest segment but also addressing a foundational experience relevant to a broader audience.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=User+Segmentation+-+Majority+were+Explorers" alt="Slide highlighting that the majority of people were Explorers." class="case-study-image">
+                <img src="https://placehold.co/800x450/333/fff?text=The+Explorer+Persona+Profile" alt="The Explorer persona description with motivations, problems, and goals." class="case-study-image">
+                <p class="mb-4">Our primary persona, “James,” a 28-year-old product designer new to his company and working from home, embodied the Explorer’s challenges: feeling easily frustrated, struggling with focus, and lacking informal interaction with colleagues.</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Persona+-+James,+the+Product+Designer" alt="Persona slide for James, the 28-year-old product designer." class="case-study-image">
+
+                <h3 class="text-2xl font-bold mb-2 mt-8">3. Co-creating Pebble (Ideation Workshops & Concept Development)</h3>
+                <p class="mb-4">With a clear understanding of our target user, we moved into co-creation ideation workshops, primarily with the VISA Innovation Centre team. The guiding question for these sessions was: HMW (How Might We) help the explorer to build a foundation of high wellbeing and better prepare for the challenges from work?</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Co-creation+Ideation+Workshop" alt="Image of Mural board and participants from a co-creation workshop." class="case-study-image">
+                <img src="https://placehold.co/800x450/333/fff?text=Workshop+Guiding+Question+(HMW)" alt="Slide showing the 'How Might We' question for the workshop." class="case-study-image">
+                <p class="mb-4">These collaborative sessions were instrumental in shaping the core concept of Pebble. We realized that a one-size-fits-all approach wouldn’t work. Instead, the idea of different “Pebble types” emerged — virtual companions with distinct personalities and interaction styles tailored to the needs of different personas (Explorer, Mentor, Feeler, Doer).</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Pebble+Types+for+Different+Needs" alt="Slide showing the four Pebble types: Explorer, Mentor, Feeler, Doer." class="case-study-image">
+
+                <h3 class="text-2xl font-bold mb-2 mt-8">4. Prototyping & Testing (Bringing Pebble to Life)</h3>
+                <p class="mb-4">We then translated these concepts into interactive prototypes. As the UI designer, I focused on creating an interface that was not only functional but also felt empathetic and engaging. We conducted user testing with 5 participants to gather initial feedback on the core Pebble experience.</p>
+            </section>
+
+            <!-- Section: The Solution -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">The Solution: Pebble — A Tailored Happiness Assistant</h2>
+                <p class="mb-4">Pebble is envisioned as a virtual assistant integrated into an employee’s workflow, promoting happiness and productivity in three key ways:</p>
+
+                <h3 class="text-2xl font-bold mb-2 mt-8">Personalized Matchmaking & Onboarding</h3>
+                <p class="mb-4">Users discover their unique Pebble companion through a conversational, quiz-based matchmaking process. This isn’t a one-time setup; the Pebble learns and adapts through daily check-ins, building an emotional engagement over time.</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Pebble+Matchmaking+Process" alt="Slide showing the 5-day matchmaking process to find the right Pebble." class="case-study-image">
+
+                <h3 class="text-2xl font-bold mb-2 mt-8">Fostering Deep Work & Productivity</h3>
+                <p class="mb-4">Pebble helps users enter a state of “flow” by offering 1-minute cognitive exercises to prepare the mind and tools to reduce distractions, directly linking focused work to a sense of accomplishment and long-lasting happiness.</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Happiness+&+Deep+Work+&+Productivity+Diagram" alt="Diagram showing Prepare the mind, In the zone, Reduce distractions." class="case-study-image">
+                <img src="https://placehold.co/800x450/333/fff?text=Healthy+Working+Habit+-+Focus+Reminder" alt="Screen showing a reminder after 45 minutes of focus." class="case-study-image">
+
+                <h3 class="text-2xl font-bold mb-2 mt-8">Enhancing Social Connection through the Virtual Café</h3>
+                <p class="mb-4">To combat isolation and recreate spontaneous office interactions, Pebble features a “Virtual Café.” This allows employees to easily join or create informal coffee chat rooms with colleagues they know or might want to connect with.</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Virtual+Cafe+UI+Mockups" alt="UI mockups of the Virtual Cafe feature." class="case-study-image">
                 
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">Results and Learnings</h2>
-                    <p>The project resulted in a deeply researched, user-validated concept. Key learnings included:</p>
-                    <ul class="list-disc list-inside space-y-2 mb-4">
-                        <li><strong>Wellbeing is Not One-Size-Fits-All:</strong> Effective solutions must be adaptable and personalizable.</li>
-                        <li><strong>Co-creation is Non-Negotiable:</strong> Involving users directly was critical to uncovering true needs.</li>
-                        <li><strong>Small Nudges Can Create Big Shifts:</strong> Gentle prompts for breaks and reflection can significantly influence behavior.</li>
-                        <li><strong>The ROI of Happiness is Real:</strong> The link between happiness and business metrics makes investing in wellbeing a strategic imperative.</li>
-                    </ul>
-                </section>
-                
-                <div class="text-center mt-16">
-                    <a href="index.html" class="back-to-work-btn">Back to Work</a>
-                </div>
+                <h3 class="text-2xl font-bold mb-2 mt-8">Building Healthy Working Habits & Boundaries</h3>
+                <p class="mb-4">Pebble acts as a “Happiness Assistant,” gently prompting users to set work-life boundaries (e.g., reminders to take breaks or log off) and reflect on their achievements and mood.</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Healthy+Working+Habit+-+End+of+Day+Reminder" alt="Screen showing a reminder that it's time to get off work." class="case-study-image">
+                <img src="https://placehold.co/800x450/333/fff?text=Pebble's+Three+Happiness+Pillars" alt="Summary slide showing how Pebble promotes user's happiness in three ways." class="case-study-image">
+            </section>
 
-            </main>
-        </div>
+            <!-- Section: Iteration & Key Insights -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Iteration & Key Insights from Testing</h2>
+                <p class="mb-4">The feedback from our initial prototype testing with 5 participants was invaluable and directly shaped our understanding and future iterations:</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Prototype+Takeaways+(I+like,+I+wish,+I+wonder)" alt="Slide showing prototype takeaways categorized as I like, I wish, I wonder." class="case-study-image">
+                <ul class="list-disc list-inside space-y-4 mb-4">
+                    <li><strong>Users Loved the Connection:</strong> Features enabling “focus,” “coffee catch-ups,” and seeing “different statuses” resonated strongly. This validated our core hypothesis about the need for tools that foster connection.<br>
+                    <strong>Insight:</strong> Beyond task completion, employees crave a sense of belonging and shared experience, especially when physically apart. Digital tools must actively facilitate this.</li>
+                    <li><strong>Users Wished for Deeper Integration & Personalization:</strong> Feedback included desires for an “Emotion check at the start of the day,” the ability to “track and use data that supports after few days,” and “more control over groups.”<br>
+                    <strong>Insight:</strong> Wellbeing isn’t a fleeting moment; users seek continuous support and agency. They want tools that learn, adapt, and provide tangible value over time through data and personalization.</li>
+                    <li><strong>Users Wondered About Platform Cohesion:</strong> Concerns were raised about “integration within the team (instead of pop-ups),” “integration with existing software,” and avoiding “too many ways to communicate.”<br>
+                    <strong>Insight:</strong> Platform fatigue is real. For a wellbeing tool to succeed, it must seamlessly integrate into existing workflows rather than becoming another siloed application. This directly informed our future vision for Pebble.</li>
+                </ul>
+                <p class="mb-4">While we didn’t have major design approaches that were completely discarded, these insights heavily influenced the prioritization of future enhancements, emphasizing the need for robust integration capabilities.</p>
+            </section>
+
+            <!-- Section: The Bigger Picture -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">The Bigger Picture: Pebble’s Ecosystem and Future Vision</h2>
+                <p class="mb-4">Pebble is designed to benefit a wide range of stakeholders within an organization:</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Key+Stakeholders+Diagram" alt="Diagram showing key stakeholders benefiting from Pebble." class="case-study-image">
+                <p class="mb-4">Our future vision for Pebble includes:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Seamless Integrations:</strong> Making Pebble a natural part of the workday by integrating with platforms like Microsoft Teams and Slack.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=Integrations+with+Teams+and+Slack" alt="Slide showing Teams and Slack logos for integrations." class="case-study-image">
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Enhanced Features:</strong> Introducing daily mood tracking with notifications for support roles if negative trends persist, team-generated personalization for focus exercises, and enriched social experiences like icebreaker games in the Café.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=Future+Enhancements+for+Pebble" alt="Slide detailing future enhancements like mood tracking and social games." class="case-study-image">
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Strategic Growth:</strong> A B2B marketing approach for company adoption, followed by onboarding employees through existing internal platforms, and retaining users through new features and intelligent conversational AI, potentially partnering with services like Headspace or Alexa.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/333/fff?text=Client+Acquisition,+User+Adoption,+User+Retention" alt="Montage of slides showing strategies for client acquisition, user adoption, and user retention." class="case-study-image">
+            </section>
+
+            <!-- Section: Results and Learnings -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Results and Learnings</h2>
+                <p class="mb-4">The Pebble project resulted in a deeply researched, user-validated concept for a service with the potential to significantly enhance employee wellbeing and productivity. While this was an academic and exploratory project with VISA, it laid a strong foundation for how such a service could be realized.</p>
+                <p class="mb-4">My key personal learning from leading this project was: The profound impact of proactively understanding and addressing diverse employee well-being needs to foster happiness and productivity, particularly in evolving work environments like remote or hybrid models.</p>
+                <p class="mb-4">Other bold insights our team gained include:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Wellbeing is Not One-Size-Fits-All:</strong> The diversity of personas and their needs underscored that effective wellbeing solutions must be adaptable and personalizable.</li>
+                    <li><strong>Co-creation is Non-Negotiable:</strong> Involving users and stakeholders (like the VISA team) directly in the design process, through numerous workshops, was critical to uncovering true needs and ensuring the relevance of our solution.</li>
+                    <li><strong>Small Nudges Can Create Big Shifts:</strong> Gentle prompts for breaks, reflection, or connection, when timed appropriately, can significantly influence behavior and contribute to a healthier work culture.</li>
+                    <li><strong>The ROI of Happiness is Real:</strong> The strong link between employee happiness and key business metrics (productivity, creativity, profitability) makes investing in wellbeing a strategic imperative, not just a “nice-to-have.”</li>
+                </ul>
+            </section>
+
+            <!-- Section: Conclusion -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Conclusion</h2>
+                <p class="mb-4">Pebble represents more than just a concept; it’s a testament to the power of design to address complex human challenges in the workplace. By starting with empathy, grounding our process in rigorous research and co-creation, and focusing on the nuanced needs of employees like “James the Explorer,” we developed a vision for a service that could genuinely bring more happiness and connection to the workday. As work continues to evolve, solutions like Pebble will be increasingly vital in building resilient, productive, and truly thriving teams.</p>
+            </section>
+
+            <!-- Section: Acknowledgements -->
+            <section>
+                <h2 class="text-3xl font-bold mb-4">Acknowledgements</h2>
+                <p class="mb-4">This project would not have been possible without the guidance and support of our tutor, David; our project partners Elin and Annie; LBS student Yurika; wellbeing specialists Hugo Alistair and Keyun Ruan; Mental Health Studio; our Fellows; and the entire Visa Innovation Team, including Richard, Finn, Tom, Thomas, Andres, Andreas, Cedrine, Matthew, Teemu, Ranjiva, Jonathan, Rouven, Cynthia, Nayibe, and Antonila. Their insights and collaboration were invaluable.</p>
+                <img src="https://placehold.co/800x450/333/fff?text=Special+Thanks" alt="Special thanks slide acknowledging all contributors." class="case-study-image">
+            </section>
+            
+            <div class="text-center mt-12">
+                <a href="index.html" class="inline-block px-6 py-3 rounded-md bg-[rgb(var(--secondary-bg-rgb))] border border-[rgba(var(--border-color-rgb),0.06)] text-[rgb(var(--primary-text-rgb))] hover:bg-[rgb(var(--link-hover-bg-rgb))] hover:border-[rgb(var(--accent-color-rgb))] hover:shadow-[0_0_25px_rgba(var(--accent-color-rgb),1.0),0_0_15px_rgba(var(--accent-color-rgb),0.6)] transition-all ease-in-out">Back to Work</a>
+            </div>
+        </main>
     </div>
-    
-    <div id="copy-toast">Email Copied!</div>
 
-    <script src="main.js"></script>
+    <!-- Sticky Theme Toggle -->
+    <div class="theme-toggle-fixed" id="theme-toggle">
+        <span id="dark-mode-toggle" class="theme-toggle-btn" role="button" aria-label="Activate dark mode">DARK</span>
+        <span class="theme-toggle-separator">/</span>
+        <span id="light-mode-toggle" class="theme-toggle-btn" role="button" aria-label="Activate light mode">LIGHT</span>
+    </div>
+
+    <script>
+        // Log to console on page load for debugging
+        console.log("pebble.html (refined) loaded.");
+
+        /**
+         * Copies text to the clipboard and provides user feedback.
+         * @param {string} text - The text to copy.
+         * @param {HTMLElement} element - The button element that was clicked.
+         */
+        function copyToClipboard(text, element) {
+            const originalText = element.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                console.log('Email copied to clipboard!');
+                element.innerText = 'COPIED!';
+                setTimeout(() => { element.innerText = originalText; }, 2000); // Revert after 2 seconds
+            }).catch(err => {
+                console.error('Could not copy text using navigator.clipboard: ', err);
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'absolute';
+                textarea.style.left = '-9999px';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    console.log('Fallback: Email copied to clipboard.');
+                    element.innerText = 'COPIED!';
+                    setTimeout(() => { element.innerText = originalText; }, 2000);
+                } catch (execErr) {
+                    console.error('Fallback copy command failed: ', execErr);
+                    element.innerText = 'FAILED';
+                    setTimeout(() => { element.innerText = originalText; }, 2000);
+                }
+                document.body.removeChild(textarea);
+            });
+        }
+
+        /**
+         * Highlights the active navigation link based on the current page URL.
+         */
+        function highlightActiveNavLink() {
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html'; // Default to index.html if path is empty
+            const navLinks = document.querySelectorAll('.framer-sidebar-section a.framer-sidebar-link-button');
+
+            navLinks.forEach(link => {
+                const linkFilename = link.getAttribute('href').split('/').pop();
+                
+                // Deactivate all links first
+                link.classList.remove('active');
+
+                // Activate the link if it matches the current page
+                if (linkFilename === currentPath) {
+                    link.classList.add('active');
+                    
+                    // If a project link is active, also highlight the main "Work" link
+                    const isProjectLink = ['koinbasket.html', 'softwire.html', 'pebble.html', 'iviprogram.html', 'stampede.html'].includes(currentPath);
+                    if (isProjectLink) {
+                        document.getElementById('nav-work-link')?.classList.add('active');
+                    }
+                }
+            });
+        }
+
+        /**
+         * Manages the theme (dark/light mode) toggle functionality.
+         */
+        function setupThemeToggle() {
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const lightModeToggle = document.getElementById('light-mode-toggle');
+            const body = document.body;
+
+            const applyTheme = (theme) => {
+                if (theme === 'light') {
+                    body.classList.add('light-mode');
+                    lightModeToggle.classList.add('active');
+                    darkModeToggle.classList.remove('active');
+                } else {
+                    body.classList.remove('light-mode');
+                    darkModeToggle.classList.add('active');
+                    lightModeToggle.classList.remove('active');
+                }
+                console.log(`Switched to ${theme.charAt(0).toUpperCase() + theme.slice(1)} Mode`);
+            };
+
+            darkModeToggle.addEventListener('click', () => {
+                localStorage.setItem('theme', 'dark');
+                applyTheme('dark');
+            });
+
+            lightModeToggle.addEventListener('click', () => {
+                localStorage.setItem('theme', 'light');
+                applyTheme('light');
+            });
+
+            // Apply saved theme on initial load, defaulting to dark mode
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            applyTheme(savedTheme);
+        }
+
+        // --- Event Listeners ---
+        // Run scripts after the DOM has fully loaded.
+        document.addEventListener('DOMContentLoaded', () => {
+            highlightActiveNavLink();
+            setupThemeToggle();
+        });
+
+        // Re-check active link on browser back/forward navigation
+        window.addEventListener('popstate', highlightActiveNavLink);
+
+    </script>
 </body>
 </html>

@@ -4,136 +4,543 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amaan Khan - Case Study: Stampede</title>
-    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for Inter, IBM Plex Mono, and DM Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Dark and Light Mode */
+        :root {
+            /* Dark Mode Defaults */
+            --primary-bg-rgb: 25 25 25;
+            --secondary-bg-rgb: 35 35 35;
+            --primary-text-rgb: 255 255 255;
+            --secondary-text-rgb: 200 200 200;
+            --tertiary-text-rgb: 160 160 160;
+            --border-color-rgb: 255 255 255;
+            --accent-color-rgb: 238 99 82;
+            --accent-color-darker-rgb: 209 86 72;
+            --link-hover-bg-rgb: 40 40 40;
+            --box-shadow-color: rgba(0, 0, 0, 0.1);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 1.0);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.6);
+        }
 
+        body.light-mode {
+            /* Light Mode Overrides */
+            --primary-bg-rgb: 245 245 245;
+            --secondary-bg-rgb: 255 255 255;
+            --primary-text-rgb: 30 30 30;
+            --secondary-text-rgb: 70 70 70;
+            --tertiary-text-rgb: 100 100 100;
+            --border-color-rgb: 0 0 0;
+            --link-hover-bg-rgb: 235 235 235;
+            --box-shadow-color: rgba(0, 0, 0, 0.08);
+            --glow-color-strong: rgba(var(--accent-color-rgb), 0.9);
+            --glow-color-soft: rgba(var(--accent-color-rgb), 0.5);
+        }
+
+        /* Base styles */
+        body {
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-thumb { background: rgba(var(--primary-text-rgb), 0.2); border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: rgba(var(--primary-text-rgb), 0.05); }
+
+        /* Sidebar */
+        .framer-fixed-sidebar {
+            width: 300px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+            background-color: rgb(var(--primary-bg-rgb));
+            box-shadow: var(--box-shadow-color) 2px 0px 6px 0px;
+            border-right: 1px solid rgba(var(--border-color-rgb), 0.06);
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            overflow-y: auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .framer-sidebar-section {
+            width: 100%;
+            padding: 12px 18px;
+            border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+        .framer-sidebar-section:last-of-type { border-bottom: none; }
+
+        .framer-sidebar-link-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border: 1px solid rgba(var(--border-color-rgb), 0.06);
+            cursor: pointer;
+            text-decoration: none;
+            color: rgb(var(--primary-text-rgb));
+        }
+        .framer-sidebar-link-button:hover, .framer-sidebar-link-button.active {
+            background-color: rgb(var(--link-hover-bg-rgb));
+            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 25px var(--glow-color-strong), 0 0 15px var(--glow-color-soft);
+            border-color: rgb(var(--accent-color-rgb));
+        }
+
+        /* Main content */
+        .framer-main-content {
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            transition: margin-left 0.3s ease-in-out;
+            background-color: rgb(var(--primary-bg-rgb));
+            color: rgb(var(--primary-text-rgb));
+        }
+
+        /* Case study specific styling */
+        .case-study-section h1, .case-study-section h2, .case-study-section h3 { font-family: 'DM Sans', sans-serif; color: rgb(var(--primary-text-rgb)); }
+        .case-study-section h2, .case-study-section h3 { font-family: 'IBM Plex Mono', monospace; }
+        .case-study-section p, .case-study-section li, .case-study-section blockquote { font-family: 'Inter', sans-serif; color: rgb(var(--secondary-text-rgb)); }
+        .case-study-section ul { list-style: disc; margin-left: 1.25rem; }
+        .case-study-section blockquote {
+            border-left: 4px solid rgb(var(--accent-color-rgb));
+            padding-left: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        .case-study-image {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 15px;
+        }
+        .case-study-pill {
+            background-color: rgba(var(--accent-color-rgb), 0.1);
+            color: rgb(var(--accent-color-rgb));
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 810px) {
+            .framer-main-content { margin-left: 300px; padding: 3rem; }
+            .mobile-only { display: none; }
+        }
+
+        @media (max-width: 809px) {
+            .framer-fixed-sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                border-right: none;
+                border-bottom: 1px solid rgba(var(--border-color-rgb), 0.06);
+                padding: 18px 0;
+            }
+            .framer-main-content { margin-left: 0 !important; }
+            .desktop-only { display: none; }
+            .framer-sidebar-section { padding: 8px 18px; }
+            .framer-sidebar-link-button { padding: 8px 18px; }
+        }
+
+        .text-shadow-md { text-shadow: 0px 0px 3px rgba(var(--primary-text-rgb), 0.2); }
+        
+        .theme-toggle-fixed {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 100;
+            background-color: rgb(var(--secondary-bg-rgb));
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            box-shadow: var(--box-shadow-color) 0px 4px 8px 0px, 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            border: 1px solid rgba(var(--border-color-rgb), 0.08);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .theme-toggle-btn { cursor: pointer; color: rgb(var(--tertiary-text-rgb)); transition: color 0.3s ease; }
+        .theme-toggle-btn.active { color: rgb(var(--primary-text-rgb)); text-shadow: 0px 0px 3px rgba(var(--primary-text-rgb), 0.3); }
+        .theme-toggle-btn:hover { color: rgb(var(--accent-color-rgb)); }
+        .theme-toggle-separator { color: rgb(var(--tertiary-text-rgb)); }
+    </style>
 </head>
-<body class="antialiased">
+<body class="bg-[rgb(var(--primary-bg-rgb))]">
+    <!-- Sidebar -->
+    <aside class="framer-fixed-sidebar" id="sidebar">
+        <!-- Bio Section -->
+        <div class="framer-sidebar-section flex-shrink-0">
+            <h1 class="text-xl md:text-2xl font-['DM_Sans'] font-bold uppercase mb-2 text-shadow-md">amaan khan</h1>
+            <p class="text-sm md:text-base text-[rgb(var(--secondary-text-rgb))] text-left font-mono leading-relaxed">
+                Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
+            </p>
+        </div>
 
-    <div class="cursor-dot"></div>
-
-    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
-        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
-        </button>
-        <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-    </header>
-    
-    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
-
-    <div class="flex">
-        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
-            <div class="sidebar-content-wrapper flex-grow flex flex-col overflow-y-auto">
-                <div class="space-y-6">
-                    <div class="hidden lg:block">
-                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
-                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">
-                            Hyderabad-based Product Designer creating impactful, human-centered products.
-                        </p>
-                    </div>
-                     <div class="block lg:hidden">
-                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
-                        <p class="text-sm" style="color: var(--text-secondary);">
-                           Hyderabad-based Product Designer creating impactful, human-centered products.
-                        </p>
-                    </div>
-
-                    <nav class="space-y-3">
-                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Work';" alt="Work Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div>
-                        </a>
-                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1516876437184-593fda40c7c4?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=Play';" alt="Play Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div>
-                        </a>
-                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?q=80&w=100&h=100&auto=format&fit=crop" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1a1a1a/f0f0f0?text=About';" alt="About Icon" class="w-10 h-10 rounded-md">
-                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div>
-                        </a>
-                    </nav>
-
+        <!-- Main Navigation -->
+        <nav class="framer-sidebar-section flex-grow-0 desktop-only">
+            <div class="space-y-2 w-full mb-4">
+                <a href="index.html" class="framer-sidebar-link-button" id="nav-work-link">
+                    <img src="https://framerusercontent.com/images/4tR2kkcmNDwWLyCTL6UKBxtGk.png" alt="" class="w-8 h-8 rounded-sm object-cover" onerror="this.style.display='none'">
                     <div>
-                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
-                        <div class="space-y-2">
-                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
-                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
-                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
-                            <a href="ivi.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
-                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
-                        </div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Work</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">A selection of recent work</p>
                     </div>
-                </div>
+                </a>
+                <a href="play.html" class="framer-sidebar-link-button" id="nav-play-link">
+                    <img src="https://framerusercontent.com/images/yXhY9qS7AmyN7I9smUNLCz5VD0.png" alt="" class="w-8 h-8 rounded-sm object-cover" onerror="this.style.display='none'">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Play</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Making things for fun</p>
+                    </div>
+                </a>
+                <a href="about.html" class="framer-sidebar-link-button" id="nav-about-link">
+                    <img src="https://framerusercontent.com/images/vcG8teeyu11wOOrFCkQIhw3k.png" alt="" class="w-8 h-8 rounded-sm object-cover" onerror="this.style.display='none'">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">About</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Let's get to know each other</p>
+                    </div>
+                </a>
             </div>
-
-            <div class="pt-6 flex-shrink-0">
-                 <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
-                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">Email</button>
-                    <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-                    <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="footer-link">Resumé</a>
-                </div>
-                <div class="mt-4 flex justify-start items-center gap-2">
-                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
-                    <span style="color: var(--text-tertiary);">/</span>
-                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
-                </div>
-                <p class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            <h3 class="text-xs text-[rgb(var(--tertiary-text-rgb))] uppercase tracking-widest font-['IBM_Plex_Mono'] mb-4 w-full text-left">Selected Case Studies</h3>
+            <div class="space-y-2 w-full">
+                <a href="koinbasket.html" class="framer-sidebar-link-button" id="nav-koinbasket-link">
+                    <img src="https://framerusercontent.com/images/25ozRUj8UvgIufO1O7xJ2ScoU.png" alt="" class="w-8 h-8 rounded-sm object-cover" onerror="this.style.display='none'">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">KoinBasket</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile app &amp; design system</p>
+                    </div>
+                </a>
+                <a href="softwire.html" class="framer-sidebar-link-button" id="nav-softwire-link">
+                    <img src="https://framerusercontent.com/images/X6xeHKrxVIDBEnvGc28O693kVc.png" alt="" class="w-8 h-8 rounded-sm object-cover" onerror="this.style.display='none'">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Softwire</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile App</p>
+                    </div>
+                </a>
+                <a href="pebble.html" class="framer-sidebar-link-button" id="nav-pebble-link">
+                    <img src="https://framerusercontent.com/images/RjmnulJqoIak9iNkv5SharVR490.png" alt="" class="w-8 h-8 rounded-sm object-cover" onerror="this.style.display='none'">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Pebble</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Web Platform</p>
+                    </div>
+                </a>
+                <a href="iviprogram.html" class="framer-sidebar-link-button" id="nav-iviprogram-link">
+                    <img src="https://framerusercontent.com/images/vAu8bVuQAH0aydSgX5quO59xGJA.png" alt="" class="w-8 h-8 rounded-sm object-cover" onerror="this.style.display='none'">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">IVI Program</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Web Platform</p>
+                    </div>
+                </a>
+                <a href="stampede.html" class="framer-sidebar-link-button" id="nav-stampede-link">
+                    <img src="https://framerusercontent.com/images/yA0FYp600JS4JkayoqQDdwNvzI.png" alt="" class="w-8 h-8 rounded-sm object-cover" onerror="this.style.display='none'">
+                    <div>
+                        <h2 class="text-sm font-['IBM_Plex_Mono'] font-semibold uppercase">Stampede</h2>
+                        <p class="text-xs text-[rgb(var(--secondary-text-rgb))] font-mono">Mobile App</p>
+                    </div>
+                </a>
             </div>
-        </aside>
+        </nav>
 
-        <div class="flex-1 lg:ml-80">
-            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12 max-w-5xl mx-auto case-study-section">
-                
-                <h1 class="text-4xl lg:text-5xl font-bold mb-4">Speeding Up Solutions: Boosting Conservation with Strategic Partnerships</h1>
-                <p class="text-lg mb-8" style="color: var(--text-secondary);">A Royal College of Art project on how we envisioned “Stampede” to forge innovative partnerships and unlock impactful action within the conservation sector.</p>
+        <!-- Footer Links -->
+        <div class="framer-sidebar-section flex-grow flex flex-col justify-end items-center p-4 pt-12">
+            <div class="flex flex-col md:flex-row gap-4 text-xs font-['IBM_Plex_Mono'] uppercase text-[rgb(var(--secondary-text-rgb))]">
+                <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">EMAIL</button>
+                <a href="https://www.linkedin.com/in/sharonh-lee" target="_blank" rel="noopener" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">LINKEDIN</a>
+                <a href="https://drive.google.com/file/d/17V7-SXAukJ1Q05_1mq_jbPrlk0S8hpbQ/view?usp=sharing" target="_blank" rel="noopener" class="hover:text-[rgb(var(--accent-color-rgb))] transition-colors duration-200">RESUMÉ</a>
+            </div>
+            <p class="text-[rgb(var(--tertiary-text-rgb))] text-xs mt-4 font-['IBM_Plex_Mono']">©2023 amaan khan</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="framer-main-content">
+        <main class="max-w-4xl mx-auto px-4 py-8 space-y-12 case-study-section">
+            <header>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Speeding Up Solutions: Using Strategic Partnerships and Design Thinking to Boost Conservation Efforts</h1>
+                <p class="text-lg text-[rgb(var(--secondary-text-rgb))] mb-6">A Royal College of Art collaborative project on how we envisioned “Stampede” to forge innovative partnerships and unlock impactful action within the conservation sector.</p>
                 <div class="flex flex-wrap gap-2 mb-8">
                     <span class="case-study-pill">Conservation</span>
                     <span class="case-study-pill">Partnerships</span>
                     <span class="case-study-pill">Design Thinking</span>
+                    <span class="case-study-pill">Royal College of Art</span>
                 </div>
+            </header>
 
-                <section>
-                    <h2 class="text-3xl font-bold mb-4">The Challenge</h2>
-                    <p>The world of wildlife conservation is passionate, yet often faces hurdles. Funding can be difficult to allocate, impactful partnerships can be serendipitous rather than strategic, and connecting the right expertise to the right cause is a persistent challenge. Our research with organizations like WWF revealed that “a lot of money [is] lying around which isn’t being spent” and that many collaborations “form out of luck.”</p>
-                    <blockquote>“There are so many people out there who have similar interests, but connecting them is tough.” — Wildlife Biologist, Founder of Key Conservation</blockquote>
-                </section>
+            <section aria-labelledby="introduction">
+                <h2 id="introduction" class="text-2xl font-bold mb-4">Introduction</h2>
+                <p class="mb-4">The world of wildlife conservation is passionate and driven, yet often faces complex hurdles in maximizing its impact. Funding can be difficult to allocate, impactful partnerships can be serendipitous rather than strategic, and connecting the right expertise to the right cause at the right time is a persistent challenge. As part of a Royal College of Art collaborative team (Team: Amaan Khan, Anahita Pradhan, Andrew Seetoh, Constance Cheung), I embarked on the “Stampede” project to explore these very issues. My role involved conducting research, contributing to the design strategy, facilitating collaborative sessions, leading the project, and conceptualizing the proposed solution.</p>
+                <p class="mb-4">This case study outlines our journey in envisioning “Stampede,” a service designed to act as a catalyst for innovative action by forging strategic partnerships within the conservation industry. We aimed to develop a design-based methodology that could not only connect disparate organizations but also inspire influential advocates and unlock stagnant resources for targeted conservation causes.</p>
+                <img src="https://placehold.co/800x450/353535/ffffff?text=Stampede+Team+Photo" alt="The Stampede project team." class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/eeeeee/333333?text=Image+Not+Found';">
+            </section>
 
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">Our Approach</h2>
-                    <p>We proposed that Stampede could act as a facilitator within the conservation sector. A core part of our strategy was “Creative Match-Making.” We recognized that different organizations operate with varying levels of Power (influence, resources) and Pace (speed of execution). We developed animal archetypes to make these characteristics relatable, like a high-power, low-pace “Walrus” (WWF) or a low-power, high-pace “Bumblebee” (a startup). Stampede’s goal is to connect partners who complement each other.</p>
-                    <img src="https://placehold.co/800x450/353535/ffffff?text=Power/Pace+Matrix+with+Archetypes" alt="The Power/Pace matrix showing organizational archetypes." class="case-study-image">
-                </section>
+            <section aria-labelledby="challenge">
+                <h2 id="challenge" class="text-2xl font-bold mb-4">The Challenge & Context: Unlocking Latent Potential in Conservation</h2>
+                <p class="mb-4">Our investigation into the conservation sector, which included interviews with leaders from organizations like WWF, Wildfowl Wetlands Trust (WWT), and academics from Imperial College, revealed a landscape ripe with opportunity but also fraught with systemic friction. This became the “spark” for our project.</p>
+                <h3 class="text-xl font-bold mt-6 mb-3">Initial & Deeper Findings:</h3>
+                <ul class="space-y-4 mb-4">
+                    <li><strong>Untapped Financial Resources:</strong> A significant insight was that “a lot of money [is] lying around which isn’t being spent.” Large organizations often struggle with the effective allocation of funds to the most pressing causes or the most capable parties.
+                        <blockquote>“A lot of big organisations like the WWF or DEFRA struggle with allocating funds… The money is left unspent.” — WWF, Head of Strategic Communications and Partnerships</blockquote>
+                    </li>
+                    <li><strong>Collaboration is Standard, but Ad Hoc:</strong> While partnerships are the norm and crucial for success, many “form out of luck” or “happy accidents” rather than through a structured, strategic approach.
+                        <blockquote>“Happy accidents lead to partnerships e.g. with HSBC.” — Visitor Centre Development, Wildfowl Wetlands Trust</blockquote>
+                    </li>
+                    <li><strong>The Matchmaking Dilemma:</strong> Finding the right people and organizations to team up with is a significant hurdle.
+                        <blockquote>“There are so many people out there who have similar interests, but connecting them is tough.” — Wildlife Biologist, Founder of Key Conservation</blockquote>
+                    </li>
+                    <li><strong>The Fragility of Advocacy:</strong> Corporate support often depends heavily on individual champions within those companies. If an advocate leaves, the partnership and funding can dissolve.
+                        <blockquote>“We had a great relationship with a corporate, but when that person left the organisation, we lost the advocate and support.” — Ecosystem Researcher, Wildfowl Wetlands Trust</blockquote>
+                    </li>
+                     <li><strong>Demand for “Ready-Made” Solutions:</strong> Funding entities increasingly prefer to see well-developed proposals, creating a barrier for nascent ideas that require collaborative incubation.
+                        <blockquote>“The way the funding world is going is that companies or organisations with money want ready proposals to sanction releases for.” — Head of Strategic Communications and Engagements, WWF</blockquote>
+                    </li>
+                </ul>
+                <img src="https://placehold.co/800x450/353535/ffffff?text=Key+Research+Findings" alt="A slide showing key quotes from research interviews." class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/eeeeee/333333?text=Image+Not+Found';">
+                <p class="font-semibold text-lg mt-6">Our problem statement therefore became: How can Stampede spur innovative action by catalysing partnerships within the conservation industry? And in doing so, how could it link previously disconnected organizations, utilize restricted income, and create long-term advocates?</p>
+            </section>
 
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">Prototyping in Action</h2>
-                    <p>To test our methodology, we prototyped a “Stampede” workshop. WWT had expressed that Airbnb was a “dream partner.” We facilitated a 3-hour session with key representatives from both organizations. The session was highly productive and generated significant enthusiasm, proving the value of facilitated collaboration.</p>
-                    <blockquote>“This was 100 times more productive than any partnership meeting I have had.” — Workshop Participant</blockquote>
-                    <img src="https://placehold.co/800x450/353535/ffffff?text=WWT+x+Airbnb+Workshop" alt="Photo from the WWT and Airbnb workshop." class="case-study-image">
-                </section>
+            <section aria-labelledby="approach">
+                <h2 id="approach" class="text-2xl font-bold mb-4">Our Approach: A Design-Led Framework for Catalysing Partnerships</h2>
+                <p class="mb-4">Inspired by the way Stampede (the client) had teamed up with the RCA for innovative solutions, we proposed that Stampede could play a similar facilitation and match-making role within the conservation sector itself. Our approach was to develop a service that could intelligently connect and facilitate meaningful collaborations between curated parties for targeted conservation causes.</p>
+                <h3 class="text-xl font-bold mt-6 mb-3">1. Conceptualizing the “Stampede” Methodology:</h3>
+                <p class="mb-4">We envisioned “Stampede” not just as a one-off event, but as a holistic process. This involved a “People, Experience, Outcome, Follow-up” framework:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>People:</strong> Connecting organizations and inspiring individuals.</li>
+                    <li><strong>Experience:</strong> Curating impactful engagements like expeditions, hackathons, and workshops.</li>
+                    <li><strong>Outcome:</strong> Enabling tangible results like new solutions, action plans, and proposals.</li>
+                    <li><strong>Follow-up:</strong> Ensuring momentum through continued engagement.</li>
+                </ul>
+                 <img src="https://placehold.co/800x450/353535/ffffff?text=People,+Experience,+Outcome,+Follow-up" alt="Diagram showing the Stampede methodology framework." class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/eeeeee/333333?text=Image+Not+Found';">
+
+                <h3 class="text-xl font-bold mt-6 mb-3">2. Creative Match-Making: The Power/Pace Matrix & Animal Archetypes:</h3>
+                <p class="mb-4">A core part of our strategy was “Creative Match-Making.” We recognized that different organizations operate with varying levels of Power (influence, resources) and Pace (speed of decision-making and execution). To make these characteristics more tangible and relatable, we developed a set of animal archetypes:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Walrus (e.g., WWF):</strong> Global charitable organization; large, careful of brand, sometimes slow due to layers.</li>
+                    <li><strong>Tiger (e.g., Apple):</strong> Large tech company; fast-moving, innovative, resource-rich.</li>
+                    <li><strong>Sheep (e.g., Thames Water):</strong> Large traditional corporate; often follows others, slower decision-making.</li>
+                    <li><strong>Bumblebee (e.g., Giki):</strong> Small conservation startup; innovative, agile, but limited reach/cash flow.</li>
+                    <li><strong>Worm (e.g., WWT):</strong> Grassroots conservation organization; local reach, cash-strapped, vital on-the-ground impact.</li>
+                    <li><strong>Octopus (e.g., EY):</strong> Large multinational corporate; analytical, many arms, can move quickly on projects.</li>
+                    <li><strong>Giant Tortoise (e.g., Government Depts):</strong> Slow to start but steady once moving, impactful long-term.</li>
+                </ul>
+                <p class="mb-4">The insight here was that Stampede should target partnerships that complement the Power and Pace of different organizations, often connecting those who wouldn’t typically collaborate (e.g., a high-power, low-pace “Walrus” with a low-power, high-pace “Bumblebee”).</p>
+                <img src="https://placehold.co/800x450/353535/ffffff?text=Power/Pace+Matrix+with+Archetypes" alt="The Power/Pace matrix showing how Stampede connects different organizational archetypes." class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/eeeeee/333333?text=Image+Not+Found';">
                 
-                <section>
-                    <h2 class="text-3xl font-bold mb-4 mt-12">The Solution</h2>
-                    <p>Stampede is a proposed service that identifies pressing causes, conducts strategic matchmaking, designs and facilitates bespoke workshops, and drives actionable outcomes. It operates with a disruptive mindset, a strong network, and a small, agile team focused on rapid action.</p>
-                </section>
-                
-                <div class="text-center mt-16">
-                    <a href="index.html" class="back-to-work-btn">Back to Work</a>
-                </div>
+                <h3 class="text-xl font-bold mt-6 mb-3">3. Tailoring the Service: Addressing Different Stages of Partnership:</h3>
+                <p class="mb-4">We understood that organizations need help at various stages of the partnership journey. Stampede’s service was designed to be flexible, offering support in: Purpose Finding, Match-Making, Connecting, Kicking-Off (Running a Stampede workshop), Project Execution, and Measuring Outcome.</p>
+            </section>
 
-            </main>
-        </div>
+             <section aria-labelledby="prototyping">
+                <h2 id="prototyping" class="text-2xl font-bold mb-4">Prototyping in Action: The WWT x Airbnb “Stampede” Workshop</h2>
+                <p class="mb-4">To test and refine our methodology, we prototyped a “Stampede” kick-off workshop. WWT had expressed that Airbnb was a “dream partner.” We facilitated a 3-hour session with key representatives: Holly Bland (Social Impact Experience Manager, Airbnb) and Nick Appleby (Senior Partnerships Manager, WWT).</p>
+                <img src="https://placehold.co/800x450/353535/ffffff?text=WWT+x+Airbnb+Workshop" alt="Photo from the WWT and Airbnb workshop." class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/eeeeee/333333?text=Image+Not+Found';">
+                <p class="mb-4">The workshop followed a condensed design sprint structure:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Unpacking (40 mins):</strong> Introductions, building trust, goal setting, reflecting on organizational strengths.</li>
+                    <li><strong>Sketching (60 mins):</strong> Idea generation (e.g., Crazy 8’s on “How might Airbnb and WWT create an authentic wetlands experience?”).</li>
+                    <li><strong>Solutioning (70 mins):</strong> Developing an action plan, discussing practical considerations, and identifying challenges.</li>
+                </ul>
+                <h3 class="text-xl font-bold mt-6 mb-3">Key Moments & Learnings from the Workshop:</h3>
+                <p class="mb-4">The session was highly productive and generated significant enthusiasm, highlighting the value of facilitated collaboration:</p>
+                <blockquote class="mb-4">“This was 100 times more productive than any partnership meeting I have had.”</blockquote>
+                <blockquote class="mb-4">“This has been an opportunity for me to think of the different things we do and could do.”</blockquote>
+                <blockquote class="mb-4">“We will be following up — I have your details.”</blockquote>
+                <h3 class="text-xl font-bold mt-6 mb-3">Design Recommendations from the Prototype:</h3>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Acknowledge and Address Monetary Value:</strong> Don’t shy away from discussing revenue, even with non-profits.</li>
+                    <li><strong>Flexibility in Approach:</strong> Go in with a “hook” idea, but allow partnerships to evolve organically based on mutual strengths.</li>
+                    <li><strong>The Power of Third-Party Facilitation:</strong> A neutral facilitator like Stampede helps level the playing field and fosters genuine collaboration.</li>
+                    <li><strong>Invite the Right Decision-Makers:</strong> Ensure those who can make decisions are present.</li>
+                    <li><strong>Adapt to Time Constraints:</strong> Develop shorter “power hour” versions of Stampede workshops.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="solution">
+                <h2 id="solution" class="text-2xl font-bold mb-4">The Solution: Stampede — A Service for Strategic Conservation Impact</h2>
+                <p class="mb-4">Based on our research and prototyping, Stampede is proposed as a service that:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>Identifies Pressing Causes & Untapped Opportunities:</strong> Through industry knowledge and networking.</li>
+                    <li><strong>Conducts Creative & Strategic Match-Making:</strong> Using frameworks like the Power/Pace matrix to connect unlikely but high-potential partners (e.g., NASA x WWF for real-time “Red List” animal tracking).</li>
+                    <li><strong>Designs & Facilitates Bespoke “Stampede” Experiences:</strong> Ranging from immersive expeditions for influential individuals to generate advocacy, to joint design sprints for organizations to co-create solutions.</li>
+                    <li><strong>Drives Actionable Outcomes & Ensures Follow-Up:</strong> Moving beyond ideation to concrete plans, proposals, and continued momentum.</li>
+                    <li><strong>Operates with Key Value Adds:</strong> A disruptive mindset, strong network, neutrality, and a small, agile team focused on rapid action.</li>
+                </ul>
+                <img src="https://placehold.co/800x450/353535/ffffff?text=Example+Partnership+Journeys" alt="Diagrams showing example journeys for creating advocates and spurring innovation." class="case-study-image" onerror="this.onerror=null;this.src='https://placehold.co/800x450/eeeeee/333333?text=Image+Not+Found';">
+            </section>
+
+            <section aria-labelledby="learnings">
+                <h2 id="learnings" class="text-2xl font-bold mb-4">Key Learnings & Insights</h2>
+                <p class="mb-4">This project offered several profound learnings about fostering collaboration for conservation:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li><strong>The “Chemistry” of Collaboration Can Be Designed:</strong> A structured approach can significantly increase the likelihood of successful collaborations by strategically matching complementary strengths.</li>
+                    <li><strong>Unlocking “Stuck” Resources Requires a Nudge (and a Plan):</strong> A neutral catalyst can help identify siloed resources and co-create viable pathways for their use.</li>
+                    <li><strong>Speed & Agility are Currencies in a Slow-Moving Sector:</strong> The contrast in operational speeds (e.g., WWT vs. Airbnb) highlights the need for processes that can accelerate decision-making.</li>
+                    <li><strong>Person-to-Person Connection is Paramount:</strong> The enthusiasm and trust built between key individuals during facilitated sessions are critical drivers of success.</li>
+                </ul>
+                <p>My personal key learning from leading and contributing to the Stampede project was the immense potential that lies at the intersection of design thinking and complex systemic challenges. Applying a structured yet creative facilitation process can unlock novel solutions and foster genuine buy-in from diverse stakeholders, even in sectors as established as conservation.</p>
+            </section>
+
+            <section aria-labelledby="future">
+                <h2 id="future" class="text-2xl font-bold mb-4">The Future of Stampede</h2>
+                <p class="mb-4">The immediate next steps for developing Stampede would involve:</p>
+                <ul class="list-disc list-inside space-y-2 mb-4">
+                    <li>Refining Brand Strategy & Collaterals: Creating pitch decks and toolkits.</li>
+                    <li>Developing a Sustainable Business Model & Financing Plan.</li>
+                    <li>Defining Organizational Structure & Roles.</li>
+                    <li>Running More Prototype Workshops: To further test and iterate the Stampede collaboration process.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="conclusion">
+                <h2 id="conclusion" class="text-2xl font-bold mb-4">Conclusion</h2>
+                <p>The Stampede project demonstrated a clear need and a viable, design-led approach to accelerating conservation efforts by fostering innovative and strategic partnerships. By understanding the unique challenges and operational styles of different organizations within the sector, and by applying a facilitated, co-creative methodology, Stampede offers a pathway to unlock unspent resources, connect disparate expertise, and ultimately drive more impactful conservation outcomes. It’s about moving from “happy accidents” to “designed impact.”</p>
+            </section>
+
+            <section aria-labelledby="team">
+                <h2 id="team" class="text-2xl font-bold mb-4">The Team</h2>
+                <p>Amaan Khan, Anahita Pradhan, Andrew Seetoh, Constance Cheung (Royal College of Art)</p>
+            </section>
+
+            <div class="text-center mt-12">
+                <a href="index.html" class="inline-block px-6 py-3 rounded-md bg-[rgb(var(--secondary-bg-rgb))] border border-[rgba(var(--border-color-rgb),0.06)] text-[rgb(var(--primary-text-rgb))] hover:bg-[rgb(var(--link-hover-bg-rgb))] hover:border-[rgb(var(--accent-color-rgb))] hover:shadow-[0_0_25px_rgba(var(--accent-color-rgb),1.0),0_0_15px_rgba(var(--accent-color-rgb),0.6)] transition-all ease-in-out">Back to Work</a>
+            </div>
+        </main>
     </div>
-    
-    <div id="copy-toast">Email Copied!</div>
 
-    <script src="main.js"></script>
+    <!-- Sticky Theme Toggle -->
+    <div class="theme-toggle-fixed" id="theme-toggle">
+        <button id="dark-mode-toggle" class="theme-toggle-btn" aria-label="Activate dark mode">DARK</button>
+        <span class="theme-toggle-separator" aria-hidden="true">/</span>
+        <button id="light-mode-toggle" class="theme-toggle-btn" aria-label="Activate light mode">LIGHT</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("stampede.html loaded.");
+
+            // --- THEME TOGGLE ---
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const lightModeToggle = document.getElementById('light-mode-toggle');
+            const body = document.body;
+
+            const applyTheme = (theme) => {
+                if (theme === 'light') {
+                    body.classList.add('light-mode');
+                    lightModeToggle.classList.add('active');
+                    darkModeToggle.classList.remove('active');
+                } else {
+                    body.classList.remove('light-mode');
+                    darkModeToggle.classList.add('active');
+                    lightModeToggle.classList.remove('active');
+                }
+            };
+
+            // Apply saved theme on load
+            const savedTheme = localStorage.getItem('theme');
+            // Default to dark mode if no preference or 'dark' saved
+            applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+
+            darkModeToggle.addEventListener('click', () => {
+                applyTheme('dark');
+                localStorage.setItem('theme', 'dark');
+                console.log('Switched to Dark Mode');
+            });
+
+            lightModeToggle.addEventListener('click', () => {
+                applyTheme('light');
+                localStorage.setItem('theme', 'light');
+                console.log('Switched to Light Mode');
+            });
+
+            // --- ACTIVE NAV LINK HIGHLIGHTING ---
+            const highlightActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                const navLinks = document.querySelectorAll('.framer-sidebar-section a.framer-sidebar-link-button');
+
+                let isProjectPage = false;
+
+                navLinks.forEach(link => {
+                    const linkPath = link.getAttribute('href').split('/').pop();
+                    link.classList.remove('active');
+
+                    if (linkPath === currentPath) {
+                        link.classList.add('active');
+                        // Check if the active link is a project link (and not work, play, or about)
+                        if (link.id.startsWith('nav-') && !['nav-work-link', 'nav-play-link', 'nav-about-link'].includes(link.id)) {
+                             isProjectPage = true;
+                        }
+                    }
+                });
+                
+                // If on a project page, also highlight the main "Work" link
+                if(isProjectPage) {
+                    document.getElementById('nav-work-link')?.classList.add('active');
+                }
+            };
+
+            highlightActiveNavLink();
+            window.addEventListener('popstate', highlightActiveNavLink);
+        });
+
+        // --- CLIPBOARD FUNCTION ---
+        // Using a modern, promise-based approach with a fallback
+        function copyToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    console.log('Email copied to clipboard!');
+                    // Optional: Show a temporary success message to the user
+                }).catch(err => {
+                    console.error('Could not copy text using navigator: ', err);
+                    copyTextFallback(text); // Use fallback if permission is denied
+                });
+            } else {
+                copyTextFallback(text); // Use fallback for older browsers
+            }
+        }
+
+        // Fallback for older browsers or when navigator.clipboard fails
+        function copyTextFallback(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed'; // Prevent scrolling to bottom of page
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                console.log('Fallback: Email copied to clipboard.');
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            document.body.removeChild(textarea);
+        }
+    </script>
 </body>
 </html>
