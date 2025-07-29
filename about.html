@@ -19,14 +19,143 @@
     <div class="cursor-dot"></div>
     <div id="copy-toast">Email Copied!</div>
 
-    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20 shadow-md">
-        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md z-50">
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
+    <header id="mobile-header" class="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20">
+        <button id="hamburger-btn" class="absolute top-1/2 left-6 -translate-y-1/2 p-2 space-y-2 rounded-md">
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
+            <span class="block w-6 h-0.5 bg-[var(--text-primary)]"></span>
         </button>
         <h1 class="font-dm-sans text-xl font-bold uppercase tracking-wider">Amaan Khan</h1>
     </header>
+    
+    <div id="sidebar-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-30 hidden"></div>
+
+    <div class="flex">
+        <aside id="sidebar" class="sidebar w-80 h-screen fixed inset-y-0 left-0 p-6 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-40">
+            <div class="sidebar-content-wrapper flex-grow flex flex-col">
+                <div class="space-y-6">
+                    <div class="hidden lg:block">
+                        <h1 class="font-dm-sans text-3xl font-bold uppercase tracking-wider">Amaan Khan</h1>
+                        <p class="mt-2 text-sm" style="color: var(--text-secondary);">
+                            Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
+                        </p>
+                    </div>
+                    <div class="block lg:hidden">
+                        <h1 class="font-dm-sans text-2xl font-bold uppercase tracking-wider mb-2">Amaan Khan</h1>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            Hyderabad-based Product Designer creating impactful, human-centered products.
+                        </p>
+                    </div>
+
+                    <nav class="space-y-3">
+                        <a href="index.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg" id="nav-work-link">
+                            <img src="https://placehold.co/100x100/ff4757/f0f0f0?text=Work" alt="Work Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Work</h2><p class="text-xs" style="color: var(--text-secondary);">A selection of recent work</p></div>
+                        </a>
+                        <a href="play.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg" id="nav-play-link">
+                            <img src="https://placehold.co/100x100/ff4757/f0f0f0?text=Play" alt="Play Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">Play</h2><p class="text-xs" style="color: var(--text-secondary);">Making things for fun</p></div>
+                        </a>
+                        <a href="about.html" class="sidebar-link flex items-center gap-4 p-3 rounded-lg" id="nav-about-link">
+                            <img src="https://placehold.co/100x100/ff4757/f0f0f0?text=About" alt="About Icon" class="w-10 h-10 rounded-md">
+                            <div><h2 class="font-ibm-plex-mono font-semibold uppercase">About</h2><p class="text-xs" style="color: var(--text-secondary);">Let's get to know each other</p></div>
+                        </a>
+                    </nav>
+
+                    <div>
+                        <h3 class="font-ibm-plex-mono text-sm uppercase tracking-widest mb-4" style="color: var(--text-tertiary);">Case Studies</h3>
+                        <div class="space-y-2">
+                            <a href="koinbasket.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">KoinBasket</span></a>
+                            <a href="softwire.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Softwire</span></a>
+                            <a href="pebble.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Pebble</span></a>
+                            <a href="iviprogram.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">IVI Program</span></a>
+                            <a href="stampede.html" class="sidebar-link flex items-center gap-3 p-2 rounded-lg text-sm"><img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede Logo" class="w-6 h-6 rounded-sm"><span class="font-ibm-plex-mono font-medium">Stampede</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex-shrink-0">
+                <div class="flex justify-start gap-5 font-ibm-plex-mono uppercase text-xs tracking-wider">
+                    <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="footer-link">EMAIL</button>
+                    <a href="https://www.linkedin.com/in/readmetxt/" target="_blank" rel="noopener" class="footer-link">LINKEDIN</a>
+                    <a href="https://docs.google.com/document/d/1sIOiJfJ6X0viz2CpZGxcRESEiGaztwLoCKm8TOmZ8Fw/edit?usp=sharing" target="_blank" rel="noopener" class="footer-link">RESUME</a>
+                </div>
+                <div class="mt-4 flex justify-start items-center gap-2">
+                    <button id="dark-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Dark</button>
+                    <span style="color: var(--text-tertiary);">/</span>
+                    <button id="light-mode-toggle" class="theme-toggle-btn font-ibm-plex-mono text-xs uppercase">Light</button>
+                </div>
+                <p id="copyright-year" class="mt-4 text-xs font-ibm-plex-mono" style="color: var(--text-tertiary);">&copy;2025 Amaan Khan</p>
+            </div>
+        </aside>
+
+        <div class="flex-1 lg:ml-80">
+            <main class="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12">
+                
+                <div class="max-w-4xl mx-auto space-y-12 case-study-section">
+                    <header>
+                        <h1 class="text-4xl md:text-5xl font-bold mb-4">About Me</h1>
+                        <p class="text-lg text-[var(--text-secondary)] mb-6">A brief introduction to my journey and philosophy.</p>
+                    </header>
+
+                    <section aria-labelledby="introduction">
+                        <h2 id="introduction" class="text-2xl font-bold mb-4">My Journey</h2>
+                        <p class="mb-4">I'm Amaan Khan, a Hyderabad-based Product Designer with a passion for crafting impactful, human-centered products. My journey into design began with a fascination for how technology shapes our lives and a desire to make those interactions more intuitive and delightful.</p>
+                        <p class="mb-4">Over the years, I've had the privilege to work on a diverse range of projects, from mobile applications to complex trading platforms, collaborating with cross-functional teams to bring ideas to life. My approach is rooted in understanding user needs, iterating rapidly, and always striving for elegant solutions to complex problems.</p>
+                    </section>
+
+                    <section aria-labelledby="skills">
+                        <h2 id="skills" class="text-2xl font-bold mb-4">Skills & Expertise</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-xl font-bold mb-3">Design Tools</h3>
+                                <ul class="list-disc list-inside space-y-2 text-[var(--text-secondary)]">
+                                    <li>Figma</li>
+                                    <li>Sketch</li>
+                                    <li>Adobe XD</li>
+                                    <li>Miro</li>
+                                    <li>Photoshop</li>
+                                    <li>Illustrator</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-3">Core Competencies</h3>
+                                <ul class="list-disc list-inside space-y-2 text-[var(--text-secondary)]">
+                                    <li>User Research & Analysis</li>
+                                    <li>Wireframing & Prototyping</li>
+                                    <li>UI/UX Design</li>
+                                    <li>Interaction Design</li>
+                                    <li>Design Systems</li>
+                                    <li>Usability Testing</li>
+                                    <li>Information Architecture</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold mb-3">My Skills (Chart)</h3>
+                            <canvas id="skillsChart"></canvas>
+                        </div>
+                    </section>
+
+                    <section aria-labelledby="philosophy">
+                        <h2 id="philosophy" class="text-2xl font-bold mb-4">My Design Philosophy</h2>
+                        <p class="mb-4">I believe that great design is invisible. It's about creating experiences that feel natural, intuitive, and effortless. My philosophy centers on empathy – truly understanding the people I'm designing for, their motivations, and their pain points. I advocate for a collaborative and iterative process, where feedback is embraced, and solutions evolve through continuous refinement.</p>
+                        <p class="mb-4">Beyond aesthetics, I'm deeply committed to designing for accessibility and inclusivity, ensuring that products are usable and enjoyable for everyone, regardless of their abilities or background. I strive to create designs that not only solve problems but also inspire and delight.</p>
+                    </section>
+
+                    <section aria-labelledby="contact">
+                        <h2 id="contact" class="text-2xl font-bold mb-4">Let's Connect</h2>
+                        <p class="mb-4 text-[var(--text-secondary)]">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+                        <div class="flex gap-4">
+                            <button onclick="copyToClipboard('mdamkhan.work@gmail.com')" class="inline-block px-6 py-3 rounded-md border transition-all ease-in-out" style="background-color: var(--bg-secondary); border-color: var(--border-color); color: var(--text-primary);">Email Me</button>
+                            <a href="https://www.linkedin.com/in/readmetxt/" target="_blank" rel="noopener" class="inline-block px-6 py-3 rounded-md border transition-all ease-in-out" style="background-color: var(--bg-secondary); border-color: var(--border-color); color: var(--text-primary);">LinkedIn</a>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
     
     <script src="main.js" defer></script>
 </body>

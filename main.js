@@ -97,7 +97,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- GLOBAL HELPER FUNCTIONS ---
-function updateChartColors(chart) { /* ... function code ... */ }
+function updateChartColors(chart) {
+    // Placeholder for chart color update logic
+    console.log("Updating chart colors for:", chart);
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        if (toast && !toast.classList.contains('show')) {
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 2500);
+        }
+    }).catch(err => console.error('Failed to copy: ', err));
+}
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('copy-toast');
