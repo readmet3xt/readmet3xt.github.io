@@ -1,0 +1,201 @@
+/* Component-Specific Styles */
+
+@layer components {
+  /* Legacy cursor styles - removed, now handled in CustomCursor component */
+
+  /* Sidebar */
+  .sidebar {
+    background-color: hsl(var(--bg-secondary));
+    border-right: 1px solid hsl(var(--border));
+    box-shadow: 2px 0px 15px hsl(var(--bg-primary) / 0.2);
+  }
+
+  /* Sidebar links */
+  .sidebar-link {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+  }
+  
+  .sidebar-link:hover {
+    background-color: hsl(var(--bg-primary));
+    border-color: hsl(var(--border));
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px hsl(var(--bg-primary) / 0.3);
+  }
+  
+  .sidebar-link.active {
+    background-color: hsl(var(--bg-primary));
+    border-color: hsl(var(--accent-primary));
+    box-shadow: 0 0 20px hsl(var(--accent-primary) / 0.4);
+  }
+  
+  .sidebar-link img {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-link:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Sidebar footer links */
+  .footer-link {
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .footer-link:hover {
+    color: hsl(var(--accent-hover));
+    transform: translateY(-2px);
+  }
+
+  /* Project Cards */
+  .project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px hsl(var(--bg-primary) / 0.15), 0 0 30px hsl(var(--accent-primary) / 0.3);
+    border-color: hsl(var(--accent-primary) / 0.5);
+  }
+  
+  .project-card img {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Image Grid Items for Play page */
+  .image-grid-item {
+    will-change: transform;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    background-color: hsl(var(--bg-secondary));
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .image-grid-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px hsl(var(--bg-primary) / 0.2), 0 0 20px hsl(var(--accent-primary) / 0.5);
+  }
+  
+  .image-grid-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* Timeline Styles for About page */
+  .timeline-container {
+    border-left: 2px solid hsl(var(--border));
+    margin-left: 8px;
+    padding-left: 2rem;
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .timeline-item:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: hsl(var(--accent-primary));
+    border: 2px solid hsl(var(--bg-primary));
+    z-index: 10;
+  }
+
+  .timeline-item ul {
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+
+  .timeline-item li {
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-item li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Chart Container */
+  .chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    height: 400px;
+    max-height: 50vh;
+    background-color: hsl(var(--bg-secondary));
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* Theme Toggle */
+  .theme-toggle-btn {
+    color: hsl(var(--text-tertiary));
+    transition: color 0.2s ease;
+  }
+  
+  .theme-toggle-btn.active, .theme-toggle-btn:hover {
+    color: hsl(var(--text-primary));
+  }
+  
+  /* Hamburger Menu Icon Styling */
+  #hamburger-btn span {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #hamburger-btn.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  #hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  #hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  .mobile-header {
+    background-color: hsl(var(--bg-primary));
+  }
+
+  /* Copy Toast */
+  .copy-toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hsl(var(--accent-primary));
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    z-index: 101;
+    transition: bottom 0.5s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .copy-toast.show {
+    bottom: 2rem;
+  }
+}

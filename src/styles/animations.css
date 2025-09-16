@@ -1,0 +1,114 @@
+/* Animation System */
+
+@layer components {
+  /* Scroll Animations */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Typewriter Animation Styling */
+  #text-animation-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 150px;
+    background-color: hsl(var(--bg-primary));
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 640px) {
+    #text-animation-container {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    #text-animation-container {
+      padding: 2rem;
+    }
+  }
+  
+  #animated-question {
+    text-align: left;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: hsl(var(--text-primary));
+    transition: opacity 0.5s ease-in-out;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  @media (min-width: 640px) {
+    #animated-question {
+      font-size: 0.875rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    #animated-question {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    #animated-question {
+      font-size: 1.125rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    #animated-question {
+      font-size: 1.25rem;
+    }
+  }
+  
+  /* Blinking cursor for typewriter effect */
+  #animated-question .typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.25rem;
+    background-color: hsl(var(--accent-primary));
+    animation: blink 1s infinite;
+    margin-left: 4px;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Interactive Sidebar Icons */
+  .sidebar-link:hover img {
+    transform: rotate(-5deg) scale(1.1);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .sidebar-link img {
+    transition: transform 0.3s ease;
+  }
+
+  /* Mouse-Aware Card Tilt */
+  .project-card {
+    will-change: transform;
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+}
