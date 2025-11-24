@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 
 interface AnimatedProjectCardProps {
   href: string;
@@ -15,45 +16,31 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
   const cardRef = useRef<HTMLAnchorElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
+  // Use optimized hover effect hook
+  useCardHoverEffect(cardRef, {
+    maxRotation: 10,
+    transitionDuration: 100,
+  });
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = (y - centerY) / 20;
-      const rotateY = (centerX - x) / 20;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-    };
-
-    const handleMouseLeave = () => {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-    };
-
-    card.addEventListener('mousemove', handleMouseMove);
-    card.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      card.removeEventListener('mousemove', handleMouseMove);
-      card.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
-  // Auto-animate between images
+  // Auto-animate between images with preloading
   useEffect(() => {
     if (images.length <= 1) return;
+
+    // Preload next image for smooth transitions
+    const preloadNextImage = () => {
+      const nextIndex = (currentImageIndex + 1) % images.length;
+      const img = new Image();
+      img.src = images[nextIndex];
+    };
+
+    preloadNextImage();
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
     }, 3000); // Change image every 3 seconds
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, currentImageIndex, images]);
 
   return (
     <Link

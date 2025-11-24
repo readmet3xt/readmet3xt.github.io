@@ -1,11 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Import modular stylesheets */
 @import './styles/typography.css';
 @import './styles/animations.css';
 @import './styles/components.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Portfolio Design System */
 
@@ -101,24 +101,31 @@
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: none; /* Hide system cursor for custom cursor */
+  }
+  
+  /* Consistent Focus Indicators for Accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--accent-primary));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  /* For elements that shouldn't have outline (use ring instead) */
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 
+                0 0 0 4px hsl(var(--accent-primary));
+  }
+  
+  /* Show system cursor when keyboard navigating */
+  body:has(*:focus-visible) {
+    cursor: auto !important;
   }
   
   /* Custom cursor for desktop only */
   @media (pointer: coarse), (max-width: 1023px) {
     body {
       cursor: default !important;
-    }
-  }
-  
-  @media (pointer: fine) and (min-width: 1024px) {
-    body {
-      cursor: none !important;
-    }
-    
-    /* Hide system cursor on all interactive elements */
-    a, button, input, textarea, select, [role="button"], [onclick], .cursor-pointer {
-      cursor: none !important;
     }
   }
   
@@ -339,17 +346,24 @@
   
   .case-study-grid-image { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-template-columns: repeat(2, 1fr); 
     gap: 1.5rem; 
     margin: 2rem 0; 
   }
   
-  .case-study-grid-image img {
+  @media (max-width: 768px) {
+    .case-study-grid-image {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .case-study-grid-image > * {
     width: 100%; 
-    height: auto; 
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px hsl(var(--bg-primary) / 0.2), 0 2px 4px -1px hsl(var(--bg-primary) / 0.2);
-    border: 1px solid hsl(var(--border));
+    height: 100%;
+  }
+  
+  .case-study-grid-image > *:nth-child(3) {
+    grid-row: span 2;
   }
   
   .case-study-pill {

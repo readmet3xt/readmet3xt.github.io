@@ -1,6 +1,5 @@
 import { useState, useEffect, ReactNode } from 'react';
 import { PanelLeft } from 'lucide-react';
-import { CustomCursor } from '@/components/CustomCursor';
 import { Sidebar } from '@/components/Sidebar';
 
 interface PageLayoutProps {
@@ -35,8 +34,6 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
 
   return (
     <div className="antialiased">
-      <CustomCursor />
-
       {/* Mobile Header */}
       <header className="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex items-center justify-center z-20 shadow-md">
         <button 

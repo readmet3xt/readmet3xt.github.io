@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 
 interface ProjectCardProps {
   href: string;
@@ -13,35 +14,12 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ href, title, description, image, className = "", summary, tags }: ProjectCardProps) => {
   const cardRef = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = (y - centerY) / 20;
-      const rotateY = (centerX - x) / 20;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-    };
-
-    const handleMouseLeave = () => {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-    };
-
-    card.addEventListener('mousemove', handleMouseMove);
-    card.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      card.removeEventListener('mousemove', handleMouseMove);
-      card.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
+  
+  // Use optimized hover effect hook
+  useCardHoverEffect(cardRef, {
+    maxRotation: 10,
+    transitionDuration: 100,
+  });
 
   return (
     <Link
@@ -53,7 +31,7 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
       <img
         src={image}
         alt={`${title} project preview showing ${description}`}
-        className="w-full h-48 sm:h-52 object-cover flex-shrink-0"
+        className="w-full h-48 sm:h-52 object-scale-down bg-card flex-shrink-0 object-top"
         loading="lazy"
       />
       <div className="p-4 sm:p-6 flex-1 flex flex-col">

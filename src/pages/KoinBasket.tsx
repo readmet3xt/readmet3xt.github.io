@@ -1,6 +1,7 @@
 import { PageLayout } from '@/components/PageLayout';
 import { useScrollReveal } from '@/components/ScrollReveal';
 import { OptimizedImage } from '@/components/OptimizedImage';
+import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
 
 // Import case study images
 import darkDashboard from '@/assets/koinbasket-dark-dashboard.jpg';
@@ -28,17 +29,39 @@ export const KoinBasket = () => {
                 </div>
 
                 <p className="text-base sm:text-lg leading-relaxed">
-                  This case study chronicles my journey with KoinBasket, from being the Founding Designer who architected its initial MVP in a one-week design sprint to becoming a Senior UX Designer who hired and led a team to execute a strategic rebrand and launch a live trading ecosystem. It's a single story of how strategic design guided a platform from a foundational concept to a mature, market-leading product that attracted over 70,000 users and fostered trust, engagement, and community.
+                  As Founding Designer, I transformed crypto investing from intimidating to accessible—architecting KoinBasket's MVP in one intense week that scaled to 70,000+ users. I led design strategy from conception through major rebrand, built and mentored the design team, and created a live trading ecosystem with influencer integration that fundamentally changed how users discover and invest in cryptocurrency.
                 </p>
               </div>
+
+              <ProjectOverviewCard
+                role={[
+                  "Founding Designer (MVP phase)",
+                  "Senior UX Designer & Design Lead (Scale phase)",
+                  "Hired and mentored Junior UX Designer",
+                  "Led complete platform rebrand and feature expansion"
+                ]}
+                team="Collaborated with CEO, Product Manager, development team; hired and led Junior UX Designer"
+                timeline="Founding Designer role - MVP to 70k users growth"
+                recognition="0 to 70,000+ users; complete platform rebrand; live trading ecosystem launched"
+                tools={[
+                  "Figma",
+                  "Balsamiq",
+                  "Design Systems",
+                  "Responsive Design",
+                  "iOS/Android Design",
+                  "Brand Design",
+                  "User Research",
+                  "Design Leadership"
+                ]}
+              />
 
               {/* Phase 1 */}
               <section className="reveal-on-scroll">
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 mt-12 sm:mt-14 md:mt-16">Phase 1: Building the Foundation – The KoinBasket MVP</h2>
                 
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 mt-6 sm:mt-8">The Initial Challenge: Demystifying Crypto's Complexity</h3>
-                <p className="text-sm sm:text-base leading-relaxed mb-4">The cryptocurrency market was a maze for new investors—complex, intimidating, and perceived as high-risk. My initial mission as the Founding Designer at KoinBasket was to solve this. We needed to lower the barrier to entry by making diversified crypto investing exceptionally simple, demonstrably secure, and genuinely engaging.</p>
-                <p className="mt-4">Our solution centered on a powerful, user-centric idea: curated crypto "baskets." Instead of forcing users to pick individual coins, we would offer diversified, thematic portfolios they could invest in instantly. Critically, we adopted a non-custodial model, allowing users to trade securely via their own trusted exchange accounts (like Binance) without ever handing over their funds to us. This became the cornerstone of our trust strategy.</p>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2 mt-6 sm:mt-8">The Challenge: Demystifying Crypto for 70,000 New Investors</h3>
+                <p className="text-sm sm:text-base leading-relaxed mb-4">Cryptocurrency was a labyrinth for new investors in 2020—complex terminology, overwhelming choices, and legitimate security fears. My founding mission was radical simplification: make diversified crypto investing so intuitive that first-time investors could confidently participate within minutes, not months.</p>
+                <p className="mt-4">Our breakthrough solution: curated crypto "baskets." Instead of forcing users to research hundreds of individual coins, we offered thematic portfolios like the "G.O.A.T. Basket" (top 5 coins) or "NFT Basket" that users could invest in with one click. Crucially, we adopted a non-custodial model—users traded through their own Binance or Coinbase accounts, never surrendering control of funds to us. This trust-first architecture became our competitive moat.</p>
 
                 <h3 className="text-2xl font-bold mb-2 mt-8">My Role & Approach: Lean, Solo, and Focused</h3>
                 <p>As the solo founding designer, I embraced a lean, agile strategy, beginning with an intense one-week design sprint to create the first version of the web app. Working closely with the CEO, program manager, and other key stakeholders, my role encompassed the full spectrum of design:</p>

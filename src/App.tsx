@@ -17,6 +17,7 @@ const Softwire = lazy(() => import("./pages/Softwire").then(m => ({ default: m.S
 const Pebble = lazy(() => import("./pages/Pebble").then(m => ({ default: m.Pebble })));
 const IviProgram = lazy(() => import("./pages/IviProgram").then(m => ({ default: m.IviProgram })));
 const Stampede = lazy(() => import("./pages/Stampede").then(m => ({ default: m.Stampede })));
+const Otagon = lazy(() => import("./pages/Otagon").then(m => ({ default: m.Otagon })));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -49,8 +50,8 @@ const App = () => {
           <BrowserRouter>
             <ScrollToTop />
             <Suspense fallback={
-              <div className="fixed inset-0 bg-background z-50 flex items-center justify-center">
-                <div className="w-6 h-6 border-2 border-accent rounded-full border-t-transparent animate-spin" />
+              <div className="fixed inset-0 bg-background z-50 flex items-center justify-center animate-fade-in">
+                <div className="w-8 h-8 border-3 border-accent-primary/20 rounded-full border-t-accent-primary animate-spin" />
               </div>
             }>
               <Routes>
@@ -62,6 +63,7 @@ const App = () => {
                 <Route path="/pebble" element={<Pebble />} />
                 <Route path="/iviprogram" element={<IviProgram />} />
                 <Route path="/stampede" element={<Stampede />} />
+                <Route path="/otagon" element={<Otagon />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

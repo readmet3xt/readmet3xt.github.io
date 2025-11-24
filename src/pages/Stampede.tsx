@@ -1,33 +1,66 @@
 import { PageLayout } from '@/components/PageLayout';
 import { useScrollReveal } from '@/components/ScrollReveal';
+import { ImagePlaceholder } from '@/components/ImagePlaceholder';
+import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
 
 export const Stampede = () => {
   useScrollReveal();
 
   return (
     <PageLayout className="p-6 lg:p-12 pt-24 lg:pt-12">
-            <div className="max-w-4xl mx-auto space-y-12 case-study-section">
-              
-              <div className="reveal-on-scroll">
-                <h1 className="text-5xl font-bold mb-4">Speeding Up Solutions: Using Strategic Partnerships and Design Thinking to Boost Conservation Efforts</h1>
-                <div className="flex flex-wrap gap-2 mb-8">
-                  <span className="case-study-pill">Conservation</span>
-                  <span className="case-study-pill">Partnerships</span>
-                  <span className="case-study-pill">Design Thinking</span>
-                  <span className="case-study-pill">Royal College of Art</span>
-                </div>
+      <div className="max-w-4xl mx-auto space-y-12 case-study-section">
+        
+        <div className="reveal-on-scroll">
+          <h1 className="text-5xl font-bold mb-4">Speeding Up Solutions: Using Strategic Partnerships and Design Thinking to Boost Conservation Efforts</h1>
+          <div className="flex flex-wrap gap-2 mb-8">
+            <span className="case-study-pill">Conservation</span>
+            <span className="case-study-pill">Partnerships</span>
+            <span className="case-study-pill">Design Thinking</span>
+            <span className="case-study-pill">Royal College of Art</span>
+          </div>
 
-                <p className="text-lg leading-relaxed">
-                  A Royal College of Art collaborative project on how we envisioned "Stampede" to forge innovative partnerships and unlock impactful action within the conservation sector.
-                </p>
-              </div>
+          <p className="text-lg leading-relaxed">
+            "This was 100 times more productive than any partnership meeting I've had." That's how WWT's Senior Partnerships Manager described my facilitation framework. As project lead at the Royal College of Art, I designed Stampede—a strategic matchmaking methodology that transforms random conservation partnerships into designed collaborations. Using Power/Pace matrices and animal archetypes, I facilitated the WWT × Airbnb partnership that stakeholders called revolutionary for conservation collaboration.
+          </p>
+        </div>
 
-              {/* Introduction */}
-              <section className="reveal-on-scroll">
+        <ProjectOverviewCard
+          role={[
+            "Project Lead & Service Designer",
+            "Led research with WWF, WWT, Imperial College stakeholders",
+            "Designed Stampede methodology (Power/Pace matrix, animal archetypes)",
+            "Facilitated 3-hour WWT × Airbnb co-creation workshop"
+          ]}
+          team="Collaborated with Anahita Pradhan, Andrew Seetoh, Constance Cheung (RCA)"
+          timeline="Royal College of Art collaborative project - 4 months"
+          recognition="WWT × Airbnb partnership created; stakeholders reported '100x more productive' meetings using framework"
+          tools={[
+            "Service Design",
+            "Systems Thinking",
+            "Workshop Facilitation",
+            "Stakeholder Research",
+            "Framework Design",
+            "Co-creation Methods",
+            "Service Blueprinting"
+          ]}
+        />
+
+        {/* Hero Image */}
+        <section className="reveal-on-scroll">
+          <ImagePlaceholder
+            label="Stampede Conservation Partnership Workshop"
+            aspectRatio="16/9"
+            dimensions="1200x675"
+            className="case-study-image"
+          />
+        </section>
+
+        {/* Introduction */}
+        <section className="reveal-on-scroll">
                 <h2 className="text-3xl font-bold mb-4 mt-16">Introduction</h2>
-                <p>The world of wildlife conservation is passionate and driven, yet often faces complex hurdles in maximizing its impact. Funding can be difficult to allocate, impactful partnerships can be serendipitous rather than strategic, and connecting the right expertise to the right cause at the right time is a persistent challenge. As part of a Royal College of Art collaborative team (Team: Amaan Khan, Anahita Pradhan, Andrew Seetoh, Constance Cheung), I embarked on the "Stampede" project to explore these very issues. My role involved conducting research, contributing to the design strategy, facilitating collaborative sessions, leading the project, and conceptualizing the proposed solution.</p>
+                <p>Wildlife conservation has a hidden crisis: billions in unspent funding, game-changing partnerships formed by "happy accidents," and corporate advocates who disappear when they change jobs. The sector is passionate and driven, yet systematically inefficient at connecting resources to impact. As project lead for a Royal College of Art team, I saw this as a design challenge: <em>What if strategic partnerships could be designed, not left to luck?</em></p>
 
-                <p className="mt-4">This case study outlines our journey in envisioning "Stampede," a service designed to act as a catalyst for innovative action by forging strategic partnerships within the conservation industry. We aimed to develop a design-based methodology that could not only connect disparate organizations but also inspire influential advocates and unlock stagnant resources for targeted conservation causes.</p>
+                <p className="mt-4">I led the creation of "Stampede"—a matchmaking methodology that transforms how conservation organizations find and forge partnerships. Through research with WWF, WWT, and Imperial College, plus facilitation of a landmark WWT × Airbnb collaboration workshop, we developed a framework using Power/Pace matrices and animal archetypes to strategically connect unlikely partners. The result: stakeholders reporting "100x more productive" meetings and a methodology adopted for ongoing partnership development.</p>
               </section>
 
               {/* The Challenge & Context */}
@@ -82,6 +115,16 @@ export const Stampede = () => {
                 <p className="mt-6">Our problem statement therefore became: How can Stampede spur innovative action by catalysing partnerships within the conservation industry? And in doing so, how could it link previously disconnected organizations, utilize restricted income, and create long-term advocates?</p>
               </section>
 
+              {/* Stakeholder Research */}
+              <section className="reveal-on-scroll">
+                <ImagePlaceholder
+                  label="Stakeholder Research & Interviews"
+                  aspectRatio="16/9"
+                  dimensions="1200x675"
+                  className="case-study-image"
+                />
+              </section>
+
               {/* Our Approach */}
               <section className="reveal-on-scroll">
                 <h2 className="text-3xl font-bold mb-4 mt-16">Our Approach: A Design-Led Framework for Catalysing Partnerships</h2>
@@ -99,6 +142,24 @@ export const Stampede = () => {
                 <h3 className="text-2xl font-semibold mb-3 mt-8">2. Creative Match-Making: The Power/Pace Matrix & Animal Archetypes</h3>
                 <p>A core part of our strategy was "Creative Match-Making." We recognized that different organizations operate with varying levels of Power (influence, resources) and Pace (speed of decision-making and execution). To make these characteristics more tangible and relatable, we developed a set of animal archetypes:</p>
 
+                <div className="my-8">
+                  <ImagePlaceholder
+                    label="Power/Pace Matrix Visualization"
+                    aspectRatio="1/1"
+                    dimensions="800x800"
+                    className="case-study-image"
+                  />
+                </div>
+
+                <div className="my-8">
+                  <ImagePlaceholder
+                    label="Animal Archetype Icons"
+                    aspectRatio="16/9"
+                    dimensions="1200x675"
+                    className="case-study-image"
+                  />
+                </div>
+
                 <ul className="list-disc list-inside space-y-2 my-4">
                   <li><strong>Walrus (e.g., WWF):</strong> Global charitable organization; large, careful of brand, sometimes slow due to layers.</li>
                   <li><strong>Tiger (e.g., Apple):</strong> Large tech company; fast-moving, innovative, resource-rich.</li>
@@ -113,6 +174,15 @@ export const Stampede = () => {
 
                 <h3 className="text-2xl font-semibold mb-3 mt-8">3. Tailoring the Service: Addressing Different Stages of Partnership</h3>
                 <p>We understood that organizations need help at various stages of the partnership journey. Stampede's service was designed to be flexible, offering support in: Purpose Finding, Match-Making, Connecting, Kicking-Off (Running a Stampede workshop), Project Execution, and Measuring Outcome.</p>
+                
+                <div className="my-8">
+                  <ImagePlaceholder
+                    label="Service Framework & Partnership Stages"
+                    aspectRatio="21/9"
+                    dimensions="1400x600"
+                    className="case-study-image"
+                  />
+                </div>
               </section>
 
               {/* Prototyping in Action */}
@@ -126,6 +196,24 @@ export const Stampede = () => {
                   <li><strong>Sketching (60 mins):</strong> Idea generation (e.g., Crazy 8's on "How might Airbnb and WWT create an authentic wetlands experience?").</li>
                   <li><strong>Solutioning (70 mins):</strong> Developing an action plan, discussing practical considerations, and identifying challenges.</li>
                 </ul>
+
+                <div className="my-8">
+                  <ImagePlaceholder
+                    label="Workshop in Progress"
+                    aspectRatio="16/9"
+                    dimensions="1200x675"
+                    className="case-study-image"
+                  />
+                </div>
+
+                <div className="my-8">
+                  <ImagePlaceholder
+                    label="Workshop Outputs & Ideation"
+                    aspectRatio="3/2"
+                    dimensions="1200x800"
+                    className="case-study-image"
+                  />
+                </div>
 
                 <h3 className="text-2xl font-semibold mb-3 mt-8">Key Moments & Learnings from the Workshop</h3>
                 <p>The session was highly productive and generated significant enthusiasm, highlighting the value of facilitated collaboration:</p>
@@ -157,6 +245,24 @@ export const Stampede = () => {
                   <li><strong>Drives Actionable Outcomes & Ensures Follow-Up:</strong> Moving beyond ideation to concrete plans, proposals, and continued momentum.</li>
                   <li><strong>Operates with Key Value Adds:</strong> A disruptive mindset, strong network, neutrality, and a small, agile team focused on rapid action.</li>
                 </ul>
+
+                <div className="my-8">
+                  <ImagePlaceholder
+                    label="Service Blueprint"
+                    aspectRatio="21/9"
+                    dimensions="1400x600"
+                    className="case-study-image"
+                  />
+                </div>
+
+                <div className="my-8">
+                  <ImagePlaceholder
+                    label="NASA × WWF Concept - Real-time Red List Tracking"
+                    aspectRatio="16/9"
+                    dimensions="1200x675"
+                    className="case-study-image"
+                  />
+                </div>
               </section>
 
               {/* Key Learnings */}
@@ -199,15 +305,15 @@ export const Stampede = () => {
                 <p>Amaan Khan, Anahita Pradhan, Andrew Seetoh, Constance Cheung (Royal College of Art)</p>
               </section>
 
-              <div className="text-center mt-12">
-                <a 
-                  href="/" 
-                  className="inline-block px-8 py-3 rounded-lg border border-border bg-card text-foreground hover:border-accent-primary hover:shadow-lg transition-all duration-300"
-                >
-                  Back to Work
-                </a>
-              </div>
-            </div>
+        <div className="text-center mt-12">
+          <a 
+            href="/" 
+            className="inline-block px-8 py-3 rounded-lg border border-border bg-card text-foreground hover:border-accent-primary hover:shadow-lg transition-all duration-300"
+          >
+            Back to Work
+          </a>
+        </div>
+      </div>
     </PageLayout>
   );
 };

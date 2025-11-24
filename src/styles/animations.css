@@ -1,16 +1,28 @@
 /* Animation System */
 
 @layer components {
+  /* GPU Acceleration for animated elements */
+  .reveal-on-scroll,
+  .project-card,
+  .sidebar-link,
+  .image-grid-item,
+  .footer-link {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
   /* Scroll Animations */
   .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(30px) translateZ(0);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
   }
   
   .reveal-on-scroll.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
 
   /* Typewriter Animation Styling */
@@ -110,5 +122,43 @@
   .project-card {
     will-change: transform;
     transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+}
+
+/* Reduced Motion Support - WCAG 2.1 Level AA Compliance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Disable problematic animations */
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .typewriter-cursor {
+    animation: none !important;
+  }
+  
+  .project-card:hover,
+  .sidebar-link:hover,
+  .image-grid-item:hover,
+  .footer-link:hover {
+    transform: none !important;
+  }
+  
+  /* Keep will-change optimization off when motion is reduced */
+  .reveal-on-scroll,
+  .project-card,
+  .sidebar-link,
+  .image-grid-item,
+  .footer-link {
+    will-change: auto !important;
   }
 }

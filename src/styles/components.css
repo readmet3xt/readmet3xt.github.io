@@ -10,17 +10,33 @@
     box-shadow: 2px 0px 15px hsl(var(--bg-primary) / 0.2);
   }
 
-  /* Sidebar links */
+  /* Sidebar links - Optimized with pseudo-element */
   .sidebar-link {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, border-color 0.3s ease;
     border: 1px solid transparent;
+  }
+  
+  .sidebar-link::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: inherit;
+    box-shadow: 0 4px 12px hsl(var(--bg-primary) / 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
   }
   
   .sidebar-link:hover {
     background-color: hsl(var(--bg-primary));
     border-color: hsl(var(--border));
     transform: translateX(8px);
-    box-shadow: 0 4px 12px hsl(var(--bg-primary) / 0.3);
+  }
+  
+  .sidebar-link:hover::before {
+    opacity: 1;
   }
   
   .sidebar-link.active {
@@ -49,16 +65,34 @@
     transform: translateY(-2px);
   }
 
-  /* Project Cards */
+  /* Project Cards - Optimized with pseudo-element for GPU acceleration */
   .project-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
     border: 1px solid hsl(var(--border));
+    will-change: transform;
+  }
+  
+  /* Shadow on pseudo-element - can be opacity animated (GPU accelerated) */
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: inherit;
+    box-shadow: 0 20px 40px hsl(var(--bg-primary) / 0.15), 0 0 30px hsl(var(--accent-primary) / 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
   }
   
   .project-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px hsl(var(--bg-primary) / 0.15), 0 0 30px hsl(var(--accent-primary) / 0.3);
     border-color: hsl(var(--accent-primary) / 0.5);
+  }
+  
+  .project-card:hover::before {
+    opacity: 1;
   }
   
   .project-card img {
@@ -70,19 +104,35 @@
     transform: scale(1.05);
   }
 
-  /* Image Grid Items for Play page */
+  /* Image Grid Items for Play page - Optimized */
   .image-grid-item {
+    position: relative;
     will-change: transform;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    transition: transform 0.2s ease;
     background-color: hsl(var(--bg-secondary));
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
   }
   
+  .image-grid-item::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: inherit;
+    box-shadow: 0 10px 25px hsl(var(--bg-primary) / 0.2), 0 0 20px hsl(var(--accent-primary) / 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
   .image-grid-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px hsl(var(--bg-primary) / 0.2), 0 0 20px hsl(var(--accent-primary) / 0.5);
+  }
+  
+  .image-grid-item:hover::before {
+    opacity: 1;
   }
   
   .image-grid-item img {

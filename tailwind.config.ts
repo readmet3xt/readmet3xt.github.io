@@ -162,6 +162,14 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
+				},
+				'shimmer': {
+					'0%, 100%': {
+						transform: 'translateX(-100%)'
+					},
+					'50%': {
+						transform: 'translateX(100%)'
+					}
 				}
 			},
 			animation: {
@@ -170,6 +178,7 @@ export default {
 				'fade-in': 'fade-in 0.3s ease-out',
 				'scale-in': 'scale-in 0.2s ease-out',
 				'zoom': 'zoom 0.4s ease-out',
+				'shimmer': 'shimmer 3s ease-in-out infinite',
 			}
 		}
 	},

@@ -37,7 +37,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
     const path = window.location.pathname;
     if (path.includes('play')) setActiveLink('play');
     else if (path.includes('about')) setActiveLink('about');
-    else if (path.includes('koinbasket') || path.includes('softwire') || path.includes('pebble') || path.includes('iviprogram') || path.includes('stampede')) setActiveLink('case-studies');
+    else if (path.includes('koinbasket') || path.includes('softwire') || path.includes('pebble') || path.includes('iviprogram') || path.includes('stampede') || path.includes('otagon')) setActiveLink('case-studies');
     else setActiveLink('work');
   }, []);
 
@@ -119,6 +119,10 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           <section className="flex-grow min-h-0">
             <h3 className="font-ibm-plex-mono text-sm lg:text-sm uppercase tracking-widest mb-3 lg:mb-3 text-text-tertiary">Case Studies</h3>
             <nav className="space-y-2 lg:space-y-1.5" role="navigation" aria-label="Case studies navigation">
+              <a href="/otagon" className={`sidebar-link flex items-center gap-2.5 lg:gap-2.5 p-2 lg:p-1.5 rounded-lg text-sm ${window.location.pathname === '/otagon' ? 'active' : ''}`} aria-current={window.location.pathname === '/otagon' ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=O" alt="Otagon project logo" className="w-5 h-5 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-sm lg:text-sm truncate">Otagon</span>
+              </a>
               <a href="/koinbasket" className={`sidebar-link flex items-center gap-2.5 lg:gap-2.5 p-2 lg:p-1.5 rounded-lg text-sm ${window.location.pathname === '/koinbasket' ? 'active' : ''}`} aria-current={window.location.pathname === '/koinbasket' ? 'page' : undefined}>
                 <img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket project logo" className="w-5 h-5 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm lg:text-sm truncate">KoinBasket</span>

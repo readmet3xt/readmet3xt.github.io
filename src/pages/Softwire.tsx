@@ -1,37 +1,70 @@
 import { PageLayout } from '@/components/PageLayout';
 import { useScrollReveal } from '@/components/ScrollReveal';
+import { ImagePlaceholder } from '@/components/ImagePlaceholder';
+import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
 
 export const Softwire = () => {
   useScrollReveal();
 
   return (
     <PageLayout className="p-6 lg:p-12 pt-24 lg:pt-12">
-            <div className="max-w-4xl mx-auto space-y-12 case-study-section">
-              
-              <div className="reveal-on-scroll">
-                <h1 className="text-5xl font-bold mb-4">Designing for Speed: The Journey of LNER's App Clip Ticket Booking at Softwire</h1>
-                <div className="flex flex-wrap gap-2 mb-8">
-                  <span className="case-study-pill">User-Centered Design</span>
-                  <span className="case-study-pill">App Clip</span>
-                  <span className="case-study-pill">Mobile Design</span>
-                  <span className="case-study-pill">Usability Testing</span>
-                  <span className="case-study-pill">LNER</span>
-                </div>
+      <div className="max-w-4xl mx-auto space-y-12 case-study-section">
+        
+        <div className="reveal-on-scroll">
+          <h1 className="text-5xl font-bold mb-4">Designing for Speed: The Journey of LNER's App Clip Ticket Booking at Softwire</h1>
+          <div className="flex flex-wrap gap-2 mb-8">
+            <span className="case-study-pill">User-Centered Design</span>
+            <span className="case-study-pill">App Clip</span>
+            <span className="case-study-pill">Mobile Design</span>
+            <span className="case-study-pill">Usability Testing</span>
+            <span className="case-study-pill">LNER</span>
+          </div>
 
-                <p className="text-lg leading-relaxed">
-                  How we tackled the stress of last-minute train travel at the station through user-centered design and Apple's App Clip technology during a summer internship at Softwire.
-                </p>
-              </div>
+          <p className="text-lg leading-relaxed">
+            How do you design for users running to catch a train? As the sole designer leading 7 developers during my Softwire internship, I architected LNER's App Clip ticket booking experience—eliminating app store friction for last-minute travelers. In 8 intense weeks, I designed, tested with 9 users, and delivered a streamlined flow that meets National Rail standards while proposing strategic innovations like Seat Finder A/B concepts that demonstrate product vision beyond project scope.
+          </p>
+        </div>
 
-              {/* Introduction */}
-              <section className="reveal-on-scroll">
-                <h2 className="text-3xl font-bold mb-4 mt-16">Introduction</h2>
-                <p>Picture this: you're rushing to the train station, weaving through crowds, only to be met by a long queue at the ticket kiosk or a confusing app download process. The clock is ticking. Buying a train ticket, especially at the last minute, can be a stressful experience. Passengers often feel overwhelmed by information, frustrated by delays, and anxious about missing their train.</p>
-                
-                <p className="mt-4">London North Eastern Railway (LNER), a major UK train operator, wanted to improve this experience. Could we leverage technology to create a faster, more user-centric way for passengers to buy tickets right when they need them at the station?</p>
-                
-                <p className="mt-4">This case study explores how, during a summer internship at Softwire, our team (Design: Amaan; Developers: Sofia, Neelu, Thomas, Joshua, Jeff, Harry) tackled this challenge by designing and developing a new LNER ticket booking experience using Apple's App Clip technology. We aimed to move beyond the traditional kiosk and app store friction, offering a seamless, glanceable solution for iPhone users.</p>
-              </section>
+        <ProjectOverviewCard
+          role={[
+            "Solo UX/UI Designer",
+            "Led end-to-end design (ideation, wireframing, prototyping, testing)",
+            "Facilitated ideation workshop with 13 stakeholders",
+            "Conducted usability testing with 9 participants"
+          ]}
+          team="Collaborated with 7 developers (Sofia, Neelu, Thomas, Joshua, Jeff, Harry), LNER stakeholders, Softwire project managers"
+          timeline="8-week summer internship at Softwire"
+          recognition="Core booking flow validated and developed; Seat Finder A/B concept designed for future roadmap"
+          tools={[
+            "Figma",
+            "User Research",
+            "Usability Testing",
+            "Wireframing",
+            "Apple App Clip",
+            "National Rail Guidelines",
+            "A/B Testing Design"
+          ]}
+        />
+
+        {/* Hero Image */}
+        <section className="reveal-on-scroll">
+          <ImagePlaceholder
+            label="LNER App Clip in Action"
+            aspectRatio="16/9"
+            dimensions="1200x675"
+            className="case-study-image"
+          />
+        </section>
+
+        {/* Introduction */}
+        <section className="reveal-on-scroll">
+          <h2 className="text-3xl font-bold mb-4 mt-16">Introduction</h2>
+          <p>You're sprinting through the station, dodging crowds, watching platform boards nervously. You reach the ticket kiosk—there's a queue. You try downloading the app—it's 200MB. The departure countdown ticks. This is the last-minute ticket buyer's nightmare that LNER needed to solve.</p>
+          
+          <p className="mt-4">Enter Apple's App Clip technology: sub-10MB, instant-launch, single-purpose apps that require no installation. Perfect for time-pressured contexts. But <em>how do you design for users literally running to catch trains?</em> What information is essential versus overwhelming? How do you build trust for payment in 30 seconds?</p>
+          
+          <p className="mt-4">During my Softwire summer internship, I led design for LNER's App Clip—from initial workshops with 13 stakeholders through usability testing and National Rail compliance. This case study explores designing for extreme time pressure, leveraging constraints for focus, and proposing strategic features (like Seat Finder A/B tests) that demonstrate product vision beyond the brief.</p>
+        </section>
 
               {/* The Challenge & Context */}
               <section className="reveal-on-scroll">
@@ -57,8 +90,24 @@ export const Softwire = () => {
                 <h3 className="text-2xl font-bold mb-2 mt-8">Understanding & Ideation (Week 1–2)</h3>
                 <p>We started with the ideation workshop, affinity mapping, and sketching exercises. A key idea emerged: a simple interface showing essential journey info with a quick buy option. Station observations and creating a user journey map helped us pinpoint exactly where the App Clip could intervene in the existing stressful flow.</p>
                 
+                <div className="my-6">
+                  <ImagePlaceholder
+                    label="Ideation Workshop & Affinity Mapping"
+                    aspectRatio="16/9"
+                    dimensions="1200x675"
+                  />
+                </div>
+                
                 <h3 className="text-2xl font-bold mb-2 mt-8">Defining the Flow & Wireframing</h3>
                 <p>We mapped out task flows for both the core booking experience and potential onboarding elements. We then moved from low-fidelity wireframes, focusing on layout and information hierarchy, to higher-fidelity screens incorporating LNER's visual language.</p>
+                
+                <div className="my-6">
+                  <ImagePlaceholder
+                    label="User Flow & Wireframe Progression"
+                    aspectRatio="21/9"
+                    dimensions="1400x600"
+                  />
+                </div>
                 
                 <h3 className="text-2xl font-bold mb-2 mt-8">Prototyping & Testing (Week 3–4)</h3>
                 <p>We built interactive prototypes in Figma and conducted usability testing with 9 participants (friends, family, Softwire employees). We gave them a specific task: book a return ticket to Birmingham for 1 adult, 1 child with a railcard. This revealed crucial insights and pain points in our initial designs.</p>
@@ -77,6 +126,14 @@ export const Softwire = () => {
                 <h2 className="text-3xl font-bold mb-4 mt-16">The Solution: A Streamlined App Clip Experience</h2>
                 <p>The result was a focused LNER App Clip booking flow, designed for speed and clarity at the station:</p>
                 
+                <div className="my-8">
+                  <ImagePlaceholder
+                    label="Journey Planning Interface"
+                    aspectRatio="9/16"
+                    dimensions="400x711"
+                  />
+                </div>
+                
                 <ul className="list-disc list-inside space-y-2 my-4">
                   <li><strong>Instant Access:</strong> Users could launch the App Clip via methods like NFC tags or QR codes at the station (or potentially location-based suggestions).</li>
                   <li><strong>Quick Journey Planning:</strong> A simplified interface allows users to quickly input or confirm their destination (potentially pre-filled based on location), select dates, passengers, and railcards.</li>
@@ -86,6 +143,19 @@ export const Softwire = () => {
                 </ul>
                 
                 <p className="mt-4">We ensured the design complied with National Rail guidelines and prioritized clarity on essential information.</p>
+                
+                <div className="case-study-grid-image my-8">
+                  <ImagePlaceholder
+                    label="Train Options Screen"
+                    aspectRatio="9/16"
+                    dimensions="400x711"
+                  />
+                  <ImagePlaceholder
+                    label="Ticket Confirmation & Wallet"
+                    aspectRatio="9/16"
+                    dimensions="400x711"
+                  />
+                </div>
               </section>
 
               {/* Beyond Booking */}
@@ -111,6 +181,19 @@ export const Softwire = () => {
                 </ul>
                 
                 <p className="mt-4">This presented a perfect opportunity for A/B testing to see which graphical representation users could interpret more quickly and easily in a real-world context. We also designed an integrated feedback form to gather insights on new features like the Seat Finder post-launch.</p>
+                
+                <div className="case-study-grid-image my-8">
+                  <ImagePlaceholder
+                    label="Seat Finder Option A - Side Profile"
+                    aspectRatio="9/16"
+                    dimensions="400x711"
+                  />
+                  <ImagePlaceholder
+                    label="Seat Finder Option B - Plan View"
+                    aspectRatio="9/16"
+                    dimensions="400x711"
+                  />
+                </div>
               </section>
 
               {/* Results and Learnings */}
@@ -147,15 +230,15 @@ export const Softwire = () => {
                 <p className="mt-4">While time constraints meant parking some exciting features like the Seat Finder for now, the project successfully demonstrated the potential of App Clips for LNER and provided valuable learnings about designing for context-specific needs. It was a fantastic experience collaborating with a cross-functional team to take an idea from research through to a functional prototype, hopefully making future journeys a little less stressful for LNER passengers.</p>
               </section>
 
-              <div className="text-center mt-12">
-                <a 
-                  href="/" 
-                  className="inline-block px-8 py-3 rounded-lg border border-border bg-card text-foreground hover:border-accent-primary hover:shadow-lg transition-all duration-300"
-                >
-                  Back to Work
-                </a>
-              </div>
-            </div>
+        <div className="text-center mt-12">
+          <a 
+            href="/" 
+            className="inline-block px-8 py-3 rounded-lg border border-border bg-card text-foreground hover:border-accent-primary hover:shadow-lg transition-all duration-300"
+          >
+            Back to Work
+          </a>
+        </div>
+      </div>
     </PageLayout>
   );
 };
