@@ -43,7 +43,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   }, []);
 
   return (
-    <aside className={`sidebar bg-bg-secondary border-r border-border w-96 h-screen fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out z-40`}>
+    <aside className={`sidebar bg-bg-secondary border-r border-border w-80 h-screen fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out z-40`}>
       <div className="sidebar-content-wrapper flex-grow flex flex-col min-h-0 px-4 sm:px-5 lg:px-8 pt-4 sm:pt-5 lg:pt-8">
         <div className="space-y-3 sm:space-y-4 lg:space-y-4 flex-shrink-0">
           {/* Bio Section (Desktop) */}

@@ -46,7 +46,7 @@ export const ImageGridItem = ({ src, alt, onClick, className = "" }: ImageGridIt
       <img
         src={src}
         alt={alt}
-        className="w-full h-48 object-cover"
+        className="w-full h-full object-contain"
       />
     </div>
   );

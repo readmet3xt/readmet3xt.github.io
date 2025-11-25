@@ -52,22 +52,22 @@ export const Play = () => {
   };
 
   return (
-    <PageLayout className="min-h-screen">
-            <h2 className="text-3xl font-dm-sans font-bold mb-2 text-foreground">Playground</h2>
-            <p className="text-lg font-mono mb-12 text-text-secondary">
-              A collection of art, doodles, & other things I've made for fun.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-              {doodleImages.map((image, index) => (
-                <ImageGridItem
-                  key={index}
-                  src={image.src}
-                  alt={image.alt}
-                  onClick={() => openModal(index)}
-                />
-              ))}
-            </div>
+    <PageLayout>
+      <h2 className="text-3xl font-dm-sans font-bold mb-2 text-foreground">Playground</h2>
+      <p className="text-lg font-mono mb-12 text-text-secondary">
+        A collection of art, doodles, & other things I've made for fun.
+      </p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {doodleImages.map((image, index) => (
+          <ImageGridItem
+            key={index}
+            src={image.src}
+            alt={image.alt}
+            onClick={() => openModal(index)}
+          />
+        ))}
+      </div>
 
       {/* Image Modal */}
       <ImageModal
