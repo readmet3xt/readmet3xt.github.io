@@ -52,7 +52,7 @@ export const TypewriterAnimation = () => {
         const suffix = question.substring(prefix.length);
 
         if (questionRef.current && animationRef.current) {
-          questionRef.current.className = `${font} text-center sm:text-left text-lg md:text-xl lg:text-2xl leading-tight transition-opacity duration-500 break-words w-full max-w-full overflow-hidden`;
+          questionRef.current.className = `${font} text-center sm:text-left text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-snug transition-opacity duration-500 break-words w-full max-w-full overflow-hidden`;
           questionRef.current.style.opacity = '1';
           
           // Type prefix with natural variations
@@ -152,7 +152,7 @@ export const TypewriterAnimation = () => {
     <div
       ref={containerRef}
       id="text-animation-container"
-      className="relative flex items-center justify-center w-full max-w-full h-[120px] sm:h-[140px] bg-bg-primary rounded-xl px-4 sm:pl-0 sm:pr-6 mb-6 cursor-pointer overflow-hidden"
+      className="relative flex items-center justify-center w-full max-w-full min-h-[100px] sm:min-h-[120px] md:min-h-[140px] lg:min-h-[160px] bg-bg-primary rounded-xl px-4 sm:pl-0 sm:pr-6 mb-6 cursor-pointer overflow-hidden"
       onClick={cycleToNextQuestion}
       role="button"
       tabIndex={0}
@@ -166,7 +166,7 @@ export const TypewriterAnimation = () => {
       <p
         ref={questionRef}
         id="animated-question"
-        className="text-center sm:text-left text-lg md:text-xl lg:text-2xl leading-tight text-text-primary transition-opacity duration-500 break-words w-full max-w-full overflow-hidden"
+        className="text-center sm:text-left text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-snug text-text-primary transition-opacity duration-500 break-words w-full max-w-full overflow-hidden"
         aria-live="polite"
         aria-atomic="true"
       >

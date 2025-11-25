@@ -49,16 +49,16 @@ const testimonials: Testimonial[] = [
 
 const TestimonialCard = memo(({ testimonial, isActive }: { testimonial: Testimonial; isActive: boolean }) => (
   <Card className={`w-full max-w-full bg-card backdrop-blur-sm transition-all duration-500 ${isActive ? 'scale-100 opacity-100 border-primary/50' : 'scale-95 opacity-70 border-border/30'} overflow-hidden`}>
-    <CardContent className="p-3 sm:p-4 md:p-6">
+    <CardContent className="p-4 sm:p-5 md:p-6">
       <div className="mb-4">
-        <h3 className="font-bold text-base sm:text-lg text-primary break-words">{testimonial.name}</h3>
-        <p className="text-xs sm:text-sm text-text-secondary font-medium break-words">
+        <h3 className="font-bold text-lg sm:text-xl text-primary break-words">{testimonial.name}</h3>
+        <p className="text-sm sm:text-base text-text-secondary font-medium break-words">
           {testimonial.title}
           {testimonial.company && ` @ ${testimonial.company}`}
         </p>
-        <p className="text-xs text-text-secondary/80 mt-1 break-words">{testimonial.relationship}</p>
+        <p className="text-xs sm:text-sm text-text-secondary/80 mt-1 break-words">{testimonial.relationship}</p>
       </div>
-      <p className="text-xs sm:text-sm text-text-secondary leading-relaxed break-words">{testimonial.content}</p>
+      <p className="text-sm sm:text-base text-text-secondary leading-relaxed break-words">{testimonial.content}</p>
     </CardContent>
   </Card>
 ));

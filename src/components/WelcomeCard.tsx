@@ -21,15 +21,15 @@ export const WelcomeCard = () => {
 
       <div className="p-4 sm:p-6 flex-1 flex flex-col relative z-10">
         <div className="flex items-center justify-between mb-1">
-          <h3 className="text-lg sm:text-xl font-bold font-dm-sans text-foreground break-words text-left">Amaan Khan</h3>
+          <h3 className="text-xl sm:text-2xl font-bold font-dm-sans text-foreground break-words text-left">Amaan Khan</h3>
           {/* Available Badge */}
           <div className="flex items-center gap-2 px-3 py-1 bg-green-500/90 backdrop-blur-sm rounded-full border border-green-500/30">
             <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
             <span className="text-xs font-medium text-white">Available</span>
           </div>
         </div>
-        <p className="text-sm text-text-secondary break-words text-left">Product Designer</p>
-        <p className="text-xs mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words text-left">
+        <p className="text-base sm:text-lg text-text-secondary break-words text-left">Product Designer</p>
+        <p className="text-sm sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words text-left">
           Hi there, Amaan here! I'm a Mechanical Engineer who traded engineering blueprints for service blueprints. I now build seamless experiences—digital or not—with an engineer's focus on function and a designer's focus on feeling.
         </p>
       </div>
