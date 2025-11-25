@@ -109,7 +109,7 @@
     position: relative;
     will-change: transform;
     transition: transform 0.2s ease;
-    background-color: hsl(var(--bg-secondary));
+    background-color: transparent;
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;

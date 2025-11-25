@@ -35,10 +35,10 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
         loading="lazy"
       />
       <div className="p-4 sm:p-6 flex-1 flex flex-col">
-        <h3 className="text-xl sm:text-2xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
-        <p className="text-base sm:text-lg mt-1 text-text-secondary break-words">{description}</p>
+        <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
+        <p className="text-lg sm:text-lg mt-1 text-text-secondary break-words">{description}</p>
         {summary && (
-          <p className="text-sm sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words">{summary}</p>
+          <p className="text-base sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words">{summary}</p>
         )}
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-auto pt-3" role="list" aria-label={`${title} project tags`}>

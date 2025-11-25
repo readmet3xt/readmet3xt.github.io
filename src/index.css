@@ -238,7 +238,7 @@
     color: white;
     font-weight: bold;
     font-size: 24px;
-    transition: 0.3s ease;
+    transition: background-color 0.3s ease;
     user-select: none;
     background-color: rgba(0, 0, 0, 0.3);
     border: none;
@@ -247,11 +247,11 @@
   }
   
   .next-btn {
-    right: 10px;
+    right: 20px;
   }
   
   .prev-btn {
-    left: 10px;
+    left: 20px;
   }
   
   .prev-btn:hover,

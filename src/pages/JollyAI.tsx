@@ -92,9 +92,9 @@ export const JollyAI = () => {
               <img 
                 src={thinkingPanel} 
                 alt="The Thinking Panel showing AI's internal workflow with Query Reframing, Clarification, and Legal Index Framework Review"
-                className="case-study-image w-full h-auto object-contain rounded-lg"
+                className="case-study-image w-full max-w-3xl mx-auto h-auto object-contain rounded-lg"
               />
-              <p className="text-sm text-text-tertiary mt-2 italic">The "Thinking" Panel displaying the AI's reasoning process</p>
+              <p className="text-sm text-text-tertiary mt-2 italic text-center">The "Thinking" Panel displaying the AI's reasoning process</p>
             </div>
 
             <div className="bg-card p-6 rounded-lg border">
@@ -120,17 +120,17 @@ export const JollyAI = () => {
                 <img 
                   src={instructionModal} 
                   alt="Add Instructions modal allowing users to set global parameters and tone control"
-                  className="w-full h-auto object-contain rounded-lg"
+                  className="case-study-image w-full max-w-3xl mx-auto h-auto object-contain rounded-lg"
                 />
-                <p className="text-sm text-text-tertiary mt-2 italic">Instruction Modal for customizing AI behavior</p>
+                <p className="text-sm text-text-tertiary mt-2 italic text-center">Instruction Modal for customizing AI behavior</p>
               </div>
               <div>
                 <img 
                   src={stateOnboarding} 
                   alt="State-specific onboarding flow with mandatory state selection for jurisdictional accuracy"
-                  className="w-full h-auto object-contain rounded-lg"
+                  className="case-study-image w-full max-w-3xl mx-auto h-auto object-contain rounded-lg"
                 />
-                <p className="text-sm text-text-tertiary mt-2 italic">State-specific onboarding for jurisdictional accuracy</p>
+                <p className="text-sm text-text-tertiary mt-2 italic text-center">State-specific onboarding for jurisdictional accuracy</p>
               </div>
             </div>
 
@@ -163,17 +163,17 @@ export const JollyAI = () => {
                 <img 
                   src={promptGallery} 
                   alt="Prompt Gallery showing curated legal-specific prompts like Draft IT notice response and Outline M&A due diligence"
-                  className="w-full h-auto object-contain rounded-lg"
+                  className="case-study-image w-full max-w-3xl mx-auto h-auto object-contain rounded-lg"
                 />
-                <p className="text-sm text-text-tertiary mt-2 italic">Prompt Gallery solving the "blank page problem"</p>
+                <p className="text-sm text-text-tertiary mt-2 italic text-center">Prompt Gallery solving the "blank page problem"</p>
               </div>
               <div>
                 <img 
                   src={sidePanelNav} 
                   alt="Clean collapsible sidebar allowing quick navigation between cases and chat threads"
-                  className="w-full h-auto object-contain rounded-lg"
+                  className="case-study-image w-full max-w-3xl mx-auto h-auto object-contain rounded-lg"
                 />
-                <p className="text-sm text-text-tertiary mt-2 italic">Side Panel Navigation for managing multiple cases</p>
+                <p className="text-sm text-text-tertiary mt-2 italic text-center">Side Panel Navigation for managing multiple cases</p>
               </div>
             </div>
 

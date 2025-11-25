@@ -2,14 +2,7 @@ import { PageLayout } from '@/components/PageLayout';
 import { useScrollReveal } from '@/components/ScrollReveal';
 import { OptimizedImage } from '@/components/OptimizedImage';
 import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
-
-// Import case study images
-import darkDashboard from '/koinbasket/Main Dashboard - Expanded and Hover.jpg';
-import mobileUI from '/koinbasket/iPhone XS (3).png';
-import sipFlow from '/koinbasket/Checkout (1).png';
-import exchangeConnection from '/koinbasket/Settings - Exchange Connected.png';
-import lightRebrand from '/koinbasket/landingpage.png';
-import liveTrading from '/koinbasket/Home.png';
+import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 
 export const KoinBasket = () => {
   useScrollReveal();
@@ -72,9 +65,17 @@ export const KoinBasket = () => {
                   <li><strong>Cross-Platform Design:</strong> From the outset, I designed a responsive web app and the foundational designs for the native iOS and Android apps. The mobile UI was optimized for clarity and quick discovery of baskets.</li>
                 </ul>
 
-                <div className="case-study-grid-image">
-                  <img src={darkDashboard} alt="High-fidelity dark theme dashboard UI for the MVP" />
-                  <img src={mobileUI} alt="Mobile UI of the KoinBasket MVP showing basket discovery" />
+                <div className="case-study-grid-image grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                  <ImagePlaceholder 
+                    label="High-fidelity dark theme dashboard UI for the MVP"
+                    aspectRatio="16/10"
+                    dimensions="1200x750"
+                  />
+                  <ImagePlaceholder 
+                    label="Mobile UI of the KoinBasket MVP showing basket discovery"
+                    aspectRatio="9/16"
+                    dimensions="390x844"
+                  />
                 </div>
 
                 <h3 className="text-2xl font-bold mb-2 mt-8">The MVP Solution: Key Foundational Features</h3>
@@ -86,9 +87,17 @@ export const KoinBasket = () => {
                   <li><strong>Gamification & Engagement:</strong> To attract and educate users, we launched the Crypto Fantasy League, a feature I designed to let users compete by creating their own baskets. This was complemented by a multi-tiered rewards and referral system.</li>
                 </ul>
 
-                <div className="case-study-grid-image">
-                  <img src={sipFlow} alt="Interface for setting up a Systematic Investment Plan (SIP)" />
-                  <img src={exchangeConnection} alt="UI for securely connecting a Binance or Coinbase account" />
+                <div className="case-study-grid-image grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                  <ImagePlaceholder 
+                    label="Interface for setting up a Systematic Investment Plan (SIP)"
+                    aspectRatio="16/10"
+                    dimensions="1200x750"
+                  />
+                  <ImagePlaceholder 
+                    label="UI for securely connecting a Binance or Coinbase account"
+                    aspectRatio="16/10"
+                    dimensions="1200x750"
+                  />
                 </div>
 
                 <h3 className="text-2xl font-bold mb-2 mt-8">MVP Outcome: Resounding Validation and Explosive Growth</h3>
@@ -119,9 +128,17 @@ export const KoinBasket = () => {
                    <li><strong>A Refined Mobile Experience:</strong> The native mobile app was completely reimagined with the new brand identity. We enhanced its core functionality, providing users with powerful tools like simple screeners to filter coins and baskets, a clear view of how to diversify their portfolio, and a transparent, assured rewards system.</li>
                 </ul>
 
-                <div className="case-study-grid-image">
-                  <img src={lightRebrand} alt="The rebranded KoinBasket platform with a light theme and green accents" />
-                  <img src={liveTrading} alt="Dashboard showing live video stream next to trading interface" />
+                <div className="case-study-grid-image grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                  <ImagePlaceholder 
+                    label="The rebranded KoinBasket platform with a light theme and green accents"
+                    aspectRatio="16/10"
+                    dimensions="1200x750"
+                  />
+                  <ImagePlaceholder 
+                    label="Dashboard showing live video stream next to trading interface"
+                    aspectRatio="16/10"
+                    dimensions="1200x750"
+                  />
                 </div>
               </section>
 

@@ -150,6 +150,20 @@ export const About = () => {
           <h2 className="heading-2 mb-8">Professional Experience</h2>
           <div className="timeline-container relative">
             <TimelineItem 
+              title="Founder & Product Designer" 
+              company="Otagon · Hyderabad, India" 
+              period="Aug 2025 - Present"
+            >
+              <ul className="list-disc list-inside space-y-2">
+                <li>Building Otagon, an AI-powered gaming companion that provides real-time screenshot analysis and context-aware gaming assistance.</li>
+                <li>Architected full-stack solution using React 19, TypeScript, Supabase, and Google Gemini AI, achieving 100x performance improvements.</li>
+                <li>Designed and developed comprehensive design system with 40+ reusable components and PWA capabilities.</li>
+              </ul>
+            </TimelineItem>
+            
+            <br />
+            
+            <TimelineItem 
               title="User Experience Consultant (Contract)" 
               company="Stealth AI Startup · Freelance" 
               period="Mar 2025 - Apr 2025"
@@ -342,7 +356,6 @@ export const About = () => {
               <ul className="space-y-2 body-base">
                 <li>Figma</li>
                 <li>Adobe XD</li>
-                <li>Sketch</li>
                 <li>Webflow</li>
                 <li>Framer</li>
                 <li>Miro</li>
@@ -351,10 +364,12 @@ export const About = () => {
                 <li>Adobe Illustrator</li>
                 <li>After Effects</li>
                 <li>LottieFiles</li>
-                <li>Canva</li>
                 <li>Spline</li>
-                <li>Relume</li>
                 <li>ChatGPT</li>
+                <li>Cursor</li>
+                <li>VS Code + GitHub Copilot</li>
+                <li>Lovable</li>
+                <li>Vercel</li>
               </ul>
             </div>
           </div>

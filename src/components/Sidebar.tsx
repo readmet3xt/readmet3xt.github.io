@@ -49,9 +49,9 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           {/* Bio Section (Desktop) */}
           <div className="hidden lg:block">
             <Link to="/" className="hover:text-accent-primary transition-colors duration-300 group">
-              <h1 className="font-dm-sans text-3xl lg:text-4xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">Amaan</h1>
+              <h1 className="font-dm-sans text-3xl lg:text-3xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">Amaan</h1>
             </Link>
-            <p className="mt-2 lg:mt-3 text-sm lg:text-base text-text-secondary leading-relaxed">
+            <p className="mt-2 lg:mt-2 text-sm lg:text-sm text-text-secondary leading-relaxed">
               Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
             </p>
           </div>
@@ -78,8 +78,8 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 text-accent-primary" />
               </div>
               <div className="min-w-0">
-                <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-lg">Work</h2>
-                <p className="text-xs sm:text-sm lg:text-base text-text-secondary truncate">A selection of recent work</p>
+                <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-base">Work</h2>
+                <p className="text-xs sm:text-sm lg:text-sm text-text-secondary truncate">A selection of recent work</p>
               </div>
             </Link>
             
@@ -93,8 +93,8 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 <Gamepad2 className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 text-accent-primary" />
               </div>
               <div className="min-w-0">
-                <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-lg">Play</h2>
-                <p className="text-xs sm:text-sm lg:text-base text-text-secondary truncate">Making things for fun</p>
+                <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-base">Play</h2>
+                <p className="text-xs sm:text-sm lg:text-sm text-text-secondary truncate">Making things for fun</p>
               </div>
             </Link>
             
@@ -110,43 +110,43 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 className="w-7 h-7 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-md object-cover flex-shrink-0"
               />
               <div className="min-w-0">
-                <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-lg">About</h2>
-                <p className="text-xs sm:text-sm lg:text-base text-text-secondary truncate">More about me</p>
+                <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-base">About</h2>
+                <p className="text-xs sm:text-sm lg:text-sm text-text-secondary truncate">More about me</p>
               </div>
             </Link>
           </nav>
 
           {/* Case Studies */}
           <section className="flex-grow min-h-0">
-            <h3 className="font-ibm-plex-mono text-xs sm:text-sm lg:text-base uppercase tracking-widest mb-3 sm:mb-4 lg:mb-5 text-text-tertiary font-semibold">Case Studies</h3>
+            <h3 className="font-ibm-plex-mono text-xs sm:text-sm lg:text-sm uppercase tracking-widest mb-3 sm:mb-4 lg:mb-4 text-text-tertiary font-semibold">Case Studies</h3>
             <nav className="space-y-1.5 sm:space-y-2 lg:space-y-2.5" role="navigation" aria-label="Case studies navigation">
-              <Link to="/otagon" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/otagon' ? 'active' : ''}`} aria-current={window.location.pathname === '/otagon' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=O" alt="Otagon project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Otagon</span>
+              <Link to="/otagon" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-2.5 p-2 sm:p-2.5 lg:p-2.5 rounded-lg text-sm sm:text-base lg:text-sm ${window.location.pathname === '/otagon' ? 'active' : ''}`} aria-current={window.location.pathname === '/otagon' ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=O" alt="Otagon project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-sm truncate">Otagon</span>
               </Link>
-              <Link to="/jollyai" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/jollyai' ? 'active' : ''}`} aria-current={window.location.pathname === '/jollyai' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/EC4899/FFFFFF?text=J" alt="JollyAI project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">JollyAI</span>
+              <Link to="/jollyai" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-2.5 p-2 sm:p-2.5 lg:p-2.5 rounded-lg text-sm sm:text-base lg:text-sm ${window.location.pathname === '/jollyai' ? 'active' : ''}`} aria-current={window.location.pathname === '/jollyai' ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/EC4899/FFFFFF?text=J" alt="JollyAI project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-sm truncate">JollyAI</span>
               </Link>
-              <Link to="/koinbasket" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/koinbasket' ? 'active' : ''}`} aria-current={window.location.pathname === '/koinbasket' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/06B6D4/FFFFFF?text=K" alt="KoinBasket project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">KoinBasket</span>
+              <Link to="/koinbasket" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-2.5 p-2 sm:p-2.5 lg:p-2.5 rounded-lg text-sm sm:text-base lg:text-sm ${window.location.pathname === '/koinbasket' ? 'active' : ''}`} aria-current={window.location.pathname === '/koinbasket' ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/06B6D4/FFFFFF?text=K" alt="KoinBasket project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-sm truncate">KoinBasket</span>
               </Link>
-              <Link to="/softwire" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/softwire' ? 'active' : ''}`} aria-current={window.location.pathname === '/softwire' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/14B8A6/FFFFFF?text=S" alt="Softwire project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Softwire</span>
+              <Link to="/softwire" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-2.5 p-2 sm:p-2.5 lg:p-2.5 rounded-lg text-sm sm:text-base lg:text-sm ${window.location.pathname === '/softwire' ? 'active' : ''}`} aria-current={window.location.pathname === '/softwire' ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/14B8A6/FFFFFF?text=S" alt="Softwire project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-sm truncate">Softwire</span>
               </Link>
-              <Link to="/pebble" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/pebble' ? 'active' : ''}`} aria-current={window.location.pathname === '/pebble' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Pebble</span>
+              <Link to="/pebble" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-2.5 p-2 sm:p-2.5 lg:p-2.5 rounded-lg text-sm sm:text-base lg:text-sm ${window.location.pathname === '/pebble' ? 'active' : ''}`} aria-current={window.location.pathname === '/pebble' ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-sm truncate">Pebble</span>
               </Link>
-              <Link to="/iviprogram" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/iviprogram' ? 'active' : ''}`} aria-current={window.location.pathname === '/iviprogram' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">IVI Program</span>
+              <Link to="/iviprogram" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-2.5 p-2 sm:p-2.5 lg:p-2.5 rounded-lg text-sm sm:text-base lg:text-sm ${window.location.pathname === '/iviprogram' ? 'active' : ''}`} aria-current={window.location.pathname === '/iviprogram' ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-sm truncate">IVI Program</span>
               </Link>
-              <Link to="/stampede" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/stampede' ? 'active' : ''}`} aria-current={window.location.pathname === '/stampede' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Stampede</span>
+              <Link to="/stampede" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-2.5 p-2 sm:p-2.5 lg:p-2.5 rounded-lg text-sm sm:text-base lg:text-sm ${window.location.pathname === '/stampede' ? 'active' : ''}`} aria-current={window.location.pathname === '/stampede' ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-sm truncate">Stampede</span>
               </Link>
             </nav>
           </section>

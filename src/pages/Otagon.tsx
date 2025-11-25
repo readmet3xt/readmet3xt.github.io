@@ -63,7 +63,7 @@ export const Otagon = () => {
           <img 
             src="/otagon/workinprogess.png" 
             alt="Hero Image - Main App Interface"
-            className="case-study-image w-full max-w-2xl mx-auto h-auto object-contain rounded-lg"
+            className="case-study-image w-full max-w-4xl mx-auto h-auto object-contain rounded-lg"
           />
         </section>
 
