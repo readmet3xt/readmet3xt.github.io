@@ -23,6 +23,7 @@ const getSentencePause = () => 150 + Math.random() * 100; // 150-250ms after sen
 
 export const TypewriterAnimation = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
   const questionRef = useRef<HTMLParagraphElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<boolean>(true);
@@ -37,6 +38,8 @@ export const TypewriterAnimation = () => {
   };
 
   useEffect(() => {
+    if (!isVisible) return;
+    
     let questionIndex = currentQuestionIndex;
 
     const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -130,14 +133,16 @@ export const TypewriterAnimation = () => {
     return () => {
       animationRef.current = false;
     };
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, isVisible]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         animationRef.current = false;
+        setIsVisible(false);
       } else {
         animationRef.current = true;
+        setIsVisible(true);
       }
     };
 
