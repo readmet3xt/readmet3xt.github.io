@@ -139,10 +139,8 @@ export const TypewriterAnimation = () => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
         animationRef.current = false;
-        setIsVisible(false);
       } else {
         animationRef.current = true;
-        setIsVisible(true);
       }
     };
 

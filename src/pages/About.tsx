@@ -64,23 +64,23 @@ export const About = () => {
               
               {/* Introduction */}
               <div className="mb-8">
-                <h3 className="text-lg md:text-xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Digital Product Designer</h3>
-                <p className="body-large mb-4">
+                <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Digital Product Designer</h3>
+                <p className="text-lg md:text-xl mb-4 leading-relaxed">
                   Currently based in <span className="font-medium">Hyderabad</span>, with a Master's in Service Design from the <span className="font-medium">Royal College of Art (RCA)</span> in London.
                 </p>
-                <p className="body-base text-text-secondary" style={{ lineHeight: '1.7' }}>
+                <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
                   I work with collaborative, cross-functional teams to create impactful and delightful experiences, specializing in human-centered design approaches that bridge digital innovation with real-world impact.
                 </p>
               </div>
 
               {/* Philosophy & Recognition */}
               <div className="mb-8">
-                <h3 className="text-lg md:text-xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Design Philosophy & Recognition</h3>
-                <p className="body-base text-text-secondary mb-4" style={{ lineHeight: '1.7' }}>
+                <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Design Philosophy & Recognition</h3>
+                <p className="text-base md:text-lg text-text-secondary mb-4 leading-relaxed" style={{ lineHeight: '1.8' }}>
                   I'm passionate about building products that encourage people to lead more creative, curious, and thoughtful lives.
                 </p>
                 <div className="bg-accent-primary/5 border border-accent-primary/20 rounded-lg p-4 mb-4">
-                  <p className="body-base text-text-secondary" style={{ lineHeight: '1.7' }}>
+                  <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
                     <span className="text-accent-primary font-semibold">🏆 Core77 Design Awards 2021</span> - Notable Honor in Speculative Design category for my IVI (Invisible Value Income) project—a forward-thinking exploration of how we might better value and support women's work-life balance in the future.
                   </p>
                 </div>
@@ -88,23 +88,23 @@ export const About = () => {
 
               {/* Experience Highlight */}
               <div className="mb-8">
-                <h3 className="text-lg md:text-xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Experience Highlights</h3>
+                <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Experience Highlights</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="body-base text-text-secondary" style={{ lineHeight: '1.7' }}>
+                    <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
                       <span className="font-semibold text-text-primary">4+ years</span> of experience designing products for clients including KoinBasket and Softwire
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="body-base text-text-secondary" style={{ lineHeight: '1.7' }}>
+                    <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
                       Scaled design teams and led <span className="font-semibold text-text-primary">strategic rebrands</span>
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="body-base text-text-secondary" style={{ lineHeight: '1.7' }}>
+                    <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
                       Innovative academic collaborations with <span className="font-semibold text-text-primary">VISA Innovation Centre, BCG × RSM × Fuzzy Studio, and Airbnb × WWT</span>
                     </p>
                   </div>
