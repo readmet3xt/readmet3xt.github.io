@@ -48,7 +48,7 @@ export const Softwire = () => {
         {/* Hero Image */}
         <section className="reveal-on-scroll">
           <img 
-            src="/Softwire/heroimage.webp" 
+            src="/softwire/heroimage.webp" 
             alt="LNER App Clip in Action"
             className="case-study-image w-full h-auto object-contain rounded-lg"
           />
@@ -81,12 +81,12 @@ export const Softwire = () => {
                 
                 <div className="case-study-grid-image my-6">
                   <img 
-                    src="/Softwire/fieldresearch1.webp" 
+                    src="/softwire/fieldresearch1.webp" 
                     alt="Field research at station"
                     className="w-full h-auto object-contain rounded-lg"
                   />
                   <img 
-                    src="/Softwire/fieldresearch2.webp" 
+                    src="/softwire/fieldresearch2.webp" 
                     alt="Station observation notes"
                     className="w-full h-auto object-contain rounded-lg"
                   />
@@ -103,7 +103,7 @@ export const Softwire = () => {
                 
                 <div className="my-6">
                   <img 
-                    src="/Softwire/ideationworkshop1.webp" 
+                    src="/softwire/ideationworkshop1.webp" 
                     alt="Ideation Workshop & Affinity Mapping"
                     className="case-study-image w-full h-auto object-contain rounded-lg"
                   />
@@ -114,7 +114,7 @@ export const Softwire = () => {
                 
                 <div className="my-6">
                   <img 
-                    src="/Softwire/appflow.webp" 
+                    src="/softwire/appflow.webp" 
                     alt="User Flow & Wireframe Progression"
                     className="case-study-image w-full h-auto object-contain rounded-lg"
                   />
@@ -139,7 +139,7 @@ export const Softwire = () => {
                 
                 <div className="my-8">
                   <img 
-                    src="/Softwire/earlyconcept.webp" 
+                    src="/softwire/earlyconcept.webp" 
                     alt="Journey Planning Interface"
                     className="case-study-image w-full h-auto object-contain rounded-lg"
                   />

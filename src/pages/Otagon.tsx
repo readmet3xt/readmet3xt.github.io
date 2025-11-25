@@ -61,7 +61,7 @@ export const Otagon = () => {
         {/* Hero Image */}
         <section className="reveal-on-scroll">
           <img 
-            src="/Otagon/workinprogess.png" 
+            src="/otagon/workinprogess.png" 
             alt="Hero Image - Main App Interface"
             className="case-study-image w-full h-auto object-contain rounded-lg"
           />
@@ -110,7 +110,7 @@ export const Otagon = () => {
           </p>
           
           <img 
-            src="/Otagon/aiprocessing.png" 
+            src="/otagon/aiprocessing.png" 
             alt="Architecture Diagram & System Flow"
             className="case-study-image w-full h-auto object-contain rounded-lg"
           />
@@ -189,22 +189,22 @@ export const Otagon = () => {
           
           <div className="case-study-grid-image">
             <img 
-              src="/Otagon/chatinput.png" 
+              src="/otagon/chatinput.png" 
               alt="AI Conversation Interface"
               className="w-full h-auto object-contain rounded-lg"
             />
             <img 
-              src="/Otagon/insightstabs.png" 
+              src="/otagon/insightstabs.png" 
               alt="Screenshot Analysis Demo"
               className="w-full h-auto object-contain rounded-lg"
             />
             <img 
-              src="/Otagon/playerprofile.png" 
+              src="/otagon/playerprofile.png" 
               alt="Mobile App View"
               className="w-full h-auto object-contain rounded-lg"
             />
             <img 
-              src="/Otagon/sidebarsorting.png" 
+              src="/otagon/sidebarsorting.png" 
               alt="User Dashboard & Stats"
               className="w-full h-auto object-contain rounded-lg"
             />
