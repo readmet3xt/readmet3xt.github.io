@@ -121,19 +121,19 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             <h3 className="font-ibm-plex-mono text-xs sm:text-sm lg:text-base uppercase tracking-widest mb-3 sm:mb-4 lg:mb-5 text-text-tertiary font-semibold">Case Studies</h3>
             <nav className="space-y-1.5 sm:space-y-2 lg:space-y-2.5" role="navigation" aria-label="Case studies navigation">
               <Link to="/otagon" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/otagon' ? 'active' : ''}`} aria-current={window.location.pathname === '/otagon' ? 'page' : undefined}>
-                <img src="/Otagon/workinprogess.png" alt="Otagon project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 object-cover" />
+                <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=O" alt="Otagon project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Otagon</span>
               </Link>
               <Link to="/jollyai" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/jollyai' ? 'active' : ''}`} aria-current={window.location.pathname === '/jollyai' ? 'page' : undefined}>
-                <img src="/JollyAI/jollyai6.png" alt="JollyAI project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 object-cover" />
+                <img src="https://placehold.co/40x40/EC4899/FFFFFF?text=J" alt="JollyAI project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">JollyAI</span>
               </Link>
               <Link to="/koinbasket" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/koinbasket' ? 'active' : ''}`} aria-current={window.location.pathname === '/koinbasket' ? 'page' : undefined}>
-                <img src="/Koinbasket/Home.png" alt="KoinBasket project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 object-cover" />
+                <img src="https://placehold.co/40x40/06B6D4/FFFFFF?text=K" alt="KoinBasket project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">KoinBasket</span>
               </Link>
               <Link to="/softwire" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/softwire' ? 'active' : ''}`} aria-current={window.location.pathname === '/softwire' ? 'page' : undefined}>
-                <img src="/Softwire/heroimage.webp" alt="Softwire project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 object-cover" />
+                <img src="https://placehold.co/40x40/14B8A6/FFFFFF?text=S" alt="Softwire project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Softwire</span>
               </Link>
               <Link to="/pebble" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/pebble' ? 'active' : ''}`} aria-current={window.location.pathname === '/pebble' ? 'page' : undefined}>
