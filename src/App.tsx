@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense, useState } from "react";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { useVersionCheck } from "@/hooks/useVersionCheck";
 
 import Index from "./pages/Index";
 
@@ -32,6 +33,9 @@ const queryClient = new QueryClient({
 
 const App = () => {
   const [showLoader, setShowLoader] = useState(true);
+  
+  // Check for version updates periodically
+  useVersionCheck();
 
   const handleLoadingComplete = () => {
     setShowLoader(false);
