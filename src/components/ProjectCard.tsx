@@ -54,7 +54,6 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
           </div>
         )}
       </div>
-      </div>
     </Link>
   );
 };
