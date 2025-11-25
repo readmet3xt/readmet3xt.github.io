@@ -55,7 +55,7 @@
   
   #animated-question {
     text-align: left;
-    font-size: 0.75rem;
+    font-size: 1.5rem;
     line-height: 1.4;
     color: hsl(var(--text-primary));
     transition: opacity 0.5s ease-in-out;
@@ -68,25 +68,25 @@
   
   @media (min-width: 640px) {
     #animated-question {
-      font-size: 0.875rem;
+      font-size: 1.875rem;
     }
   }
   
   @media (min-width: 768px) {
     #animated-question {
-      font-size: 1rem;
+      font-size: 2.25rem;
     }
   }
   
   @media (min-width: 1024px) {
     #animated-question {
-      font-size: 1.125rem;
+      font-size: 3rem;
     }
   }
   
   @media (min-width: 1280px) {
     #animated-question {
-      font-size: 1.25rem;
+      font-size: 3rem;
     }
   }
   
