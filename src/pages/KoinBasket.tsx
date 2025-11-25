@@ -19,7 +19,7 @@ export const KoinBasket = () => {
             <div className="max-w-4xl mx-auto space-y-8 sm:space-y-10 md:space-y-12 case-study-section">
               
               <div className="reveal-on-scroll">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">From MVP to Market Leader: The Strategic Design Evolution of KoinBasket</h1>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">From MVP to Market Leader: The Strategic Design Evolution of KoinBasket</h1>
                 <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
                   <span className="case-study-pill">Fintech</span>
                   <span className="case-study-pill">MVP Design</span>

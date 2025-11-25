@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/hooks/useTheme';
 import { useToast } from '@/hooks/use-toast';
 import { Briefcase, Gamepad2 } from 'lucide-react';
@@ -47,9 +48,9 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         <div className="space-y-3 sm:space-y-4 lg:space-y-4 flex-shrink-0">
           {/* Bio Section (Desktop) */}
           <div className="hidden lg:block">
-            <a href="/" className="hover:text-accent-primary transition-colors duration-300 group">
+            <Link to="/" className="hover:text-accent-primary transition-colors duration-300 group">
               <h1 className="font-dm-sans text-3xl lg:text-4xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">Amaan</h1>
-            </a>
+            </Link>
             <p className="mt-2 lg:mt-3 text-sm lg:text-base text-text-secondary leading-relaxed">
               Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
             </p>
@@ -57,9 +58,9 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           
           {/* Bio Section (Mobile) */}
           <div className="block lg:hidden">
-            <a href="/" className="hover:text-accent-primary transition-colors duration-300 group">
+            <Link to="/" className="hover:text-accent-primary transition-colors duration-300 group">
               <h1 className="font-dm-sans text-xl sm:text-2xl font-bold tracking-wider mb-2 text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">Amaan</h1>
-            </a>
+            </Link>
             <p className="text-sm sm:text-base text-text-secondary leading-relaxed">
               Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.
             </p>
@@ -67,8 +68,8 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
           {/* Main Navigation */}
           <nav className="space-y-3 sm:space-y-4 lg:space-y-4" role="navigation" aria-label="Main navigation">
-            <a 
-              href="/" 
+            <Link 
+              to="/" 
               className={`sidebar-link flex items-center gap-2 sm:gap-3 lg:gap-4 p-2.5 sm:p-3 lg:p-4 rounded-lg ${activeLink === 'work' ? 'active' : ''}`}
               onClick={() => handleLinkClick('work')}
               aria-current={activeLink === 'work' ? 'page' : undefined}
@@ -80,10 +81,10 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-lg">Work</h2>
                 <p className="text-xs sm:text-sm lg:text-base text-text-secondary truncate">A selection of recent work</p>
               </div>
-            </a>
+            </Link>
             
-            <a 
-              href="/play" 
+            <Link 
+              to="/play" 
               className={`sidebar-link flex items-center gap-2 sm:gap-3 lg:gap-4 p-2.5 sm:p-3 lg:p-4 rounded-lg ${activeLink === 'play' ? 'active' : ''}`}
               onClick={() => handleLinkClick('play')}
               aria-current={activeLink === 'play' ? 'page' : undefined}
@@ -95,10 +96,10 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-lg">Play</h2>
                 <p className="text-xs sm:text-sm lg:text-base text-text-secondary truncate">Making things for fun</p>
               </div>
-            </a>
+            </Link>
             
-            <a 
-              href="/about" 
+            <Link 
+              to="/about" 
               className={`sidebar-link flex items-center gap-2 sm:gap-3 lg:gap-4 p-2.5 sm:p-3 lg:p-4 rounded-lg ${activeLink === 'about' ? 'active' : ''}`}
               onClick={() => handleLinkClick('about')}
               aria-current={activeLink === 'about' ? 'page' : undefined}
@@ -112,41 +113,41 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-sm sm:text-base lg:text-lg">About</h2>
                 <p className="text-xs sm:text-sm lg:text-base text-text-secondary truncate">More about me</p>
               </div>
-            </a>
+            </Link>
           </nav>
 
           {/* Case Studies */}
           <section className="flex-grow min-h-0">
             <h3 className="font-ibm-plex-mono text-xs sm:text-sm lg:text-base uppercase tracking-widest mb-3 sm:mb-4 lg:mb-5 text-text-tertiary font-semibold">Case Studies</h3>
             <nav className="space-y-1.5 sm:space-y-2 lg:space-y-2.5" role="navigation" aria-label="Case studies navigation">
-              <a href="/otagon" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/otagon' ? 'active' : ''}`} aria-current={window.location.pathname === '/otagon' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=O" alt="Otagon project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
+              <Link to="/otagon" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/otagon' ? 'active' : ''}`} aria-current={window.location.pathname === '/otagon' ? 'page' : undefined}>
+                <img src="/Otagon/workinprogess.png" alt="Otagon project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 object-cover" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Otagon</span>
-              </a>
-              <a href="/jollyai" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/jollyai' ? 'active' : ''}`} aria-current={window.location.pathname === '/jollyai' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/F59E0B/FFFFFF?text=J" alt="JollyAI project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
+              </Link>
+              <Link to="/jollyai" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/jollyai' ? 'active' : ''}`} aria-current={window.location.pathname === '/jollyai' ? 'page' : undefined}>
+                <img src="/JollyAI/jollyai6.png" alt="JollyAI project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 object-cover" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">JollyAI</span>
-              </a>
-              <a href="/koinbasket" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/koinbasket' ? 'active' : ''}`} aria-current={window.location.pathname === '/koinbasket' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/FF4757/FFFFFF?text=K" alt="KoinBasket project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
+              </Link>
+              <Link to="/koinbasket" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/koinbasket' ? 'active' : ''}`} aria-current={window.location.pathname === '/koinbasket' ? 'page' : undefined}>
+                <img src="/Koinbasket/Home.png" alt="KoinBasket project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 object-cover" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">KoinBasket</span>
-              </a>
-              <a href="/softwire" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/softwire' ? 'active' : ''}`} aria-current={window.location.pathname === '/softwire' ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/374151/FFFFFF?text=S" alt="Softwire project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
+              </Link>
+              <Link to="/softwire" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/softwire' ? 'active' : ''}`} aria-current={window.location.pathname === '/softwire' ? 'page' : undefined}>
+                <img src="/Softwire/heroimage.webp" alt="Softwire project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 object-cover" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Softwire</span>
-              </a>
-              <a href="/pebble" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/pebble' ? 'active' : ''}`} aria-current={window.location.pathname === '/pebble' ? 'page' : undefined}>
+              </Link>
+              <Link to="/pebble" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/pebble' ? 'active' : ''}`} aria-current={window.location.pathname === '/pebble' ? 'page' : undefined}>
                 <img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Pebble</span>
-              </a>
-              <a href="/iviprogram" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/iviprogram' ? 'active' : ''}`} aria-current={window.location.pathname === '/iviprogram' ? 'page' : undefined}>
+              </Link>
+              <Link to="/iviprogram" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/iviprogram' ? 'active' : ''}`} aria-current={window.location.pathname === '/iviprogram' ? 'page' : undefined}>
                 <img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">IVI Program</span>
-              </a>
-              <a href="/stampede" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/stampede' ? 'active' : ''}`} aria-current={window.location.pathname === '/stampede' ? 'page' : undefined}>
+              </Link>
+              <Link to="/stampede" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 lg:gap-3 p-2 sm:p-2.5 lg:p-3 rounded-lg text-sm sm:text-base lg:text-base ${window.location.pathname === '/stampede' ? 'active' : ''}`} aria-current={window.location.pathname === '/stampede' ? 'page' : undefined}>
                 <img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede project logo" className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-sm sm:text-base lg:text-base truncate">Stampede</span>
-              </a>
+              </Link>
             </nav>
           </section>
         </div>

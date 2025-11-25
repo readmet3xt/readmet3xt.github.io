@@ -9,7 +9,7 @@ import softwireImage from '/lovable-uploads/52c6231a-18dd-4a9b-8876-aece1c3e8ecc
 import pebbleImage from '/lovable-uploads/cb1a1f3c-1847-4464-b0bb-8f75aa61e069.png';
 import iviImage from '/lovable-uploads/edac5882-86eb-4c8d-90e2-3ae3b2034954.png';
 import stampedeImage from '/lovable-uploads/98dba331-62c7-4ed1-a6ca-8cb63df6ac7d.png';
-import otagonImage from '/Otagon/otagon  log.png';
+import otagonImage from '/Otagon/workinprogess.png';
 import jollyAiImage from '/JollyAI/jollyai6.png';
 
 export const ProjectsGrid = () => {

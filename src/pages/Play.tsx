@@ -52,7 +52,7 @@ export const Play = () => {
   };
 
   return (
-    <PageLayout className="p-6 pt-24 pb-12 md:p-12 lg:pt-12 lg:pb-12 min-h-screen">
+    <PageLayout className="min-h-screen">
             <h2 className="text-3xl font-dm-sans font-bold mb-2 text-foreground">Playground</h2>
             <p className="text-lg font-mono mb-12 text-text-secondary">
               A collection of art, doodles, & other things I've made for fun.

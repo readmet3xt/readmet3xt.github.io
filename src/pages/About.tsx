@@ -55,7 +55,7 @@ export const About = () => {
 
   return (
     <>
-      <PageLayout className="p-6 pt-24 pb-24 md:p-12 lg:pt-12 lg:pb-12">
+      <PageLayout>
         {/* Overview Section */}
         <section id="overview" className="mb-24 scroll-mt-24 reveal-on-scroll">
           <div className="grid md:grid-cols-5 gap-8 items-start">
