@@ -60,11 +60,11 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
         />
       )}
 
-      <div className="flex w-full max-w-full overflow-x-hidden">
+      <div className="w-full max-w-full overflow-x-hidden min-h-screen">
         <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
 
         {/* Main Content */}
-        <div className="flex-1 lg:ml-80 w-full max-w-full overflow-x-hidden">
+        <div className="w-full lg:pl-80 min-h-screen">
           <main className={`px-3 sm:px-4 md:px-6 lg:px-12 xl:px-16 pt-20 pb-16 sm:pb-20 md:pb-24 lg:pt-12 lg:pb-12 max-w-7xl mx-auto ${className}`}>
             {children}
           </main>
