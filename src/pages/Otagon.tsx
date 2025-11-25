@@ -63,7 +63,7 @@ export const Otagon = () => {
           <img 
             src="/otagon/workinprogess.png" 
             alt="Hero Image - Main App Interface"
-            className="case-study-image w-full h-auto object-contain rounded-lg"
+            className="case-study-image w-full max-w-2xl mx-auto h-auto object-contain rounded-lg"
           />
         </section>
 
@@ -112,7 +112,7 @@ export const Otagon = () => {
           <img 
             src="/otagon/aiprocessing.png" 
             alt="Architecture Diagram & System Flow"
-            className="case-study-image w-full h-auto object-contain rounded-lg"
+            className="case-study-image w-full max-w-2xl mx-auto h-auto object-contain rounded-lg"
           />
           
           <div className="mt-6">
@@ -187,26 +187,26 @@ export const Otagon = () => {
             </div>
           </div>
           
-          <div className="case-study-grid-image">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <img 
               src="/otagon/chatinput.png" 
               alt="AI Conversation Interface"
-              className="w-full h-auto object-contain rounded-lg"
+              className="w-full h-auto object-contain rounded-lg border border-border"
             />
             <img 
               src="/otagon/insightstabs.png" 
               alt="Screenshot Analysis Demo"
-              className="w-full h-auto object-contain rounded-lg"
+              className="w-full h-auto object-contain rounded-lg border border-border"
             />
             <img 
               src="/otagon/playerprofile.png" 
               alt="Mobile App View"
-              className="w-full h-auto object-contain rounded-lg"
+              className="w-full h-auto object-contain rounded-lg border border-border"
             />
             <img 
               src="/otagon/sidebarsorting.png" 
               alt="User Dashboard & Stats"
-              className="w-full h-auto object-contain rounded-lg"
+              className="w-full h-auto object-contain rounded-lg border border-border"
             />
           </div>
         </section>

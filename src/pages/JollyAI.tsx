@@ -4,13 +4,13 @@ import { OptimizedImage } from '@/components/OptimizedImage';
 import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
 
 // Import case study images
-import thinkingPanel from '/JollyAI/jollyai1.png';
-import instructionModal from '/JollyAI/jollyai2.png';
-import stateOnboarding from '/JollyAI/jollyai3.png';
-import promptGallery from '/JollyAI/jollyai5.png';
-import sidePanelNav from '/JollyAI/jollyai6.png';
-import visualIdentity from '/JollyAI/jollyai7.png';
-import fullInterface from '/JollyAI/jollyai8.png';
+import thinkingPanel from '/jollyai/jollyai1.png';
+import instructionModal from '/jollyai/jollyai2.png';
+import stateOnboarding from '/jollyai/jollyai3.png';
+import promptGallery from '/jollyai/jollyai5.png';
+import sidePanelNav from '/jollyai/jollyai6.png';
+import visualIdentity from '/jollyai/jollyai7.png';
+import fullInterface from '/jollyai/jollyai8.png';
 
 export const JollyAI = () => {
   useScrollReveal();

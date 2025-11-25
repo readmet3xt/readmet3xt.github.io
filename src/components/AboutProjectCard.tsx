@@ -43,8 +43,8 @@ export const AboutProjectCard = ({ title, description, onClick, className = "" }
       className={`project-card rounded-lg shadow-md overflow-hidden cursor-pointer bg-card border border-border hover:border-accent-primary p-6 ${className}`}
       onClick={onClick}
     >
-      <h3 className="text-xl font-bold text-foreground">{title}</h3>
-      <p className="text-text-secondary">{description}</p>
+      <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{title}</h3>
+      <p className="text-base md:text-lg text-text-secondary leading-relaxed">{description}</p>
     </div>
   );
 };
