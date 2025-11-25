@@ -9,11 +9,12 @@ import softwireImage from '/lovable-uploads/52c6231a-18dd-4a9b-8876-aece1c3e8ecc
 import pebbleImage from '/lovable-uploads/cb1a1f3c-1847-4464-b0bb-8f75aa61e069.png';
 import iviImage from '/lovable-uploads/edac5882-86eb-4c8d-90e2-3ae3b2034954.png';
 import stampedeImage from '/lovable-uploads/98dba331-62c7-4ed1-a6ca-8cb63df6ac7d.png';
-import otagonImage from '/otagon3.png';
+import otagonImage from '/Otagon/otagon  log.png';
+import jollyAiImage from '/JollyAI/jollyai6.png';
 
 export const ProjectsGrid = () => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-6 md:gap-6 mb-20 auto-rows-fr w-full max-w-full" aria-label="Portfolio projects">
+    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full" aria-label="Portfolio projects">
       <WelcomeCard />
       
       <ProjectCard
@@ -24,6 +25,16 @@ export const ProjectsGrid = () => {
         className="reveal-on-scroll"
         summary="Built a sophisticated AI gaming companion with real-time screenshot analysis, intelligent conversation, and personalized gaming insights. Achieved 100x performance improvements and 85% cost reduction through intelligent caching."
         tags={["React TypeScript", "AI/ML", "PWA", "Supabase"]}
+      />
+
+      <ProjectCard
+        href="/jollyai"
+        title="Jolly AI"
+        description="Transparent Legal Assistant"
+        image={jollyAiImage}
+        className="reveal-on-scroll"
+        summary="Designed an AI assistant for lawyers that visualizes reasoning processes, providing trust through transparency and precise control over legal tone"
+        tags={["Legal Tech", "AI UX", "Transparency Design"]}
       />
 
       <AnimatedProjectCard

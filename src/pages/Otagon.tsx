@@ -1,6 +1,5 @@
 import { PageLayout } from '@/components/PageLayout';
 import { useScrollReveal } from '@/components/ScrollReveal';
-import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
 
 export const Otagon = () => {
@@ -63,11 +62,10 @@ export const Otagon = () => {
 
         {/* Hero Image */}
         <section className="reveal-on-scroll">
-          <ImagePlaceholder
-            label="Hero Image - Main App Interface"
-            aspectRatio="16/9"
-            dimensions="1200x675"
-            className="case-study-image"
+          <img 
+            src="/Otagon/workinprogess.png" 
+            alt="Hero Image - Main App Interface"
+            className="case-study-image w-full h-auto object-contain rounded-lg"
           />
         </section>
 
@@ -113,11 +111,10 @@ export const Otagon = () => {
             I built a comprehensive full-stack solution where design thinking informed every technical decision. My UX background drove architecture choices: React 19's concurrent rendering for smooth AI interactions, component composition for maintainability, aggressive bundle optimization for mobile performance (1.84MB production build), and intelligent caching to reduce costs by 85% while maintaining instant response times.
           </p>
           
-          <ImagePlaceholder
-            label="Architecture Diagram & System Flow"
-            aspectRatio="16/9"
-            dimensions="1200x675"
-            className="case-study-image"
+          <img 
+            src="/Otagon/aiprocessing.png" 
+            alt="Architecture Diagram & System Flow"
+            className="case-study-image w-full h-auto object-contain rounded-lg"
           />
           
           <div className="mt-6">
@@ -193,25 +190,25 @@ export const Otagon = () => {
           </div>
           
           <div className="case-study-grid-image">
-            <ImagePlaceholder
-              label="AI Conversation Interface"
-              aspectRatio="4/3"
-              dimensions="800x600"
+            <img 
+              src="/Otagon/chatinput.png" 
+              alt="AI Conversation Interface"
+              className="w-full h-auto object-contain rounded-lg"
             />
-            <ImagePlaceholder
-              label="Screenshot Analysis Demo"
-              aspectRatio="4/3"
-              dimensions="800x600"
+            <img 
+              src="/Otagon/insightstabs.png" 
+              alt="Screenshot Analysis Demo"
+              className="w-full h-auto object-contain rounded-lg"
             />
-            <ImagePlaceholder
-              label="Mobile App View"
-              aspectRatio="9/16"
-              dimensions="450x800"
+            <img 
+              src="/Otagon/playerprofile.png" 
+              alt="Mobile App View"
+              className="w-full h-auto object-contain rounded-lg"
             />
-            <ImagePlaceholder
-              label="User Dashboard & Stats"
-              aspectRatio="4/3"
-              dimensions="800x600"
+            <img 
+              src="/Otagon/sidebarsorting.png" 
+              alt="User Dashboard & Stats"
+              className="w-full h-auto object-contain rounded-lg"
             />
           </div>
         </section>

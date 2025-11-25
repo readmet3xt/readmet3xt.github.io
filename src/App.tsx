@@ -18,6 +18,7 @@ const Pebble = lazy(() => import("./pages/Pebble").then(m => ({ default: m.Pebbl
 const IviProgram = lazy(() => import("./pages/IviProgram").then(m => ({ default: m.IviProgram })));
 const Stampede = lazy(() => import("./pages/Stampede").then(m => ({ default: m.Stampede })));
 const Otagon = lazy(() => import("./pages/Otagon").then(m => ({ default: m.Otagon })));
+const JollyAI = lazy(() => import("./pages/JollyAI").then(m => ({ default: m.JollyAI })));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -50,7 +51,7 @@ const App = () => {
           <BrowserRouter>
             <ScrollToTop />
             <Suspense fallback={
-              <div className="fixed inset-0 bg-background z-50 flex items-center justify-center animate-fade-in">
+              <div className="fixed inset-0 bg-bg-primary z-50 flex items-center justify-center">
                 <div className="w-8 h-8 border-3 border-accent-primary/20 rounded-full border-t-accent-primary animate-spin" />
               </div>
             }>
@@ -64,6 +65,7 @@ const App = () => {
                 <Route path="/iviprogram" element={<IviProgram />} />
                 <Route path="/stampede" element={<Stampede />} />
                 <Route path="/otagon" element={<Otagon />} />
+                <Route path="/jollyai" element={<JollyAI />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

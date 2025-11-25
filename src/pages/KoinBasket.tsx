@@ -4,12 +4,12 @@ import { OptimizedImage } from '@/components/OptimizedImage';
 import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
 
 // Import case study images
-import darkDashboard from '@/assets/koinbasket-dark-dashboard.jpg';
-import mobileUI from '@/assets/koinbasket-mobile-ui.jpg';
-import sipFlow from '@/assets/koinbasket-sip-flow.jpg';
-import exchangeConnection from '@/assets/koinbasket-exchange-connection.jpg';
-import lightRebrand from '@/assets/koinbasket-light-rebrand.jpg';
-import liveTrading from '@/assets/koinbasket-live-trading.jpg';
+import darkDashboard from '/Koinbasket/Main Dashboard - Expanded and Hover.jpg';
+import mobileUI from '/Koinbasket/iPhone XS (3).png';
+import sipFlow from '/Koinbasket/Checkout (1).png';
+import exchangeConnection from '/Koinbasket/Settings - Exchange Connected.png';
+import lightRebrand from '/Koinbasket/landingpage.png';
+import liveTrading from '/Koinbasket/Home.png';
 
 export const KoinBasket = () => {
   useScrollReveal();

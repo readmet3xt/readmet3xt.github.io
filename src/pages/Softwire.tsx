@@ -1,6 +1,5 @@
 import { PageLayout } from '@/components/PageLayout';
 import { useScrollReveal } from '@/components/ScrollReveal';
-import { ImagePlaceholder } from '@/components/ImagePlaceholder';
 import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
 
 export const Softwire = () => {
@@ -48,11 +47,10 @@ export const Softwire = () => {
 
         {/* Hero Image */}
         <section className="reveal-on-scroll">
-          <ImagePlaceholder
-            label="LNER App Clip in Action"
-            aspectRatio="16/9"
-            dimensions="1200x675"
-            className="case-study-image"
+          <img 
+            src="/Softwire/heroimage.webp" 
+            alt="LNER App Clip in Action"
+            className="case-study-image w-full h-auto object-contain rounded-lg"
           />
         </section>
 
@@ -80,6 +78,19 @@ export const Softwire = () => {
                 </ul>
                 
                 <p className="mt-4">This research painted a picture of a user needing speed, clarity, and reassurance. Our App Clip needed to cut through the noise and provide a direct path to purchasing a ticket.</p>
+                
+                <div className="case-study-grid-image my-6">
+                  <img 
+                    src="/Softwire/fieldresearch1.webp" 
+                    alt="Field research at station"
+                    className="w-full h-auto object-contain rounded-lg"
+                  />
+                  <img 
+                    src="/Softwire/fieldresearch2.webp" 
+                    alt="Station observation notes"
+                    className="w-full h-auto object-contain rounded-lg"
+                  />
+                </div>
               </section>
 
               {/* Our Approach */}
@@ -91,10 +102,10 @@ export const Softwire = () => {
                 <p>We started with the ideation workshop, affinity mapping, and sketching exercises. A key idea emerged: a simple interface showing essential journey info with a quick buy option. Station observations and creating a user journey map helped us pinpoint exactly where the App Clip could intervene in the existing stressful flow.</p>
                 
                 <div className="my-6">
-                  <ImagePlaceholder
-                    label="Ideation Workshop & Affinity Mapping"
-                    aspectRatio="16/9"
-                    dimensions="1200x675"
+                  <img 
+                    src="/Softwire/ideationworkshop1.webp" 
+                    alt="Ideation Workshop & Affinity Mapping"
+                    className="case-study-image w-full h-auto object-contain rounded-lg"
                   />
                 </div>
                 
@@ -102,10 +113,10 @@ export const Softwire = () => {
                 <p>We mapped out task flows for both the core booking experience and potential onboarding elements. We then moved from low-fidelity wireframes, focusing on layout and information hierarchy, to higher-fidelity screens incorporating LNER's visual language.</p>
                 
                 <div className="my-6">
-                  <ImagePlaceholder
-                    label="User Flow & Wireframe Progression"
-                    aspectRatio="21/9"
-                    dimensions="1400x600"
+                  <img 
+                    src="/Softwire/appflow.webp" 
+                    alt="User Flow & Wireframe Progression"
+                    className="case-study-image w-full h-auto object-contain rounded-lg"
                   />
                 </div>
                 
@@ -127,10 +138,10 @@ export const Softwire = () => {
                 <p>The result was a focused LNER App Clip booking flow, designed for speed and clarity at the station:</p>
                 
                 <div className="my-8">
-                  <ImagePlaceholder
-                    label="Journey Planning Interface"
-                    aspectRatio="9/16"
-                    dimensions="400x711"
+                  <img 
+                    src="/Softwire/earlyconcept.webp" 
+                    alt="Journey Planning Interface"
+                    className="case-study-image w-full h-auto object-contain rounded-lg"
                   />
                 </div>
                 
@@ -143,19 +154,6 @@ export const Softwire = () => {
                 </ul>
                 
                 <p className="mt-4">We ensured the design complied with National Rail guidelines and prioritized clarity on essential information.</p>
-                
-                <div className="case-study-grid-image my-8">
-                  <ImagePlaceholder
-                    label="Train Options Screen"
-                    aspectRatio="9/16"
-                    dimensions="400x711"
-                  />
-                  <ImagePlaceholder
-                    label="Ticket Confirmation & Wallet"
-                    aspectRatio="9/16"
-                    dimensions="400x711"
-                  />
-                </div>
               </section>
 
               {/* Beyond Booking */}
@@ -181,19 +179,6 @@ export const Softwire = () => {
                 </ul>
                 
                 <p className="mt-4">This presented a perfect opportunity for A/B testing to see which graphical representation users could interpret more quickly and easily in a real-world context. We also designed an integrated feedback form to gather insights on new features like the Seat Finder post-launch.</p>
-                
-                <div className="case-study-grid-image my-8">
-                  <ImagePlaceholder
-                    label="Seat Finder Option A - Side Profile"
-                    aspectRatio="9/16"
-                    dimensions="400x711"
-                  />
-                  <ImagePlaceholder
-                    label="Seat Finder Option B - Plan View"
-                    aspectRatio="9/16"
-                    dimensions="400x711"
-                  />
-                </div>
               </section>
 
               {/* Results and Learnings */}
