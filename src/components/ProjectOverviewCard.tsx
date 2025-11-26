@@ -16,10 +16,10 @@ export const ProjectOverviewCard = ({
   tools,
 }: ProjectOverviewCardProps) => {
   return (
-    <div className="reveal-on-scroll my-8 p-6 rounded-lg border border-border bg-card/50 backdrop-blur-sm">
-      <div className="grid md:grid-cols-2 gap-6">
+    <div className="p-4 rounded-lg border border-border bg-card/50 backdrop-blur-sm">
+      <div className="grid md:grid-cols-2 gap-4">
         {/* Left Column */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <div className="w-8 h-8 rounded-full bg-accent-primary/10 flex items-center justify-center">
@@ -50,7 +50,7 @@ export const ProjectOverviewCard = ({
         </div>
 
         {/* Right Column */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <div className="w-8 h-8 rounded-full bg-accent-tertiary/10 flex items-center justify-center">

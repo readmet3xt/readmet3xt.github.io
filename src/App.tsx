@@ -2,11 +2,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense, useState } from "react";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { useVersionCheck } from "@/hooks/useVersionCheck";
+import { AnimatePresence } from "framer-motion";
 
 import Index from "./pages/Index";
 
@@ -30,6 +31,30 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+// Animated Routes wrapper for page transitions
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Index />} />
+        <Route path="/play" element={<Play />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/koinbasket" element={<KoinBasket />} />
+        <Route path="/softwire" element={<Softwire />} />
+        <Route path="/pebble" element={<Pebble />} />
+        <Route path="/iviprogram" element={<IviProgram />} />
+        <Route path="/stampede" element={<Stampede />} />
+        <Route path="/otagon" element={<Otagon />} />
+        <Route path="/jollyai" element={<JollyAI />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 const App = () => {
   const [showLoader, setShowLoader] = useState(true);
@@ -59,20 +84,7 @@ const App = () => {
                 <div className="w-8 h-8 border-3 border-accent-primary/20 rounded-full border-t-accent-primary animate-spin" />
               </div>
             }>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/play" element={<Play />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/koinbasket" element={<KoinBasket />} />
-                <Route path="/softwire" element={<Softwire />} />
-                <Route path="/pebble" element={<Pebble />} />
-                <Route path="/iviprogram" element={<IviProgram />} />
-                <Route path="/stampede" element={<Stampede />} />
-                <Route path="/otagon" element={<Otagon />} />
-                <Route path="/jollyai" element={<JollyAI />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <AnimatedRoutes />
             </Suspense>
           </BrowserRouter>
         </TooltipProvider>

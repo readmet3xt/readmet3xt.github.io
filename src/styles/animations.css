@@ -25,6 +25,84 @@
     transform: translateY(0) translateZ(0);
   }
 
+  /* Staggered Animation Classes */
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+  .stagger-5 { transition-delay: 0.5s; }
+
+  /* Fade In Animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .fade-in-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  
+  .fade-in-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Scale In Animation */
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  }
+  
+  .scale-in.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Parallax Effect */
+  .parallax {
+    will-change: transform;
+    transition: transform 0.1s linear;
+  }
+
+  /* Hover Lift Effect */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Active Tap Feedback */
+  .tap-feedback {
+    transition: transform 0.1s ease;
+  }
+  
+  .tap-feedback:active {
+    transform: scale(0.98);
+  }
+
   /* Typewriter Animation Styling */
   #text-animation-container {
     position: relative;
@@ -137,6 +215,93 @@
   .project-card {
     will-change: transform;
     transition: transform 0.1s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Case Study Specific Animations */
+  .case-study-image {
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+  
+  .case-study-image:hover {
+    transform: scale(1.02);
+  }
+
+  /* Section Reveal with Mask */
+  .section-reveal {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .section-reveal.is-visible {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* Smooth Counter Animation */
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .stat-counter {
+    animation: countUp 0.5s ease-out forwards;
+  }
+
+  /* Pill Bounce Animation */
+  @keyframes pillBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
+  .case-study-pill {
+    transition: all 0.2s ease;
+  }
+  
+  .case-study-pill:hover {
+    animation: pillBounce 0.4s ease;
+    background-color: hsl(var(--accent-primary) / 0.15);
+  }
+
+  /* Image Loading Shimmer */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .image-loading {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--bg-tertiary)) 25%,
+      hsl(var(--bg-secondary)) 50%,
+      hsl(var(--bg-tertiary)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Card Glow on Hover */
+  .card-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--accent-primary) / 0.1),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+  
+  .card-glow:hover::before {
+    left: 100%;
   }
 }
 
