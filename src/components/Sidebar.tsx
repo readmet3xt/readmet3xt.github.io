@@ -47,8 +47,8 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
   return (
     <aside className={`sidebar bg-bg-secondary border-r border-border w-72 sm:w-80 h-screen fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out z-40 overflow-y-auto overflow-x-hidden`}>
-      <div className="sidebar-content-wrapper flex-1 flex flex-col px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4 lg:pt-6">
-        <div className="space-y-2 sm:space-y-3 lg:space-y-3 flex-shrink-0">
+      <div className="sidebar-content-wrapper flex-1 flex flex-col px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4 lg:pt-6 pb-2">
+        <div className="space-y-2 sm:space-y-3 lg:space-y-3">
           {/* Bio Section (Desktop) */}
           <div className="hidden lg:block">
             <Link to="/" className="hover:text-accent-primary transition-colors duration-300 group" onClick={() => handleLinkClick('work')} aria-current={activeLink === 'work' ? 'page' : undefined}>
@@ -120,7 +120,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           </nav>
 
           {/* Case Studies */}
-          <section className="flex-1 min-h-0">
+          <section>
             <h3 className="font-ibm-plex-mono text-[10px] sm:text-xs uppercase tracking-widest mb-2 sm:mb-2.5 text-text-tertiary font-semibold">Case Studies</h3>
             <nav className="space-y-1 sm:space-y-1.5" role="navigation" aria-label="Case studies navigation">
               <Link to="/otagon" className={`sidebar-link flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/otagon') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/otagon') ? 'page' : undefined}>
