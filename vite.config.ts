@@ -30,12 +30,23 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Separate vendor chunks for better caching
-          'react-vendor': ['react', 'react-dom'],
-          'router-vendor': ['react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-slot', '@radix-ui/react-toast'],
-          'query-vendor': ['@tanstack/react-query'],
+        manualChunks(id) {
+          // Keep React and React DOM together to avoid context issues
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+            return 'react-vendor';
+          }
+          if (id.includes('node_modules/react-router-dom/') || id.includes('node_modules/@remix-run/')) {
+            return 'router-vendor';
+          }
+          if (id.includes('node_modules/@radix-ui/')) {
+            return 'ui-vendor';
+          }
+          if (id.includes('node_modules/@tanstack/')) {
+            return 'query-vendor';
+          }
+          if (id.includes('node_modules/framer-motion/')) {
+            return 'animation-vendor';
+          }
         },
       },
     },
