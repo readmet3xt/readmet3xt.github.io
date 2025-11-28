@@ -272,8 +272,8 @@ export const Otagon = () => {
       {/* Technical Architecture */}
       <CaseStudySection title="Technical Architecture">
         <CaseStudyParagraph lead>
-          I collaborated with the engineering team to design a scalable architecture handling 
-          real-time AI processing across frontend, backend, and AI layers.
+          I designed a scalable architecture handling real-time AI processing across frontend, 
+          backend, and AI layers—built and deployed entirely by myself.
         </CaseStudyParagraph>
 
         <CaseStudyCardGrid columns={3}>
