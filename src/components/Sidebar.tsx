@@ -46,8 +46,8 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const isActiveCaseStudy = (path: string) => location.pathname === path;
 
   return (
-    <aside className={`sidebar bg-bg-secondary border-r border-border w-72 sm:w-80 h-screen fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out z-40 overflow-y-auto overflow-x-hidden`}>
-      <div className="sidebar-content-wrapper flex-1 flex flex-col px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4 lg:pt-6 pb-2">
+    <aside className={`sidebar bg-bg-secondary border-r border-border w-72 sm:w-80 h-screen fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out z-40 overflow-hidden`}>
+      <div className="sidebar-content-wrapper flex-1 flex flex-col px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4 lg:pt-6 pb-2 overflow-y-auto overflow-x-hidden min-h-0">
         <div className="space-y-2 sm:space-y-3 lg:space-y-3">
           {/* Bio Section (Desktop) */}
           <div className="hidden lg:block">
@@ -157,7 +157,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       </div>
 
       {/* Sidebar Footer */}
-      <footer className="flex-shrink-0 pt-4 sm:pt-6 pb-4 sm:pb-6 lg:pb-6 px-3 sm:px-4 lg:px-6 mt-auto">
+      <footer className="flex-shrink-0 border-t border-border pt-4 sm:pt-6 pb-4 sm:pb-6 lg:pb-6 px-3 sm:px-4 lg:px-6 bg-bg-secondary">
         <nav className="flex flex-wrap justify-start gap-2 sm:gap-3 font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider" role="navigation" aria-label="Contact and social links">
           <button 
             onClick={() => copyToClipboard('mdamkhan.work@gmail.com')} 

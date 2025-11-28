@@ -15,40 +15,40 @@ import {
 export const Otagon = () => {
   return (
     <CaseStudyLayout
-      title="Otagon"
+      title="Otagon AI"
       externalLink="https://otagon.app"
       externalLabel="Visit otagon.app"
     >
       <CaseStudyHero
-        title="Building an AI Gaming Companion from Scratch"
-        subtitle="A designer's journey into full-stack development"
+        title="AI-Powered Gaming Companion Platform"
+        subtitle="Full product ownership from conception to launch"
         pills={[
-          'React 19',
+          'Product Management',
+          'React',
           'TypeScript',
           'AI/ML',
           'PWA',
           'Supabase',
           'Google Gemini',
-          'Full-Stack',
         ]}
-        intro="What happens when a product designer decides to build production-grade software? Otagon is my answer—an AI gaming companion that analyzes screenshots in real-time, providing context-aware hints without spoilers. Along the way, I learned that over-engineering 97 microservices is just as dangerous as under-engineering, and that design thinking applies to code architecture as much as UI design."
+        intro="Otagon AI is an AI-powered gaming companion that helps gamers get real-time assistance, strategy tips, and game-specific insights while playing. As the Product Manager with full ownership, I led the product from conception to launch over a 6-month development cycle, building a fully functional PWA serving 3 user tiers with 15+ core features and AI integration."
         externalLink="https://otagon.app"
         externalLabel="otagon.app"
         overview={{
           role: [
-            'Full-stack development (Frontend + Backend + AI)',
-            'UX/UI design and design system architecture',
-            'Database schema design and optimization',
-            'Performance optimization strategy',
+            'Full product ownership from conception to launch',
+            'User research and persona development',
+            'Feature specification and prioritization',
+            'Go-to-market strategy and pricing',
           ],
-          timeline: '3 months (Personal Project)',
-          recognition: '100x performance improvement, 85% cost reduction',
+          timeline: '6 months development cycle',
+          recognition: '15+ features shipped, 95%+ feature completion, <3s response time',
           tools: [
-            'React 19',
+            'React',
             'TypeScript',
             'Vite',
             'Supabase',
-            'Google Gemini AI',
+            'Google Gemini 2.5',
             'PostgreSQL',
             'Tailwind CSS',
             'PWA',
@@ -58,137 +58,203 @@ export const Otagon = () => {
         heroImageAlt="Otagon AI Gaming Companion Interface"
       />
 
-      {/* The Story */}
-      <CaseStudySection title="The Story Behind Otagon">
+      {/* Problem Statement */}
+      <CaseStudySection title="Problem Statement">
         <CaseStudyParagraph lead>
-          It started as a personal challenge: could I, a designer who codes, ship production-grade 
-          full-stack software? Not a prototype or a "designer's version"—but a real application 
-          handling authentication, databases, AI integration, and real-time processing.
-        </CaseStudyParagraph>
-        
-        <CaseStudyParagraph>
-          The gaming industry had a gap I couldn't ignore. Gamers get stuck—on puzzles, boss fights, 
-          obscure mechanics. They turn to walkthroughs, but those are riddled with spoilers. I wanted 
-          something smarter: an AI that could look at your screen, understand exactly where you are 
-          in a game, and give you just enough help without ruining the experience.
+          Gamers frequently need help during gameplay—whether it's boss strategies, storyline context, 
+          item locations, or build optimization. Current solutions have significant friction that 
+          breaks immersion and creates anxiety around spoilers.
         </CaseStudyParagraph>
 
-        <CaseStudyQuote author="Personal reflection" role="3 AM debugging session">
-          The technical journey was humbling. I over-engineered catastrophically, fought OAuth 
-          authentication demons, and debugged conflicting database schemas at 3am. But through 
-          systematic refactoring, I achieved 100x performance gains and slashed API costs by 85%.
+        <CaseStudyCardGrid columns={2}>
+          <CaseStudyCard title="Current Solutions & Problems">
+            <CaseStudyList items={[
+              { title: 'Alt-Tab to browser', description: 'Breaks immersion, risk of spoilers' },
+              { title: 'YouTube walkthroughs', description: 'Time-consuming, not contextual' },
+              { title: 'Gaming wikis', description: 'Outdated, overwhelming information' },
+              { title: 'Discord/Reddit', description: 'Wait time for responses, inconsistent quality' },
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="User Research Insights">
+            <CaseStudyList items={[
+              { title: '78%', description: 'of gamers alt-tab during gameplay sessions' },
+              { title: '3-5 minutes', description: 'average time spent searching for game help' },
+              { title: '45%', description: 'avoid seeking help due to spoiler anxiety' },
+              { title: '65%', description: 'prefer mobile companion apps for console/PC gaming' },
+            ]} />
+          </CaseStudyCard>
+        </CaseStudyCardGrid>
+
+        <CaseStudyQuote author="Opportunity Insight" role="Product Vision">
+          Create an AI companion that provides instant, contextual, spoiler-free gaming assistance 
+          through screenshot analysis and natural conversation.
         </CaseStudyQuote>
       </CaseStudySection>
 
-      {/* The Challenge */}
-      <CaseStudySection title="The Challenge">
+      {/* Product Vision & Strategy */}
+      <CaseStudySection title="Product Vision & Strategy">
         <CaseStudyParagraph lead>
-          Building Otagon meant solving two fundamentally different problems simultaneously: 
-          the user experience challenge of making AI helpful without spoiling games, and the 
-          technical challenge of making it all work at scale without burning through API costs.
+          "Be the ultimate AI gaming companion that understands where you are in any game and 
+          provides exactly the help you need, without spoilers."
         </CaseStudyParagraph>
 
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="User Experience Challenges">
+          <CaseStudyCard title="🎯 Instant Context Understanding">
             <CaseStudyList items={[
-              { title: 'Spoiler Prevention', description: 'How do you give hints without revealing too much?' },
-              { title: 'Context Awareness', description: 'The AI needs to understand where you are in the game' },
-              { title: 'Instant Response', description: 'Gamers won\'t wait—help must feel immediate' },
-              { title: 'Cross-Platform', description: 'Works on any device, even while gaming on another' },
+              'Screenshot analysis for automatic game detection',
+              'Progress tracking without manual input',
+              'Spoiler-aware responses based on player progress',
             ]} />
           </CaseStudyCard>
           
-          <CaseStudyCard title="Technical Challenges">
+          <CaseStudyCard title="📱 Multi-Platform Accessibility">
             <CaseStudyList items={[
-              { title: 'Real-time Image Processing', description: 'Analyzing screenshots with AI quickly enough' },
-              { title: 'Cost Optimization', description: 'AI APIs are expensive—every query costs money' },
-              { title: 'Offline Support', description: 'PWA that works without constant connectivity' },
-              { title: 'Scale Architecture', description: 'Built for growth, not just a demo' },
+              'PWA for mobile-first experience',
+              'PC companion app for seamless screenshot capture',
+              'Cross-device sync for continuous sessions',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="🧠 Personalized Intelligence">
+            <CaseStudyList items={[
+              'Player profile customization (casual vs. completionist)',
+              'Genre-specific assistance (RPG builds vs. FPS tactics)',
+              'Learning from conversation history',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="💰 Sustainable Business Model">
+            <CaseStudyList items={[
+              'Freemium model with clear value differentiation',
+              'Query-based limits (not arbitrary restrictions)',
+              'Vanguard founding member program for early adopters',
             ]} />
           </CaseStudyCard>
         </CaseStudyCardGrid>
-
-        <CaseStudyParagraph>
-          The biggest lesson? I initially created 97+ microservices thinking "that's what real 
-          engineers do." It was a maintenance nightmare. Learning to ruthlessly simplify—consolidating 
-          down to 8 core services—was more valuable than any technical skill.
-        </CaseStudyParagraph>
       </CaseStudySection>
 
-      {/* Solution & Architecture */}
-      <CaseStudySection title="Solution & Architecture">
+      {/* User Personas */}
+      <CaseStudySection title="User Personas & Journeys">
         <CaseStudyParagraph lead>
-          I built a full-stack solution where design thinking informed every technical decision. 
-          My UX background drove architecture choices that engineers might not prioritize—and 
-          that made all the difference.
+          Through user research, I identified three primary personas that shaped our tiered 
+          product strategy and feature prioritization.
         </CaseStudyParagraph>
+
+        <CaseStudyCardGrid columns={3}>
+          <CaseStudyCard title="🎮 The Casual Gamer">
+            <CaseStudyParagraph>
+              <strong>"Weekend Warrior"</strong><br/>
+              25-35, plays 5-10 hours/week<br/><br/>
+              <strong>Pain Point:</strong> Gets stuck on bosses, loses momentum<br/>
+              <strong>Need:</strong> Quick tips without deep research<br/>
+              <strong>Tier:</strong> Free (55 text + 25 image queries/month)
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="⚔️ The Dedicated Player">
+            <CaseStudyParagraph>
+              <strong>"Story Seeker"</strong><br/>
+              20-30, plays 15-25 hours/week<br/><br/>
+              <strong>Pain Point:</strong> Wants full story without missing content<br/>
+              <strong>Need:</strong> Lore context, hidden secrets, optimal paths<br/>
+              <strong>Tier:</strong> Pro ($3.99/month)
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="🏆 The Completionist">
+            <CaseStudyParagraph>
+              <strong>"Achievement Hunter"</strong><br/>
+              18-35, plays 30+ hours/week<br/><br/>
+              <strong>Pain Point:</strong> Needs comprehensive guides for 100%<br/>
+              <strong>Need:</strong> Detailed checklists, missables, build optimization<br/>
+              <strong>Tier:</strong> Vanguard Pro ($20/year)
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+        </CaseStudyCardGrid>
+      </CaseStudySection>
+
+      {/* Feature Specification */}
+      <CaseStudySection title="Feature Specification">
+        <CaseStudyParagraph lead>
+          I designed and shipped 15+ core features with clear tier differentiation, 
+          achieving 95%+ feature completion across all planned functionality.
+        </CaseStudyParagraph>
+
+        <CaseStudyCardGrid columns={2}>
+          <CaseStudyCard title="Core Features (All Tiers)">
+            <CaseStudyList items={[
+              { title: 'Game Detection', description: 'Automatic identification from screenshots' },
+              { title: 'Screenshot Analysis', description: 'AI-powered context understanding' },
+              { title: 'Game Tabs', description: 'Organized conversations per game' },
+              { title: 'PC-to-Mobile Sync', description: 'Seamless cross-device experience' },
+              { title: 'Progress Tracking', description: 'Remember where you are in each game' },
+              { title: 'Playing/Planning Modes', description: 'Different assistance styles' },
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Pro Features">
+            <CaseStudyList items={[
+              { title: 'Insight Subtabs', description: 'Auto-generated game insights panels' },
+              { title: 'Google Search Grounding', description: 'Real-time web information' },
+              { title: '1,583 text queries/mo', description: 'vs 55 for free tier' },
+              { title: '328 image queries/mo', description: 'vs 25 for free tier' },
+              { title: 'Ad-Free Experience', description: 'No interruptions' },
+            ]} />
+          </CaseStudyCard>
+        </CaseStudyCardGrid>
 
         <CaseStudyImage
           src="/otagon/aiprocessing.png"
-          alt="Otagon Architecture Diagram"
+          alt="Screenshot Analysis Flow"
           caption="The AI processing pipeline that powers real-time screenshot analysis"
         />
-
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Frontend">
-            <CaseStudyList items={[
-              'React 19.1 with TypeScript',
-              'Vite 6.2 for build optimization',
-              'Tailwind CSS design system',
-              'PWA with service worker',
-            ]} />
-          </CaseStudyCard>
-          
-          <CaseStudyCard title="Backend & Database">
-            <CaseStudyList items={[
-              'Supabase for auth & real-time DB',
-              'Express.js API server',
-              'PostgreSQL with 12 tables',
-              'Row-Level Security (RLS)',
-            ]} />
-          </CaseStudyCard>
-          
-          <CaseStudyCard title="AI Integration">
-            <CaseStudyList items={[
-              'Google Gemini 2.5 (Flash + Pro)',
-              'Image processing (10 images/context)',
-              'Context management (20 messages)',
-              'Intelligent response caching',
-            ]} />
-          </CaseStudyCard>
-          
-          <CaseStudyCard title="Key Features">
-            <CaseStudyList items={[
-              'Real-time screenshot analysis',
-              'Cross-device synchronization',
-              'Offline-first architecture',
-              'Tier-based user management',
-            ]} />
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
       </CaseStudySection>
 
-      {/* Key Features */}
-      <CaseStudySection title="Key Features I Built">
+      {/* Feature Deep Dives */}
+      <CaseStudySection title="Feature Deep Dives">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="🤖 Intelligent Screenshot Analysis">
-            Real-time game identification from screenshots, progress estimation, and spoiler-free 
-            assistance. The AI creates context-aware hints based on exactly where you are in the game.
+          <CaseStudyCard title="🔍 Screenshot Analysis & Game Detection">
+            <CaseStudyParagraph>
+              When users upload a screenshot, the AI (Gemini 2.5 Flash) analyzes it to extract 
+              game title, location, enemies, and UI elements. It generates structured OTAKON tags 
+              including game ID, confidence level, genre, progress estimate, and current objective.
+            </CaseStudyParagraph>
+            <CaseStudyParagraph>
+              <strong>Success Metrics:</strong> 95%+ game detection accuracy, &lt;3 second response time, 
+              4.5+ star user satisfaction.
+            </CaseStudyParagraph>
           </CaseStudyCard>
           
-          <CaseStudyCard title="💬 Three AI Personas">
-            Screenshot Analyst for image-based help, Game Companion for ongoing guidance, and 
-            General Assistant for everything else. Each has distinct personality and capabilities.
+          <CaseStudyCard title="📁 Dynamic Game Tabs & Subtabs">
+            <CaseStudyParagraph>
+              Pro users get organized tabs for each game with auto-generated insight panels. 
+              Subtabs vary by genre—Action RPGs get "Story So Far," "Build Optimization," and 
+              "Boss Strategy," while FPS games get "Loadout Analysis" and "Map Strategies."
+            </CaseStudyParagraph>
+            <CaseStudyParagraph>
+              <strong>Technical:</strong> Dual-write system (JSONB + normalized table) with 
+              background AI generation and progressive updates from conversation context.
+            </CaseStudyParagraph>
           </CaseStudyCard>
           
-          <CaseStudyCard title="👥 Tiered User System">
-            Free tier with 55 text queries and 25 images monthly. Pro tier scales to 1,583 text 
-            queries and 328 images. Built a sustainable freemium model from day one.
+          <CaseStudyCard title="🎮 Playing vs. Planning Mode">
+            <CaseStudyParagraph>
+              <strong>Playing Mode:</strong> Concise, actionable tips for immediate tactical help. 
+              "How do I beat this boss NOW?"
+            </CaseStudyParagraph>
+            <CaseStudyParagraph>
+              <strong>Planning Mode:</strong> Detailed strategic advice for session preparation. 
+              "What build should I prepare?" Includes auto-generated session summaries when switching modes.
+            </CaseStudyParagraph>
           </CaseStudyCard>
           
-          <CaseStudyCard title="📱 Progressive Web App">
-            Offline-first with IndexedDB fallback, background sync, installable with app shortcuts, 
-            and cross-device synchronization. Works like a native app, deploys like a website.
+          <CaseStudyCard title="📲 PC-to-Mobile Sync">
+            <CaseStudyParagraph>
+              PC gamers can use their phone as a second screen for AI assistance without alt-tabbing. 
+              PC app generates a 6-digit code, mobile app connects via WebSocket, enabling hands-free 
+              screenshot capture and analysis.
+            </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
@@ -203,125 +269,284 @@ export const Otagon = () => {
         />
       </CaseStudySection>
 
-      {/* Design-Driven Development */}
-      <CaseStudySection title="Bridging Design & Development">
+      {/* Technical Architecture */}
+      <CaseStudySection title="Technical Architecture">
         <CaseStudyParagraph lead>
-          As a designer who codes, I made architecture decisions driven by UX principles rather 
-          than pure engineering patterns. This "design-thinking-meets-code" approach resulted in 
-          a system that's both performant and maintainable.
+          I collaborated with the engineering team to design a scalable architecture handling 
+          real-time AI processing across frontend, backend, and AI layers.
         </CaseStudyParagraph>
 
-        <CaseStudyList items={[
-          { 
-            title: 'React 19 Concurrent Rendering', 
-            description: 'Chose for smooth AI response streaming—users see typing indicators instead of loading spinners, maintaining conversational flow.' 
-          },
-          { 
-            title: 'Component Composition', 
-            description: 'Built 40+ reusable components that map directly to Figma designs—developers and designers speak the same language.' 
-          },
-          { 
-            title: 'Bundle Optimization', 
-            description: 'Aggressively optimized to 1.84MB because gamers need instant access on mobile. User experience drove technical constraints.' 
-          },
-          { 
-            title: 'Behavior-Based Caching', 
-            description: 'Designed caching rules based on how users actually interact (frequent screenshot re-analysis), not generic TTL rules.' 
-          },
-          { 
-            title: 'Error States as Design Moments', 
-            description: 'Every error condition has a designed fallback with actionable next steps—failures are part of the journey, not edge cases.' 
-          },
-        ]} />
+        <CaseStudyCardGrid columns={3}>
+          <CaseStudyCard title="Frontend">
+            <CaseStudyList items={[
+              'React + TypeScript',
+              'PWA with Service Worker',
+              'Tailwind CSS Design System',
+              'Offline-first with IndexedDB',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Backend">
+            <CaseStudyList items={[
+              'Supabase (Auth, DB, Storage)',
+              'Edge Functions for AI proxy',
+              'PostgreSQL with RLS',
+              'Real-time subscriptions',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="AI Layer">
+            <CaseStudyList items={[
+              'Google Gemini 2.5 Flash',
+              'Image + Text analysis',
+              'Web search grounding (Pro)',
+              'OTAKON structured output',
+            ]} />
+          </CaseStudyCard>
+        </CaseStudyCardGrid>
+
+        <CaseStudyCard title="Key Technical Decisions">
+          <CaseStudyList items={[
+            { title: 'PWA over native app', description: 'Faster iteration, cross-platform—2-week launch vs. 2-month' },
+            { title: 'Supabase for backend', description: 'Real-time, auth, storage in one—50% reduced complexity' },
+            { title: 'Edge Functions for AI', description: 'Security, rate limiting—API keys protected' },
+            { title: 'OTAKON tag system', description: 'Structured AI responses—reliable data extraction' },
+          ]} />
+        </CaseStudyCard>
       </CaseStudySection>
 
-      {/* Results */}
+      {/* Challenges & Solutions */}
+      <CaseStudySection title="Challenges & Solutions">
+        <CaseStudyCardGrid columns={2}>
+          <CaseStudyCard title="Challenge: AI Response Quality">
+            <CaseStudyParagraph>
+              <strong>Problem:</strong> Generic responses that don't feel game-specific.
+            </CaseStudyParagraph>
+            <CaseStudyParagraph>
+              <strong>Solution:</strong> Implemented OTAKON tag system for structured extraction, 
+              added Google Search grounding for current game info, created genre-specific prompt 
+              templates, and progressive subtab updates to maintain context.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Challenge: Screenshot Misclassification">
+            <CaseStudyParagraph>
+              <strong>Problem:</strong> AI creating tabs for non-gameplay screenshots (menus, launchers).
+            </CaseStudyParagraph>
+            <CaseStudyParagraph>
+              <strong>Solution:</strong> Added IS_FULLSCREEN tag to detect actual gameplay, defined 
+              clear rules for in-game vs. main menus, pre-game screens stay in Game Hub. 
+              Reduced false tab creation by 80%.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Challenge: Message Migration">
+            <CaseStudyParagraph>
+              <strong>Problem:</strong> Messages lost during tab creation when background processes competed.
+            </CaseStudyParagraph>
+            <CaseStudyParagraph>
+              <strong>Solution:</strong> Implemented atomic message migration service, added 
+              conversation existence checks, fresh data reads after async operations, and 
+              dual-write system for subtabs.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Challenge: Subtab Generation Timing">
+            <CaseStudyParagraph>
+              <strong>Problem:</strong> Empty subtabs appearing because AI generation is async.
+            </CaseStudyParagraph>
+            <CaseStudyParagraph>
+              <strong>Solution:</strong> Template subtabs created immediately with "Loading..." state, 
+              background AI generation populates content, polling mechanism refreshes UI, 
+              fallback content from initial AI response.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+        </CaseStudyCardGrid>
+      </CaseStudySection>
+
+      {/* Go-to-Market Strategy */}
+      <CaseStudySection title="Go-to-Market Strategy">
+        <CaseStudyParagraph lead>
+          I developed a phased launch strategy with a freemium pricing model designed to 
+          convert users through clear value differentiation.
+        </CaseStudyParagraph>
+
+        <CaseStudyCardGrid columns={3}>
+          <CaseStudyCard title="Phase 1: Early Access (Current)">
+            <CaseStudyList items={[
+              'Invite-only waitlist',
+              '7-day Pro trial for all new users',
+              'PC companion app launched',
+              'Gather feedback and iterate',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Phase 2: Public Beta">
+            <CaseStudyList items={[
+              'Open registration',
+              'Stripe payment integration',
+              'Marketing campaigns',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Phase 3: Full Launch">
+            <CaseStudyList items={[
+              'Mobile app store listings',
+              'Influencer partnerships',
+              'Expanded game coverage',
+            ]} />
+          </CaseStudyCard>
+        </CaseStudyCardGrid>
+
+        <CaseStudyCard title="Pricing Strategy">
+          <CaseStudyList items={[
+            { title: 'Free ($0)', description: 'Try the product, limited usage—55 text + 25 image queries/month' },
+            { title: 'Pro ($3.99/mo)', description: 'Serious gamers, full features—1,583 text + 328 image queries/month' },
+            { title: 'Vanguard ($20/year)', description: 'Early adopters, lifetime price lock—$1.67/month effective (66% cheaper)' },
+          ]} />
+          <CaseStudyParagraph>
+            <strong>Vanguard Psychology:</strong> "Founding member" exclusivity creates urgency, 
+            lifetime price lock drives early conversion, significant savings vs. monthly Pro.
+          </CaseStudyParagraph>
+        </CaseStudyCard>
+      </CaseStudySection>
+
+      {/* Metrics & Analytics */}
+      <CaseStudySection title="Metrics & Analytics">
+        <CaseStudyParagraph lead>
+          I established a metrics framework centered on our North Star Metric: 
+          Active Gaming Sessions per User per Week.
+        </CaseStudyParagraph>
+
+        <CaseStudyCard title="Key Performance Indicators">
+          <CaseStudyList items={[
+            { title: 'Acquisition', description: '500 weekly new users target' },
+            { title: 'Activation', description: '60% first screenshot analysis rate' },
+            { title: 'Retention', description: '40% D7 retention target' },
+            { title: 'Revenue', description: '5% Pro conversion rate target' },
+            { title: 'Engagement', description: '5+ queries per session target' },
+          ]} />
+        </CaseStudyCard>
+      </CaseStudySection>
+
+      {/* Results & Impact */}
       <CaseStudySection title="Results & Impact">
         <CaseStudyStatsGrid
           stats={[
-            { value: '100x', label: 'Faster Loading', sublabel: '5-10s → 0.1s' },
-            { value: '85%', label: 'Cost Reduction', sublabel: 'API Optimization' },
-            { value: '97→8', label: 'Services Consolidated', sublabel: 'Architecture Cleanup' },
-            { value: '1.84MB', label: 'Bundle Size', sublabel: 'Mobile Optimized' },
+            { value: '15+', label: 'Features Shipped', sublabel: 'End-to-end' },
+            { value: '3', label: 'User Tiers', sublabel: 'Differentiated value' },
+            { value: '95%+', label: 'Feature Completion', sublabel: 'Full delivery' },
+            { value: '<3s', label: 'Response Time', sublabel: 'AI processing' },
           ]}
         />
 
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Performance Wins">
+          <CaseStudyCard title="Quantitative Results">
             <CaseStudyList items={[
-              '100x faster insight loading (5-10s → 0.1s)',
-              '85% reduction in API costs via intelligent caching',
-              '50-80% faster responses through parallel operations',
-              '60-70% reduction in memory usage',
+              'Built fully functional PWA serving 3 user tiers',
+              'Implemented 15+ core features with AI integration',
+              'Designed end-to-end user journeys with 95%+ completion',
+              'Established scalable architecture for real-time AI processing',
+              '95%+ uptime maintained',
             ]} />
           </CaseStudyCard>
           
-          <CaseStudyCard title="Code Quality">
+          <CaseStudyCard title="Technical Achievements">
             <CaseStudyList items={[
-              '97 services consolidated into 8 core services',
-              'Zero TypeScript errors with full type safety',
-              'Comprehensive error handling with fallbacks',
-              '95+ Lighthouse performance score',
+              'Idempotent tab creation (no duplicates)',
+              'Atomic message migration (no data loss)',
+              'Dual-write subtab system (migration-ready)',
+              'Comprehensive caching strategy',
+              'Zero critical bugs in production',
             ]} />
           </CaseStudyCard>
         </CaseStudyCardGrid>
       </CaseStudySection>
 
-      {/* Learnings */}
-      <CaseStudySection title="What I Learned">
-        <CaseStudyParagraph lead>
-          This project fundamentally changed how I think about the designer-developer relationship. 
-          The biggest insight: design thinking (simplicity, user-centricity, iterative refinement) 
-          applies to code architecture as much as UI design.
-        </CaseStudyParagraph>
-
+      {/* Lessons Learned */}
+      <CaseStudySection title="Lessons Learned">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Technical Insights">
+          <CaseStudyCard title="What Worked Well">
             <CaseStudyList items={[
-              { title: 'Less is More', description: 'Architectural simplicity beats theoretical scalability' },
-              { title: 'Performance Psychology', description: 'Users perceive 0.1s as instant, 1s as delayed' },
-              { title: 'Type Safety Saves Nights', description: 'TypeScript prevents 3am debugging sessions' },
-              { title: 'Caching is King', description: '85% savings came from understanding user patterns' },
+              { title: 'Structured AI responses (OTAKON tags)', description: 'Made AI output predictable and parseable' },
+              { title: 'Progressive enhancement', description: 'Free users get value, Pro users get more' },
+              { title: 'Edge Function proxy', description: 'Kept API keys secure, enabled rate limiting' },
+              { title: 'Playing/Planning modes', description: 'Simple UX that maps to user mental models' },
             ]} />
           </CaseStudyCard>
           
           <CaseStudyCard title="What I'd Do Differently">
             <CaseStudyList items={[
-              { title: 'Start Simple', description: 'Begin with monolith, extract services only when needed' },
-              { title: 'Test Earlier', description: 'AI response quality testing should happen week 1' },
-              { title: 'Document Decisions', description: 'Decision logs explaining WHY save refactoring time' },
-              { title: 'Monitor from Day 1', description: 'Analytics validate assumptions about behavior' },
+              { title: 'Start with normalized database', description: 'Dual-write was necessary but complex' },
+              { title: 'Earlier user testing', description: 'Some features needed iteration post-build' },
+              { title: 'Better loading states', description: 'Users need more feedback during async operations' },
+              { title: 'Mobile-first from day one', description: 'Some desktop patterns don\'t translate well' },
             ]} />
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyQuote>
-          The revelation: I over-engineered because I thought "that's what real engineers do." 
-          The best engineers I've since worked with prioritize simplicity above all else. 
-          Consolidating 97 services into 8 wasn't just optimization—it was learning to think clearly.
+          AI products need structured output formats. Gaming users expect instant responses. 
+          Freemium conversion requires clear value gaps. Background processes need robust error handling.
         </CaseStudyQuote>
       </CaseStudySection>
 
-      {/* What's Next */}
-      <CaseStudySection title="What's Next">
+      {/* Future Roadmap */}
+      <CaseStudySection title="Future Roadmap">
         <CaseStudyParagraph lead>
-          Otagon is live and growing. The next chapter focuses on user acquisition and 
-          feature refinement based on real usage data.
+          The product roadmap focuses on payment integration, platform expansion, and 
+          enhanced AI capabilities.
         </CaseStudyParagraph>
 
-        <CaseStudyList items={[
-          'User acquisition through gaming Discord communities',
-          'A/B testing different AI response tones and personalities',
-          'Analytics dashboards to validate which features drive retention',
-          'Partnerships with gaming content creators for co-marketing',
-        ]} />
+        <CaseStudyCardGrid columns={3}>
+          <CaseStudyCard title="Q1 2025">
+            <CaseStudyList items={[
+              'Stripe payment integration',
+              'Mobile app store deployment',
+              'Ad monetization for free tier',
+              'Expanded game database',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Q2 2025">
+            <CaseStudyList items={[
+              'Voice input for hands-free queries',
+              'Game progress auto-detection',
+              'Community features (shared builds)',
+              'Achievement tracking integration',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Q3 2025">
+            <CaseStudyList items={[
+              'Multi-language support',
+              'Console screenshot capture',
+              'Real-time game event detection',
+              'Personalized recommendations',
+            ]} />
+          </CaseStudyCard>
+        </CaseStudyCardGrid>
+      </CaseStudySection>
 
-        <CaseStudyParagraph>
-          This project proved that designers can ship production-grade code—and that the 
-          design thinking we bring to UI problems is equally valuable for technical architecture. 
-          The lines between "design" and "development" are more blurred than ever, and that's 
-          exactly where the interesting work happens.
-        </CaseStudyParagraph>
+      {/* Technology Stack */}
+      <CaseStudySection title="Technology Stack">
+        <CaseStudyCardGrid columns={2}>
+          <CaseStudyCard title="Frontend">
+            <CaseStudyList items={[
+              'React, TypeScript, Tailwind CSS, Vite',
+              'PWA with Service Worker',
+              'IndexedDB for offline support',
+            ]} />
+          </CaseStudyCard>
+          
+          <CaseStudyCard title="Backend & AI">
+            <CaseStudyList items={[
+              'Supabase (PostgreSQL, Auth, Storage, Edge Functions)',
+              'Google Gemini 2.5 Flash (with Search Grounding)',
+              'GitHub Pages (static), Supabase (dynamic)',
+            ]} />
+          </CaseStudyCard>
+        </CaseStudyCardGrid>
       </CaseStudySection>
     </CaseStudyLayout>
   );
