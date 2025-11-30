@@ -138,6 +138,20 @@
       overflow: auto;
     }
   }
+  
+  /* Sidebar height fallback for browsers that don't support dvh */
+  .sidebar {
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height - adjusts for browser UI */
+  }
+  
+  /* Ensure sidebar content fits without scrolling on mobile */
+  @media (max-width: 639px) {
+    .sidebar {
+      height: -webkit-fill-available;
+      height: 100dvh;
+    }
+  }
 }
 
 @layer components {
