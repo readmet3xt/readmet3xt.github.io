@@ -19,7 +19,7 @@ export const ProjectsGrid = () => {
       
       <ProjectCard
         href="/otagon"
-        title="Otagon AI Gaming Companion"
+        title="Otagon Gaming Companion"
         description="AI-Powered Gaming Assistant"
         image={otagonImage}
         className="reveal-on-scroll"

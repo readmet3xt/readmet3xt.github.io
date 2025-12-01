@@ -15,7 +15,7 @@ import {
 export const Otagon = () => {
   return (
     <CaseStudyLayout
-      title="Otagon AI"
+      title="Otagon"
       description="AI-Powered Gaming Companion Platform - Full product ownership from conception to launch. Built with React, TypeScript, and Google Gemini AI."
       externalLink="https://otagon.app"
       externalLabel="Visit otagon.app"
@@ -32,7 +32,7 @@ export const Otagon = () => {
           'Supabase',
           'Google Gemini',
         ]}
-        intro="Otagon AI is an AI-powered gaming companion that helps gamers get real-time assistance, strategy tips, and game-specific insights while playing. As the Product Manager with full ownership, I led the product from conception to launch over a 6-month development cycle, building a fully functional PWA serving 3 user tiers with 15+ core features and AI integration."
+        intro="Otagon is an AI-powered gaming companion that helps gamers get real-time assistance, strategy tips, and game-specific insights while playing. As the Product Manager with full ownership, I led the product from conception to launch over a 6-month development cycle, building a fully functional PWA serving 3 user tiers with 15+ core features and AI integration."
         externalLink="https://otagon.app"
         externalLabel="otagon.app"
         overview={{
@@ -56,7 +56,7 @@ export const Otagon = () => {
           ],
         }}
         heroImage="/otagon/workinprogess.png"
-        heroImageAlt="Otagon AI Gaming Companion Interface"
+        heroImageAlt="Otagon Gaming Companion Interface"
       />
 
       {/* Problem Statement */}
