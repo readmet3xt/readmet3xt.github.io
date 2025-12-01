@@ -12,7 +12,7 @@ const defaultMeta = {
   title: 'Amaan Khan - Product Designer Portfolio',
   description: 'Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.',
   image: 'https://storage.googleapis.com/gpt-engineer-file-uploads/3DwcQ4iImQTnMy6jZLwBSnPzKM32/social-images/social-1758010556926-IMG_7524 1.png',
-  url: 'https://amaan-portfolio.lovable.app/',
+  url: 'https://readmet3xt.github.io/',
   type: 'website',
 };
 
