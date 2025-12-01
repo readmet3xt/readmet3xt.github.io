@@ -14,7 +14,10 @@ import {
 
 export const KoinBasket = () => {
   return (
-    <CaseStudyLayout title="KoinBasket">
+    <CaseStudyLayout 
+      title="KoinBasket"
+      description="From One-Week MVP to 70,000 Users - How I built a crypto investing platform that democratized portfolio diversification as the founding designer."
+    >
       <CaseStudyHero
         title="From One-Week MVP to 70,000 Users"
         subtitle="How I built a crypto investing platform that democratized portfolio diversification"

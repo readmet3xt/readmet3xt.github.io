@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { PageLayout } from '@/components/PageLayout';
 import { ProjectModal } from '@/components/ProjectModal';
 import { TimelineItem } from '@/components/TimelineItem';
-import { AboutProjectCard } from '@/components/AboutProjectCard';
 import { CopyToast } from '@/components/CopyToast';
 import { useScrollReveal } from '@/components/ScrollReveal';
 import { CertificatesCarousel } from '@/components/CertificatesCarousel';
@@ -153,6 +152,8 @@ export const About = () => {
               title="Founder & Product Designer" 
               company="Otagon · Hyderabad, India" 
               period="Aug 2025 - Present"
+              actionLabel="View Case Study →"
+              onAction={() => navigateToProject('/otagon')}
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>Building Otagon, an AI-powered gaming companion that provides real-time screenshot analysis and context-aware gaming assistance.</li>
@@ -165,11 +166,13 @@ export const About = () => {
             
             <TimelineItem 
               title="User Experience Consultant (Contract)" 
-              company="Stealth AI Startup · Freelance" 
+              company="JollyAI · Freelance" 
               period="Mar 2025 - Apr 2025"
+              actionLabel="View Case Study →"
+              onAction={() => navigateToProject('/jollyai')}
             >
               <ul className="list-disc list-inside space-y-2">
-                <li>NDA - Independently drove the UX design process, from initial concepts to interactive prototypes, for a generative AI tool</li>
+                <li>Independently drove the UX design process, from initial concepts to interactive prototypes, for a generative AI tool</li>
               </ul>
             </TimelineItem>
             
@@ -179,6 +182,8 @@ export const About = () => {
               title="Senior UX Designer" 
               company="KoinBasket | Remote, India" 
               period="June 2024 - Mar 2025"
+              actionLabel="View Case Study →"
+              onAction={() => navigateToProject('/koinbasket')}
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>Led the strategic rebrand and UI rework for web and mobile, transitioning to a cleaner, more professional aesthetic to enhance user trust.</li>
@@ -194,6 +199,8 @@ export const About = () => {
               title="Founding Designer" 
               company="KoinBasket | Remote, India" 
               period="October 2022 - June 2023"
+              actionLabel="View Case Study →"
+              onAction={() => navigateToProject('/koinbasket')}
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>As the solo designer, led the strategy and design of the MVP in a one-week sprint, growing the user base from 0 to 70,000.</li>
@@ -209,6 +216,8 @@ export const About = () => {
               title="Design Intern" 
               company="Softwire | London, UK" 
               period="July 2022 - August 2022"
+              actionLabel="View Case Study →"
+              onAction={() => navigateToProject('/softwire')}
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>Conducted foundational user research and usability testing for an LNER App Clip, uncovering key insights that directly informed the final UI design.</li>
@@ -238,6 +247,8 @@ export const About = () => {
               title="Pebble (VISA Innovation Centre Project)" 
               company="RCA | London, U.K" 
               period="January 2021 – June 2021"
+              actionLabel="View Case Study →"
+              onAction={() => navigateToProject('/pebble')}
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>Led a service design project focused on enhancing employee well-being and productivity through innovative digital solutions within the VISA Innovation Centre.</li>
@@ -252,6 +263,8 @@ export const About = () => {
               title="Invisible Value Income Program (Fuzzy Design x BCG x RSM Collaboration)" 
               company="RCA | London, U.K" 
               period="October 2020 – December 2020"
+              actionLabel="View Case Study →"
+              onAction={() => navigateToProject('/iviprogram')}
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>Co-created a program aimed at addressing work-life balance disparities for women, utilizing design thinking methodologies.</li>
@@ -267,6 +280,8 @@ export const About = () => {
               title="Stampede" 
               company="RCA | London, U.K" 
               period="January 2019 – March 2019"
+              actionLabel="View Case Study →"
+              onAction={() => navigateToProject('/stampede')}
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>Developed the 'Stampede' workshop methodology, aimed at creating impactful conservation partnerships using core design principles.</li>
@@ -289,31 +304,6 @@ export const About = () => {
             <TimelineItem title="B.E, Mechanical Engineering" company="Osmania University | Hyderabad, India">
               <p></p>
             </TimelineItem>
-          </div>
-        </section>
-
-        {/* Academic Projects */}
-        <section id="projects" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <h2 className="heading-2 mb-2">Academic Projects</h2>
-          <p className="body-base mb-8 max-w-2xl">
-            These academic projects demonstrate my ability to apply design thinking to complex, real-world challenges. Click to learn more.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <AboutProjectCard
-              title="Pebble - Employee Wellbeing"
-              description="VISA Innovation Centre Collaboration"
-              onClick={() => navigateToProject('/pebble')}
-            />
-            <AboutProjectCard
-              title="Invisible Value Income Program"
-              description="BCG & RSM Collaboration"
-              onClick={() => navigateToProject('/iviprogram')}
-            />
-            <AboutProjectCard
-              title="Stampede"
-              description="Airbnb & WWT Collaboration"
-              onClick={() => navigateToProject('/stampede')}
-            />
           </div>
         </section>
 

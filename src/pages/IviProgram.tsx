@@ -14,7 +14,10 @@ import {
 
 export const IviProgram = () => {
   return (
-    <CaseStudyLayout>
+    <CaseStudyLayout
+      title="Invisible Value Income Program"
+      description="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040 - A Core77 Award-winning speculative service design project with BCG & RSM."
+    >
       <CaseStudyHero
         title="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040"
         pills={[

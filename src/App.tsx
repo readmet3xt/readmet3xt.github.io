@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense, useState } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { useVersionCheck } from "@/hooks/useVersionCheck";
@@ -71,25 +72,27 @@ const App = () => {
   }
 
   return (
-    <div className="animate-fade-in">
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          
-          <BrowserRouter>
-            <ScrollToTop />
-            <Suspense fallback={
-              <div className="fixed inset-0 bg-bg-primary z-50 flex items-center justify-center">
-                <div className="w-8 h-8 border-3 border-accent-primary/20 rounded-full border-t-accent-primary animate-spin" />
-              </div>
-            }>
-              <AnimatedRoutes />
-            </Suspense>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </div>
+    <HelmetProvider>
+      <div className="animate-fade-in">
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            
+            <BrowserRouter>
+              <ScrollToTop />
+              <Suspense fallback={
+                <div className="fixed inset-0 bg-bg-primary z-50 flex items-center justify-center">
+                  <div className="w-8 h-8 border-3 border-accent-primary/20 rounded-full border-t-accent-primary animate-spin" />
+                </div>
+              }>
+                <AnimatedRoutes />
+              </Suspense>
+            </BrowserRouter>
+          </TooltipProvider>
+        </QueryClientProvider>
+      </div>
+    </HelmetProvider>
   );
 };
 

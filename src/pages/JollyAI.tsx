@@ -13,7 +13,10 @@ import {
 
 export const JollyAI = () => {
   return (
-    <CaseStudyLayout title="Jolly AI">
+    <CaseStudyLayout 
+      title="Jolly AI"
+      description="Designing Transparency into Legal AI - How I transformed a 'black box' chatbot into a trusted legal workspace through transparency design."
+    >
       <CaseStudyHero
         title="Designing Transparency into Legal AI"
         subtitle="How I transformed a 'black box' chatbot into a trusted legal workspace"

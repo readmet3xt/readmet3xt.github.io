@@ -14,7 +14,10 @@ import {
 
 export const Pebble = () => {
   return (
-    <CaseStudyLayout title="Pebble">
+    <CaseStudyLayout 
+      title="Pebble"
+      description="What If Workplace Happiness Was Designed, Not Hoped For? A VISA-backed virtual companion that transforms how remote teams combat isolation."
+    >
       <CaseStudyHero
         title="What If Workplace Happiness Was Designed, Not Hoped For?"
         subtitle="A VISA-backed virtual companion that transforms how remote teams combat isolation"

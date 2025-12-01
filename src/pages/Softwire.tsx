@@ -14,7 +14,10 @@ import {
 
 export const Softwire = () => {
   return (
-    <CaseStudyLayout title="LNER App Clip">
+    <CaseStudyLayout 
+      title="LNER App Clip"
+      description="Designing for Users Running to Catch Trains - How I led UX design for LNER's instant ticket booking experience during my Softwire internship."
+    >
       <CaseStudyHero
         title="Designing for Users Running to Catch Trains"
         subtitle="How I led UX design for LNER's instant ticket booking experience"

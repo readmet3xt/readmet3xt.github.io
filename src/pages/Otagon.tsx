@@ -16,6 +16,7 @@ export const Otagon = () => {
   return (
     <CaseStudyLayout
       title="Otagon AI"
+      description="AI-Powered Gaming Companion Platform - Full product ownership from conception to launch. Built with React, TypeScript, and Google Gemini AI."
       externalLink="https://otagon.app"
       externalLabel="Visit otagon.app"
     >

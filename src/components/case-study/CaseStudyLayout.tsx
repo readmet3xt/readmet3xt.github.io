@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { PageLayout } from '@/components/PageLayout';
 import { ReadingProgressBar } from './ReadingProgressBar';
+import { SEO } from '@/components/SEO';
 
 interface CaseStudyLayoutProps {
   children: ReactNode;
   title: string;
+  description?: string;
+  image?: string;
   backLink?: string;
   backLabel?: string;
   externalLink?: string;
@@ -50,6 +53,8 @@ const containerVariants = {
 export const CaseStudyLayout = ({
   children,
   title,
+  description,
+  image,
   backLink = '/',
   backLabel = 'Back to Work',
   externalLink,
@@ -57,6 +62,11 @@ export const CaseStudyLayout = ({
 }: CaseStudyLayoutProps) => {
   return (
     <PageLayout className="px-4 sm:px-6 md:px-8 lg:px-12 pt-20 pb-16 sm:pt-24 sm:pb-20 md:pb-24 lg:pt-12 lg:pb-12 overflow-x-hidden">
+      <SEO 
+        title={title} 
+        description={description}
+        image={image}
+      />
       <ReadingProgressBar />
       
       <motion.div

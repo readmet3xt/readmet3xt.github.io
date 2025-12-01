@@ -14,7 +14,10 @@ import {
 
 export const Stampede = () => {
   return (
-    <CaseStudyLayout>
+    <CaseStudyLayout
+      title="Stampede"
+      description="Designing Strategic Partnerships for Conservation Impact - A methodology that transforms random conservation partnerships into designed collaborations with Airbnb & WWT."
+    >
       <CaseStudyHero
         title="Stampede: Designing Strategic Partnerships for Conservation Impact"
         pills={[
