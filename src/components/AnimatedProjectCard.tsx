@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 
 interface AnimatedProjectCardProps {
@@ -11,6 +12,9 @@ interface AnimatedProjectCardProps {
   summary?: string;
   tags?: string[];
 }
+
+// Create motion-enabled Link component
+const MotionLink = motion(Link);
 
 export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags }: AnimatedProjectCardProps) => {
   const cardRef = useRef<HTMLAnchorElement>(null);
@@ -43,11 +47,23 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
   }, [images.length, currentImageIndex, images]);
 
   return (
-    <Link
+    <MotionLink
       ref={cardRef}
       to={href}
-      className={`project-card reveal-on-scroll rounded-xl overflow-hidden group bg-card block min-h-[340px] flex flex-col w-full max-w-full ${className}`}
+      className={`project-card rounded-xl overflow-hidden group bg-card block min-h-[340px] flex flex-col w-full max-w-full ${className}`}
       aria-label={`View ${title} project details`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      whileHover={{
+        scale: 1.02,
+        transition: { duration: 0.2, ease: "easeOut" }
+      }}
+      whileTap={{
+        scale: 0.98,
+        transition: { duration: 0.1 }
+      }}
     >
       <div className="relative w-full h-48 sm:h-52 flex-shrink-0 overflow-hidden">
         {images.map((image, index) => (
@@ -81,6 +97,6 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
           </div>
         )}
       </div>
-    </Link>
+    </MotionLink>
   );
 };

@@ -22,7 +22,7 @@ export const ProjectsGrid = () => {
         title="Otagon Gaming Companion"
         description="AI-Powered Gaming Assistant"
         image={otagonImage}
-        className="reveal-on-scroll"
+        className=""
         summary="Built a sophisticated AI gaming companion with real-time screenshot analysis, intelligent conversation, and personalized gaming insights. Achieved 100x performance improvements and 85% cost reduction through intelligent caching."
         tags={["React TypeScript", "AI/ML", "PWA", "Supabase"]}
       />
@@ -32,7 +32,7 @@ export const ProjectsGrid = () => {
         title="Jolly AI"
         description="Transparent Legal Assistant"
         image={jollyAiImage}
-        className="reveal-on-scroll"
+        className=""
         summary="Designed an AI assistant for lawyers that visualizes reasoning processes, providing trust through transparency and precise control over legal tone"
         tags={["Legal Tech", "AI UX", "Transparency Design"]}
       />
@@ -42,7 +42,7 @@ export const ProjectsGrid = () => {
         title="KoinBasket"
         description="Trading Platform & Mobile App"
         images={[koinbasket1, koinbasket2]}
-        className="reveal-on-scroll"
+        className=""
         summary="Led design evolution from MVP to market leader, growing from 0 to 70,000 users through strategic UX and live trading platform"
         tags={["Fintech", "MVP Design", "Rebranding"]}
       />
@@ -52,7 +52,7 @@ export const ProjectsGrid = () => {
         title="Softwire"
         description="LNER App Clip"
         image={softwireImage}
-        className="reveal-on-scroll"
+        className=""
         summary="Designed streamlined ticket booking experience using Apple's App Clip technology for stress-free last-minute train travel"
         tags={["App Clip", "Prototyping", "Usability Testing"]}
       />
@@ -62,7 +62,7 @@ export const ProjectsGrid = () => {
         title="Pebble"
         description="Employee Wellbeing Service"
         image={pebbleImage}
-        className="reveal-on-scroll"
+        className=""
         summary="Created virtual companion service to combat workplace stress and foster connection in remote work environments"
         tags={["Service Design", "Employee Wellbeing", "Remote Work"]}
       />
@@ -72,7 +72,7 @@ export const ProjectsGrid = () => {
         title="Invisible Value Income Program"
         description="Social Impact Design"
         image={iviImage}
-        className="reveal-on-scroll"
+        className=""
         summary="Designed inclusive financial service addressing systemic economic exclusion through human-centered design approach"
         tags={["Social Impact", "Inclusive Design", "Speculative Design"]}
       />

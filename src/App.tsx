@@ -1,14 +1,15 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { memo, lazy, Suspense, useState } from 'react';
+import { PageLayout } from '@/components/PageLayout';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { lazy, Suspense, useState } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { useVersionCheck } from "@/hooks/useVersionCheck";
-import { AnimatePresence } from "framer-motion";
 
 import Index from "./pages/Index";
 
@@ -38,28 +39,36 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Index />} />
-        <Route path="/play" element={<Play />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/koinbasket" element={<KoinBasket />} />
-        <Route path="/softwire" element={<Softwire />} />
-        <Route path="/pebble" element={<Pebble />} />
-        <Route path="/iviprogram" element={<IviProgram />} />
-        <Route path="/stampede" element={<Stampede />} />
-        <Route path="/otagon" element={<Otagon />} />
-        <Route path="/jollyai" element={<JollyAI />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="w-full h-full"
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Index />} />
+          <Route path="/play" element={<Play />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/koinbasket" element={<KoinBasket />} />
+          <Route path="/softwire" element={<Softwire />} />
+          <Route path="/pebble" element={<Pebble />} />
+          <Route path="/iviprogram" element={<IviProgram />} />
+          <Route path="/stampede" element={<Stampede />} />
+          <Route path="/otagon" element={<Otagon />} />
+          <Route path="/jollyai" element={<JollyAI />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </motion.div>
     </AnimatePresence>
   );
 };
 
 const App = () => {
   const [showLoader, setShowLoader] = useState(true);
-  
+
   // Check for version updates periodically
   useVersionCheck();
 
@@ -78,7 +87,7 @@ const App = () => {
           <TooltipProvider>
             <Toaster />
             <Sonner />
-            
+
             <BrowserRouter>
               <ScrollToTop />
               <Suspense fallback={

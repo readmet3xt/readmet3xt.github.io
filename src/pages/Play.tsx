@@ -57,7 +57,7 @@ export const Play = () => {
       <p className="text-lg font-mono mb-12 text-text-secondary">
         A collection of art, doodles, & other things I've made for fun.
       </p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         {doodleImages.map((image, index) => (
           <ImageGridItem

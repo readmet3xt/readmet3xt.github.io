@@ -29,7 +29,7 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
     <MotionLink
       ref={cardRef}
       to={href}
-      className={`project-card reveal-on-scroll rounded-xl overflow-hidden group bg-card block min-h-[340px] flex flex-col w-full max-w-full ${className}`}
+      className={`project-card rounded-xl overflow-hidden group bg-card block min-h-[340px] flex flex-col w-full max-w-full ${className}`}
       aria-label={`View ${title} project details`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
