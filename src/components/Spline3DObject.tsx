@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useCallback } from 'react';
 
 const LoadingSpinner = () => (
@@ -19,7 +19,7 @@ const ErrorFallback = ({ onRetry }: { onRetry: () => void }) => (
       <p className="text-text-secondary">3D Scene Unavailable</p>
       <p className="text-xs text-text-secondary/60 mt-1">Interactive content will load here</p>
     </div>
-    <button 
+    <button
       onClick={onRetry}
       className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm"
     >
@@ -39,7 +39,7 @@ export const Spline3DObject = ({ mousePosition }: { mousePosition?: { x: number;
     try {
       setIsLoading(true);
       setHasError(false);
-      
+
       const SplineModule = await import('@splinetool/react-spline');
       setSplineComponent(() => SplineModule.default);
     } catch (error) {
@@ -55,7 +55,7 @@ export const Spline3DObject = ({ mousePosition }: { mousePosition?: { x: number;
     if (splineInstance && mousePosition) {
       const x = (mousePosition.x / window.innerWidth) * 2 - 1;
       const y = -(mousePosition.y / window.innerHeight) * 2 + 1;
-      
+
       if (splineInstance.scene && splineInstance.scene.children[0]) {
         const object = splineInstance.scene.children[0];
         object.rotation.y = x * 0.2;
@@ -79,7 +79,7 @@ export const Spline3DObject = ({ mousePosition }: { mousePosition?: { x: number;
 
   const handleSplineLoad = useCallback((spline: any) => {
     setSplineInstance(spline);
-    
+
     // Zoom out the camera much further to show the complete scene
     if (spline.camera) {
       spline.camera.position.set(0, 0, 25); // Move camera much further back

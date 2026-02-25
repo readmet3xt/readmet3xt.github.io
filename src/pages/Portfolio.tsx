@@ -1,4 +1,5 @@
 import { memo, lazy, Suspense } from 'react';
+import { motion } from 'framer-motion';
 import { PageLayout } from '@/components/PageLayout';
 import { HeroSection } from '@/components/HeroSection';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
@@ -7,7 +8,7 @@ import { useScrollReveal } from '@/components/ScrollReveal';
 // Lazy load testimonials carousel for better performance  
 const TestimonialsCarousel = lazy(() => import('@/components/TestimonialsCarousel').then(m => ({ default: m.TestimonialsCarousel })));
 
-const Portfolio = memo(() => {
+export const Portfolio = memo(() => {
   useScrollReveal();
 
   return (
@@ -30,5 +31,3 @@ const Portfolio = memo(() => {
 });
 
 Portfolio.displayName = 'Portfolio';
-
-export { Portfolio };

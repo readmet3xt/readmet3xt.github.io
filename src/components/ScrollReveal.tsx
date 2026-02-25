@@ -5,11 +5,18 @@ export const useScrollReveal = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Small delay to ensure DOM is ready after route transition
-    const timeoutId = setTimeout(() => {
-      const scrollElements = document.querySelectorAll('.reveal-on-scroll');
+    let isMounted = true;
+    let observer: IntersectionObserver | null = null;
+    let timeoutId: NodeJS.Timeout | null = null;
 
-      const observer = new IntersectionObserver((entries) => {
+    // Small delay to ensure DOM is ready after route transition
+    timeoutId = setTimeout(() => {
+      if (!isMounted) return;
+
+      const scrollElements = document.querySelectorAll('.reveal-on-scroll');
+      if (scrollElements.length === 0) return;
+
+      observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
@@ -26,14 +33,14 @@ export const useScrollReveal = () => {
         if (rect.top < window.innerHeight) {
           el.classList.add('is-visible');
         }
-        observer.observe(el);
+        if (observer) observer.observe(el);
       });
-
-      return () => {
-        scrollElements.forEach(el => observer.unobserve(el));
-      };
     }, 100);
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      isMounted = false;
+      if (timeoutId) clearTimeout(timeoutId);
+      if (observer) observer.disconnect();
+    };
   }, [pathname]);
 };

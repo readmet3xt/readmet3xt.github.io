@@ -13,8 +13,8 @@ interface AnimatedProjectCardProps {
   tags?: string[];
 }
 
-// Create motion-enabled Link component
-const MotionLink = motion(Link);
+// Create motion-enabled Link component (Framer Motion v11+ syntax)
+const MotionLink = motion.create(Link);
 
 export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags }: AnimatedProjectCardProps) => {
   const cardRef = useRef<HTMLAnchorElement>(null);

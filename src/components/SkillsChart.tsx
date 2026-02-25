@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps, @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from 'react';
 import {
   Chart as ChartJS,
@@ -25,7 +26,7 @@ export const SkillsChart = () => {
   const skillsData = {
     labels: [
       'Product Design',
-      'UX/UI Design', 
+      'UX/UI Design',
       'User Research',
       'Info. Architecture',
       'Interaction Design',
@@ -42,7 +43,7 @@ export const SkillsChart = () => {
   const getChartColors = () => {
     const style = getComputedStyle(document.documentElement);
     const isDark = !document.body.classList.contains('light');
-    
+
     return {
       backgroundColor: 'rgba(255, 71, 87, 0.6)',
       borderColor: '#ff4757',
@@ -55,10 +56,10 @@ export const SkillsChart = () => {
     if (chartRef.current) {
       const colors = getChartColors();
       const chart = chartRef.current;
-      
+
       chart.data.datasets[0].backgroundColor = colors.backgroundColor;
       chart.data.datasets[0].borderColor = colors.borderColor;
-      
+
       if (chart.options.scales?.x?.ticks) {
         chart.options.scales.x.ticks.color = colors.textColor;
       }
@@ -71,14 +72,14 @@ export const SkillsChart = () => {
       if (chart.options.scales?.y?.grid) {
         chart.options.scales.y.grid.color = colors.gridColor;
       }
-      
+
       chart.update();
     }
   };
 
   useEffect(() => {
     updateChartColors();
-    
+
     // Listen for theme changes
     const observer = new MutationObserver(updateChartColors);
     observer.observe(document.body, {
@@ -119,7 +120,7 @@ export const SkillsChart = () => {
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
+          label: function (context: any) {
             return `${context.parsed.x}% proficiency`;
           }
         }

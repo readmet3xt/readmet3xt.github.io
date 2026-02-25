@@ -170,29 +170,26 @@ export const TypewriterAnimation = () => {
       }}
       aria-label="Click to explore projects"
     >
-      <AnimatePresence mode="wait">
-        <motion.p
-          key={currentQuestionIndex}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className={`${fontClasses[currentQuestionIndex]} text-center sm:text-left text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight break-words w-full max-w-full overflow-hidden text-text-primary px-4 sm:px-8 lg:px-12`}
-          aria-live="polite"
-        >
-          {isTypingPrefix ? (
-            <span className="text-accent-primary">
-              {displayText}
-              {!isComplete && <span className="typewriter-cursor"></span>}
-            </span>
-          ) : (
-            <>
-              <span className="text-accent-primary">{PREFIX}</span> {displayText}
-              {!isComplete && <span className="typewriter-cursor"></span>}
-            </>
-          )}
-        </motion.p>
-      </AnimatePresence>
+      <motion.p
+        key={currentQuestionIndex}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className={`${fontClasses[currentQuestionIndex]} text-center sm:text-left text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight break-words w-full max-w-full overflow-hidden text-text-primary px-4 sm:px-8 lg:px-12`}
+        aria-live="polite"
+      >
+        {isTypingPrefix ? (
+          <span className="text-accent-primary">
+            {displayText}
+            {!isComplete && <span className="typewriter-cursor"></span>}
+          </span>
+        ) : (
+          <>
+            <span className="text-accent-primary">{PREFIX}</span> {displayText}
+            {!isComplete && <span className="typewriter-cursor"></span>}
+          </>
+        )}
+      </motion.p>
 
       {/* Scroll indicator for desktop focus */}
       <motion.div
