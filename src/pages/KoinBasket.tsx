@@ -14,9 +14,11 @@ import {
 
 export const KoinBasket = () => {
   return (
-    <CaseStudyLayout 
+    <CaseStudyLayout
       title="KoinBasket"
       description="From One-Week MVP to 70,000 Users - How I built a crypto investing platform that democratized portfolio diversification as the founding designer."
+      externalLink="https://otagon2.github.io/Koinbasket/"
+      externalLabel="KoinBasket"
     >
       <CaseStudyHero
         title="From One-Week MVP to 70,000 Users"
@@ -29,6 +31,8 @@ export const KoinBasket = () => {
           'Rebranding',
         ]}
         intro="When I joined as KoinBasket's founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. One week, one intense sprint, and soon—70,000 users."
+        externalLink="https://otagon2.github.io/Koinbasket/"
+        externalLabel="KoinBasket"
         overview={{
           role: [
             'Founding Designer (MVP phase)',
@@ -53,21 +57,21 @@ export const KoinBasket = () => {
       {/* The Story */}
       <CaseStudySection title="The Origin Story">
         <CaseStudyParagraph lead>
-          Cryptocurrency in 2020 was a labyrinth—complex terminology, overwhelming choices, 
-          and legitimate security fears. New investors faced a steep learning curve just to 
+          Cryptocurrency in 2020 was a labyrinth—complex terminology, overwhelming choices,
+          and legitimate security fears. New investors faced a steep learning curve just to
           make their first purchase, let alone build a diversified portfolio.
         </CaseStudyParagraph>
 
         <CaseStudyParagraph>
-          Our breakthrough insight was radical simplification: curated crypto "baskets." 
-          Instead of forcing users to research hundreds of individual coins, we offered 
-          thematic portfolios—the "G.O.A.T. Basket" (top 5 coins), "NFT Basket," "DeFi 
+          Our breakthrough insight was radical simplification: curated crypto "baskets."
+          Instead of forcing users to research hundreds of individual coins, we offered
+          thematic portfolios—the "G.O.A.T. Basket" (top 5 coins), "NFT Basket," "DeFi
           Basket"—that users could invest in with one click.
         </CaseStudyParagraph>
 
         <CaseStudyQuote author="Core Design Principle">
-          Trust is the ultimate currency in fintech. We adopted a non-custodial model—users 
-          traded through their own Binance or Coinbase accounts, never surrendering control 
+          Trust is the ultimate currency in fintech. We adopted a non-custodial model—users
+          traded through their own Binance or Coinbase accounts, never surrendering control
           of funds to us. This trust-first architecture became our competitive moat.
         </CaseStudyQuote>
       </CaseStudySection>
@@ -75,8 +79,8 @@ export const KoinBasket = () => {
       {/* Phase 1: MVP */}
       <CaseStudySection title="Phase 1: The One-Week MVP">
         <CaseStudyParagraph lead>
-          As the solo founding designer, I had one week to design a fully functional MVP. 
-          No time for perfection—just relentless focus on what would validate our hypothesis: 
+          As the solo founding designer, I had one week to design a fully functional MVP.
+          No time for perfection—just relentless focus on what would validate our hypothesis:
           Can we make crypto investing accessible?
         </CaseStudyParagraph>
 
@@ -89,21 +93,21 @@ export const KoinBasket = () => {
         />
 
         <CaseStudyList items={[
-          { 
-            title: 'Rapid Iteration', 
-            description: 'Balsamiq wireframes → high-fidelity UI in days. Dark theme with vibrant accents established the visual language.' 
+          {
+            title: 'Rapid Iteration',
+            description: 'Balsamiq wireframes → high-fidelity UI in days. Dark theme with vibrant accents established the visual language.'
           },
-          { 
-            title: 'Comprehensive Ownership', 
-            description: 'Beyond UI/UX: custom basket icons, email templates, marketing content, onboarding checklists.' 
+          {
+            title: 'Comprehensive Ownership',
+            description: 'Beyond UI/UX: custom basket icons, email templates, marketing content, onboarding checklists.'
           },
-          { 
-            title: 'Cross-Platform from Day 1', 
-            description: 'Responsive web app plus foundational iOS/Android designs optimized for mobile discovery.' 
+          {
+            title: 'Cross-Platform from Day 1',
+            description: 'Responsive web app plus foundational iOS/Android designs optimized for mobile discovery.'
           },
-          { 
-            title: 'User-Centric Strategy', 
-            description: 'Mapped critical user journeys, designed demo experiences, conducted internal usability sessions.' 
+          {
+            title: 'User-Centric Strategy',
+            description: 'Mapped critical user journeys, designed demo experiences, conducted internal usability sessions.'
           },
         ]} />
 
@@ -121,30 +125,30 @@ export const KoinBasket = () => {
         <CaseStudyCardGrid columns={2}>
           <CaseStudyCard title="🧺 Curated Baskets & SIP">
             <CaseStudyParagraph>
-              Thematic portfolios like "G.O.A.T. Basket" and "NFT Basket" with one-click 
-              investing. Designed Systematic Investment Plans for recurring investments. 
+              Thematic portfolios like "G.O.A.T. Basket" and "NFT Basket" with one-click
+              investing. Designed Systematic Investment Plans for recurring investments.
               Transparent coin breakdown in simple pop-ups.
             </CaseStudyParagraph>
           </CaseStudyCard>
-          
+
           <CaseStudyCard title="🔐 Non-Custodial Integration">
             <CaseStudyParagraph>
-              Clear, simple flows for connecting Coinbase and Binance accounts. Users 
-              never surrendered fund control. Dedicated connection management page for 
+              Clear, simple flows for connecting Coinbase and Binance accounts. Users
+              never surrendered fund control. Dedicated connection management page for
               full account authority.
             </CaseStudyParagraph>
           </CaseStudyCard>
-          
+
           <CaseStudyCard title="📊 Portfolio Tracking">
             <CaseStudyParagraph>
-              Comprehensive holdings breakdown, performance tracking, and complete 
+              Comprehensive holdings breakdown, performance tracking, and complete
               transaction history. Users could see their entire investment picture at a glance.
             </CaseStudyParagraph>
           </CaseStudyCard>
-          
+
           <CaseStudyCard title="🎮 Gamification">
             <CaseStudyParagraph>
-              Crypto Fantasy League: users competed by creating their own baskets. 
+              Crypto Fantasy League: users competed by creating their own baskets.
               Multi-tiered rewards and referral system to drive engagement and education.
             </CaseStudyParagraph>
           </CaseStudyCard>
@@ -154,8 +158,8 @@ export const KoinBasket = () => {
       {/* Phase 2: Scale */}
       <CaseStudySection title="Phase 2: Scaling to Market Leadership">
         <CaseStudyParagraph lead>
-          MVP success created new challenges. 70,000 users validated the concept, but now 
-          we needed to evolve from promising startup to mature, trusted platform. My role 
+          MVP success created new challenges. 70,000 users validated the concept, but now
+          we needed to evolve from promising startup to mature, trusted platform. My role
           evolved too—from solo designer to design leader.
         </CaseStudyParagraph>
 
@@ -171,8 +175,8 @@ export const KoinBasket = () => {
       {/* The Rebrand */}
       <CaseStudySection title="The Complete Rebrand">
         <CaseStudyParagraph lead>
-          I led the complete visual overhaul across web and mobile. We transitioned from 
-          the initial dark theme to a cleaner, lighter aesthetic with green accents—more 
+          I led the complete visual overhaul across web and mobile. We transitioned from
+          the initial dark theme to a cleaner, lighter aesthetic with green accents—more
           professional, more inviting, more trustworthy.
         </CaseStudyParagraph>
 
@@ -188,8 +192,8 @@ export const KoinBasket = () => {
       {/* BitBuddy */}
       <CaseStudySection title="BitBuddy: The Influencer Ecosystem">
         <CaseStudyParagraph lead>
-          Our major strategic move: building a community. I designed BitBuddy as a 
-          two-sided platform—influencers ("Bitpals") create content, users discover 
+          Our major strategic move: building a community. I designed BitBuddy as a
+          two-sided platform—influencers ("Bitpals") create content, users discover
           and invest alongside them.
         </CaseStudyParagraph>
 
@@ -201,8 +205,8 @@ export const KoinBasket = () => {
 
         <CaseStudyCard title="🎬 Live Trading Experience">
           <CaseStudyParagraph>
-            The flagship feature: users watch live video streams hosted by influencers 
-            and purchase cryptocurrencies directly from the same page. Live video, 
+            The flagship feature: users watch live video streams hosted by influencers
+            and purchase cryptocurrencies directly from the same page. Live video,
             real-time market data, and seamless trade execution—all in one dashboard.
           </CaseStudyParagraph>
         </CaseStudyCard>
@@ -228,7 +232,7 @@ export const KoinBasket = () => {
               'BitBuddy influencer platform',
             ]} />
           </CaseStudyCard>
-          
+
           <CaseStudyCard title="Personal Growth">
             <CaseStudyList items={[
               'Founding designer → Senior Lead',
@@ -245,38 +249,38 @@ export const KoinBasket = () => {
         <CaseStudyCardGrid columns={2}>
           <CaseStudyCard title="Speed vs. Structure">
             <CaseStudyParagraph>
-              One-week design sprint was perfect for MVP validation. Scaling required 
-              structured process, robust design system, and team delegation. Know when 
+              One-week design sprint was perfect for MVP validation. Scaling required
+              structured process, robust design system, and team delegation. Know when
               each approach is appropriate.
             </CaseStudyParagraph>
           </CaseStudyCard>
-          
+
           <CaseStudyCard title="Trust is Currency">
             <CaseStudyParagraph>
-              From non-custodial model to professional rebrand—every major decision 
-              anchored in building user trust. In fintech, trust isn't a feature; 
+              From non-custodial model to professional rebrand—every major decision
+              anchored in building user trust. In fintech, trust isn't a feature;
               it's the foundation.
             </CaseStudyParagraph>
           </CaseStudyCard>
-          
+
           <CaseStudyCard title="Ecosystems > Features">
             <CaseStudyParagraph>
-              BitBuddy combined content, community, and commerce. Transformed KoinBasket 
+              BitBuddy combined content, community, and commerce. Transformed KoinBasket
               from a tool into a dynamic ecosystem with competitive advantage.
             </CaseStudyParagraph>
           </CaseStudyCard>
-          
+
           <CaseStudyCard title="Leadership Evolves">
             <CaseStudyParagraph>
-              My journey from solo designer to hiring and managing a team reflects how 
+              My journey from solo designer to hiring and managing a team reflects how
               design leadership must adapt to company growth. Building people, not just products.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyQuote>
-          By grounding our evolution in deep understanding of user needs and business goals, 
-          we transformed KoinBasket from a simple MVP into a sophisticated, trusted, 
+          By grounding our evolution in deep understanding of user needs and business goals,
+          we transformed KoinBasket from a simple MVP into a sophisticated, trusted,
           community-driven platform poised for market leadership.
         </CaseStudyQuote>
       </CaseStudySection>
