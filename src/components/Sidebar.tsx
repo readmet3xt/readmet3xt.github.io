@@ -65,13 +65,8 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
                   onClick={() => handleLinkClick('work')}
                   aria-current={activeLink === 'work' ? 'page' : undefined}
                 >
-                  <img
-                    src="/favicon.png"
-                    alt="Logo"
-                    className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 group-hover:scale-110 transition-transform duration-300"
-                  />
                   <h1 className="font-dm-sans text-xl sm:text-2xl lg:text-3xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">
-                    Amaan Khan
+                    amaan
                   </h1>
                 </Link>
 
