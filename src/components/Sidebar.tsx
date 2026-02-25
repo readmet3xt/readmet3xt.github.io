@@ -59,8 +59,20 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
             {/* Bio Section */}
             <div className="relative">
               <div className="flex items-center justify-between">
-                <Link to="/" className="hover:text-accent-primary transition-colors duration-300 group" onClick={() => handleLinkClick('work')} aria-current={activeLink === 'work' ? 'page' : undefined}>
-                  <h1 className="font-dm-sans text-xl sm:text-2xl lg:text-3xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">Amaan Khan</h1>
+                <Link
+                  to="/"
+                  className="flex items-center gap-2.5 hover:text-accent-primary transition-colors duration-300 group"
+                  onClick={() => handleLinkClick('work')}
+                  aria-current={activeLink === 'work' ? 'page' : undefined}
+                >
+                  <img
+                    src="/favicon.png"
+                    alt="Logo"
+                    className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <h1 className="font-dm-sans text-xl sm:text-2xl lg:text-3xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">
+                    Amaan Khan
+                  </h1>
                 </Link>
 
                 {/* Mobile Close Button */}
