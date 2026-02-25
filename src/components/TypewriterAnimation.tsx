@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { cn } from '@/lib/utils';
 
 const questions = [
   "How might we make it easy to see if online information is trustworthy?",
@@ -147,7 +148,11 @@ export const TypewriterAnimation = () => {
   return (
     <div
       id="text-animation-container"
-      className="relative flex flex-col items-center justify-center w-full max-w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[calc(100vh-80px)] xl:min-h-[calc(100vh-100px)] bg-bg-primary rounded-xl px-4 mb-12 cursor-pointer overflow-hidden group"
+      className={cn(
+        "relative flex flex-col items-center justify-center w-full max-w-full",
+        "min-h-[500px] lg:min-h-screen lg:-mt-12", // Offset the pt-12 (3rem) from PageLayout for perfect absolute center
+        "bg-bg-primary rounded-xl px-4 mb-0 cursor-pointer overflow-hidden group"
+      )}
       onClick={() => {
         // Dispatch custom event for sidebar trigger
         window.dispatchEvent(new CustomEvent('typewriter-clicked'));
@@ -182,10 +187,10 @@ export const TypewriterAnimation = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto"
+          className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto pt-12 sm:pt-16 lg:pt-20"
         >
           {/* Lottie Animation */}
-          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 mb-2 sm:mb-4">
+          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-80 lg:h-80 xl:w-[440px] xl:h-[440px] mb-4 sm:mb-6">
             <DotLottieReact
               src={lottieSources[currentQuestionIndex]}
               loop
@@ -195,7 +200,7 @@ export const TypewriterAnimation = () => {
 
           {/* Question Text */}
           <p
-            className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight break-words px-4 sm:px-8 lg:px-12 text-text-primary`}
+            className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-5xl xl:text-6xl leading-tight break-words px-4 sm:px-8 lg:px-12 text-text-primary`}
             aria-live="polite"
           >
             {isTypingPrefix ? (
