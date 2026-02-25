@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const questions = [
   "How might we make it easy to see if online information is trustworthy?",
@@ -9,6 +10,16 @@ const questions = [
   "How might we use technology to help neighbors with different views solve local problems together?",
   "How might we create services that are just as easy for an 80-year-old to use as an 18-year-old?",
   "How might we give people simple, honest control over how their personal data is used?"
+];
+
+const lottieSources = [
+  "https://lottie.host/49577b50-4df1-4c0d-8838-2eab8b8edc37/YewI0M4wou.lottie",
+  "https://lottie.host/a33a3510-b739-4550-af87-67e2a2a3515e/A7Nej50tFT.lottie",
+  "https://lottie.host/db276e0e-2f94-401d-8a52-c4d9ee665b90/s1LJRYPtPV.lottie",
+  "https://lottie.host/de500585-e8a6-4318-9f61-db16e471403a/E09Bpjn0np.lottie",
+  "https://lottie.host/d4940733-ce24-4dbb-a14e-9dfef936316a/k5M6KkI6Jr.lottie",
+  "https://lottie.host/336f0a07-f047-4bac-bb05-560de2528843/RlgpAr0cgg.lottie",
+  "https://lottie.host/23f9baeb-81af-4741-89fc-463f9b0d5bee/jTZfXT1G8C.lottie"
 ];
 
 const fontClasses = [
@@ -116,7 +127,7 @@ export const TypewriterAnimation = () => {
 
     const timeout = setTimeout(() => {
       startNextQuestion();
-    }, 3000);
+    }, 4000); // Slightly longer delay to look at the Lottie
 
     return () => clearTimeout(timeout);
   }, [isComplete, isPaused, startNextQuestion]);
@@ -136,7 +147,7 @@ export const TypewriterAnimation = () => {
   return (
     <div
       id="text-animation-container"
-      className="relative flex items-center justify-center w-full max-w-full min-h-[160px] sm:min-h-[200px] lg:min-h-[calc(100vh-80px)] xl:min-h-[calc(100vh-100px)] bg-bg-primary rounded-xl px-4 sm:pl-0 sm:pr-6 mb-12 cursor-pointer overflow-hidden group"
+      className="relative flex flex-col items-center justify-center w-full max-w-full min-h-[400px] sm:min-h-[500px] lg:min-h-[calc(100vh-80px)] xl:min-h-[calc(100vh-100px)] bg-bg-primary rounded-xl px-4 mb-12 cursor-pointer overflow-hidden group"
       onClick={() => {
         // Dispatch custom event for sidebar trigger
         window.dispatchEvent(new CustomEvent('typewriter-clicked'));
@@ -164,26 +175,43 @@ export const TypewriterAnimation = () => {
       }}
       aria-label="Click to explore projects"
     >
-      <motion.p
-        key={currentQuestionIndex}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`${fontClasses[currentQuestionIndex]} text-center sm:text-left text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight break-words w-full max-w-full overflow-hidden text-text-primary px-4 sm:px-8 lg:px-12`}
-        aria-live="polite"
-      >
-        {isTypingPrefix ? (
-          <span className="text-accent-primary">
-            {displayText}
-            {!isComplete && <span className="typewriter-cursor"></span>}
-          </span>
-        ) : (
-          <>
-            <span className="text-accent-primary">{PREFIX}</span> {displayText}
-            {!isComplete && <span className="typewriter-cursor"></span>}
-          </>
-        )}
-      </motion.p>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentQuestionIndex}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -30 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto"
+        >
+          {/* Lottie Animation */}
+          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 mb-2 sm:mb-4">
+            <DotLottieReact
+              src={lottieSources[currentQuestionIndex]}
+              loop
+              autoplay
+            />
+          </div>
+
+          {/* Question Text */}
+          <p
+            className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-tight break-words px-4 sm:px-8 lg:px-12 text-text-primary`}
+            aria-live="polite"
+          >
+            {isTypingPrefix ? (
+              <span className="text-accent-primary">
+                {displayText}
+                {!isComplete && <span className="typewriter-cursor"></span>}
+              </span>
+            ) : (
+              <>
+                <span className="text-accent-primary">{PREFIX}</span> {displayText}
+                {!isComplete && <span className="typewriter-cursor"></span>}
+              </>
+            )}
+          </p>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Scroll indicator for desktop focus */}
       <motion.div
@@ -199,6 +227,6 @@ export const TypewriterAnimation = () => {
           className="w-1 h-3 rounded-full bg-accent-primary opacity-40"
         />
       </motion.div>
-    </div >
+    </div>
   );
 };
