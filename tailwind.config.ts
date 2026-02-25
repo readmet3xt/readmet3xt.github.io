@@ -26,6 +26,11 @@ export default {
 				'figtree': ['Figtree', 'sans-serif'],
 				'jetbrains-mono': ['JetBrains Mono', 'monospace'],
 				'urbanist': ['Urbanist', 'sans-serif'],
+				'outfit': ['Outfit', 'sans-serif'],
+				'playfair': ['Playfair Display', 'serif'],
+				'bricolage': ['Bricolage Grotesque', 'sans-serif'],
+				'syne': ['Syne', 'sans-serif'],
+				'instrument': ['Instrument Sans', 'sans-serif'],
 			},
 			fontSize: {
 				'xs': 'var(--text-xs)',

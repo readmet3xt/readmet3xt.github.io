@@ -20,7 +20,7 @@ export const AboutProjectCard = ({ title, description, onClick, className = "" }
       const y = e.clientY - rect.top;
       const rotateX = (y - rect.height / 2) / 20;
       const rotateY = (rect.width / 2 - x) / 20;
-      
+
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
     };
 

@@ -55,9 +55,8 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
             key={index}
             src={image}
             alt={`${title} project preview ${index + 1} of ${images.length}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
             loading="lazy"
           />
         ))}
@@ -71,7 +70,7 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-auto pt-3" role="list" aria-label={`${title} project tags`}>
             {tags.slice(0, 3).map((tag, index) => (
-              <span 
+              <span
                 key={index}
                 className="px-2.5 py-1 text-sm bg-accent-primary/10 text-accent-primary rounded break-words"
                 role="listitem"

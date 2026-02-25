@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@/hooks/useTheme';
 import { useToast } from '@/hooks/use-toast';
-import { Briefcase, Gamepad2 } from 'lucide-react';
+import { Briefcase, Gamepad2, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -46,33 +47,39 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const isActiveCaseStudy = (path: string) => location.pathname === path;
 
   return (
-    <aside className={`sidebar bg-bg-secondary border-r border-border w-[85vw] max-w-72 sm:max-w-80 sm:w-80 h-[100dvh] fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300 ease-in-out z-40 overflow-hidden`}>
+    <aside className={`sidebar bg-bg-secondary border-r border-border w-[85vw] max-w-72 sm:max-w-80 sm:w-80 h-[100dvh] fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-40 overflow-hidden`}>
       <div className="sidebar-content-wrapper flex-1 flex flex-col px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4 lg:pt-6 pb-2 overflow-x-hidden min-h-0">
-        <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-          {/* Bio Section (Desktop) */}
-          <div className="hidden lg:block">
-            <Link to="/" className="hover:text-accent-primary transition-colors duration-300 group" onClick={() => handleLinkClick('work')} aria-current={activeLink === 'work' ? 'page' : undefined}>
-              <h1 className="font-dm-sans text-2xl lg:text-3xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">Amaan</h1>
-            </Link>
-            <p className="mt-1.5 lg:mt-2 text-xs lg:text-sm text-text-secondary leading-relaxed">
+        <div className="flex flex-col gap-4 lg:gap-6">
+          <div className="flex flex-col gap-2 lg:gap-3">
+            {/* Bio Section */}
+            <div className="relative">
+              <div className="flex items-center justify-between">
+                <Link to="/" className="hover:text-accent-primary transition-colors duration-300 group" onClick={() => handleLinkClick('work')} aria-current={activeLink === 'work' ? 'page' : undefined}>
+                  <h1 className="font-dm-sans text-xl sm:text-2xl lg:text-3xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">Amaan Khan</h1>
+                </Link>
+
+                {/* Mobile Close Button */}
+                <div className="lg:hidden pointer-events-auto">
+                  <button
+                    onClick={onClose}
+                    className="p-2 -mr-2 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
+                    aria-label="Close sidebar"
+                  >
+                    <X className="w-5 h-5 text-text-primary" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-[10px] sm:text-xs lg:text-sm text-text-secondary leading-relaxed pr-8 lg:pr-14">
               Hyderabad-based Product Designer creating impactful, human-centered products.
-            </p>
-          </div>
-          
-          {/* Bio Section (Mobile/Tablet) */}
-          <div className="block lg:hidden">
-            <Link to="/" className="hover:text-accent-primary transition-colors duration-300 group" onClick={() => handleLinkClick('work')} aria-current={activeLink === 'work' ? 'page' : undefined}>
-              <h1 className="font-dm-sans text-base sm:text-lg font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">Amaan</h1>
-            </Link>
-            <p className="mt-0.5 text-[10px] sm:text-xs text-text-secondary leading-relaxed">
-              Product Designer, Hyderabad
             </p>
           </div>
 
           {/* Main Navigation */}
           <nav className="space-y-1" role="navigation" aria-label="Main navigation">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className={`sidebar-link flex items-center gap-2.5 sm:gap-3 min-h-[44px] px-2.5 py-2 sm:p-2.5 rounded-lg ${activeLink === 'work' ? 'active' : ''}`}
               onClick={() => handleLinkClick('work')}
               aria-current={activeLink === 'work' ? 'page' : undefined}
@@ -85,9 +92,9 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 <p className="text-[10px] sm:text-xs text-text-secondary truncate">Recent projects</p>
               </div>
             </Link>
-            
-            <Link 
-              to="/play" 
+
+            <Link
+              to="/play"
               className={`sidebar-link flex items-center gap-2.5 sm:gap-3 min-h-[44px] px-2.5 py-2 sm:p-2.5 rounded-lg ${activeLink === 'play' ? 'active' : ''}`}
               onClick={() => handleLinkClick('play')}
               aria-current={activeLink === 'play' ? 'page' : undefined}
@@ -100,16 +107,16 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                 <p className="text-[10px] sm:text-xs text-text-secondary truncate">Fun projects</p>
               </div>
             </Link>
-            
-            <Link 
-              to="/about" 
+
+            <Link
+              to="/about"
               className={`sidebar-link flex items-center gap-2.5 sm:gap-3 min-h-[44px] px-2.5 py-2 sm:p-2.5 rounded-lg ${activeLink === 'about' ? 'active' : ''}`}
               onClick={() => handleLinkClick('about')}
               aria-current={activeLink === 'about' ? 'page' : undefined}
             >
-              <img 
+              <img
                 src="/lovable-uploads/22366376-40f2-492f-989a-067de0fdb01f.png"
-                alt="Amaan Khan profile photo" 
+                alt="Amaan Khan profile photo"
                 className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-md object-cover flex-shrink-0"
               />
               <div className="min-w-0">
@@ -159,26 +166,26 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       {/* Sidebar Footer */}
       <footer className="flex-shrink-0 border-t border-border pt-2.5 sm:pt-3 lg:pt-4 pb-3 sm:pb-4 lg:pb-6 px-3 sm:px-4 lg:px-6 bg-bg-secondary">
         <nav className="flex flex-wrap justify-start gap-1 font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider" role="navigation" aria-label="Contact and social links">
-          <button 
-            onClick={() => copyToClipboard('mdamkhan.work@gmail.com')} 
+          <button
+            onClick={() => copyToClipboard('mdamkhan.work@gmail.com')}
             className="footer-link min-h-[44px] min-w-[44px] px-3 py-2 flex items-center justify-center text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
             aria-label="Copy email address to clipboard"
           >
             EMAIL
           </button>
-          <a 
-            href="https://www.linkedin.com/in/readmetxt/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://www.linkedin.com/in/readmetxt/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="footer-link min-h-[44px] min-w-[44px] px-3 py-2 flex items-center justify-center text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
             aria-label="Visit Amaan Khan's LinkedIn profile (opens in new tab)"
           >
             LINKEDIN
           </a>
-          <a 
-            href="https://drive.google.com/file/d/1SnvkzMujpXhg1Ep_0qunMcKuNnt3rTXv/view?usp=sharing" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://drive.google.com/file/d/1SnvkzMujpXhg1Ep_0qunMcKuNnt3rTXv/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="footer-link min-h-[44px] min-w-[44px] px-3 py-2 flex items-center justify-center text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
             aria-label="View Amaan Khan's resume (opens in new tab)"
           >
@@ -186,7 +193,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           </a>
         </nav>
         <div className="mt-1 flex justify-start items-center" role="group" aria-label="Theme selection">
-          <button 
+          <button
             onClick={() => toggleTheme('dark')}
             className={`theme-toggle-btn min-h-[44px] min-w-[44px] px-3 py-2 font-ibm-plex-mono text-[10px] sm:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md ${theme === 'dark' ? 'active text-text-primary' : 'text-text-tertiary'}`}
             aria-pressed={theme === 'dark'}
@@ -195,7 +202,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             Dark
           </button>
           <span className="text-text-tertiary text-xs" aria-hidden="true">/</span>
-          <button 
+          <button
             onClick={() => toggleTheme('light')}
             className={`theme-toggle-btn min-h-[44px] min-w-[44px] px-3 py-2 font-ibm-plex-mono text-[10px] sm:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md ${theme === 'light' ? 'active text-text-primary' : 'text-text-tertiary'}`}
             aria-pressed={theme === 'light'}

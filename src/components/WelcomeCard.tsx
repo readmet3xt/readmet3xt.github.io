@@ -4,7 +4,7 @@ import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 
 export const WelcomeCard = () => {
   const cardRef = useRef<HTMLAnchorElement>(null);
-  
+
   // Use optimized hover effect hook (same as other project cards)
   useCardHoverEffect(cardRef, {
     maxRotation: 10,
@@ -12,19 +12,19 @@ export const WelcomeCard = () => {
   });
 
   return (
-    <Link 
+    <Link
       ref={cardRef}
-      to="/about" 
+      to="/about"
       className="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-gradient-to-br from-accent-primary/10 via-accent-primary/5 to-card border border-accent-primary/20 block min-h-[340px] flex flex-col w-full max-w-full relative hover:border-accent-primary/40 cursor-pointer touch-manipulation select-none"
     >
       {/* Image */}
       <div className="h-48 sm:h-52 relative overflow-hidden bg-gradient-to-br from-accent-primary/10 to-accent-primary/5">
-        <img 
+        <img
           src="/lovable-uploads/6bba6c1a-b7f8-404a-b8c3-367c42cbc2a0.png"
-          alt="Amaan Khan - Product Designer" 
+          alt="Amaan Khan - Product Designer"
           className="w-full h-full object-cover"
         />
-        
+
         {/* Decorative Elements */}
         <div className="absolute top-4 left-4 w-16 h-16 bg-accent-primary/10 rounded-full blur-xl" />
         <div className="absolute bottom-8 right-8 w-12 h-12 bg-accent-primary/10 rounded-full blur-lg" />

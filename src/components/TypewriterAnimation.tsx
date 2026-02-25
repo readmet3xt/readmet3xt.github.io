@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const questions = [
   "How might we make it easy to see if online information is trustworthy?",
@@ -11,167 +12,202 @@ const questions = [
 ];
 
 const fontClasses = [
-  'font-satoshi', 'font-inter', 'font-figtree', 
-  'font-dm-sans', 'font-calistoga', 'font-jetbrains-mono', 'font-urbanist'
+  'font-outfit',
+  'font-playfair',
+  'font-bricolage',
+  'font-syne',
+  'font-instrument',
+  'font-jetbrains-mono',
+  'font-inter'
 ];
 
-// Faster typing speeds for better responsiveness
-const getRandomTypeSpeed = () => 20 + Math.random() * 30; // 20-50ms
-const getRandomPause = () => 50 + Math.random() * 100; // 50-150ms for natural pauses
-const getWordPause = () => 75 + Math.random() * 50; // 75-125ms after words
-const getSentencePause = () => 150 + Math.random() * 100; // 150-250ms after sentences
+const PREFIX = "How might we";
+
+// Human-like typing constants
+const BASE_SPEED = 45;
+const JITTER = 35;
+const WORD_PAUSE_BASE = 120;
+const PUNCTUATION_PAUSE = 400;
+
+const getNaturalDelay = (char: string) => {
+  let delay = BASE_SPEED + Math.random() * JITTER;
+
+  // Faster for vowels (easier to flow)
+  if (['a', 'e', 'i', 'o', 'u'].includes(char.toLowerCase())) {
+    delay *= 0.8;
+  }
+
+  // Slightly slower for spaces (separating thoughts)
+  if (char === ' ') {
+    delay += WORD_PAUSE_BASE * (0.8 + Math.random() * 0.4);
+  }
+
+  // Significant pause for punctuation
+  if (['.', ',', '?', '!'].includes(char)) {
+    delay += PUNCTUATION_PAUSE * (0.9 + Math.random() * 0.2);
+  }
+
+  return delay;
+};
 
 export const TypewriterAnimation = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
-  const questionRef = useRef<HTMLParagraphElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<boolean>(true);
+  const [displayText, setDisplayText] = useState('');
+  const [isTypingPrefix, setIsTypingPrefix] = useState(true);
+  const [isComplete, setIsComplete] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const cycleToNextQuestion = () => {
-    setCurrentQuestionIndex((prev) => (prev + 1) % questions.length);
-    // Restart the animation with the new question
-    animationRef.current = false;
-    setTimeout(() => {
-      animationRef.current = true;
-    }, 100);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const clearCurrentTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
   };
 
+  const startNextQuestion = useCallback(() => {
+    clearCurrentTimeout();
+    setIsComplete(false);
+    setIsTypingPrefix(true);
+    setDisplayText('');
+    setCurrentQuestionIndex((prev) => (prev + 1) % questions.length);
+  }, []);
+
   useEffect(() => {
-    if (!isVisible) return;
-    
-    let questionIndex = currentQuestionIndex;
+    if (isPaused || isComplete) return;
 
-    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+    const currentFullText = questions[currentQuestionIndex];
 
-    const runAnimation = async () => {
-      while (animationRef.current) {
-        const question = questions[questionIndex];
-        const font = fontClasses[questionIndex];
-        const prefix = "How might we";
-        const suffix = question.substring(prefix.length);
+    const type = async () => {
+      if (isTypingPrefix) {
+        if (displayText.length < PREFIX.length) {
+          const nextChar = PREFIX[displayText.length];
+          const delay = getNaturalDelay(nextChar);
 
-        if (questionRef.current && animationRef.current) {
-          questionRef.current.className = `${font} text-center sm:text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug transition-opacity duration-500 break-words w-full max-w-full overflow-hidden`;
-          questionRef.current.style.opacity = '1';
-          
-          // Type prefix with natural variations
-          for (let i = 0; i <= prefix.length; i++) {
-            if (!animationRef.current) break;
-            
-            const typedText = prefix.substring(0, i);
-            if (questionRef.current) {
-              questionRef.current.innerHTML = `<span class="text-accent-primary">${typedText}</span><span class="typewriter-cursor"></span>`;
-            }
-            
-            // Natural typing rhythm with variations
-            const delay = getRandomTypeSpeed();
-            await sleep(delay);
-            
-            // Add natural pauses after spaces
-            if (prefix[i] === ' ') {
-              await sleep(getWordPause());
-            }
-          }
+          timeoutRef.current = setTimeout(() => {
+            setDisplayText(prev => prev + nextChar);
+          }, delay);
+        } else {
+          // Pause briefly after prefix
+          timeoutRef.current = setTimeout(() => {
+            setIsTypingPrefix(false);
+            setDisplayText(''); // Reset for suffix typing
+          }, 500);
+        }
+      } else {
+        const suffix = currentFullText.substring(PREFIX.length);
+        if (displayText.length < suffix.length) {
+          const nextChar = suffix[displayText.length];
+          const delay = getNaturalDelay(nextChar);
 
-          // Small pause before continuing with suffix
-          await sleep(200);
-
-          // Type suffix with natural rhythm
-          for (let i = 0; i <= suffix.length; i++) {
-            if (!animationRef.current) break;
-            
-            const typedSuffix = suffix.substring(0, i);
-            
-            if (questionRef.current) {
-              questionRef.current.innerHTML = `<span class="text-accent-primary">${prefix}</span>${typedSuffix}<span class="typewriter-cursor"></span>`;
-            }
-            
-            // Natural typing with more variation
-            let delay = getRandomTypeSpeed();
-            
-            // Slow down for punctuation
-            if (suffix[i] === ',' || suffix[i] === '.' || suffix[i] === '?') {
-              delay += getSentencePause();
-            }
-            // Pause after spaces
-            else if (suffix[i] === ' ') {
-              delay += getWordPause();
-            }
-            
-            await sleep(delay);
-          }
-          
-          // Pause after typing complete, remove cursor
-          await sleep(1500);
-          
-          if (questionRef.current && animationRef.current) {
-            questionRef.current.innerHTML = questionRef.current.innerHTML.replace('<span class="typewriter-cursor"></span>', '');
-          }
-
-          // Smooth fade out
-          if (questionRef.current && animationRef.current) {
-            questionRef.current.style.opacity = '0';
-          }
-          await sleep(400);
-          
-          // Prepare for next loop
-          questionIndex = (questionIndex + 1) % questions.length;
-          
-          if (questionRef.current && animationRef.current) {
-            questionRef.current.innerHTML = '<span class="typewriter-cursor"></span>';
-          }
-          
-          // Brief pause before starting next question
-          await sleep(300);
+          timeoutRef.current = setTimeout(() => {
+            setDisplayText(prev => prev + nextChar);
+          }, delay);
+        } else {
+          // Typing complete
+          setIsComplete(true);
         }
       }
     };
 
-    runAnimation();
+    type();
 
-    return () => {
-      animationRef.current = false;
-    };
-  }, [currentQuestionIndex, isVisible]);
+    return () => clearCurrentTimeout();
+  }, [displayText, isTypingPrefix, currentQuestionIndex, isComplete, isPaused, startNextQuestion]);
+
+  // Transition to next question after completion
+  useEffect(() => {
+    if (!isComplete || isPaused) return;
+
+    const timeout = setTimeout(() => {
+      startNextQuestion();
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, [isComplete, isPaused, startNextQuestion]);
 
   useEffect(() => {
     const handleVisibilityChange = () => {
-      if (document.hidden) {
-        animationRef.current = false;
-      } else {
-        animationRef.current = true;
-      }
+      setIsPaused(document.hidden);
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      clearCurrentTimeout();
+    };
   }, []);
 
   return (
     <div
-      ref={containerRef}
       id="text-animation-container"
-      className="relative flex items-center justify-center w-full max-w-full min-h-[120px] sm:min-h-[140px] md:min-h-[180px] lg:min-h-[200px] bg-bg-primary rounded-xl px-4 sm:pl-0 sm:pr-6 mb-6 cursor-pointer overflow-hidden"
-      onClick={cycleToNextQuestion}
+      className="relative flex items-center justify-center w-full max-w-full min-h-[160px] sm:min-h-[200px] lg:min-h-[calc(100vh-80px)] xl:min-h-[calc(100vh-100px)] bg-bg-primary rounded-xl px-4 sm:pl-0 sm:pr-6 mb-12 cursor-pointer overflow-hidden group"
+      onClick={() => {
+        // Dispatch custom event for sidebar trigger
+        window.dispatchEvent(new CustomEvent('typewriter-clicked'));
+
+        // Scroll to projects grid
+        const grid = document.querySelector('[aria-label="Portfolio projects"]');
+        if (grid) {
+          grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          startNextQuestion();
+        }
+      }}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          cycleToNextQuestion();
+          window.dispatchEvent(new CustomEvent('typewriter-clicked'));
+          const grid = document.querySelector('[aria-label="Portfolio projects"]');
+          if (grid) {
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            startNextQuestion();
+          }
         }
       }}
-      aria-label="Click to cycle to the next design question"
+      aria-label="Click to explore projects"
     >
-      <p
-        ref={questionRef}
-        id="animated-question"
-        className="text-center sm:text-left text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug text-text-primary transition-opacity duration-500 break-words w-full max-w-full overflow-hidden"
-        aria-live="polite"
-        aria-atomic="true"
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={currentQuestionIndex}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className={`${fontClasses[currentQuestionIndex]} text-center sm:text-left text-2xl sm:text-3xl lg:text-3xl xl:text-4xl leading-tight break-words w-full max-w-full overflow-hidden text-text-primary px-4 sm:px-8 lg:px-12`}
+          aria-live="polite"
+        >
+          {isTypingPrefix ? (
+            <span className="text-accent-primary">
+              {displayText}
+              {!isComplete && <span className="typewriter-cursor"></span>}
+            </span>
+          ) : (
+            <>
+              <span className="text-accent-primary">{PREFIX}</span> {displayText}
+              {!isComplete && <span className="typewriter-cursor"></span>}
+            </>
+          )}
+        </motion.p>
+      </AnimatePresence>
+
+      {/* Scroll indicator for desktop focus */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none hidden lg:flex"
       >
-        <span className="typewriter-cursor"></span>
-      </p>
-    </div>
+        <p className="text-[10px] uppercase tracking-widest font-ibm-plex-mono text-text-tertiary opacity-60">Click to explore</p>
+        <motion.div
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-1 h-3 rounded-full bg-accent-primary opacity-40"
+        />
+      </motion.div>
+    </div >
   );
 };
