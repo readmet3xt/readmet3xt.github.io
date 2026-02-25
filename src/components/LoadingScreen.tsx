@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface LoadingScreenProps {
   onComplete: () => void;
@@ -8,39 +10,34 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Optimized loading - check for critical resources
-    const checkCriticalResources = () => {
-      // Check if fonts are loaded
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => {
-          setIsVisible(false);
-          setTimeout(onComplete, 200);
-        });
-      } else {
-        // Fallback timer for browsers without font loading API
-        setTimeout(() => {
-          setIsVisible(false);
-          setTimeout(onComplete, 200);
-        }, 600);
-      }
-    };
+    // Show for exactly 2 seconds as requested
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+      // Wait for fade animation to complete before calling onComplete
+      setTimeout(onComplete, 500);
+    }, 2000);
 
-    // Small delay to allow initial render
-    const timer = setTimeout(checkCriticalResources, 100);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
-  if (!isVisible) {
-    return (
-      <div className="fixed inset-0 bg-background z-50 flex items-center justify-center transition-opacity duration-500 opacity-0 pointer-events-none">
-        <div className="w-8 h-8 border-2 border-accent rounded-full border-t-transparent animate-spin" />
-      </div>
-    );
-  }
-
   return (
-    <div className="fixed inset-0 bg-background z-50 flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-accent rounded-full border-t-transparent animate-spin" />
-    </div>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="fixed inset-0 bg-bg-primary z-[9999] flex items-center justify-center"
+        >
+          <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
+            <DotLottieReact
+              src="https://lottie.host/1f8a0262-d200-4867-b5ac-bdf971f4101b/bY8i1cKMl0.lottie"
+              loop
+              autoplay
+            />
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

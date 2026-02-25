@@ -123,12 +123,17 @@ class GlobalErrorBoundary extends Component<{ children: React.ReactNode }, { has
 }
 
 const App = () => {
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(() => {
+    // For development, you might want to clear this to see the loader
+    // localStorage.removeItem('portfolio-loader-seen');
+    return !localStorage.getItem('portfolio-loader-seen');
+  });
 
   // Check for version updates periodically
   useVersionCheck();
 
   const handleLoadingComplete = () => {
+    localStorage.setItem('portfolio-loader-seen', 'true');
     setShowLoader(false);
   };
 
