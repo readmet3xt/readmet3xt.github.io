@@ -14,7 +14,7 @@ const questions = [
 ];
 
 const lottieSources = [
-  "https://lottie.host/49577b50-4df1-4c0d-8838-2eab8b8edc37/YewI0M4wou.lottie",
+  "https://lottie.host/afe6274d-7b48-43b1-a540-411910f70e36/c4puYH1f3t.lottie",
   "https://lottie.host/a33a3510-b739-4550-af87-67e2a2a3515e/A7Nej50tFT.lottie",
   "https://lottie.host/db276e0e-2f94-401d-8a52-c4d9ee665b90/s1LJRYPtPV.lottie",
   "https://lottie.host/de500585-e8a6-4318-9f61-db16e471403a/E09Bpjn0np.lottie",
