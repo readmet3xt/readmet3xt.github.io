@@ -1,9 +1,16 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
+import { useSidebar } from '@/components/SidebarContext';
+import { cn } from '@/lib/utils';
+
+// Create motion-enabled Link component
+const MotionLink = motion.create(Link);
 
 export const WelcomeCard = () => {
   const cardRef = useRef<HTMLAnchorElement>(null);
+  const { isOpen } = useSidebar();
 
   // Use optimized hover effect hook (same as other project cards)
   useCardHoverEffect(cardRef, {
@@ -12,13 +19,22 @@ export const WelcomeCard = () => {
   });
 
   return (
-    <Link
+    <MotionLink
       ref={cardRef}
       to="/about"
-      className="project-card reveal-on-scroll rounded-xl overflow-hidden group bg-gradient-to-br from-accent-primary/10 via-accent-primary/5 to-card border border-accent-primary/20 block min-h-[340px] flex flex-col w-full max-w-full relative hover:border-accent-primary/40 cursor-pointer touch-manipulation select-none"
+      className={cn(
+        "project-card rounded-xl overflow-hidden group bg-gradient-to-br from-accent-primary/10 via-accent-primary/5 to-card border border-accent-primary/20 block flex flex-col w-full max-w-full relative hover:border-accent-primary/40 cursor-pointer touch-manipulation select-none transition-all duration-300",
+        isOpen ? "min-h-[340px]" : "min-h-[300px]"
+      )}
+      initial={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
     >
       {/* Image */}
-      <div className="h-48 sm:h-52 relative overflow-hidden bg-gradient-to-br from-accent-primary/10 to-accent-primary/5">
+      <div className={cn(
+        "relative overflow-hidden bg-gradient-to-br from-accent-primary/10 to-accent-primary/5 transition-all duration-300",
+        isOpen ? "h-48 sm:h-52" : "h-40 sm:h-44"
+      )}>
         <img
           src="/lovable-uploads/6bba6c1a-b7f8-404a-b8c3-367c42cbc2a0.png"
           alt="Amaan Khan - Product Designer"
@@ -44,6 +60,6 @@ export const WelcomeCard = () => {
           Hi there, Amaan here! I'm a Mechanical Engineer who traded engineering blueprints for service blueprints. I now build seamless experiences—digital or not—with an engineer's focus on function and a designer's focus on feeling.
         </p>
       </div>
-    </Link>
+    </MotionLink>
   );
 };

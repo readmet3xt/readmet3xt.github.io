@@ -24,10 +24,9 @@ const fontClasses = [
 const PREFIX = "How might we";
 
 // Human-like typing constants
-const BASE_SPEED = 45;
-const JITTER = 35;
-const WORD_PAUSE_BASE = 120;
-const PUNCTUATION_PAUSE = 400;
+const BASE_SPEED = 25; // Faster base typing speed
+const JITTER = 15; // Less variation between characters
+const PUNCTUATION_PAUSE = 150; // Shorter pause at punctuation
 
 const getNaturalDelay = (char: string) => {
   let delay = BASE_SPEED + Math.random() * JITTER;
@@ -37,12 +36,7 @@ const getNaturalDelay = (char: string) => {
     delay *= 0.8;
   }
 
-  // Slightly slower for spaces (separating thoughts)
-  if (char === ' ') {
-    delay += WORD_PAUSE_BASE * (0.8 + Math.random() * 0.4);
-  }
-
-  // Significant pause for punctuation
+  // Pause slightly for punctuation
   if (['.', ',', '?', '!'].includes(char)) {
     delay += PUNCTUATION_PAUSE * (0.9 + Math.random() * 0.2);
   }

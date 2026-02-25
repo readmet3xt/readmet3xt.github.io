@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
+import { useSidebar } from '@/components/SidebarContext';
+import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
   href: string;
@@ -18,6 +20,7 @@ const MotionLink = motion(Link);
 
 export const ProjectCard = ({ href, title, description, image, className = "", summary, tags }: ProjectCardProps) => {
   const cardRef = useRef<HTMLAnchorElement>(null);
+  const { isOpen } = useSidebar();
 
   // Use optimized hover effect hook
   useCardHoverEffect(cardRef, {
@@ -29,7 +32,11 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
     <MotionLink
       ref={cardRef}
       to={href}
-      className={`project-card rounded-xl overflow-hidden group bg-card block min-h-[340px] flex flex-col w-full max-w-full ${className}`}
+      className={cn(
+        "project-card rounded-xl overflow-hidden group bg-card block flex flex-col w-full max-w-full transition-all duration-300",
+        isOpen ? "min-h-[340px]" : "min-h-[300px]",
+        className
+      )}
       aria-label={`View ${title} project details`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +59,10 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
         <img
           src={image}
           alt={`${title} project preview showing ${description}`}
-          className="w-full h-48 sm:h-52 object-scale-down bg-card flex-shrink-0 object-top"
+          className={cn(
+            "w-full object-scale-down bg-card flex-shrink-0 object-top transition-all duration-300",
+            isOpen ? "h-48 sm:h-52" : "h-40 sm:h-44"
+          )}
           loading="lazy"
         />
       </motion.div>

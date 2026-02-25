@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
+import { useSidebar } from '@/components/SidebarContext';
+import { cn } from '@/lib/utils';
 
 interface AnimatedProjectCardProps {
   href: string;
@@ -19,6 +21,7 @@ const MotionLink = motion.create(Link);
 export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags }: AnimatedProjectCardProps) => {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { isOpen } = useSidebar();
 
   // Use optimized hover effect hook
   useCardHoverEffect(cardRef, {
@@ -50,7 +53,11 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
     <MotionLink
       ref={cardRef}
       to={href}
-      className={`project-card rounded-xl overflow-hidden group bg-card block min-h-[340px] flex flex-col w-full max-w-full ${className}`}
+      className={cn(
+        "project-card rounded-xl overflow-hidden group bg-card block flex flex-col w-full max-w-full transition-all duration-300",
+        isOpen ? "min-h-[340px]" : "min-h-[300px]",
+        className
+      )}
       aria-label={`View ${title} project details`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +72,10 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
         transition: { duration: 0.1 }
       }}
     >
-      <div className="relative w-full h-48 sm:h-52 flex-shrink-0 overflow-hidden">
+      <div className={cn(
+        "relative w-full flex-shrink-0 overflow-hidden transition-all duration-300",
+        isOpen ? "h-48 sm:h-52" : "h-40 sm:h-44"
+      )}>
         {images.map((image, index) => (
           <img
             key={index}

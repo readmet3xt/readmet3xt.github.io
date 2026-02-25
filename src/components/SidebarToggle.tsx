@@ -7,23 +7,25 @@ interface SidebarToggleProps {
     onClick: () => void;
     className?: string;
     minimal?: boolean;
+    isVisible?: boolean;
 }
 
-export const SidebarToggle = ({ isOpen, onClick, className, minimal }: SidebarToggleProps) => {
+export const SidebarToggle = ({ isOpen, onClick, className, minimal, isVisible = true }: SidebarToggleProps) => {
     return (
         <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{
-                opacity: isOpen ? 0.5 : 1,
-                scale: 1
+                opacity: !isVisible ? 0 : (isOpen ? 0.5 : 1),
+                scale: !isVisible ? 0.9 : 1,
+                pointerEvents: isVisible ? 'auto' : 'none'
             }}
             whileHover={{ scale: 1.05, opacity: 1 }}
             whileTap={{ scale: 0.95 }}
             onClick={onClick}
             className={cn(
                 "z-50 p-2 rounded-xl flex items-center justify-center transition-all duration-300",
-                !minimal && "bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg",
-                !minimal && "hover:bg-white/20 dark:hover:bg-black/20 hover:border-accent-primary/50",
+                !minimal && "bg-transparent border border-white/20 dark:border-white/10",
+                !minimal && "hover:bg-white/10 dark:hover:bg-white/5 hover:border-accent-primary/50",
                 "group min-h-[44px] min-w-[44px]",
                 className
             )}
@@ -56,22 +58,6 @@ export const SidebarToggle = ({ isOpen, onClick, className, minimal }: SidebarTo
                     <X className="w-5 h-5 text-text-primary group-hover:text-accent-primary transition-colors" />
                 </motion.div>
             </div>
-
-            {!isOpen && !minimal && (
-                <motion.div
-                    layoutId="pulse"
-                    className="absolute inset-0 rounded-xl bg-accent-primary/20 -z-10"
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.2, 0, 0.2]
-                    }}
-                    transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-            )}
         </motion.button>
     );
 };

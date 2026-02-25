@@ -1,6 +1,8 @@
 import { AnimatedProjectCard } from '@/components/AnimatedProjectCard';
 import { ProjectCard } from '@/components/ProjectCard';
 import { WelcomeCard } from '@/components/WelcomeCard';
+import { useSidebar } from '@/components/SidebarContext';
+import { cn } from '@/lib/utils';
 
 // Import project images
 import koinbasket1 from '/lovable-uploads/02a3c6bb-17dd-4d61-92a0-6ea7b5defb71.png';
@@ -13,8 +15,18 @@ import otagonImage from '/otagon/otagon3.png';
 import jollyAiImage from '/jollyai/jollyai6.png';
 
 export const ProjectsGrid = () => {
+  const { isOpen } = useSidebar();
+
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full scroll-mt-20" aria-label="Portfolio projects">
+    <section
+      className={cn(
+        "grid gap-12 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full scroll-mt-20",
+        isOpen
+          ? "grid-cols-1 md:grid-cols-2"
+          : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      )}
+      aria-label="Portfolio projects"
+    >
       <WelcomeCard />
 
       <ProjectCard
@@ -23,7 +35,7 @@ export const ProjectsGrid = () => {
         description="AI-Powered Gaming Assistant"
         image={otagonImage}
         className=""
-        summary="Built a sophisticated AI gaming companion with real-time screenshot analysis, intelligent conversation, and personalized gaming insights. Achieved 100x performance improvements and 85% cost reduction through intelligent caching."
+        summary="Built an advanced AI gaming companion with real-time screenshot analysis, intelligent conversation, and personalized gaming insights."
         tags={["React TypeScript", "AI/ML", "PWA", "Supabase"]}
       />
 

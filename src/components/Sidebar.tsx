@@ -8,9 +8,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
-export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: SidebarProps) => {
   const { theme, toggleTheme } = useTheme();
   const { toast } = useToast();
   const location = useLocation();
@@ -47,7 +49,10 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const isActiveCaseStudy = (path: string) => location.pathname === path;
 
   return (
-    <aside className={`sidebar bg-bg-secondary border-r border-border w-[85vw] max-w-72 sm:max-w-80 sm:w-80 h-[100dvh] fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-40 overflow-hidden`}>
+    <aside
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`sidebar bg-bg-secondary border-r border-border w-[85vw] max-w-72 sm:max-w-80 sm:w-80 h-[100dvh] fixed inset-y-0 left-0 flex flex-col transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out z-40 overflow-hidden`}>
       <div className="sidebar-content-wrapper flex-1 flex flex-col px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4 lg:pt-6 pb-2 overflow-x-hidden min-h-0">
         <div className="flex flex-col gap-4 lg:gap-6">
           <div className="flex flex-col gap-2 lg:gap-3">

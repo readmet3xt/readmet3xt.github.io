@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, memo } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Testimonial {
   id: number;
@@ -48,8 +49,8 @@ const testimonials: Testimonial[] = [
 ];
 
 const TestimonialCard = memo(({ testimonial, isActive }: { testimonial: Testimonial; isActive: boolean }) => (
-  <Card className={`w-full max-w-full bg-card backdrop-blur-sm transition-all duration-500 ${isActive ? 'scale-100 opacity-100 border-primary/50' : 'scale-95 opacity-70 border-border/30'} overflow-hidden`}>
-    <CardContent className="p-4 sm:p-5 md:p-6">
+  <Card className={`w-full max-w-full bg-card backdrop-blur-sm border-primary/20 overflow-hidden shadow-none`}>
+    <CardContent className="p-4 sm:p-5 md:p-6 text-center lg:text-left">
       <div className="mb-4">
         <h3 className="font-bold text-xl sm:text-2xl text-primary break-words">{testimonial.name}</h3>
         <p className="text-base sm:text-lg text-text-secondary font-medium break-words">
@@ -59,6 +60,15 @@ const TestimonialCard = memo(({ testimonial, isActive }: { testimonial: Testimon
         <p className="text-sm sm:text-base text-text-secondary/80 mt-1 break-words">{testimonial.relationship}</p>
       </div>
       <p className="text-base sm:text-lg text-text-secondary leading-relaxed break-words">{testimonial.content}</p>
+      <a
+        href="https://www.linkedin.com/in/readmetxt/details/recommendations/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-6 inline-flex items-center gap-2 text-[10px] font-ibm-plex-mono uppercase tracking-widest text-foreground/70 hover:text-accent-primary transition-colors hover:opacity-100 group"
+      >
+        <Linkedin className="w-3 h-3 transition-transform group-hover:scale-110" />
+        View on LinkedIn
+      </a>
     </CardContent>
   </Card>
 ));
@@ -68,7 +78,6 @@ TestimonialCard.displayName = 'TestimonialCard';
 export const TestimonialsCarousel = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Calculate reading time based on text length (average 200 words per minute)
@@ -81,16 +90,12 @@ export const TestimonialsCarousel = memo(() => {
 
   // Auto-ticker functionality with dynamic timing
   useEffect(() => {
-    if (!isPaused && !isTransitioning) {
+    if (!isPaused) {
       const currentTestimonial = testimonials[currentIndex];
       const readingTime = getReadingTime(currentTestimonial.content);
-      
+
       intervalRef.current = setTimeout(() => {
-        setIsTransitioning(true);
-        setTimeout(() => {
-          setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-          setIsTransitioning(false);
-        }, 300); // Fade transition duration
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
       }, readingTime);
     }
 
@@ -99,22 +104,14 @@ export const TestimonialsCarousel = memo(() => {
         clearTimeout(intervalRef.current);
       }
     };
-  }, [currentIndex, isPaused, isTransitioning]);
+  }, [currentIndex, isPaused]);
 
   const goToPrevious = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-      setIsTransitioning(false);
-    }, 300);
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const goToNext = () => {
-    setIsTransitioning(true);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-      setIsTransitioning(false);
-    }, 300);
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
   const handleMouseEnter = () => {
@@ -126,7 +123,7 @@ export const TestimonialsCarousel = memo(() => {
   };
 
   return (
-    <div 
+    <div
       className="relative w-full max-w-full overflow-hidden px-1"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -155,24 +152,27 @@ export const TestimonialsCarousel = memo(() => {
         </div>
       </div>
 
-      <div className="overflow-hidden">
-        <div 
-          className={`flex transition-all duration-500 ease-in-out ${isTransitioning ? 'opacity-50' : 'opacity-100'}`}
-          style={{ 
-            transform: `translateX(-${currentIndex * 100}%)` 
-          }}
-          role="tabpanel"
-          aria-live="polite"
-        >
-          {testimonials.map((testimonial, index) => (
-            <div key={testimonial.id} className="w-full max-w-full flex-shrink-0 px-1">
-              <TestimonialCard 
-                testimonial={testimonial}
-                isActive={index === currentIndex}
-              />
-            </div>
-          ))}
-        </div>
+      <div className="min-h-[300px] flex items-center justify-center relative">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
+            transition={{
+              duration: 0.5,
+              ease: [0.4, 0, 0.2, 1]
+            }}
+            className="w-full"
+            role="tabpanel"
+            aria-live="polite"
+          >
+            <TestimonialCard
+              testimonial={testimonials[currentIndex]}
+              isActive={true}
+            />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
     </div>
