@@ -65,7 +65,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
                     className="p-2 -mr-2 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors"
                     aria-label="Close sidebar"
                   >
-                    <X className="w-5 h-5 text-text-primary" />
+                    <X className="w-4 h-4 text-text-primary" />
                   </button>
                 </div>
               </div>
