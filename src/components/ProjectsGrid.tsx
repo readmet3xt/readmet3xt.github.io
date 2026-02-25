@@ -14,7 +14,7 @@ import jollyAiImage from '/jollyai/jollyai6.png';
 
 export const ProjectsGrid = () => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full scroll-mt-20" aria-label="Portfolio projects">
+    <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full scroll-mt-20" aria-label="Portfolio projects">
       <WelcomeCard />
 
       <ProjectCard
