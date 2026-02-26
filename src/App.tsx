@@ -21,7 +21,7 @@ const Pebble = lazy(() => import("./pages/Pebble").then(m => ({ default: m.Pebbl
 const IviProgram = lazy(() => import("./pages/IviProgram").then(m => ({ default: m.IviProgram })));
 const Stampede = lazy(() => import("./pages/Stampede").then(m => ({ default: m.Stampede })));
 const Otagon = lazy(() => import("./pages/Otagon").then(m => ({ default: m.Otagon })));
-const JollyAI = lazy(() => import("./pages/JollyAI").then(m => ({ default: m.JollyAI })));
+const LawX = lazy(() => import("./pages/LawX").then(m => ({ default: m.LawX })));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -78,7 +78,7 @@ const AnimatedRoutes = () => {
         <Route path="/iviprogram" element={<Suspense fallback={<RouteLoader />}><IviProgram /></Suspense>} />
         <Route path="/stampede" element={<Suspense fallback={<RouteLoader />}><Stampede /></Suspense>} />
         <Route path="/otagon" element={<Suspense fallback={<RouteLoader />}><Otagon /></Suspense>} />
-        <Route path="/jollyai" element={<Suspense fallback={<RouteLoader />}><JollyAI /></Suspense>} />
+        <Route path="/lawx" element={<Suspense fallback={<RouteLoader />}><LawX /></Suspense>} />
 
         <Route path="*" element={
           <Suspense fallback={<RouteLoader />}>

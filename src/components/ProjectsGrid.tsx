@@ -40,8 +40,8 @@ export const ProjectsGrid = () => {
       />
 
       <ProjectCard
-        href="/jollyai"
-        title="Jolly AI"
+        href="/lawx"
+        title="Law.X"
         description="Transparent Legal Assistant"
         image={jollyAiImage}
         className=""
