@@ -190,7 +190,7 @@ export const TypewriterAnimation = () => {
           className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
         >
           {/* Lottie Animation */}
-          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] mt-8 mb-6 sm:mb-8">
+          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] mt-8 lg:mt-24 xl:mt-32 mb-6 sm:mb-8">
             <DotLottieReact
               src={lottieSources[currentQuestionIndex]}
               loop

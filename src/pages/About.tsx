@@ -31,7 +31,7 @@ export const About = () => {
   const [selectedProject, setSelectedProject] = useState<keyof typeof projectsData | null>(null);
   const [toastVisible, setToastVisible] = useState(false);
   const navigate = useNavigate();
-  
+
   useScrollReveal();
 
   const navigateToProject = (projectPath: string) => {
@@ -60,7 +60,7 @@ export const About = () => {
           <div className="grid md:grid-cols-5 gap-8 items-start">
             <div className="md:col-span-3">
               <h2 className="heading-2 mb-8">About Me</h2>
-              
+
               {/* Introduction */}
               <div className="mb-8">
                 <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Digital Product Designer</h3>
@@ -110,23 +110,23 @@ export const About = () => {
                 </div>
               </div>
               <div className="flex flex-wrap gap-4">
-                <button 
+                <button
                   onClick={copyEmail}
                   className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
                 >
                   Email
                 </button>
-                <a 
-                  href="https://linkedin.com/in/mdamkhan" 
-                  target="_blank" 
+                <a
+                  href="https://linkedin.com/in/mdamkhan"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
                 >
                   LinkedIn
                 </a>
-                <a 
-                  href="https://drive.google.com/file/d/1SnvkzMujpXhg1Ep_0qunMcKuNnt3rTXv/view?usp=sharing" 
-                  target="_blank" 
+                <a
+                  href="https://drive.google.com/file/d/1SnvkzMujpXhg1Ep_0qunMcKuNnt3rTXv/view?usp=sharing"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
                 >
@@ -135,9 +135,9 @@ export const About = () => {
               </div>
             </div>
             <div className="md:col-span-2">
-              <img 
+              <img
                 src={amaanHero}
-                alt="Amaan Khan - Product Designer" 
+                alt="Amaan Khan - Product Designer"
                 className="w-full h-auto rounded-lg object-cover max-w-sm mx-auto md:mx-0"
               />
             </div>
@@ -148,9 +148,9 @@ export const About = () => {
         <section id="experience" className="mb-24 scroll-mt-24 reveal-on-scroll">
           <h2 className="heading-2 mb-8">Professional Experience</h2>
           <div className="timeline-container relative">
-            <TimelineItem 
-              title="Founder & Product Designer" 
-              company="Otagon · Hyderabad, India" 
+            <TimelineItem
+              title="Founder & Product Designer"
+              company="Otagon · Hyderabad, India"
               period="Aug 2025 - Present"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/otagon')}
@@ -161,12 +161,12 @@ export const About = () => {
                 <li>Designed and developed comprehensive design system with 40+ reusable components and PWA capabilities.</li>
               </ul>
             </TimelineItem>
-            
+
             <br />
-            
-            <TimelineItem 
-              title="User Experience Consultant (Contract)" 
-              company="JollyAI · Freelance" 
+
+            <TimelineItem
+              title="User Experience Consultant (Contract)"
+              company="JollyAI · Freelance"
               period="Mar 2025 - Apr 2025"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/jollyai')}
@@ -175,12 +175,12 @@ export const About = () => {
                 <li>Independently drove the UX design process, from initial concepts to interactive prototypes, for a generative AI tool</li>
               </ul>
             </TimelineItem>
-            
+
             <br />
-            
-            <TimelineItem 
-              title="Senior UX Designer" 
-              company="KoinBasket | Remote, India" 
+
+            <TimelineItem
+              title="Senior UX Designer"
+              company="KoinBasket | Remote, India"
               period="June 2024 - Mar 2025"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/koinbasket')}
@@ -192,12 +192,12 @@ export const About = () => {
                 <li>Architected the immersive Live Trading Experience, a flagship dashboard integrating live video streams with real-time market data and trade execution.</li>
               </ul>
             </TimelineItem>
-            
+
             <br />
-            
-            <TimelineItem 
-              title="Founding Designer" 
-              company="KoinBasket | Remote, India" 
+
+            <TimelineItem
+              title="Founding Designer"
+              company="KoinBasket | Remote, India"
               period="October 2022 - June 2023"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/koinbasket')}
@@ -209,12 +209,12 @@ export const About = () => {
                 <li>Designed key engagement features, including a Crypto Fantasy League and a multi-tiered rewards system, to drive user adoption and education.</li>
               </ul>
             </TimelineItem>
-            
+
             <br />
-            
-            <TimelineItem 
-              title="Design Intern" 
-              company="Softwire | London, UK" 
+
+            <TimelineItem
+              title="Design Intern"
+              company="Softwire | London, UK"
               period="July 2022 - August 2022"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/softwire')}
@@ -223,12 +223,12 @@ export const About = () => {
                 <li>Conducted foundational user research and usability testing for an LNER App Clip, uncovering key insights that directly informed the final UI design.</li>
               </ul>
             </TimelineItem>
-            
+
             <br />
-            
-            <TimelineItem 
-              title="Design Research Intern" 
-              company="Think Design | Remote, India" 
+
+            <TimelineItem
+              title="Design Research Intern"
+              company="Think Design | Remote, India"
               period="April 2020 - May 2020"
             >
               <ul className="list-disc list-inside space-y-2">
@@ -238,14 +238,14 @@ export const About = () => {
             </TimelineItem>
           </div>
         </section>
-        
+
         {/* Academic Experience */}
         <section id="academic-experience" className="mb-24 scroll-mt-24 reveal-on-scroll">
           <h2 className="heading-2 mb-8">Academic Experience</h2>
           <div className="timeline-container relative">
-            <TimelineItem 
-              title="Pebble (VISA Innovation Centre Project)" 
-              company="RCA | London, U.K" 
+            <TimelineItem
+              title="Pebble (VISA Innovation Centre Project)"
+              company="RCA | London, U.K"
               period="January 2021 – June 2021"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/pebble')}
@@ -256,12 +256,12 @@ export const About = () => {
                 <li>Developed a well-received digital service concept focused on improving focus, communication, and overall support within the workplace.</li>
               </ul>
             </TimelineItem>
-            
+
             <br />
-            
-            <TimelineItem 
-              title="Invisible Value Income Program (Fuzzy Design x BCG x RSM Collaboration)" 
-              company="RCA | London, U.K" 
+
+            <TimelineItem
+              title="Invisible Value Income Program (Fuzzy Design x BCG x RSM Collaboration)"
+              company="RCA | London, U.K"
               period="October 2020 – December 2020"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/iviprogram')}
@@ -273,12 +273,12 @@ export const About = () => {
                 <li>Project research and findings were utilized by BCG for further analysis and implementation strategies.</li>
               </ul>
             </TimelineItem>
-            
+
             <br />
-            
-            <TimelineItem 
-              title="Stampede" 
-              company="RCA | London, U.K" 
+
+            <TimelineItem
+              title="Stampede"
+              company="RCA | London, U.K"
               period="January 2019 – March 2019"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/stampede')}
@@ -290,7 +290,7 @@ export const About = () => {
             </TimelineItem>
           </div>
         </section>
-        
+
         {/* Education */}
         <section id="education" className="mb-24 scroll-mt-24 reveal-on-scroll">
           <h2 className="heading-2 mb-8">Education</h2>
@@ -354,7 +354,6 @@ export const About = () => {
                 <li>Adobe Illustrator</li>
                 <li>After Effects</li>
                 <li>LottieFiles</li>
-                <li>Spline</li>
                 <li>ChatGPT</li>
                 <li>Cursor</li>
                 <li>VS Code + GitHub Copilot</li>
