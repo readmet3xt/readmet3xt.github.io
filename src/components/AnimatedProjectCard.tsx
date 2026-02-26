@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 import { useSidebar } from '@/components/SidebarContext';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface AnimatedProjectCardProps {
   href: string;
@@ -22,6 +23,7 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
   const cardRef = useRef<HTMLAnchorElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { isOpen } = useSidebar();
+  const isMobile = useIsMobile();
 
   // Use optimized hover effect hook
   useCardHoverEffect(cardRef, {
@@ -69,6 +71,7 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
       }}
       whileTap={{
         scale: 0.98,
+        boxShadow: isMobile ? "0 0 60px rgba(255, 71, 87, 0.6)" : "none",
         transition: { duration: 0.1 }
       }}
     >
