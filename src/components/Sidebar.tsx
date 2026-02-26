@@ -65,7 +65,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
                   onClick={() => handleLinkClick('work')}
                   aria-current={activeLink === 'work' ? 'page' : undefined}
                 >
-                  <h1 className="font-dm-sans text-xl sm:text-2xl lg:text-3xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">
+                  <h1 className="font-dm-sans text-lg sm:text-xl lg:text-2xl font-bold tracking-wider text-foreground group-hover:text-accent-primary group-focus:text-accent-primary transition-colors duration-300">
                     amaan
                   </h1>
                 </Link>

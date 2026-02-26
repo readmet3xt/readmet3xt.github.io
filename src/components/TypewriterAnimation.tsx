@@ -223,14 +223,22 @@ export const TypewriterAnimation = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none hidden lg:flex"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none"
       >
-        <p className="text-[10px] uppercase tracking-widest font-ibm-plex-mono text-text-tertiary opacity-60">Click to explore</p>
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-1 h-3 rounded-full bg-accent-primary opacity-40"
-        />
+        {/* WIP Badge */}
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-accent-primary/5 border border-accent-primary/20 backdrop-blur-sm">
+          <div className="w-1.5 h-1.5 rounded-full bg-accent-primary animate-pulse" />
+          <span className="text-[9px] font-ibm-plex-mono uppercase tracking-[0.2em] text-accent-primary font-medium">Work in Progress</span>
+        </div>
+
+        <div className="flex flex-col items-center gap-2 hidden lg:flex">
+          <p className="text-[10px] uppercase tracking-widest font-ibm-plex-mono text-text-tertiary opacity-60">Click to explore</p>
+          <motion.div
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-1 h-3 rounded-full bg-accent-primary opacity-40"
+          />
+        </div>
       </motion.div>
     </div>
   );
