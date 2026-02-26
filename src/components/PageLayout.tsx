@@ -43,8 +43,11 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
     };
 
     const handleScroll = () => {
-      // Hide toggle during scroll
-      if (!isScrolling) setIsScrolling(true);
+      // Use functional update to avoid dependency on isScrolling
+      setIsScrolling(prev => {
+        if (!prev) return true;
+        return prev;
+      });
 
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
       scrollTimeoutRef.current = setTimeout(() => {
@@ -52,13 +55,13 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
       }, 300);
 
       // Auto-open sidebar only on desktop
+      // Note: we'll check these values from refs/latest state in handlescroll
+      // to avoid effect re-runs when they change
       if (!isMobile && hasClickedTypewriter && !sidebarOpen && window.scrollY > 100) {
         setSidebarOpen(true);
         document.body.classList.add('sidebar-open');
-        // Reset the flag so it only auto-opens once per click
         setHasClickedTypewriter(false);
 
-        // Auto-close after 2 seconds unless user interacts
         if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
         autoCloseTimeoutRef.current = setTimeout(() => {
           setSidebarOpen(false);
@@ -75,7 +78,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
       window.removeEventListener('scroll', handleScroll);
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
-  }, [hasClickedTypewriter, sidebarOpen, isMobile, isScrolling]);
+  }, [hasClickedTypewriter, sidebarOpen, isMobile]); // Removed isScrolling from dependencies
 
   return (
     <SidebarProvider isOpen={sidebarOpen} isScrolling={isScrolling}>

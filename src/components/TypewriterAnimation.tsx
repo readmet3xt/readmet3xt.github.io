@@ -20,7 +20,7 @@ const lottieSources = [
   "https://lottie.host/de500585-e8a6-4318-9f61-db16e471403a/E09Bpjn0np.lottie",
   "https://lottie.host/d4940733-ce24-4dbb-a14e-9dfef936316a/k5M6KkI6Jr.lottie",
   "https://lottie.host/336f0a07-f047-4bac-bb05-560de2528843/RlgpAr0cgg.lottie",
-  "https://lottie.host/23f9baeb-81af-4741-89fc-463f9b0d5bee/jTZfXT1G8C.lottie"
+  "https://lottie.host/d9a36635-1610-48ec-8863-7670f674ecb4/RplOYxCSbD.lottie"
 ];
 
 const fontClasses = [
