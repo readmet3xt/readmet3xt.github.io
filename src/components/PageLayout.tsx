@@ -125,7 +125,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
         </div>
 
         {/* Mobile Header */}
-        <header className="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex flex-col items-center justify-center z-20 pointer-events-none bg-bg-primary/80 backdrop-blur-sm">
+        <header className="mobile-header lg:hidden fixed top-0 left-0 right-0 h-20 flex flex-row items-center justify-end px-6 z-20 pointer-events-none bg-bg-primary/80 backdrop-blur-sm">
           <h1 className="font-dm-sans text-lg sm:text-xl font-bold tracking-wider text-foreground pointer-events-auto">
             <a href="/" className="hover:text-accent-primary focus:text-accent-primary transition-colors duration-300">
               amaan
