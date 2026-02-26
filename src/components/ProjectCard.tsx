@@ -33,7 +33,7 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
       ref={cardRef}
       to={href}
       className={cn(
-        "project-card rounded-xl overflow-hidden group bg-card block flex flex-col w-full max-w-full transition-all duration-300",
+        "project-card rounded-xl overflow-hidden group bg-card block flex flex-col w-full max-w-full transition-all duration-300 shadow-none hover:shadow-[0_0_50px_rgba(255,71,87,0.4)]",
         isOpen ? "min-h-[340px]" : "min-h-[300px]",
         className
       )}
