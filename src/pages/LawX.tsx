@@ -24,18 +24,18 @@ export const LawX = () => {
                     'Legal Tech',
                     'AI UX',
                     'Transparency Design',
-                    'Freelance',
+                    '1-Month Contract',
                     'Figma',
                 ]}
-                intro="Legal professionals don't trust AI—and for good reason. When I took on this freelance project, my challenge was clear: design an AI assistant that lawyers would actually use. The answer wasn't better AI; it was better transparency. By visualizing the AI's reasoning process, I turned skepticism into trust."
+                intro="Legal professionals don't trust AI—and for good reason. When I took on this 1-month contract for early concept design, my challenge was clear: design an AI assistant that lawyers would actually use. The answer wasn't better AI; it was better transparency. By visualizing the AI's reasoning process, I turned skepticism into trust."
                 overview={{
                     role: [
-                        'Freelance Product Designer',
+                        'Concept Designer (Contract)',
                         'UX Strategy & Information Architecture',
                         'Interface Design & Visual Identity',
                         'User Flow & Interaction Design',
                     ],
-                    timeline: 'Freelance Project',
+                    timeline: '1-Month Contract',
                     tools: [
                         'Figma',
                         'User Research',

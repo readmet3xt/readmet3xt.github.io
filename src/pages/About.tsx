@@ -166,7 +166,7 @@ export const About = () => {
 
             <TimelineItem
               title="User Experience Consultant (Contract)"
-              company="Law.X · Freelance"
+              company="Law.X · 1-Month Contract"
               period="Mar 2025 - Apr 2025"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/lawx')}
