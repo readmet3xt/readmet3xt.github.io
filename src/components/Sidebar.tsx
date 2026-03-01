@@ -42,7 +42,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
     const path = location.pathname;
     if (path === '/play') setActiveLink('play');
     else if (path === '/about') setActiveLink('about');
-    else if (path === '/koinbasket' || path === '/softwire' || path === '/pebble' || path === '/iviprogram' || path === '/stampede' || path === '/otagon' || path === '/jollyai') setActiveLink('case-studies');
+    else if (path === '/koinbasket' || path === '/softwire' || path === '/pebble' || path === '/iviprogram' || path === '/stampede' || path === '/otagon' || path === '/lawx') setActiveLink('case-studies');
     else setActiveLink('work');
   }, [location.pathname]);
 
@@ -146,9 +146,9 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
                 <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=O" alt="Otagon project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
                 <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">Otagon</span>
               </Link>
-              <Link to="/jollyai" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/jollyai') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/jollyai') ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/EC4899/FFFFFF?text=J" alt="JollyAI project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">JollyAI</span>
+              <Link to="/lawx" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/lawx') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/lawx') ? 'page' : undefined}>
+                <img src="https://placehold.co/40x40/EC4899/FFFFFF?text=L" alt="Law.X project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
+                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">Law.X</span>
               </Link>
               <Link to="/koinbasket" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/koinbasket') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/koinbasket') ? 'page' : undefined}>
                 <img src="https://placehold.co/40x40/06B6D4/FFFFFF?text=K" alt="KoinBasket project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />

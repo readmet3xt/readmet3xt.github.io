@@ -166,10 +166,10 @@ export const About = () => {
 
             <TimelineItem
               title="User Experience Consultant (Contract)"
-              company="JollyAI · Freelance"
+              company="Law.X · Freelance"
               period="Mar 2025 - Apr 2025"
               actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/jollyai')}
+              onAction={() => navigateToProject('/lawx')}
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>Independently drove the UX design process, from initial concepts to interactive prototypes, for a generative AI tool</li>
