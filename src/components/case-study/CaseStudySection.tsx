@@ -68,8 +68,8 @@ interface CaseStudyParagraphProps {
   lead?: boolean;
 }
 
-export const CaseStudyParagraph = ({ 
-  children, 
+export const CaseStudyParagraph = ({
+  children,
   className = '',
   lead = false,
 }: CaseStudyParagraphProps) => (
@@ -117,7 +117,7 @@ interface CaseStudyListProps {
 
 export const CaseStudyList = ({ items, ordered = false, className = '' }: CaseStudyListProps) => {
   const ListTag = ordered ? 'ol' : 'ul';
-  
+
   return (
     <ListTag className={`space-y-2 ${ordered ? 'list-decimal' : ''} ${className}`}>
       {items.map((item, i) => (
@@ -156,10 +156,10 @@ interface CaseStudyImageProps {
   priority?: boolean;
 }
 
-export const CaseStudyImage = ({ 
-  src, 
-  alt, 
-  caption, 
+export const CaseStudyImage = ({
+  src,
+  alt,
+  caption,
   className = '',
   priority = false,
 }: CaseStudyImageProps) => (
@@ -170,12 +170,15 @@ export const CaseStudyImage = ({
     viewport={{ once: true, margin: '-50px' }}
     transition={{ duration: 0.5 }}
   >
-    <div className="relative overflow-hidden rounded-lg bg-bg-tertiary">
+    <div className="relative overflow-hidden rounded-lg bg-white border border-border aspect-video shadow-sm flex items-center justify-center">
       <img
         src={src}
         alt={alt}
-        className="w-full h-auto object-contain"
+        className="w-full h-full object-cover"
         loading={priority ? 'eager' : 'lazy'}
+        onError={(e) => {
+          (e.currentTarget.style.display = 'none');
+        }}
       />
     </div>
     {caption && (
@@ -192,8 +195,8 @@ interface CaseStudyImageGridProps {
   className?: string;
 }
 
-export const CaseStudyImageGrid = ({ 
-  images, 
+export const CaseStudyImageGrid = ({
+  images,
   columns = 2,
   className = '',
 }: CaseStudyImageGridProps) => {
@@ -214,12 +217,17 @@ export const CaseStudyImageGrid = ({
           viewport={{ once: true }}
           transition={{ delay: i * 0.1, duration: 0.4 }}
         >
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="w-full h-auto object-contain"
-            loading="lazy"
-          />
+          <div className="w-full aspect-video bg-white border border-border flex items-center justify-center overflow-hidden">
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="w-full h-full object-cover"
+              loading="lazy"
+              onError={(e) => {
+                (e.currentTarget.style.display = 'none');
+              }}
+            />
+          </div>
           {image.caption && (
             <figcaption className="p-2 text-xs text-text-tertiary text-center">
               {image.caption}
@@ -238,9 +246,9 @@ interface CaseStudyCardProps {
   className?: string;
 }
 
-export const CaseStudyCard = ({ 
-  children, 
-  title, 
+export const CaseStudyCard = ({
+  children,
+  title,
   icon,
   className = '',
 }: CaseStudyCardProps) => (
@@ -273,8 +281,8 @@ interface CaseStudyCardGridProps {
   className?: string;
 }
 
-export const CaseStudyCardGrid = ({ 
-  children, 
+export const CaseStudyCardGrid = ({
+  children,
   columns = 2,
   className = '',
 }: CaseStudyCardGridProps) => {

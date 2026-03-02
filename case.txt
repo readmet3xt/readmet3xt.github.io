@@ -1,0 +1,416 @@
+Otagon: Never Get Stuck Again
+How I designed and built an AI gaming companion from zero to production — solo
+Product Management React TypeScript AI/ML PWA Supabase Google Gemini
+
+The Short Version
+I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Over 6 months I went from concept to a production-ready PWA with 25+ features, 3 user tiers, real paying users, and AI response times under 3 seconds. This is the story of how that happened.
+
+My Role
+Product Manager & Solo Developer — full ownership from research to launch, including design, frontend engineering, AI integration, and go-to-market strategy.
+Timeline: 6+ months, August 2025–Present
+Stack: React 18, TypeScript, Supabase, Google Gemini 2.5 Flash, PostgreSQL, Tailwind CSS, PWA
+
+The Problem
+Gamers constantly need help — boss strategies, lore context, build optimization — but every existing solution breaks immersion or risks spoilers.
+
+Alt-tabbing to Google means re-explaining your context every time
+YouTube walkthroughs are linear and spoiler-heavy
+ChatGPT and Claude have no idea where you are in a game
+
+The core insight: gamers don't need more information — they need contextual help that knows where they are.
+
+"78% of gamers alt-tab during gameplay. 45% avoid seeking help entirely due to spoiler anxiety. 3–5 minutes lost per query."
+
+
+The Vision
+An AI companion that sees what you see. Upload a screenshot, and Otagon instantly knows your game, your location, your progress — and responds without spoilers.
+
+How It Was Built
+Phase 1 — Research & Direction (Weeks 1–3)
+I interviewed gamers across play styles and mapped the competitive landscape. Three distinct personas emerged — the Casual Gamer, the Story Seeker, and the Completionist — which directly shaped the tiered product strategy and every feature prioritization decision after.
+Phase 2 — MVP (Weeks 4–12)
+I made a key early decision: PWA over native app. 2 weeks to launch versus 2 months. That call defined the product's trajectory. I shipped the core: screenshot analysis via Gemini 2.5 Flash, game detection, conversation history, Game Hub, and PC-to-Mobile sync via WebSocket relay.
+Phase 3 — Pro Features & Monetization (Weeks 13–20)
+Usage patterns revealed the right pricing model: query-based limits, not arbitrary feature gates. I built Pro-tier features — Lore & Insights Subtabs, Google Search Grounding for real-time meta strategies, Playing vs Planning modes with session summaries.
+Phase 4 — Polish & Advanced Systems (Weeks 21–28)
+AI Behavior Training — users can teach Otagon correct responses when it gets something wrong. Hands-Free Mode with TTS for console players. Smart caching that reduced API costs by 40%.
+
+Key Design Decisions
+The OTAGON Tag System
+Early on, AI responses were generic and unreliable to parse. I designed a structured output format — OTAGON tags — that extract game title, location, progress estimate, spoiler risk, and confidence level from every screenshot. This made AI output predictable and the entire product more stable.
+Before: free-form text, unparseable. After: structured, reliable, product-grade.
+Spoiler-Aware Responses
+The most emotionally important feature. Progress-aware AI calibrated to how far you are in the game, with user-configurable spoiler tolerance. This was the insight that made Otagon feel different from just "ChatGPT for games."
+Playing vs Planning Mode
+A simple mental model with real product impact. Playing Mode: concise, immediate tactical tips. Planning Mode: deeper strategy, auto-generates a session summary when you switch. Clean modes map to real user behavior and reduce prompt engineering complexity.
+Genre-Specific Personas
+Generic AI responses were the first major failure point. I built 8+ genre-specific tone profiles — the AI feels different helping you with a FromSouls game versus an open-world RPG. This single change drove a qualitative improvement in perceived response relevance.
+
+The Hard Problems
+Screenshot Misclassification — AI was creating new game tabs for desktop screenshots and launchers. Fixed with IS_FULLSCREEN detection and confidence scoring. 80% reduction in false tabs.
+Context Loss in Long Conversations — Long sessions caused token overflow and cost spikes. Built a context summarization service: AI condenses history to 300 words, preserves the last 8 messages, triggers before overflow. Consistent costs regardless of session length.
+Empty Subtabs — Async AI generation meant Pro users saw blank panels on first load. Switched to a template-first approach: subtabs appear immediately in a loading state, populate in the background. Eliminated the complaint entirely.
+Race Conditions in Message Migration — Messages were occasionally lost when tab creation competed with message saving. Solved with atomic migration — single transaction for tab creation and message move. Zero data loss since.
+
+Results
+MetricTargetResultAI Response Time<3s✅ AchievedGame Detection Accuracy95%+✅ AchievedUptime99%+✅ MaintainedCritical Bugs in Production0✅ ZeroAPI Cost Reduction—~40% via cachingFeatures Shipped—25+
+Production-ready. 3 user tiers live. Real users on the platform.
+
+What I Learned
+Structure beats intelligence in AI products. Free-form AI output is unpredictable at scale. The OTAGON tag system was the single most important technical decision I made.
+Speed is emotional, not just functional. Even 5 seconds feels broken for gamers. <3 seconds feels magic.
+Freemium works when the free tier genuinely delivers value. Feature gates feel punitive. Query limits feel fair. That framing changes conversion behavior.
+Early database shortcuts compound. I built dual-write subtabs (JSONB + normalized tables) because of an early schema decision. It worked, but added complexity I'd avoid next time by starting normalized.
+
+What's Next
+Stripe payment integration and mobile app store deployment are in active development. Community features — shared builds, strategy sharing — are on the Q2 roadmap. The architecture is built to scale.
+
+
+(Here's the updated sections specifically:
+
+Results — add to the metrics:
+
+Lemon Squeezy payment integration live. Monetization active.
+
+Replace "Production-ready. 3 user tiers live. Real users on the platform." with:
+
+Fully shipped. Live PWA with active payments via Lemon Squeezy, 3 monetized user tiers, and real users on the platform.
+
+
+Technical Architecture — AI Layer — update to:
+
+Google Gemini 2.5 Flash via Vertex AI API — enterprise-grade multimodal processing with web search grounding for Pro tier)
+
+2. Designing Transparency into Legal AI
+How I turned a 'black box' chatbot into a workspace lawyers actually trust
+Legal Tech AI UX Transparency Design 1-Month Contract Figma
+
+Legal professionals don't trust AI — and for good reason. When I took on this 1-month contract for early concept design, the brief was clear: design an AI assistant that lawyers would actually use. The answer wasn't better AI. It was better transparency.
+
+My Role
+Concept Designer (Contract) — UX strategy, information architecture, interface design, visual identity, and interaction design. Early-stage concept work delivered in Figma.
+Timeline: 1-month contract
+
+The Challenge
+Lawyers are deeply skeptical of AI hallucinations — and rightly so. Confidently stated falsehoods don't just embarrass lawyers, they end careers. My client needed a design that addressed three specific realities of legal practice in India: trust in AI output, precision of legal tone, and accuracy across state-specific jurisdictions.
+The existing solution was a standard chatbot. You ask, it answers. No explanation of how. For a lawyer, that's not a tool — it's a liability.
+
+The Key Insight: Glass Box UX
+The breakthrough wasn't about making the AI more accurate. It was about making it more verifiable.
+Lawyers don't need AI to be perfect. They need to catch it when it's wrong — before it matters. So instead of hiding the AI's reasoning, I designed a system that surfaces it.
+
+"The moment I showed lawyers they could watch the AI think — and catch mistakes before they happened — their skepticism transformed into genuine interest."
+
+
+The Thinking Panel
+Before generating any answer, the UI displays the AI's internal workflow in real time: Query Reframing, Clarification, and Legal Index Framework Review. Lawyers can see exactly which statutes are being referenced — Section 56(2) of the Income Tax Act, for example — before they trust the output.
+This single decision reframed the entire product from "AI that might be wrong" to "AI you can supervise."
+
+Context & Customisation
+Legal tone isn't one thing. A court filing, a client email, and a legal notice require completely different registers. I designed two systems to give lawyers precise control:
+Instruction Modal — a persistent settings layer directly in the chat input. Lawyers set global parameters — "Keep it concise," "Use formal legal terminology" — and the AI carries them across sessions without re-prompting.
+State-Specific Onboarding — laws in India vary significantly by state. The onboarding flow makes jurisdiction selection mandatory from the first interaction, ensuring accuracy before a single query is made.
+
+Reducing the Blank Page Problem
+Legal professionals manage dozens of cases simultaneously. I designed two features specifically to reduce friction at the start of tasks:
+Prompt Gallery — the home screen leads with curated, legal-specific prompts: "Draft IT notice response," "Outline M&A due diligence," "Summarize contract risks." No blank chat box, no cognitive load about where to start.
+Side Panel Navigation — a collapsible sidebar for jumping between cases and threads instantly. Essential for professionals managing multiple clients with overlapping deadlines.
+
+Visual Identity
+The design language is deliberately restrained — stark black, white, and grey with high-contrast typography. Legal professionals read thousands of words daily; clarity takes priority over personality. The one deliberate accent: a yellow "Thinking..." status pill that signals AI activity without cluttering the interface.
+
+The Outcome
+A Figma prototype delivering a cohesive legal workspace that addresses the core barrier to AI adoption in law: trust. By making reasoning visible rather than hiding it, a generic chatbot became a specialized professional tool.
+The four design principles that emerged from this project:
+Transparency First — show the reasoning, not just the result.
+Precise Control — tone and terminology must be lawyer-defined, not AI-assumed.
+Jurisdictional Accuracy — state-specific context from the very first interaction.
+Workflow Efficiency — reduce the friction before users even start a task.
+
+Reflection
+"This project taught me that designing for trust is fundamentally different from designing for usability. Sometimes the best UX isn't hiding complexity — it's revealing it in a way that empowers users to make informed decisions."
+The legal tech space is growing fast, but adoption hinges on trust. Law.X demonstrates that thoughtful UX can bridge the gap between AI capability and professional confidence — not by making AI smarter, but by making it legible.
+
+3. From One-Week MVP to 70,000 Users
+How I built a crypto investing platform that democratized portfolio diversification
+Fintech Founding Designer MVP Design Design Leadership Rebranding
+
+When I joined KoinBasket as founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. One week, one intense sprint — and eventually, 70,000 users.
+
+My Role
+Founding Designer → Senior UX Designer & Design Lead. I came in solo, built the MVP, grew into a design leader, hired and mentored a junior designer, and led a complete platform rebrand.
+Timeline: Founding Designer (Oct 2022–May 2023) → Senior Design Lead (Jun 2024–Mar 2025)
+Tools: Figma, Balsamiq, iOS/Android Design, Design Systems, Brand Design
+
+The Origin Story
+Crypto in 2020 was a labyrinth — complex terminology, overwhelming choices, legitimate security fears. New investors faced a steep learning curve just to make their first purchase, let alone build a diversified portfolio.
+The breakthrough insight was radical simplification: curated crypto "baskets." Instead of forcing users to research hundreds of coins individually, we offered thematic portfolios — the G.O.A.T. Basket (top 5 coins), NFT Basket, DeFi Basket — that users could invest in with one click.
+Trust was the other non-negotiable. We adopted a non-custodial model — users traded through their own Binance or Coinbase accounts, never surrendering control of funds to us. That architecture became our competitive moat.
+
+"Trust is the ultimate currency in fintech. Non-custodial wasn't just a technical decision — it was the design principle that shaped everything."
+
+
+Chapter 1: The One-Week MVP
+As the sole founding designer, I had one week to design a fully functional MVP. No time for perfection — just relentless focus on one question: can we make crypto investing accessible?
+I moved from Balsamiq wireframes to high-fidelity UI in days. The dark theme with vibrant accents established the visual language immediately. Beyond UI, I owned everything — custom basket icons, email templates, marketing content, onboarding flows. Cross-platform from day one: responsive web plus foundational iOS and Android designs.
+The core features I shipped in that sprint: curated baskets with one-click investing and transparent coin breakdowns, non-custodial Coinbase and Binance account connection, portfolio tracking with full transaction history, and a gamification layer — a Crypto Fantasy League where users competed by building their own baskets.
+The result: The hypothesis was validated. That one-week sprint grew to 70,000 users.
+
+Chapter 2: Scaling to Market Leadership
+70,000 users created new problems. The MVP had done its job — now we needed to evolve from promising startup to mature, trusted platform. My role evolved with it.
+The Rebrand
+I led a complete visual overhaul across web and mobile. We moved away from the dark MVP aesthetic to a cleaner, lighter interface with green accents — more professional, more trustworthy, more inviting to the mainstream investor we were now targeting. Not just a cosmetic change — the rebrand signalled a new chapter of the company to existing and potential users alike.
+BitBuddy: Building an Ecosystem
+Our major strategic move was community. I designed BitBuddy as a two-sided platform — influencers ("Bitpals") create content, users discover and invest alongside them. The flagship feature: live video streams where users could watch influencers trade in real time and execute their own purchases directly from the same screen. Live video, real-time market data, and seamless trade execution in one dashboard.
+This transformed KoinBasket from a tool into an ecosystem — content, community, and commerce in one place.
+Design Leadership
+This phase also meant building a team. I hired and mentored a junior designer, built our design system from scratch, and led cross-functional design decisions across product, marketing, and engineering. The recommendation my junior left when I was let go is something I'm genuinely proud of.
+
+Results
+Users0 → 70,000TeamSolo → Design Lead with direct reportPlatformsWeb + MobileDeliverablesMVP, full rebrand, live trading ecosystem, BitBuddy influencer platform, design system
+
+What I Learned
+Speed vs. Structure — a one-week sprint is perfect for validation. Scaling requires process, systems, and delegation. Knowing which mode you're in changes every decision you make.
+Trust is a design decision — from non-custodial architecture to the rebrand, every major call anchored in one question: does this make users feel safer? In fintech, trust isn't a feature. It's the foundation.
+Leadership is about people, not just products — my most lasting output from this company wasn't a screen. It was a designer who grew under my mentorship and went on to do great work.
+
+4.Designing for Users Running to Catch Trains
+How I led UX design for LNER's instant ticket booking experience
+App Clip Mobile Design Usability Testing LNER Internship
+
+You're sprinting through the station, dodging crowds, watching platform boards nervously. You reach the ticket kiosk — there's a queue. You try downloading the app — it's 200MB. The departure countdown ticks.
+During my Softwire internship, I led UX design for LNER's App Clip: a sub-10MB, instant-launch solution for exactly this situation.
+
+My Role
+Solo UX/UI Designer — led 7 developers through the design process, facilitated a workshop with 13 stakeholders, and conducted usability testing with 9 participants.
+Timeline: 8-week summer internship, July–August 2022
+Tools: Figma, Usability Testing, Apple App Clip, National Rail Guidelines
+
+The Challenge
+App Clips are Apple's answer to instant-launch experiences: sub-10MB, no installation, focused on a single task. Perfect for time-pressured contexts in theory. But designing for users literally running to catch trains is a different problem entirely.
+Three constraints shaped every decision from day one: the 10MB size limit demanded ruthless prioritisation, instant launch meant zero onboarding, and National Rail compliance added a layer of industry requirements on top.
+The design questions that emerged from those constraints:
+
+"What information is essential versus overwhelming? How do you build trust for payment in 30 seconds?"
+
+
+Research & Discovery
+I started with an ideation workshop — 13 participants across LNER stakeholders, designers, developers, and project managers — then took the research to the field.
+Fly-on-the-wall observations at St. Pancras told the real story. Users checking platform boards repeatedly. Anxiety spiking when platforms weren't announced until the last minute. Fumbling with paper tickets or slow apps under pressure. The stress wasn't hypothetical — it was visible and consistent.
+From research, five priorities emerged that users consistently named as non-negotiable: live times, delays, platform details, prices, and journey duration. Everything else was noise.
+
+Design Process
+Weeks 1–2: Understanding
+Ideation workshop, affinity mapping, sketching. One clear direction: a minimal interface showing only essential journey information with a single, fast purchase path.
+Weeks 3–4: Prototyping & Testing
+Interactive Figma prototypes tested with 9 participants. The task: book a return ticket to Birmingham for 1 adult and 1 child with a railcard. Two critical failures surfaced immediately.
+
+Key Iterations
+Ticket Confirmation Screen — users found the initial design overwhelming. Too much information at once, unclear hierarchy, confusing ticket-saving options. I stripped it back, clarified the primary action, and restructured the information hierarchy around what users actually needed in that moment: platform number and QR code, visible immediately.
+Journey Planning Flow — the original multi-step flow felt too long for an App Clip context. Users couldn't easily edit journey details mid-flow. Redesigned to a single-overview approach with inline editing — fewer taps, less backtracking, faster to purchase.
+Both issues only surfaced through testing. Neither was visible from the inside.
+
+The Solution
+A streamlined booking flow built around four principles:
+Instant Access — launch via NFC tag or QR code at the station. No download, no account creation to start.
+Radical Simplification — upcoming trains shown with only the five things users asked for: time, price, duration, changes, and delay status. Filters for cheapest and fastest, nothing else.
+Frictionless Payment — Apple Pay integration. One confirmation tap to purchase.
+Accessible Ticket — prominent QR code, platform number, and Apple Wallet integration on the confirmation screen. Everything a running passenger needs, immediately visible.
+
+Beyond Booking: The Seat Finder Concept
+Last-minute buyers often have no reserved seat. Finding a free seat on a busy train adds a final layer of stress. I explored a Seat Finder feature as part of the onboarding experience — two visual approaches:
+Side Profile view — mimics standing on the platform looking at the train. Horizontal scrolling, potentially easier spatial orientation in context.
+Plan view — industry-standard carriage layout. More information visible at once, vertical scrolling.
+
+"This was a perfect A/B testing opportunity — which representation would users interpret faster under real-world pressure?"
+
+The feature was parked for future development, but the question it raised — how small visual decisions change usability under stress — became one of the most important things I took from the project.
+
+Outcome
+The core booking flow was validated through usability testing, developed by the engineering team, and met National Rail compliance guidelines. Delivered within the 8-week internship timeline.
+
+What I Learned
+Context changes everything — what works in a calm setting fails under pressure. Designing for stressed, time-constrained users requires fundamentally different thinking, not just simplified UI.
+Constraints are clarifying — the 10MB limit forced decisions I wouldn't have made otherwise. Every screen had to justify its existence. That discipline made the product better.
+Test your assumptions in context — the confirmation screen and journey flow failures were invisible until real users tried them under realistic task conditions. No amount of internal review would have caught either.
+
+5.What If Workplace Happiness Was Designed, Not Hoped For?
+A VISA-backed virtual companion that transforms how remote teams combat isolation
+Service Design Employee Wellbeing VISA Innovation RCA Group Project Virtual Companion
+
+Remote work promised freedom. It delivered isolation. As project lead at the Royal College of Art, I created Pebble — a virtual wellbeing companion born from 1,200+ worker interviews and 24 co-creation workshops. Our Virtual Café concept influenced VISA's internal collaboration roadmap, proving that proactive wellbeing design drives measurable business impact.
+
+My Role
+Project Lead & UX Researcher — I designed and facilitated 24 co-creation workshops, led research synthesis across 1,200+ responses, and owned the UI/UX design for the Pebble companion itself.
+Timeline: 3 months, RCA + VISA Innovation Centre, January–June 2021
+Tools: Service Design, Co-creation Workshops, Figma, User Testing
+
+The Crisis We Were Designing For
+The numbers told a troubling story before we'd designed a single screen.
+43% of employees rated their mental health between "very bad" and "fair." The percentage feeling completely happy at work had dropped from 26% to 13% since February 2020. And the business cost was concrete — happier employees are 12% more productive, 3x more creative, and drive up to 147% higher profitability.
+The framing that shaped our entire approach:
+
+"How might we proactively design for workplace happiness rather than reactively treating burnout? Wellbeing isn't an HR checklist — it's a competitive advantage when designed systemically."
+
+
+Research & Co-Creation
+We believed you can't design for emotional needs without deeply understanding them first. So before any solution work, we built a research foundation I'm still proud of.
+1,200+ individual survey responses capturing emotional journeys and core needs. 24 co-creation workshops with both public participants and VISA Innovation Centre employees. Emotional journey mapping using "How was your week?" tools to understand the weekly rhythm of remote work stress. Data-backed personas developed from synthesis across all of it.
+The workshops weren't just research — they were design sessions. Participants shaped the direction alongside us, which meant the eventual solution had genuine co-authorship from the people it was built for.
+
+The Explorer Persona
+A pivotal decision from our validation workshop: focus on the "Explorer" — someone aware their mental wellbeing is suffering but unsure what to do about it. We found this wasn't a niche user type. Almost every other user group passes through an Explorer phase at some point.
+Meet James — a 28-year-old remote product designer. Frustrated, distracted, socially isolated. He knows something's off. He doesn't know how to fix it.
+
+"How might we help the Explorer build a foundation of high wellbeing? This question led directly to the concept of different Pebble types — virtual companions with distinct personalities."
+
+
+The Solution: Pebble
+Pebble is a virtual assistant that promotes happiness and productivity through personalisation, focus enhancement, and social connection. Four distinct Pebble personalities match different user needs — matched through an onboarding quiz that continues learning through daily check-ins.
+The four core features emerged directly from research, not assumptions:
+Personalised Matchmaking — quiz-based companion matching that adapts over time. Emotional engagement built through continuity, not novelty.
+Deep Work & Flow — 1-minute cognitive exercises and distraction-reducing tools to help users enter flow state. Connecting focused work to lasting happiness rather than treating them as opposites.
+Virtual Café — the feature that changed everything. Informal coffee chat rooms that recreate the spontaneous social interactions remote work eliminates. Employees join or create rooms, conversations happen, isolation decreases. This concept directly influenced VISA's internal collaboration roadmap.
+Healthy Boundaries — gentle prompts to take breaks, log off, and reflect. Wellbeing as ongoing habit, not one-off intervention.
+
+What Testing Taught Us
+Five participants tested the prototype. Three things we assumed were wrong.
+Connection was the priority, not productivity — focus tools were valued, but coffee catch-up features resonated most strongly. People crave belonging. Digital tools have to actively create it, not just enable it.
+Personalisation needed to be continuous — users wanted daily emotion tracking and adaptive support over time. A one-off onboarding quiz wasn't enough. Pebble needed to keep learning.
+Platform fatigue is real — the most consistent concern was adding yet another tool. A wellbeing product that doesn't integrate into Teams, Slack, and existing calendars will be abandoned regardless of how good it is.
+
+Impact & Recognition
+Our Virtual Café concept was adopted into VISA Innovation Centre's roadmap for team chat feature development. Senior designers at VISA praised both the research-driven approach and the co-creation methodology specifically — not just the output, but how we got there.
+
+"Amaan was not only proactive in managing his stakeholders and bringing together the right people at the right time in the design thinking process, his thoughts, analysis of the insight and creative output was thoughtful, articulate and incredibly creative."
+— Elin Sjursen, Senior Design Strategy Director, VISA
+
+
+What I Learned
+Wellbeing is personal, not universal — one-size-fits-all fails because stress is experienced differently by everyone. Adaptability isn't a nice-to-have in this space. It's the product.
+Co-creation is not a methodology, it's a mindset — 24 workshops sounds like a lot until you see how much better the output is when users shape the solution alongside you rather than react to it afterwards.
+Small nudges, big shifts — the most impactful features weren't grand interventions. They were gentle, well-timed micro-moments. A coffee chat invite. A reminder to log off. Design doesn't have to be dramatic to change behaviour.
+The ROI of happiness is measurable — 147% profit increase with engaged teams isn't a soft claim. Framing wellbeing as a business outcome, not just an HR concern, was what got VISA's attention.
+
+The Team
+Collaboration with Jing Qian and Zhiyuan Zheng at the Royal College of Art. With thanks to tutor David, project partners Elin and Annie, LBS student Yurika, wellbeing specialists Hugo Alistair and Keyun Ruan, Mental Health Studio, and the VISA Innovation Team.
+
+6. The Hidden Workload: Reimagining Women's Work-Life Balance for 2040
+A Core77-awarded speculative service that makes invisible domestic labour economically visible
+Speculative Design Women's Wellbeing Invisible Labour Future of Work Systemic Design Core77 Award Winner
+
+What if the invisible labour women perform at home could be economically valued and compensated? As project lead at the Royal College of Art, I designed a Core77-award-winning speculative service that reimagines work-life balance by 2040. Through research with 79 working women and co-creation with BCG, we developed the Invisible Value Income Program — a future-facing system that makes unpaid domestic work visible, measurable, and compensated.
+
+My Role
+Project Lead & Design Strategist — I led the research design and synthesis across 79 participant interviews, facilitated co-creation workshops with BCG stakeholders, and designed the speculative service system and Sensei platform UI.
+Timeline: 4 months, Royal College of Art, October–December 2020
+Team: Collaboration with Guoxing Song, Jing Qian, Kotoko Kimura, and Zhiyuan Zheng. Partners: Fuzzy Design Studio, Royal Society of Medicine, BCG.
+Recognition: Core77 Design Awards 2021 — Notable Honor, Speculative Design. Research framework adopted internally by BCG.
+
+The Problem
+The modern working woman carries two jobs. One is paid and visible. The other — childcare, domestic management, emotional labour — is invisible to every economic system that exists today.
+Our research with 79 working women across sectors and countries mapped the systemic pressure clearly: workplace stress compounded by unpaid domestic workload, blurred boundaries between professional and personal life, and what we came to call the "Working Mom Penalty" — the systematic devaluation of contributions both at home and at work.
+The central question that emerged wasn't about better apps or workplace wellness programs:
+
+"What if invisible value could be evaluated economically?"
+
+
+Our Approach
+We believed designing for systemic inequality required understanding it at a human level first. So before any solution work, we built a genuine research foundation.
+Phase 1 — Discovery: 79 working women interviewed across diverse sectors and countries, plus 4 wellbeing specialists. Key findings: stress is both external (workload, societal pressure) and internal (self-doubt, fear of obsolescence). A sense of control significantly decreases stress. Prevention is more effective than cure, yet chronically underfunded.
+Phase 2 — Persona & Problem Definition: We developed Johanna — a 36-year-old working mother. No time for herself. Loss of control. Constant adjustment to competing demands. No space for deep communication. Her root problem wasn't time management. It was that her domestic work had no recognised value.
+Phase 3 — Future Speculation: We projected Johanna's needs into a 2040 scenario — accounting for advances in AI, IoT, evolving family structures, and shifting work cultures. The question became: if technology can measure almost anything, why are we choosing not to measure this?
+
+The Solution: The I.V.I. Program
+The Invisible Value Income Program is a speculative governmental service for 2040. It recognises, measures, and compensates for the invisible value created by individuals — primarily women — outside of formal employment.
+Three things the program does that no current system does:
+Makes invisible value visible — IoT devices collect data on domestic contributions, the Sensei platform visualises that work, and it translates into potential income. The act of measurement alone shifts perception.
+Enhances sense of control — users gain data and insight into their full life-work landscape, enabling better planning and genuine decision-making autonomy.
+Promotes systemic equity — by compensating unpaid work at a governmental level (not employer level — a critical design decision from stakeholder validation), the program avoids creating new workplace discrimination while addressing the structural inequality directly.
+The Sensei Platform is the central touchpoint: a digital interface that collects invisible value data via IoT, facilitates self-monitoring of physical and mental health, connects users to professional support pathways, and facilitates planning conversations with managers, HR, and family members.
+
+Validation with Stakeholders
+We prototyped the I.V.I. Program and tested it with 9 stakeholders — working mothers and fathers, managers, and HR specialists across multiple countries. The feedback sharpened our thinking significantly.
+
+"The invisible value should be paid for by the government, not companies — women are discriminated against more if the company pays for it."
+— Miao, Working Mother, China
+
+
+"This will help us plan and manage our employees' workload to ensure lack of productivity is addressed."
+— Saanya, Manager, India
+
+
+"It would need to be very easy to access, otherwise only educated women would benefit."
+— Miriam, Germany
+
+From validation, four design principles crystallised: government funding only to prevent workplace discrimination, partial employer data access with user consent, trust-based service design with minimal tracking, and careful consideration of unintended consequences — particularly domestic work becoming transactional.
+
+Impact & Recognition
+Core77 Design Awards 2021 — Notable Honor in Speculative Design.
+The "6 Dimensions of Workplace Wellbeing" framework developed during this project was adopted by BCG for their internal employee affiliation workshops — demonstrating that speculative design, done rigorously, produces frameworks with immediate real-world applicability.
+
+What I Learned
+Speculative design is a tool for real dialogue — designing a 2040 scenario didn't make the work abstract. It made the conversations about current inequality sharper and more honest. People engage differently when you remove the constraints of "what's feasible now."
+Wellbeing is systemic, not individual — the instinct in most wellness products is to help individuals cope better. The harder, more important question is: what systemic conditions are producing the stress in the first place?
+Making the invisible visible is itself an act of design — the most powerful thing the I.V.I. Program does isn't the income. It's the measurement. Quantifying domestic labour changes how it's perceived, discussed, and valued — by institutions, by families, and by women themselves
+
+7.Stampede: Designing Strategic Partnerships for Conservation Impact
+A facilitation methodology that turned "happy accidents" into designed collaborations
+Conservation Strategic Partnerships Design Thinking Workshop Facilitation Systems Design Royal College of Art
+
+
+"This was 100 times more productive than any partnership meeting I've had."
+— Nick Appleby, Senior Partnerships Manager, WWT
+
+That quote came at the end of a 3-hour workshop I designed and facilitated between WWT and Airbnb — two organisations that had never formally collaborated. It's the best summary of what Stampede does: transforms conservation partnerships from happy accidents into designed outcomes.
+
+My Role
+Project Lead & Service Designer — I led stakeholder research with WWF, WWT, and Imperial College, designed the Stampede methodology including the Power/Pace matrix and animal archetypes, and facilitated the live WWT × Airbnb co-creation workshop.
+Timeline: 4 months, Royal College of Art, January–March 2019
+Team: Collaboration with Anahita Pradhan, Andrew Seetoh, and Constance Cheung (RCA)
+
+The Problem
+Wildlife conservation has a hidden crisis. It's not lack of funding — it's lack of connection.
+Our research with leaders from WWF, WWT, and Imperial College revealed three systemic failures happening simultaneously:
+Billions in unspent funding sitting in large organisations unable to allocate it effectively. Partnerships forming by "happy accident" rather than strategic intent — an HSBC collaboration cited as a lucky encounter, not a designed outcome. And corporate advocacy that dissolves the moment an individual champion leaves their role — taking years of relationship-building with them.
+
+"There are so many people out there who have similar interests, but connecting them is tough."
+— Wildlife Biologist, Founder of Key Conservation
+
+The sector is passionate and driven. It's systematically inefficient at connecting resources to impact. That's a design problem.
+
+The Insight: Collaboration Can Be Designed
+The breakthrough was recognising that organisations don't just differ in mission — they differ in how they operate. Power (influence, resources) and Pace (speed of decision-making) vary enormously across the conservation ecosystem. A WWF moves slowly and carefully. A startup like Giki moves fast with limited reach. Matching them randomly produces friction. Matching them strategically produces leverage.
+To make this tangible, we developed animal archetypes — a tool for quickly mapping an organisation's operational character before attempting to partner them.
+🦭 Walrus (e.g., WWF) — large, globally influential, brand-cautious, slow due to layers of approval
+🐅 Tiger (e.g., Apple) — large tech company, fast-moving, innovative, resource-rich
+🐑 Sheep (e.g., Thames Water) — large traditional corporate, follows others, slower decision-making
+🐝 Bumblebee (e.g., Giki) — small conservation startup, innovative and agile, limited reach
+🪱 Worm (e.g., WWT) — grassroots organisation, vital on-the-ground impact, cash-strapped
+🐙 Octopus (e.g., EY) — large multinational, analytical, many arms, can move quickly
+The key insight: the most powerful partnerships connect organisations with complementary Power/Pace profiles — not similar ones. A Walrus and a Bumblebee achieve together what neither can alone.
+
+The Stampede Methodology
+Stampede is a facilitation service built around four stages: People (connecting the right organisations and individuals), Experience (curating the right format — expedition, hackathon, workshop), Outcome (enabling tangible plans and proposals), and Follow-up (maintaining momentum beyond the room).
+The service is designed to support organisations at any stage of the partnership journey — from Purpose Finding and Match-Making through to Project Execution and Outcome Measurement. It's not a one-off event. It's a designed relationship infrastructure.
+
+Prototyping in Action: The WWT × Airbnb Workshop
+WWT had described Airbnb as a "dream partner." We designed a 3-hour Stampede workshop to test whether the methodology could turn that aspiration into a real working relationship.
+Unpacking (40 mins) — introductions, trust-building, goal setting, and mapping each organisation's strengths honestly.
+Sketching (60 mins) — Crazy 8s ideation around a single question: "How might Airbnb and WWT create an authentic wetlands experience?"
+Solutioning (70 mins) — developing an action plan, identifying practical constraints, and agreeing next steps.
+The result wasn't just a good meeting. It was a genuine partnership commitment.
+
+"This has been an opportunity for me to think of the different things we do and could do. We will be following up — I have your details."
+— Holly Bland, Social Impact Experience Manager, Airbnb
+
+Five design principles emerged from running the prototype: government or neutral funding prevents power imbalances, go in with a hook idea but let the partnership evolve, third-party facilitation levels the playing field, only invite people who can actually make decisions, and always build a shorter "power hour" version for time-constrained stakeholders.
+
+Results
+WWT × Airbnb partnership initiated from a single facilitated workshop. Stakeholders described the methodology as "100x more productive" than standard partnership meetings. The framework was adopted for ongoing partnership development within the conservation sector.
+
+What I Learned
+Collaboration is a design problem — the reason conservation partnerships form by accident isn't that people lack goodwill. It's that no one has designed the infrastructure for strategic connection. Stampede is that infrastructure.
+Archetypes beat analysis — the Power/Pace matrix could have been a dry quadrant chart. Making it animal archetypes changed how stakeholders engaged with it. Abstract concepts need tangible handles.
+The facilitator changes the dynamic — a neutral third party levels the playing field in ways that neither organisation can do for themselves. The Walrus and the Worm can only have an honest conversation if someone else is holding the space.
+From happy accidents to designed impact — that shift is the entire value of service design applied to systemic problems. The sector doesn't need more passion. It needs better matchmaking.

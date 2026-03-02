@@ -90,7 +90,7 @@ export const CaseStudyHero = ({
       )}
 
       {/* Pills */}
-      <motion.div 
+      <motion.div
         className="flex flex-wrap gap-2"
         initial="initial"
         animate="animate"
@@ -141,12 +141,17 @@ export const CaseStudyHero = ({
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }}
         >
-          <img
-            src={heroImage}
-            alt={heroImageAlt || title}
-            className="w-full h-auto object-contain rounded-xl"
-            loading="eager"
-          />
+          <div className="w-full aspect-[16/9] bg-white rounded-xl border border-border flex items-center justify-center overflow-hidden shadow-sm">
+            <img
+              src={heroImage}
+              alt={heroImageAlt || title}
+              className="w-full h-full object-cover"
+              loading="eager"
+              onError={(e) => {
+                (e.currentTarget.style.display = 'none');
+              }}
+            />
+          </div>
         </motion.figure>
       )}
     </header>

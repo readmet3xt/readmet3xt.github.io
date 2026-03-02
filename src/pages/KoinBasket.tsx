@@ -16,7 +16,7 @@ export const KoinBasket = () => {
   return (
     <CaseStudyLayout
       title="KoinBasket"
-      description="From One-Week MVP to 70,000 Users - How I built a crypto investing platform that democratized portfolio diversification as the founding designer."
+      description="From One-Week MVP to 70,000 Users — How I built a crypto investing platform that democratized portfolio diversification."
       externalLink="https://otagon2.github.io/Koinbasket/"
       externalLabel="KoinBasket"
     >
@@ -30,259 +30,198 @@ export const KoinBasket = () => {
           'Design Leadership',
           'Rebranding',
         ]}
-        intro="When I joined as KoinBasket's founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. One week, one intense sprint, and soon—70,000 users."
+        intro="When I joined KoinBasket as founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. One week, one intense sprint — and eventually, 70,000 users."
         externalLink="https://otagon2.github.io/Koinbasket/"
         externalLabel="KoinBasket"
         overview={{
           role: [
-            'Founding Designer (MVP phase)',
-            'Senior UX Designer & Design Lead (Scale phase)',
-            'Hired and mentored Junior UX Designer',
-            'Led complete platform rebrand',
+            'Founding Designer → Senior UX Designer & Design Lead',
+            'Built the MVP solo, grew into design leader',
+            'Hired and mentored a junior designer',
+            'Led a complete platform rebrand',
           ],
-          timeline: 'Founding Designer → Senior Design Lead',
-          recognition: '0 → 70,000 users; Complete rebrand; Live trading launch',
+          timeline: 'Founding Designer (Oct 2022–May 2023) → Senior Design Lead (Jun 2024–Mar 2025)',
+          recognition: '0 → 70,000 users; Complete rebrand; Live trading ecosystem',
           tools: [
             'Figma',
             'Balsamiq',
-            'Design Systems',
             'iOS/Android Design',
+            'Design Systems',
             'Brand Design',
           ],
         }}
-        heroImage="/koinbasket/placeholder-hero.png"
+        heroImage="/images/casestudies/koinbasket/hero.png"
         heroImageAlt="KoinBasket platform interface"
       />
 
-      {/* The Story */}
+      {/* The Origin Story */}
       <CaseStudySection title="The Origin Story">
         <CaseStudyParagraph lead>
-          Cryptocurrency in 2020 was a labyrinth—complex terminology, overwhelming choices,
-          and legitimate security fears. New investors faced a steep learning curve just to
-          make their first purchase, let alone build a diversified portfolio.
+          Crypto in 2020 was a labyrinth — complex terminology, overwhelming choices, legitimate
+          security fears. New investors faced a steep learning curve just to make their first purchase,
+          let alone build a diversified portfolio.
         </CaseStudyParagraph>
 
         <CaseStudyParagraph>
-          Our breakthrough insight was radical simplification: curated crypto "baskets."
-          Instead of forcing users to research hundreds of individual coins, we offered
-          thematic portfolios—the "G.O.A.T. Basket" (top 5 coins), "NFT Basket," "DeFi
-          Basket"—that users could invest in with one click.
+          The breakthrough insight was radical simplification: curated crypto "baskets." Instead of
+          forcing users to research hundreds of coins individually, we offered thematic portfolios —
+          the G.O.A.T. Basket (top 5 coins), NFT Basket, DeFi Basket — that users could invest in
+          with one click.
         </CaseStudyParagraph>
 
-        <CaseStudyQuote author="Core Design Principle">
-          Trust is the ultimate currency in fintech. We adopted a non-custodial model—users
-          traded through their own Binance or Coinbase accounts, never surrendering control
-          of funds to us. This trust-first architecture became our competitive moat.
+        <CaseStudyParagraph>
+          Trust was the other non-negotiable. We adopted a non-custodial model — users traded through
+          their own Binance or Coinbase accounts, never surrendering control of funds to us. That
+          architecture became our competitive moat.
+        </CaseStudyParagraph>
+
+        <CaseStudyQuote>
+          Trust is the ultimate currency in fintech. Non-custodial wasn't just a technical decision —
+          it was the design principle that shaped everything.
         </CaseStudyQuote>
-      </CaseStudySection>
 
-      {/* Phase 1: MVP */}
-      <CaseStudySection title="Phase 1: The One-Week MVP">
-        <CaseStudyParagraph lead>
-          As the solo founding designer, I had one week to design a fully functional MVP.
-          No time for perfection—just relentless focus on what would validate our hypothesis:
-          Can we make crypto investing accessible?
-        </CaseStudyParagraph>
-
-        <CaseStudyStatsGrid
-          stats={[
-            { value: '1', label: 'Week', sublabel: 'Design sprint' },
-            { value: '1', label: 'Designer', sublabel: 'Solo founding' },
-            { value: '0→70K', label: 'Users', sublabel: 'Growth achieved' },
-          ]}
-        />
-
-        <CaseStudyList items={[
-          {
-            title: 'Rapid Iteration',
-            description: 'Balsamiq wireframes → high-fidelity UI in days. Dark theme with vibrant accents established the visual language.'
-          },
-          {
-            title: 'Comprehensive Ownership',
-            description: 'Beyond UI/UX: custom basket icons, email templates, marketing content, onboarding checklists.'
-          },
-          {
-            title: 'Cross-Platform from Day 1',
-            description: 'Responsive web app plus foundational iOS/Android designs optimized for mobile discovery.'
-          },
-          {
-            title: 'User-Centric Strategy',
-            description: 'Mapped critical user journeys, designed demo experiences, conducted internal usability sessions.'
-          },
-        ]} />
-
-        <CaseStudyImageGrid
-          images={[
-            { src: '/koinbasket/mvp-dashboard.png', alt: 'MVP Dashboard', caption: 'Dark theme dashboard' },
-            { src: '/koinbasket/mvp-mobile.png', alt: 'Mobile UI', caption: 'Mobile basket discovery' },
-          ]}
-          columns={2}
+        <CaseStudyImage
+          src="/images/casestudies/koinbasket/image-1.png"
+          alt="The origin story of KoinBasket"
+          caption="Radical simplification: curated crypto baskets for one-click investing"
         />
       </CaseStudySection>
 
-      {/* MVP Features */}
-      <CaseStudySection title="MVP: Core Features I Designed">
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="🧺 Curated Baskets & SIP">
-            <CaseStudyParagraph>
-              Thematic portfolios like "G.O.A.T. Basket" and "NFT Basket" with one-click
-              investing. Designed Systematic Investment Plans for recurring investments.
-              Transparent coin breakdown in simple pop-ups.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="🔐 Non-Custodial Integration">
-            <CaseStudyParagraph>
-              Clear, simple flows for connecting Coinbase and Binance accounts. Users
-              never surrendered fund control. Dedicated connection management page for
-              full account authority.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="📊 Portfolio Tracking">
-            <CaseStudyParagraph>
-              Comprehensive holdings breakdown, performance tracking, and complete
-              transaction history. Users could see their entire investment picture at a glance.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="🎮 Gamification">
-            <CaseStudyParagraph>
-              Crypto Fantasy League: users competed by creating their own baskets.
-              Multi-tiered rewards and referral system to drive engagement and education.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
-      </CaseStudySection>
-
-      {/* Phase 2: Scale */}
-      <CaseStudySection title="Phase 2: Scaling to Market Leadership">
+      {/* Chapter 1: The One-Week MVP */}
+      <CaseStudySection title="Chapter 1: The One-Week MVP">
         <CaseStudyParagraph lead>
-          MVP success created new challenges. 70,000 users validated the concept, but now
-          we needed to evolve from promising startup to mature, trusted platform. My role
-          evolved too—from solo designer to design leader.
+          As the sole founding designer, I had one week to design a fully functional MVP. No time
+          for perfection — just relentless focus on one question: can we make crypto investing accessible?
         </CaseStudyParagraph>
 
-        <CaseStudyCard title="Strategic Imperatives">
+        <CaseStudyParagraph>
+          I moved from Balsamiq wireframes to high-fidelity UI in days. The dark theme with vibrant
+          accents established the visual language immediately. Beyond UI, I owned everything — custom
+          basket icons, email templates, marketing content, onboarding flows. Cross-platform from day
+          one: responsive web plus foundational iOS and Android designs.
+        </CaseStudyParagraph>
+
+        <CaseStudyCard title="Core Features Shipped in One-Week Sprint">
           <CaseStudyList items={[
-            { title: 'Elevate Brand Perception', description: 'Major rebranding to project professional, trustworthy image' },
-            { title: 'Launch Live Trading', description: 'Real-money trading experience that was robust and engaging' },
-            { title: 'Build Community', description: 'Create ecosystem around expert insights with "BitBuddy" influencer platform' },
+            'Curated baskets with one-click investing and transparent coin breakdowns',
+            'Non-custodial Coinbase and Binance account connection',
+            'Portfolio tracking with full transaction history',
+            'Gamification layer — a Crypto Fantasy League where users competed by building their own baskets',
           ]} />
         </CaseStudyCard>
-      </CaseStudySection>
 
-      {/* The Rebrand */}
-      <CaseStudySection title="The Complete Rebrand">
-        <CaseStudyParagraph lead>
-          I led the complete visual overhaul across web and mobile. We transitioned from
-          the initial dark theme to a cleaner, lighter aesthetic with green accents—more
-          professional, more inviting, more trustworthy.
-        </CaseStudyParagraph>
-
-        <CaseStudyImageGrid
-          images={[
-            { src: '/koinbasket/rebrand-web.png', alt: 'Rebranded Web', caption: 'Light theme with green accents' },
-            { src: '/koinbasket/rebrand-mobile.png', alt: 'Rebranded Mobile', caption: 'Refined mobile experience' },
-          ]}
-          columns={2}
-        />
-      </CaseStudySection>
-
-      {/* BitBuddy */}
-      <CaseStudySection title="BitBuddy: The Influencer Ecosystem">
-        <CaseStudyParagraph lead>
-          Our major strategic move: building a community. I designed BitBuddy as a
-          two-sided platform—influencers ("Bitpals") create content, users discover
-          and invest alongside them.
+        <CaseStudyParagraph>
+          <strong>The result:</strong> The hypothesis was validated. That one-week sprint grew to 70,000 users.
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/koinbasket/bitbuddy-live.png"
-          alt="BitBuddy Live Trading"
+          src="/images/casestudies/koinbasket/image-2.png"
+          alt="MVP dashboard design"
+          caption="The one-week MVP that validated the entire concept"
+        />
+      </CaseStudySection>
+
+      {/* Chapter 2: Scaling */}
+      <CaseStudySection title="Chapter 2: Scaling to Market Leadership">
+        <CaseStudyParagraph lead>
+          70,000 users created new problems. The MVP had done its job — now we needed to evolve from
+          promising startup to mature, trusted platform. My role evolved with it.
+        </CaseStudyParagraph>
+
+        <CaseStudyCard title="The Rebrand">
+          <CaseStudyParagraph>
+            I led a complete visual overhaul across web and mobile. We moved away from the dark MVP
+            aesthetic to a cleaner, lighter interface with green accents — more professional, more
+            trustworthy, more inviting to the mainstream investor we were now targeting. Not just a
+            cosmetic change — the rebrand signalled a new chapter of the company.
+          </CaseStudyParagraph>
+        </CaseStudyCard>
+
+        <CaseStudyImage
+          src="/images/casestudies/koinbasket/image-3.png"
+          alt="KoinBasket rebrand"
+          caption="From dark MVP aesthetic to clean, professional design language"
+        />
+
+        <CaseStudyCard title="BitBuddy: Building an Ecosystem">
+          <CaseStudyParagraph>
+            Our major strategic move was community. I designed BitBuddy as a two-sided platform —
+            influencers ("Bitpals") create content, users discover and invest alongside them.
+            The flagship feature: live video streams where users could watch influencers trade in
+            real time and execute their own purchases directly from the same screen. Live video,
+            real-time market data, and seamless trade execution in one dashboard.
+          </CaseStudyParagraph>
+          <CaseStudyParagraph>
+            This transformed KoinBasket from a tool into an ecosystem — content, community, and
+            commerce in one place.
+          </CaseStudyParagraph>
+        </CaseStudyCard>
+
+        <CaseStudyImage
+          src="/images/casestudies/koinbasket/image-4.png"
+          alt="BitBuddy live trading ecosystem"
           caption="Live video streams integrated with real-time trading"
         />
 
-        <CaseStudyCard title="🎬 Live Trading Experience">
+        <CaseStudyCard title="Design Leadership">
           <CaseStudyParagraph>
-            The flagship feature: users watch live video streams hosted by influencers
-            and purchase cryptocurrencies directly from the same page. Live video,
-            real-time market data, and seamless trade execution—all in one dashboard.
+            This phase also meant building a team. I hired and mentored a junior designer, built our
+            design system from scratch, and led cross-functional design decisions across product,
+            marketing, and engineering. The recommendation my junior left when I was let go is something
+            I'm genuinely proud of.
           </CaseStudyParagraph>
         </CaseStudyCard>
       </CaseStudySection>
 
       {/* Results */}
-      <CaseStudySection title="Results & Impact">
+      <CaseStudySection title="Results">
         <CaseStudyStatsGrid
           stats={[
             { value: '70K+', label: 'Users', sublabel: 'From zero' },
-            { value: '1→2', label: 'Team Size', sublabel: 'Design growth' },
-            { value: '2', label: 'Platforms', sublabel: 'Web + Mobile' },
-            { value: 'Live', label: 'Trading', sublabel: 'Ecosystem launched' },
+            { value: '1→Lead', label: 'Team', sublabel: 'Solo → Design Lead' },
+            { value: 'Web+Mobile', label: 'Platforms', sublabel: 'Cross-platform' },
           ]}
         />
 
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Platform Achievements">
-            <CaseStudyList items={[
-              'MVP to 70,000 users',
-              'Complete platform rebrand',
-              'Live trading ecosystem launch',
-              'BitBuddy influencer platform',
-            ]} />
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Personal Growth">
-            <CaseStudyList items={[
-              'Founding designer → Senior Lead',
-              'Hired and mentored junior designer',
-              'Built design system from scratch',
-              'Led cross-functional design decisions',
-            ]} />
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
+        <CaseStudyImage
+          src="/images/casestudies/koinbasket/image-5.png"
+          alt="KoinBasket results and growth"
+          caption="MVP, full rebrand, live trading ecosystem, BitBuddy influencer platform, design system"
+        />
       </CaseStudySection>
 
-      {/* Learnings */}
-      <CaseStudySection title="Key Learnings">
+      {/* What I Learned */}
+      <CaseStudySection title="What I Learned">
         <CaseStudyCardGrid columns={2}>
           <CaseStudyCard title="Speed vs. Structure">
             <CaseStudyParagraph>
-              One-week design sprint was perfect for MVP validation. Scaling required
-              structured process, robust design system, and team delegation. Know when
-              each approach is appropriate.
+              A one-week sprint is perfect for validation. Scaling requires process, systems, and
+              delegation. Knowing which mode you're in changes every decision you make.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Trust is Currency">
+          <CaseStudyCard title="Trust is a design decision">
             <CaseStudyParagraph>
-              From non-custodial model to professional rebrand—every major decision
-              anchored in building user trust. In fintech, trust isn't a feature;
-              it's the foundation.
+              From non-custodial architecture to the rebrand, every major call anchored in one question:
+              does this make users feel safer? In fintech, trust isn't a feature. It's the foundation.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Ecosystems > Features">
+          <CaseStudyCard title="Leadership is about people, not just products">
             <CaseStudyParagraph>
-              BitBuddy combined content, community, and commerce. Transformed KoinBasket
-              from a tool into a dynamic ecosystem with competitive advantage.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Leadership Evolves">
-            <CaseStudyParagraph>
-              My journey from solo designer to hiring and managing a team reflects how
-              design leadership must adapt to company growth. Building people, not just products.
+              My most lasting output from this company wasn't a screen. It was a designer who grew
+              under my mentorship and went on to do great work.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyQuote>
-          By grounding our evolution in deep understanding of user needs and business goals,
-          we transformed KoinBasket from a simple MVP into a sophisticated, trusted,
-          community-driven platform poised for market leadership.
-        </CaseStudyQuote>
+        <CaseStudyImageGrid
+          images={[
+            { src: '/images/casestudies/koinbasket/image-6.png', alt: 'Design system components', caption: 'Design system' },
+            { src: '/images/casestudies/koinbasket/image-7.png', alt: 'Mobile platform views', caption: 'Mobile experience' },
+          ]}
+          columns={2}
+        />
       </CaseStudySection>
     </CaseStudyLayout>
   );

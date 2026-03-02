@@ -15,11 +15,11 @@ export const LawX = () => {
     return (
         <CaseStudyLayout
             title="Law.X"
-            description="Designing Transparency into Legal AI - How I transformed a 'black box' chatbot into a trusted legal workspace through transparency design."
+            description="Designing Transparency into Legal AI — How I turned a 'black box' chatbot into a workspace lawyers actually trust."
         >
             <CaseStudyHero
                 title="Designing Transparency into Legal AI"
-                subtitle="How I transformed a 'black box' chatbot into a trusted legal workspace"
+                subtitle="How I turned a 'black box' chatbot into a workspace lawyers actually trust"
                 pills={[
                     'Legal Tech',
                     'AI UX',
@@ -27,15 +27,15 @@ export const LawX = () => {
                     '1-Month Contract',
                     'Figma',
                 ]}
-                intro="Legal professionals don't trust AI—and for good reason. When I took on this 1-month contract for early concept design, my challenge was clear: design an AI assistant that lawyers would actually use. The answer wasn't better AI; it was better transparency. By visualizing the AI's reasoning process, I turned skepticism into trust."
+                intro="Legal professionals don't trust AI — and for good reason. When I took on this 1-month contract for early concept design, the brief was clear: design an AI assistant that lawyers would actually use. The answer wasn't better AI. It was better transparency."
                 overview={{
                     role: [
                         'Concept Designer (Contract)',
-                        'UX Strategy & Information Architecture',
-                        'Interface Design & Visual Identity',
-                        'User Flow & Interaction Design',
+                        'UX strategy, information architecture',
+                        'Interface design, visual identity',
+                        'Interaction design',
                     ],
-                    timeline: '1-Month Contract',
+                    timeline: '1-month contract',
                     tools: [
                         'Figma',
                         'User Research',
@@ -43,203 +43,172 @@ export const LawX = () => {
                         'Design Systems',
                     ],
                 }}
-                heroImage="/jollyai/jollyai8.png"
+                heroImage="/images/casestudies/lawx/hero.png"
                 heroImageAlt="Law.X transparent legal assistant workspace"
             />
 
             {/* The Challenge */}
             <CaseStudySection title="The Challenge">
                 <CaseStudyParagraph lead>
-                    Legal professionals are deeply skeptical of AI. "Hallucinations"—confidently stated
-                    falsehoods—could end careers. My client needed a design that prioritized trust,
-                    accuracy, and customization for lawyers practicing in India's complex legal system.
+                    Lawyers are deeply skeptical of AI hallucinations — and rightly so. Confidently stated
+                    falsehoods don't just embarrass lawyers, they end careers. My client needed a design
+                    that addressed three specific realities of legal practice in India: trust in AI output,
+                    precision of legal tone, and accuracy across state-specific jurisdictions.
                 </CaseStudyParagraph>
 
-                <CaseStudyCardGrid columns={2}>
-                    <CaseStudyCard title="Trust Problem">
-                        <CaseStudyParagraph>
-                            Standard AI chatbots are "black boxes"—you get an answer but have no idea how it
-                            arrived there. For lawyers, citing a non-existent case or misinterpreting a statute
-                            isn't just embarrassing; it's malpractice.
-                        </CaseStudyParagraph>
-                    </CaseStudyCard>
+                <CaseStudyParagraph>
+                    The existing solution was a standard chatbot. You ask, it answers. No explanation of how.
+                    For a lawyer, that's not a tool — it's a liability.
+                </CaseStudyParagraph>
 
-                    <CaseStudyCard title="Design Requirements">
-                        <CaseStudyList items={[
-                            { title: 'Build Trust', description: 'Visualize AI reasoning so lawyers can verify accuracy' },
-                            { title: 'Ensure Precision', description: 'Control legal tone for different contexts' },
-                            { title: 'Handle Jurisdiction', description: 'Account for India\'s state-specific laws' },
-                            { title: 'Streamline Workflow', description: 'Reduce friction in common legal tasks' },
-                        ]} />
-                    </CaseStudyCard>
-                </CaseStudyCardGrid>
+                <CaseStudyImage
+                    src="/images/casestudies/lawx/image-1.png"
+                    alt="The challenge of trust in legal AI"
+                    caption="Standard chatbots offer no transparency into how they arrive at legal conclusions"
+                />
             </CaseStudySection>
 
             {/* The Key Insight */}
             <CaseStudySection title="The Key Insight: Glass Box UX">
                 <CaseStudyParagraph lead>
-                    The breakthrough came when I realized the problem wasn't AI accuracy—it was AI
-                    opacity. Lawyers don't need AI to be perfect; they need to verify it themselves.
-                    I designed a "Glass Box" experience that shows its work.
+                    The breakthrough wasn't about making the AI more accurate. It was about making it more verifiable.
+                </CaseStudyParagraph>
+
+                <CaseStudyParagraph>
+                    Lawyers don't need AI to be perfect. They need to catch it when it's wrong — before it matters.
+                    So instead of hiding the AI's reasoning, I designed a system that surfaces it.
+                </CaseStudyParagraph>
+
+                <CaseStudyQuote>
+                    The moment I showed lawyers they could watch the AI think — and catch mistakes before
+                    they happened — their skepticism transformed into genuine interest.
+                </CaseStudyQuote>
+
+                <CaseStudyImage
+                    src="/images/casestudies/lawx/image-2.png"
+                    alt="Glass Box UX concept"
+                    caption="Making AI reasoning visible transforms skepticism into trust"
+                />
+            </CaseStudySection>
+
+            {/* The Thinking Panel */}
+            <CaseStudySection title="The Thinking Panel">
+                <CaseStudyParagraph lead>
+                    Before generating any answer, the UI displays the AI's internal workflow in real time:
+                    Query Reframing, Clarification, and Legal Index Framework Review. Lawyers can see exactly
+                    which statutes are being referenced — Section 56(2) of the Income Tax Act, for example —
+                    before they trust the output.
+                </CaseStudyParagraph>
+
+                <CaseStudyParagraph>
+                    This single decision reframed the entire product from "AI that might be wrong" to "AI you can supervise."
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/jollyai/jollyai1.png"
-                    alt="The Thinking Panel showing AI's internal workflow"
-                    caption="The 'Thinking' Panel displays the AI's reasoning process in real-time"
+                    src="/images/casestudies/lawx/image-3.png"
+                    alt="The Thinking Panel interface"
+                    caption="Real-time visibility into the AI's reasoning process"
                 />
-
-                <CaseStudyCard title="The 'Thinking' Panel">
-                    <CaseStudyParagraph>
-                        Before generating an answer, the UI displays the AI's internal workflow: Query
-                        Reframing, Clarification, and Legal Index Framework Review. Lawyers can see
-                        exactly which statutes the AI is referencing (e.g., Section 56(2) of the Income
-                        Tax Act) before trusting the output.
-                    </CaseStudyParagraph>
-                </CaseStudyCard>
-
-                <CaseStudyQuote>
-                    The moment I showed lawyers they could watch the AI "think"—and catch mistakes
-                    before they happened—their skepticism transformed into genuine interest.
-                </CaseStudyQuote>
             </CaseStudySection>
 
-            {/* Context & Customization */}
-            <CaseStudySection title="Context & Customization">
+            {/* Context & Customisation */}
+            <CaseStudySection title="Context & Customisation">
                 <CaseStudyParagraph lead>
-                    Law requires precise tone control. A generic "helpful" response won't work for a
-                    stern legal notice, a client email, or a court filing. I designed systems that
-                    give lawyers complete control.
+                    Legal tone isn't one thing. A court filing, a client email, and a legal notice require
+                    completely different registers. I designed two systems to give lawyers precise control.
                 </CaseStudyParagraph>
-
-                <CaseStudyImageGrid
-                    images={[
-                        { src: '/jollyai/jollyai2.png', alt: 'Instruction Modal', caption: 'Custom tone and context settings' },
-                        { src: '/jollyai/jollyai3.png', alt: 'State Onboarding', caption: 'Jurisdictional accuracy from day one' },
-                    ]}
-                    columns={2}
-                />
 
                 <CaseStudyCardGrid columns={2}>
                     <CaseStudyCard title="Instruction Modal">
                         <CaseStudyParagraph>
-                            I designed an "Add Instructions" feature directly in the chat input. Users can
-                            set global parameters like "Keep it concise" or "Use formal legal terminology"
-                            that the AI remembers across sessions.
+                            A persistent settings layer directly in the chat input. Lawyers set global parameters —
+                            "Keep it concise," "Use formal legal terminology" — and the AI carries them across sessions
+                            without re-prompting.
                         </CaseStudyParagraph>
                     </CaseStudyCard>
 
                     <CaseStudyCard title="State-Specific Onboarding">
                         <CaseStudyParagraph>
-                            Laws in India vary significantly by state. The onboarding flow includes mandatory
-                            state selection (e.g., Telangana) to ensure jurisdictional accuracy from the
-                            very first query.
+                            Laws in India vary significantly by state. The onboarding flow makes jurisdiction selection
+                            mandatory from the first interaction, ensuring accuracy before a single query is made.
                         </CaseStudyParagraph>
                     </CaseStudyCard>
                 </CaseStudyCardGrid>
+
+                <CaseStudyImage
+                    src="/images/casestudies/lawx/image-4.png"
+                    alt="Context and customisation features"
+                    caption="Instruction modal and state-specific onboarding for precise legal control"
+                />
             </CaseStudySection>
 
-            {/* Streamlined Workflow */}
-            <CaseStudySection title="Streamlined Workflow">
+            {/* Reducing the Blank Page Problem */}
+            <CaseStudySection title="Reducing the Blank Page Problem">
                 <CaseStudyParagraph lead>
-                    Legal professionals juggle dozens of cases simultaneously. I designed features
-                    that eliminate the "blank page problem" and make case management effortless.
+                    Legal professionals manage dozens of cases simultaneously. I designed two features
+                    specifically to reduce friction at the start of tasks.
                 </CaseStudyParagraph>
-
-                <CaseStudyImageGrid
-                    images={[
-                        { src: '/jollyai/jollyai5.png', alt: 'Prompt Gallery', caption: 'Curated legal-specific prompts' },
-                        { src: '/jollyai/jollyai6.png', alt: 'Side Panel Navigation', caption: 'Quick case switching' },
-                    ]}
-                    columns={2}
-                />
 
                 <CaseStudyCardGrid columns={2}>
                     <CaseStudyCard title="Prompt Gallery">
                         <CaseStudyParagraph>
-                            The home screen features curated legal-specific prompts: "Draft IT notice
-                            response," "Outline M&A due diligence," "Summarize contract risks." No
-                            more staring at an empty chat wondering where to start.
+                            The home screen leads with curated, legal-specific prompts: "Draft IT notice response,"
+                            "Outline M&A due diligence," "Summarize contract risks." No blank chat box, no cognitive
+                            load about where to start.
                         </CaseStudyParagraph>
                     </CaseStudyCard>
 
                     <CaseStudyCard title="Side Panel Navigation">
                         <CaseStudyParagraph>
-                            A clean, collapsible sidebar allows lawyers to jump between different cases
-                            and chat threads instantly. Essential for professionals managing multiple
-                            clients with overlapping deadlines.
+                            A collapsible sidebar for jumping between cases and threads instantly. Essential for
+                            professionals managing multiple clients with overlapping deadlines.
                         </CaseStudyParagraph>
                     </CaseStudyCard>
                 </CaseStudyCardGrid>
+
+                <CaseStudyImage
+                    src="/images/casestudies/lawx/image-5.png"
+                    alt="Prompt gallery and side panel navigation"
+                    caption="Reducing friction with curated prompts and efficient case management"
+                />
             </CaseStudySection>
 
             {/* Visual Identity */}
             <CaseStudySection title="Visual Identity">
+                <CaseStudyParagraph lead>
+                    The design language is deliberately restrained — stark black, white, and grey with
+                    high-contrast typography. Legal professionals read thousands of words daily; clarity
+                    takes priority over personality. The one deliberate accent: a yellow "Thinking..." status
+                    pill that signals AI activity without cluttering the interface.
+                </CaseStudyParagraph>
+
                 <CaseStudyImage
-                    src="/jollyai/jollyai7.png"
-                    alt="Law.X Visual Identity"
+                    src="/images/casestudies/lawx/image-6.png"
+                    alt="Law.X visual identity"
                     caption="Minimalist, high-contrast design conveying professionalism and authority"
                 />
-
-                <CaseStudyCardGrid columns={3}>
-                    <CaseStudyCard title="Minimalist & Professional">
-                        <CaseStudyParagraph>
-                            Stark black, white, and gray palette conveys the seriousness legal
-                            professionals expect. No playful colors or casual aesthetics.
-                        </CaseStudyParagraph>
-                    </CaseStudyCard>
-
-                    <CaseStudyCard title="Functional Typography">
-                        <CaseStudyParagraph>
-                            High readability for long-form legal content. Typography prioritizes
-                            clarity over personality—lawyers read thousands of words daily.
-                        </CaseStudyParagraph>
-                    </CaseStudyCard>
-
-                    <CaseStudyCard title="Status Indicators">
-                        <CaseStudyParagraph>
-                            Subtle color cues (the yellow "Thinking..." pill) provide immediate
-                            system feedback without cluttering the clean interface.
-                        </CaseStudyParagraph>
-                    </CaseStudyCard>
-                </CaseStudyCardGrid>
             </CaseStudySection>
 
-            {/* Outcome */}
+            {/* The Outcome */}
             <CaseStudySection title="The Outcome">
                 <CaseStudyParagraph lead>
-                    The final Figma prototypes delivered a cohesive experience that addresses
-                    the specific pain points of legal practitioners: verifiable accuracy and
-                    stylistic control. A generic chatbot became a specialized legal workspace.
+                    A Figma prototype delivering a cohesive legal workspace that addresses the core barrier
+                    to AI adoption in law: trust. By making reasoning visible rather than hiding it, a generic
+                    chatbot became a specialized professional tool.
                 </CaseStudyParagraph>
 
                 <CaseStudyCardGrid columns={2}>
                     <CaseStudyCard title="🔍 Transparency First">
-                        <CaseStudyParagraph>
-                            Created a "glass box" experience where lawyers verify AI reasoning before
-                            trusting outputs—addressing the core trust issue in legal AI.
-                        </CaseStudyParagraph>
+                        <CaseStudyParagraph>Show the reasoning, not just the result.</CaseStudyParagraph>
                     </CaseStudyCard>
-
                     <CaseStudyCard title="🎯 Precise Control">
-                        <CaseStudyParagraph>
-                            Customization features give exact control over tone, terminology, and
-                            context for different legal scenarios.
-                        </CaseStudyParagraph>
+                        <CaseStudyParagraph>Tone and terminology must be lawyer-defined, not AI-assumed.</CaseStudyParagraph>
                     </CaseStudyCard>
-
                     <CaseStudyCard title="📍 Jurisdictional Accuracy">
-                        <CaseStudyParagraph>
-                            State-specific onboarding ensures legal advice is accurate for India's
-                            varied regional legal frameworks from the first interaction.
-                        </CaseStudyParagraph>
+                        <CaseStudyParagraph>State-specific context from the very first interaction.</CaseStudyParagraph>
                     </CaseStudyCard>
-
-                    <CaseStudyCard title="⚡ Workflow Optimization">
-                        <CaseStudyParagraph>
-                            Prompt galleries and efficient navigation streamline common tasks
-                            and multi-case management.
-                        </CaseStudyParagraph>
+                    <CaseStudyCard title="⚡ Workflow Efficiency">
+                        <CaseStudyParagraph>Reduce the friction before users even start a task.</CaseStudyParagraph>
                     </CaseStudyCard>
                 </CaseStudyCardGrid>
             </CaseStudySection>
@@ -248,15 +217,21 @@ export const LawX = () => {
             <CaseStudySection title="Reflection">
                 <CaseStudyQuote>
                     This project taught me that designing for trust is fundamentally different from
-                    designing for usability. Sometimes the best UX isn't hiding complexity—it's
+                    designing for usability. Sometimes the best UX isn't hiding complexity — it's
                     revealing it in a way that empowers users to make informed decisions.
                 </CaseStudyQuote>
 
                 <CaseStudyParagraph>
-                    The legal tech space is growing rapidly, but adoption hinges on trust. By
-                    prioritizing transparency over polish, Law.X demonstrates how thoughtful
-                    UX design can bridge the gap between AI capability and professional confidence.
+                    The legal tech space is growing fast, but adoption hinges on trust. Law.X demonstrates
+                    that thoughtful UX can bridge the gap between AI capability and professional confidence —
+                    not by making AI smarter, but by making it legible.
                 </CaseStudyParagraph>
+
+                <CaseStudyImage
+                    src="/images/casestudies/lawx/image-7.png"
+                    alt="Law.X final prototype overview"
+                    caption="The complete Law.X design system — trust through transparency"
+                />
             </CaseStudySection>
         </CaseStudyLayout>
     );
