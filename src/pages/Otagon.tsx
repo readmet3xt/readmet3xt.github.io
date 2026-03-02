@@ -32,7 +32,7 @@ export const Otagon = () => {
           'Supabase',
           'Google Gemini',
         ]}
-        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Over 6 months I went from concept to a production-ready PWA with 25+ features, 3 user tiers, real paying users, and AI response times under 3 seconds. This is the story of how that happened."
+        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Over 6 months I went from concept to a production-ready PWA with 25+ features, advanced database management, WebSocket-based synchronization, and a structured OTAGON tag system. This is the story of how that happened."
         externalLink="https://otagon.app"
         externalLabel="otagon.app"
         overview={{
@@ -43,7 +43,7 @@ export const Otagon = () => {
             'Go-to-market strategy',
           ],
           timeline: '6+ months, August 2025–Present',
-          recognition: 'Lemon Squeezy payments live, 25+ features shipped, <3s AI response time',
+          recognition: '25+ features shipped, WebSocket-based synchronization, and advanced database architecture',
           tools: [
             'React 18',
             'TypeScript',
@@ -243,7 +243,7 @@ export const Otagon = () => {
       <CaseStudySection title="Results">
         <CaseStudyStatsGrid
           stats={[
-            { value: '<3s', label: 'AI Response Time', sublabel: '✅ Achieved' },
+            { value: '8+', label: 'Genre Personas', sublabel: '✅ Integrated' },
             { value: '95%+', label: 'Game Detection', sublabel: '✅ Achieved' },
             { value: '99%+', label: 'Uptime', sublabel: '✅ Maintained' },
             { value: '0', label: 'Critical Bugs', sublabel: '✅ Zero' },
@@ -254,16 +254,17 @@ export const Otagon = () => {
           <CaseStudyCard title="Shipped">
             <CaseStudyList items={[
               '25+ features end-to-end',
-              '3 monetized user tiers',
-              'Lemon Squeezy payment integration live',
+              'Lemon Squeezy payment integration',
+              'WebSocket-based PC-to-Mobile sync',
+              'Advanced database management & normalization',
               '~40% API cost reduction via caching',
             ]} />
           </CaseStudyCard>
 
           <CaseStudyCard title="Status">
             <CaseStudyParagraph>
-              Fully shipped. Live PWA with active payments via Lemon Squeezy, 3 monetized user tiers,
-              and real users on the platform.
+              Fully shipped. Live PWA with Lemon Squeezy payments, PC-to-Mobile sync,
+              genre-specific personas, and a comprehensive Game Hub.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
@@ -309,7 +310,7 @@ export const Otagon = () => {
       {/* What's Next */}
       <CaseStudySection title="What's Next">
         <CaseStudyParagraph lead>
-          Stripe payment integration and mobile app store deployment are in active development.
+          Lemon Squeezy integration is live, and improving performance is in active development along with integrating video capture, and Google Cloud TTS for active conversations.
           Community features — shared builds, strategy sharing — are on the Q2 roadmap.
           The architecture is built to scale.
         </CaseStudyParagraph>
