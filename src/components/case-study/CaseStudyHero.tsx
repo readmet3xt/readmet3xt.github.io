@@ -141,11 +141,14 @@ export const CaseStudyHero = ({
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }}
         >
-          <div className="w-full aspect-[16/9] bg-white rounded-xl border border-border flex items-center justify-center overflow-hidden shadow-sm">
+          <div className="w-full aspect-[16/9] bg-white rounded-xl border border-border flex items-center justify-center overflow-hidden shadow-sm relative">
+            <span className="text-text-tertiary font-medium text-lg Select-none tracking-wide uppercase opacity-40">
+              Work in Progress
+            </span>
             <img
               src={heroImage}
               alt={heroImageAlt || title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover absolute inset-0 z-10"
               loading="eager"
               onError={(e) => {
                 (e.currentTarget.style.display = 'none');

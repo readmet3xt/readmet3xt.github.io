@@ -171,10 +171,13 @@ export const CaseStudyImage = ({
     transition={{ duration: 0.5 }}
   >
     <div className="relative overflow-hidden rounded-lg bg-white border border-border aspect-video shadow-sm flex items-center justify-center">
+      <span className="text-text-tertiary font-medium text-sm Select-none tracking-wide uppercase opacity-40">
+        Work in Progress
+      </span>
       <img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover absolute inset-0 z-10"
         loading={priority ? 'eager' : 'lazy'}
         onError={(e) => {
           (e.currentTarget.style.display = 'none');
@@ -217,11 +220,14 @@ export const CaseStudyImageGrid = ({
           viewport={{ once: true }}
           transition={{ delay: i * 0.1, duration: 0.4 }}
         >
-          <div className="w-full aspect-video bg-white border border-border flex items-center justify-center overflow-hidden">
+          <div className="w-full aspect-video bg-white border border-border flex items-center justify-center overflow-hidden relative">
+            <span className="text-text-tertiary font-medium text-xs Select-none tracking-wide uppercase opacity-40">
+              Work in Progress
+            </span>
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover absolute inset-0 z-10"
               loading="lazy"
               onError={(e) => {
                 (e.currentTarget.style.display = 'none');
