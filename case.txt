@@ -131,11 +131,11 @@ Reflection
 "This project taught me that designing for trust is fundamentally different from designing for usability. Sometimes the best UX isn't hiding complexity — it's revealing it in a way that empowers users to make informed decisions."
 The legal tech space is growing fast, but adoption hinges on trust. Law.X demonstrates that thoughtful UX can bridge the gap between AI capability and professional confidence — not by making AI smarter, but by making it legible.
 
-3. From One-Week MVP to 70,000 Users
+3. From a One-Week MVP Contract to 70,000 Users
 How I built a crypto investing platform that democratized portfolio diversification
 Fintech Founding Designer MVP Design Design Leadership Rebranding
 
-When I joined KoinBasket as founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. One week, one intense sprint — and eventually, 70,000 users.
+When I joined KoinBasket as founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. What started as a one-week MVP contract evolved into a full-time lead role, scaling the product to 70,000 users.
 
 My Role
 Founding Designer → Senior UX Designer & Design Lead. I came in solo, built the MVP, grew into a design leader, hired and mentored a junior designer, and led a complete platform rebrand.
@@ -154,7 +154,7 @@ Chapter 1: The One-Week MVP
 As the sole founding designer, I had one week to design a fully functional MVP. No time for perfection — just relentless focus on one question: can we make crypto investing accessible?
 I moved from Balsamiq wireframes to high-fidelity UI in days. The dark theme with vibrant accents established the visual language immediately. Beyond UI, I owned everything — custom basket icons, email templates, marketing content, onboarding flows. Cross-platform from day one: responsive web plus foundational iOS and Android designs.
 The core features I shipped in that sprint: curated baskets with one-click investing and transparent coin breakdowns, non-custodial Coinbase and Binance account connection, portfolio tracking with full transaction history, and a gamification layer — a Crypto Fantasy League where users competed by building their own baskets.
-The result: The hypothesis was validated. That one-week sprint grew to 70,000 users.
+The result: The hypothesis was validated. That one-week contract turned into a full-time offer, eventually scaling to 70,000 users.
 
 Chapter 2: Scaling to Market Leadership
 70,000 users created new problems. The MVP had done its job — now we needed to evolve from promising startup to mature, trusted platform. My role evolved with it.
@@ -362,7 +362,7 @@ Conservation Strategic Partnerships Design Thinking Workshop Facilitation System
 "This was 100 times more productive than any partnership meeting I've had."
 — Nick Appleby, Senior Partnerships Manager, WWT
 
-That quote came at the end of a 3-hour workshop I designed and facilitated between WWT and Airbnb — two organisations that had never formally collaborated. It's the best summary of what Stampede does: transforms conservation partnerships from happy accidents into designed outcomes.
+That quote came at the end of a 3-hour workshop we designed and facilitated between WWT and Airbnb — two organisations that had never formally collaborated. It's the best summary of what Stampede does: transforms conservation partnerships from happy accidents into designed outcomes.
 
 My Role
 Project Lead & Service Designer — I led stakeholder research with WWF, WWT, and Imperial College, designed the Stampede methodology including the Power/Pace matrix and animal archetypes, and facilitated the live WWT × Airbnb co-creation workshop.

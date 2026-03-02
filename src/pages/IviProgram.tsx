@@ -253,12 +253,15 @@ export const IviProgram = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImageGrid
-          images={[
-            { src: '/images/casestudies/iviprogram/image-6.png', alt: 'Service blueprint', caption: 'I.V.I. Service Blueprint' },
-            { src: '/images/casestudies/iviprogram/image-7.png', alt: '2040 vision scenario', caption: '2040 Future Vision' },
-          ]}
-          columns={2}
+        <CaseStudyImage
+          src="/images/casestudies/iviprogram/image-6.png"
+          alt="Service blueprint"
+          caption="I.V.I. Service Blueprint"
+        />
+        <CaseStudyImage
+          src="/images/casestudies/iviprogram/image-7.png"
+          alt="2040 vision scenario"
+          caption="2040 Future Vision"
         />
       </CaseStudySection>
     </CaseStudyLayout>

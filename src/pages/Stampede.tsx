@@ -29,7 +29,7 @@ export const Stampede = () => {
           'Systems Design',
           'Royal College of Art',
         ]}
-        intro={`"This was 100 times more productive than any partnership meeting I've had." — Nick Appleby, Senior Partnerships Manager, WWT. That quote came at the end of a 3-hour workshop I designed and facilitated between WWT and Airbnb — two organisations that had never formally collaborated. It's the best summary of what Stampede does: transforms conservation partnerships from happy accidents into designed outcomes.`}
+        intro={`"This was 100 times more productive than any partnership meeting I've had." — Nick Appleby, Senior Partnerships Manager, WWT. That quote came at the end of a 3-hour workshop we designed and facilitated between WWT and Airbnb — two organisations that had never formally collaborated. It's the best summary of what Stampede does: transforms conservation partnerships from happy accidents into designed outcomes.`}
         overview={{
           role: [
             'Project Lead & Service Designer',
@@ -288,12 +288,15 @@ export const Stampede = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImageGrid
-          images={[
-            { src: '/images/casestudies/stampede/image-6.png', alt: 'Service blueprint', caption: 'Service Blueprint' },
-            { src: '/images/casestudies/stampede/image-7.png', alt: 'Partnership framework', caption: 'Partnership Framework' },
-          ]}
-          columns={2}
+        <CaseStudyImage
+          src="/images/casestudies/stampede/image-6.png"
+          alt="Service blueprint"
+          caption="Service Blueprint"
+        />
+        <CaseStudyImage
+          src="/images/casestudies/stampede/image-7.png"
+          alt="Partnership framework"
+          caption="Partnership Framework"
         />
       </CaseStudySection>
     </CaseStudyLayout>

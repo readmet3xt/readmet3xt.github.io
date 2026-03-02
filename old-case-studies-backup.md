@@ -1074,12 +1074,12 @@ export const KoinBasket = () => {
   return (
     <CaseStudyLayout
       title="KoinBasket"
-      description="From One-Week MVP to 70,000 Users - How I built a crypto investing platform that democratized portfolio diversification as the founding designer."
+      description="From a One-Week MVP Contract to 70,000 Users - How I built a crypto investing platform that democratized portfolio diversification as the founding designer."
       externalLink="https://otagon2.github.io/Koinbasket/"
       externalLabel="KoinBasket"
     >
       <CaseStudyHero
-        title="From One-Week MVP to 70,000 Users"
+        title="From a One-Week MVP Contract to 70,000 Users"
         subtitle="How I built a crypto investing platform that democratized portfolio diversification"
         pills={[
           'Fintech',
@@ -1088,7 +1088,7 @@ export const KoinBasket = () => {
           'Design Leadership',
           'Rebranding',
         ]}
-        intro="When I joined as KoinBasket's founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. One week, one intense sprint, and soon—70,000 users."
+        intro="When I joined as KoinBasket's founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. What started as a one-week MVP contract evolved into a full-time lead role, scaling the product to 70,000 users."
         externalLink="https://otagon2.github.io/Koinbasket/"
         externalLabel="KoinBasket"
         overview={{

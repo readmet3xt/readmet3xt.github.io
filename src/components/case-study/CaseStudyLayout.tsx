@@ -55,7 +55,7 @@ export const CaseStudyLayout = ({
   title,
   description,
   image,
-  backLink = '/',
+  backLink = '/#work',
   backLabel = 'Back to Work',
   externalLink,
   externalLabel,

@@ -19,6 +19,7 @@ export const ProjectsGrid = () => {
 
   return (
     <section
+      id="work"
       className={cn(
         "grid gap-12 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full scroll-mt-20",
         isOpen
