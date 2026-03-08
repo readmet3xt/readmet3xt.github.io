@@ -43,7 +43,7 @@ export const LawX = () => {
                         'Design Systems',
                     ],
                 }}
-                heroImage="/images/casestudies/lawx/hero.png"
+                heroImage="/jollyai/jollyai1.png"
                 heroImageAlt="Law.X transparent legal assistant workspace"
             />
 
@@ -62,7 +62,7 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/image-1.png"
+                    src="/jollyai/jollyai2.png"
                     alt="The challenge of trust in legal AI"
                     caption="Standard chatbots offer no transparency into how they arrive at legal conclusions"
                 />
@@ -85,7 +85,7 @@ export const LawX = () => {
                 </CaseStudyQuote>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/image-2.png"
+                    src="/jollyai/jollyai3.png"
                     alt="Glass Box UX concept"
                     caption="Making AI reasoning visible transforms skepticism into trust"
                 />
@@ -105,7 +105,7 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/image-3.png"
+                    src="/jollyai/jollyai4.png"
                     alt="The Thinking Panel interface"
                     caption="Real-time visibility into the AI's reasoning process"
                 />
@@ -136,7 +136,7 @@ export const LawX = () => {
                 </CaseStudyCardGrid>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/image-4.png"
+                    src="/jollyai/jollyai5.png"
                     alt="Context and customisation features"
                     caption="Instruction modal and state-specific onboarding for precise legal control"
                 />
@@ -167,7 +167,7 @@ export const LawX = () => {
                 </CaseStudyCardGrid>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/image-5.png"
+                    src="/jollyai/jollyai6.png"
                     alt="Prompt gallery and side panel navigation"
                     caption="Reducing friction with curated prompts and efficient case management"
                 />
@@ -183,7 +183,7 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/image-6.png"
+                    src="/jollyai/jollyai7.png"
                     alt="Law.X visual identity"
                     caption="Minimalist, high-contrast design conveying professionalism and authority"
                 />
@@ -228,7 +228,7 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/image-7.png"
+                    src="/jollyai/jollyai8.png"
                     alt="Law.X final prototype overview"
                     caption="The complete Law.X design system — trust through transparency"
                 />

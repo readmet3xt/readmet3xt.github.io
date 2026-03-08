@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { PageLayout } from '@/components/PageLayout';
 import { ReadingProgressBar } from './ReadingProgressBar';
 import { SEO } from '@/components/SEO';
+import { ImageLightbox } from './ImageLightbox';
 
 interface CaseStudyLayoutProps {
   children: ReactNode;
@@ -132,6 +133,7 @@ export const CaseStudyLayout = ({
           </div>
         </motion.footer>
       </motion.div>
+      <ImageLightbox />
     </PageLayout>
   );
 };

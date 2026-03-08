@@ -81,7 +81,7 @@ export const CaseStudyHero = ({
             href={externalLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-accent-primary text-white rounded-lg hover:bg-accent-hover transition-colors text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[hsl(var(--accent-primary)/0.1)] text-[hsl(var(--accent-primary))] hover:bg-[hsl(var(--accent-primary)/0.2)] transition-colors text-sm font-semibold uppercase tracking-wide"
           >
             <ExternalLink className="w-4 h-4" />
             {externalLabel || externalLink.replace(/^https?:\/\//, '')}
@@ -142,17 +142,24 @@ export const CaseStudyHero = ({
           transition={{ delay: 0.6, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }}
         >
           <div className="w-full aspect-[16/9] bg-white rounded-xl border border-border flex items-center justify-center overflow-hidden shadow-sm relative">
-            <span className="text-text-tertiary font-medium text-lg Select-none tracking-wide uppercase opacity-40">
+            <span className="text-text-tertiary font-medium text-lg Select-none tracking-wide uppercase opacity-40 absolute z-0">
               Work in Progress
             </span>
-            <img
+            <motion.img
               src={heroImage}
               alt={heroImageAlt || title}
-              className="w-full h-full object-cover absolute inset-0 z-10"
+              className="w-full h-full object-cover object-top absolute inset-0 z-10 lightbox-image cursor-grab active:cursor-grabbing transition-transform duration-300 hover:scale-[1.02]"
               loading="eager"
+              drag
+              dragConstraints={{ left: -300, right: 300, top: -300, bottom: 300 }}
+              dragElastic={0.2}
+              dragSnapToOrigin={true}
+              onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: heroImage } }))}
               onError={(e) => {
-                (e.currentTarget.style.display = 'none');
+                (e.currentTarget as HTMLImageElement).style.display = 'none';
               }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             />
           </div>
         </motion.figure>

@@ -12,15 +12,23 @@
 @layer base {
   :root {
     /* Portfolio Theme - Dark Mode (Default) */
-    --bg-primary: 0 0% 6.7%; /* #111111 */
-    --bg-secondary: 0 0% 10.2%; /* #1a1a1a */
-    --text-primary: 0 0% 94.1%; /* #f0f0f0 */
-    --text-secondary: 0 0% 62.7%; /* #a0a0a0 */
-    --text-tertiary: 220 14% 50.2%; /* #6b7280 */
-    --accent-primary: 349 100% 64.3%; /* #ff4757 */
-    --accent-hover: 349 100% 70.4%; /* #ff6b81 */
-    --glow-primary: 349 100% 64.3%; /* #ff4757 with alpha */
-    
+    --bg-primary: 0 0% 6.7%;
+    /* #111111 */
+    --bg-secondary: 0 0% 10.2%;
+    /* #1a1a1a */
+    --text-primary: 0 0% 94.1%;
+    /* #f0f0f0 */
+    --text-secondary: 0 0% 62.7%;
+    /* #a0a0a0 */
+    --text-tertiary: 220 14% 50.2%;
+    /* #6b7280 */
+    --accent-primary: 349 100% 64.3%;
+    /* #ff4757 */
+    --accent-hover: 349 100% 70.4%;
+    /* #ff6b81 */
+    --glow-primary: 349 100% 64.3%;
+    /* #ff4757 with alpha */
+
     /* Semantic tokens matching original structure */
     --background: var(--bg-primary);
     --foreground: var(--text-primary);
@@ -38,11 +46,12 @@
     --accent-foreground: var(--text-primary);
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: var(--text-primary);
-    --border: 0 0% 100% / 0.1; /* rgba(255,255,255,0.1) */
+    --border: 0 0% 100% / 0.1;
+    /* rgba(255,255,255,0.1) */
     --input: 0 0% 100% / 0.1;
     --ring: var(--accent-primary);
     --radius: 0.5rem;
-    
+
     /* Sidebar tokens */
     --sidebar-background: var(--bg-secondary);
     --sidebar-foreground: var(--text-primary);
@@ -56,14 +65,21 @@
 
   .light {
     /* Portfolio Theme - Light Mode */
-    --bg-primary: 0 0% 96.1%; /* #f5f5f5 */
-    --bg-secondary: 0 0% 100%; /* #ffffff */
-    --text-primary: 220 26.1% 14.0%; /* #1f2937 */
-    --text-secondary: 220 13.0% 29.4%; /* #4b5563 */
-    --text-tertiary: 220 8.8% 60.8%; /* #9ca3af */
-    --accent-primary: 349 100% 64.3%; /* #ff4757 */
-    --accent-hover: 349 100% 70.4%; /* #ff6b81 */
-    
+    --bg-primary: 0 0% 96.1%;
+    /* #f5f5f5 */
+    --bg-secondary: 0 0% 100%;
+    /* #ffffff */
+    --text-primary: 220 26.1% 14.0%;
+    /* #1f2937 */
+    --text-secondary: 220 13.0% 29.4%;
+    /* #4b5563 */
+    --text-tertiary: 220 8.8% 60.8%;
+    /* #9ca3af */
+    --accent-primary: 349 100% 64.3%;
+    /* #ff4757 */
+    --accent-hover: 349 100% 70.4%;
+    /* #ff6b81 */
+
     --background: var(--bg-primary);
     --foreground: var(--text-primary);
     --card: var(--bg-secondary);
@@ -78,9 +94,10 @@
     --muted-foreground: var(--text-secondary);
     --accent: var(--accent-primary);
     --accent-foreground: var(--text-primary);
-    --border: 0 0% 0% / 0.1; /* rgba(0,0,0,0.1) */
+    --border: 0 0% 0% / 0.1;
+    /* rgba(0,0,0,0.1) */
     --input: 0 0% 0% / 0.1;
-    
+
     --sidebar-background: var(--bg-secondary);
     --sidebar-foreground: var(--text-primary);
     --sidebar-primary: var(--accent-primary);
@@ -89,6 +106,62 @@
     --sidebar-accent-foreground: var(--text-primary);
     --sidebar-border: var(--border);
     --sidebar-ring: var(--accent-primary);
+  }
+
+  /* Specific Brand Colors for Stampede Case Study (#a8a9a1 -> 68 4.2% 64.7%) */
+  .theme-stampede {
+    --accent-primary: 68 4.2% 64.7%;
+    --accent-hover: 68 4.2% 54.7%;
+    --glow-primary: 68 4.2% 64.7%;
+  }
+
+  /* Specific Brand Colors for IVI Program Case Study (#7A8EB1 -> 218 26.1% 58.6%) */
+  .theme-ivi {
+    --accent-primary: 218 26.1% 58.6%;
+    --accent-hover: 218 26.1% 48.6%;
+    --glow-primary: 218 26.1% 58.6%;
+  }
+
+  /* Specific Brand Colors for Pebble Case Study (#26A69A -> 174 62.8% 40%) */
+  .theme-pebble {
+    --accent-primary: 174 62.8% 40%;
+    --accent-hover: 174 62.8% 30%;
+    --glow-primary: 174 62.8% 40%;
+  }
+
+  /* Specific Brand Colors for Softwire Case Study (Placeholder LNER Red #E3000F -> 356 100% 45%) */
+  .theme-softwire {
+    --accent-primary: 356 100% 45%;
+    --accent-hover: 356 100% 35%;
+    --glow-primary: 356 100% 45%;
+  }
+
+  /* Specific Brand Colors for KoinBasket Case Study (Dark theme #1A0B2E -> 266 61.5% 11%) */
+  .theme-kb-dark {
+    --accent-primary: 266 80% 75%;
+    --accent-hover: 266 80% 85%;
+    --glow-primary: 266 80% 75%;
+    --text-primary: 0 0% 100%;
+    --text-secondary: 0 0% 90%;
+    --text-tertiary: 0 0% 80%;
+    --bg-primary: 266 61.5% 11%;
+    --bg-secondary: 266 61.5% 16%;
+    --bg-tertiary: 266 61.5% 21%;
+    --border: 0 0% 100% / 0.1;
+  }
+
+  /* Specific Brand Colors for KoinBasket Case Study (Light/Green theme #2B5310 -> 96 67.7% 19.4%) */
+  .theme-kb-light {
+    --accent-primary: 96 60% 65%;
+    --accent-hover: 96 60% 75%;
+    --glow-primary: 96 60% 65%;
+    --text-primary: 0 0% 100%;
+    --text-secondary: 0 0% 90%;
+    --text-tertiary: 0 0% 80%;
+    --bg-primary: 96 67.7% 19.4%;
+    --bg-secondary: 96 67.7% 24.4%;
+    --bg-tertiary: 96 67.7% 29.4%;
+    --border: 0 0% 100% / 0.1;
   }
 }
 
@@ -102,49 +175,53 @@
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-  
+
   /* Consistent Focus Indicators for Accessibility */
   *:focus-visible {
     outline: 2px solid hsl(var(--accent-primary));
     outline-offset: 2px;
     border-radius: 2px;
   }
-  
+
   /* For elements that shouldn't have outline (use ring instead) */
   .focus-ring:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px hsl(var(--background)), 
-                0 0 0 4px hsl(var(--accent-primary));
+    box-shadow: 0 0 0 2px hsl(var(--background)),
+      0 0 0 4px hsl(var(--accent-primary));
   }
-  
+
   /* Show system cursor when keyboard navigating */
   body:has(*:focus-visible) {
     cursor: auto !important;
   }
-  
+
   /* Custom cursor for desktop only */
-  @media (pointer: coarse), (max-width: 1023px) {
+  @media (pointer: coarse),
+  (max-width: 1023px) {
     body {
       cursor: default !important;
     }
   }
-  
+
   /* Prevent content shifting when sidebar opens on mobile */
   body.sidebar-open {
     overflow: hidden;
   }
+
   @media (min-width: 1024px) {
     body.sidebar-open {
       overflow: auto;
     }
   }
-  
+
   /* Sidebar height fallback for browsers that don't support dvh */
   .sidebar {
-    height: 100vh; /* Fallback */
-    height: 100dvh; /* Dynamic viewport height - adjusts for browser UI */
+    height: 100vh;
+    /* Fallback */
+    height: 100dvh;
+    /* Dynamic viewport height - adjusts for browser UI */
   }
-  
+
   /* Ensure sidebar content fits without scrolling on mobile */
   @media (max-width: 639px) {
     .sidebar {
@@ -155,19 +232,49 @@
 }
 
 @layer components {
+
   /* Font families - keep for backwards compatibility */
-  .font-satoshi { font-family: 'Satoshi', sans-serif; }
-  .font-figtree { font-family: 'Figtree', sans-serif; }
-  .font-jetbrains-mono { font-family: 'JetBrains Mono', monospace; }
-  .font-urbanist { font-family: 'Urbanist', sans-serif; }
-  .font-dm-sans { font-family: 'DM Sans', sans-serif; }
-  .font-ibm-plex-mono { font-family: 'IBM Plex Mono', monospace; }
+  .font-satoshi {
+    font-family: 'Satoshi', sans-serif;
+  }
+
+  .font-figtree {
+    font-family: 'Figtree', sans-serif;
+  }
+
+  .font-jetbrains-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-urbanist {
+    font-family: 'Urbanist', sans-serif;
+  }
+
+  .font-dm-sans {
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .font-ibm-plex-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
 
   /* Custom scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: hsl(var(--bg-primary)); }
-  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--accent-primary)); }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--bg-primary));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent-primary));
+  }
 
   /* Modal/Lightbox Styles */
   .modal-container {
@@ -187,13 +294,13 @@
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
   }
-  
+
   .modal-container.active {
     opacity: 1;
     visibility: visible;
     display: flex;
   }
-  
+
   .modal-content {
     position: relative;
     padding: 0;
@@ -202,7 +309,7 @@
     border-radius: 8px;
     background: hsl(var(--bg-secondary));
   }
-  
+
   .modal-image-content {
     width: 100%;
     height: 100%;
@@ -210,12 +317,19 @@
     display: block;
     border-radius: 8px;
   }
-  
+
   @keyframes zoom {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
-  
+
   .close-btn {
     position: absolute;
     top: -40px;
@@ -234,13 +348,13 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .close-btn:hover,
   .close-btn:focus {
     color: hsl(var(--accent-primary));
     background: rgba(0, 0, 0, 0.8);
   }
-  
+
   .prev-btn,
   .next-btn {
     cursor: pointer;
@@ -259,20 +373,20 @@
     border-radius: 4px;
     z-index: 1001;
   }
-  
+
   .next-btn {
     right: 20px;
   }
-  
+
   .prev-btn {
     left: 20px;
   }
-  
+
   .prev-btn:hover,
   .next-btn:hover {
     background-color: hsl(var(--accent-primary) / 0.8);
   }
-  
+
   .resize-handle {
     position: absolute;
     width: 20px;
@@ -282,7 +396,7 @@
     cursor: nwse-resize;
     z-index: 10;
   }
-  
+
   .resize-handle::after {
     content: '';
     position: absolute;
@@ -302,79 +416,83 @@
     opacity: 0;
     visibility: hidden;
   }
-  
+
   .project-modal.open {
     opacity: 1;
     visibility: visible;
   }
-  
+
   .modal-content-box {
     background-color: hsl(var(--bg-secondary));
     border: 1px solid hsl(var(--border));
   }
-  
+
   .close-modal {
     color: hsl(var(--text-secondary));
     transition: color 0.3s ease;
   }
-  
+
   .close-modal:hover {
     color: hsl(var(--accent-primary));
   }
 
   /* Case Study Styles */
-  .case-study-section h1, .case-study-section h2, .case-study-section h3 { 
-    font-family: 'DM Sans', sans-serif; 
-    color: hsl(var(--text-primary)); 
+  .case-study-section h1,
+  .case-study-section h2,
+  .case-study-section h3 {
+    font-family: 'DM Sans', sans-serif;
+    color: hsl(var(--text-primary));
   }
-  
-  .case-study-section h2, .case-study-section h3 { 
-    font-family: 'IBM Plex Mono', monospace; 
+
+  .case-study-section h2,
+  .case-study-section h3 {
+    font-family: 'IBM Plex Mono', monospace;
   }
-  
-  .case-study-section p, .case-study-section li { 
-    font-family: 'Inter', sans-serif; 
-    color: hsl(var(--text-secondary)); 
-    line-height: 1.7; 
+
+  .case-study-section p,
+  .case-study-section li {
+    font-family: 'Inter', sans-serif;
+    color: hsl(var(--text-secondary));
+    line-height: 1.7;
   }
-  
-  .case-study-section ul { 
-    list-style: disc; 
-    margin-left: 1.25rem; 
+
+  .case-study-section ul {
+    list-style: disc;
+    margin-left: 1.25rem;
   }
-  
-  .case-study-section li strong { 
-    color: hsl(var(--text-primary)); 
-    font-weight: 600; 
+
+  .case-study-section li strong {
+    color: hsl(var(--text-primary));
+    font-weight: 600;
   }
-  
+
   .case-study-image {
-    width: 100%; 
-    height: auto; 
-    max-width: 800px; 
-    margin: 0 auto; 
-    display: block; 
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    margin: 0 auto;
+    display: block;
     border-radius: 12px;
     box-shadow: 0 10px 25px -5px hsl(var(--bg-primary) / 0.2), 0 10px 10px -5px hsl(var(--bg-primary) / 0.2);
     border: 1px solid hsl(var(--border));
   }
-  
+
   .case-study-pill {
-    background-color: hsl(var(--accent-primary) / 0.1); 
+    background-color: hsl(var(--accent-primary) / 0.1);
     color: hsl(var(--accent-primary));
-    padding: 0.35rem 0.85rem; 
-    border-radius: 9999px; 
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
     font-size: 0.75rem;
-    font-family: 'IBM Plex Mono', monospace; 
-    text-transform: uppercase; 
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
     font-weight: 500;
   }
-  
+
   .case-study-section blockquote {
-    border-left: 3px solid hsl(var(--accent-primary)); 
+    border-left: 3px solid hsl(var(--accent-primary));
     padding-left: 1.5rem;
-    margin: 0.5rem 0; 
-    font-style: italic; 
+    margin: 0.5rem 0;
+    font-style: italic;
     color: hsl(var(--text-secondary));
   }
 }

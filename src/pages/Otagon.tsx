@@ -54,7 +54,7 @@ export const Otagon = () => {
             'PWA',
           ],
         }}
-        heroImage="/images/casestudies/otagon/hero.png"
+        heroImage="/otagon/otagon3.png"
         heroImageAlt="Otagon Gaming Companion Interface"
       />
 
@@ -87,7 +87,7 @@ export const Otagon = () => {
         </CaseStudyQuote>
 
         <CaseStudyImage
-          src="/images/casestudies/otagon/image-1.png"
+          src="/otagon/workinprogess.png"
           alt="The Problem — Alt-tabbing and spoiler anxiety"
           caption="The friction gamers face when seeking help during gameplay"
         />
@@ -101,7 +101,7 @@ export const Otagon = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/images/casestudies/otagon/image-2.png"
+          src="/otagon/aiprocessing.png"
           alt="Otagon Vision — Screenshot analysis flow"
           caption="How Otagon understands your game context from a single screenshot"
         />
@@ -144,7 +144,7 @@ export const Otagon = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/images/casestudies/otagon/image-3.png"
+          src="/otagon/vision/1.png"
           alt="Development phases timeline"
           caption="The four phases of building Otagon from concept to production"
         />
@@ -189,10 +189,12 @@ export const Otagon = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImage
-          src="/images/casestudies/otagon/image-4.png"
-          alt="OTAGON Tag System and design decisions"
-          caption="Structured AI output format that powers reliable game context extraction"
+        <CaseStudyImageGrid
+          columns={2}
+          images={[
+            { src: '/otagon/vision/2.png', alt: 'OTAGON Tag System and design decisions 1' },
+            { src: '/otagon/vision/3.png', alt: 'OTAGON Tag System and design decisions 2', caption: 'Structured AI output format that powers reliable game context extraction' },
+          ]}
         />
       </CaseStudySection>
 
@@ -233,7 +235,7 @@ export const Otagon = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/images/casestudies/otagon/image-5.png"
+          src="/otagon/vision/4.png"
           alt="Technical challenges and solutions"
           caption="Hard engineering problems that required creative solutions"
         />
@@ -270,7 +272,7 @@ export const Otagon = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/images/casestudies/otagon/image-6.png"
+          src="/otagon/vision/5.png"
           alt="Results dashboard and metrics"
           caption="Production metrics and achievement milestones"
         />
@@ -316,7 +318,7 @@ export const Otagon = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/images/casestudies/otagon/image-7.png"
+          src="/otagon/vision/6.png"
           alt="Future roadmap"
           caption="Upcoming features and platform expansion plans"
         />

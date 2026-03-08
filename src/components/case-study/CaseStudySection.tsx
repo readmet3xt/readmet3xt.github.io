@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 interface CaseStudySectionProps {
   children: ReactNode;
@@ -154,6 +154,8 @@ interface CaseStudyImageProps {
   caption?: string;
   className?: string;
   priority?: boolean;
+  aspectRatio?: string;
+  objectPosition?: string;
 }
 
 export const CaseStudyImage = ({
@@ -162,84 +164,145 @@ export const CaseStudyImage = ({
   caption,
   className = '',
   priority = false,
-}: CaseStudyImageProps) => (
-  <motion.figure
-    className={`${className}`}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-50px' }}
-    transition={{ duration: 0.5 }}
-  >
-    <div className="relative overflow-hidden rounded-lg bg-white border border-border aspect-video shadow-sm flex items-center justify-center">
-      <span className="text-text-tertiary font-medium text-sm Select-none tracking-wide uppercase opacity-40">
-        Work in Progress
-      </span>
-      <img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover absolute inset-0 z-10"
-        loading={priority ? 'eager' : 'lazy'}
-        onError={(e) => {
-          (e.currentTarget.style.display = 'none');
-        }}
-      />
-    </div>
-    {caption && (
-      <figcaption className="mt-2 text-sm text-text-tertiary text-center italic">
-        {caption}
-      </figcaption>
-    )}
-  </motion.figure>
-);
+  aspectRatio = 'aspect-auto',
+  objectPosition = 'object-top',
+}: CaseStudyImageProps) => {
+  const scale = useMotionValue(1);
+  const scaleSpring = useSpring(scale, { stiffness: 300, damping: 30 });
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const currentScale = scale.get();
+    const newScale = Math.min(Math.max(1, currentScale - e.deltaY * 0.005), 4);
+    scale.set(newScale);
+  };
+
+  return (
+    <motion.figure
+      className={`my-10 ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5 }}
+    >
+      <div
+        className={`relative overflow-hidden rounded-lg bg-white border border-border w-full h-full min-h-[300px] ${aspectRatio} shadow-sm flex items-center justify-center`}
+        onWheel={handleWheel}
+      >
+        <span className="text-text-tertiary font-medium text-sm Select-none tracking-wide uppercase opacity-40 absolute z-0">
+          Work in Progress
+        </span>
+        <motion.img
+          src={src}
+          alt={alt}
+          style={{ scale: scaleSpring }}
+          className={`w-full ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[70vh] md:max-h-[80vh] object-contain relative' : `h-full absolute inset-0 object-cover ${objectPosition}`} z-10 lightbox-image cursor-grab active:cursor-grabbing hover:opacity-90`}
+          loading={priority ? 'eager' : 'lazy'}
+          drag
+          dragConstraints={{ left: -300, right: 300, top: -300, bottom: 300 }}
+          dragElastic={0.2}
+          dragSnapToOrigin={true}
+          onDoubleClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src } }))}
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = 'none';
+          }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        />
+      </div>
+      {caption && (
+        <figcaption className="mt-2 text-sm text-text-tertiary text-center italic">
+          {caption}
+        </figcaption>
+      )}
+    </motion.figure>
+  );
+};
 
 interface CaseStudyImageGridProps {
   images: { src: string; alt: string; caption?: string }[];
-  columns?: 2 | 3 | 4;
+  columns?: 1 | 2 | 3 | 4;
   className?: string;
 }
+
+interface GridImageCardProps {
+  image: { src: string; alt: string; caption?: string };
+  index: number;
+  aspectRatio?: string;
+  objectPosition?: string;
+}
+
+const GridImageCard = ({ image, index, aspectRatio = 'aspect-auto', objectPosition = 'object-top' }: GridImageCardProps) => {
+  const scale = useMotionValue(1);
+  const scaleSpring = useSpring(scale, { stiffness: 300, damping: 30 });
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const currentScale = scale.get();
+    const newScale = Math.min(Math.max(1, currentScale - e.deltaY * 0.005), 4);
+    scale.set(newScale);
+  };
+
+  return (
+    <motion.figure
+      className="relative overflow-hidden rounded-lg bg-bg-secondary h-full"
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.4 }}
+    >
+      <div
+        className={`w-full h-full min-h-[300px] ${aspectRatio} bg-white border border-border flex items-center justify-center overflow-hidden relative`}
+        onWheel={handleWheel}
+      >
+        <span className="text-text-tertiary font-medium text-xs Select-none tracking-wide uppercase opacity-40 absolute z-0">
+          Work in Progress
+        </span>
+        <motion.img
+          src={image.src}
+          alt={image.alt}
+          style={{ scale: scaleSpring }}
+          className={`w-full ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[60vh] md:max-h-[75vh] object-contain relative' : `h-full absolute inset-0 object-cover ${objectPosition}`} z-10 lightbox-image cursor-grab active:cursor-grabbing hover:opacity-90`}
+          loading="lazy"
+          drag
+          dragConstraints={{ left: -250, right: 250, top: -250, bottom: 250 }}
+          dragElastic={0.2}
+          dragSnapToOrigin={true}
+          onDoubleClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: image.src } }))}
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = 'none';
+          }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        />
+      </div>
+      {image.caption && (
+        <figcaption className="p-2 text-xs text-text-tertiary text-center">
+          {image.caption}
+        </figcaption>
+      )}
+    </motion.figure>
+  );
+};
 
 export const CaseStudyImageGrid = ({
   images,
   columns = 2,
   className = '',
-}: CaseStudyImageGridProps) => {
+  aspectRatio = 'aspect-auto',
+  objectPosition = 'object-top',
+}: CaseStudyImageGridProps & { aspectRatio?: string; objectPosition?: string }) => {
   const colClass = {
+    1: 'grid-cols-1',
     2: 'grid-cols-1 sm:grid-cols-2',
     3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
     4: 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4',
   }[columns];
 
   return (
-    <div className={`grid ${colClass} gap-3 ${className}`}>
+    <div className={`my-10 grid ${colClass} gap-6 ${className}`}>
       {images.map((image, i) => (
-        <motion.figure
-          key={i}
-          className="relative overflow-hidden rounded-lg bg-bg-tertiary"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1, duration: 0.4 }}
-        >
-          <div className="w-full aspect-video bg-white border border-border flex items-center justify-center overflow-hidden relative">
-            <span className="text-text-tertiary font-medium text-xs Select-none tracking-wide uppercase opacity-40">
-              Work in Progress
-            </span>
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover absolute inset-0 z-10"
-              loading="lazy"
-              onError={(e) => {
-                (e.currentTarget.style.display = 'none');
-              }}
-            />
-          </div>
-          {image.caption && (
-            <figcaption className="p-2 text-xs text-text-tertiary text-center">
-              {image.caption}
-            </figcaption>
-          )}
-        </motion.figure>
+        <GridImageCard key={i} image={image} index={i} aspectRatio={aspectRatio} objectPosition={objectPosition} />
       ))}
     </div>
   );
@@ -320,7 +383,7 @@ export const CaseStudyStat = ({ value, label, sublabel }: CaseStudyStatProps) =>
     transition={{ duration: 0.4 }}
     whileHover={{ scale: 1.02 }}
   >
-    <div className="text-2xl sm:text-3xl font-bold text-accent-primary mb-1 sm:mb-2">
+    <div className="text-2xl sm:text-3xl font-bold text-accent-primary mb-1 sm:mb-2 break-words">
       {value}
     </div>
     <div className="text-xs sm:text-sm text-text-secondary">{label}</div>
