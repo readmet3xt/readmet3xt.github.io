@@ -195,7 +195,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
             LINKEDIN
           </a>
           <a
-            href="https://drive.google.com/file/d/1SnvkzMujpXhg1Ep_0qunMcKuNnt3rTXv/view?usp=sharing"
+            href="https://drive.google.com/file/d/15mxM6r_j_RMzgDX5RCTYptMZmlZVBXPS/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-link min-h-[44px] min-w-[44px] px-3 py-2 flex items-center justify-center text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
