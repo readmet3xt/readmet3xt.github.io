@@ -16,6 +16,7 @@ interface CaseStudyLayoutProps {
   backLabel?: string;
   externalLink?: string;
   externalLabel?: string;
+  ctaClassName?: string;
 }
 
 // Page transition variants
@@ -60,6 +61,7 @@ export const CaseStudyLayout = ({
   backLabel = 'Back to Work',
   externalLink,
   externalLabel,
+  ctaClassName,
 }: CaseStudyLayoutProps) => {
   return (
     <PageLayout className="px-4 sm:px-6 md:px-8 lg:px-12 pt-20 pb-16 sm:pt-24 sm:pb-20 md:pb-24 lg:pt-12 lg:pb-12 overflow-x-hidden">
@@ -124,7 +126,7 @@ export const CaseStudyLayout = ({
                 href={externalLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent-primary text-white rounded-lg hover:bg-accent-hover transition-colors"
+                className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-colors ${ctaClassName || 'bg-accent-primary text-white hover:bg-accent-hover'}`}
               >
                 <span>{externalLabel || 'View Project'}</span>
                 <ExternalLink className="w-4 h-4" />

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   CaseStudyLayout,
   CaseStudyHero,
@@ -13,13 +14,34 @@ import {
 } from '@/components/case-study';
 
 export const KoinBasket = () => {
+  const [isPastChapter2, setIsPastChapter2] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const chapter2Element = document.getElementById('chapter-2');
+      if (chapter2Element) {
+        const rect = chapter2Element.getBoundingClientRect();
+        // Trigger when Chapter 2 is 50% or more into the viewport
+        if (rect.top <= window.innerHeight * 0.5) {
+          setIsPastChapter2(true);
+        } else {
+          setIsPastChapter2(false);
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="theme-kb-dark">
+    <div className={`transition-colors duration-300 ${isPastChapter2 ? 'theme-kb-deep' : 'theme-kb-dark'}`}>
       <CaseStudyLayout
         title="KoinBasket"
         description="From a One-Week MVP Contract to 70,000 Users — How I built a crypto investing platform that democratized portfolio diversification."
         externalLink="https://otagon2.github.io/Koinbasket/"
         externalLabel="KoinBasket"
+        ctaClassName={isPastChapter2 ? 'bg-accent-primary text-card hover:bg-accent-hover' : undefined}
       >
         <CaseStudyHero
           title="From a One-Week MVP Contract to 70,000 Users"
@@ -140,14 +162,14 @@ export const KoinBasket = () => {
         </CaseStudySection>
 
         {/* Light Theme Section */}
-        <div className="theme-kb-light text-foreground relative pt-16 mt-16 pb-16">
+        <div className={`text-foreground relative pt-16 mt-16 pb-16 transition-colors duration-300 ${isPastChapter2 ? 'theme-kb-deep' : 'theme-kb-light'}`}>
           {/* Full Bleed Background Element using Box Shadow to avoid 100vw scrollbar issue */}
-          <div className="absolute inset-0 bg-bg-primary -z-10" style={{ boxShadow: '0 0 0 100vmax hsl(var(--bg-primary))', clipPath: 'inset(0 -100vmax)' }}></div>
+          <div className="absolute inset-0 bg-bg-primary -z-10 transition-colors duration-300" style={{ boxShadow: '0 0 0 100vmax hsl(var(--bg-primary))', clipPath: 'inset(0 -100vmax)' }}></div>
 
           <div className="space-y-12">
 
             {/* Chapter 2: Scaling */}
-            <CaseStudySection title="Chapter 2: Scaling to Market Leadership">
+            <CaseStudySection id="chapter-2" title="Chapter 2: Scaling to Market Leadership">
               <CaseStudyParagraph lead>
                 70,000 users created new problems. The MVP had done its job — now we needed to evolve from
                 promising startup to mature, trusted platform. My role evolved with it.

@@ -398,10 +398,13 @@ interface CaseStudyStatsGridProps {
   className?: string;
 }
 
-export const CaseStudyStatsGrid = ({ stats, className = '' }: CaseStudyStatsGridProps) => (
-  <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${className}`}>
-    {stats.map((stat, i) => (
-      <CaseStudyStat key={i} {...stat} />
-    ))}
-  </div>
-);
+export const CaseStudyStatsGrid = ({ stats, className = '' }: CaseStudyStatsGridProps) => {
+  const mdCols = stats.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4';
+  return (
+    <div className={`grid grid-cols-2 ${mdCols} gap-4 ${className}`}>
+      {stats.map((stat, i) => (
+        <CaseStudyStat key={i} {...stat} />
+      ))}
+    </div>
+  );
+};
