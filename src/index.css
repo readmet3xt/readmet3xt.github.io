@@ -178,15 +178,49 @@
     --bg-tertiary: 94 100% 20%;
     --border: 0 0% 100% / 0.1;
   }
+
+  /* Light Theme overrides for KoinBasket */
+  .light .theme-kb-dark,
+  .light .theme-kb-light,
+  .light .theme-kb-deep {
+    --bg-primary: 0 0% 96.1%;
+    --bg-secondary: 0 0% 100%;
+    --bg-tertiary: 0 0% 96.1%;
+    --text-primary: 220 26.1% 14.0%;
+    --text-secondary: 220 13.0% 29.4%;
+    --text-tertiary: 220 8.8% 60.8%;
+    --border: 0 0% 0% / 0.1;
+  }
+
+  .light .theme-kb-dark {
+    --accent-primary: 266 80% 45%;
+    --accent-hover: 266 80% 35%;
+    --glow-primary: 266 80% 45%;
+  }
+
+  .light .theme-kb-light {
+    --accent-primary: 96 60% 40%;
+    --accent-hover: 96 60% 30%;
+    --glow-primary: 96 60% 40%;
+  }
+
+  .light .theme-kb-deep {
+    --accent-primary: 84 72% 35%;
+    --accent-hover: 84 72% 25%;
+    --glow-primary: 84 72% 35%;
+  }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
