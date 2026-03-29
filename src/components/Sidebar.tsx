@@ -177,10 +177,10 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
 
       {/* Sidebar Footer */}
       <footer className="flex-shrink-0 border-t border-border pt-2.5 sm:pt-3 lg:pt-4 pb-3 sm:pb-4 lg:pb-6 px-3 sm:px-4 lg:px-6 bg-bg-secondary">
-        <nav className="flex flex-wrap justify-start gap-1 font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider" role="navigation" aria-label="Contact and social links">
+        <nav className="flex flex-wrap justify-start gap-[3.11rem] sm:gap-[3.02rem] lg:gap-[2.58rem] font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider -ml-2 sm:-ml-2.5" role="navigation" aria-label="Contact and social links">
           <button
             onClick={() => copyToClipboard('mdamkhan.work@gmail.com')}
-            className="footer-link min-h-[44px] min-w-[44px] px-3 py-2 flex items-center justify-center text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
+            className="footer-link h-fit py-1 px-2 flex items-center justify-start text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
             aria-label="Copy email address to clipboard"
           >
             EMAIL
@@ -189,7 +189,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
             href="https://www.linkedin.com/in/readmetxt/"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer-link min-h-[44px] min-w-[44px] px-3 py-2 flex items-center justify-center text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
+            className="footer-link h-fit py-1 px-2 flex items-center justify-start text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
             aria-label="Visit Amaan Khan's LinkedIn profile (opens in new tab)"
           >
             LINKEDIN
@@ -198,32 +198,34 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
             href="https://drive.google.com/file/d/15mxM6r_j_RMzgDX5RCTYptMZmlZVBXPS/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer-link min-h-[44px] min-w-[44px] px-3 py-2 flex items-center justify-center text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
+            className="footer-link h-fit py-1 px-2 flex items-center justify-start text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
             aria-label="View Amaan Khan's resume (opens in new tab)"
           >
             RESUME
           </a>
         </nav>
-        <div className="mt-1 flex justify-start items-center" role="group" aria-label="Theme selection">
-          <button
-            onClick={() => toggleTheme('dark')}
-            className={`theme-toggle-btn min-h-[44px] min-w-[44px] px-3 py-2 font-ibm-plex-mono text-[10px] sm:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md ${theme === 'dark' ? 'active text-text-primary' : 'text-text-tertiary'}`}
-            aria-pressed={theme === 'dark'}
-            aria-label="Switch to dark theme"
-          >
-            Dark
-          </button>
-          <span className="text-text-tertiary text-xs" aria-hidden="true">/</span>
-          <button
-            onClick={() => toggleTheme('light')}
-            className={`theme-toggle-btn min-h-[44px] min-w-[44px] px-3 py-2 font-ibm-plex-mono text-[10px] sm:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md ${theme === 'light' ? 'active text-text-primary' : 'text-text-tertiary'}`}
-            aria-pressed={theme === 'light'}
-            aria-label="Switch to light theme"
-          >
-            Light
-          </button>
+        <div className="mt-2 sm:mt-2.5 lg:mt-3 flex items-center justify-between" role="group" aria-label="Theme and copyright">
+          <p className="text-[10px] sm:text-xs font-ibm-plex-mono text-text-tertiary leading-tight">&copy;2025 Amaan</p>
+          <div className="flex items-center justify-end" role="group" aria-label="Theme selection">
+            <button
+              onClick={() => toggleTheme('dark')}
+              className={`theme-toggle-btn px-2 sm:px-2.5 py-1 font-ibm-plex-mono text-[10px] sm:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md transition-colors ${theme === 'dark' ? 'active text-text-primary' : 'text-text-tertiary hover:text-text-secondary'}`}
+              aria-pressed={theme === 'dark'}
+              aria-label="Switch to dark theme"
+            >
+              Dark
+            </button>
+            <span className="text-text-tertiary text-xs mx-1" aria-hidden="true">/</span>
+            <button
+              onClick={() => toggleTheme('light')}
+              className={`theme-toggle-btn px-2 sm:px-2.5 py-1 font-ibm-plex-mono text-[10px] sm:text-xs uppercase focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md transition-colors ${theme === 'light' ? 'active text-text-primary' : 'text-text-tertiary hover:text-text-secondary'}`}
+              aria-pressed={theme === 'light'}
+              aria-label="Switch to light theme"
+            >
+              Light
+            </button>
+          </div>
         </div>
-        <p className="mt-1 text-[10px] sm:text-xs font-ibm-plex-mono text-text-tertiary">&copy;2025 Amaan</p>
       </footer>
     </aside>
   );
