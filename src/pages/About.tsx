@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageLayout } from '@/components/PageLayout';
 import { ProjectModal } from '@/components/ProjectModal';
@@ -7,6 +7,8 @@ import { CopyToast } from '@/components/CopyToast';
 import { useScrollReveal } from '@/components/ScrollReveal';
 import { CertificatesCarousel } from '@/components/CertificatesCarousel';
 import amaanHero from '/lovable-uploads/22366376-40f2-492f-989a-067de0fdb01f.png';
+
+const TestimonialsCarousel = lazy(() => import('@/components/TestimonialsCarousel').then(m => ({ default: m.TestimonialsCarousel })));
 
 const projectsData = {
   pebble: {
@@ -109,7 +111,20 @@ export const About = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-wrap gap-4">
+
+              {/* Testimonials Section */}
+              <div className="mb-12 reveal-on-scroll">
+                <Suspense fallback={
+                  <div className="min-h-[200px] flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                  </div>
+                }>
+                  <TestimonialsCarousel showTitle={false} />
+                </Suspense>
+              </div>
+
+              {/* Desktop Contact Buttons */}
+              <div className="hidden md:flex flex-wrap gap-4">
                 <button
                   onClick={copyEmail}
                   className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
@@ -140,6 +155,32 @@ export const About = () => {
                 alt="Amaan Khan - Product Designer"
                 className="w-full h-auto rounded-lg object-cover max-w-sm mx-auto md:mx-0"
               />
+              
+              {/* Mobile Contact Buttons */}
+              <div className="flex md:hidden flex-wrap gap-4 mt-8">
+                <button
+                  onClick={copyEmail}
+                  className="flex-1 min-w-[120px] border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center"
+                >
+                  Email
+                </button>
+                <a
+                  href="https://linkedin.com/in/mdamkhan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 min-w-[120px] border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://drive.google.com/file/d/1SnvkzMujpXhg1Ep_0qunMcKuNnt3rTXv/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center"
+                >
+                  Resume
+                </a>
+              </div>
             </div>
           </div>
         </section>

@@ -75,7 +75,11 @@ const TestimonialCard = memo(({ testimonial, isActive }: { testimonial: Testimon
 
 TestimonialCard.displayName = 'TestimonialCard';
 
-export const TestimonialsCarousel = memo(() => {
+interface TestimonialsCarouselProps {
+  showTitle?: boolean;
+}
+
+export const TestimonialsCarousel = memo(({ showTitle = true }: TestimonialsCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -129,8 +133,8 @@ export const TestimonialsCarousel = memo(() => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Testimonials</h2>
-        <div className="flex gap-2">
+        {showTitle && <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Testimonials</h2>}
+        <div className={`flex gap-2 ${!showTitle ? 'ml-auto' : ''}`}>
           <Button
             variant="outline"
             size="sm"
