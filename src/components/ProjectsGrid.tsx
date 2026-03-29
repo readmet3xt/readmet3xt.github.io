@@ -1,18 +1,7 @@
 import { AnimatedProjectCard } from '@/components/AnimatedProjectCard';
-import { ProjectCard } from '@/components/ProjectCard';
 import { WelcomeCard } from '@/components/WelcomeCard';
 import { useSidebar } from '@/components/SidebarContext';
 import { cn } from '@/lib/utils';
-
-// Import project images
-import koinbasket1 from '/lovable-uploads/02a3c6bb-17dd-4d61-92a0-6ea7b5defb71.png';
-import koinbasket2 from '/lovable-uploads/afffb1f8-f97f-43bf-aad0-561e1bd11059.png';
-import softwireImage from '/lovable-uploads/52c6231a-18dd-4a9b-8876-aece1c3e8ecc.png';
-import pebbleImage from '/lovable-uploads/cb1a1f3c-1847-4464-b0bb-8f75aa61e069.png';
-import iviImage from '/lovable-uploads/edac5882-86eb-4c8d-90e2-3ae3b2034954.png';
-import stampedeImage from '/lovable-uploads/98dba331-62c7-4ed1-a6ca-8cb63df6ac7d.png';
-import otagonImage from '/otagon/otagon3.png';
-import jollyAiImage from '/jollyai/jollyai6.png';
 
 export const ProjectsGrid = () => {
   const { isOpen } = useSidebar();
@@ -30,72 +19,142 @@ export const ProjectsGrid = () => {
     >
       <WelcomeCard />
 
-      <ProjectCard
+      <AnimatedProjectCard
+        index={0}
         href="/otagon"
         title="Otagon Gaming Companion"
         description="AI-Powered Gaming Assistant"
-        image={otagonImage}
+        images={[
+          '/otagon/otagon3.png',
+          '/otagon/aiprocessing.png',
+          '/otagon/workinprogess.png',
+          '/otagon/vision/1.png',
+          '/otagon/vision/2.png',
+          '/otagon/vision/3.png',
+          '/otagon/vision/4.png',
+          '/otagon/vision/5.png',
+        ]}
         className=""
         summary="Built an advanced AI gaming companion with real-time screenshot analysis, intelligent conversation, and personalized gaming insights."
         tags={["React TypeScript", "AI/ML", "PWA", "Supabase"]}
       />
 
-      <ProjectCard
+      <AnimatedProjectCard
+        index={1}
         href="/lawx"
         title="Law.X"
         description="Transparent Legal Assistant"
-        image={jollyAiImage}
+        images={[
+          '/jollyai/jollyai6.png',
+          '/jollyai/jollyai1.png',
+          '/jollyai/jollyai2.png',
+          '/jollyai/jollyai3.png',
+          '/jollyai/jollyai4.png',
+          '/jollyai/jollyai5.png',
+          '/jollyai/jollyai7.png',
+          '/jollyai/jollyai8.png',
+        ]}
         className=""
-        summary="Designed an AI assistant for lawyers that visualizes reasoning processes, providing trust through transparency and precise control over legal tone"
+        summary="Designed early concepts for an AI assistant for lawyers that visualizes reasoning processes, providing trust through transparency and precise control over legal tone"
         tags={["Legal Tech", "AI UX", "Transparency Design"]}
       />
 
       <AnimatedProjectCard
+        index={2}
         href="/koinbasket"
         title="KoinBasket"
         description="Trading Platform & Mobile App"
-        images={[koinbasket1, koinbasket2]}
+        images={[
+          '/images/casestudies/koinbasket/Main Dashboard - Expanded and Hover.jpg',
+          '/images/casestudies/koinbasket/Home.png',
+          '/images/casestudies/koinbasket/Coin Details.png',
+          '/images/casestudies/koinbasket/Portfolio - Completed - Expanded View.png',
+          '/images/casestudies/koinbasket/Manage - My baskets.png',
+          '/images/casestudies/koinbasket/Exchange Popup.png',
+          '/images/casestudies/koinbasket/homepage (3).png',
+          '/images/casestudies/koinbasket/landingpage.png',
+        ]}
         className=""
         summary="Led design evolution from MVP to market leader, growing from 0 to 70,000 users through strategic UX and live trading platform"
         tags={["Fintech", "MVP Design", "Rebranding"]}
       />
 
-      <ProjectCard
+      <AnimatedProjectCard
+        index={3}
         href="/softwire"
         title="Softwire"
         description="LNER App Clip"
-        image={softwireImage}
+        images={[
+          '/images/casestudies/softwire/1.webp',
+          '/images/casestudies/softwire/2.webp',
+          '/images/casestudies/softwire/4.webp',
+          '/images/casestudies/softwire/5.webp',
+          '/images/casestudies/softwire/7.webp',
+          '/images/casestudies/softwire/12.webp',
+          '/images/casestudies/softwire/13.webp',
+          '/images/casestudies/softwire/25.webp',
+        ]}
         className=""
         summary="Designed streamlined ticket booking experience using Apple's App Clip technology for stress-free last-minute train travel"
         tags={["App Clip", "Prototyping", "Usability Testing"]}
       />
 
-      <ProjectCard
+      <AnimatedProjectCard
+        index={4}
         href="/pebble"
         title="Pebble"
         description="Employee Wellbeing Service"
-        image={pebbleImage}
+        images={[
+          '/images/casestudies/pebble/Hero Image Pebble 1600.jpeg',
+          '/images/casestudies/pebble/2.jpg',
+          '/images/casestudies/pebble/3.jpg',
+          '/images/casestudies/pebble/4.jpg',
+          '/images/casestudies/pebble/10.jpg',
+          '/images/casestudies/pebble/13.jpg',
+          '/images/casestudies/pebble/24.jpg',
+          '/images/casestudies/pebble/36.jpg',
+        ]}
         className=""
         summary="Created virtual companion service to combat workplace stress and foster connection in remote work environments"
         tags={["Service Design", "Employee Wellbeing", "Remote Work"]}
       />
 
-      <ProjectCard
+      <AnimatedProjectCard
+        index={5}
         href="/iviprogram"
         title="Invisible Value Income Program"
         description="Social Impact Design"
-        image={iviImage}
+        images={[
+          '/images/casestudies/ivi/1 (3).jpg',
+          '/images/casestudies/ivi/2 (3).jpg',
+          '/images/casestudies/ivi/4.jpg',
+          '/images/casestudies/ivi/5.jpg',
+          '/images/casestudies/ivi/6.jpg',
+          '/images/casestudies/ivi/10 (3).jpg',
+          '/images/casestudies/ivi/15 (2).jpg',
+          '/images/casestudies/ivi/20.jpg',
+        ]}
         className=""
         summary="Designed inclusive financial service addressing systemic economic exclusion through human-centered design approach"
         tags={["Social Impact", "Inclusive Design", "Speculative Design"]}
       />
 
-      <ProjectCard
+      <AnimatedProjectCard
+        index={6}
         href="/stampede"
         title="Stampede"
         description="Conservation Partnerships"
-        image={stampedeImage}
-        className="reveal-on-scroll"
+        images={[
+          '/images/casestudies/stampede/1.jpg',
+          '/images/casestudies/stampede/1.1.jpg',
+          '/images/casestudies/stampede/1.2.jpg',
+          '/images/casestudies/stampede/2.jpg',
+          '/images/casestudies/stampede/3.1.jpg',
+          '/images/casestudies/stampede/4.1.jpg',
+          '/images/casestudies/stampede/5.1 (1).jpg',
+          '/images/casestudies/stampede/8-Stampede.jpg',
+        ]}
+        className=""
         summary="Developed platform connecting conservation organizations with local communities for sustainable wildlife protection"
         tags={["Conservation", "Match-making", "Sustainability"]}
       />

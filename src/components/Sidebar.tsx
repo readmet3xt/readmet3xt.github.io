@@ -177,7 +177,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
 
       {/* Sidebar Footer */}
       <footer className="flex-shrink-0 border-t border-border pt-2.5 sm:pt-3 lg:pt-4 pb-3 sm:pb-4 lg:pb-6 px-3 sm:px-4 lg:px-6 bg-bg-secondary">
-        <nav className="flex flex-wrap justify-start gap-[3.11rem] sm:gap-[3.02rem] lg:gap-[2.58rem] font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider -ml-2 sm:-ml-2.5" role="navigation" aria-label="Contact and social links">
+        <nav className="flex flex-wrap justify-start gap-[1.5rem] sm:gap-[3.02rem] lg:gap-[2.58rem] font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider -ml-2 sm:-ml-2.5" role="navigation" aria-label="Contact and social links">
           <button
             onClick={() => copyToClipboard('mdamkhan.work@gmail.com')}
             className="footer-link h-fit py-1 px-2 flex items-center justify-start text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"

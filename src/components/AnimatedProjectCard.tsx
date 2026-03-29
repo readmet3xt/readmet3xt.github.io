@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 import { useSidebar } from '@/components/SidebarContext';
 import { cn } from '@/lib/utils';
@@ -14,12 +14,39 @@ interface AnimatedProjectCardProps {
   className?: string;
   summary?: string;
   tags?: string[];
+  index?: number;
 }
 
 // Create motion-enabled Link component (Framer Motion v11+ syntax)
 const MotionLink = motion.create(Link);
 
-export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags }: AnimatedProjectCardProps) => {
+// Cascading top-to-bottom flip: the image flips down from the top edge
+// like a panel hinged at the top, revealing the new image underneath
+const flipVariants = {
+  enter: {
+    clipPath: 'inset(0 0 100% 0)',
+    opacity: 1,
+  },
+  center: {
+    clipPath: 'inset(0 0 0% 0)',
+    opacity: 1,
+    transition: {
+      clipPath: {
+        duration: 0.35,
+      },
+      opacity: { duration: 0.2 },
+    },
+  },
+  exit: {
+    clipPath: 'inset(0 0 0% 0)',
+    opacity: 0,
+    transition: {
+      opacity: { duration: 0.25, delay: 0.2 },
+    },
+  },
+};
+
+export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags, index = 0 }: AnimatedProjectCardProps) => {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { isOpen } = useSidebar();
@@ -31,25 +58,35 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
     transitionDuration: 100,
   });
 
-  // Auto-animate between images with preloading
+  // Preload all images on mount
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [images]);
+
+  // Auto-advance every 5 seconds, staggered by card index
+  const advanceImage = useCallback(() => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
   useEffect(() => {
     if (images.length <= 1) return;
 
-    // Preload next image for smooth transitions
-    const preloadNextImage = () => {
-      const nextIndex = (currentImageIndex + 1) % images.length;
-      const img = new Image();
-      img.src = images[nextIndex];
+    // Stagger the start time by 600ms per card to create a top-to-bottom wave
+    const staggerDelay = index * 600;
+    let interval: NodeJS.Timeout;
+
+    const timeout = setTimeout(() => {
+      interval = setInterval(advanceImage, 5000);
+    }, staggerDelay);
+
+    return () => {
+      clearTimeout(timeout);
+      if (interval) clearInterval(interval);
     };
-
-    preloadNextImage();
-
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [images.length, currentImageIndex, images]);
+  }, [images.length, advanceImage, index]);
 
   return (
     <MotionLink
@@ -75,21 +112,28 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
         transition: { duration: 0.1 }
       }}
     >
-      <div className={cn(
-        "relative w-full flex-shrink-0 overflow-hidden transition-all duration-300",
-        isOpen ? "h-48 sm:h-52" : "h-40 sm:h-44"
-      )}>
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`${title} project preview ${index + 1} of ${images.length}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
+      {/* Image carousel — cascading top-to-bottom reveal, no controls */}
+      <div
+        className={cn(
+          "relative w-full flex-shrink-0 overflow-hidden transition-all duration-300 bg-card",
+          isOpen ? "h-48 sm:h-52" : "h-40 sm:h-44"
+        )}
+      >
+        <AnimatePresence initial={false}>
+          <motion.img
+            key={currentImageIndex}
+            src={images[currentImageIndex]}
+            alt={`${title} project preview ${currentImageIndex + 1} of ${images.length}`}
+            className="absolute inset-0 w-full h-full object-cover object-top"
+            variants={flipVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
             loading="lazy"
           />
-        ))}
+        </AnimatePresence>
       </div>
+
       <div className="p-4 sm:p-6 flex-1 flex flex-col">
         <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
         <p className="text-lg sm:text-lg mt-1 text-text-secondary break-words">{description}</p>
