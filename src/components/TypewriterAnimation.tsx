@@ -160,7 +160,7 @@ export const TypewriterAnimation = () => {
         // Scroll to projects grid
         const grid = document.querySelector('[aria-label="Portfolio projects"]');
         if (grid) {
-          grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          grid.scrollIntoView({ behavior: 'auto', block: 'start' });
         } else {
           startNextQuestion();
         }
@@ -172,7 +172,7 @@ export const TypewriterAnimation = () => {
           window.dispatchEvent(new CustomEvent('typewriter-clicked'));
           const grid = document.querySelector('[aria-label="Portfolio projects"]');
           if (grid) {
-            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            grid.scrollIntoView({ behavior: 'auto', block: 'start' });
           } else {
             startNextQuestion();
           }

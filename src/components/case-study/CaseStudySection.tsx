@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { motion, useSpring, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface CaseStudySectionProps {
   children: ReactNode;
@@ -167,51 +167,33 @@ export const CaseStudyImage = ({
   aspectRatio = 'aspect-auto',
   objectPosition = 'object-top',
 }: CaseStudyImageProps) => {
-  const scale = useMotionValue(1);
-  const scaleSpring = useSpring(scale, { stiffness: 300, damping: 30 });
-
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    const currentScale = scale.get();
-    const newScale = Math.min(Math.max(1, currentScale - e.deltaY * 0.005), 4);
-    scale.set(newScale);
-  };
-
   return (
     <motion.figure
-      className={`my-10 ${className}`}
+      className={`group my-10 ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5 }}
     >
       <div
-        className={`relative overflow-hidden rounded-lg bg-white border border-border w-full h-full min-h-[300px] ${aspectRatio} shadow-sm flex items-center justify-center`}
-        onWheel={handleWheel}
+        className={`relative overflow-hidden rounded-2xl w-full h-full min-h-[320px] ${aspectRatio} flex items-center justify-center bg-gradient-to-br from-card via-card to-bg-secondary shadow-[0_18px_48px_hsl(var(--bg-primary)/0.22)]`}
       >
-        <span className="text-text-tertiary font-medium text-sm Select-none tracking-wide uppercase opacity-40 absolute z-0">
-          Work in Progress
-        </span>
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_hsl(var(--accent-primary)/0.16),_transparent_58%)]" />
         <motion.img
           src={src}
           alt={alt}
-          style={{ scale: scaleSpring }}
-          className={`w-full ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[70vh] md:max-h-[80vh] object-contain relative' : `h-full absolute inset-0 object-cover ${objectPosition}`} z-10 lightbox-image cursor-grab active:cursor-grabbing hover:opacity-90`}
+          data-lightbox-caption={caption || alt}
+          className={`w-full ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[72vh] md:max-h-[80vh] object-contain relative p-3 sm:p-4' : `h-full absolute inset-0 object-cover ${objectPosition}`} z-10 lightbox-image cursor-zoom-in transition-transform duration-500 group-hover:scale-[1.015]`}
           loading={priority ? 'eager' : 'lazy'}
-          drag
-          dragConstraints={{ left: -300, right: 300, top: -300, bottom: 300 }}
-          dragElastic={0.2}
-          dragSnapToOrigin={true}
-          onDoubleClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src } }))}
+          onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src } }))}
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = 'none';
           }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileTap={{ scale: 0.995 }}
         />
       </div>
       {caption && (
-        <figcaption className="mt-2 text-sm text-text-tertiary text-center italic">
+        <figcaption className="mt-3 text-sm text-text-tertiary text-center leading-relaxed">
           {caption}
         </figcaption>
       )}
@@ -233,51 +215,34 @@ interface GridImageCardProps {
 }
 
 const GridImageCard = ({ image, index, aspectRatio = 'aspect-auto', objectPosition = 'object-top' }: GridImageCardProps) => {
-  const scale = useMotionValue(1);
-  const scaleSpring = useSpring(scale, { stiffness: 300, damping: 30 });
-
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    const currentScale = scale.get();
-    const newScale = Math.min(Math.max(1, currentScale - e.deltaY * 0.005), 4);
-    scale.set(newScale);
-  };
-
   return (
     <motion.figure
-      className="relative overflow-hidden rounded-lg bg-bg-secondary h-full"
+      className="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-card to-bg-secondary h-full shadow-[0_14px_32px_hsl(var(--bg-primary)/0.18)]"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
+      whileHover={{ y: -4 }}
     >
       <div
-        className={`w-full h-full min-h-[300px] ${aspectRatio} bg-white border border-border flex items-center justify-center overflow-hidden relative`}
-        onWheel={handleWheel}
+        className={`w-full h-full min-h-[280px] ${aspectRatio} flex items-center justify-center overflow-hidden relative`}
       >
-        <span className="text-text-tertiary font-medium text-xs Select-none tracking-wide uppercase opacity-40 absolute z-0">
-          Work in Progress
-        </span>
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_hsl(var(--accent-primary)/0.14),_transparent_58%)]" />
         <motion.img
           src={image.src}
           alt={image.alt}
-          style={{ scale: scaleSpring }}
-          className={`w-full ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[60vh] md:max-h-[75vh] object-contain relative' : `h-full absolute inset-0 object-cover ${objectPosition}`} z-10 lightbox-image cursor-grab active:cursor-grabbing hover:opacity-90`}
+          data-lightbox-caption={image.caption || image.alt}
+          className={`w-full ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[62vh] md:max-h-[74vh] object-contain relative p-3 sm:p-4' : `h-full absolute inset-0 object-cover ${objectPosition}`} z-10 lightbox-image cursor-zoom-in transition-transform duration-500 group-hover:scale-[1.015]`}
           loading="lazy"
-          drag
-          dragConstraints={{ left: -250, right: 250, top: -250, bottom: 250 }}
-          dragElastic={0.2}
-          dragSnapToOrigin={true}
-          onDoubleClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: image.src } }))}
+          onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: image.src } }))}
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = 'none';
           }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileTap={{ scale: 0.995 }}
         />
       </div>
       {image.caption && (
-        <figcaption className="p-2 text-xs text-text-tertiary text-center">
+        <figcaption className="px-3 pb-3 pt-2 text-xs text-text-tertiary text-center leading-relaxed">
           {image.caption}
         </figcaption>
       )}

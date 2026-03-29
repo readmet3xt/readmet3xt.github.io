@@ -257,6 +257,12 @@
     overflow: hidden;
   }
 
+  /* Work page section snapping for quicker transitions between hero, projects, and testimonials */
+  html.work-scroll-snap,
+  body.work-scroll-snap {
+    scroll-snap-type: y mandatory;
+  }
+
   @media (min-width: 1024px) {
     body.sidebar-open {
       overflow: auto;

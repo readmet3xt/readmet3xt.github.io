@@ -301,7 +301,7 @@ export const About = () => {
             <TimelineItem title="Brand Management" company="London Business School | London, U.K">
               <p></p>
             </TimelineItem>
-            <TimelineItem title="B.E, Mechanical Engineering" company="Osmania University | Hyderabad, India">
+            <TimelineItem title="B.E in Mechanical Engineering" company="Osmania University | Hyderabad, India">
               <p></p>
             </TimelineItem>
           </div>

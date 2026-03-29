@@ -4,7 +4,7 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ImageLightbox = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [images, setImages] = useState<{ src: string, alt: string }[]>([]);
+    const [images, setImages] = useState<{ src: string, alt: string, caption?: string }[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -17,7 +17,8 @@ export const ImageLightbox = () => {
             const imgElements = document.querySelectorAll('img.lightbox-image');
             const imgArray = Array.from(imgElements).map(img => ({
                 src: (img as HTMLImageElement).src,
-                alt: (img as HTMLImageElement).alt || ''
+                alt: (img as HTMLImageElement).alt || '',
+                caption: (img as HTMLImageElement).dataset.lightboxCaption || ''
             }));
 
             // Use decoded URLs for accurate matching
@@ -80,6 +81,7 @@ export const ImageLightbox = () => {
                     <button
                         onClick={handleClose}
                         className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 flex items-center justify-center hover:text-white bg-black/50 rounded-full z-50 p-2"
+                        aria-label="Close image lightbox"
                     >
                         <X className="w-8 h-8" />
                     </button>
@@ -88,6 +90,7 @@ export const ImageLightbox = () => {
                         <button
                             onClick={handlePrev}
                             className="absolute left-2 sm:left-4 text-white/70 hover:text-white bg-black/50 rounded-full z-50 p-2"
+                            aria-label="Previous image"
                         >
                             <ChevronLeft className="w-8 h-8" />
                         </button>
@@ -97,6 +100,7 @@ export const ImageLightbox = () => {
                         <button
                             onClick={handleNext}
                             className="absolute right-2 sm:right-4 text-white/70 hover:text-white bg-black/50 rounded-full z-50 p-2"
+                            aria-label="Next image"
                         >
                             <ChevronRight className="w-8 h-8" />
                         </button>
@@ -113,6 +117,15 @@ export const ImageLightbox = () => {
                         className="max-w-full max-h-[90vh] object-contain rounded-md"
                         onClick={(e) => e.stopPropagation()}
                     />
+
+                    {images[currentIndex]?.caption && (
+                        <div
+                            className="absolute bottom-12 left-1/2 -translate-x-1/2 max-w-[min(90vw,56rem)] rounded-md bg-black/55 px-4 py-2 text-center text-sm text-white/90"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {images[currentIndex].caption}
+                        </div>
+                    )}
 
                     <div className="absolute bottom-4 left-0 right-0 text-center text-white/70 text-sm font-medium">
                         {currentIndex + 1} / {images.length}
