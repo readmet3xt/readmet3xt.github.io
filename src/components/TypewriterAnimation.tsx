@@ -225,12 +225,6 @@ export const TypewriterAnimation = () => {
         transition={{ delay: 2 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none"
       >
-        {/* WIP Badge */}
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-accent-primary/5 border border-accent-primary/20 backdrop-blur-sm">
-          <div className="w-1.5 h-1.5 rounded-full bg-accent-primary animate-pulse" />
-          <span className="text-[9px] font-ibm-plex-mono uppercase tracking-[0.2em] text-accent-primary font-medium">Work in Progress</span>
-        </div>
-
         <div className="flex flex-col items-center gap-2 hidden lg:flex">
           <p className="text-[10px] uppercase tracking-widest font-ibm-plex-mono text-text-tertiary opacity-60">Click to explore</p>
           <motion.div
