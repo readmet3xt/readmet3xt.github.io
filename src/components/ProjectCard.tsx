@@ -1,6 +1,6 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion, useAnimation } from 'framer-motion';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 import { useSidebar } from '@/components/SidebarContext';
 import { cn } from '@/lib/utils';
@@ -16,13 +16,13 @@ interface ProjectCardProps {
   tags?: string[];
 }
 
-// Create motion-enabled Link component
-const MotionLink = motion(Link);
-
 export const ProjectCard = ({ href, title, description, image, className = "", summary, tags }: ProjectCardProps) => {
-  const cardRef = useRef<HTMLAnchorElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const { isOpen } = useSidebar();
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  const controls = useAnimation();
+  const isNavigating = useRef(false);
 
   // Use optimized hover effect hook
   useCardHoverEffect(cardRef, {
@@ -30,28 +30,50 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
     transitionDuration: 100,
   });
 
+  const handleClick = useCallback(async (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    if (isNavigating.current) return;
+    isNavigating.current = true;
+
+    // Play press-down animation
+    await controls.start({
+      scale: 0.96,
+      boxShadow: "0 0 60px rgba(255, 71, 87, 0.6)",
+      transition: { duration: 0.12, ease: "easeOut" },
+    });
+
+    // Brief hold so user sees the press
+    await new Promise(resolve => setTimeout(resolve, 80));
+
+    // Navigate
+    navigate(href);
+  }, [controls, navigate, href]);
+
   return (
-    <MotionLink
+    <motion.div
       ref={cardRef}
-      to={href}
       className={cn(
-        "project-card rounded-xl overflow-hidden group bg-card block flex flex-col w-full max-w-full transition-all duration-300 shadow-none hover:shadow-[0_0_50px_rgba(255,71,87,0.4)]",
+        "project-card rounded-xl overflow-hidden group bg-card block flex flex-col w-full max-w-full cursor-pointer shadow-none hover:shadow-[0_0_50px_rgba(255,71,87,0.4)]",
         isOpen ? "min-h-[340px]" : "min-h-[300px]",
         className
       )}
+      role="link"
+      tabIndex={0}
       aria-label={`View ${title} project details`}
+      onClick={handleClick}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick(e as any); }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      animate={controls}
       whileHover={{
         scale: 1.02,
         transition: { duration: 0.2, ease: "easeOut" }
       }}
       whileTap={{
-        scale: 0.98,
-        boxShadow: isMobile ? "0 0 60px rgba(255, 71, 87, 0.6)" : "none",
-        transition: { duration: 0.1 }
+        scale: 0.96,
+        transition: { duration: 0.12, ease: "easeOut" }
       }}
     >
       <motion.div
@@ -99,6 +121,6 @@ export const ProjectCard = ({ href, title, description, image, className = "", s
           </div>
         )}
       </div>
-    </MotionLink>
+    </motion.div>
   );
 };

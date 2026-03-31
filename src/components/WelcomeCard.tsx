@@ -1,16 +1,16 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion, useAnimation } from 'framer-motion';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 import { useSidebar } from '@/components/SidebarContext';
 import { cn } from '@/lib/utils';
 
-// Create motion-enabled Link component
-const MotionLink = motion.create(Link);
-
 export const WelcomeCard = () => {
-  const cardRef = useRef<HTMLAnchorElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const { isOpen } = useSidebar();
+  const navigate = useNavigate();
+  const controls = useAnimation();
+  const isNavigating = useRef(false);
 
   // Use optimized hover effect hook (same as other project cards)
   useCardHoverEffect(cardRef, {
@@ -18,17 +18,48 @@ export const WelcomeCard = () => {
     transitionDuration: 100,
   });
 
+  const handleClick = useCallback(async (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    if (isNavigating.current) return;
+    isNavigating.current = true;
+
+    // Play press-down animation
+    await controls.start({
+      scale: 0.96,
+      boxShadow: "0 0 60px rgba(255, 71, 87, 0.6)",
+      transition: { duration: 0.12, ease: "easeOut" },
+    });
+
+    // Brief hold so user sees the press
+    await new Promise(resolve => setTimeout(resolve, 80));
+
+    // Navigate
+    navigate('/about');
+  }, [controls, navigate]);
+
   return (
-    <MotionLink
+    <motion.div
       ref={cardRef}
-      to="/about"
       className={cn(
         "project-card rounded-xl overflow-hidden group bg-gradient-to-br from-accent-primary/10 via-accent-primary/5 to-card border border-accent-primary/20 block flex flex-col w-full max-w-full relative hover:border-accent-primary/40 cursor-pointer touch-manipulation select-none transition-all duration-300",
         isOpen ? "min-h-[340px]" : "min-h-[300px]"
       )}
+      role="link"
+      tabIndex={0}
+      aria-label="View About page"
+      onClick={handleClick}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick(e as any); }}
       initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={controls}
       transition={{ duration: 0.3 }}
+      whileHover={{
+        scale: 1.02,
+        transition: { duration: 0.2, ease: "easeOut" }
+      }}
+      whileTap={{
+        scale: 0.96,
+        transition: { duration: 0.12, ease: "easeOut" }
+      }}
     >
       {/* Image */}
       <div className={cn(
@@ -60,6 +91,6 @@ export const WelcomeCard = () => {
           Hi there, Amaan here! I'm a Mechanical Engineer who traded engineering blueprints for service blueprints. I now build seamless experiences—digital or not—with an engineer's focus on function and a designer's focus on feeling.
         </p>
       </div>
-    </MotionLink>
+    </motion.div>
   );
 };
