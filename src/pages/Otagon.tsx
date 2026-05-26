@@ -183,7 +183,7 @@ export const Otagon = () => {
           <CaseStudyCard title="Genre-Specific Personas">
             <CaseStudyParagraph>
               Generic AI responses were the first major failure point. I built 8+ genre-specific tone profiles —
-              the AI feels different helping you with a FromSouls game versus an open-world RPG. This single
+              the AI feels different helping you with a Soulslike versus an open-world RPG. This single
               change drove a qualitative improvement in perceived response relevance.
             </CaseStudyParagraph>
           </CaseStudyCard>
@@ -245,10 +245,10 @@ export const Otagon = () => {
       <CaseStudySection title="Results">
         <CaseStudyStatsGrid
           stats={[
-            { value: '8+', label: 'Genre Personas', sublabel: '✅ Integrated' },
-            { value: '95%+', label: 'Game Detection', sublabel: '✅ Achieved' },
-            { value: '99%+', label: 'Uptime', sublabel: '✅ Maintained' },
-            { value: '0', label: 'Critical Bugs', sublabel: '✅ Zero' },
+            { value: '25+', label: 'Features shipped', sublabel: 'End-to-end, solo' },
+            { value: '80%', label: 'Fewer false tabs', sublabel: 'After IS_FULLSCREEN fix' },
+            { value: '~40%', label: 'API cost reduction', sublabel: 'Smart caching' },
+            { value: '8+', label: 'Genre personas', sublabel: 'Souls, RPG, FPS, more' },
           ]}
         />
 
@@ -312,9 +312,9 @@ export const Otagon = () => {
       {/* What's Next */}
       <CaseStudySection title="What's Next">
         <CaseStudyParagraph lead>
-          Lemon Squeezy integration is live, and improving performance is in active development along with integrating video capture, and Google Cloud TTS for active conversations.
-          Community features — shared builds, strategy sharing — are on the Q2 roadmap.
-          The architecture is built to scale.
+          Lemon Squeezy payments are live. In active development: performance improvements, video capture,
+          and Google Cloud TTS for hands-free conversations. Community features — shared builds and strategy
+          sharing — are on the Q2 roadmap. The architecture is built to scale.
         </CaseStudyParagraph>
 
         <CaseStudyImage

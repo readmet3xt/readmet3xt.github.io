@@ -44,8 +44,33 @@ export const SEO = ({
       "addressRegion": "Telangana",
       "addressCountry": "India"
     },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Royal College of Art",
+        "sameAs": "https://www.rca.ac.uk/"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "London Business School",
+        "sameAs": "https://www.london.edu/"
+      },
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Osmania University"
+      }
+    ],
+    "award": "Core77 Design Awards 2021 — Notable Honor in Speculative Design",
+    "knowsAbout": [
+      "Product Design",
+      "User Experience Design",
+      "Service Design",
+      "Design Systems",
+      "AI UX",
+      "Prototyping"
+    ],
     "sameAs": [
-      "https://www.linkedin.com/in/readmetxt/",
+      "https://www.linkedin.com/in/readmetxt/"
     ]
   };
 

@@ -48,7 +48,7 @@ export const WelcomeCard = () => {
       tabIndex={0}
       aria-label="View About page"
       onClick={handleClick}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick(e as any); }}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick(e as unknown as React.MouseEvent); }}
       initial={{ opacity: 1, y: 0 }}
       animate={controls}
       transition={{ duration: 0.3 }}

@@ -35,8 +35,8 @@ export const ProjectsGrid = () => {
           '/otagon/vision/5.png',
         ]}
         className=""
-        summary="Built an advanced AI gaming companion with real-time screenshot analysis, intelligent conversation, and personalized gaming insights."
-        tags={["React TypeScript", "AI/ML", "PWA", "Supabase"]}
+        summary="An AI gaming companion that sees what you see. Designed and built solo from zero to a production PWA with 25+ features, spoiler-aware AI, and PC-to-Mobile sync."
+        tags={["Solo Build", "AI UX", "PWA", "Live"]}
       />
 
       <AnimatedProjectCard
@@ -55,7 +55,7 @@ export const ProjectsGrid = () => {
           '/jollyai/jollyai8.png',
         ]}
         className=""
-        summary="Designed early concepts for an AI assistant for lawyers that visualizes reasoning processes, providing trust through transparency and precise control over legal tone"
+        summary="Turned a 'black box' legal chatbot into a workspace lawyers actually trust — by showing the AI's reasoning instead of hiding it. One-month design contract."
         tags={["Legal Tech", "AI UX", "Transparency Design"]}
       />
 
@@ -75,7 +75,7 @@ export const ProjectsGrid = () => {
           '/images/casestudies/koinbasket/landingpage.png',
         ]}
         className=""
-        summary="Led design evolution from MVP to market leader, growing from 0 to 70,000 users through strategic UX and live trading platform"
+        summary="Joined as founding designer on a one-week MVP contract. Scaled the platform from 0 to 70,000 users, led a full rebrand, and built a two-sided live-trading ecosystem."
         tags={["Fintech", "MVP Design", "Rebranding"]}
       />
 
@@ -95,8 +95,8 @@ export const ProjectsGrid = () => {
           '/images/casestudies/softwire/25.webp',
         ]}
         className=""
-        summary="Designed streamlined ticket booking experience using Apple's App Clip technology for stress-free last-minute train travel"
-        tags={["App Clip", "Prototyping", "Usability Testing"]}
+        summary="Designing for users running to catch trains. Led UX for LNER's sub-10MB instant-launch ticket booking via Apple App Clip during my Softwire internship."
+        tags={["App Clip", "Mobile UX", "LNER"]}
       />
 
       <AnimatedProjectCard
@@ -115,8 +115,8 @@ export const ProjectsGrid = () => {
           '/images/casestudies/pebble/36.jpg',
         ]}
         className=""
-        summary="Created virtual companion service to combat workplace stress and foster connection in remote work environments"
-        tags={["Service Design", "Employee Wellbeing", "Remote Work"]}
+        summary="A VISA-backed virtual companion that turns isolation into connection. The Virtual Café concept was adopted into VISA's internal collaboration roadmap."
+        tags={["Service Design", "VISA Innovation", "Employee Wellbeing"]}
       />
 
       <AnimatedProjectCard
@@ -135,8 +135,8 @@ export const ProjectsGrid = () => {
           '/images/casestudies/ivi/20.jpg',
         ]}
         className=""
-        summary="Designed inclusive financial service addressing systemic economic exclusion through human-centered design approach"
-        tags={["Social Impact", "Inclusive Design", "Speculative Design"]}
+        summary="Core77-awarded speculative service that makes women's invisible domestic labour economically visible. Research framework adopted internally by BCG."
+        tags={["Speculative Design", "Core77 Award", "Future of Work"]}
       />
 
       <AnimatedProjectCard
@@ -155,8 +155,8 @@ export const ProjectsGrid = () => {
           '/images/casestudies/stampede/8-Stampede.jpg',
         ]}
         className=""
-        summary="Developed platform connecting conservation organizations with local communities for sustainable wildlife protection"
-        tags={["Conservation", "Match-making", "Sustainability"]}
+        summary="A facilitation methodology that turns conservation 'happy accidents' into designed partnerships. Initiated the WWT × Airbnb collaboration in a single 3-hour workshop."
+        tags={["Service Design", "Conservation", "Facilitation"]}
       />
     </section>
   );

@@ -17,11 +17,10 @@ export const useVersionCheck = () => {
         
         // If version changed, reload the page
         if (initialVersion !== data.version) {
-          console.log('New version detected, reloading...');
           window.location.reload();
         }
-      } catch (error) {
-        console.error('Version check failed:', error);
+      } catch {
+        // Network blip or offline — try again on next interval
       }
     };
 

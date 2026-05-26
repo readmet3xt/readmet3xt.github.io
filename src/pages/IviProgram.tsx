@@ -30,7 +30,7 @@ export const IviProgram = () => {
             'Systemic Design',
             'Core77 Award Winner',
           ]}
-          intro="What if the invisible labour women perform at home could be economically valued and compensated? As project lead at the Royal College of Art, I designed a Core77-award-winning speculative service that reimagines work-life balance by 2040. Through research with 79 working women and co-creation with BCG, we developed the Invisible Value Income Program — a future-facing system that makes unpaid domestic work visible, measurable, and compensated."
+          intro="What if the invisible labour women perform at home could be economically valued? At the Royal College of Art I led a Core77-awarded speculative service set in 2040 — built on research with 79 working women and validated with BCG. The Invisible Value Income Program makes unpaid domestic work visible, measurable, and compensated."
           overview={{
             role: [
               'Project Lead & Design Strategist',

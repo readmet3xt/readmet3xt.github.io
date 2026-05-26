@@ -257,10 +257,10 @@
     overflow: hidden;
   }
 
-  /* Work page section snapping for quicker transitions between hero, projects, and testimonials */
+  /* Work page section snapping — proximity (not mandatory) so power-scrollers aren't trapped */
   html.work-scroll-snap,
   body.work-scroll-snap {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
   }
 
   @media (min-width: 1024px) {

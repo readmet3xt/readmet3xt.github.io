@@ -4,11 +4,10 @@ import {
     CaseStudySection,
     CaseStudyParagraph,
     CaseStudyQuote,
-    CaseStudyList,
     CaseStudyImage,
-    CaseStudyImageGrid,
     CaseStudyCard,
     CaseStudyCardGrid,
+    CaseStudyStatsGrid,
 } from '@/components/case-study';
 
 export const LawX = () => {
@@ -211,6 +210,24 @@ export const LawX = () => {
                         <CaseStudyParagraph>Reduce the friction before users even start a task.</CaseStudyParagraph>
                     </CaseStudyCard>
                 </CaseStudyCardGrid>
+            </CaseStudySection>
+
+            {/* What I Delivered */}
+            <CaseStudySection title="What I Delivered">
+                <CaseStudyStatsGrid
+                    stats={[
+                        { value: '1mo', label: 'Contract', sublabel: 'End-to-end concept design' },
+                        { value: '7', label: 'Core flows', sublabel: 'Designed in Figma' },
+                        { value: '2', label: 'Trust systems', sublabel: 'Thinking Panel + Glass Box' },
+                        { value: '1', label: 'Sole designer', sublabel: 'Strategy to interaction design' },
+                    ]}
+                />
+                <CaseStudyParagraph>
+                    A complete prototype handed off with a documented design rationale: the Thinking Panel,
+                    Instruction Modal, jurisdictional onboarding, Prompt Gallery, side panel navigation,
+                    and a restrained legal-professional visual identity — all built around one principle:
+                    show the reasoning, earn the trust.
+                </CaseStudyParagraph>
             </CaseStudySection>
 
             {/* Reflection */}

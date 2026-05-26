@@ -251,20 +251,16 @@ export const Softwire = () => {
 
         {/* Outcome */}
         <CaseStudySection title="Outcome">
-          <CaseStudyParagraph>
-            The core booking flow was validated through usability testing, developed by the engineering
-            team, and met National Rail compliance guidelines. Delivered within the 8-week internship timeline.
+          <CaseStudyParagraph lead>
+            The core booking flow was validated through usability testing, handed off to engineering,
+            and met National Rail compliance — delivered within the 8-week internship timeline.
           </CaseStudyParagraph>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/softwire/25.webp', alt: 'Outcome 1' },
-              { src: '/images/casestudies/softwire/19.webp', alt: 'Outcome 2' },
-              { src: '/images/casestudies/softwire/20.webp', alt: 'Outcome 3' },
-              { src: '/images/casestudies/softwire/21.webp', alt: 'Outcome 4' }
-            ]}
-          />
+          <CaseStudyParagraph>
+            Two specific design failures — an overwhelming confirmation screen and a multi-step journey
+            flow — were caught early because we tested under realistic time pressure. Both fixes shipped
+            into the build.
+          </CaseStudyParagraph>
         </CaseStudySection>
 
         {/* What I Learned */}

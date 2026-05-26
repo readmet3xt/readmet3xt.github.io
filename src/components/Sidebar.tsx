@@ -12,6 +12,16 @@ interface SidebarProps {
   onMouseLeave?: () => void;
 }
 
+const caseStudies = [
+  { path: '/otagon', label: 'Otagon', letter: 'O', color: '#8B5CF6' },
+  { path: '/lawx', label: 'Law.X', letter: 'L', color: '#EC4899' },
+  { path: '/koinbasket', label: 'KoinBasket', letter: 'K', color: '#06B6D4' },
+  { path: '/softwire', label: 'Softwire', letter: 'S', color: '#14B8A6' },
+  { path: '/pebble', label: 'Pebble', letter: 'P', color: '#10B981' },
+  { path: '/iviprogram', label: 'IVI Program', letter: 'I', color: '#3B82F6' },
+  { path: '/stampede', label: 'Stampede', letter: 'S', color: '#F97316' },
+];
+
 export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: SidebarProps) => {
   const { theme, toggleTheme } = useTheme();
   const { toast } = useToast();
@@ -42,7 +52,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
     const path = location.pathname;
     if (path === '/play') setActiveLink('play');
     else if (path === '/about') setActiveLink('about');
-    else if (path === '/koinbasket' || path === '/softwire' || path === '/pebble' || path === '/iviprogram' || path === '/stampede' || path === '/otagon' || path === '/lawx') setActiveLink('case-studies');
+    else if (caseStudies.some((cs) => cs.path === path)) setActiveLink('case-studies');
     else setActiveLink('work');
   }, [location.pathname]);
 
@@ -142,34 +152,24 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
           <section>
             <h3 className="font-ibm-plex-mono text-[10px] sm:text-xs uppercase tracking-widest mb-1.5 sm:mb-2 text-text-tertiary font-semibold">Case Studies</h3>
             <nav className="space-y-0.5" role="navigation" aria-label="Case studies navigation">
-              <Link to="/otagon" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/otagon') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/otagon') ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/8B5CF6/FFFFFF?text=O" alt="Otagon project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">Otagon</span>
-              </Link>
-              <Link to="/lawx" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/lawx') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/lawx') ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/EC4899/FFFFFF?text=L" alt="Law.X project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">Law.X</span>
-              </Link>
-              <Link to="/koinbasket" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/koinbasket') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/koinbasket') ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/06B6D4/FFFFFF?text=K" alt="KoinBasket project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">KoinBasket</span>
-              </Link>
-              <Link to="/softwire" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/softwire') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/softwire') ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/14B8A6/FFFFFF?text=S" alt="Softwire project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">Softwire</span>
-              </Link>
-              <Link to="/pebble" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/pebble') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/pebble') ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/10B981/FFFFFF?text=P" alt="Pebble project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">Pebble</span>
-              </Link>
-              <Link to="/iviprogram" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/iviprogram') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/iviprogram') ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/3B82F6/FFFFFF?text=I" alt="IVI Program project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">IVI Program</span>
-              </Link>
-              <Link to="/stampede" className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy('/stampede') ? 'active' : ''}`} onClick={() => handleLinkClick('case-studies')} aria-current={isActiveCaseStudy('/stampede') ? 'page' : undefined}>
-                <img src="https://placehold.co/40x40/F97316/FFFFFF?text=S" alt="Stampede project logo" className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0" />
-                <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">Stampede</span>
-              </Link>
+              {caseStudies.map(({ path, label, letter, color }) => (
+                <Link
+                  key={path}
+                  to={path}
+                  className={`sidebar-link flex items-center gap-2 sm:gap-2.5 min-h-[40px] px-2 py-1.5 sm:p-2 rounded-lg ${isActiveCaseStudy(path) ? 'active' : ''}`}
+                  onClick={() => handleLinkClick('case-studies')}
+                  aria-current={isActiveCaseStudy(path) ? 'page' : undefined}
+                >
+                  <span
+                    aria-hidden="true"
+                    className="w-5 h-5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 rounded-sm flex-shrink-0 flex items-center justify-center font-ibm-plex-mono text-[10px] sm:text-[11px] font-bold text-white"
+                    style={{ backgroundColor: color }}
+                  >
+                    {letter}
+                  </span>
+                  <span className="font-ibm-plex-mono font-medium text-foreground text-xs sm:text-sm truncate">{label}</span>
+                </Link>
+              ))}
             </nav>
           </section>
         </div>
@@ -177,7 +177,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
 
       {/* Sidebar Footer */}
       <footer className="flex-shrink-0 border-t border-border pt-2.5 sm:pt-3 lg:pt-4 pb-3 sm:pb-4 lg:pb-6 px-3 sm:px-4 lg:px-6 bg-bg-secondary">
-        <nav className="flex flex-wrap justify-start gap-[1.5rem] sm:gap-[3.02rem] lg:gap-[2.58rem] font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider -ml-2 sm:-ml-2.5" role="navigation" aria-label="Contact and social links">
+        <nav className="flex flex-wrap justify-start gap-6 sm:gap-12 font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider -ml-2 sm:-ml-2.5" role="navigation" aria-label="Contact and social links">
           <button
             onClick={() => copyToClipboard('mdamkhan.work@gmail.com')}
             className="footer-link h-fit py-1 px-2 flex items-center justify-start text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"

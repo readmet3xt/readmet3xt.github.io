@@ -1,7 +1,6 @@
 import { useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageLayout } from '@/components/PageLayout';
-import { ProjectModal } from '@/components/ProjectModal';
 import { TimelineItem } from '@/components/TimelineItem';
 import { CopyToast } from '@/components/CopyToast';
 import { useScrollReveal } from '@/components/ScrollReveal';
@@ -10,27 +9,7 @@ import amaanHero from '/lovable-uploads/22366376-40f2-492f-989a-067de0fdb01f.png
 
 const TestimonialsCarousel = lazy(() => import('@/components/TestimonialsCarousel').then(m => ({ default: m.TestimonialsCarousel })));
 
-const projectsData = {
-  pebble: {
-    title: 'Pebble - Employee Wellbeing Service',
-    collab: 'VISA Innovation Centre Collaboration',
-    content: `<p>Led a service design project focused on improving employee productivity and well-being. Utilized a human-centered design approach to develop a digital service concept that addressed key user challenges.</p>`
-  },
-  invisiblevalueprogram: {
-    title: 'Invisible Value Income Program',
-    collab: 'BCG & RSM Collaboration',
-    content: `<p>Co-created a program to address work-life balance disparities, leveraging systems thinking and speculative design. The project's innovative approach was recognized with a Core 77 Design Award.</p>`
-  },
-  stampede: {
-    title: 'Stampede - Conservation Partnerships',
-    collab: 'Airbnb & WWT Collaboration',
-    content: `<p>Developed an innovative workshop methodology to create impactful conservation partnerships using core design thinking principles and proposed inclusive design solutions.</p>`
-  }
-};
-
 export const About = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<keyof typeof projectsData | null>(null);
   const [toastVisible, setToastVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -40,17 +19,12 @@ export const About = () => {
     navigate(projectPath);
   };
 
-  const closeProjectModal = () => {
-    setModalOpen(false);
-    setSelectedProject(null);
-  };
-
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText('mdamkhan.work@gmail.com');
       setToastVisible(true);
-    } catch (err) {
-      console.error('Failed to copy email:', err);
+    } catch {
+      // Silently ignore clipboard failures (e.g., insecure context)
     }
   };
 
@@ -65,23 +39,23 @@ export const About = () => {
 
               {/* Introduction */}
               <div className="mb-8">
-                <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Digital Product Designer</h3>
+                <h3 className="font-ibm-plex-mono text-xl md:text-2xl font-semibold text-text-primary mb-4">Digital Product Designer</h3>
                 <p className="text-lg md:text-xl mb-4 leading-relaxed">
                   Currently based in <span className="font-medium">Hyderabad</span>, with a Master's in Service Design from the <span className="font-medium">Royal College of Art (RCA)</span> in London.
                 </p>
-                <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
+                <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
                   I work with collaborative, cross-functional teams to create impactful and delightful experiences, specializing in human-centered design approaches that bridge digital innovation with real-world impact.
                 </p>
               </div>
 
               {/* Philosophy & Recognition */}
               <div className="mb-8">
-                <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Design Philosophy & Recognition</h3>
-                <p className="text-base md:text-lg text-text-secondary mb-4 leading-relaxed" style={{ lineHeight: '1.8' }}>
+                <h3 className="font-ibm-plex-mono text-xl md:text-2xl font-semibold text-text-primary mb-4">Design Philosophy & Recognition</h3>
+                <p className="text-base md:text-lg text-text-secondary mb-4 leading-[1.8]">
                   I'm passionate about building products that encourage people to lead more creative, curious, and thoughtful lives.
                 </p>
                 <div className="bg-accent-primary/5 border border-accent-primary/20 rounded-lg p-4 mb-4">
-                  <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
+                  <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
                     <span className="text-accent-primary font-semibold">🏆 Core77 Design Awards 2021</span> - Notable Honor in Speculative Design category for my IVI (Invisible Value Income) project—a forward-thinking exploration of how we might better value and support women's work-life balance in the future.
                   </p>
                 </div>
@@ -89,23 +63,23 @@ export const About = () => {
 
               {/* Experience Highlight */}
               <div className="mb-8">
-                <h3 className="text-xl md:text-2xl font-semibold text-text-primary mb-4" style={{ fontFamily: 'IBM Plex Mono, monospace' }}>Experience Highlights</h3>
+                <h3 className="font-ibm-plex-mono text-xl md:text-2xl font-semibold text-text-primary mb-4">Experience Highlights</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
+                    <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
                       <span className="font-semibold text-text-primary">4+ years</span> of experience designing products for clients including KoinBasket and Softwire
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
+                    <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
                       Scaled design teams and led <span className="font-semibold text-text-primary">strategic rebrands</span>
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-base md:text-lg text-text-secondary leading-relaxed" style={{ lineHeight: '1.8' }}>
+                    <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
                       Innovative academic collaborations with <span className="font-semibold text-text-primary">VISA Innovation Centre, BCG × RSM × Fuzzy Studio, and Airbnb × WWT</span>
                     </p>
                   </div>
@@ -132,7 +106,7 @@ export const About = () => {
                   Email
                 </button>
                 <a
-                  href="https://linkedin.com/in/mdamkhan"
+                  href="https://www.linkedin.com/in/readmetxt/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
@@ -165,7 +139,7 @@ export const About = () => {
                   Email
                 </button>
                 <a
-                  href="https://linkedin.com/in/mdamkhan"
+                  href="https://www.linkedin.com/in/readmetxt/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 min-w-[120px] border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center"
@@ -198,12 +172,10 @@ export const About = () => {
             >
               <ul className="list-disc list-inside space-y-2">
                 <li>Building Otagon, an AI-powered gaming companion that provides real-time screenshot analysis and context-aware gaming assistance.</li>
-                <li>Architected full-stack solution using React 19, TypeScript, Supabase, and Google Gemini AI, achieving 100x performance improvements.</li>
+                <li>Architected the full-stack solution using React 18, TypeScript, Supabase, and Google Gemini, with a structured OTAGON tag system for reliable AI output.</li>
                 <li>Designed and developed comprehensive design system with 40+ reusable components and PWA capabilities.</li>
               </ul>
             </TimelineItem>
-
-            <br />
 
             <TimelineItem
               title="User Experience Consultant (Contract)"
@@ -216,8 +188,6 @@ export const About = () => {
                 <li>Independently drove the UX design process, from initial concepts to interactive prototypes, for a generative AI tool</li>
               </ul>
             </TimelineItem>
-
-            <br />
 
             <TimelineItem
               title="Senior UX Designer"
@@ -234,8 +204,6 @@ export const About = () => {
               </ul>
             </TimelineItem>
 
-            <br />
-
             <TimelineItem
               title="Founding Designer"
               company="KoinBasket | Remote, India"
@@ -251,8 +219,6 @@ export const About = () => {
               </ul>
             </TimelineItem>
 
-            <br />
-
             <TimelineItem
               title="Design Intern"
               company="Softwire | London, UK"
@@ -264,8 +230,6 @@ export const About = () => {
                 <li>Conducted foundational user research and usability testing for an LNER App Clip, uncovering key insights that directly informed the final UI design.</li>
               </ul>
             </TimelineItem>
-
-            <br />
 
             <TimelineItem
               title="Design Research Intern"
@@ -298,8 +262,6 @@ export const About = () => {
               </ul>
             </TimelineItem>
 
-            <br />
-
             <TimelineItem
               title="Invisible Value Income Program (Fuzzy Design x BCG x RSM Collaboration)"
               company="RCA | London, U.K"
@@ -314,8 +276,6 @@ export const About = () => {
                 <li>Project research and findings were utilized by BCG for further analysis and implementation strategies.</li>
               </ul>
             </TimelineItem>
-
-            <br />
 
             <TimelineItem
               title="Stampede"
@@ -336,15 +296,9 @@ export const About = () => {
         <section id="education" className="mb-24 scroll-mt-24 reveal-on-scroll">
           <h2 className="heading-2 mb-8">Education</h2>
           <div className="timeline-container relative">
-            <TimelineItem title="M.A in Service Design" company="Royal College of Art | London, U.K">
-              <p></p>
-            </TimelineItem>
-            <TimelineItem title="Brand Management" company="London Business School | London, U.K">
-              <p></p>
-            </TimelineItem>
-            <TimelineItem title="B.E in Mechanical Engineering" company="Osmania University | Hyderabad, India">
-              <p></p>
-            </TimelineItem>
+            <TimelineItem title="M.A in Service Design" company="Royal College of Art | London, U.K" />
+            <TimelineItem title="Brand Management" company="London Business School | London, U.K" />
+            <TimelineItem title="B.E in Mechanical Engineering" company="Osmania University | Hyderabad, India" />
           </div>
         </section>
 
@@ -422,13 +376,6 @@ export const About = () => {
           </div>
         </section>
       </PageLayout>
-
-      {/* Project Modal */}
-      <ProjectModal
-        isOpen={modalOpen}
-        onClose={closeProjectModal}
-        project={selectedProject ? projectsData[selectedProject] : null}
-      />
 
       {/* Copy Toast */}
       <CopyToast
