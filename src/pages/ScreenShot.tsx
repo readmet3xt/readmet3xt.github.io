@@ -17,6 +17,8 @@ export const ScreenShot = () => {
     <CaseStudyLayout
       title="ScreenShot"
       description="Press F1 on your PC, see it on your phone — a universal hotkey-driven screenshot grabber with per-user folders, lightbox, and PWA install."
+      externalLink="https://otagon2.github.io/ScreenShot/"
+      externalLabel="Visit ScreenShot"
     >
       <CaseStudyHero
         title="ScreenShot: Hotkey to Cloud, in One Step"
@@ -48,6 +50,8 @@ export const ScreenShot = () => {
             'GitHub Pages',
           ],
         }}
+        externalLink="https://otagon2.github.io/ScreenShot/"
+        externalLabel="Visit ScreenShot"
         heroImage="/screenshot/hero.png"
         heroImageAlt="ScreenShot gallery hero"
       />
