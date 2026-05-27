@@ -24,6 +24,7 @@ export const ProjectsGrid = () => {
         href="/otagon"
         title="Otagon Gaming Companion"
         description="AI-Powered Gaming Assistant"
+        ongoing
         images={[
           '/otagon/otagon3.png',
           '/otagon/aiprocessing.png',
@@ -35,12 +36,48 @@ export const ProjectsGrid = () => {
           '/otagon/vision/5.png',
         ]}
         className=""
-        summary="An AI gaming companion that sees what you see. Designed and built solo from zero to a production PWA with 25+ features, spoiler-aware AI, and PC-to-Mobile sync."
-        tags={["Solo Build", "AI UX", "PWA", "Live"]}
+        summary="An AI gaming companion that sees what you see. Designed and built solo from zero to a live PWA + iOS + Android product with 30+ features, spoiler-aware AI, paid tiers, and PC-to-Mobile sync."
+        tags={["Solo Build", "AI UX", "PWA + Mobile", "Live"]}
       />
 
       <AnimatedProjectCard
         index={1}
+        href="/versus"
+        title="Versus"
+        description="Live Tournament Tracker"
+        ongoing
+        images={[
+          '/versus/hero.png',
+          '/versus/vision.png',
+          '/versus/design-1.png',
+          '/versus/design-2.png',
+          '/versus/results.png',
+        ]}
+        className=""
+        summary="A pro tournament tracker for FIFA/FC nights — leagues, knockouts, groups, live scoring, and a shareable spectator link. Built solo on a static SPA + Supabase + WebRTC stack."
+        tags={["Solo Build", "Real-time", "PWA"]}
+      />
+
+      <AnimatedProjectCard
+        index={2}
+        href="/screenshot"
+        title="ScreenShot"
+        description="PC → Phone Capture Sync"
+        ongoing
+        images={[
+          '/screenshot/hero.png',
+          '/screenshot/vision.png',
+          '/screenshot/design-1.png',
+          '/screenshot/design-2.png',
+          '/screenshot/results.png',
+        ]}
+        className=""
+        summary="Press F1 on your PC, see it on your phone. A pairing-code screenshot grabber with per-user folders, lightbox, and an installable PWA — shipped in 2 weeks."
+        tags={["Solo Build", "PWA", "v0"]}
+      />
+
+      <AnimatedProjectCard
+        index={3}
         href="/lawx"
         title="Law.X"
         description="Transparent Legal Assistant"
@@ -60,7 +97,7 @@ export const ProjectsGrid = () => {
       />
 
       <AnimatedProjectCard
-        index={2}
+        index={4}
         href="/koinbasket"
         title="KoinBasket"
         description="Trading Platform & Mobile App"
@@ -80,7 +117,7 @@ export const ProjectsGrid = () => {
       />
 
       <AnimatedProjectCard
-        index={3}
+        index={5}
         href="/softwire"
         title="Softwire"
         description="LNER App Clip"
@@ -100,7 +137,7 @@ export const ProjectsGrid = () => {
       />
 
       <AnimatedProjectCard
-        index={4}
+        index={6}
         href="/pebble"
         title="Pebble"
         description="Employee Wellbeing Service"
@@ -120,7 +157,7 @@ export const ProjectsGrid = () => {
       />
 
       <AnimatedProjectCard
-        index={5}
+        index={7}
         href="/iviprogram"
         title="Invisible Value Income Program"
         description="Social Impact Design"
@@ -140,7 +177,7 @@ export const ProjectsGrid = () => {
       />
 
       <AnimatedProjectCard
-        index={6}
+        index={8}
         href="/stampede"
         title="Stampede"
         description="Conservation Partnerships"

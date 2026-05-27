@@ -16,23 +16,23 @@ export const Otagon = () => {
   return (
     <CaseStudyLayout
       title="Otagon"
-      description="Never Get Stuck Again — How I designed and built an AI gaming companion from zero to production, solo."
+      description="Never Get Stuck Again — How I designed and built an AI gaming companion from zero to a live, multi-platform product, solo."
       externalLink="https://otagon.app"
       externalLabel="Visit otagon.app"
     >
       <CaseStudyHero
         title="Otagon: Never Get Stuck Again"
-        subtitle="How I designed and built an AI gaming companion from zero to production — solo"
+        subtitle="How I designed and built an AI gaming companion from zero to a live, multi-platform product — solo"
         pills={[
           'Product Management',
-          'React',
+          'React 18',
           'TypeScript',
-          'AI/ML',
-          'PWA',
+          'AI / Gemini',
+          'PWA + iOS + Android',
           'Supabase',
-          'Google Gemini',
+          'Lemon Squeezy',
         ]}
-        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Over 6 months I went from concept to a production-ready PWA with 25+ features, advanced database management, WebSocket-based synchronization, and a structured OTAGON tag system. This is the story of how that happened."
+        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Over the past year I've gone from concept to a production product spanning a PWA, a Capacitor-packaged iOS and Android app, a desktop pairing client, paid tiers via Lemon Squeezy, gamification, and an AI stack built on Gemini and Supabase. This case study is the story of how it actually got here."
         externalLink="https://otagon.app"
         externalLabel="otagon.app"
         overview={{
@@ -40,18 +40,21 @@ export const Otagon = () => {
             'Product Manager & Solo Developer',
             'Full ownership from research to launch',
             'Design, frontend engineering, AI integration',
-            'Go-to-market strategy',
+            'Backend, billing, mobile packaging, GTM',
           ],
-          timeline: '6+ months, August 2025–Present',
-          recognition: '25+ features shipped, WebSocket-based synchronization, and advanced database architecture',
+          timeline: '12+ months, August 2025 – present',
+          recognition: '30+ shipped features, paid tier live on Lemon Squeezy, iOS & Android packaged via Capacitor',
           tools: [
             'React 18',
             'TypeScript',
-            'Supabase',
-            'Google Gemini 2.5 Flash',
-            'PostgreSQL',
+            'Vite',
+            'Capacitor (iOS + Android)',
+            'Supabase (Auth, DB, Edge Functions)',
+            'Google Gemini 2.x',
+            'IGDB API',
+            'Lemon Squeezy',
             'Tailwind CSS',
-            'PWA',
+            'Framer Motion',
           ],
         }}
         heroImage="/otagon/otagon3.png"
@@ -96,8 +99,8 @@ export const Otagon = () => {
       {/* The Vision */}
       <CaseStudySection title="The Vision">
         <CaseStudyParagraph lead>
-          An AI companion that sees what you see. Upload a screenshot, and Otagon instantly knows your game,
-          your location, your progress — and responds without spoilers.
+          An AI companion that sees what you see. Upload a screenshot, or hit F1 on your PC,
+          and Otagon instantly knows your game, your location, your progress — and responds without spoilers.
         </CaseStudyParagraph>
 
         <CaseStudyImage
@@ -110,7 +113,7 @@ export const Otagon = () => {
       {/* How It Was Built */}
       <CaseStudySection title="How It Was Built">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Phase 1 — Research & Direction (Weeks 1–3)">
+          <CaseStudyCard title="Phase 1 — Research & Direction">
             <CaseStudyParagraph>
               I interviewed gamers across play styles and mapped the competitive landscape.
               Three distinct personas emerged — the Casual Gamer, the Story Seeker, and the Completionist —
@@ -118,27 +121,44 @@ export const Otagon = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 2 — MVP (Weeks 4–12)">
+          <CaseStudyCard title="Phase 2 — MVP">
             <CaseStudyParagraph>
               I made a key early decision: PWA over native app. 2 weeks to launch versus 2 months.
               That call defined the product's trajectory. I shipped the core: screenshot analysis via
-              Gemini 2.5 Flash, game detection, conversation history, Game Hub, and PC-to-Mobile sync
+              Gemini 2.x, game detection, conversation history, Game Hub, and PC-to-Mobile sync
               via WebSocket relay.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 3 — Pro Features & Monetization (Weeks 13–20)">
+          <CaseStudyCard title="Phase 3 — Pro Features & Monetization">
             <CaseStudyParagraph>
               Usage patterns revealed the right pricing model: query-based limits, not arbitrary feature gates.
               I built Pro-tier features — Lore & Insights Subtabs, Google Search Grounding for real-time
-              meta strategies, Playing vs Planning modes with session summaries.
+              meta strategies, Playing vs Planning modes with session summaries — and shipped Lemon Squeezy
+              checkout through a hardened Supabase Edge Function.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 4 — Polish & Advanced Systems (Weeks 21–28)">
+          <CaseStudyCard title="Phase 4 — Polish & Advanced Systems">
             <CaseStudyParagraph>
-              AI Behavior Training — users can teach Otagon correct responses when it gets something wrong.
-              Hands-Free Mode with TTS for console players. Smart caching that reduced API costs by 40%.
+              AI Behavior Training — users teach Otagon correct responses when it gets something wrong.
+              Hands-Free Mode with TTS for console players. Smart caching that reduced API costs by ~40%.
+              A shared <code>game_knowledge_cache</code> that deduplicates IGDB and grounding lookups across users.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+
+          <CaseStudyCard title="Phase 5 — Mobile, Gamification & Hardening">
+            <CaseStudyParagraph>
+              Packaged the PWA into iOS and Android builds via Capacitor. Layered in a full gamification
+              system — achievements, XP, intent classification, Bronze → Pro tiers. Hardened RLS across
+              every user-data table and ran a top-to-bottom security audit.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+
+          <CaseStudyCard title="Phase 6 — Production & Live Ops">
+            <CaseStudyParagraph>
+              Live in production with Lemon Squeezy checkout, a deployed Edge Function on the
+              production Supabase project, and a deploy pipeline I run end-to-end alone.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
@@ -146,7 +166,7 @@ export const Otagon = () => {
         <CaseStudyImage
           src="/otagon/vision/1.png"
           alt="Development phases timeline"
-          caption="The four phases of building Otagon from concept to production"
+          caption="Six phases from concept to a live, multi-platform product"
         />
       </CaseStudySection>
 
@@ -185,6 +205,22 @@ export const Otagon = () => {
               Generic AI responses were the first major failure point. I built 8+ genre-specific tone profiles —
               the AI feels different helping you with a Soulslike versus an open-world RPG. This single
               change drove a qualitative improvement in perceived response relevance.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+
+          <CaseStudyCard title="Subtabs as First-Class Surfaces">
+            <CaseStudyParagraph>
+              The AI doesn't just answer — it builds persistent, game-specific panels (Build Guide,
+              Collectible Map, Boss Strategy). Subtabs turn one-off answers into a long-lived workspace
+              the user keeps returning to.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+
+          <CaseStudyCard title="Gamification That Tracks Intent">
+            <CaseStudyParagraph>
+              Achievements aren't arbitrary — they're tied to AI intent classification. Ask lore-heavy
+              questions and you progress toward "Lore Seeker." This makes XP feel like a reflection of
+              your real play style, not a checklist.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
@@ -232,6 +268,22 @@ export const Otagon = () => {
               <strong> Zero data loss since.</strong>
             </CaseStudyParagraph>
           </CaseStudyCard>
+
+          <CaseStudyCard title="Secure Lemon Squeezy Checkout">
+            <CaseStudyParagraph>
+              Checkout could not happen client-side without leaking the API key. Routed every checkout
+              through a Supabase Edge Function with secrets-scoped env vars and strict origin allow-lists.
+              <strong> No secret ever ships to the browser.</strong>
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+
+          <CaseStudyCard title="RLS on Every User-Data Table">
+            <CaseStudyParagraph>
+              Audited the schema and added <code>auth_user_id</code>-scoped policies on every user-data
+              table — conversations, messages, subtabs, gamification, achievements. A client-side leak
+              can no longer turn into a cross-account data leak.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyImage
@@ -245,9 +297,9 @@ export const Otagon = () => {
       <CaseStudySection title="Results">
         <CaseStudyStatsGrid
           stats={[
-            { value: '25+', label: 'Features shipped', sublabel: 'End-to-end, solo' },
-            { value: '80%', label: 'Fewer false tabs', sublabel: 'After IS_FULLSCREEN fix' },
-            { value: '~40%', label: 'API cost reduction', sublabel: 'Smart caching' },
+            { value: '30+', label: 'Features shipped', sublabel: 'End-to-end, solo' },
+            { value: '3', label: 'Platforms live', sublabel: 'PWA, iOS, Android' },
+            { value: '~40%', label: 'API cost reduction', sublabel: 'Caching + shared knowledge' },
             { value: '8+', label: 'Genre personas', sublabel: 'Souls, RPG, FPS, more' },
           ]}
         />
@@ -255,18 +307,20 @@ export const Otagon = () => {
         <CaseStudyCardGrid columns={2}>
           <CaseStudyCard title="Shipped">
             <CaseStudyList items={[
-              '25+ features end-to-end',
-              'Lemon Squeezy payment integration',
+              '30+ features end-to-end',
+              'Lemon Squeezy payment integration (Edge Function-secured)',
               'WebSocket-based PC-to-Mobile sync',
-              'Advanced database management & normalization',
+              'iOS + Android builds via Capacitor',
+              'Achievements, XP, and tiered progression',
               '~40% API cost reduction via caching',
+              'Strict RLS on every user-data table',
             ]} />
           </CaseStudyCard>
 
           <CaseStudyCard title="Status">
             <CaseStudyParagraph>
-              Fully shipped. Live PWA with Lemon Squeezy payments, PC-to-Mobile sync,
-              genre-specific personas, and a comprehensive Game Hub.
+              Live in production with Lemon Squeezy payments, the Edge Function deployed to the
+              production Supabase project, mobile builds packaged, and the security audit closed out.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
@@ -306,15 +360,30 @@ export const Otagon = () => {
               It worked, but added complexity I'd avoid next time by starting normalized.
             </CaseStudyParagraph>
           </CaseStudyCard>
+
+          <CaseStudyCard title="Secrets belong on the server, always">
+            <CaseStudyParagraph>
+              Moving checkout into an Edge Function was the moment Otagon stopped being a side project
+              and became a real product. Treat every API key like it's already leaking.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+
+          <CaseStudyCard title="PWA-first earns you mobile for free">
+            <CaseStudyParagraph>
+              The PWA-first decision paid back twice: it bought me a year of iteration, and Capacitor
+              turned the same codebase into iOS and Android builds without a rewrite.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
         </CaseStudyCardGrid>
       </CaseStudySection>
 
       {/* What's Next */}
       <CaseStudySection title="What's Next">
         <CaseStudyParagraph lead>
-          Lemon Squeezy payments are live. In active development: performance improvements, video capture,
-          and Google Cloud TTS for hands-free conversations. Community features — shared builds and strategy
-          sharing — are on the Q2 roadmap. The architecture is built to scale.
+          Lemon Squeezy payments are live. iOS and Android builds are packaged and ready. In active
+          development: performance work, video capture, hands-free TTS conversations, and a ScreenShot
+          spin-off that surfaces the same pairing flow as a focused utility. Community features —
+          shared builds and strategy sharing — are on the next roadmap. The architecture is built to scale.
         </CaseStudyParagraph>
 
         <CaseStudyImage

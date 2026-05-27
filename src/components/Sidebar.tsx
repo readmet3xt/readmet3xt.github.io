@@ -14,6 +14,8 @@ interface SidebarProps {
 
 const caseStudies = [
   { path: '/otagon', label: 'Otagon', letter: 'O', color: '#8B5CF6' },
+  { path: '/versus', label: 'Versus', letter: 'V', color: '#22C55E' },
+  { path: '/screenshot', label: 'ScreenShot', letter: 'S', color: '#F59E0B' },
   { path: '/lawx', label: 'Law.X', letter: 'L', color: '#EC4899' },
   { path: '/koinbasket', label: 'KoinBasket', letter: 'K', color: '#06B6D4' },
   { path: '/softwire', label: 'Softwire', letter: 'S', color: '#14B8A6' },

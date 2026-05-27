@@ -15,6 +15,7 @@ interface AnimatedProjectCardProps {
   summary?: string;
   tags?: string[];
   index?: number;
+  ongoing?: boolean;
 }
 
 // Cascading top-to-bottom flip: the image flips down from the top edge
@@ -43,7 +44,7 @@ const flipVariants = {
   },
 };
 
-export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags, index = 0 }: AnimatedProjectCardProps) => {
+export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags, index = 0, ongoing = false }: AnimatedProjectCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { isOpen } = useSidebar();
@@ -154,6 +155,13 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
             loading="lazy"
           />
         </AnimatePresence>
+
+        {ongoing && (
+          <div className="absolute top-3 right-3 z-10 flex items-center gap-2 px-3 py-1 bg-green-500/90 backdrop-blur-sm rounded-full border border-green-500/30 shadow-md">
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+            <span className="text-xs font-medium text-white">Ongoing</span>
+          </div>
+        )}
       </div>
 
       <div className="p-4 sm:p-6 flex-1 flex flex-col">
