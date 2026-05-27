@@ -1,6 +1,7 @@
 import { useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
+import { TrophySpin } from 'react-loading-indicators';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 import { useSidebar } from '@/components/SidebarContext';
 import { cn } from '@/lib/utils';
@@ -81,8 +82,8 @@ export const WelcomeCard = () => {
         <div className="flex items-start justify-between gap-3 mb-1">
           <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words text-left">Amaan Khan</h3>
           {/* Available Badge */}
-          <div className="flex-shrink-0 mt-1.5 flex items-center gap-2 px-3 py-1 bg-violet-400/90 backdrop-blur-sm rounded-full border border-violet-400/30">
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+          <div className="flex-shrink-0 mt-1.5 flex items-center gap-1.5 px-3 py-1 bg-violet-400/90 backdrop-blur-sm rounded-full border border-violet-400/30">
+            <TrophySpin color="#ffffff" size="small" text="" textColor="" />
             <span className="text-xs font-medium text-white">Vibecoding</span>
           </div>
         </div>
