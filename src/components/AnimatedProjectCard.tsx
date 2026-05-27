@@ -25,6 +25,7 @@ const PILL_STYLES = {
     border: 'border-yellow-400/30',
     text: 'text-black',
     dot: 'bg-black',
+    tick: false,
   },
   launched: {
     label: 'Launched',
@@ -32,6 +33,7 @@ const PILL_STYLES = {
     border: 'border-blue-500/30',
     text: 'text-white',
     dot: 'bg-white',
+    tick: true,
   },
 } as const;
 
@@ -181,7 +183,13 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
           <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
           {pillStyle && (
             <div className={`flex-shrink-0 mt-1.5 flex items-center gap-2 px-3 py-1 ${pillStyle.bg} backdrop-blur-sm rounded-full border ${pillStyle.border}`}>
-              <div className={`w-2 h-2 ${pillStyle.dot} rounded-full animate-pulse`} />
+              {pillStyle.tick ? (
+                <svg className="w-3 h-3 animate-pulse" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2 6.5l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              ) : (
+                <div className={`w-2 h-2 ${pillStyle.dot} rounded-full animate-pulse`} />
+              )}
               <span className={`text-xs font-medium ${pillStyle.text}`}>{pillStyle.label}</span>
             </div>
           )}
