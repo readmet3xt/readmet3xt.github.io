@@ -15,8 +15,25 @@ interface AnimatedProjectCardProps {
   summary?: string;
   tags?: string[];
   index?: number;
-  ongoing?: boolean;
+  pill?: 'ongoing' | 'launched';
 }
+
+const PILL_STYLES = {
+  ongoing: {
+    label: 'Ongoing',
+    bg: 'bg-yellow-400/90',
+    border: 'border-yellow-400/30',
+    text: 'text-black',
+    dot: 'bg-black',
+  },
+  launched: {
+    label: 'Launched',
+    bg: 'bg-blue-500/90',
+    border: 'border-blue-500/30',
+    text: 'text-white',
+    dot: 'bg-white',
+  },
+} as const;
 
 // Cascading top-to-bottom flip: the image flips down from the top edge
 // like a panel hinged at the top, revealing the new image underneath
@@ -44,7 +61,9 @@ const flipVariants = {
   },
 };
 
-export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags, index = 0, ongoing = false }: AnimatedProjectCardProps) => {
+export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags, index = 0, pill }: AnimatedProjectCardProps) => {
+  const pillStyle = pill ? PILL_STYLES[pill] : null;
+
   const cardRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { isOpen } = useSidebar();
@@ -155,17 +174,18 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
             loading="lazy"
           />
         </AnimatePresence>
-
-        {ongoing && (
-          <div className="absolute top-3 right-3 z-10 flex items-center gap-2 px-3 py-1 bg-green-500/90 backdrop-blur-sm rounded-full border border-green-500/30 shadow-md">
-            <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-            <span className="text-xs font-medium text-white">Ongoing</span>
-          </div>
-        )}
       </div>
 
       <div className="p-4 sm:p-6 flex-1 flex flex-col">
-        <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
+        <div className="flex items-center justify-between gap-3 mb-1">
+          <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
+          {pillStyle && (
+            <div className={`flex-shrink-0 flex items-center gap-2 px-3 py-1 ${pillStyle.bg} backdrop-blur-sm rounded-full border ${pillStyle.border}`}>
+              <div className={`w-2 h-2 ${pillStyle.dot} rounded-full animate-pulse`} />
+              <span className={`text-xs font-medium ${pillStyle.text}`}>{pillStyle.label}</span>
+            </div>
+          )}
+        </div>
         <p className="text-lg sm:text-lg mt-1 text-text-secondary break-words">{description}</p>
         {summary && (
           <p className="text-base sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words">{summary}</p>

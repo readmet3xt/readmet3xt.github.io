@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="versusBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <radialGradient id="versusGlow" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0%" stop-color="#CCFF00" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#CCFF00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#versusBg)"/>
+  <rect width="800" height="600" fill="url(#versusGlow)"/>
+  <g font-family="'Big Shoulders Display','Impact','Arial Black',sans-serif" font-weight="900" text-anchor="middle">
+    <text x="400" y="320" font-size="180" fill="#CCFF00" letter-spacing="6">VERSUS</text>
+    <text x="400" y="380" font-size="22" fill="#CCFF00" opacity="0.7" letter-spacing="12">LIVE TOURNAMENT TRACKER</text>
+  </g>
+  <g stroke="#CCFF00" stroke-width="2" opacity="0.4">
+    <line x1="60" y1="80" x2="180" y2="80"/>
+    <line x1="620" y1="520" x2="740" y2="520"/>
+  </g>
+</svg>

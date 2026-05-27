@@ -24,7 +24,7 @@ export const ProjectsGrid = () => {
         href="/otagon"
         title="Otagon Gaming Companion"
         description="AI-Powered Gaming Assistant"
-        ongoing
+        pill="launched"
         images={[
           '/otagon/otagon3.png',
           '/otagon/aiprocessing.png',
@@ -45,13 +45,9 @@ export const ProjectsGrid = () => {
         href="/versus"
         title="Versus"
         description="Live Tournament Tracker"
-        ongoing
+        pill="ongoing"
         images={[
-          '/versus/hero.png',
-          '/versus/vision.png',
-          '/versus/design-1.png',
-          '/versus/design-2.png',
-          '/versus/results.png',
+          '/versus/hero.svg',
         ]}
         className=""
         summary="A pro tournament tracker for FIFA/FC nights — leagues, knockouts, groups, live scoring, and a shareable spectator link. Built solo on a static SPA + Supabase + WebRTC stack."
@@ -63,13 +59,9 @@ export const ProjectsGrid = () => {
         href="/screenshot"
         title="ScreenShot"
         description="PC → Phone Capture Sync"
-        ongoing
+        pill="ongoing"
         images={[
-          '/screenshot/hero.png',
-          '/screenshot/vision.png',
-          '/screenshot/design-1.png',
-          '/screenshot/design-2.png',
-          '/screenshot/results.png',
+          '/screenshot/hero.svg',
         ]}
         className=""
         summary="Press F1 on your PC, see it on your phone. A pairing-code screenshot grabber with per-user folders, lightbox, and an installable PWA — shipped in 2 weeks."

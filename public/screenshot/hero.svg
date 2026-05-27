@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ssBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1c1c1e"/>
+    </linearGradient>
+    <radialGradient id="ssGlow" cx="0.5" cy="0.45" r="0.6">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#ssBg)"/>
+  <rect width="800" height="600" fill="url(#ssGlow)"/>
+  <g transform="translate(400 270)" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(-72 -56) scale(6)">
+      <path d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"/>
+      <circle cx="12" cy="12.75" r="4.5"/>
+    </g>
+  </g>
+  <g font-family="'Inter','Helvetica Neue','Arial',sans-serif" text-anchor="middle">
+    <text x="400" y="460" font-size="46" font-weight="700" fill="#ffffff" letter-spacing="2">ScreenShot</text>
+    <text x="400" y="498" font-size="16" font-weight="500" fill="#ffffff" opacity="0.55" letter-spacing="6">PRESS F1 · SEE IT ON YOUR PHONE</text>
+  </g>
+</svg>
