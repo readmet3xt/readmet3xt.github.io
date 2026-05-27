@@ -78,10 +78,10 @@ export const WelcomeCard = () => {
       </div>
 
       <div className="p-4 sm:p-6 flex-1 flex flex-col relative z-10">
-        <div className="flex items-center justify-between mb-1">
+        <div className="flex items-start justify-between gap-3 mb-1">
           <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words text-left">Amaan Khan</h3>
           {/* Available Badge */}
-          <div className="flex items-center gap-2 px-3 py-1 bg-green-500/90 backdrop-blur-sm rounded-full border border-green-500/30">
+          <div className="flex-shrink-0 mt-1.5 flex items-center gap-2 px-3 py-1 bg-green-500/90 backdrop-blur-sm rounded-full border border-green-500/30">
             <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
             <span className="text-xs font-medium text-white">Available</span>
           </div>
