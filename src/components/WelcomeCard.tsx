@@ -83,7 +83,11 @@ export const WelcomeCard = () => {
           <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words text-left">Amaan Khan</h3>
           {/* Available Badge */}
           <div className="flex-shrink-0 mt-1.5 flex items-center gap-1.5 px-3 py-1 bg-violet-400/90 backdrop-blur-sm rounded-full border border-violet-400/30">
-            <TrophySpin color="#ffffff" size="small" text="" textColor="" />
+            <span className="w-3 h-3 flex-shrink-0 overflow-hidden" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ transform: 'scale(0.45)', transformOrigin: 'center', display: 'flex' }}>
+                <TrophySpin color="#ffffff" size="small" text="" textColor="" />
+              </span>
+            </span>
             <span className="text-xs font-medium text-white">Vibecoding</span>
           </div>
         </div>
