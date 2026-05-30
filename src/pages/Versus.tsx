@@ -17,7 +17,7 @@ export const Versus = () => {
     <CaseStudyLayout
       title="Versus"
       description="A pro tournament tracker for FIFA/FC nights — leagues, knockouts, and groups with live scoring, brackets, and shareable spectator links."
-      externalLink="https://otagon2.github.io/FC26/"
+      externalLink="https://otagon2.github.io/Versus/"
       externalLabel="Visit Versus"
     >
       <CaseStudyHero
@@ -50,7 +50,7 @@ export const Versus = () => {
             'Lucide icons',
           ],
         }}
-        externalLink="https://otagon2.github.io/FC26/"
+        externalLink="https://otagon2.github.io/Versus/"
         externalLabel="Visit Versus"
         heroImage="/versus/hero.png"
         heroImageAlt="Versus tournament dashboard hero"
