@@ -10,12 +10,12 @@ interface SEOProps {
 }
 
 const defaultMeta = {
-  title: 'Amaan Khan - Product Designer Portfolio',
-  description: 'Hyderabad-based Product Designer creating impactful, human-centered products for a more thoughtful digital landscape.',
+  title: 'Amaan Khan — Product Designer & Engineer',
+  description: 'Product Designer who ships code. RCA-trained (Royal College of Art), full-stack engineer. Solo-built Otagon, a production AI SaaS, in 6 months. Open to roles in Bangalore, Mumbai, or Remote.',
   image: 'https://storage.googleapis.com/gpt-engineer-file-uploads/3DwcQ4iImQTnMy6jZLwBSnPzKM32/social-images/social-1758010556926-IMG_7524 1.png',
   url: 'https://readmet3xt.github.io/',
   type: 'website',
-  keywords: 'Product Designer, UX Designer, UI Designer, Portfolio, Hyderabad, User Experience, Digital Design',
+  keywords: 'Product Designer, Design Engineer, UX Designer, AI Product Designer, React Developer, TypeScript, Supabase, Full-Stack Designer, RCA, Royal College of Art, Service Design, Portfolio, Hyderabad, Bangalore, Remote, Otagon, KoinBasket',
 };
 
 export const SEO = ({
@@ -36,7 +36,7 @@ export const SEO = ({
     "name": "Amaan Khan",
     "url": defaultMeta.url,
     "image": defaultMeta.image,
-    "jobTitle": "Product Designer",
+    "jobTitle": "Product Designer & Engineer",
     "description": defaultMeta.description,
     "address": {
       "@type": "PostalAddress",
@@ -67,7 +67,13 @@ export const SEO = ({
       "Service Design",
       "Design Systems",
       "AI UX",
-      "Prototyping"
+      "Prototyping",
+      "React",
+      "TypeScript",
+      "Full-Stack Development",
+      "AI Integration",
+      "PWA Development",
+      "Supabase"
     ],
     "sameAs": [
       "https://www.linkedin.com/in/readmetxt/"

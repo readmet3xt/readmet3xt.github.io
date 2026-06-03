@@ -39,12 +39,12 @@ export const About = () => {
 
               {/* Introduction */}
               <div className="mb-8">
-                <h3 className="font-ibm-plex-mono text-xl md:text-2xl font-semibold text-text-primary mb-4">Digital Product Designer</h3>
+                <h3 className="font-ibm-plex-mono text-xl md:text-2xl font-semibold text-text-primary mb-4">Product Designer & Engineer</h3>
                 <p className="text-lg md:text-xl mb-4 leading-relaxed">
-                  Currently based in <span className="font-medium">Hyderabad</span>, with a Master's in Service Design from the <span className="font-medium">Royal College of Art (RCA)</span> in London.
+                  Based in <span className="font-medium">Hyderabad</span>, open to Bangalore / Mumbai / Remote. M.A. Service Design from the <span className="font-medium">Royal College of Art (RCA), London</span> — ranked #1 art & design school globally.
                 </p>
                 <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                  I work with collaborative, cross-functional teams to create impactful and delightful experiences, specializing in human-centered design approaches that bridge digital innovation with real-world impact.
+                  I design and build products end-to-end — from user research and service blueprinting to React architecture and AI integration. Most recently solo-shipped Otagon, a production AI SaaS, in 6 months across 25+ features and a 150K+ game library.
                 </p>
               </div>
 
@@ -68,19 +68,19 @@ export const About = () => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      <span className="font-semibold text-text-primary">4+ years</span> of experience designing products for clients including KoinBasket and Softwire
+                      Solo-shipped <span className="font-semibold text-text-primary">Otagon</span> — production AI PWA — in 6 months: 25+ features, 3 subscription tiers, 95%+ detection accuracy, 70–80% API cost reduction
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      Scaled design teams and led <span className="font-semibold text-text-primary">strategic rebrands</span>
+                      Founding designer at KoinBasket — scaled from MVP to <span className="font-semibold text-text-primary">70,000+ users</span>, led full rebrand, drove 42% engagement increase
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      Innovative academic collaborations with <span className="font-semibold text-text-primary">VISA Innovation Centre, BCG × RSM × Fuzzy Studio, and Airbnb × WWT</span>
+                      Academic partnerships with <span className="font-semibold text-text-primary">VISA Innovation Centre, BCG, and Airbnb × WWT</span> — all three outcomes adopted or implemented
                     </p>
                   </div>
                 </div>
@@ -305,55 +305,59 @@ export const About = () => {
         {/* Skills */}
         <section id="skills" className="mb-24 scroll-mt-24 reveal-on-scroll">
           <h2 className="heading-2 mb-8">Skills</h2>
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid lg:grid-cols-4 gap-8 mb-16">
             <div>
-              <h3 className="heading-4 mb-4">Design Skills</h3>
+              <h3 className="heading-4 mb-4">Design</h3>
               <ul className="space-y-2 body-base">
                 <li>Service Design</li>
-                <li>User Experience Design</li>
+                <li>UI/UX Design</li>
                 <li>User Research</li>
                 <li>Interaction Design</li>
                 <li>Prototyping</li>
-                <li>Wireframing</li>
-                <li>Usability Testing</li>
-                <li>Design Thinking</li>
                 <li>Design Systems</li>
-                <li>Information Architecture</li>
-                <li>Customer Journey Mapping</li>
-                <li>End-to-End Product Design</li>
+                <li>Info Architecture</li>
+                <li>Usability Testing</li>
+                <li>Journey Mapping</li>
               </ul>
             </div>
             <div>
-              <h3 className="heading-4 mb-4">Soft Skills</h3>
+              <h3 className="heading-4 mb-4">Engineering</h3>
               <ul className="space-y-2 body-base">
-                <li>Facilitation</li>
-                <li>Project Management</li>
-                <li>Stakeholder Communication</li>
-                <li>Creative Problem-Solving</li>
-                <li>Team Collaboration</li>
-                <li>Leadership</li>
-                <li>Presentation Skills</li>
-                <li>Time Management</li>
+                <li>React 18 / 19</li>
+                <li>TypeScript</li>
+                <li>Supabase</li>
+                <li>AI Integration</li>
+                <li>Gemini / OpenAI APIs</li>
+                <li>PWA Development</li>
+                <li>Full-Stack Dev</li>
+                <li>Performance Optimisation</li>
+                <li>Database Design</li>
               </ul>
             </div>
             <div>
               <h3 className="heading-4 mb-4">Tools</h3>
               <ul className="space-y-2 body-base">
                 <li>Figma</li>
-                <li>Adobe XD</li>
-                <li>Webflow</li>
                 <li>Framer</li>
+                <li>Webflow</li>
+                <li>Pencil.dev</li>
                 <li>Miro</li>
-                <li>Jira</li>
-                <li>Confluence</li>
-                <li>Adobe Illustrator</li>
-                <li>After Effects</li>
-                <li>LottieFiles</li>
-                <li>ChatGPT</li>
+                <li>VS Code</li>
                 <li>Cursor</li>
-                <li>VS Code + GitHub Copilot</li>
-                <li>Lovable</li>
+                <li>Claude Code CLI</li>
                 <li>Vercel</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="heading-4 mb-4">Leadership</h3>
+              <ul className="space-y-2 body-base">
+                <li>Facilitation</li>
+                <li>Stakeholder Management</li>
+                <li>Team Leadership</li>
+                <li>Project Management</li>
+                <li>Hiring & Mentoring</li>
+                <li>Workshop Design</li>
+                <li>Presentation</li>
               </ul>
             </div>
           </div>

@@ -1,7 +1,6 @@
 import { useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
-import { TrophySpin } from 'react-loading-indicators';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 import { useSidebar } from '@/components/SidebarContext';
 import { cn } from '@/lib/utils';
@@ -82,18 +81,14 @@ export const WelcomeCard = () => {
         <div className="flex items-start justify-between gap-3 mb-1">
           <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words text-left">Amaan Khan</h3>
           {/* Available Badge */}
-          <div className="flex-shrink-0 mt-1.5 flex items-center gap-1.5 px-3 py-1 bg-violet-400/90 backdrop-blur-sm rounded-full border border-violet-400/30">
-            <span className="w-3 h-3 flex-shrink-0 overflow-hidden" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ transform: 'scale(0.45)', transformOrigin: 'center', display: 'flex' }}>
-                <TrophySpin color="#ffffff" size="small" text="" textColor="" />
-              </span>
-            </span>
-            <span className="text-xs font-medium text-white">Vibecoding</span>
+          <div className="flex-shrink-0 mt-1.5 flex items-center gap-1.5 px-3 py-1 bg-emerald-500/90 backdrop-blur-sm rounded-full border border-emerald-400/30">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse flex-shrink-0" />
+            <span className="text-xs font-medium text-white">Available for Work</span>
           </div>
         </div>
-        <p className="text-lg sm:text-lg text-text-secondary break-words text-left">Product Designer</p>
+        <p className="text-lg sm:text-lg text-text-secondary break-words text-left">Product Designer & Engineer</p>
         <p className="text-base sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words text-left">
-          Hi there, Amaan here! I'm a Mechanical Engineer who traded engineering blueprints for service blueprints. I now build seamless experiences—digital or not—with an engineer's focus on function and a designer's focus on feeling.
+          RCA-trained designer who writes React and ships products. I solo-built Otagon — an AI gaming companion PWA — from zero to launch in 6 months. I work end-to-end: research, design, and code.
         </p>
       </div>
     </motion.div>

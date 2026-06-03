@@ -19,6 +19,7 @@ export const ProjectsGrid = () => {
     >
       <WelcomeCard />
 
+      {/* 1 — Strongest commercial + engineering work */}
       <AnimatedProjectCard
         index={0}
         href="/otagon"
@@ -40,36 +41,30 @@ export const ProjectsGrid = () => {
         tags={["Solo Build", "AI UX", "PWA + Mobile", "Live"]}
       />
 
+      {/* 2 — Biggest commercial impact */}
       <AnimatedProjectCard
         index={1}
-        href="/versus"
-        title="Versus"
-        description="Live Tournament Tracker"
-        pill="ongoing"
+        href="/koinbasket"
+        title="KoinBasket"
+        description="Trading Platform & Mobile App"
         images={[
-          '/versus/hero.svg',
+          '/images/casestudies/koinbasket/Main Dashboard - Expanded and Hover.jpg',
+          '/images/casestudies/koinbasket/Home.png',
+          '/images/casestudies/koinbasket/Coin Details.png',
+          '/images/casestudies/koinbasket/Portfolio - Completed - Expanded View.png',
+          '/images/casestudies/koinbasket/Manage - My baskets.png',
+          '/images/casestudies/koinbasket/Exchange Popup.png',
+          '/images/casestudies/koinbasket/homepage (3).png',
+          '/images/casestudies/koinbasket/landingpage.png',
         ]}
         className=""
-        summary="A pro tournament tracker for FIFA/FC nights — leagues, knockouts, groups, live scoring, and a shareable spectator link. Built solo on a static SPA + Supabase + WebRTC stack."
-        tags={["Solo Build", "Real-time", "PWA"]}
+        summary="Joined as founding designer on a one-week MVP contract. Scaled the platform from 0 to 70,000 users, led a full rebrand, and built a two-sided live-trading ecosystem."
+        tags={["Fintech", "70K Users", "Founding Designer"]}
       />
 
+      {/* 3 — AI UX work */}
       <AnimatedProjectCard
         index={2}
-        href="/screenshot"
-        title="ScreenShot"
-        description="PC → Phone Capture Sync"
-        pill="ongoing"
-        images={[
-          '/screenshot/hero.svg',
-        ]}
-        className=""
-        summary="Press F1 on your PC, see it on your phone. A pairing-code screenshot grabber with per-user folders, lightbox, and an installable PWA — shipped in 2 weeks."
-        tags={["Solo Build", "PWA", "v0"]}
-      />
-
-      <AnimatedProjectCard
-        index={3}
         href="/lawx"
         title="Law.X"
         description="Transparent Legal Assistant"
@@ -88,26 +83,49 @@ export const ProjectsGrid = () => {
         tags={["Legal Tech", "AI UX", "Transparency Design"]}
       />
 
+      {/* 4 — Award-winning academic: VISA */}
       <AnimatedProjectCard
-        index={4}
-        href="/koinbasket"
-        title="KoinBasket"
-        description="Trading Platform & Mobile App"
+        index={3}
+        href="/pebble"
+        title="Pebble"
+        description="Employee Wellbeing Service"
         images={[
-          '/images/casestudies/koinbasket/Main Dashboard - Expanded and Hover.jpg',
-          '/images/casestudies/koinbasket/Home.png',
-          '/images/casestudies/koinbasket/Coin Details.png',
-          '/images/casestudies/koinbasket/Portfolio - Completed - Expanded View.png',
-          '/images/casestudies/koinbasket/Manage - My baskets.png',
-          '/images/casestudies/koinbasket/Exchange Popup.png',
-          '/images/casestudies/koinbasket/homepage (3).png',
-          '/images/casestudies/koinbasket/landingpage.png',
+          '/images/casestudies/pebble/Hero Image Pebble 1600.jpeg',
+          '/images/casestudies/pebble/2.jpg',
+          '/images/casestudies/pebble/3.jpg',
+          '/images/casestudies/pebble/4.jpg',
+          '/images/casestudies/pebble/10.jpg',
+          '/images/casestudies/pebble/13.jpg',
+          '/images/casestudies/pebble/24.jpg',
+          '/images/casestudies/pebble/36.jpg',
         ]}
         className=""
-        summary="Joined as founding designer on a one-week MVP contract. Scaled the platform from 0 to 70,000 users, led a full rebrand, and built a two-sided live-trading ecosystem."
-        tags={["Fintech", "MVP Design", "Rebranding"]}
+        summary="A VISA-backed virtual companion that turns isolation into connection. The Virtual Café concept was adopted into VISA's internal collaboration roadmap."
+        tags={["Service Design", "VISA Innovation", "Employee Wellbeing"]}
       />
 
+      {/* 5 — Core77 award */}
+      <AnimatedProjectCard
+        index={4}
+        href="/iviprogram"
+        title="Invisible Value Income Program"
+        description="Social Impact Design"
+        images={[
+          '/images/casestudies/ivi/1 (3).jpg',
+          '/images/casestudies/ivi/2 (3).jpg',
+          '/images/casestudies/ivi/4.jpg',
+          '/images/casestudies/ivi/5.jpg',
+          '/images/casestudies/ivi/6.jpg',
+          '/images/casestudies/ivi/10 (3).jpg',
+          '/images/casestudies/ivi/15 (2).jpg',
+          '/images/casestudies/ivi/20.jpg',
+        ]}
+        className=""
+        summary="Core77-awarded speculative service that makes women's invisible domestic labour economically visible. Research framework adopted internally by BCG."
+        tags={["Speculative Design", "Core77 Award", "Future of Work"]}
+      />
+
+      {/* 6 — Internship */}
       <AnimatedProjectCard
         index={5}
         href="/softwire"
@@ -128,48 +146,9 @@ export const ProjectsGrid = () => {
         tags={["App Clip", "Mobile UX", "LNER"]}
       />
 
+      {/* 7 — Conservation partnerships */}
       <AnimatedProjectCard
         index={6}
-        href="/pebble"
-        title="Pebble"
-        description="Employee Wellbeing Service"
-        images={[
-          '/images/casestudies/pebble/Hero Image Pebble 1600.jpeg',
-          '/images/casestudies/pebble/2.jpg',
-          '/images/casestudies/pebble/3.jpg',
-          '/images/casestudies/pebble/4.jpg',
-          '/images/casestudies/pebble/10.jpg',
-          '/images/casestudies/pebble/13.jpg',
-          '/images/casestudies/pebble/24.jpg',
-          '/images/casestudies/pebble/36.jpg',
-        ]}
-        className=""
-        summary="A VISA-backed virtual companion that turns isolation into connection. The Virtual Café concept was adopted into VISA's internal collaboration roadmap."
-        tags={["Service Design", "VISA Innovation", "Employee Wellbeing"]}
-      />
-
-      <AnimatedProjectCard
-        index={7}
-        href="/iviprogram"
-        title="Invisible Value Income Program"
-        description="Social Impact Design"
-        images={[
-          '/images/casestudies/ivi/1 (3).jpg',
-          '/images/casestudies/ivi/2 (3).jpg',
-          '/images/casestudies/ivi/4.jpg',
-          '/images/casestudies/ivi/5.jpg',
-          '/images/casestudies/ivi/6.jpg',
-          '/images/casestudies/ivi/10 (3).jpg',
-          '/images/casestudies/ivi/15 (2).jpg',
-          '/images/casestudies/ivi/20.jpg',
-        ]}
-        className=""
-        summary="Core77-awarded speculative service that makes women's invisible domestic labour economically visible. Research framework adopted internally by BCG."
-        tags={["Speculative Design", "Core77 Award", "Future of Work"]}
-      />
-
-      <AnimatedProjectCard
-        index={8}
         href="/stampede"
         title="Stampede"
         description="Conservation Partnerships"
@@ -186,6 +165,35 @@ export const ProjectsGrid = () => {
         className=""
         summary="A facilitation methodology that turns conservation 'happy accidents' into designed partnerships. Initiated the WWT × Airbnb collaboration in a single 3-hour workshop."
         tags={["Service Design", "Conservation", "Facilitation"]}
+      />
+
+      {/* 8 — Side projects */}
+      <AnimatedProjectCard
+        index={7}
+        href="/versus"
+        title="Versus"
+        description="Live Tournament Tracker"
+        pill="ongoing"
+        images={[
+          '/versus/hero.svg',
+        ]}
+        className=""
+        summary="A pro tournament tracker for FIFA/FC nights — leagues, knockouts, groups, live scoring, and a shareable spectator link. Built solo on a static SPA + Supabase + WebRTC stack."
+        tags={["Solo Build", "Real-time", "PWA"]}
+      />
+
+      <AnimatedProjectCard
+        index={8}
+        href="/screenshot"
+        title="ScreenShot"
+        description="PC → Phone Capture Sync"
+        pill="ongoing"
+        images={[
+          '/screenshot/hero.svg',
+        ]}
+        className=""
+        summary="Press F1 on your PC, see it on your phone. A pairing-code screenshot grabber with per-user folders, lightbox, and an installable PWA — shipped in 2 weeks."
+        tags={["Solo Build", "PWA", "v0"]}
       />
     </section>
   );
