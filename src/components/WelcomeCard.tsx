@@ -83,7 +83,7 @@ export const WelcomeCard = () => {
           {/* Available Badge */}
           <div className="flex-shrink-0 mt-1.5 flex items-center gap-1.5 px-3 py-1 bg-emerald-500/90 backdrop-blur-sm rounded-full border border-emerald-400/30">
             <span className="w-2 h-2 rounded-full bg-white animate-pulse flex-shrink-0" />
-            <span className="text-xs font-medium text-white">Available for Work</span>
+            <span className="text-xs font-medium text-white">Available</span>
           </div>
         </div>
         <p className="text-lg sm:text-lg text-text-secondary break-words text-left">Product Designer & Engineer</p>
