@@ -179,7 +179,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
 
       {/* Sidebar Footer */}
       <footer className="flex-shrink-0 border-t border-border pt-2.5 sm:pt-3 lg:pt-4 pb-3 sm:pb-4 lg:pb-6 px-3 sm:px-4 lg:px-6 bg-bg-secondary">
-        <nav className="flex flex-wrap justify-start gap-6 sm:gap-12 font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider -ml-2 sm:-ml-2.5" role="navigation" aria-label="Contact and social links">
+        <nav className="grid grid-cols-3 font-ibm-plex-mono uppercase text-[10px] sm:text-xs tracking-wider" role="navigation" aria-label="Contact and social links">
           <button
             onClick={() => copyToClipboard('mdamkhan.work@gmail.com')}
             className="footer-link h-fit py-1 px-2 flex items-center justify-start text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
@@ -191,7 +191,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
             href="https://www.linkedin.com/in/readmetxt/"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer-link h-fit py-1 px-2 flex items-center justify-start text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
+            className="footer-link h-fit py-1 px-2 flex items-center justify-center text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
             aria-label="Visit Amaan Khan's LinkedIn profile (opens in new tab)"
           >
             LINKEDIN
@@ -200,7 +200,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
             href="https://drive.google.com/file/d/15mxM6r_j_RMzgDX5RCTYptMZmlZVBXPS/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer-link h-fit py-1 px-2 flex items-center justify-start text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
+            className="footer-link h-fit py-1 px-2 flex items-center justify-end text-text-tertiary hover:text-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 rounded-md"
             aria-label="View Amaan Khan's resume (opens in new tab)"
           >
             RESUME
