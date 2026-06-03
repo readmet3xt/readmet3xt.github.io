@@ -114,7 +114,7 @@ export const About = () => {
                   LinkedIn
                 </a>
                 <a
-                  href="https://drive.google.com/file/d/1SnvkzMujpXhg1Ep_0qunMcKuNnt3rTXv/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1YtQLJCELLWw8P2Djfzf0A0Xtt5VfrCqk/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
@@ -147,7 +147,7 @@ export const About = () => {
                   LinkedIn
                 </a>
                 <a
-                  href="https://drive.google.com/file/d/1SnvkzMujpXhg1Ep_0qunMcKuNnt3rTXv/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1YtQLJCELLWw8P2Djfzf0A0Xtt5VfrCqk/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center"
