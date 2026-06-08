@@ -37,7 +37,7 @@ export const Stampede = () => {
               'Designed the Stampede methodology including Power/Pace matrix and animal archetypes',
               'Facilitated live WWT × Airbnb co-creation workshop',
             ],
-            team: 'Anahita Pradhan, Andrew Seetoh, Constance Cheung (RCA)',
+            team: 'Anahita Pradhan, Andrew Seetoh, Constance Chung (RCA Team 9)',
             timeline: '4 months, Royal College of Art, January–March 2019',
             recognition: 'WWT × Airbnb partnership initiated; "100x more productive" methodology',
             tools: [
@@ -74,9 +74,9 @@ export const Stampede = () => {
           </CaseStudyParagraph>
 
           <CaseStudyList items={[
-            { title: 'Billions in unspent funding', description: 'Sitting in large organisations unable to allocate it effectively' },
-            { title: 'Partnerships by "happy accident"', description: 'An HSBC collaboration cited as a lucky encounter, not a designed outcome' },
-            { title: 'Fragile corporate advocacy', description: 'Dissolves the moment an individual champion leaves their role — taking years of relationship-building with them' },
+            { title: 'Only 3% of charitable giving', description: 'Wildlife conservation receives a sliver of total giving (Imperial College) — so every pound and every partnership has to work disproportionately hard' },
+            { title: 'Partnerships by "happy accident"', description: 'A WWT interviewee literally described their HSBC collaboration as a lucky encounter, not a designed outcome' },
+            { title: 'Fragile, advocate-dependent', description: '"When that person left the organisation, we lost the advocate and support" — years of relationship-building gone with one resignation' },
           ]} />
 
           <CaseStudyQuote author="Wildlife Biologist" role="Founder of Key Conservation">
@@ -148,7 +148,14 @@ export const Stampede = () => {
 
             <CaseStudyCard title="🐙 Octopus (e.g., EY)">
               <CaseStudyParagraph>
-                Large multinational, analytical, many arms, can move quickly.
+                Large multinational, analytical, many arms everywhere, moves fast on data.
+              </CaseStudyParagraph>
+            </CaseStudyCard>
+
+            <CaseStudyCard title="🐢 Giant Tortoise (e.g., Dept of Education)">
+              <CaseStudyParagraph>
+                Government body — enormous reach and long-term impact, but slowed by hierarchy,
+                regulation, and red tape.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
@@ -172,16 +179,17 @@ export const Stampede = () => {
         {/* The Stampede Methodology */}
         <CaseStudySection title="The Stampede Methodology">
           <CaseStudyParagraph lead>
-            Stampede is a facilitation service built around four stages: People (connecting the right
-            organisations and individuals), Experience (curating the right format — expedition, hackathon,
-            workshop), Outcome (enabling tangible plans and proposals), and Follow-up (maintaining
-            momentum beyond the room).
+            Stampede maps the whole partnership journey as six stages — Purpose Finding, Match-Making,
+            Connecting, Kicking-Off (running a "Stampede"), Project Execution, and Measuring Outcome —
+            because our interviews showed no single entry point fits everyone. Different organisations
+            want help at different moments.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            The service is designed to support organisations at any stage of the partnership journey —
-            from Purpose Finding and Match-Making through to Project Execution and Outcome Measurement.
-            It's not a one-off event. It's a designed relationship infrastructure.
+            The centrepiece is the Kick-Off: a facilitated workshop with five steps — Unpacking,
+            Sketching, Solutioning, Prototyping, and Validating. It's not a one-off event. It's
+            designed relationship infrastructure, wrapped in a toolkit so momentum survives after
+            everyone leaves the room.
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
@@ -222,6 +230,13 @@ export const Stampede = () => {
           </CaseStudyCardGrid>
 
           <CaseStudyParagraph>
+            The Power/Pace gap stopped being theory and surfaced live. Asked how long a first project
+            would take to ship, Airbnb said <strong>"7 days"</strong>; WWT said <strong>"6 months."</strong>
+            Same room, same goal, a 25× difference in pace. Naming it openly was exactly what let them
+            design around the gap instead of colliding with it months later.
+          </CaseStudyParagraph>
+
+          <CaseStudyParagraph>
             <strong>The result</strong> wasn't just a good meeting. It was a genuine partnership commitment.
           </CaseStudyParagraph>
 
@@ -258,7 +273,7 @@ export const Stampede = () => {
             stats={[
               { value: '100x', label: 'More Productive', sublabel: 'Than standard meetings' },
               { value: 'WWT × Airbnb', label: 'Partnership', sublabel: 'Initiated' },
-              { value: '6', label: 'Animal Archetypes', sublabel: 'Created' },
+              { value: '7', label: 'Animal Archetypes', sublabel: 'Power/Pace profiles' },
               { value: '3hrs', label: 'Workshop', sublabel: 'Sprint format' },
             ]}
           />

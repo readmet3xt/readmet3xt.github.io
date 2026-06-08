@@ -29,16 +29,16 @@ export const Softwire = () => {
             'LNER',
             'Internship',
           ]}
-          intro="You're sprinting through the station, dodging crowds, watching platform boards nervously. You reach the ticket kiosk — there's a queue. You try downloading the app — it's 200MB. The departure countdown ticks. During my Softwire internship, I led UX design for LNER's App Clip: a sub-10MB, instant-launch solution for exactly this situation."
+          intro="You're sprinting through the station, dodging crowds, watching platform boards nervously. You reach the ticket kiosk — there's a queue. You try downloading the app — it's 200MB. The departure countdown ticks. During my Softwire internship I co-led UX design — one of two design interns driving the project — for LNER's App Clip: a sub-10MB, instant-launch solution for exactly this situation."
           overview={{
             role: [
-              'Solo UX/UI Designer',
-              'Led 7 developers through the design process',
-              'Facilitated workshop with 13 stakeholders',
-              'Conducted usability testing with 9 participants',
+              'UX/UI Designer — co-led the project with one other design intern',
+              'Drove the design process for a 7-strong developer team',
+              'Co-facilitated a 13-person ideation workshop',
+              'Ran usability testing with 9 participants',
             ],
             timeline: '8-week summer internship, July–August 2022',
-            recognition: 'Core booking flow validated and developed within internship timeline',
+            recognition: 'Core booking flow validated and handed to engineering within the internship timeline',
             tools: [
               'Figma',
               'Usability Testing',
@@ -79,8 +79,15 @@ export const Softwire = () => {
         {/* Research & Discovery */}
         <CaseStudySection title="Research & Discovery">
           <CaseStudyParagraph lead>
-            I started with an ideation workshop — 13 participants across LNER stakeholders, designers,
+            We started with an ideation workshop — 13 participants across LNER stakeholders, designers,
             developers, and project managers — then took the research to the field.
+          </CaseStudyParagraph>
+
+          <CaseStudyParagraph>
+            Desk research set the baseline: travellers already rated the ease of buying a ticket
+            positively at <strong>82%</strong> (Department for Transport / TfL). So the real gap wasn't
+            the transaction — it was getting <em>live, trustworthy</em> journey information under pressure.
+            The recurring demand from passengers was that information should feel "demonstrably live."
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
@@ -126,8 +133,9 @@ export const Softwire = () => {
 
             <CaseStudyCard title="Weeks 3–4: Prototyping & Testing">
               <CaseStudyParagraph>
-                Interactive Figma prototypes tested with 9 participants. The task: book a return ticket
-                to Birmingham for 1 adult and 1 child with a railcard. Two critical failures surfaced immediately.
+                Interactive Figma prototypes tested with 9 participants (4 friends and family, 5 Softwire
+                colleagues). The set task: book a return ticket to Birmingham for 1 adult and 1 child on a
+                16–25 Railcard, as if standing on the platform. Two critical failures surfaced immediately.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
@@ -260,6 +268,12 @@ export const Softwire = () => {
             Two specific design failures — an overwhelming confirmation screen and a multi-step journey
             flow — were caught early because we tested under realistic time pressure. Both fixes shipped
             into the build.
+          </CaseStudyParagraph>
+
+          <CaseStudyParagraph>
+            The 8-week clock also forced honest cuts. Multiple payment methods, editing journey details
+            from the review screen, and the onboarding/Seat Finder experiences were scoped out and
+            documented as next steps — better to ship a validated core than a half-finished everything.
           </CaseStudyParagraph>
         </CaseStudySection>
 

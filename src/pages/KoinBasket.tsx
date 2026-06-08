@@ -58,10 +58,10 @@ export const KoinBasket = () => {
           externalLabel="KoinBasket"
           overview={{
             role: [
-              'Founding Designer → Senior UX Designer & Design Lead',
-              'Built the MVP solo, grew into design leader',
-              'Hired and mentored a junior designer',
-              'Led a complete platform rebrand',
+              'Founding Designer → returned as Senior UX Designer',
+              'Designed the MVP solo, end-to-end',
+              'Mentored and managed a junior designer',
+              'Led the rebrand and later product initiatives',
             ],
             timeline: 'Founding Designer (Oct 2022–May 2023) → Senior Design Lead (Jun 2024–Mar 2025)',
             recognition: '0 → 70,000 users; Complete rebrand; Live trading ecosystem',
@@ -227,9 +227,9 @@ export const KoinBasket = () => {
 
               <CaseStudyCard title="Design Leadership">
                 <CaseStudyParagraph>
-                  This phase also meant building a team. I hired and mentored a junior designer, built our
+                  This phase also meant building a team. I mentored and managed a junior designer, built our
                   design system from scratch, and led cross-functional design decisions across product,
-                  marketing, and engineering. The recommendation my junior left when I was let go is something
+                  marketing, and engineering. The recommendation my junior left when I moved on is something
                   I'm genuinely proud of.
                 </CaseStudyParagraph>
               </CaseStudyCard>

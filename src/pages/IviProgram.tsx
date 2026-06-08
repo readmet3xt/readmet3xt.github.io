@@ -30,11 +30,11 @@ export const IviProgram = () => {
             'Systemic Design',
             'Core77 Award Winner',
           ]}
-          intro="What if the invisible labour women perform at home could be economically valued? At the Royal College of Art I led a Core77-awarded speculative service set in 2040 — built on research with 79 working women and validated with BCG. The Invisible Value Income Program makes unpaid domestic work visible, measurable, and compensated."
+          intro="What if the invisible labour women perform at home could be economically valued? At the Royal College of Art I led a Core77-awarded speculative service set in 2040 — built on 26 in-depth interviews and 53 questionnaire responses across 12 countries, and validated with BCG. The Invisible Value Income Program makes unpaid domestic work visible, measurable, and compensated."
           overview={{
             role: [
               'Project Lead & Design Strategist',
-              'Led research design and synthesis (79 participant interviews)',
+              'Led research design and synthesis (26 interviews + 53 surveys, 12 countries)',
               'Facilitated co-creation workshops with BCG stakeholders',
               'Designed speculative service system and Sensei platform UI',
             ],
@@ -82,11 +82,18 @@ export const IviProgram = () => {
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            Our research with 79 working women across sectors and countries mapped the systemic pressure
-            clearly: workplace stress compounded by unpaid domestic workload, blurred boundaries between
-            professional and personal life, and what we came to call the "Working Mom Penalty" — the
-            systematic devaluation of contributions both at home and at work.
+            Our research — 26 in-depth interviews and 53 questionnaire responses with working women
+            across 12 countries (UK, Germany, France, Japan, India, China and more), plus four wellbeing
+            specialists — mapped the systemic pressure clearly: workplace stress compounded by unpaid
+            domestic workload, blurred boundaries between professional and personal life, and what we
+            came to call the "Working Mom Penalty" — the systematic devaluation of contributions both
+            at home and at work.
           </CaseStudyParagraph>
+
+          <CaseStudyQuote author="Interview participant" role="Working mother">
+            Married men with children still work overtime, but women with children find it hard to —
+            which makes it difficult to compete and get promoted.
+          </CaseStudyQuote>
 
           <CaseStudyQuote>
             What if invisible value could be evaluated economically?
@@ -115,7 +122,8 @@ export const IviProgram = () => {
           <CaseStudyCardGrid columns={3}>
             <CaseStudyCard title="Phase 1 — Discovery">
               <CaseStudyParagraph>
-                79 working women interviewed across diverse sectors and countries, plus 4 wellbeing specialists.
+                26 in-depth interviews and 53 questionnaires with working women across 12 countries,
+                plus 4 wellbeing specialists.
                 <strong> Key findings:</strong> stress is both external (workload, societal pressure) and internal
                 (self-doubt, fear of obsolescence). A sense of control significantly decreases stress.
                 Prevention is more effective than cure, yet chronically underfunded.
@@ -124,9 +132,10 @@ export const IviProgram = () => {
 
             <CaseStudyCard title="Phase 2 — Persona & Problem">
               <CaseStudyParagraph>
-                We developed Johanna — a 36-year-old working mother. No time for herself. Loss of control.
-                Constant adjustment to competing demands. No space for deep communication. Her root problem
-                wasn't time management. It was that her domestic work had no recognised value.
+                We built Johanna from six mothers' real daily schedules — 36, a one-year-old daughter,
+                just back from maternity leave. <em>"I don't have one minute to myself. I'm 100% productive
+                at work in back-to-back meetings, and when the meetings stop, it's 100% parenting time."</em>
+                Her root problem wasn't time management. It was that her domestic work had no recognised value.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
@@ -250,7 +259,7 @@ export const IviProgram = () => {
         <CaseStudySection title="Impact & Recognition">
           <CaseStudyStatsGrid
             stats={[
-              { value: '79', label: 'Women Interviewed' },
+              { value: '79', label: 'Women', sublabel: 'Interviews + surveys, 12 countries' },
               { value: 'Core77', label: 'Award', sublabel: 'Notable Honor' },
               { value: 'BCG', label: 'Framework Adopted' },
               { value: '9', label: 'Stakeholders', sublabel: 'Validated' },

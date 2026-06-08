@@ -85,8 +85,8 @@ export const Otagon = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyQuote>
-          78% of gamers alt-tab during gameplay. 45% avoid seeking help entirely due to spoiler anxiety.
-          3–5 minutes lost per query.
+          Nearly every gamer I interviewed alt-tabbed mid-game to look something up — and a striking number
+          avoided seeking help at all, for fear of spoilers. Either way, the flow of play breaks.
         </CaseStudyQuote>
 
         <CaseStudyImage
