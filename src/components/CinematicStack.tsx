@@ -119,9 +119,9 @@ export default function CinematicStack({ projects, onSwitchToGrid }: CinematicSt
       style={{ height: `calc(100vh + ${numTransitions * 100}vh)` }}
       className="relative w-full"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center gap-6">
+      <div className="sticky top-0 h-screen w-full overflow-visible flex flex-col justify-center gap-6">
         {/* Card area — right margin clears the pagination rail */}
-        <div className="relative h-[76vh] max-h-[800px] mr-0 md:mr-24 lg:mr-32">
+        <div className="relative h-[80vh] max-h-[850px] mr-0 md:mr-24 lg:mr-32">
           {projects.map((project, index) => (
             <CinematicCard
               key={project.href}
@@ -273,6 +273,7 @@ function CinematicCard({
     >
       <motion.div
         animate={controls}
+        whileHover={{ scale: 1.05 }}
         onClick={handleClick}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') handleClick(e);
@@ -284,10 +285,10 @@ function CinematicCard({
           "relative w-full h-full rounded-2xl md:rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden bg-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60",
           isActive
             ? "border-2 shadow-[0_-30px_80px_-10px_rgba(0,0,0,0.6),0_0_30px_-5px] transition-all duration-300"
-            : "border border-white/[0.08] shadow-[0_-30px_80px_-10px_rgba(0,0,0,0.6)]"
+            : "border border-white/[0.04] shadow-[0_-30px_80px_-10px_rgba(0,0,0,0.6)]"
         )}
         style={isActive ? { 
-          borderColor: project.brandColor,
+          borderColor: project.brandColor + '80',
           boxShadow: `0 -30px 80px -10px rgba(0,0,0,0.6), 0 0 30px -5px ${project.brandColor}66`
         } : undefined}
       >
