@@ -14,7 +14,6 @@ interface PageLayoutProps {
 
 export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [hasClickedTypewriter, setHasClickedTypewriter] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const isMobile = useIsMobile();
   const autoCloseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -38,10 +37,6 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
   };
 
   useEffect(() => {
-    const handleTypewriterClick = () => {
-      setHasClickedTypewriter(true);
-    };
-
     const handleScroll = () => {
       // Use functional update to avoid dependency on isScrolling
       setIsScrolling(prev => {
@@ -53,32 +48,15 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
       }, 300);
-
-      // Auto-open sidebar only on desktop
-      // Note: we'll check these values from refs/latest state in handlescroll
-      // to avoid effect re-runs when they change
-      if (!isMobile && hasClickedTypewriter && !sidebarOpen && window.scrollY > 100) {
-        setSidebarOpen(true);
-        document.body.classList.add('sidebar-open');
-        setHasClickedTypewriter(false);
-
-        if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
-        autoCloseTimeoutRef.current = setTimeout(() => {
-          setSidebarOpen(false);
-          document.body.classList.remove('sidebar-open');
-        }, 2000);
-      }
     };
 
-    window.addEventListener('typewriter-clicked', handleTypewriterClick);
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('typewriter-clicked', handleTypewriterClick);
       window.removeEventListener('scroll', handleScroll);
       if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
-  }, [hasClickedTypewriter, sidebarOpen, isMobile]); // Removed isScrolling from dependencies
+  }, []);
 
   return (
     <SidebarProvider isOpen={sidebarOpen} isScrolling={isScrolling}>

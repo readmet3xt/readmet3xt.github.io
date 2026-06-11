@@ -154,11 +154,8 @@ export const TypewriterAnimation = () => {
         "bg-bg-primary rounded-xl px-4 mb-0 cursor-pointer overflow-hidden group"
       )}
       onClick={() => {
-        // Dispatch custom event for sidebar trigger
-        window.dispatchEvent(new CustomEvent('typewriter-clicked'));
-
-        // Scroll to projects grid
-        const grid = document.querySelector('[aria-label="Portfolio projects"]');
+        // Scroll to I design products section
+        const grid = document.querySelector('[aria-label="Introduction"]');
         if (grid) {
           grid.scrollIntoView({ behavior: 'auto', block: 'start' });
         } else {
@@ -169,8 +166,7 @@ export const TypewriterAnimation = () => {
       tabIndex={0}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-          window.dispatchEvent(new CustomEvent('typewriter-clicked'));
-          const grid = document.querySelector('[aria-label="Portfolio projects"]');
+          const grid = document.querySelector('[aria-label="Introduction"]');
           if (grid) {
             grid.scrollIntoView({ behavior: 'auto', block: 'start' });
           } else {

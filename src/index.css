@@ -257,10 +257,10 @@
     overflow: hidden;
   }
 
-  /* Work page section snapping — proximity (not mandatory) so power-scrollers aren't trapped */
+  /* Work page section snapping — mandatory so power-scrollers are snapped to sections */
   html.work-scroll-snap,
   body.work-scroll-snap {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
   }
 
   @media (min-width: 1024px) {

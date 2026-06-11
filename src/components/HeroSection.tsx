@@ -25,8 +25,6 @@ export const HeroSection = () => {
   });
 
   const scrollToWork = () => {
-    // Preserve the sidebar auto-open behavior tied to this event
-    window.dispatchEvent(new CustomEvent('typewriter-clicked'));
     const grid = document.getElementById('work');
     if (grid) {
       grid.scrollIntoView({ behavior: 'auto', block: 'start' });
