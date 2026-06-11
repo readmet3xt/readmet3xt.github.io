@@ -44,8 +44,8 @@ export const ProjectsGrid = () => {
           '/otagon/vision/5.png',
         ]}
         className=""
-        summary="An AI gaming companion that sees what you see. Solo-built from zero to a live product on web, iOS, and Android — 30+ features, spoiler-aware AI, paid tiers, PC-to-mobile sync."
-        tags={["Solo Build", "AI UX", "PWA + Mobile", "Live"]}
+        summary="An AI gaming companion that sees what you see. Solo-built from zero to a live product on web and PWA — 30+ features, spoiler-aware AI, paid tiers, PC-to-mobile sync."
+        tags={["Solo Build", "AI UX", "Web + PWA", "Live"]}
       />
 
       {/* 2 — Biggest commercial impact */}

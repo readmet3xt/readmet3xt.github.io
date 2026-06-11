@@ -6,7 +6,7 @@ import { TypewriterAnimation } from '@/components/TypewriterAnimation';
 const proofPoints = [
   { value: '0 → 70K', label: 'users as founding designer' },
   { value: 'Core77', label: 'Design Award winner' },
-  { value: '3 platforms', label: 'shipped solo — web, iOS, Android' },
+  { value: 'Web & PWA', label: 'shipped solo' },
   { value: 'VISA · BCG', label: 'adopted my concepts' },
 ];
 
@@ -64,7 +64,7 @@ export const HeroSection = () => {
             I'm <span className="text-text-primary font-medium">Amaan Khan</span> — an
             RCA-trained product designer who writes production React. Founding designer
             behind a fintech that grew to 70,000 users, and solo builder of Otagon, an AI
-            gaming companion live on web, iOS, and Android.
+            gaming companion live on web and PWA.
           </motion.p>
 
           <motion.div

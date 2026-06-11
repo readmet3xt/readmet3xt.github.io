@@ -88,7 +88,7 @@ export const WelcomeCard = () => {
         </div>
         <p className="text-lg sm:text-lg text-text-secondary break-words text-left">Product Designer & Engineer</p>
         <p className="text-base sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words text-left">
-          RCA-trained designer who writes production React. I solo-built Otagon — an AI gaming companion live on web, iOS, and Android — and work end-to-end: research, design, and code.
+          RCA-trained designer who writes production React. I solo-built Otagon — an AI gaming companion live on web and PWA — and work end-to-end: research, design, and code.
         </p>
         <div className="flex items-center gap-1.5 pt-4 mt-3 border-t border-border/60">
           <span className="font-ibm-plex-mono text-[11px] uppercase tracking-widest text-text-tertiary group-hover:text-accent-primary transition-colors duration-300">

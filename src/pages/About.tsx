@@ -45,7 +45,7 @@ export const About = () => {
                   Based in <span className="font-medium">Hyderabad</span>, open to Bangalore / Mumbai / Remote. M.A. Service Design from the <span className="font-medium">Royal College of Art (RCA), London</span> — ranked #1 art & design school globally.
                 </p>
                 <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                  I design and build products end-to-end — from user research and service blueprinting to React architecture and AI integration. Most recently I solo-shipped Otagon, an AI gaming companion live on web, iOS, and Android, with 30+ features built end-to-end.
+                  I design and build products end-to-end — from user research and service blueprinting to React architecture and AI integration. Most recently I solo-shipped Otagon, an AI gaming companion live on web and PWA, with 30+ features built end-to-end.
                 </p>
               </div>
 
@@ -69,7 +69,7 @@ export const About = () => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      Solo-shipped <span className="font-semibold text-text-primary">Otagon</span> — a production AI companion on web, iOS, and Android: 30+ features, paid tiers, and a ~40% API cost reduction through smart caching
+                      Solo-shipped <span className="font-semibold text-text-primary">Otagon</span> — a production AI companion on web and PWA: 30+ features, paid tiers, and a ~40% API cost reduction through smart caching
                     </p>
                   </div>
                   <div className="flex items-start gap-3">

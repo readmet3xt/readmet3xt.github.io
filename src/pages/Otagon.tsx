@@ -29,11 +29,11 @@ export const Otagon = () => {
           'React 18',
           'TypeScript',
           'AI / Gemini',
-          'PWA + iOS + Android',
+          'Web + PWA',
           'Supabase',
           'Lemon Squeezy',
         ]}
-        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Otagon went from concept to a production product — a PWA, Capacitor-packaged iOS and Android apps, a desktop pairing client, paid tiers, and an AI stack on Gemini and Supabase. This is the story of how it actually got here."
+        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Otagon went from concept to a production product — a PWA, a desktop pairing client, paid tiers, and an AI stack on Gemini and Supabase. This is the story of how it actually got here."
         externalLink="https://otagon.app"
         externalLabel="otagon.app"
         overview={{
@@ -44,12 +44,12 @@ export const Otagon = () => {
             'Backend, billing, mobile packaging, GTM',
           ],
           timeline: 'August 2025 – present',
-          recognition: '30+ shipped features, paid tier live on Lemon Squeezy, iOS & Android packaged via Capacitor',
+          recognition: '30+ shipped features, paid tier live on Lemon Squeezy, installable PWA with desktop pairing',
           tools: [
             'React 18',
             'TypeScript',
             'Vite',
-            'Capacitor (iOS + Android)',
+            'PWA Development',
             'Supabase (Auth, DB, Edge Functions)',
             'Google Gemini 2.x',
             'IGDB API',
@@ -148,9 +148,9 @@ export const Otagon = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 5 — Mobile, Gamification & Hardening">
+          <CaseStudyCard title="Phase 5 — PWA, Gamification & Hardening">
             <CaseStudyParagraph>
-              Packaged the PWA into iOS and Android builds via Capacitor. Layered in a full gamification
+              Optimized the PWA for responsive mobile/desktop layouts. Layered in a full gamification
               system — achievements, XP, intent classification, Bronze → Pro tiers. Hardened RLS across
               every user-data table and ran a top-to-bottom security audit.
             </CaseStudyParagraph>
@@ -299,7 +299,7 @@ export const Otagon = () => {
         <CaseStudyStatsGrid
           stats={[
             { value: '30+', label: 'Features shipped', sublabel: 'End-to-end, solo' },
-            { value: '3', label: 'Platforms live', sublabel: 'PWA, iOS, Android' },
+            { value: 'Web & PWA', label: 'Platform coverage', sublabel: 'Desktop, Mobile, PWA' },
             { value: '~40%', label: 'API cost reduction', sublabel: 'Caching + shared knowledge' },
             { value: '8+', label: 'Genre personas', sublabel: 'Souls, RPG, FPS, more' },
           ]}
@@ -311,7 +311,7 @@ export const Otagon = () => {
               '30+ features end-to-end',
               'Lemon Squeezy payment integration (Edge Function-secured)',
               'WebSocket-based PC-to-Mobile sync',
-              'iOS + Android builds via Capacitor',
+              'PWA installation and mobile optimization',
               'Achievements, XP, and tiered progression',
               '~40% API cost reduction via caching',
               'Strict RLS on every user-data table',
@@ -321,7 +321,7 @@ export const Otagon = () => {
           <CaseStudyCard title="Status">
             <CaseStudyParagraph>
               Live in production with Lemon Squeezy payments, the Edge Function deployed to the
-              production Supabase project, mobile builds packaged, and the security audit closed out.
+              production Supabase project, web/PWA builds deployed, and the security audit closed out.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
@@ -369,10 +369,10 @@ export const Otagon = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="PWA-first earns you mobile for free">
+          <CaseStudyCard title="PWA-first builds cross-platform leverage">
             <CaseStudyParagraph>
-              The PWA-first decision paid back twice: it bought me a year of iteration, and Capacitor
-              turned the same codebase into iOS and Android builds without a rewrite.
+              The PWA-first decision paid back twice: it bought me a year of iteration, and allowed
+              delivering a near-native experience on both mobile and desktop without a rewrite.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
@@ -381,7 +381,7 @@ export const Otagon = () => {
       {/* What's Next */}
       <CaseStudySection title="What's Next">
         <CaseStudyParagraph lead>
-          Lemon Squeezy payments are live. iOS and Android builds are packaged and ready. In active
+          Lemon Squeezy payments are live. The web and PWA builds are fully optimized and ready. In active
           development: performance work, video capture, hands-free TTS conversations, and a ScreenShot
           spin-off that surfaces the same pairing flow as a focused utility. Community features —
           shared builds and strategy sharing — are on the next roadmap. The architecture is built to scale.

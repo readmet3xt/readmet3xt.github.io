@@ -9,7 +9,7 @@ import { ImageLightbox } from './ImageLightbox';
 
 // Reading order for the next-project rail (mirrors the home grid order)
 const caseStudyOrder = [
-  { path: '/otagon', title: 'Otagon', blurb: 'An AI gaming companion shipped solo to web, iOS, and Android' },
+  { path: '/otagon', title: 'Otagon', blurb: 'An AI gaming companion shipped solo to web and PWA' },
   { path: '/koinbasket', title: 'KoinBasket', blurb: 'From a one-week MVP contract to 70,000 users' },
   { path: '/lawx', title: 'Law.X', blurb: 'Designing transparency into legal AI' },
   { path: '/pebble', title: 'Pebble', blurb: 'A VISA-backed wellbeing companion for remote teams' },
