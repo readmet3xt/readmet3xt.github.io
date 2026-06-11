@@ -1,5 +1,4 @@
-import { memo, lazy, Suspense, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { memo, lazy, Suspense } from 'react';
 import { PageLayout } from '@/components/PageLayout';
 import { TypewriterAnimation } from '@/components/TypewriterAnimation';
 import { HeroSection } from '@/components/HeroSection';
@@ -13,27 +12,17 @@ const TestimonialsCarousel = lazy(() => import('@/components/TestimonialsCarouse
 export const Portfolio = memo(() => {
   useScrollReveal();
 
-  useEffect(() => {
-    document.documentElement.classList.add('work-scroll-snap');
-    document.body.classList.add('work-scroll-snap');
-
-    return () => {
-      document.documentElement.classList.remove('work-scroll-snap');
-      document.body.classList.remove('work-scroll-snap');
-    };
-  }, []);
-
   return (
     <PageLayout className="max-w-7xl mx-auto w-full">
-      <div className="snap-start snap-always h-[100svh]" data-work-snap="true">
+      <div className="h-[100svh]">
         <TypewriterAnimation />
       </div>
 
-      <div className="snap-start snap-always lg:h-[100svh]" data-work-snap="true">
+      <div className="lg:h-[100svh]">
         <HeroSection />
       </div>
 
-      <div className="snap-start snap-always" data-work-snap="true">
+      <div>
         <div className="pt-8 sm:pt-10 lg:pt-12">
           <ProjectsGrid />
         </div>

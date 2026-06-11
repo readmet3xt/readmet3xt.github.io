@@ -3,7 +3,13 @@ import * as React from "react"
 const MOBILE_BREAKPOINT = 768
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+  // Initialize synchronously so the first render doesn't briefly assume desktop
+  // (which would flash desktop-only UI like the cinematic stack on phones)
+  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(() =>
+    typeof window !== "undefined"
+      ? window.innerWidth < MOBILE_BREAKPOINT
+      : undefined
+  )
 
   React.useEffect(() => {
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)

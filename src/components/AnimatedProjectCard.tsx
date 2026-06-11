@@ -19,22 +19,17 @@ interface AnimatedProjectCardProps {
   brandColor?: string; // Accent color of the case study
 }
 
+// Frosted status pills — same language as the cinematic stack
 const PILL_STYLES = {
   ongoing: {
     label: 'Ongoing',
-    bg: 'bg-yellow-400/90',
-    border: 'border-yellow-400/30',
-    text: 'text-black',
-    dot: 'bg-black',
-    tick: false,
+    dot: 'bg-amber-400',
+    ping: true,
   },
   launched: {
     label: 'Launched',
-    bg: 'bg-blue-500/90',
-    border: 'border-blue-500/30',
-    text: 'text-white',
-    dot: 'bg-white',
-    tick: true,
+    dot: 'bg-emerald-400',
+    ping: false,
   },
 } as const;
 
@@ -89,9 +84,9 @@ export const AnimatedProjectCard = ({
 
   const themeColor = brandColor || '#ff4757';
 
-  // Use optimized hover effect hook
+  // Use optimized hover effect hook — restrained tilt
   useCardHoverEffect(cardRef, {
-    maxRotation: 10,
+    maxRotation: 4,
     transitionDuration: 100,
   });
 
@@ -164,10 +159,8 @@ export const AnimatedProjectCard = ({
       transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       animate={controls}
       whileHover={{
-        scale: 1.02,
-        boxShadow: `0 0 50px ${themeColor}40`,
-        borderColor: `${themeColor}66`,
-        transition: { duration: 0.2, ease: "easeOut" }
+        boxShadow: `0 24px 60px -24px ${themeColor}40`,
+        transition: { duration: 0.3, ease: "easeOut" }
       }}
       whileTap={{
         scale: 0.96,
@@ -178,7 +171,7 @@ export const AnimatedProjectCard = ({
       {/* Image carousel — cascading top-to-bottom reveal, no controls */}
       <div
         className={cn(
-          "relative w-full aspect-[2/1] flex-shrink-0 overflow-hidden transition-all duration-300 bg-card"
+          "relative w-full aspect-[2/1] flex-shrink-0 overflow-hidden bg-card transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         )}
       >
         <AnimatePresence initial={false}>
@@ -201,15 +194,16 @@ export const AnimatedProjectCard = ({
           <div className="flex items-start justify-between gap-3 mb-1">
             <h3 className="text-xl sm:text-xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
             {pillStyle && (
-              <div className={`flex-shrink-0 mt-1 flex items-center gap-2 px-3 py-1 ${pillStyle.bg} backdrop-blur-sm rounded-full border ${pillStyle.border}`}>
-                {pillStyle.tick ? (
-                  <svg className="w-3 h-3 animate-pulse" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M2 6.5l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                ) : (
-                  <div className={`w-2 h-2 ${pillStyle.dot} rounded-full animate-pulse`} />
-                )}
-                <span className={`text-xs font-medium ${pillStyle.text}`}>{pillStyle.label}</span>
+              <div className="flex-shrink-0 mt-1 flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/[0.05] border border-foreground/10 backdrop-blur-md">
+                <span className="relative flex w-1.5 h-1.5">
+                  {pillStyle.ping && (
+                    <span className={`absolute inline-flex h-full w-full rounded-full ${pillStyle.dot} opacity-60 animate-ping`} />
+                  )}
+                  <span className={`relative inline-flex w-1.5 h-1.5 rounded-full ${pillStyle.dot}`} />
+                </span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-text-primary leading-none">
+                  {pillStyle.label}
+                </span>
               </div>
             )}
           </div>
@@ -224,7 +218,11 @@ export const AnimatedProjectCard = ({
               {tags.slice(0, 3).map((tag, index) => (
                 <span
                   key={index}
-                  className="px-2.5 py-1 text-sm bg-accent-primary/10 text-accent-primary rounded break-words"
+                  className="px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-text-primary rounded-full border break-words"
+                  style={{
+                    backgroundColor: `${themeColor}14`,
+                    borderColor: `${themeColor}30`,
+                  }}
                   role="listitem"
                 >
                   {tag}

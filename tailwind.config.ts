@@ -20,7 +20,8 @@ export default {
 		extend: {
 			fontFamily: {
 				'inter': ['Inter', 'sans-serif'],
-				'dm-sans': ['DM Sans', 'sans-serif'],
+				'dm-sans': ['Bricolage Grotesque', 'DM Sans', 'sans-serif'],
+				'serif-accent': ['Instrument Serif', 'Georgia', 'serif'],
 				'ibm-plex-mono': ['IBM Plex Mono', 'monospace'],
 				'satoshi': ['Satoshi', 'sans-serif'],
 				'figtree': ['Figtree', 'sans-serif'],

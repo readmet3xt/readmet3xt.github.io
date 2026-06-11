@@ -61,6 +61,12 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
   return (
     <SidebarProvider isOpen={sidebarOpen} isScrolling={isScrolling}>
       <div className="antialiased font-inter text-text-primary bg-bg-primary">
+        {/* Film grain — above content, below modals (z-1000) so lightbox images stay clean */}
+        <div
+          aria-hidden="true"
+          className="grain-overlay pointer-events-none fixed inset-0 z-[60] opacity-[0.05] mix-blend-overlay"
+        />
+
         {/* Sidebar Status Area (Toggle or Scroll Icon) */}
         <div
           className={cn(
@@ -119,7 +125,17 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
           />
         )}
 
-        <div className="w-full max-w-full overflow-x-hidden min-h-screen relative">
+        <div className="w-full max-w-full overflow-clip min-h-screen relative">
+          {/* Ambient glow anchored to the top of the page so the hero has a focal point */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[120vh]"
+            style={{
+              background:
+                'radial-gradient(ellipse 80% 55% at 50% -10%, hsl(var(--accent-primary) / 0.07), transparent 70%)',
+            }}
+          />
+
           <Sidebar
             isOpen={sidebarOpen}
             onClose={closeSidebar}
