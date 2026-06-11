@@ -25,7 +25,7 @@ export const Portfolio = memo(() => {
 
   return (
     <PageLayout className="max-w-7xl mx-auto w-full">
-      <div className="snap-start snap-always lg:h-[100svh]" data-work-snap="true">
+      <div className="snap-start snap-always h-[100svh]" data-work-snap="true">
         <TypewriterAnimation />
       </div>
 

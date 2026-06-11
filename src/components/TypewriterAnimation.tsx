@@ -145,34 +145,27 @@ export const TypewriterAnimation = () => {
     };
   }, []);
 
+  const scrollToNext = () => {
+    const intro = document.querySelector('[aria-label="Introduction"]');
+    if (intro) {
+      intro.scrollIntoView({ behavior: 'auto', block: 'start' });
+    } else {
+      startNextQuestion();
+    }
+  };
+
   return (
     <div
       id="text-animation-container"
       className={cn(
-        "relative flex flex-col items-center justify-center w-full max-w-full h-full",
-        "min-h-[500px]", // Removed negative margin to ensure perfect centering in the snap container
-        "bg-bg-primary rounded-xl px-4 mb-0 cursor-pointer overflow-hidden group"
+        "relative flex flex-col items-center w-full max-w-full h-full min-h-[500px]",
+        "bg-bg-primary rounded-xl cursor-pointer overflow-hidden group"
       )}
-      onClick={() => {
-        // Scroll to I design products section
-        const grid = document.querySelector('[aria-label="Introduction"]');
-        if (grid) {
-          grid.scrollIntoView({ behavior: 'auto', block: 'start' });
-        } else {
-          startNextQuestion();
-        }
-      }}
+      onClick={scrollToNext}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          const grid = document.querySelector('[aria-label="Introduction"]');
-          if (grid) {
-            grid.scrollIntoView({ behavior: 'auto', block: 'start' });
-          } else {
-            startNextQuestion();
-          }
-        }
+        if (e.key === 'Enter' || e.key === ' ') scrollToNext();
       }}
       aria-label="Click to explore projects"
     >
@@ -183,10 +176,14 @@ export const TypewriterAnimation = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
+          className="flex flex-col items-center w-full max-w-5xl mx-auto flex-1 min-h-0"
         >
-          {/* Lottie Animation */}
-          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-[25vh] lg:h-[25vh] xl:w-[28vh] xl:h-[28vh] max-w-[280px] max-h-[280px] lg:max-w-[300px] lg:max-h-[300px] mt-8 lg:mt-0 mb-6 sm:mb-8 shrink-0">
+          {/* Top spacer — h-20 on mobile clears the fixed header; lg:h-[16%] halves
+              the prior whitespace above the lottie on desktop */}
+          <div className="h-20 lg:h-[16%] shrink-0" />
+
+          {/* Lottie — shrink-0 keeps it fixed as text grows below */}
+          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-[25vh] lg:h-[25vh] xl:w-[28vh] xl:h-[28vh] max-w-[280px] max-h-[280px] lg:max-w-[300px] lg:max-h-[300px] shrink-0 mb-6 sm:mb-8">
             <DotLottieReact
               src={lottieSources[currentQuestionIndex]}
               loop
@@ -194,7 +191,7 @@ export const TypewriterAnimation = () => {
             />
           </div>
 
-          {/* Question Text */}
+          {/* Question Text — text grows downward into the bottom spacer, lottie never moves */}
           <p
             className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-[clamp(1.75rem,3.5vh,3rem)] xl:text-[clamp(2rem,4vh,3.5rem)] leading-tight break-words px-4 sm:px-8 lg:px-12 xl:px-16 text-text-primary`}
             aria-live="polite"
@@ -211,10 +208,13 @@ export const TypewriterAnimation = () => {
               </>
             )}
           </p>
+
+          {/* Bottom spacer absorbs space so text grows down without pushing lottie up */}
+          <div className="flex-1" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Scroll indicator for desktop focus */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
