@@ -28,7 +28,7 @@ export const PROJECTS: ProjectData[] = [
     summary:
       'An AI gaming companion that sees what you see. Solo-built from zero to a live product on web and PWA — 30+ features, spoiler-aware AI, paid tiers, PC-to-mobile sync.',
     tags: ['Solo Build', 'AI UX', 'Web + PWA', 'Live'],
-    brandColor: '#8B5CF6',
+    brandColor: '#FF8C00',
   },
   {
     href: '/koinbasket',
@@ -47,7 +47,7 @@ export const PROJECTS: ProjectData[] = [
     summary:
       'From a one-week MVP contract to 70,000 users. Founding designer through a full rebrand, a design team, and a two-sided live-trading ecosystem.',
     tags: ['Fintech', '70K Users', 'Founding Designer'],
-    brandColor: '#9FE870',
+    brandColor: '#8B5CF6',
   },
   {
     href: '/lawx',
@@ -153,7 +153,7 @@ export const PROJECTS: ProjectData[] = [
     summary:
       'A tournament tracker for FIFA nights — leagues, knockouts, groups, live scoring, and a spectator link friends open on their phones. Solo-built on a static SPA + Supabase + WebRTC.',
     tags: ['Solo Build', 'Real-time', 'PWA'],
-    brandColor: '#22C55E',
+    brandColor: '#ADFF2F',
   },
   {
     href: '/screenshot',
