@@ -118,95 +118,15 @@
     transform: scale(0.98);
   }
 
-  /* Typewriter Animation Styling */
-  #text-animation-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    height: 150px;
-    background-color: hsl(var(--bg-primary));
-    border-radius: 0.75rem;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    cursor: pointer;
-    overflow: hidden;
-  }
-
-  @media (min-width: 640px) {
-    #text-animation-container {
-      padding: 1.5rem;
-      height: 160px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    #text-animation-container {
-      padding: 2rem;
-      height: 180px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    #text-animation-container {
-      height: 140px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    #text-animation-container {
-      height: 140px;
-    }
-  }
-
-  #animated-question {
-    text-align: left;
-    font-size: 1.5rem;
-    line-height: 1.4;
-    color: hsl(var(--text-primary));
-    transition: opacity 0.5s ease-in-out;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    max-width: 100%;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  @media (min-width: 640px) {
-    #animated-question {
-      font-size: 1.5rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    #animated-question {
-      font-size: 1.875rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    #animated-question {
-      font-size: 2rem;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    #animated-question {
-      font-size: 2.25rem;
-    }
-  }
-
   /* Blinking cursor for typewriter effect */
-  #animated-question .typewriter-cursor {
+  .typewriter-cursor {
     display: inline-block;
     width: 2px;
-    height: 1.25rem;
+    height: 1em;
     background-color: hsl(var(--accent-primary));
     animation: blink 1s infinite;
-    margin-left: 4px;
-    vertical-align: middle;
+    margin-left: 3px;
+    vertical-align: text-bottom;
     position: relative;
     z-index: 1;
   }

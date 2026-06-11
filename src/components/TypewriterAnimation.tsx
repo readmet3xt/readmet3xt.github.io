@@ -186,7 +186,7 @@ export const TypewriterAnimation = () => {
           className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
         >
           {/* Lottie Animation */}
-          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-[25vh] lg:h-[25vh] xl:w-[30vh] xl:h-[30vh] mt-8 lg:mt-0 mb-6 sm:mb-8">
+          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-[25vh] lg:h-[25vh] xl:w-[28vh] xl:h-[28vh] max-w-[280px] max-h-[280px] lg:max-w-[300px] lg:max-h-[300px] mt-8 lg:mt-0 mb-6 sm:mb-8 shrink-0">
             <DotLottieReact
               src={lottieSources[currentQuestionIndex]}
               loop
@@ -196,7 +196,7 @@ export const TypewriterAnimation = () => {
 
           {/* Question Text */}
           <p
-            className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-[clamp(1.75rem,3.5vh,3rem)] xl:text-[clamp(2rem,4vh,3.75rem)] leading-tight break-words px-4 sm:px-8 lg:px-12 text-text-primary`}
+            className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-[clamp(1.75rem,3.5vh,3rem)] xl:text-[clamp(2rem,4vh,3.5rem)] leading-tight break-words px-4 sm:px-8 lg:px-12 xl:px-16 text-text-primary`}
             aria-live="polite"
           >
             {isTypingPrefix ? (
