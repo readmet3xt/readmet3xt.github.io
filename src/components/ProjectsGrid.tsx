@@ -18,7 +18,7 @@ export const ProjectsGrid = () => {
       </header>
       <div
         className={cn(
-          "grid gap-12 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full",
+          "grid gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full",
           isOpen
             ? "grid-cols-1 md:grid-cols-2"
             : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
@@ -46,6 +46,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="An AI gaming companion that sees what you see. Solo-built from zero to a live product on web and PWA — 30+ features, spoiler-aware AI, paid tiers, PC-to-mobile sync."
         tags={["Solo Build", "AI UX", "Web + PWA", "Live"]}
+        brandColor="#8B5CF6"
       />
 
       {/* 2 — Biggest commercial impact */}
@@ -67,6 +68,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="From a one-week MVP contract to 70,000 users. Founding designer through a full rebrand, a design team, and a two-sided live-trading ecosystem."
         tags={["Fintech", "70K Users", "Founding Designer"]}
+        brandColor="#9FE870"
       />
 
       {/* 3 — AI UX work */}
@@ -88,6 +90,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="Turned a black-box legal chatbot into a workspace lawyers can supervise — by showing the AI's reasoning instead of hiding it. One-month design contract."
         tags={["Legal Tech", "AI UX", "Transparency Design"]}
+        brandColor="#EAB308"
       />
 
       {/* 4 — Award-winning academic: VISA */}
@@ -109,6 +112,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="A wellbeing companion for remote teams, built on 1,200+ survey responses and 24 workshops. The Virtual Café concept was adopted into VISA's collaboration roadmap."
         tags={["Service Design", "VISA Innovation", "Employee Wellbeing"]}
+        brandColor="#26A69A"
       />
 
       {/* 5 — Core77 award */}
@@ -130,6 +134,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="Core77-awarded speculative service that makes women's invisible domestic labour economically visible. The research framework was adopted internally by BCG."
         tags={["Speculative Design", "Core77 Award", "Future of Work"]}
+        brandColor="#7A8EB1"
       />
 
       {/* 6 — Internship */}
@@ -151,6 +156,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="Designing for people running to catch trains. Co-led UX for LNER's sub-10MB instant-launch ticket booking App Clip — validated with users and handed to engineering in 8 weeks."
         tags={["App Clip", "Mobile UX", "LNER"]}
+        brandColor="#E3000F"
       />
 
       {/* 7 — Conservation partnerships */}
@@ -172,6 +178,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="A facilitation methodology that turns conservation 'happy accidents' into designed partnerships. One 3-hour workshop initiated the WWT × Airbnb collaboration."
         tags={["Service Design", "Conservation", "Facilitation"]}
+        brandColor="#A8A9A1"
       />
 
       {/* 8 — Side projects */}
@@ -187,6 +194,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="A tournament tracker for FIFA nights — leagues, knockouts, groups, live scoring, and a spectator link friends open on their phones. Solo-built on a static SPA + Supabase + WebRTC."
         tags={["Solo Build", "Real-time", "PWA"]}
+        brandColor="#22C55E"
       />
 
       <AnimatedProjectCard
@@ -201,6 +209,7 @@ export const ProjectsGrid = () => {
         className=""
         summary="Press F1 on your PC, see it on your phone seconds later. A pairing-code screenshot grabber with folders, lightbox, and an installable PWA — shipped in two weeks."
         tags={["Solo Build", "PWA", "v0"]}
+        brandColor="#F59E0B"
       />
       </div>
     </section>

@@ -16,6 +16,7 @@ interface AnimatedProjectCardProps {
   tags?: string[];
   index?: number;
   pill?: 'ongoing' | 'launched';
+  brandColor?: string; // Accent color of the case study
 }
 
 const PILL_STYLES = {
@@ -63,16 +64,30 @@ const flipVariants = {
   },
 };
 
-export const AnimatedProjectCard = ({ href, title, description, images, className = "", summary, tags, index = 0, pill }: AnimatedProjectCardProps) => {
+export const AnimatedProjectCard = ({ 
+  href, 
+  title, 
+  description, 
+  images, 
+  className = "", 
+  summary, 
+  tags, 
+  index = 0, 
+  pill,
+  brandColor
+}: AnimatedProjectCardProps) => {
   const pillStyle = pill ? PILL_STYLES[pill] : null;
 
   const cardRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const { isOpen } = useSidebar();
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const controls = useAnimation();
   const isNavigating = useRef(false);
+
+  const themeColor = brandColor || '#ff4757';
 
   // Use optimized hover effect hook
   useCardHoverEffect(cardRef, {
@@ -115,10 +130,10 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
     if (isNavigating.current) return;
     isNavigating.current = true;
 
-    // Play press-down animation
+    // Play press-down animation with custom brand shadow glow
     await controls.start({
       scale: 0.96,
-      boxShadow: "0 0 60px rgba(255, 71, 87, 0.6)",
+      boxShadow: `0 0 60px ${themeColor}66`,
       transition: { duration: 0.12, ease: "easeOut" },
     });
 
@@ -127,14 +142,13 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
 
     // Navigate
     navigate(href);
-  }, [controls, navigate, href]);
+  }, [controls, navigate, href, themeColor]);
 
   return (
     <motion.div
       ref={cardRef}
       className={cn(
-        "project-card rounded-xl overflow-hidden group bg-card block flex flex-col w-full max-w-full cursor-pointer shadow-none hover:shadow-[0_0_50px_rgba(255,71,87,0.4)]",
-        isOpen ? "min-h-[340px]" : "min-h-[300px]",
+        "project-card rounded-xl overflow-hidden group bg-card block flex flex-col w-full max-w-full cursor-pointer shadow-none transition-all duration-300",
         className
       )}
       role="link"
@@ -142,6 +156,8 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
       aria-label={`View ${title} project details`}
       onClick={handleClick}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick(e as unknown as React.MouseEvent); }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -149,18 +165,20 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
       animate={controls}
       whileHover={{
         scale: 1.02,
+        boxShadow: `0 0 50px ${themeColor}40`,
+        borderColor: `${themeColor}66`,
         transition: { duration: 0.2, ease: "easeOut" }
       }}
       whileTap={{
         scale: 0.96,
+        boxShadow: `0 0 60px ${themeColor}66`,
         transition: { duration: 0.12, ease: "easeOut" }
       }}
     >
       {/* Image carousel — cascading top-to-bottom reveal, no controls */}
       <div
         className={cn(
-          "relative w-full flex-shrink-0 overflow-hidden transition-all duration-300 bg-card",
-          isOpen ? "h-48 sm:h-52" : "h-40 sm:h-44"
+          "relative w-full aspect-[2/1] flex-shrink-0 overflow-hidden transition-all duration-300 bg-card"
         )}
       >
         <AnimatePresence initial={false}>
@@ -178,54 +196,58 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
         </AnimatePresence>
       </div>
 
-      <div className="p-4 sm:p-6 flex-1 flex flex-col">
-        <div className="flex items-start justify-between gap-3 mb-1">
-          <h3 className="text-2xl sm:text-2xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
-          {pillStyle && (
-            <div className={`flex-shrink-0 mt-1.5 flex items-center gap-2 px-3 py-1 ${pillStyle.bg} backdrop-blur-sm rounded-full border ${pillStyle.border}`}>
-              {pillStyle.tick ? (
-                <svg className="w-3 h-3 animate-pulse" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                  <path d="M2 6.5l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              ) : (
-                <div className={`w-2 h-2 ${pillStyle.dot} rounded-full animate-pulse`} />
-              )}
-              <span className={`text-xs font-medium ${pillStyle.text}`}>{pillStyle.label}</span>
-            </div>
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <div className="flex items-start justify-between gap-3 mb-1">
+            <h3 className="text-xl sm:text-xl font-bold font-dm-sans text-foreground break-words">{title}</h3>
+            {pillStyle && (
+              <div className={`flex-shrink-0 mt-1 flex items-center gap-2 px-3 py-1 ${pillStyle.bg} backdrop-blur-sm rounded-full border ${pillStyle.border}`}>
+                {pillStyle.tick ? (
+                  <svg className="w-3 h-3 animate-pulse" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2 6.5l3 3 5-5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                ) : (
+                  <div className={`w-2 h-2 ${pillStyle.dot} rounded-full animate-pulse`} />
+                )}
+                <span className={`text-xs font-medium ${pillStyle.text}`}>{pillStyle.label}</span>
+              </div>
+            )}
+          </div>
+          <p className="text-base sm:text-base mt-0.5 text-text-secondary break-words">{description}</p>
+          {summary && (
+            <p className="text-sm sm:text-sm mt-2 text-text-secondary/80 leading-relaxed line-clamp-2 break-words">{summary}</p>
           )}
         </div>
-        <p className="text-lg sm:text-lg mt-1 text-text-secondary break-words">{description}</p>
-        {summary && (
-          <p className="text-base sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words">{summary}</p>
-        )}
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mt-auto pt-3" role="list" aria-label={`${title} project tags`}>
-            {tags.slice(0, 3).map((tag, index) => (
-              <span
-                key={index}
-                className="px-2.5 py-1 text-sm bg-accent-primary/10 text-accent-primary rounded break-words"
-                role="listitem"
-              >
-                {tag}
-              </span>
-            ))}
+        <div>
+          {tags && tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 pt-3" role="list" aria-label={`${title} project tags`}>
+              {tags.slice(0, 3).map((tag, index) => (
+                <span
+                  key={index}
+                  className="px-2.5 py-1 text-sm bg-accent-primary/10 text-accent-primary rounded break-words"
+                  role="listitem"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+          <div className={cn(
+            "flex items-center gap-1.5 pt-4 mt-3 border-t border-foreground/[0.15]",
+            !(tags && tags.length > 0) && "mt-auto"
+          )}>
+            <span className="font-ibm-plex-mono text-[11px] uppercase tracking-widest text-text-tertiary group-hover:text-accent-primary transition-colors duration-300">
+              View case study
+            </span>
+            <svg
+              className="w-3.5 h-3.5 text-text-tertiary group-hover:text-accent-primary transition-all duration-300 group-hover:translate-x-1"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
-        )}
-        <div className={cn(
-          "flex items-center gap-1.5 pt-4 mt-3 border-t border-border/60",
-          !(tags && tags.length > 0) && "mt-auto"
-        )}>
-          <span className="font-ibm-plex-mono text-[11px] uppercase tracking-widest text-text-tertiary group-hover:text-accent-primary transition-colors duration-300">
-            View case study
-          </span>
-          <svg
-            className="w-3.5 h-3.5 text-text-tertiary group-hover:text-accent-primary transition-all duration-300 group-hover:translate-x-1"
-            viewBox="0 0 16 16"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
         </div>
       </div>
     </motion.div>

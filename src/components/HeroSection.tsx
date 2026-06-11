@@ -1,7 +1,8 @@
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowDown } from 'lucide-react';
-import { TypewriterAnimation } from '@/components/TypewriterAnimation';
+import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 
 const proofPoints = [
   { value: '0 → 70K', label: 'users as founding designer' },
@@ -16,6 +17,13 @@ const fadeUp = {
 };
 
 export const HeroSection = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useCardHoverEffect(cardRef, {
+    maxRotation: 10,
+    transitionDuration: 100,
+  });
+
   const scrollToWork = () => {
     // Preserve the sidebar auto-open behavior tied to this event
     window.dispatchEvent(new CustomEvent('typewriter-clicked'));
@@ -109,14 +117,27 @@ export const HeroSection = () => {
           </motion.dl>
         </div>
 
-        {/* "How might we" flavor block */}
+        {/* Profile Card image block with tilt */}
         <motion.div
-          className="lg:col-span-5"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          className="lg:col-span-5 flex justify-center lg:justify-end w-full"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
         >
-          <TypewriterAnimation />
+          <Link
+            to="/about"
+            ref={cardRef}
+            className="project-card rounded-xl overflow-hidden group bg-gradient-to-br from-accent-primary/10 via-accent-primary/5 to-card border border-accent-primary/20 w-full max-w-sm aspect-[3/4] relative hover:border-accent-primary/40 cursor-pointer select-none transition-all duration-300 shadow-xl block"
+          >
+            <img
+              src="/lovable-uploads/6bba6c1a-b7f8-404a-b8c3-367c42cbc2a0.png"
+              alt="Amaan Khan - Product Designer"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            {/* Decorative Elements */}
+            <div className="absolute top-4 left-4 w-16 h-16 bg-accent-primary/10 rounded-full blur-xl" />
+            <div className="absolute bottom-8 right-8 w-12 h-12 bg-accent-primary/10 rounded-full blur-lg" />
+          </Link>
         </motion.div>
       </div>
 
