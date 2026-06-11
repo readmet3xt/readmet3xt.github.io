@@ -52,7 +52,7 @@ export const HeroSection = () => {
 
   return (
     <section
-      className="relative flex flex-col justify-center h-full min-h-[calc(100svh-6rem)] lg:min-h-0 pt-4 lg:pt-8 pb-8 lg:pb-12"
+      className="relative flex flex-col justify-center h-full min-h-[calc(100svh-6rem)] lg:min-h-0 pt-4 lg:pt-8 pb-8 lg:pb-12 scroll-mt-20 lg:scroll-mt-0"
       aria-label="Introduction"
     >
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center w-full">

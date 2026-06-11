@@ -184,9 +184,9 @@ export const TypewriterAnimation = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="flex flex-col items-center w-full max-w-5xl mx-auto flex-1 min-h-0"
         >
-          {/* Top spacer — h-20 on mobile clears the fixed header; lg:h-[16%] halves
+          {/* Top spacer — h-48 on mobile clears the fixed header; lg:h-[16%] halves
               the prior whitespace above the lottie on desktop */}
-          <div className="h-20 lg:h-[16%] shrink-0" />
+          <div className="h-48 sm:h-40 lg:h-[16%] shrink-0" />
 
           {/* Lottie — shrink-0 keeps it fixed as text grows below */}
           <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-[25vh] lg:h-[25vh] xl:w-[28vh] xl:h-[28vh] max-w-[280px] max-h-[280px] lg:max-w-[300px] lg:max-h-[300px] shrink-0 mb-6 sm:mb-8">
