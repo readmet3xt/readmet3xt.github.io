@@ -40,9 +40,9 @@ export const HeroSection = () => {
     >
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center w-full">
         {/* Identity block */}
-        <div className="lg:col-span-7 flex flex-col items-start">
+        <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
           <motion.div
-            className="flex flex-wrap items-center gap-3 mb-5"
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-5"
             {...fadeUp}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
@@ -76,7 +76,7 @@ export const HeroSection = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap items-center gap-3 mb-10"
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-10"
             {...fadeUp}
             transition={{ duration: 0.5, delay: 0.24, ease: 'easeOut' }}
           >
