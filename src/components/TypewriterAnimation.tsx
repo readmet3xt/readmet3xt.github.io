@@ -171,7 +171,7 @@ export const TypewriterAnimation = () => {
         id="text-animation-container"
         className={cn(
           "relative flex flex-col items-center w-full max-w-full h-full min-h-[500px]",
-          "bg-bg-primary rounded-xl overflow-hidden group"
+          "bg-transparent rounded-xl overflow-hidden group"
         )}
       >
 

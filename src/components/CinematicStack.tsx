@@ -1,4 +1,4 @@
-import { useRef, useCallback, useState } from 'react';
+import { useRef, useCallback, useState, useEffect } from 'react';
 import {
   motion,
   useScroll,
@@ -30,6 +30,7 @@ interface CinematicStackProps {
 export default function CinematicStack({ projects, onSwitchToGrid }: CinematicStackProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const isScrollingRef = useRef(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -40,6 +41,7 @@ export default function CinematicStack({ projects, onSwitchToGrid }: CinematicSt
   const numTransitions = projects.length - 1;
   const segmentSize = numTransitions > 0 ? 1 / numTransitions : 1;
 
+  // Update activeIndex based on scroll progress
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     const idx = Math.min(
       Math.round(latest / segmentSize),
@@ -64,6 +66,52 @@ export default function CinematicStack({ projects, onSwitchToGrid }: CinematicSt
     },
     [numTransitions]
   );
+
+  // Handle discrete scroll events — any scroll flips to next card
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      const el = containerRef.current;
+      if (!el) return;
+
+      // Only intercept scroll within the cinematic stack area
+      const rect = el.getBoundingClientRect();
+      const isWithinContainer =
+        e.clientY >= rect.top && e.clientY <= rect.bottom;
+
+      if (!isWithinContainer) return;
+
+      // Ignore rapid consecutive scrolls
+      if (isScrollingRef.current) return;
+
+      const isScrollingDown = e.deltaY > 0;
+      const isAtFirstCard = activeIndex === 0;
+      const isAtLastCard = activeIndex === projects.length - 1;
+
+      // Allow normal scroll behavior at boundaries
+      if ((isScrollingDown && isAtLastCard) || (!isScrollingDown && isAtFirstCard)) {
+        return;
+      }
+
+      // Prevent default scroll behavior for card transitions
+      e.preventDefault();
+      isScrollingRef.current = true;
+
+      // Move to next/previous card
+      const nextIndex = isScrollingDown
+        ? Math.min(activeIndex + 1, projects.length - 1)
+        : Math.max(activeIndex - 1, 0);
+
+      scrollToIndex(nextIndex);
+
+      // Debounce rapid scrolls
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 600);
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, [activeIndex, projects.length, scrollToIndex]);
 
   return (
     <div
