@@ -149,8 +149,8 @@ export const TypewriterAnimation = () => {
     <div
       id="text-animation-container"
       className={cn(
-        "relative flex flex-col items-center justify-center w-full max-w-full",
-        "min-h-[500px] lg:min-h-screen lg:-mt-12", // Offset the pt-12 (3rem) from PageLayout for perfect absolute center
+        "relative flex flex-col items-center justify-center w-full max-w-full h-full",
+        "min-h-[500px]", // Removed negative margin to ensure perfect centering in the snap container
         "bg-bg-primary rounded-xl px-4 mb-0 cursor-pointer overflow-hidden group"
       )}
       onClick={() => {
@@ -186,7 +186,7 @@ export const TypewriterAnimation = () => {
           className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
         >
           {/* Lottie Animation */}
-          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] mt-8 lg:mt-24 xl:mt-32 mb-6 sm:mb-8">
+          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-[25vh] lg:h-[25vh] xl:w-[30vh] xl:h-[30vh] mt-8 lg:mt-0 mb-6 sm:mb-8">
             <DotLottieReact
               src={lottieSources[currentQuestionIndex]}
               loop
@@ -196,7 +196,7 @@ export const TypewriterAnimation = () => {
 
           {/* Question Text */}
           <p
-            className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-5xl xl:text-6xl leading-tight break-words px-4 sm:px-8 lg:px-12 text-text-primary`}
+            className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-[clamp(1.75rem,3.5vh,3rem)] xl:text-[clamp(2rem,4vh,3.75rem)] leading-tight break-words px-4 sm:px-8 lg:px-12 text-text-primary`}
             aria-live="polite"
           >
             {isTypingPrefix ? (

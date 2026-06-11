@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 
 const proofPoints = [
@@ -33,7 +33,7 @@ export const HeroSection = () => {
 
   return (
     <section
-      className="relative flex flex-col justify-center min-h-[calc(100svh-6rem)] lg:min-h-[calc(100vh-3rem)] lg:-mt-12 pt-4 lg:pt-12"
+      className="relative flex flex-col justify-center h-full min-h-[calc(100svh-6rem)] lg:min-h-0 pt-4 lg:pt-8 pb-8 lg:pb-12"
       aria-label="Introduction"
     >
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center w-full">
@@ -54,7 +54,7 @@ export const HeroSection = () => {
           </motion.div>
 
           <motion.h1
-            className="font-dm-sans font-bold tracking-tight text-4xl sm:text-5xl xl:text-6xl leading-[1.06] text-text-primary mb-5 text-balance"
+            className="font-dm-sans font-bold tracking-tight text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-6xl leading-[1.06] text-text-primary mb-4 lg:mb-5 text-balance"
             {...fadeUp}
             transition={{ duration: 0.5, delay: 0.08, ease: 'easeOut' }}
           >
@@ -63,7 +63,7 @@ export const HeroSection = () => {
           </motion.h1>
 
           <motion.p
-            className="text-base sm:text-lg text-text-secondary leading-relaxed max-w-xl mb-8"
+            className="text-base sm:text-lg lg:text-base xl:text-lg text-text-secondary leading-relaxed max-w-xl mb-6 lg:mb-6 xl:mb-8"
             {...fadeUp}
             transition={{ duration: 0.5, delay: 0.16, ease: 'easeOut' }}
           >
@@ -74,7 +74,7 @@ export const HeroSection = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-10"
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6 lg:mb-6 xl:mb-10"
             {...fadeUp}
             transition={{ duration: 0.5, delay: 0.24, ease: 'easeOut' }}
           >
@@ -87,9 +87,10 @@ export const HeroSection = () => {
             </button>
             <Link
               to="/about"
-              className="inline-flex items-center px-6 py-3 rounded-lg border border-border text-text-primary font-semibold hover:border-accent-primary hover:text-accent-primary transition-all duration-300 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-text-primary font-semibold hover:border-accent-primary hover:text-accent-primary transition-all duration-300 hover:-translate-y-0.5"
             >
               About me
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
 
@@ -125,7 +126,7 @@ export const HeroSection = () => {
           <Link
             to="/about"
             ref={cardRef}
-            className="project-card rounded-xl overflow-hidden group bg-gradient-to-br from-accent-primary/10 via-accent-primary/5 to-card border border-accent-primary/20 w-full max-w-sm aspect-[3/4] relative hover:border-accent-primary/40 cursor-pointer select-none transition-all duration-300 shadow-xl block"
+            className="project-card rounded-xl overflow-hidden group bg-gradient-to-br from-accent-primary/10 via-accent-primary/5 to-card border border-accent-primary/20 w-full max-w-xs xl:max-w-sm lg:max-h-[55vh] aspect-[3/4] relative hover:border-accent-primary/40 cursor-pointer select-none transition-all duration-300 shadow-xl block"
           >
             <img
               src="/lovable-uploads/6bba6c1a-b7f8-404a-b8c3-367c42cbc2a0.png"
