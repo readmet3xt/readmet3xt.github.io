@@ -1,5 +1,5 @@
 import { AnimatedProjectCard } from '@/components/AnimatedProjectCard';
-import { WelcomeCard } from '@/components/WelcomeCard';
+// import { WelcomeCard } from '@/components/WelcomeCard';
 import { useSidebar } from '@/components/SidebarContext';
 import { cn } from '@/lib/utils';
 
@@ -24,7 +24,7 @@ export const ProjectsGrid = () => {
             : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         )}
       >
-      <WelcomeCard />
+      {/* <WelcomeCard /> */}
 
       {/* 1 — Strongest commercial + engineering work */}
       <AnimatedProjectCard
