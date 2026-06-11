@@ -1,6 +1,7 @@
 import { memo, lazy, Suspense, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { PageLayout } from '@/components/PageLayout';
+import { TypewriterAnimation } from '@/components/TypewriterAnimation';
 import { HeroSection } from '@/components/HeroSection';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
 import { ContactSection } from '@/components/ContactSection';
@@ -24,6 +25,10 @@ export const Portfolio = memo(() => {
 
   return (
     <PageLayout className="max-w-7xl mx-auto w-full">
+      <div className="snap-start snap-always" data-work-snap="true">
+        <TypewriterAnimation />
+      </div>
+
       <div className="snap-start snap-always" data-work-snap="true">
         <HeroSection />
       </div>
