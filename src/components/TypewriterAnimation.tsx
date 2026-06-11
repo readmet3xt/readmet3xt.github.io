@@ -155,22 +155,25 @@ export const TypewriterAnimation = () => {
   };
 
   return (
-    <div
-      id="text-animation-container"
-      className={cn(
-        "relative flex flex-col items-center w-full max-w-full h-full min-h-[500px]",
-        "bg-bg-primary rounded-xl overflow-hidden group"
-      )}
-    >
-      {/* Transparent full-area overlay — captures every tap/click anywhere in the section */}
+    <div className="relative w-full h-full">
+      {/* Transparent full-area overlay bleeding to viewport edges to capture clicks in side margins */}
       <div
-        className="absolute inset-0 z-10 cursor-pointer"
+        className="absolute top-0 bottom-0 z-10 cursor-pointer"
+        style={{ left: '-50vw', right: '-50vw' }}
         onClick={scrollToNext}
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToNext(); }}
         role="button"
         tabIndex={0}
         aria-label="Click to explore projects"
       />
+      
+      <div
+        id="text-animation-container"
+        className={cn(
+          "relative flex flex-col items-center w-full max-w-full h-full min-h-[500px]",
+          "bg-bg-primary rounded-xl overflow-hidden group"
+        )}
+      >
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -233,6 +236,7 @@ export const TypewriterAnimation = () => {
           />
         </div>
       </motion.div>
+      </div>
     </div>
   );
 };
