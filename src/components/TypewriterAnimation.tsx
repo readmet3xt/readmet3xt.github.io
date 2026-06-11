@@ -159,16 +159,19 @@ export const TypewriterAnimation = () => {
       id="text-animation-container"
       className={cn(
         "relative flex flex-col items-center w-full max-w-full h-full min-h-[500px]",
-        "bg-bg-primary rounded-xl cursor-pointer overflow-hidden group"
+        "bg-bg-primary rounded-xl overflow-hidden group"
       )}
-      onClick={scrollToNext}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') scrollToNext();
-      }}
-      aria-label="Click to explore projects"
     >
+      {/* Transparent full-area overlay — captures every tap/click anywhere in the section */}
+      <div
+        className="absolute inset-0 z-10 cursor-pointer"
+        onClick={scrollToNext}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToNext(); }}
+        role="button"
+        tabIndex={0}
+        aria-label="Click to explore projects"
+      />
+
       <AnimatePresence mode="wait">
         <motion.div
           key={currentQuestionIndex}
