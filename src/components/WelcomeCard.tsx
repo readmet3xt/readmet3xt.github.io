@@ -90,6 +90,19 @@ export const WelcomeCard = () => {
         <p className="text-base sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words text-left">
           RCA-trained designer who writes production React. I solo-built Otagon — an AI gaming companion live on web, iOS, and Android — and work end-to-end: research, design, and code.
         </p>
+        <div className="flex items-center gap-1.5 pt-4 mt-3 border-t border-border/60">
+          <span className="font-ibm-plex-mono text-[11px] uppercase tracking-widest text-text-tertiary group-hover:text-accent-primary transition-colors duration-300">
+            More about me
+          </span>
+          <svg
+            className="w-3.5 h-3.5 text-text-tertiary group-hover:text-accent-primary transition-all duration-300 group-hover:translate-x-1"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
       </div>
     </motion.div>
   );

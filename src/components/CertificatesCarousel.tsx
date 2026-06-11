@@ -99,8 +99,11 @@ export const CertificatesCarousel = memo(() => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-xl sm:text-2xl font-bold text-foreground">Certificates & Awards</h2>
+      <div className="mb-6 flex items-end justify-between gap-4">
+        <div>
+          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Recognition</p>
+          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight">Certificates & Awards</h2>
+        </div>
         <div className="flex gap-2">
           <Button
             variant="outline"

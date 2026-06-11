@@ -53,10 +53,17 @@ export const Play = () => {
 
   return (
     <PageLayout>
-      <h2 className="text-3xl font-dm-sans font-bold mb-2 text-foreground">Playground</h2>
-      <p className="text-lg font-mono mb-12 text-text-secondary">
-        A collection of art, doodles, & other things I've made for fun.
-      </p>
+      <header className="mb-10">
+        <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">
+          Off the Clock
+        </p>
+        <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-2">
+          Playground
+        </h2>
+        <p className="text-base sm:text-lg text-text-secondary">
+          Art, doodles, and other things I've made for fun.
+        </p>
+      </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
         {doodleImages.map((image, index) => (

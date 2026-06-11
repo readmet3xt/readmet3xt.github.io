@@ -211,6 +211,22 @@ export const AnimatedProjectCard = ({ href, title, description, images, classNam
             ))}
           </div>
         )}
+        <div className={cn(
+          "flex items-center gap-1.5 pt-4 mt-3 border-t border-border/60",
+          !(tags && tags.length > 0) && "mt-auto"
+        )}>
+          <span className="font-ibm-plex-mono text-[11px] uppercase tracking-widest text-text-tertiary group-hover:text-accent-primary transition-colors duration-300">
+            View case study
+          </span>
+          <svg
+            className="w-3.5 h-3.5 text-text-tertiary group-hover:text-accent-primary transition-all duration-300 group-hover:translate-x-1"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
       </div>
     </motion.div>
   );

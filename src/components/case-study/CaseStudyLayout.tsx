@@ -1,11 +1,24 @@
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import { PageLayout } from '@/components/PageLayout';
 import { ReadingProgressBar } from './ReadingProgressBar';
 import { SEO } from '@/components/SEO';
 import { ImageLightbox } from './ImageLightbox';
+
+// Reading order for the next-project rail (mirrors the home grid order)
+const caseStudyOrder = [
+  { path: '/otagon', title: 'Otagon', blurb: 'An AI gaming companion shipped solo to web, iOS, and Android' },
+  { path: '/koinbasket', title: 'KoinBasket', blurb: 'From a one-week MVP contract to 70,000 users' },
+  { path: '/lawx', title: 'Law.X', blurb: 'Designing transparency into legal AI' },
+  { path: '/pebble', title: 'Pebble', blurb: 'A VISA-backed wellbeing companion for remote teams' },
+  { path: '/iviprogram', title: 'I.V.I. Program', blurb: 'A Core77-awarded service that makes invisible labour visible' },
+  { path: '/softwire', title: 'Softwire × LNER', blurb: 'Instant train tickets for people running to catch trains' },
+  { path: '/stampede', title: 'Stampede', blurb: 'Turning conservation partnerships into designed outcomes' },
+  { path: '/versus', title: 'Versus', blurb: 'A live tournament tracker for FIFA nights' },
+  { path: '/screenshot', title: 'ScreenShot', blurb: 'Press F1 on your PC, see it on your phone' },
+];
 
 interface CaseStudyLayoutProps {
   children: ReactNode;
@@ -63,6 +76,13 @@ export const CaseStudyLayout = ({
   externalLabel,
   ctaClassName,
 }: CaseStudyLayoutProps) => {
+  const { pathname } = useLocation();
+  const currentIndex = caseStudyOrder.findIndex((cs) => cs.path === pathname);
+  const nextProject =
+    currentIndex >= 0
+      ? caseStudyOrder[(currentIndex + 1) % caseStudyOrder.length]
+      : null;
+
   return (
     <PageLayout className="px-4 sm:px-6 md:px-8 lg:px-12 pt-20 pb-16 sm:pt-24 sm:pb-20 md:pb-24 lg:pt-12 lg:pb-12 overflow-x-hidden">
       <SEO
@@ -105,9 +125,40 @@ export const CaseStudyLayout = ({
           {children}
         </motion.article>
 
+        {/* Next Project */}
+        {nextProject && (
+          <motion.div
+            className="mt-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link
+              to={nextProject.path}
+              className="group block rounded-xl border border-border bg-card p-6 sm:p-8 hover:border-accent-primary transition-colors duration-300"
+            >
+              <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-3">
+                Next case study
+              </p>
+              <div className="flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground group-hover:text-accent-primary transition-colors duration-300">
+                    {nextProject.title}
+                  </h2>
+                  <p className="text-sm sm:text-base text-text-secondary mt-1">
+                    {nextProject.blurb}
+                  </p>
+                </div>
+                <ArrowRight className="w-6 h-6 sm:w-7 sm:h-7 text-text-tertiary group-hover:text-accent-primary transition-all duration-300 group-hover:translate-x-1.5 flex-shrink-0" />
+              </div>
+            </Link>
+          </motion.div>
+        )}
+
         {/* Footer Navigation */}
         <motion.footer
-          className="mt-16 pt-8 border-t border-border"
+          className="mt-8 pt-8 border-t border-border"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.5 }}

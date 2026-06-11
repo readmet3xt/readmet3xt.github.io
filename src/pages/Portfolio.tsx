@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { PageLayout } from '@/components/PageLayout';
 import { HeroSection } from '@/components/HeroSection';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
+import { ContactSection } from '@/components/ContactSection';
 import { useScrollReveal } from '@/components/ScrollReveal';
 
 // Lazy load testimonials carousel for better performance  
@@ -40,6 +41,11 @@ export const Portfolio = memo(() => {
         }>
           <TestimonialsCarousel />
         </Suspense>
+      </section>
+
+      {/* Contact Section */}
+      <section className="mb-16 lg:mb-20 snap-start snap-always" aria-label="Contact" data-work-snap="true">
+        <ContactSection />
       </section>
     </PageLayout>
   );

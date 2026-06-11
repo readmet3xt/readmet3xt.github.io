@@ -35,7 +35,8 @@ export const About = () => {
         <section id="overview" className="mb-24 scroll-mt-24 reveal-on-scroll">
           <div className="grid md:grid-cols-5 gap-8 items-start">
             <div className="md:col-span-3">
-              <h2 className="heading-2 mb-8">About Me</h2>
+              <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Who I Am</p>
+              <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">About Me</h2>
 
               {/* Introduction */}
               <div className="mb-8">
@@ -161,7 +162,8 @@ export const About = () => {
 
         {/* Professional Experience */}
         <section id="experience" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <h2 className="heading-2 mb-8">Professional Experience</h2>
+          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Career</p>
+          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Professional Experience</h2>
           <div className="timeline-container relative">
             <TimelineItem
               title="Founder & Product Designer"
@@ -246,7 +248,8 @@ export const About = () => {
 
         {/* Academic Experience */}
         <section id="academic-experience" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <h2 className="heading-2 mb-8">Academic Experience</h2>
+          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Academia</p>
+          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Academic Experience</h2>
           <div className="timeline-container relative">
             <TimelineItem
               title="Pebble (VISA Innovation Centre Project)"
@@ -294,7 +297,8 @@ export const About = () => {
 
         {/* Education */}
         <section id="education" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <h2 className="heading-2 mb-8">Education</h2>
+          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Foundations</p>
+          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Education</h2>
           <div className="timeline-container relative">
             <TimelineItem title="M.A in Service Design" company="Royal College of Art | London, U.K" />
             <TimelineItem title="Brand Management" company="London Business School | London, U.K" />
@@ -304,7 +308,8 @@ export const About = () => {
 
         {/* Skills */}
         <section id="skills" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <h2 className="heading-2 mb-8">Skills</h2>
+          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Toolkit</p>
+          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Skills</h2>
           <div className="grid lg:grid-cols-4 gap-8 mb-16">
             <div>
               <h3 className="heading-4 mb-4">Design</h3>
@@ -370,7 +375,8 @@ export const About = () => {
 
         {/* Interests */}
         <section id="interests" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <h2 className="heading-2 mb-8">Interests</h2>
+          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Beyond Work</p>
+          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Interests</h2>
           <div className="flex flex-wrap gap-4">
             {['Football', 'Travelling', 'Stargazing', 'Indie Music', 'Casual Gaming', 'Photography'].map((interest) => (
               <span key={interest} className="bg-accent-primary/10 text-accent-primary px-4 py-2 rounded-lg font-medium">

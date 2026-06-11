@@ -100,7 +100,7 @@ export const CaseStudyQuote = ({ children, author, role }: CaseStudyQuoteProps) 
     viewport={{ once: true }}
     transition={{ duration: 0.5 }}
   >
-    <p className="text-base sm:text-lg italic text-text-primary leading-relaxed">
+    <p className="font-playfair text-lg sm:text-xl italic text-text-primary leading-relaxed">
       "{children}"
     </p>
     {(author || role) && (

@@ -132,8 +132,17 @@ export const TestimonialsCarousel = memo(({ showTitle = true }: TestimonialsCaro
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="mb-6 flex items-center justify-between">
-        {showTitle && <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Testimonials</h2>}
+      <div className="mb-6 flex items-end justify-between gap-4">
+        {showTitle && (
+          <div>
+            <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">
+              Kind Words
+            </p>
+            <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight">
+              What it's like to work with me
+            </h2>
+          </div>
+        )}
         <div className={`flex gap-2 ${!showTitle ? 'ml-auto' : ''}`}>
           <Button
             variant="outline"
