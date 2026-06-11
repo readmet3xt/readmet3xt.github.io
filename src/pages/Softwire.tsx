@@ -20,6 +20,7 @@ export const Softwire = () => {
         description="Designing for Users Running to Catch Trains — How I led UX design for LNER's instant ticket booking experience."
       >
         <CaseStudyHero
+          eyebrow="Case Study · Softwire × LNER · App Clip · 2022"
           title="Designing for Users Running to Catch Trains"
           subtitle="How I led UX design for LNER's instant ticket booking experience"
           pills={[

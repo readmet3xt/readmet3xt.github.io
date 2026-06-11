@@ -20,6 +20,7 @@ export const IviProgram = () => {
         description="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040 — A Core77-awarded speculative service that makes invisible domestic labour economically visible."
       >
         <CaseStudyHero
+          eyebrow="Case Study · I.V.I. Program · RCA × BCG · Core77 Award 2021"
           title="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040"
           subtitle="A Core77-awarded speculative service that makes invisible domestic labour economically visible"
           pills={[
@@ -39,7 +40,7 @@ export const IviProgram = () => {
               'Designed speculative service system and Sensei platform UI',
             ],
             team: 'Guoxing Song, Jing Qian, Kotoko Kimura, Zhiyuan Zheng. Partners: Fuzzy Design Studio, Royal Society of Medicine, BCG',
-            timeline: '4 months, Royal College of Art, October–December 2020',
+            timeline: 'October–December 2020, Royal College of Art',
             recognition: 'Core77 Design Awards 2021 — Notable Honor, Speculative Design. Research framework adopted internally by BCG.',
             tools: [
               'Speculative Design',

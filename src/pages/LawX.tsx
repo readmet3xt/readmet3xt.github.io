@@ -17,6 +17,7 @@ export const LawX = () => {
             description="Designing Transparency into Legal AI — How I turned a 'black box' chatbot into a workspace lawyers actually trust."
         >
             <CaseStudyHero
+                eyebrow="Case Study · Law.X · Legal AI · 2025"
                 title="Designing Transparency into Legal AI"
                 subtitle="How I turned a 'black box' chatbot into a workspace lawyers actually trust"
                 pills={[
@@ -197,16 +198,16 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyCardGrid columns={2}>
-                    <CaseStudyCard title="🔍 Transparency First">
+                    <CaseStudyCard title="Transparency First">
                         <CaseStudyParagraph>Show the reasoning, not just the result.</CaseStudyParagraph>
                     </CaseStudyCard>
-                    <CaseStudyCard title="🎯 Precise Control">
+                    <CaseStudyCard title="Precise Control">
                         <CaseStudyParagraph>Tone and terminology must be lawyer-defined, not AI-assumed.</CaseStudyParagraph>
                     </CaseStudyCard>
-                    <CaseStudyCard title="📍 Jurisdictional Accuracy">
+                    <CaseStudyCard title="Jurisdictional Accuracy">
                         <CaseStudyParagraph>State-specific context from the very first interaction.</CaseStudyParagraph>
                     </CaseStudyCard>
-                    <CaseStudyCard title="⚡ Workflow Efficiency">
+                    <CaseStudyCard title="Workflow Efficiency">
                         <CaseStudyParagraph>Reduce the friction before users even start a task.</CaseStudyParagraph>
                     </CaseStudyCard>
                 </CaseStudyCardGrid>

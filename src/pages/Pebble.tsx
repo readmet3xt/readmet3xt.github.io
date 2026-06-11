@@ -20,6 +20,7 @@ export const Pebble = () => {
         description="What If Workplace Happiness Was Designed, Not Hoped For? A VISA-backed virtual companion that transforms how remote teams combat isolation."
       >
         <CaseStudyHero
+          eyebrow="Case Study · Pebble · RCA × VISA Innovation Centre · 2021"
           title="What If Workplace Happiness Was Designed, Not Hoped For?"
           subtitle="A VISA-backed virtual companion that transforms how remote teams combat isolation"
           pills={[
@@ -37,7 +38,7 @@ export const Pebble = () => {
               'Led research synthesis across 1,200+ responses',
               'Owned UI/UX design for the Pebble companion',
             ],
-            timeline: '3 months, RCA + VISA Innovation Centre, January–June 2021',
+            timeline: 'January–June 2021, RCA × VISA Innovation Centre',
             recognition: 'Virtual Café concept adopted into VISA roadmap',
             tools: [
               'Service Design',
@@ -163,21 +164,21 @@ export const Pebble = () => {
           </CaseStudyParagraph>
 
           <CaseStudyCardGrid columns={2}>
-            <CaseStudyCard title="🎯 Personalised Matchmaking">
+            <CaseStudyCard title="Personalised Matchmaking">
               <CaseStudyParagraph>
                 Quiz-based companion matching that adapts over time. Emotional engagement built through
                 continuity, not novelty.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="🧠 Deep Work & Flow">
+            <CaseStudyCard title="Deep Work & Flow">
               <CaseStudyParagraph>
                 1-minute cognitive exercises and distraction-reducing tools to help users enter flow state.
                 Connecting focused work to lasting happiness rather than treating them as opposites.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="☕ Virtual Café">
+            <CaseStudyCard title="Virtual Café">
               <CaseStudyParagraph>
                 The feature that changed everything. Informal coffee chat rooms that recreate the spontaneous
                 social interactions remote work eliminates. Employees join or create rooms, conversations happen,
@@ -185,7 +186,7 @@ export const Pebble = () => {
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="⏰ Healthy Boundaries">
+            <CaseStudyCard title="Healthy Boundaries">
               <CaseStudyParagraph>
                 Gentle prompts to take breaks, log off, and reflect. Wellbeing as ongoing habit, not one-off intervention.
               </CaseStudyParagraph>
@@ -210,21 +211,21 @@ export const Pebble = () => {
           </CaseStudyParagraph>
 
           <CaseStudyCardGrid columns={3}>
-            <CaseStudyCard title="❤️ Connection was the priority">
+            <CaseStudyCard title="Connection was the priority">
               <CaseStudyParagraph>
                 Focus tools were valued, but coffee catch-up features resonated most strongly.
                 People crave belonging. Digital tools have to actively create it, not just enable it.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="📊 Personalisation needed to be continuous">
+            <CaseStudyCard title="Personalisation needed to be continuous">
               <CaseStudyParagraph>
                 Users wanted daily emotion tracking and adaptive support over time. A one-off
                 onboarding quiz wasn't enough. Pebble needed to keep learning.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="🔗 Platform fatigue is real">
+            <CaseStudyCard title="Platform fatigue is real">
               <CaseStudyParagraph>
                 The most consistent concern was adding yet another tool. A wellbeing product that
                 doesn't integrate into Teams, Slack, and existing calendars will be abandoned regardless

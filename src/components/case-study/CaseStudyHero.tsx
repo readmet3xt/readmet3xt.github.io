@@ -6,6 +6,7 @@ import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
 interface CaseStudyHeroProps {
   title: string;
   subtitle?: string;
+  eyebrow?: string;
   pills: string[];
   intro: string;
   externalLink?: string;
@@ -48,6 +49,7 @@ const pillVariants = {
 export const CaseStudyHero = ({
   title,
   subtitle,
+  eyebrow,
   pills,
   intro,
   externalLink,
@@ -60,6 +62,11 @@ export const CaseStudyHero = ({
     <header className="space-y-6">
       {/* Title & Subtitle */}
       <motion.div variants={heroVariants}>
+        {eyebrow && (
+          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-3">
+            {eyebrow}
+          </p>
+        )}
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-balance">
           {title}
         </h1>

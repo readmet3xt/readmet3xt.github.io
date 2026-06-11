@@ -88,7 +88,7 @@ export const WelcomeCard = () => {
         </div>
         <p className="text-lg sm:text-lg text-text-secondary break-words text-left">Product Designer & Engineer</p>
         <p className="text-base sm:text-base mt-3 text-text-secondary/80 leading-relaxed flex-1 break-words text-left">
-          RCA-trained designer who writes React and ships products. I solo-built Otagon — an AI gaming companion PWA — from zero to launch in 6 months. I work end-to-end: research, design, and code.
+          RCA-trained designer who writes production React. I solo-built Otagon — an AI gaming companion live on web, iOS, and Android — and work end-to-end: research, design, and code.
         </p>
       </div>
     </motion.div>

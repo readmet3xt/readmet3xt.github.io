@@ -21,7 +21,8 @@ export const ScreenShot = () => {
       externalLabel="Visit ScreenShot"
     >
       <CaseStudyHero
-        title="ScreenShot: Hotkey to Cloud, in One Step"
+        eyebrow="Side Project · ScreenShot · Solo Design + Build · 2 Weeks"
+        title="Hotkey to Cloud, in One Step"
         subtitle="A pairing-code screenshot grabber that pipes from PC to web in a single tap"
         pills={[
           'Product Design',

@@ -19,7 +19,8 @@ export const Stampede = () => {
         description="Designing Strategic Partnerships for Conservation Impact — A facilitation methodology that turned 'happy accidents' into designed collaborations."
       >
         <CaseStudyHero
-          title="Stampede: Designing Strategic Partnerships for Conservation Impact"
+          eyebrow="Case Study · Stampede · Royal College of Art · 2019"
+          title="Designing Strategic Partnerships for Conservation Impact"
           subtitle="A facilitation methodology that turned 'happy accidents' into designed collaborations"
           pills={[
             'Conservation',
@@ -38,7 +39,7 @@ export const Stampede = () => {
               'Facilitated live WWT × Airbnb co-creation workshop',
             ],
             team: 'Anahita Pradhan, Andrew Seetoh, Constance Chung (RCA Team 9)',
-            timeline: '4 months, Royal College of Art, January–March 2019',
+            timeline: 'January–March 2019, Royal College of Art',
             recognition: 'WWT × Airbnb partnership initiated; "100x more productive" methodology',
             tools: [
               'Service Design',

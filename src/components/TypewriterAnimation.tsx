@@ -23,32 +23,20 @@ const lottieSources = [
   "https://lottie.host/d9a36635-1610-48ec-8863-7670f674ecb4/RplOYxCSbD.lottie"
 ];
 
-const fontClasses = [
-  'font-outfit',
-  'font-playfair',
-  'font-bricolage',
-  'font-syne',
-  'font-instrument',
-  'font-jetbrains-mono',
-  'font-inter'
-];
-
 const PREFIX = "How might we";
 
 // Human-like typing constants
-const BASE_SPEED = 25; // Faster base typing speed
-const JITTER = 15; // Less variation between characters
-const PUNCTUATION_PAUSE = 150; // Shorter pause at punctuation
+const BASE_SPEED = 25;
+const JITTER = 15;
+const PUNCTUATION_PAUSE = 150;
 
 const getNaturalDelay = (char: string) => {
   let delay = BASE_SPEED + Math.random() * JITTER;
 
-  // Faster for vowels (easier to flow)
   if (['a', 'e', 'i', 'o', 'u'].includes(char.toLowerCase())) {
     delay *= 0.8;
   }
 
-  // Pause slightly for punctuation
   if (['.', ',', '?', '!'].includes(char)) {
     delay += PUNCTUATION_PAUSE * (0.9 + Math.random() * 0.2);
   }
@@ -56,7 +44,13 @@ const getNaturalDelay = (char: string) => {
   return delay;
 };
 
-export const TypewriterAnimation = () => {
+interface TypewriterAnimationProps {
+  className?: string;
+}
+
+// Compact "How might we" card — Lottie + rotating question.
+// Lives inside the hero's right column; clicking it advances to the next question.
+export const TypewriterAnimation = ({ className }: TypewriterAnimationProps) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isTypingPrefix, setIsTypingPrefix] = useState(true);
@@ -85,42 +79,32 @@ export const TypewriterAnimation = () => {
 
     const currentFullText = questions[currentQuestionIndex];
 
-    const type = async () => {
-      if (isTypingPrefix) {
-        if (displayText.length < PREFIX.length) {
-          const nextChar = PREFIX[displayText.length];
-          const delay = getNaturalDelay(nextChar);
-
-          timeoutRef.current = setTimeout(() => {
-            setDisplayText(prev => prev + nextChar);
-          }, delay);
-        } else {
-          // Pause briefly after prefix
-          timeoutRef.current = setTimeout(() => {
-            setIsTypingPrefix(false);
-            setDisplayText(''); // Reset for suffix typing
-          }, 500);
-        }
+    if (isTypingPrefix) {
+      if (displayText.length < PREFIX.length) {
+        const nextChar = PREFIX[displayText.length];
+        timeoutRef.current = setTimeout(() => {
+          setDisplayText(prev => prev + nextChar);
+        }, getNaturalDelay(nextChar));
       } else {
-        const suffix = currentFullText.substring(PREFIX.length);
-        if (displayText.length < suffix.length) {
-          const nextChar = suffix[displayText.length];
-          const delay = getNaturalDelay(nextChar);
-
-          timeoutRef.current = setTimeout(() => {
-            setDisplayText(prev => prev + nextChar);
-          }, delay);
-        } else {
-          // Typing complete
-          setIsComplete(true);
-        }
+        timeoutRef.current = setTimeout(() => {
+          setIsTypingPrefix(false);
+          setDisplayText('');
+        }, 500);
       }
-    };
-
-    type();
+    } else {
+      const suffix = currentFullText.substring(PREFIX.length);
+      if (displayText.length < suffix.length) {
+        const nextChar = suffix[displayText.length];
+        timeoutRef.current = setTimeout(() => {
+          setDisplayText(prev => prev + nextChar);
+        }, getNaturalDelay(nextChar));
+      } else {
+        setIsComplete(true);
+      }
+    }
 
     return () => clearCurrentTimeout();
-  }, [displayText, isTypingPrefix, currentQuestionIndex, isComplete, isPaused, startNextQuestion]);
+  }, [displayText, isTypingPrefix, currentQuestionIndex, isComplete, isPaused]);
 
   // Transition to next question after completion
   useEffect(() => {
@@ -128,7 +112,7 @@ export const TypewriterAnimation = () => {
 
     const timeout = setTimeout(() => {
       startNextQuestion();
-    }, 4000); // Slightly longer delay to look at the Lottie
+    }, 4000);
 
     return () => clearTimeout(timeout);
   }, [isComplete, isPaused, startNextQuestion]);
@@ -147,50 +131,29 @@ export const TypewriterAnimation = () => {
 
   return (
     <div
-      id="text-animation-container"
       className={cn(
-        "relative flex flex-col items-center justify-center w-full max-w-full",
-        "min-h-[500px] lg:min-h-screen lg:-mt-12", // Offset the pt-12 (3rem) from PageLayout for perfect absolute center
-        "bg-bg-primary rounded-xl px-4 mb-0 cursor-pointer overflow-hidden group"
+        "flex flex-col items-center justify-center text-center cursor-pointer select-none group",
+        className
       )}
-      onClick={() => {
-        // Dispatch custom event for sidebar trigger
-        window.dispatchEvent(new CustomEvent('typewriter-clicked'));
-
-        // Scroll to projects grid
-        const grid = document.querySelector('[aria-label="Portfolio projects"]');
-        if (grid) {
-          grid.scrollIntoView({ behavior: 'auto', block: 'start' });
-        } else {
-          startNextQuestion();
-        }
-      }}
+      onClick={startNextQuestion}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          window.dispatchEvent(new CustomEvent('typewriter-clicked'));
-          const grid = document.querySelector('[aria-label="Portfolio projects"]');
-          if (grid) {
-            grid.scrollIntoView({ behavior: 'auto', block: 'start' });
-          } else {
-            startNextQuestion();
-          }
-        }
+        if (e.key === 'Enter' || e.key === ' ') startNextQuestion();
       }}
-      aria-label="Click to explore projects"
+      aria-label="Show the next design question"
     >
       <AnimatePresence mode="wait">
         <motion.div
           key={currentQuestionIndex}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex flex-col items-center justify-center w-full max-w-5xl mx-auto"
+          exit={{ opacity: 0, y: -16 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex flex-col items-center w-full"
         >
           {/* Lottie Animation */}
-          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-96 lg:h-96 xl:w-[420px] xl:h-[420px] mt-8 lg:mt-24 xl:mt-32 mb-6 sm:mb-8">
+          <div className="w-36 h-36 sm:w-44 sm:h-44 lg:w-60 lg:h-60 xl:w-72 xl:h-72 mb-4 sm:mb-5 transition-transform duration-300 group-hover:scale-[1.03]">
             <DotLottieReact
               src={lottieSources[currentQuestionIndex]}
               loop
@@ -200,7 +163,7 @@ export const TypewriterAnimation = () => {
 
           {/* Question Text */}
           <p
-            className={`${fontClasses[currentQuestionIndex]} text-center text-2xl sm:text-3xl lg:text-5xl xl:text-6xl leading-tight break-words px-4 sm:px-8 lg:px-12 text-text-primary`}
+            className="font-bricolage text-lg sm:text-xl lg:text-2xl leading-snug text-text-primary min-h-[4.5rem] px-2 max-w-md"
             aria-live="polite"
           >
             {isTypingPrefix ? (
@@ -218,22 +181,9 @@ export const TypewriterAnimation = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Scroll indicator for desktop focus */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none"
-      >
-        <div className="flex flex-col items-center gap-2 hidden lg:flex">
-          <p className="text-[10px] uppercase tracking-widest font-ibm-plex-mono text-text-tertiary opacity-60">Click to explore</p>
-          <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-3 rounded-full bg-accent-primary opacity-40"
-          />
-        </div>
-      </motion.div>
+      <p className="mt-3 text-[10px] uppercase tracking-widest font-ibm-plex-mono text-text-tertiary opacity-0 group-hover:opacity-60 transition-opacity duration-300">
+        Tap for another question
+      </p>
     </div>
   );
 };

@@ -7,16 +7,23 @@ export const ProjectsGrid = () => {
   const { isOpen } = useSidebar();
 
   return (
-    <section
-      id="work"
-      className={cn(
-        "grid gap-12 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full scroll-mt-20",
-        isOpen
-          ? "grid-cols-1 md:grid-cols-2"
-          : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-      )}
-      aria-label="Portfolio projects"
-    >
+    <section id="work" className="scroll-mt-20" aria-label="Portfolio projects">
+      <header className="mb-6 sm:mb-8">
+        <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">
+          Selected Work
+        </p>
+        <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-text-primary tracking-tight">
+          Nine projects, end-to-end
+        </h2>
+      </header>
+      <div
+        className={cn(
+          "grid gap-12 sm:gap-5 md:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 auto-rows-fr w-full max-w-full",
+          isOpen
+            ? "grid-cols-1 md:grid-cols-2"
+            : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        )}
+      >
       <WelcomeCard />
 
       {/* 1 — Strongest commercial + engineering work */}
@@ -37,7 +44,7 @@ export const ProjectsGrid = () => {
           '/otagon/vision/5.png',
         ]}
         className=""
-        summary="An AI gaming companion that sees what you see. Designed and built solo from zero to a live PWA + iOS + Android product with 30+ features, spoiler-aware AI, paid tiers, and PC-to-Mobile sync."
+        summary="An AI gaming companion that sees what you see. Solo-built from zero to a live product on web, iOS, and Android — 30+ features, spoiler-aware AI, paid tiers, PC-to-mobile sync."
         tags={["Solo Build", "AI UX", "PWA + Mobile", "Live"]}
       />
 
@@ -58,7 +65,7 @@ export const ProjectsGrid = () => {
           '/images/casestudies/koinbasket/landingpage.png',
         ]}
         className=""
-        summary="Joined as founding designer on a one-week MVP contract. Scaled the platform from 0 to 70,000 users, led a full rebrand, and built a two-sided live-trading ecosystem."
+        summary="From a one-week MVP contract to 70,000 users. Founding designer through a full rebrand, a design team, and a two-sided live-trading ecosystem."
         tags={["Fintech", "70K Users", "Founding Designer"]}
       />
 
@@ -79,7 +86,7 @@ export const ProjectsGrid = () => {
           '/jollyai/jollyai8.png',
         ]}
         className=""
-        summary="Turned a 'black box' legal chatbot into a workspace lawyers actually trust — by showing the AI's reasoning instead of hiding it. One-month design contract."
+        summary="Turned a black-box legal chatbot into a workspace lawyers can supervise — by showing the AI's reasoning instead of hiding it. One-month design contract."
         tags={["Legal Tech", "AI UX", "Transparency Design"]}
       />
 
@@ -100,7 +107,7 @@ export const ProjectsGrid = () => {
           '/images/casestudies/pebble/36.jpg',
         ]}
         className=""
-        summary="A VISA-backed virtual companion that turns isolation into connection. The Virtual Café concept was adopted into VISA's internal collaboration roadmap."
+        summary="A wellbeing companion for remote teams, built on 1,200+ survey responses and 24 workshops. The Virtual Café concept was adopted into VISA's collaboration roadmap."
         tags={["Service Design", "VISA Innovation", "Employee Wellbeing"]}
       />
 
@@ -121,7 +128,7 @@ export const ProjectsGrid = () => {
           '/images/casestudies/ivi/20.jpg',
         ]}
         className=""
-        summary="Core77-awarded speculative service that makes women's invisible domestic labour economically visible. Research framework adopted internally by BCG."
+        summary="Core77-awarded speculative service that makes women's invisible domestic labour economically visible. The research framework was adopted internally by BCG."
         tags={["Speculative Design", "Core77 Award", "Future of Work"]}
       />
 
@@ -142,7 +149,7 @@ export const ProjectsGrid = () => {
           '/images/casestudies/softwire/25.webp',
         ]}
         className=""
-        summary="Designing for users running to catch trains. Led UX for LNER's sub-10MB instant-launch ticket booking via Apple App Clip during my Softwire internship."
+        summary="Designing for people running to catch trains. Co-led UX for LNER's sub-10MB instant-launch ticket booking App Clip — validated with users and handed to engineering in 8 weeks."
         tags={["App Clip", "Mobile UX", "LNER"]}
       />
 
@@ -163,7 +170,7 @@ export const ProjectsGrid = () => {
           '/images/casestudies/stampede/8-Stampede.jpg',
         ]}
         className=""
-        summary="A facilitation methodology that turns conservation 'happy accidents' into designed partnerships. Initiated the WWT × Airbnb collaboration in a single 3-hour workshop."
+        summary="A facilitation methodology that turns conservation 'happy accidents' into designed partnerships. One 3-hour workshop initiated the WWT × Airbnb collaboration."
         tags={["Service Design", "Conservation", "Facilitation"]}
       />
 
@@ -178,7 +185,7 @@ export const ProjectsGrid = () => {
           '/versus/hero.svg',
         ]}
         className=""
-        summary="A pro tournament tracker for FIFA/FC nights — leagues, knockouts, groups, live scoring, and a shareable spectator link. Built solo on a static SPA + Supabase + WebRTC stack."
+        summary="A tournament tracker for FIFA nights — leagues, knockouts, groups, live scoring, and a spectator link friends open on their phones. Solo-built on a static SPA + Supabase + WebRTC."
         tags={["Solo Build", "Real-time", "PWA"]}
       />
 
@@ -192,9 +199,10 @@ export const ProjectsGrid = () => {
           '/screenshot/hero.svg',
         ]}
         className=""
-        summary="Press F1 on your PC, see it on your phone. A pairing-code screenshot grabber with per-user folders, lightbox, and an installable PWA — shipped in 2 weeks."
+        summary="Press F1 on your PC, see it on your phone seconds later. A pairing-code screenshot grabber with folders, lightbox, and an installable PWA — shipped in two weeks."
         tags={["Solo Build", "PWA", "v0"]}
       />
+      </div>
     </section>
   );
 };

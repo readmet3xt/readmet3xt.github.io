@@ -44,6 +44,7 @@ export const KoinBasket = () => {
         ctaClassName={isPastChapter2 ? 'bg-accent-primary text-card hover:bg-accent-hover' : undefined}
       >
         <CaseStudyHero
+          eyebrow="Case Study · KoinBasket · Fintech · 2022 — 2025"
           title="From a One-Week MVP Contract to 70,000 Users"
           subtitle="How I built a crypto investing platform that democratized portfolio diversification"
           pills={[
@@ -53,7 +54,7 @@ export const KoinBasket = () => {
             'Design Leadership',
             'Rebranding',
           ]}
-          intro="When I joined KoinBasket as founding designer, cryptocurrency felt like an exclusive club for tech-savvy investors. My mission: make diversified crypto investing so intuitive that first-time investors could participate confidently within minutes, not months. What started as a one-week MVP contract evolved into a full-time lead role, scaling the product to 70,000 users."
+          intro="When I joined KoinBasket as founding designer, crypto felt like an exclusive club for the tech-savvy. My brief: make diversified investing so intuitive that a first-timer could participate confidently in minutes. A one-week MVP contract became a full-time lead role — and the product scaled to 70,000 users."
           externalLink="https://otagon2.github.io/Koinbasket/"
           externalLabel="KoinBasket"
           overview={{

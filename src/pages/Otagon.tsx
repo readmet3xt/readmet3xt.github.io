@@ -21,7 +21,8 @@ export const Otagon = () => {
       externalLabel="Visit otagon.app"
     >
       <CaseStudyHero
-        title="Otagon: Never Get Stuck Again"
+        eyebrow="Case Study · Otagon · AI Gaming Companion · 2025 — Present"
+        title="Never Get Stuck Again"
         subtitle="How I designed and built an AI gaming companion from zero to a live, multi-platform product — solo"
         pills={[
           'Product Management',
@@ -32,7 +33,7 @@ export const Otagon = () => {
           'Supabase',
           'Lemon Squeezy',
         ]}
-        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Over the past year I've gone from concept to a production product spanning a PWA, a Capacitor-packaged iOS and Android app, a desktop pairing client, paid tiers via Lemon Squeezy, gamification, and an AI stack built on Gemini and Supabase. This case study is the story of how it actually got here."
+        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Otagon went from concept to a production product — a PWA, Capacitor-packaged iOS and Android apps, a desktop pairing client, paid tiers, and an AI stack on Gemini and Supabase. This is the story of how it actually got here."
         externalLink="https://otagon.app"
         externalLabel="otagon.app"
         overview={{
@@ -42,7 +43,7 @@ export const Otagon = () => {
             'Design, frontend engineering, AI integration',
             'Backend, billing, mobile packaging, GTM',
           ],
-          timeline: '12+ months, August 2025 – present',
+          timeline: 'August 2025 – present',
           recognition: '30+ shipped features, paid tier live on Lemon Squeezy, iOS & Android packaged via Capacitor',
           tools: [
             'React 18',

@@ -43,12 +43,16 @@ export const CaseStudySection = ({
       {(title || subtitle) && (
         <div className="space-y-2">
           {title && (
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
-              {title}
+            <h2 className="flex items-baseline gap-3 text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
+              <span
+                aria-hidden="true"
+                className="self-stretch w-1 rounded-full bg-accent-primary flex-shrink-0"
+              />
+              <span className="flex-1">{title}</span>
             </h2>
           )}
           {subtitle && (
-            <p className="text-base sm:text-lg text-text-secondary">
+            <p className="text-base sm:text-lg text-text-secondary pl-4">
               {subtitle}
             </p>
           )}

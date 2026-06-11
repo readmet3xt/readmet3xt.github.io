@@ -21,7 +21,8 @@ export const Versus = () => {
       externalLabel="Visit Versus"
     >
       <CaseStudyHero
-        title="Versus: A Tournament Tracker Built for Couch Co-op"
+        eyebrow="Side Project · Versus · Solo Design + Build"
+        title="A Tournament Tracker Built for Couch Co-op"
         subtitle="Designing and shipping a live FIFA/FC tournament platform — leagues, knockouts, groups, and spectator links"
         pills={[
           'Product Design',

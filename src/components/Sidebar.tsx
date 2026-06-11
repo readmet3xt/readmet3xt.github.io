@@ -96,7 +96,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
             </div>
 
             <p className="text-[10px] sm:text-xs lg:text-sm text-text-secondary leading-relaxed pr-8 lg:pr-14">
-              Hyderabad-based Product Designer creating impactful, human-centered products.
+              Product designer &amp; engineer. I design products end-to-end, then build them.
             </p>
           </div>
 
@@ -207,7 +207,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
           </a>
         </nav>
         <div className="mt-2 sm:mt-2.5 lg:mt-3 flex items-center justify-between" role="group" aria-label="Theme and copyright">
-          <p className="text-[10px] sm:text-xs font-ibm-plex-mono text-text-tertiary leading-tight">&copy;2025 Amaan</p>
+          <p className="text-[10px] sm:text-xs font-ibm-plex-mono text-text-tertiary leading-tight">&copy;2026 Amaan</p>
           <div className="flex items-center justify-end" role="group" aria-label="Theme selection">
             <button
               onClick={() => toggleTheme('dark')}

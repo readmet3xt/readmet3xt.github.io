@@ -44,7 +44,7 @@ export const About = () => {
                   Based in <span className="font-medium">Hyderabad</span>, open to Bangalore / Mumbai / Remote. M.A. Service Design from the <span className="font-medium">Royal College of Art (RCA), London</span> — ranked #1 art & design school globally.
                 </p>
                 <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                  I design and build products end-to-end — from user research and service blueprinting to React architecture and AI integration. Most recently solo-shipped Otagon, a production AI SaaS, in 6 months across 25+ features and a 150K+ game library.
+                  I design and build products end-to-end — from user research and service blueprinting to React architecture and AI integration. Most recently I solo-shipped Otagon, an AI gaming companion live on web, iOS, and Android, with 30+ features built end-to-end.
                 </p>
               </div>
 
@@ -56,7 +56,7 @@ export const About = () => {
                 </p>
                 <div className="bg-accent-primary/5 border border-accent-primary/20 rounded-lg p-4 mb-4">
                   <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                    <span className="text-accent-primary font-semibold">🏆 Core77 Design Awards 2021</span> - Notable Honor in Speculative Design category for my IVI (Invisible Value Income) project—a forward-thinking exploration of how we might better value and support women's work-life balance in the future.
+                    <span className="text-accent-primary font-semibold">Core77 Design Awards 2021</span> — Notable Honor in Speculative Design for the I.V.I. (Invisible Value Income) Program, an exploration of how we might better value and support women's work-life balance in the future.
                   </p>
                 </div>
               </div>
@@ -68,13 +68,13 @@ export const About = () => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      Solo-shipped <span className="font-semibold text-text-primary">Otagon</span> — production AI PWA — in 6 months: 25+ features, 3 subscription tiers, 95%+ detection accuracy, 70–80% API cost reduction
+                      Solo-shipped <span className="font-semibold text-text-primary">Otagon</span> — a production AI companion on web, iOS, and Android: 30+ features, paid tiers, and a ~40% API cost reduction through smart caching
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
                     <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      Founding designer at KoinBasket — scaled from MVP to <span className="font-semibold text-text-primary">70,000+ users</span>, led full rebrand, drove 42% engagement increase
+                      Founding designer at KoinBasket — scaled from a one-week MVP to <span className="font-semibold text-text-primary">70,000+ users</span>, led the full rebrand, and hired &amp; mentored the company's first junior designer
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
