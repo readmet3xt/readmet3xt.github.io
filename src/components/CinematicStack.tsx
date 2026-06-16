@@ -119,7 +119,7 @@ export default function CinematicStack({ projects, onSwitchToGrid }: CinematicSt
     <div
       ref={containerRef}
       style={{ height: `calc(100vh + ${numTransitions * 100}vh)` }}
-      className="relative w-full"
+      className="relative w-full -mt-[3vh] md:-mt-[5vh] lg:-mt-[7vh]"
     >
       <div className="sticky top-0 h-screen w-full overflow-visible flex flex-col justify-center gap-6">
         {/* Card area — right margin clears the pagination rail.

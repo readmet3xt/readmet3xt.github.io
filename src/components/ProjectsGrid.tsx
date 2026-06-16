@@ -48,49 +48,66 @@ export const ProjectsGrid = () => {
       className="scroll-mt-20"
       aria-label="Portfolio projects"
     >
-      <header className="mb-6 sm:mb-8 flex items-end justify-between gap-4">
-        <div>
-          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">
+      <header className="mb-7 sm:mb-9 lg:mb-11">
+        {/* Eyebrow */}
+        <div className="flex items-center gap-3 mb-3 sm:mb-4">
+          <span className="h-px w-7 sm:w-9 bg-accent-primary/70" />
+          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-[0.3em] text-accent-primary">
             Selected Work
           </p>
-          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-text-primary tracking-tight">
-            Nine projects, end-to-end
-          </h2>
         </div>
 
-        {/* View Toggle — hidden on mobile */}
-        {!isMobile && (
-          <div className="flex-shrink-0 flex items-center gap-1 p-1 rounded-xl bg-bg-secondary border border-foreground/[0.08] backdrop-blur-sm">
-            <button
-              onClick={() => switchView('cinematic')}
-              className={cn(
-                'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium tracking-wider uppercase transition-all duration-200 font-ibm-plex-mono',
-                viewMode === 'cinematic'
-                  ? 'bg-accent-primary/15 text-accent-primary shadow-sm'
-                  : 'text-text-tertiary hover:text-text-secondary'
-              )}
-              aria-label="Cinematic stack view"
-              aria-pressed={viewMode === 'cinematic'}
-            >
-              <Layers size={13} strokeWidth={2} />
-              <span className="hidden lg:inline">Stack</span>
-            </button>
-            <button
-              onClick={() => switchView('grid')}
-              className={cn(
-                'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium tracking-wider uppercase transition-all duration-200 font-ibm-plex-mono',
-                viewMode === 'grid'
-                  ? 'bg-accent-primary/15 text-accent-primary shadow-sm'
-                  : 'text-text-tertiary hover:text-text-secondary'
-              )}
-              aria-label="Grid view"
-              aria-pressed={viewMode === 'grid'}
-            >
-              <LayoutGrid size={13} strokeWidth={2} />
-              <span className="hidden lg:inline">Grid</span>
-            </button>
-          </div>
-        )}
+        {/* Title row with view toggle */}
+        <div className="flex items-end justify-between gap-5 sm:gap-8">
+          <h2 className="font-dm-sans font-bold text-3xl sm:text-4xl lg:text-[3.25rem] text-text-primary tracking-tight leading-[1.03]">
+            Nine projects,{' '}
+            <span className="font-light italic text-text-tertiary">end&#8209;to&#8209;end</span>
+          </h2>
+
+          {/* View Toggle — hidden on mobile */}
+          {!isMobile && (
+            <div className="flex-shrink-0 flex items-center gap-1 p-1 rounded-xl bg-bg-secondary border border-foreground/[0.08] backdrop-blur-sm">
+              <button
+                onClick={() => switchView('cinematic')}
+                className={cn(
+                  'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium tracking-wider uppercase transition-all duration-200 font-ibm-plex-mono',
+                  viewMode === 'cinematic'
+                    ? 'bg-accent-primary/15 text-accent-primary shadow-sm'
+                    : 'text-text-tertiary hover:text-text-secondary'
+                )}
+                aria-label="Cinematic stack view"
+                aria-pressed={viewMode === 'cinematic'}
+              >
+                <Layers size={13} strokeWidth={2} />
+                <span className="hidden lg:inline">Stack</span>
+              </button>
+              <button
+                onClick={() => switchView('grid')}
+                className={cn(
+                  'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-medium tracking-wider uppercase transition-all duration-200 font-ibm-plex-mono',
+                  viewMode === 'grid'
+                    ? 'bg-accent-primary/15 text-accent-primary shadow-sm'
+                    : 'text-text-tertiary hover:text-text-secondary'
+                )}
+                aria-label="Grid view"
+                aria-pressed={viewMode === 'grid'}
+              >
+                <LayoutGrid size={13} strokeWidth={2} />
+                <span className="hidden lg:inline">Grid</span>
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Editorial baseline rule */}
+        <div className="mt-5 sm:mt-6 flex items-center gap-4">
+          <div className="h-px flex-1 bg-foreground/[0.08]" />
+          <span className="font-ibm-plex-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-tertiary whitespace-nowrap">
+            Product Design
+            <span className="mx-2 text-text-tertiary/40">/</span>
+            {String(PROJECTS.length).padStart(2, '0')} Projects
+          </span>
+        </div>
       </header>
 
       {/* ===== Cinematic Stack View ===== */}
