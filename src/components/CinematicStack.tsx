@@ -1,6 +1,7 @@
 import { useRef, useCallback, useState, useEffect } from 'react';
 import {
   motion,
+  AnimatePresence,
   useScroll,
   useTransform,
   MotionValue,
@@ -31,6 +32,7 @@ export default function CinematicStack({ projects, onSwitchToGrid }: CinematicSt
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const isScrollingRef = useRef(false);
+  const navigate = useNavigate();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -120,18 +122,83 @@ export default function CinematicStack({ projects, onSwitchToGrid }: CinematicSt
       className="relative w-full"
     >
       <div className="sticky top-0 h-screen w-full overflow-visible flex flex-col justify-center gap-6">
-        {/* Card area — right margin clears the pagination rail */}
-        <div className="relative h-[80vh] max-h-[850px] mr-0 md:mr-24 lg:mr-32">
-          {projects.map((project, index) => (
-            <CinematicCard
-              key={project.href}
-              project={project}
-              index={index}
-              total={projects.length}
-              progress={scrollYProgress}
-              isActive={index === activeIndex}
-            />
-          ))}
+        {/* Card area — right margin clears the pagination rail.
+            On large screens this becomes a two-column row: info panel + smaller
+            card. Tablet keeps the full-size card with its content inside. */}
+        <div className="relative h-[80vh] max-h-[850px] mr-0 md:mr-24 lg:mr-32 lg:flex lg:items-center lg:justify-end lg:gap-12 xl:gap-16">
+          {/* Desktop-only info panel — title + summary for the active project */}
+          <div className="hidden lg:flex lg:flex-col lg:justify-center lg:flex-1 lg:min-w-0 lg:max-w-md xl:max-w-lg lg:pl-6 xl:pl-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.5, ease: entryEase }}
+                className="flex flex-col gap-3 lg:gap-4"
+              >
+                <span className="font-ibm-plex-mono text-[10px] lg:text-xs uppercase tracking-[0.3em] text-white/40">
+                  {String(activeIndex + 1).padStart(2, '0')}
+                  <span className="mx-2 text-white/20">—</span>
+                  {projects[activeIndex].description}
+                </span>
+                <h3 className="text-2xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-white font-dm-sans leading-[1.08]">
+                  {projects[activeIndex].title}
+                </h3>
+                {projects[activeIndex].summary && (
+                  <p className="text-sm lg:text-base text-neutral-300/85 leading-relaxed">
+                    {projects[activeIndex].summary}
+                  </p>
+                )}
+                <div
+                  className="h-px w-12 lg:w-16 mt-1 mb-1 lg:mb-2"
+                  style={{ background: projects[activeIndex].brandColor }}
+                />
+                <button
+                  className="group/cta inline-flex items-center justify-center gap-2 self-start h-10 lg:h-11 px-5 lg:px-6 rounded-full text-[11px] lg:text-xs tracking-widest font-bold uppercase transition-all duration-300 backdrop-blur-sm border whitespace-nowrap"
+                  style={{
+                    backgroundColor: `${projects[activeIndex].brandColor}18`,
+                    borderColor: `${projects[activeIndex].brandColor}40`,
+                    color: 'white',
+                  }}
+                  onMouseEnter={(e) => {
+                    const btn = e.currentTarget;
+                    btn.style.backgroundColor = projects[activeIndex].brandColor;
+                    btn.style.borderColor = projects[activeIndex].brandColor;
+                    btn.style.color = '#000';
+                  }}
+                  onMouseLeave={(e) => {
+                    const btn = e.currentTarget;
+                    btn.style.backgroundColor = `${projects[activeIndex].brandColor}18`;
+                    btn.style.borderColor = `${projects[activeIndex].brandColor}40`;
+                    btn.style.color = 'white';
+                  }}
+                  onClick={() => navigate(projects[activeIndex].href)}
+                  aria-label={`Explore ${projects[activeIndex].title}`}
+                >
+                  <span className="font-ibm-plex-mono">VIEW CASE STUDY</span>
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform duration-200 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5"
+                  />
+                </button>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Card stack — full size on mobile/tablet, ~half size on desktop */}
+          <div className="relative h-full w-full lg:h-[60%] xl:h-[62%] lg:w-1/2 lg:max-w-[500px] xl:max-w-[560px] lg:flex-shrink-0">
+            {projects.map((project, index) => (
+              <CinematicCard
+                key={project.href}
+                project={project}
+                index={index}
+                total={projects.length}
+                progress={scrollYProgress}
+                isActive={index === activeIndex}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Scroll hint — visible only before the journey starts */}
@@ -216,6 +283,15 @@ function CinematicCard({
     isLastCard ? [1, 1] : [1, 0.94]
   );
 
+  // Keep cards that haven't entered yet hidden — otherwise the one parked below
+  // (e.g. the last card) peeks out in the gap beneath the smaller desktop card.
+  const fadeInEnd = entryStart + (entryEnd - entryStart) * 0.2;
+  const opacity = useTransform(
+    progress,
+    isFirstCard ? [0, 1] : [entryStart, fadeInEnd],
+    isFirstCard ? [1, 1] : [0, 1]
+  );
+
   // Dim as the next card covers this one
   const overlayOpacity = useTransform(
     progress,
@@ -267,7 +343,7 @@ function CinematicCard({
     /* Scroll-driven shell — keep press animation on the inner layer so the two
        transforms don't fight over the same motion values */
     <motion.div
-      style={{ y, scale, zIndex: index, transformOrigin: 'top center' }}
+      style={{ y, scale, opacity, zIndex: index, transformOrigin: 'top center' }}
       className="absolute inset-0 will-change-transform"
       aria-hidden={!isActive}
     >
@@ -282,15 +358,20 @@ function CinematicCard({
         tabIndex={isActive ? 0 : -1}
         aria-label={`View ${project.title} case study`}
         className={cn(
-          "relative w-full h-full rounded-2xl md:rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden bg-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60",
+          "relative w-full h-full rounded-2xl md:rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden bg-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60 border transition-all duration-300",
+          // Mobile keeps the original active/idle border treatment
           isActive
-            ? "border-2 shadow-[0_-30px_80px_-10px_rgba(0,0,0,0.6),0_0_30px_-5px] transition-all duration-300"
-            : "border border-white/[0.04] shadow-[0_-30px_80px_-10px_rgba(0,0,0,0.6)]"
+            ? "border-[color:var(--brand-border)] shadow-[0_-30px_80px_-10px_rgba(0,0,0,0.6),0_0_30px_-5px]"
+            : "border-white/[0.04] shadow-[0_-30px_80px_-10px_rgba(0,0,0,0.6)]",
+          // Desktop: no border unless the card is hovered
+          "lg:border-transparent lg:group-hover:border-[color:var(--brand-border)]"
         )}
-        style={isActive ? { 
-          borderColor: project.brandColor + '80',
-          boxShadow: `0 -30px 80px -10px rgba(0,0,0,0.6), 0 0 30px -5px ${project.brandColor}66`
-        } : undefined}
+        style={{
+          ['--brand-border' as string]: project.brandColor + '80',
+          ...(isActive
+            ? { boxShadow: `0 -30px 80px -10px rgba(0,0,0,0.6), 0 0 30px -5px ${project.brandColor}66` }
+            : {}),
+        }}
       >
         {/* ===== Background Image + Cinematic Grading ===== */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -367,8 +448,8 @@ function CinematicCard({
 
           {/* --- Bottom Section --- */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end mt-auto">
-            {/* Left: Title Block */}
-            <div className="md:col-span-8 flex flex-col gap-2">
+            {/* Left: Title Block — desktop shows this beside the card instead */}
+            <div className="md:col-span-8 flex flex-col gap-2 lg:hidden">
               <span className="text-xs text-neutral-400 tracking-[0.25em] font-medium font-ibm-plex-mono uppercase">
                 {project.description}
               </span>
@@ -382,8 +463,8 @@ function CinematicCard({
               )}
             </div>
 
-            {/* Right: CTA Button */}
-            <div className="md:col-span-4 flex justify-start md:justify-end items-end">
+            {/* Right: CTA Button — desktop shows this in the side panel instead */}
+            <div className="md:col-span-4 flex justify-start md:justify-end items-end lg:hidden">
               <button
                 tabIndex={isActive ? 0 : -1}
                 className="group/cta flex items-center gap-2 px-5 py-2.5 rounded-full text-xs tracking-widest font-bold uppercase transition-all duration-300 backdrop-blur-sm border"
@@ -426,9 +507,9 @@ function CinematicCard({
           className="absolute inset-0 bg-black z-20 pointer-events-none"
         />
 
-        {/* ===== Bottom edge shine line ===== */}
+        {/* ===== Bottom edge shine line — hover-only on desktop ===== */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-px z-30 opacity-30"
+          className="absolute bottom-0 left-0 right-0 h-px z-30 opacity-30 lg:opacity-0 lg:transition-opacity lg:duration-300 lg:group-hover:opacity-30"
           style={{
             background: `linear-gradient(90deg, transparent, ${project.brandColor}, transparent)`,
           }}

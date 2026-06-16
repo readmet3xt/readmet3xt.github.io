@@ -10,6 +10,8 @@ lerna-debug.log*
 dist/
 build/
 .vite/
+Otakon Connector v2.0/dist/win-unpacked/Otagon Connector.exe/
+Otakon Connector v2.0/
 
 # Environment variables
 .env
