@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const questions = [
@@ -220,23 +221,31 @@ export const TypewriterAnimation = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none"
-      >
-        <div className="flex flex-col items-center gap-2 hidden lg:flex">
-          <p className="text-[10px] uppercase tracking-widest font-ibm-plex-mono text-text-tertiary opacity-60">Click to explore</p>
-          <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-3 rounded-full bg-accent-primary opacity-40"
-          />
-        </div>
-      </motion.div>
       </div>
+
+      {/* Explore CTA — anchored to the full hero height (not the inner min-h-[500px]
+          container) so it always stays within the first viewport. Prominent,
+          highlighted and clickable. */}
+      <motion.button
+        type="button"
+        onClick={scrollToNext}
+        aria-label="Click to explore projects"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.6, duration: 0.6, ease: 'easeOut' }}
+        className="group/explore absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 z-20 inline-flex items-center gap-2.5 rounded-full border border-accent-primary/50 bg-accent-primary/10 px-5 py-2.5 backdrop-blur-md transition-all duration-300 hover:bg-accent-primary hover:border-accent-primary hover:shadow-[0_0_36px_hsl(var(--accent-primary)/0.55)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent-primary"
+      >
+        <span className="text-[11px] sm:text-xs uppercase tracking-[0.25em] font-ibm-plex-mono font-semibold text-accent-primary transition-colors duration-300 group-hover/explore:text-black">
+          Click to explore
+        </span>
+        <motion.span
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="text-accent-primary transition-colors duration-300 group-hover/explore:text-black"
+        >
+          <ChevronDown size={16} strokeWidth={2.5} />
+        </motion.span>
+      </motion.button>
     </div>
   );
 };
