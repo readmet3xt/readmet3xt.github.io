@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowDown, ArrowRight, Presentation } from 'lucide-react';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 import { PresentationModal } from '@/components/PresentationModal';
-import { PRESENTATION_SLIDES, PRESENTATION_TITLE } from '@/data/presentation';
+import { DECK_URL, DECK_TITLE } from '@/data/presentation';
 
 const istFormatter = new Intl.DateTimeFormat('en-GB', {
   hour: '2-digit',
@@ -202,8 +202,8 @@ export const HeroSection = () => {
     <PresentationModal
       open={deckOpen}
       onClose={() => setDeckOpen(false)}
-      slides={PRESENTATION_SLIDES}
-      title={PRESENTATION_TITLE}
+      src={DECK_URL}
+      title={DECK_TITLE}
     />
     </>
   );
