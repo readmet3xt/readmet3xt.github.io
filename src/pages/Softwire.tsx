@@ -47,8 +47,8 @@ export const Softwire = () => {
               'National Rail Guidelines',
             ],
           }}
-          heroImage="/images/casestudies/softwire/1.webp"
-          heroImageAlt="LNER App Clip interface"
+          heroImage="/images/casestudies/softwire/14-5-product-final-landing.webp"
+          heroImageAlt="LNER App Clip landing screen — final product design"
         />
 
         {/* The Challenge */}
@@ -71,8 +71,11 @@ export const Softwire = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/2.webp', alt: 'The challenge' }
+              { src: '/images/casestudies/softwire/1-problem.webp', alt: 'The problem — passengers running to catch trains with no fast way to buy a ticket', caption: 'The problem: time-pressured passengers with no fast, lightweight way to buy a ticket.' },
+              { src: '/images/casestudies/softwire/2-solution.webp', alt: 'The solution — an instant-launch, sub-10MB App Clip', caption: 'The solution: a sub-10MB, instant-launch App Clip focused on a single task.' },
+              { src: '/images/casestudies/softwire/10-opportunity.webp', alt: 'The opportunity space for an App Clip ticket experience', caption: 'The opportunity: an instant ticketing experience tailored to the station context.' }
             ]}
           />
         </CaseStudySection>
@@ -105,10 +108,16 @@ export const Softwire = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/5.webp', alt: 'Research 1' },
-              { src: '/images/casestudies/softwire/6.webp', alt: 'Research 2' },
-              { src: '/images/casestudies/softwire/4.webp', alt: 'Research 3' }
+              { src: '/images/casestudies/softwire/3-1-ideation-workshop.webp', alt: 'The 13-person ideation workshop in session', caption: 'Co-facilitating a 13-person ideation workshop with LNER stakeholders, designers and developers.' },
+              { src: '/images/casestudies/softwire/3-2-workshop-crazy-8.webp', alt: 'Workshop in progress — Crazy 8s sketching exercise', caption: 'Workshop in progress: a Crazy 8s rapid-sketching exercise.' },
+              { src: '/images/casestudies/softwire/4-results-of-workshop.webp', alt: 'Results of the workshop — clustered ideas', caption: 'Results of the workshop: clustered ideas and emerging directions.' },
+              { src: '/images/casestudies/softwire/5-results-of-workshop-activity-2.webp', alt: 'Results of workshop activity 2', caption: 'Outputs from the second workshop activity.' },
+              { src: '/images/casestudies/softwire/6-fly-on-the-wall.webp', alt: 'Fly-on-the-wall observation method at the station', caption: 'Fly-on-the-wall observations at St. Pancras to see real passenger behaviour.' },
+              { src: '/images/casestudies/softwire/9-fly-on-the-wall-pics.webp', alt: 'Photographs from fly-on-the-wall station observations', caption: 'Field photographs captured during station observations.' },
+              { src: '/images/casestudies/softwire/7-fly-on-the-wall-results.webp', alt: 'Synthesised results from fly-on-the-wall observations', caption: 'Synthesised observation findings: anxiety spikes around platform announcements.' },
+              { src: '/images/casestudies/softwire/8-problems-found.webp', alt: 'Key problems found through research', caption: 'The core problems found: the gap was live, trustworthy journey information under pressure.' }
             ]}
           />
         </CaseStudySection>
@@ -143,15 +152,11 @@ export const Softwire = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/8.webp', alt: 'Design process 1' },
-              { src: '/images/casestudies/softwire/9.webp', alt: 'Design process 2' },
-              { src: '/images/casestudies/softwire/10.webp', alt: 'Design process 3' },
-              { src: '/images/casestudies/softwire/11.webp', alt: 'Design process 4' },
-              { src: '/images/casestudies/softwire/12.webp', alt: 'Design process 5' },
-              { src: '/images/casestudies/softwire/13.webp', alt: 'Design process 6' },
-              { src: '/images/casestudies/softwire/14.webp', alt: 'Design process 7' },
-              { src: '/images/casestudies/softwire/7.webp', alt: 'Design process 8' }
+              { src: '/images/casestudies/softwire/11-app-clip-flow-chart.webp', alt: 'App Clip flow chart mapping the booking journey', caption: 'Mapping the App Clip booking flow end to end.' },
+              { src: '/images/casestudies/softwire/12-lofi-wireframe.webp', alt: 'Low-fidelity wireframes of the booking screens', caption: 'Low-fidelity wireframes exploring screen layout and hierarchy.' },
+              { src: '/images/casestudies/softwire/13-usability-testing.webp', alt: 'Usability testing setup and findings', caption: 'Usability testing with 9 participants under realistic time pressure.' }
             ]}
           />
         </CaseStudySection>
@@ -183,11 +188,12 @@ export const Softwire = () => {
 
           <CaseStudyImageGrid
             columns={2}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/15.webp', alt: 'Iteration 1' },
-              { src: '/images/casestudies/softwire/18.webp', alt: 'Iteration 2' },
-              { src: '/images/casestudies/softwire/21.webp', alt: 'Iteration 3' },
-              { src: '/images/casestudies/softwire/23.webp', alt: 'Iteration 4' }
+              { src: '/images/casestudies/softwire/14-4-product-initial.webp', alt: 'Initial product design before iteration', caption: 'The initial design — before testing surfaced the issues.' },
+              { src: '/images/casestudies/softwire/16-feedback-form.webp', alt: 'Feedback form used to capture usability findings', caption: 'Capturing structured feedback from each test session.' },
+              { src: '/images/casestudies/softwire/14-9-product-final-ticket.webp', alt: 'Final confirmation screen — platform number and QR code visible immediately', caption: 'The reworked confirmation screen: platform number and QR code front and centre.' },
+              { src: '/images/casestudies/softwire/18-notifications.webp', alt: 'Live journey notifications design', caption: 'Live, demonstrably up-to-date journey notifications.' }
             ]}
           />
         </CaseStudySection>
@@ -206,12 +212,17 @@ export const Softwire = () => {
           ]} />
 
           <CaseStudyImageGrid
-            columns={2}
+            columns={3}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/19.webp', alt: 'Solution 1' },
-              { src: '/images/casestudies/softwire/20.webp', alt: 'Solution 2' },
-              { src: '/images/casestudies/softwire/24.webp', alt: 'Solution 3' },
-              { src: '/images/casestudies/softwire/25.webp', alt: 'Solution 4' }
+              { src: '/images/casestudies/softwire/14-5-product-final-landing.webp', alt: 'Final product — landing screen', caption: 'Landing' },
+              { src: '/images/casestudies/softwire/14-6-product-ticket-selection.webp', alt: 'Final product — ticket selection screen', caption: 'Ticket selection' },
+              { src: '/images/casestudies/softwire/14-7-product-selecting-train.webp', alt: 'Final product — selecting a train', caption: 'Selecting a train' },
+              { src: '/images/casestudies/softwire/14-8-product-checkout-page.webp', alt: 'Final product — checkout page', caption: 'Checkout' },
+              { src: '/images/casestudies/softwire/14-9-product-final-ticket.webp', alt: 'Final product — final ticket screen', caption: 'Final ticket' },
+              { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Final product screen', caption: 'Final UI' },
+              { src: '/images/casestudies/softwire/14-2-product-final.webp', alt: 'Final product screen', caption: 'Final UI' },
+              { src: '/images/casestudies/softwire/14-3-product-final.webp', alt: 'Final product screen', caption: 'Final UI' }
             ]}
           />
         </CaseStudySection>
@@ -250,10 +261,11 @@ export const Softwire = () => {
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
-            columns={1}
+            columns={2}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/26.webp', alt: 'Seat Finder 1' },
-              { src: '/images/casestudies/softwire/28.webp', alt: 'Seat Finder 2' }
+              { src: '/images/casestudies/softwire/15-seat-finder.webp', alt: 'Seat Finder concept — first representation', caption: 'Seat Finder concept: one representation of the carriage.' },
+              { src: '/images/casestudies/softwire/17-seat-finder-2.webp', alt: 'Seat Finder concept — alternative representation', caption: 'Seat Finder concept: an alternative view for A/B comparison.' }
             ]}
           />
         </CaseStudySection>

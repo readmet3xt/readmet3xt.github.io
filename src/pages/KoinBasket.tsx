@@ -74,8 +74,8 @@ export const KoinBasket = () => {
               'Brand Design',
             ],
           }}
-          heroImage="/images/casestudies/koinbasket/Main Dashboard - Expanded and Hover.jpg"
-          heroImageAlt="KoinBasket platform interface"
+          heroImage="/images/casestudies/koinbasket/2-home-page.jpg"
+          heroImageAlt="KoinBasket home page"
         />
 
         {/* The Origin Story */}
@@ -104,11 +104,11 @@ export const KoinBasket = () => {
             it was the design principle that shaped everything.
           </CaseStudyQuote>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/koinbasket/Coin Details.png', alt: 'Coin Details' }
-            ]}
+          <CaseStudyImage
+            src="/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.png"
+            alt="KoinBasket product dashboard with live trading"
+            caption="The product dashboard — curated baskets and live trading in one view."
+            aspectRatio="aspect-auto"
           />
         </CaseStudySection>
 
@@ -125,6 +125,15 @@ export const KoinBasket = () => {
             basket icons, email templates, marketing content, onboarding flows. Cross-platform from day
             one: responsive web plus foundational iOS and Android designs.
           </CaseStudyParagraph>
+
+          <CaseStudyImageGrid
+            columns={2}
+            aspectRatio="aspect-auto"
+            images={[
+              { src: '/images/casestudies/koinbasket/3-lofi-home.png', alt: 'Low-fidelity home page concept' },
+              { src: '/images/casestudies/koinbasket/4-lofi-2.png', alt: 'Low-fidelity layout concept' }
+            ]}
+          />
 
           <CaseStudyCard title="Core Features Shipped in One-Week Sprint">
             <CaseStudyList items={[
@@ -143,9 +152,12 @@ export const KoinBasket = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/koinbasket/Login.png', alt: 'Login' },
-              { src: '/images/casestudies/koinbasket/Exchange Popup.png', alt: 'Exchange Popup' },
-              { src: '/images/casestudies/koinbasket/Portfolio - Completed - Expanded View.png', alt: 'Portfolio Expanded View' }
+              { src: '/images/casestudies/koinbasket/1-login.png', alt: 'Login screen' },
+              { src: '/images/casestudies/koinbasket/5-login-verification.png', alt: 'Login verification screen' },
+              { src: '/images/casestudies/koinbasket/7-checkout.png', alt: 'Checkout flow' },
+              { src: '/images/casestudies/koinbasket/8-basket-management.png', alt: 'Basket management dashboard' },
+              { src: '/images/casestudies/koinbasket/9-fantasy-league-team-creator.png', alt: 'Crypto Fantasy League team creator' },
+              { src: '/images/casestudies/koinbasket/10-fantasy-league-home.png', alt: 'Crypto Fantasy League home' }
             ]}
           />
 
@@ -154,10 +166,19 @@ export const KoinBasket = () => {
               columns={3}
               aspectRatio="aspect-auto"
               images={[
-                { src: '/images/casestudies/koinbasket/Buy - Second Screen (2).png', alt: 'Buy Screen' },
-                { src: '/images/casestudies/koinbasket/iPhone XS (3).png', alt: 'Mobile Screen 1' },
-                { src: '/images/casestudies/koinbasket/iPhone XS (4).png', alt: 'Mobile Screen 2' }
+                { src: '/images/casestudies/koinbasket/6-mobile-basket-page.png', alt: 'Mobile basket page' },
+                { src: '/images/casestudies/koinbasket/10-mobile-home.jpg', alt: 'Mobile home screen' },
+                { src: '/images/casestudies/koinbasket/11-mobile-onboarding.jpg', alt: 'Mobile onboarding flow' }
               ]}
+            />
+          </div>
+
+          <div className="mt-8">
+            <CaseStudyImage
+              src="/images/casestudies/koinbasket/11-email-template.png"
+              alt="KoinBasket email template"
+              caption="One of the custom email templates I designed as part of owning the full brand experience."
+              aspectRatio="aspect-auto"
             />
           </div>
         </CaseStudySection>
@@ -189,11 +210,9 @@ export const KoinBasket = () => {
                 columns={1}
                 aspectRatio="aspect-auto"
                 images={[
-                  { src: '/images/casestudies/koinbasket/homepage (3).png', alt: 'Homepage' },
-                  { src: '/images/casestudies/koinbasket/Signup Screen.png', alt: 'Signup Screen' },
-                  { src: '/images/casestudies/koinbasket/buy flow basket.png', alt: 'Buy Flow' },
-                  { src: '/images/casestudies/koinbasket/Checkout (1).png', alt: 'Checkout' },
-                  { src: '/images/casestudies/koinbasket/Home.png', alt: 'Home' }
+                  { src: '/images/casestudies/koinbasket/16-new-homescreen.png', alt: 'Rebranded home screen' },
+                  { src: '/images/casestudies/koinbasket/17-new-product-live-trading.png', alt: 'Rebranded product with live trading' },
+                  { src: '/images/casestudies/koinbasket/14-checkout-successful-page.png', alt: 'Successful checkout confirmation page' }
                 ]}
               />
 
@@ -216,12 +235,12 @@ export const KoinBasket = () => {
                 aspectRatio="aspect-auto"
                 images={[
                   {
-                    src: '/images/casestudies/koinbasket/Portrait (1).png',
-                    alt: 'First vertical portrait snapshot',
+                    src: '/images/casestudies/koinbasket/13-bitbuddy-create-a-basket-influencer.png',
+                    alt: 'BitBuddy influencer creating a basket',
                   },
                   {
-                    src: '/images/casestudies/koinbasket/Portrait (3).png',
-                    alt: 'Second vertical portrait snapshot',
+                    src: '/images/casestudies/koinbasket/15-mobile-new-design.png',
+                    alt: 'Rebranded mobile design',
                   },
                 ]}
               />
@@ -246,16 +265,27 @@ export const KoinBasket = () => {
                 ]}
               />
 
-              <CaseStudyImageGrid
-                columns={1}
+              <CaseStudyImage
+                src="/images/casestudies/koinbasket/17-new-product-live-trading.png"
+                alt="Live trading dashboard in the rebranded product"
+                caption="The mature platform — live trading, real-time market data, and community in one dashboard."
                 aspectRatio="aspect-auto"
-                images={[
-                  { src: '/images/casestudies/koinbasket/Pack Details Page (1).png', alt: 'Pack Details' },
-                  { src: '/images/casestudies/koinbasket/Desktop.png', alt: 'Desktop' },
-                  { src: '/images/casestudies/koinbasket/earlyconcept1.png', alt: 'Early Concept 1' },
-                  { src: '/images/casestudies/koinbasket/earlyconcept2.png', alt: 'Early Concept 2' }
-                ]}
               />
+
+              <div className="mt-8">
+                <CaseStudyImageGrid
+                  columns={3}
+                  aspectRatio="aspect-auto"
+                  images={[
+                    { src: '/images/casestudies/koinbasket/18-1-mobile-feature-highlight-1.png', alt: 'Mobile feature highlight 1' },
+                    { src: '/images/casestudies/koinbasket/18-2-mobile-feature-highlight-2.png', alt: 'Mobile feature highlight 2' },
+                    { src: '/images/casestudies/koinbasket/18-3-mobile-feature-highlight-3.png', alt: 'Mobile feature highlight 3' },
+                    { src: '/images/casestudies/koinbasket/18-4-mobile-feature-highlight-4.png', alt: 'Mobile feature highlight 4' },
+                    { src: '/images/casestudies/koinbasket/18-5-mobile-feature-highlight-5.png', alt: 'Mobile feature highlight 5' },
+                    { src: '/images/casestudies/koinbasket/18-6-mobile-feature-highlight-6.png', alt: 'Mobile feature highlight 6' }
+                  ]}
+                />
+              </div>
             </CaseStudySection>
 
             {/* What I Learned */}
@@ -285,10 +315,10 @@ export const KoinBasket = () => {
 
               <CaseStudyImageGrid
                 columns={1}
+                aspectRatio="aspect-auto"
                 images={[
-                  { src: '/images/casestudies/koinbasket/landingpage.png', alt: 'Landing Page' },
-                  { src: '/images/casestudies/koinbasket/Manage - Articles.png', alt: 'Manage Articles' },
-                  { src: '/images/casestudies/koinbasket/Manage - My baskets.png', alt: 'Manage Baskets' }
+                  { src: '/images/casestudies/koinbasket/2-home-page.jpg', alt: 'KoinBasket home page' },
+                  { src: '/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.png', alt: 'Product dashboard with live trading' }
                 ]}
               />
             </CaseStudySection>

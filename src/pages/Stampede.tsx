@@ -5,6 +5,7 @@ import {
   CaseStudyParagraph,
   CaseStudyQuote,
   CaseStudyList,
+  CaseStudyImage,
   CaseStudyImageGrid,
   CaseStudyCard,
   CaseStudyCardGrid,
@@ -49,19 +50,9 @@ export const Stampede = () => {
               'Co-creation Methods',
             ],
           }}
-          heroImage="/images/casestudies/stampede/1.jpg"
-          heroImageAlt="Stampede Conservation Partnership Workshop"
+          heroImage="/images/casestudies/stampede/1-problem-statement.jpg"
+          heroImageAlt="Stampede problem statement — the conservation partnership crisis"
         />
-
-        <CaseStudySection>
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/stampede/1.1.jpg', alt: 'Hero image 2' },
-              { src: '/images/casestudies/stampede/1.2.jpg', alt: 'Hero image 3' }
-            ]}
-          />
-        </CaseStudySection>
 
         {/* The Problem */}
         <CaseStudySection title="The Problem">
@@ -89,12 +80,18 @@ export const Stampede = () => {
             to impact. That's a design problem.
           </CaseStudyParagraph>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/stampede/2.jpg', alt: 'Conservation partnership challenges 1', caption: 'Systemic failures in how conservation organisations connect' },
-              { src: '/images/casestudies/stampede/2.1.jpg', alt: 'Conservation partnership challenges 2' }
-            ]}
+          <CaseStudyImage
+            src="/images/casestudies/stampede/1-problem-statement.jpg"
+            alt="Problem statement — wildlife conservation's connection crisis"
+            caption="The problem: conservation partnerships form by happy accident, not design"
+            aspectRatio="aspect-auto"
+          />
+
+          <CaseStudyImage
+            src="/images/casestudies/stampede/2-how-the-service-works.jpg"
+            alt="How the Stampede service works"
+            caption="How the service works — designing connection into the conservation ecosystem"
+            aspectRatio="aspect-auto"
           />
         </CaseStudySection>
 
@@ -167,13 +164,18 @@ export const Stampede = () => {
             together what neither can alone.
           </CaseStudyParagraph>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/stampede/3.1.jpg', alt: 'Power/Pace matrix 1' },
-              { src: '/images/casestudies/stampede/3.2.jpg', alt: 'Power/Pace matrix 2' },
-              { src: '/images/casestudies/stampede/3.3.jpg', alt: 'Power/Pace matrix 3' }
-            ]}
+          <CaseStudyImage
+            src="/images/casestudies/stampede/3-all-animals.jpg"
+            alt="The seven animal archetypes mapped on the Power/Pace matrix"
+            caption="The animal archetypes — mapping every organisation's operational character"
+            aspectRatio="aspect-auto"
+          />
+
+          <CaseStudyImage
+            src="/images/casestudies/stampede/4-how-they-match.jpg"
+            alt="How organisations are matched by complementary Power/Pace profiles"
+            caption="How they match — pairing complementary archetypes for maximum leverage"
+            aspectRatio="aspect-auto"
           />
         </CaseStudySection>
 
@@ -193,12 +195,11 @@ export const Stampede = () => {
             everyone leaves the room.
           </CaseStudyParagraph>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/stampede/4.1.jpg', alt: 'Stampede methodology framework 1' },
-              { src: '/images/casestudies/stampede/4.2.jpg', alt: 'Stampede methodology framework 2' }
-            ]}
+          <CaseStudyImage
+            src="/images/casestudies/stampede/5-how-the-workshop-works.jpg"
+            alt="How the Stampede kick-off workshop works — the five-step format"
+            caption="How the workshop works — the Kick-Off broken into five facilitated steps"
+            aspectRatio="aspect-auto"
           />
         </CaseStudySection>
 
@@ -247,14 +248,30 @@ export const Stampede = () => {
           </CaseStudyQuote>
 
           <CaseStudyImageGrid
-            columns={1}
+            columns={3}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/stampede/5.1 (1).jpg', alt: 'WWT × Airbnb workshop 1' },
-              { src: '/images/casestudies/stampede/5.1 (2).jpg', alt: 'WWT × Airbnb workshop 2' },
-              { src: '/images/casestudies/stampede/5.1 (3).jpg', alt: 'WWT × Airbnb workshop 3' },
-              { src: '/images/casestudies/stampede/5.2.jpg', alt: 'WWT × Airbnb workshop 4' },
-              { src: '/images/casestudies/stampede/5.4.jpg', alt: 'WWT × Airbnb workshop 5' }
+              { src: '/images/casestudies/stampede/6-workshop-1.jpg', alt: 'WWT × Airbnb workshop — Unpacking step', caption: 'Unpacking' },
+              { src: '/images/casestudies/stampede/7-workshop-2.jpg', alt: 'WWT × Airbnb workshop — Sketching step', caption: 'Sketching' },
+              { src: '/images/casestudies/stampede/8-workshop-3.jpg', alt: 'WWT × Airbnb workshop — Solutioning step', caption: 'Solutioning' }
             ]}
+          />
+
+          <CaseStudyImageGrid
+            columns={3}
+            aspectRatio="aspect-auto"
+            images={[
+              { src: '/images/casestudies/stampede/9-1-workshop-activity-1.jpg', alt: 'Workshop activity 1', caption: 'Workshop activity 1' },
+              { src: '/images/casestudies/stampede/9-2-workshop-activity-2.jpg', alt: 'Workshop activity 2', caption: 'Workshop activity 2' },
+              { src: '/images/casestudies/stampede/9-3-workshop-activity-3.jpg', alt: 'Workshop activity 3', caption: 'Workshop activity 3' }
+            ]}
+          />
+
+          <CaseStudyImage
+            src="/images/casestudies/stampede/10-workshop-in-progress.jpg"
+            alt="The WWT × Airbnb workshop in progress"
+            caption="The workshop in progress — WWT and Airbnb co-creating live"
+            aspectRatio="aspect-auto"
           />
 
           <CaseStudyCard title="Design Principles from the Prototype">
@@ -295,13 +312,11 @@ export const Stampede = () => {
                 allowFullScreen>
               </iframe>
             </div>
-            <CaseStudyImageGrid
-              columns={1}
-              images={[
-                { src: '/images/casestudies/stampede/6.1.jpg', alt: 'Workshop results 1' },
-                { src: '/images/casestudies/stampede/6.2.jpg', alt: 'Workshop results 2' },
-                { src: '/images/casestudies/stampede/6.3.jpg', alt: 'Workshop results 3' }
-              ]}
+            <CaseStudyImage
+              src="/images/casestudies/stampede/11-results.jpg"
+              alt="Stampede results — outcomes and impact of the methodology"
+              caption="Results — the impact of the Stampede methodology"
+              aspectRatio="aspect-auto"
             />
           </div>
         </CaseStudySection>
@@ -340,13 +355,11 @@ export const Stampede = () => {
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/stampede/1_page-0069.jpg', alt: 'Service blueprint' },
-              { src: '/images/casestudies/stampede/1_page-0045.jpg', alt: 'Partnership framework' },
-              { src: '/images/casestudies/stampede/8-Stampede.jpg', alt: 'Learnings' }
-            ]}
+          <CaseStudyImage
+            src="/images/casestudies/stampede/12-team.jpg"
+            alt="The Stampede team — RCA Team 9"
+            caption="The team — RCA Team 9: Amaan, Anahita Pradhan, Andrew Seetoh, Constance Chung"
+            aspectRatio="aspect-auto"
           />
         </CaseStudySection>
       </CaseStudyLayout>

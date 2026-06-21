@@ -50,7 +50,7 @@ export const IviProgram = () => {
               'Figma',
             ],
           }}
-          heroImage="/images/casestudies/ivi/1 (3).jpg"
+          heroImage="/images/casestudies/ivi/1-bad-health.jpg"
         />
 
         <CaseStudySection>
@@ -68,8 +68,9 @@ export const IviProgram = () => {
             </div>
             <CaseStudyImageGrid
               columns={1}
+              aspectRatio="aspect-auto"
               images={[
-                { src: '/images/casestudies/ivi/2 (3).jpg', alt: 'Hero image 2' }
+                { src: '/images/casestudies/ivi/2-good-mental-health.jpg', alt: 'What good mental health looks like for working women', caption: 'Good mental health' }
               ]}
             />
           </div>
@@ -102,13 +103,11 @@ export const IviProgram = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/33 (2).jpg', alt: 'The invisible workload problem 1' },
-              { src: '/images/casestudies/ivi/10 (3).jpg', alt: 'The invisible workload problem 2' },
-              { src: '/images/casestudies/ivi/4.jpg', alt: 'The invisible workload problem 3' },
-              { src: '/images/casestudies/ivi/5.jpg', alt: 'The invisible workload problem 4' },
-              { src: '/images/casestudies/ivi/6.jpg', alt: 'The invisible workload problem 5' },
-              { src: '/images/casestudies/ivi/7.jpg', alt: 'The invisible workload problem 6' }
+              { src: '/images/casestudies/ivi/1-bad-health.jpg', alt: 'The toll of poor mental and physical health on working women', caption: 'Bad health' },
+              { src: '/images/casestudies/ivi/3-initial-hmw.jpg', alt: 'Our initial How Might We framing of the problem', caption: 'Initial how-might-we' },
+              { src: '/images/casestudies/ivi/4-why-this-happens.jpg', alt: 'Mapping the systemic reasons why this happens', caption: 'Why this happens' }
             ]}
           />
         </CaseStudySection>
@@ -151,10 +150,9 @@ export const IviProgram = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/8 (2).jpg', alt: 'Research approach 1' },
-              { src: '/images/casestudies/ivi/Term4_Final presentation.003.jpeg', alt: 'Research approach 2' },
-              { src: '/images/casestudies/ivi/13 (2).jpg', alt: 'Research approach 3' }
+              { src: '/images/casestudies/ivi/5-research-findings.jpeg', alt: 'Key research findings from interviews and surveys across 12 countries', caption: 'Research findings' }
             ]}
           />
         </CaseStudySection>
@@ -200,16 +198,18 @@ export const IviProgram = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/17 (3).jpg', alt: 'Sensei platform 1' }
+              { src: '/images/casestudies/ivi/7-sensei.jpeg', alt: 'The Sensei platform — the central touchpoint of the I.V.I. Program', caption: 'The Sensei platform' }
             ]}
           />
           <div className="mt-8">
             <CaseStudyImageGrid
-              columns={2}
+              columns={1}
+              aspectRatio="aspect-auto"
               images={[
-                { src: '/images/casestudies/ivi/Term4_Final presentation.008.jpeg', alt: 'Sensei UI 1' },
-                { src: '/images/casestudies/ivi/Term4_Final presentation.009.jpeg', alt: 'Sensei UI 2' }
+                { src: '/images/casestudies/ivi/6-1-journey-map-1.jpeg', alt: 'Service journey map — part one', caption: 'Journey map' },
+                { src: '/images/casestudies/ivi/6-2-journey-map-2.jpeg', alt: 'Service journey map — how the system will look in practice', caption: 'Journey map — how the system will look' }
               ]}
             />
           </div>

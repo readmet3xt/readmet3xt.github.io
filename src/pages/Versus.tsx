@@ -53,8 +53,8 @@ export const Versus = () => {
         }}
         externalLink="https://otagon2.github.io/Versus/"
         externalLabel="Visit Versus"
-        heroImage="/versus/hero.png"
-        heroImageAlt="Versus tournament dashboard hero"
+        heroImage="/versus/1-landing-page-desktop.png"
+        heroImageAlt="Versus landing page on desktop"
       />
 
       {/* The Problem */}
@@ -84,9 +84,10 @@ export const Versus = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/versus/problem.png"
-          alt="Paper-bracket friction"
-          caption="The mess of manual brackets, scribbled scoresheets, and missing fixtures"
+          src="/versus/1-landing-page-desktop.png"
+          alt="Versus landing page on desktop"
+          caption="The landing page — the entry point that replaces the paper bracket"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -99,10 +100,14 @@ export const Versus = () => {
           spectators can open instantly.
         </CaseStudyParagraph>
 
-        <CaseStudyImage
-          src="/versus/vision.png"
-          alt="Versus vision — broadcast-style tournament UI"
-          caption="A live, sport-flavoured interface for casual tournaments at home"
+        <CaseStudyImageGrid
+          columns={3}
+          aspectRatio="aspect-auto"
+          images={[
+            { src: '/versus/2-tournament-creator-mobile.png', alt: 'Tournament creator on mobile' },
+            { src: '/versus/3-loading-tournament.png', alt: 'Loading a tournament on mobile' },
+            { src: '/versus/4-tournament-page.png', alt: 'Tournament page on mobile', caption: 'Create a tournament, load it, and play — the full setup flow on a phone' },
+          ]}
         />
       </CaseStudySection>
 
@@ -142,9 +147,10 @@ export const Versus = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/versus/build.png"
-          alt="Build phases for Versus"
-          caption="From paper brackets to a live, shareable tournament app"
+          src="/versus/6-match-started-admin.png"
+          alt="A match started in the admin view"
+          caption="The live Match Hub — scoring an in-progress match from the host's admin view"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -182,12 +188,11 @@ export const Versus = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImageGrid
-          columns={2}
-          images={[
-            { src: '/versus/design-1.png', alt: 'League standings view' },
-            { src: '/versus/design-2.png', alt: 'Knockout bracket view', caption: 'League and knockout views sharing the same underlying match model' },
-          ]}
+        <CaseStudyImage
+          src="/versus/5-spectator-view-mobile.png"
+          alt="Spectator view on mobile"
+          caption="The read-only spectator view — what someone sees when they open the share link on their phone"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -228,11 +233,6 @@ export const Versus = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImage
-          src="/versus/hard-problems.png"
-          alt="Live sync architecture"
-          caption="Architecture: static SPA + Supabase + PeerJS signaling, no per-tournament backend"
-        />
       </CaseStudySection>
 
       {/* Results */}
@@ -266,9 +266,10 @@ export const Versus = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/versus/results.png"
-          alt="Versus results dashboard"
-          caption="Live dashboard during a tournament night"
+          src="/versus/7-tournament-home-page-admin.png"
+          alt="Tournament home page in the admin view"
+          caption="The admin tournament home — live standings and fixtures during a tournament night"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 

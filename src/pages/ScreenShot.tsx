@@ -53,8 +53,8 @@ export const ScreenShot = () => {
         }}
         externalLink="https://otagon2.github.io/ScreenShot/"
         externalLabel="Visit ScreenShot"
-        heroImage="/screenshot/hero.png"
-        heroImageAlt="ScreenShot gallery hero"
+        heroImage="/screenshot/1-landing-page-hero.png"
+        heroImageAlt="ScreenShot landing page hero section"
       />
 
       {/* The Problem */}
@@ -83,12 +83,6 @@ export const ScreenShot = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
-
-        <CaseStudyImage
-          src="/screenshot/problem.png"
-          alt="The friction of moving screenshots between devices"
-          caption="From PC capture to phone gallery, the journey today is way too long"
-        />
       </CaseStudySection>
 
       {/* The Vision */}
@@ -99,9 +93,10 @@ export const ScreenShot = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/screenshot/vision.png"
-          alt="ScreenShot vision — F1 to phone gallery"
-          caption="One key press on PC, one synced gallery everywhere else"
+          src="/screenshot/2-after-login-gallery.png"
+          alt="The gallery page right after logging in"
+          caption="After login: a clean gallery wall, ready for incoming screenshots"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -141,9 +136,10 @@ export const ScreenShot = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/screenshot/build.png"
-          alt="Build phases"
-          caption="Four focused phases — pairing, gallery, lightbox, install"
+          src="/screenshot/3-connector-wifi.png"
+          alt="The desktop connector pairing with the web app over WiFi"
+          caption="Phase 1 in action: the connector pairs with the web app over WiFi"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -182,12 +178,11 @@ export const ScreenShot = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImageGrid
-          columns={2}
-          images={[
-            { src: '/screenshot/design-1.png', alt: 'Folder sidebar with live counts' },
-            { src: '/screenshot/design-2.png', alt: 'Selection mode + action bar', caption: 'Folder sidebar and selection-mode action bar' },
-          ]}
+        <CaseStudyImage
+          src="/screenshot/4-gallery-websocket.png"
+          alt="Gallery populated live with images arriving over the WebSocket relay"
+          caption="Inbox-by-default gallery filling up live as screenshots stream in over the WebSocket relay"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -227,12 +222,6 @@ export const ScreenShot = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
-
-        <CaseStudyImage
-          src="/screenshot/hard-problems.png"
-          alt="Architecture diagram"
-          caption="ScreenShot architecture: PC client → relay → web app → Supabase storage"
-        />
       </CaseStudySection>
 
       {/* Results */}
@@ -267,9 +256,10 @@ export const ScreenShot = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/screenshot/results.png"
-          alt="Gallery results"
-          caption="The gallery in action — folders, selection mode, and lightbox"
+          src="/screenshot/5-mobile-pwa-install.png"
+          alt="Mobile gallery view with the PWA install prompt"
+          caption="The payoff on mobile: the gallery as an installable PWA on your phone"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 

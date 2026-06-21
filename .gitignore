@@ -6,6 +6,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Raw image-delivery staging folder (processed copies live in public/)
+Pic/
+
 # Build outputs
 dist/
 build/

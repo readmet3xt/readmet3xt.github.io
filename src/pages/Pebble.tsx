@@ -47,7 +47,7 @@ export const Pebble = () => {
               'User Testing',
             ],
           }}
-          heroImage="/images/casestudies/pebble/Hero Image Pebble 1600.jpeg"
+          heroImage="/images/casestudies/pebble/1-cover-pic.jpg"
           heroImageAlt="Pebble virtual wellbeing companion"
         />
 
@@ -89,9 +89,9 @@ export const Pebble = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/2.jpg', alt: 'The crisis 1' },
-              { src: '/images/casestudies/pebble/3.jpg', alt: 'The crisis 2' }
+              { src: '/images/casestudies/pebble/2-problem.jpg', alt: 'The problem: workplace wellbeing in decline', caption: 'The problem' }
             ]}
           />
         </CaseStudySection>
@@ -117,10 +117,11 @@ export const Pebble = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/4.jpg', alt: 'Co-creation 1' },
-              { src: '/images/casestudies/pebble/13.jpg', alt: 'Co-creation 2' },
-              { src: '/images/casestudies/pebble/14.jpg', alt: 'Co-creation 3' }
+              { src: '/images/casestudies/pebble/3-workshop.jpg', alt: 'Co-creation workshop overview', caption: 'Workshop' },
+              { src: '/images/casestudies/pebble/6-research.jpg', alt: 'Research synthesis across 1,200+ responses', caption: 'Research' },
+              { src: '/images/casestudies/pebble/7-co-creation-workshop.jpg', alt: 'Co-creation workshop with participants', caption: 'Co-creation workshop' }
             ]}
           />
         </CaseStudySection>
@@ -147,10 +148,10 @@ export const Pebble = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/8.jpg', alt: 'Explorer Persona 1' },
-              { src: '/images/casestudies/pebble/9.jpg', alt: 'Explorer Persona 2' },
-              { src: '/images/casestudies/pebble/10.jpg', alt: 'Explorer Persona 3' }
+              { src: '/images/casestudies/pebble/4-why-explorer.jpg', alt: 'Why we focused on the Explorer', caption: 'Why the Explorer' },
+              { src: '/images/casestudies/pebble/5-persona.jpg', alt: 'The Explorer persona: meet James', caption: 'Persona' }
             ]}
           />
         </CaseStudySection>
@@ -195,11 +196,11 @@ export const Pebble = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/Pebble Image 1600x900.jpeg', alt: 'Pebble Solution 1' },
-              { src: '/images/casestudies/pebble/Pebble Image 2.gif', alt: 'Pebble Solution 2' },
-              { src: '/images/casestudies/pebble/24.jpg', alt: 'Pebble Solution 3' },
-              { src: '/images/casestudies/pebble/19.jpg', alt: 'Pebble Solution 4' }
+              { src: '/images/casestudies/pebble/8-how-deep-work-works.jpg', alt: 'How deep work and flow features work', caption: 'How deep work works' },
+              { src: '/images/casestudies/pebble/9-cafe.jpg', alt: 'The Virtual Café concept', caption: 'Virtual Café' },
+              { src: '/images/casestudies/pebble/10-how-it-works.jpg', alt: 'How Pebble works end to end', caption: 'How it works' }
             ]}
           />
         </CaseStudySection>
@@ -236,10 +237,10 @@ export const Pebble = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/31.jpg', alt: 'Testing Insight 1' },
-              { src: '/images/casestudies/pebble/30.jpg', alt: 'Testing Insight 2' },
-              { src: '/images/casestudies/pebble/28.jpg', alt: 'Testing Insight 3' }
+              { src: '/images/casestudies/pebble/11-feedback.jpg', alt: 'User testing feedback', caption: 'Feedback' },
+              { src: '/images/casestudies/pebble/12-iterate-again.jpg', alt: 'Iterating again on the prototype', caption: 'Iterate again' }
             ]}
           />
         </CaseStudySection>
@@ -260,8 +261,9 @@ export const Pebble = () => {
 
           <CaseStudyImageGrid
             columns={1}
+            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/36.jpg', alt: 'Impact at VISA' }
+              { src: '/images/casestudies/pebble/13-highlight-of-workshops-in-total.jpeg', alt: 'Highlights from all workshops in total', caption: 'Workshop highlights' }
             ]}
           />
         </CaseStudySection>

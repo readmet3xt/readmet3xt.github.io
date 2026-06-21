@@ -58,8 +58,8 @@ export const Otagon = () => {
             'Framer Motion',
           ],
         }}
-        heroImage="/otagon/otagon3.png"
-        heroImageAlt="Otagon Gaming Companion Interface"
+        heroImage="/otagon/1-home-page-landing.png"
+        heroImageAlt="Otagon landing page — Never Get Stuck Again"
       />
 
       {/* The Problem */}
@@ -91,9 +91,10 @@ export const Otagon = () => {
         </CaseStudyQuote>
 
         <CaseStudyImage
-          src="/otagon/workinprogess.png"
-          alt="The Problem — Alt-tabbing and spoiler anxiety"
-          caption="The friction gamers face when seeking help during gameplay"
+          src="/otagon/10-user-query-on-home-page.png"
+          alt="Otagon home — a user asking a question about their game"
+          caption="Instead of alt-tabbing to Google, the player asks Otagon in-context"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -105,9 +106,10 @@ export const Otagon = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/otagon/aiprocessing.png"
-          alt="Otagon Vision — Screenshot analysis flow"
-          caption="How Otagon understands your game context from a single screenshot"
+          src="/otagon/11-ai-response.png"
+          alt="Otagon AI response with spoiler-aware, context-aware guidance"
+          caption="Otagon reads your game context and responds without spoilers"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -165,9 +167,20 @@ export const Otagon = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/otagon/vision/1.png"
-          alt="Development phases timeline"
-          caption="Six phases from concept to a live, multi-platform product"
+          src="/otagon/8-pc-connector.png"
+          alt="Otagon desktop PC connector — pairs your PC to the mobile app"
+          caption="The desktop pairing client: hit F1 on PC and the capture syncs to mobile via WebSocket relay"
+          aspectRatio="aspect-auto"
+        />
+
+        <CaseStudyImageGrid
+          columns={3}
+          aspectRatio="aspect-auto"
+          images={[
+            { src: '/otagon/3-mobile-logged-in-home.png', alt: 'Otagon mobile home screen once logged in' },
+            { src: '/otagon/5-gaming-hq-home-page.png', alt: 'Gaming HQ home page', caption: 'Game Hub' },
+            { src: '/otagon/7-connected-to-pc.png', alt: 'Mobile app showing it is connected to the PC', caption: 'PC-to-mobile sync, live' },
+          ]}
         />
       </CaseStudySection>
 
@@ -227,11 +240,20 @@ export const Otagon = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImageGrid
-          columns={2}
+          columns={3}
+          aspectRatio="aspect-auto"
           images={[
-            { src: '/otagon/vision/2.png', alt: 'OTAGON Tag System and design decisions 1' },
-            { src: '/otagon/vision/3.png', alt: 'OTAGON Tag System and design decisions 2', caption: 'Structured AI output format that powers reliable game context extraction' },
+            { src: '/otagon/12-subtabs-1.png', alt: 'Subtabs surface — persistent game-specific panel' },
+            { src: '/otagon/13-subtabs-2.png', alt: 'A second subtabs view with more game-specific content' },
+            { src: '/otagon/18-ai-response-with-suggestion-tabs.png', alt: 'AI response with suggested subtabs to open', caption: 'AI answers spawn persistent, game-specific subtabs' },
           ]}
+        />
+
+        <CaseStudyImage
+          src="/otagon/17-subtabs-in-desktop.png"
+          alt="Subtabs as first-class surfaces in the desktop layout"
+          caption="The same subtab workspace, laid out for desktop"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
 
@@ -287,10 +309,14 @@ export const Otagon = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImage
-          src="/otagon/vision/4.png"
-          alt="Technical challenges and solutions"
-          caption="Hard engineering problems that required creative solutions"
+        <CaseStudyImageGrid
+          columns={3}
+          aspectRatio="aspect-auto"
+          images={[
+            { src: '/otagon/14-sidebar.png', alt: 'Otagon sidebar navigation' },
+            { src: '/otagon/4-control-sheet.png', alt: 'Control sheet giving users more controls', caption: 'Per-response controls' },
+            { src: '/otagon/15-game-info-modal.png', alt: 'Game info modal with IGDB-sourced details' },
+          ]}
         />
       </CaseStudySection>
 
@@ -326,10 +352,14 @@ export const Otagon = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImage
-          src="/otagon/vision/5.png"
-          alt="Results dashboard and metrics"
-          caption="Production metrics and achievement milestones"
+        <CaseStudyImageGrid
+          columns={3}
+          aspectRatio="aspect-auto"
+          images={[
+            { src: '/otagon/16b-game-library.png', alt: 'Game library of titles the user has played' },
+            { src: '/otagon/16-gallery.png', alt: 'Gallery of captured game screenshots', caption: 'Screenshot gallery' },
+            { src: '/otagon/9-pro-features.png', alt: 'Pro features overview' },
+          ]}
         />
       </CaseStudySection>
 
@@ -388,9 +418,10 @@ export const Otagon = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/otagon/vision/6.png"
-          alt="Future roadmap"
-          caption="Upcoming features and platform expansion plans"
+          src="/otagon/6-credits-modal.png"
+          alt="Otagon credits modal — query-based usage and Pro upgrade"
+          caption="Query-based credits power the freemium model — fair limits over feature gates"
+          aspectRatio="aspect-auto"
         />
       </CaseStudySection>
     </CaseStudyLayout>
