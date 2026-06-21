@@ -82,13 +82,6 @@ export const Versus = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
-
-        <CaseStudyImage
-          src="/versus/1-landing-page-desktop.png"
-          alt="Versus landing page on desktop"
-          caption="The landing page — the entry point that replaces the paper bracket"
-          aspectRatio="aspect-auto"
-        />
       </CaseStudySection>
 
       {/* The Vision */}

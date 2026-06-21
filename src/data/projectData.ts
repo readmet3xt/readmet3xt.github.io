@@ -31,10 +31,10 @@ export const PROJECTS: ProjectData[] = [
     title: 'KoinBasket',
     description: 'Trading Platform & Mobile App',
     images: [
-      '/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.png',
       '/images/casestudies/koinbasket/2-home-page.jpg',
-      '/images/casestudies/koinbasket/17-new-product-live-trading.png',
       '/images/casestudies/koinbasket/9-fantasy-league-team-creator.png',
+      '/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.png',
+      '/images/casestudies/koinbasket/17-new-product-live-trading.png',
     ],
     summary:
       'From a one-week MVP contract to 70,000 users. Founding designer through a full rebrand, a design team, and a two-sided live-trading ecosystem.',

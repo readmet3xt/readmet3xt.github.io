@@ -247,6 +247,9 @@ function CinematicCard({
   const navigate = useNavigate();
   const controls = useAnimation();
   const isNavigating = useRef(false);
+  // The card box takes the image's own aspect ratio so a landscape screenshot
+  // fills it edge-to-edge — object-cover then crops nothing and leaves no bars.
+  const [imgRatio, setImgRatio] = useState(16 / 9);
 
   const numTransitions = total - 1;
   const segmentSize = numTransitions > 0 ? 1 / numTransitions : 1;
@@ -344,7 +347,7 @@ function CinematicCard({
        transforms don't fight over the same motion values */
     <motion.div
       style={{ y, scale, opacity, zIndex: index, transformOrigin: 'top center' }}
-      className="absolute inset-0 will-change-transform"
+      className="absolute inset-0 will-change-transform flex items-center justify-center"
       aria-hidden={!isActive}
     >
       <motion.div
@@ -358,7 +361,7 @@ function CinematicCard({
         tabIndex={isActive ? 0 : -1}
         aria-label={`View ${project.title} case study`}
         className={cn(
-          "relative w-full h-full rounded-2xl md:rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden bg-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60 border transition-all duration-300",
+          "relative w-full max-h-full rounded-2xl md:rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden bg-card cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60 border transition-all duration-300",
           // Mobile keeps the original active/idle border treatment
           isActive
             ? "border-[color:var(--brand-border)] shadow-[0_-30px_80px_-10px_rgba(0,0,0,0.6),0_0_30px_-5px]"
@@ -367,6 +370,7 @@ function CinematicCard({
           "lg:border-transparent lg:group-hover:border-[color:var(--brand-border)]"
         )}
         style={{
+          aspectRatio: imgRatio,
           ['--brand-border' as string]: project.brandColor + '80',
           ...(isActive
             ? { boxShadow: `0 -30px 80px -10px rgba(0,0,0,0.6), 0 0 30px -5px ${project.brandColor}66` }
@@ -380,6 +384,12 @@ function CinematicCard({
             alt=""
             aria-hidden="true"
             style={{ scale: imageScale }}
+            onLoad={(e) => {
+              const img = e.currentTarget;
+              if (img.naturalWidth && img.naturalHeight) {
+                setImgRatio(img.naturalWidth / img.naturalHeight);
+              }
+            }}
             className={cn(
               "w-full h-full object-cover object-center transition-[filter,opacity] duration-500",
               isActive
