@@ -1,8 +1,10 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, Presentation } from 'lucide-react';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
+import { PresentationModal } from '@/components/PresentationModal';
+import { PRESENTATION_SLIDES, PRESENTATION_TITLE } from '@/data/presentation';
 
 const istFormatter = new Intl.DateTimeFormat('en-GB', {
   hour: '2-digit',
@@ -37,6 +39,7 @@ const fadeUp = {
 
 export const HeroSection = () => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [deckOpen, setDeckOpen] = useState(false);
 
   useCardHoverEffect(cardRef, {
     maxRotation: 4,
@@ -51,6 +54,7 @@ export const HeroSection = () => {
   };
 
   return (
+    <>
     <section
       className="relative flex flex-col justify-center h-full min-h-[calc(100svh-6rem)] lg:min-h-0 pt-4 lg:pt-8 pb-8 lg:pb-12 scroll-mt-20 lg:scroll-mt-0"
       aria-label="Introduction"
@@ -108,6 +112,13 @@ export const HeroSection = () => {
             >
               View my work
               <ArrowDown className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => setDeckOpen(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-text-primary font-semibold hover:border-accent-primary hover:text-accent-primary transition-all duration-300 hover:-translate-y-0.5"
+            >
+              View presentation
+              <Presentation className="w-4 h-4" />
             </button>
             <Link
               to="/about"
@@ -187,5 +198,13 @@ export const HeroSection = () => {
         />
       </motion.div>
     </section>
+
+    <PresentationModal
+      open={deckOpen}
+      onClose={() => setDeckOpen(false)}
+      slides={PRESENTATION_SLIDES}
+      title={PRESENTATION_TITLE}
+    />
+    </>
   );
 };
