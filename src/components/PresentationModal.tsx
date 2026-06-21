@@ -9,22 +9,10 @@ interface PresentationModalProps {
   title?: string;
 }
 
-type SlideCustom = { direction: number; rotate: number };
-
 const slideVariants = {
-  enter: ({ direction, rotate }: SlideCustom) => ({
-    opacity: 0,
-    scale: 0.98,
-    rotate,
-    x: rotate ? 0 : direction * 60,
-  }),
-  center: ({ rotate }: SlideCustom) => ({ opacity: 1, scale: 1, rotate, x: 0 }),
-  exit: ({ direction, rotate }: SlideCustom) => ({
-    opacity: 0,
-    scale: 0.98,
-    rotate,
-    x: rotate ? 0 : direction * -60,
-  }),
+  enter: (d: number) => ({ opacity: 0, scale: 0.98, x: d * 60 }),
+  center: { opacity: 1, scale: 1, x: 0 },
+  exit: (d: number) => ({ opacity: 0, scale: 0.98, x: d * -60 }),
 };
 
 export const PresentationModal = ({ open, onClose, slides, title = 'Presentation' }: PresentationModalProps) => {
@@ -119,7 +107,7 @@ export const PresentationModal = ({ open, onClose, slides, title = 'Presentation
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm"
           onClick={onClose}
           role="dialog"
           aria-modal="true"
@@ -127,65 +115,79 @@ export const PresentationModal = ({ open, onClose, slides, title = 'Presentation
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Close */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 flex items-center justify-center hover:text-white bg-black/50 rounded-full z-50 p-2"
-            aria-label="Close presentation"
+          {/* Stage — on a portrait phone this becomes a rotated landscape frame, so
+              the slide AND its controls share one orientation (the buttons rotate
+              with the deck instead of staying upright in portrait). */}
+          <div
+            className="absolute left-1/2 top-1/2 flex items-center justify-center"
+            style={
+              rotated
+                ? { width: '100vh', height: '100vw', transform: 'translate(-50%, -50%) rotate(90deg)' }
+                : { width: '100%', height: '100%', transform: 'translate(-50%, -50%)' }
+            }
           >
-            <X className="w-7 h-7 sm:w-8 sm:h-8" />
-          </button>
-
-          {/* Prev */}
-          {!atFirst && (
+            {/* Close */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                prev();
+                onClose();
               }}
-              className="absolute left-2 sm:left-4 text-white/70 hover:text-white bg-black/50 rounded-full z-50 p-2"
-              aria-label="Previous slide"
+              className="absolute top-3 right-3 sm:top-5 sm:right-5 text-white/70 flex items-center justify-center hover:text-white bg-black/50 rounded-full z-50 p-2"
+              aria-label="Close presentation"
             >
-              <ChevronLeft className="w-8 h-8" />
+              <X className="w-7 h-7" />
             </button>
-          )}
 
-          {/* Next */}
-          {!atLast && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                next();
-              }}
-              className="absolute right-2 sm:right-4 text-white/70 hover:text-white bg-black/50 rounded-full z-50 p-2"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-8 h-8" />
-            </button>
-          )}
+            {/* Prev */}
+            {!atFirst && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prev();
+                }}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white bg-black/50 rounded-full z-50 p-2"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+            )}
 
-          {/* Slide */}
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.img
-              key={index}
-              src={slides[index]}
-              alt={`${title} — slide ${index + 1} of ${total}`}
-              custom={{ direction, rotate: rotated ? 90 : 0 }}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ type: 'spring', damping: 26, stiffness: 320 }}
-              className={`rounded-md shadow-2xl ${rotated ? '' : 'max-w-full max-h-[90vh] object-contain'}`}
-              style={rotated ? { height: '100vw', width: 'auto', maxWidth: '100vh' } : undefined}
-              onClick={(e) => e.stopPropagation()}
-              draggable={false}
-            />
-          </AnimatePresence>
+            {/* Next */}
+            {!atLast && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  next();
+                }}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white bg-black/50 rounded-full z-50 p-2"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+            )}
 
-          {/* Slide counter */}
-          <div className="absolute bottom-4 left-0 right-0 text-center text-white/70 text-sm font-medium pointer-events-none">
-            {index + 1} / {total}
+            {/* Slide */}
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.img
+                key={index}
+                src={slides[index]}
+                alt={`${title} — slide ${index + 1} of ${total}`}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ type: 'spring', damping: 26, stiffness: 320 }}
+                className={`rounded-md shadow-2xl object-contain ${rotated ? 'max-w-full max-h-full' : 'max-w-[92vw] max-h-[88vh]'}`}
+                onClick={(e) => e.stopPropagation()}
+                draggable={false}
+              />
+            </AnimatePresence>
+
+            {/* Slide counter */}
+            <div className="absolute bottom-3 sm:bottom-4 left-0 right-0 text-center text-white/70 text-sm font-medium pointer-events-none">
+              {index + 1} / {total}
+            </div>
           </div>
         </motion.div>
       )}
