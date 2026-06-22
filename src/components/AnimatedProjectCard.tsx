@@ -101,27 +101,32 @@ export const AnimatedProjectCard = ({
     });
   }, [images]);
 
-  // Auto-advance every 5 seconds, staggered by card index
+  // Advance to the next image (still in order, so every image gets shown)
   const advanceImage = useCallback(() => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   }, [images.length]);
 
+  // Randomized timing: a random start offset, then a jittered gap before each
+  // change. Cards never advance in a wave or in lockstep — the grid feels alive.
   useEffect(() => {
     if (images.length <= 1) return;
 
-    // Stagger the start time by 600ms per card to create a top-to-bottom wave
-    const staggerDelay = index * 600;
-    let interval: NodeJS.Timeout;
+    let timer: NodeJS.Timeout;
+    // Jittered gap: 4–7s
+    const nextGap = () => 4000 + Math.random() * 3000;
 
-    const timeout = setTimeout(() => {
-      interval = setInterval(advanceImage, 5000);
-    }, staggerDelay);
-
-    return () => {
-      clearTimeout(timeout);
-      if (interval) clearInterval(interval);
+    const schedule = (delay: number) => {
+      timer = setTimeout(() => {
+        advanceImage();
+        schedule(nextGap());
+      }, delay);
     };
-  }, [images.length, advanceImage, index]);
+
+    // Random initial offset (0–5s) so cards start out of phase with each other
+    schedule(Math.random() * 5000);
+
+    return () => clearTimeout(timer);
+  }, [images.length, advanceImage]);
 
   const handleClick = useCallback(async (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
