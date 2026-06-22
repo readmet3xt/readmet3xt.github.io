@@ -89,7 +89,7 @@ export const TestimonialsCarousel = memo(({ showTitle = true }: TestimonialsCaro
     const wordsPerMinute = 200;
     const words = text.split(' ').length;
     const readingTimeMs = (words / wordsPerMinute) * 60 * 1000;
-    return Math.max(4000, Math.min(8000, readingTimeMs)); // Min 4s, max 8s
+    return Math.max(5000, Math.min(16000, readingTimeMs)); // Min 5s, max 16s — long testimonials (Chandana, Elin) get more dwell
   };
 
   // Auto-ticker functionality with dynamic timing
