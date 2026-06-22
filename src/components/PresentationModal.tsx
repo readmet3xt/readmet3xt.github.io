@@ -218,6 +218,9 @@ export const PresentationModal = ({
     const style = doc.createElement('style');
     style.id = 'rail-overrides';
     style.textContent = `
+/* The deck's native control overlay (Prev · count · Next · Reset) duplicates the
+   modal's own playback controls, so hide it everywhere to avoid the overlap. */
+.overlay { display: none !important; }
 @media (max-width: 1024px) {
   .rail, .rail-resize { display: none !important; }
   .stage { left: 0 !important; right: 0 !important; width: 100% !important; }
