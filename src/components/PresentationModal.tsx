@@ -24,6 +24,9 @@ export const PresentationModal = ({
 }: PresentationModalProps) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+  // Screen Wake Lock — keeps the phone awake while the deck is playing.
+  // Typed loosely since the API isn't in every TS lib target.
+  const wakeLockRef = useRef<{ release: () => Promise<void> } | null>(null);
   const currentSlide = useRef(0);
   const currentImg = useRef(0);
   // slideNumber → number of carousel images on that slide (built once the deck loads).
@@ -344,6 +347,40 @@ export const PresentationModal = ({
     };
   }, [open]);
 
+  // Keep the screen awake while the deck is playing (phones otherwise sleep).
+  // The lock is auto-released when the tab is hidden, so re-acquire on return.
+  useEffect(() => {
+    const nav = navigator as Navigator & {
+      wakeLock?: { request: (type: 'screen') => Promise<{ release: () => Promise<void> }> };
+    };
+    if (!nav.wakeLock) return;
+
+    const acquire = async () => {
+      if (!(open && playing) || wakeLockRef.current) return;
+      try {
+        wakeLockRef.current = await nav.wakeLock!.request('screen');
+      } catch {
+        /* user agent may reject (e.g. low battery) — nothing we can do */
+      }
+    };
+    const release = () => {
+      wakeLockRef.current?.release().catch(() => {});
+      wakeLockRef.current = null;
+    };
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') acquire();
+    };
+
+    if (open && playing) acquire();
+    else release();
+    document.addEventListener('visibilitychange', onVisible);
+
+    return () => {
+      document.removeEventListener('visibilitychange', onVisible);
+      release();
+    };
+  }, [open, playing]);
+
   return (
     <>
       {/* Mounted once, always — never inside AnimatePresence — so there is only
@@ -388,15 +425,6 @@ export const PresentationModal = ({
                 className="w-full h-full border-0 bg-black"
                 allow="fullscreen; autoplay"
               />
-
-              {/* Close */}
-              <button
-                onClick={onClose}
-                className="absolute top-3 right-3 sm:top-5 sm:right-5 z-50 text-white/80 flex items-center justify-center hover:text-white bg-black/60 rounded-full p-2"
-                aria-label="Close presentation"
-              >
-                <X className="w-7 h-7" />
-              </button>
 
               {/* Slide-selection toggle — only below lg, where the rail is hidden
                   by default. Opens the thumbnail rail as an overlay on the deck. */}
@@ -478,6 +506,16 @@ export const PresentationModal = ({
                 </div>
               )}
             </div>
+
+            {/* Close — kept outside the rotated stage so it stays upright at the
+                real bottom-right corner on every breakpoint. */}
+            <button
+              onClick={onClose}
+              className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5 z-[110] text-white/80 flex items-center justify-center hover:text-white bg-black/60 rounded-full p-2"
+              aria-label="Close presentation"
+            >
+              <X className="w-7 h-7" />
+            </button>
 
             {/* Loading overlay — kept upright (outside the rotated stage) and
                 centred on screen while the deck loads. */}
