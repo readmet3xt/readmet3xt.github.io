@@ -10,7 +10,7 @@ import {
   cubicBezier,
 } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ArrowUpRight, LayoutGrid, List, X } from 'lucide-react';
+import { ArrowUpRight, LayoutGrid } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { ProjectData } from '@/data/projectData';
 
@@ -125,7 +125,7 @@ export default function CinematicStack({ projects, onSwitchToGrid }: CinematicSt
         {/* Card area — right margin clears the pagination rail.
             On large screens this becomes a two-column row: info panel + smaller
             card. Tablet keeps the full-size card with its content inside. */}
-        <div className="relative h-[80vh] max-h-[850px] mr-0 lg:mr-32 lg:flex lg:items-center lg:justify-end lg:gap-12 xl:gap-16">
+        <div className="relative h-[80vh] max-h-[850px] mr-0 md:mr-24 lg:mr-32 lg:flex lg:items-center lg:justify-end lg:gap-12 xl:gap-16">
           {/* Desktop-only info panel — title + summary for the active project */}
           <div className="hidden lg:flex lg:flex-col lg:justify-center lg:flex-1 lg:min-w-0 lg:max-w-md xl:max-w-lg lg:pl-6 xl:pl-8">
             <AnimatePresence mode="wait">
@@ -549,156 +549,71 @@ function SidePagination({
   onDotClick: (index: number) => void;
   onSwitchToGrid?: () => void;
 }) {
-  const [open, setOpen] = useState(false);
-  const brand = projects[activeIndex].brandColor;
-
   return (
-    <>
-      {/* ===== Desktop rail (lg+) — always visible ===== */}
-      <div className="absolute right-2 lg:right-3 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center">
-        {/* Counter badge */}
-        <div className="mb-3 font-ibm-plex-mono text-[10px] tracking-wider text-white/50">
-          <span className="text-white font-semibold">
-            {String(activeIndex + 1).padStart(2, '0')}
-          </span>
-          <span className="mx-0.5">/</span>
-          <span>{String(projects.length).padStart(2, '0')}</span>
-        </div>
-
-        {/* Clickable dots with hover labels */}
-        <div className="relative flex flex-col items-center">
-          {projects.map((project, i) => {
-            const isActive = i === activeIndex;
-            const isPast = i < activeIndex;
-            return (
-              <button
-                key={project.href}
-                onClick={() => onDotClick(i)}
-                aria-label={`Go to ${project.title}`}
-                aria-current={isActive ? 'true' : undefined}
-                className="group/dot relative flex items-center justify-center w-7 h-6"
-              >
-                {/* Hover label */}
-                <span className="absolute right-full mr-1.5 whitespace-nowrap rounded-md bg-black/75 backdrop-blur-md border border-white/10 px-2 py-1 font-ibm-plex-mono text-[9px] uppercase tracking-wider text-white/80 opacity-0 translate-x-1 transition-all duration-200 group-hover/dot:opacity-100 group-hover/dot:translate-x-0 pointer-events-none">
-                  {project.title}
-                </span>
-                <span
-                  className={cn(
-                    'rounded-full transition-all duration-300 ease-out',
-                    isActive
-                      ? 'w-1.5 h-5'
-                      : isPast
-                        ? 'w-1.5 h-1.5 bg-white/35 group-hover/dot:bg-white/60'
-                        : 'w-1.5 h-1.5 bg-white/15 group-hover/dot:bg-white/40'
-                  )}
-                  style={
-                    isActive
-                      ? { backgroundColor: brand, boxShadow: `0 0 10px ${brand}66` }
-                      : undefined
-                  }
-                />
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Grid view toggle */}
-        {onSwitchToGrid && (
-          <>
-            <div className="w-px h-4 bg-white/10 my-2.5" />
-            <button
-              onClick={onSwitchToGrid}
-              aria-label="Switch to grid view"
-              title="Grid view"
-              className="p-2 rounded-lg border border-white/10 bg-black/40 backdrop-blur-md text-white/50 hover:text-white hover:border-white/30 transition-colors duration-200"
-            >
-              <LayoutGrid size={13} strokeWidth={2} />
-            </button>
-          </>
-        )}
+    <div className="absolute right-2 lg:right-3 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center">
+      {/* Counter badge */}
+      <div className="mb-3 font-ibm-plex-mono text-[10px] tracking-wider text-white/50">
+        <span className="text-white font-semibold">
+          {String(activeIndex + 1).padStart(2, '0')}
+        </span>
+        <span className="mx-0.5">/</span>
+        <span>{String(projects.length).padStart(2, '0')}</span>
       </div>
 
-      {/* ===== Compact toggle button (below lg — e.g. landscape phones) ===== */}
-      <button
-        onClick={() => setOpen((o) => !o)}
-        aria-label={open ? 'Close slide selection' : 'Open slide selection'}
-        aria-expanded={open}
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-[60] flex lg:hidden items-center gap-1.5 px-2.5 py-2 rounded-full bg-black/55 backdrop-blur-xl border border-white/10 text-white/80 shadow-lg active:scale-95 transition-transform"
-      >
-        {open ? <X size={14} strokeWidth={2} /> : <List size={14} strokeWidth={2} />}
-        <span className="font-ibm-plex-mono text-[10px] tracking-wider tabular-nums">
-          {String(activeIndex + 1).padStart(2, '0')}/{String(projects.length).padStart(2, '0')}
-        </span>
-      </button>
+      {/* Clickable dots with hover labels */}
+      <div className="relative flex flex-col items-center">
+        {projects.map((project, i) => {
+          const isActive = i === activeIndex;
+          const isPast = i < activeIndex;
+          return (
+            <button
+              key={project.href}
+              onClick={() => onDotClick(i)}
+              aria-label={`Go to ${project.title}`}
+              aria-current={isActive ? 'true' : undefined}
+              className="group/dot relative flex items-center justify-center w-7 h-6"
+            >
+              {/* Hover label */}
+              <span className="absolute right-full mr-1.5 whitespace-nowrap rounded-md bg-black/75 backdrop-blur-md border border-white/10 px-2 py-1 font-ibm-plex-mono text-[9px] uppercase tracking-wider text-white/80 opacity-0 translate-x-1 transition-all duration-200 group-hover/dot:opacity-100 group-hover/dot:translate-x-0 pointer-events-none">
+                {project.title}
+              </span>
+              <span
+                className={cn(
+                  'rounded-full transition-all duration-300 ease-out',
+                  isActive
+                    ? 'w-1.5 h-5'
+                    : isPast
+                      ? 'w-1.5 h-1.5 bg-white/35 group-hover/dot:bg-white/60'
+                      : 'w-1.5 h-1.5 bg-white/15 group-hover/dot:bg-white/40'
+                )}
+                style={
+                  isActive
+                    ? {
+                        backgroundColor: projects[activeIndex].brandColor,
+                        boxShadow: `0 0 10px ${projects[activeIndex].brandColor}66`,
+                      }
+                    : undefined
+                }
+              />
+            </button>
+          );
+        })}
+      </div>
 
-      {/* ===== Overlay slide selection (below lg) — centered on top of the deck ===== */}
-      {open && (
-        <div
-          className="absolute inset-0 z-50 flex lg:hidden items-center justify-center px-6"
-          onClick={() => setOpen(false)}
-        >
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
-          <div
-            className="relative w-full max-w-xs max-h-[80%] overflow-y-auto rounded-2xl bg-black/80 backdrop-blur-2xl border border-white/10 p-2 shadow-2xl flex flex-col"
-            onClick={(e) => e.stopPropagation()}
+      {/* Grid view toggle */}
+      {onSwitchToGrid && (
+        <>
+          <div className="w-px h-4 bg-white/10 my-2.5" />
+          <button
+            onClick={onSwitchToGrid}
+            aria-label="Switch to grid view"
+            title="Grid view"
+            className="p-2 rounded-lg border border-white/10 bg-black/40 backdrop-blur-md text-white/50 hover:text-white hover:border-white/30 transition-colors duration-200"
           >
-            {projects.map((project, i) => {
-              const isActive = i === activeIndex;
-              return (
-                <button
-                  key={project.href}
-                  onClick={() => {
-                    onDotClick(i);
-                    setOpen(false);
-                  }}
-                  aria-current={isActive ? 'true' : undefined}
-                  className={cn(
-                    'flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-colors duration-150',
-                    isActive ? 'bg-white/10' : 'hover:bg-white/[0.06]'
-                  )}
-                >
-                  <span
-                    className="font-ibm-plex-mono text-[10px] tracking-wider w-5 flex-shrink-0"
-                    style={{ color: isActive ? brand : 'rgba(255,255,255,0.4)' }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span
-                    className={cn(
-                      'text-sm font-medium font-dm-sans truncate',
-                      isActive ? 'text-white' : 'text-white/70'
-                    )}
-                  >
-                    {project.title}
-                  </span>
-                  {isActive && (
-                    <span
-                      className="ml-auto w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: brand, boxShadow: `0 0 8px ${brand}` }}
-                    />
-                  )}
-                </button>
-              );
-            })}
-
-            {onSwitchToGrid && (
-              <>
-                <div className="h-px bg-white/10 my-1.5 mx-2" />
-                <button
-                  onClick={() => {
-                    onSwitchToGrid();
-                    setOpen(false);
-                  }}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-left text-white/70 hover:bg-white/[0.06] hover:text-white transition-colors duration-150"
-                >
-                  <LayoutGrid size={14} strokeWidth={2} className="w-5 flex-shrink-0" />
-                  <span className="text-sm font-medium font-dm-sans">Grid view</span>
-                </button>
-              </>
-            )}
-          </div>
-        </div>
+            <LayoutGrid size={13} strokeWidth={2} />
+          </button>
+        </>
       )}
-    </>
+    </div>
   );
 }

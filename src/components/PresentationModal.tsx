@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Play, Pause, RotateCcw, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { X, Play, Pause, RotateCcw, ChevronLeft, ChevronRight, Loader2, PanelLeftOpen, PanelLeftClose } from 'lucide-react';
 
 interface PresentationModalProps {
   open: boolean;
@@ -41,6 +41,10 @@ export const PresentationModal = ({
   // On a portrait phone the landscape deck is tiny, so we rotate the whole stage
   // (deck + controls) 90° to fill the screen and read it in landscape.
   const [rotated, setRotated] = useState(false);
+  // The deck's built-in slide thumbnail rail eats the left ~190px and shoves the
+  // slide off-centre on small screens. We hide it by default there and toggle it
+  // back as an overlay on top of the (now centred) deck.
+  const [railOpen, setRailOpen] = useState(false);
 
   const total = cues.length;
   const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 2];
@@ -197,6 +201,56 @@ export const PresentationModal = ({
   const prevSlide = useCallback(() => seekToSlide(deckCurrentSlide() - 1), [seekToSlide, deckCurrentSlide]);
   const nextSlide = useCallback(() => seekToSlide(deckCurrentSlide() + 1), [seekToSlide, deckCurrentSlide]);
 
+  // The deck's custom element (light-DOM host whose shadow root holds the rail).
+  const deckStage = useCallback(
+    () => (iframeRef.current?.contentDocument?.querySelector('deck-stage') as HTMLElement | null) ?? null,
+    [],
+  );
+
+  // Inject a stylesheet into the deck's shadow root: below lg, hide the thumbnail
+  // rail and re-centre the slide; when the host carries `.rail-open`, bring the
+  // rail back as an overlay on top of the deck (deck stays put underneath).
+  const injectRailCss = useCallback(() => {
+    const stage = deckStage();
+    const sr = stage?.shadowRoot;
+    const doc = iframeRef.current?.contentDocument;
+    if (!sr || !doc || sr.getElementById('rail-overrides')) return;
+    const style = doc.createElement('style');
+    style.id = 'rail-overrides';
+    style.textContent = `
+@media (max-width: 1024px) {
+  .rail, .rail-resize { display: none !important; }
+  .stage { left: 0 !important; right: 0 !important; width: 100% !important; }
+  :host(.rail-open) .rail {
+    display: flex !important;
+    z-index: 99999 !important;
+    box-shadow: 8px 0 40px rgba(0,0,0,0.7);
+  }
+}`;
+    sr.appendChild(style);
+  }, [deckStage]);
+
+  // Reflect railOpen onto the deck host so the injected CSS shows/hides the rail.
+  useEffect(() => {
+    deckStage()?.classList.toggle('rail-open', railOpen);
+  }, [railOpen, deckStage, loading]);
+
+  // While the rail overlay is open, picking a thumbnail should align the audio to
+  // that slide (so playback doesn't snap back) and dismiss the overlay.
+  useEffect(() => {
+    if (!railOpen) return;
+    const rail = deckStage()?.shadowRoot?.querySelector('.rail');
+    if (!rail) return;
+    const onPick = () => {
+      setTimeout(() => {
+        seekToSlide(deckCurrentSlide());
+        setRailOpen(false);
+      }, 60);
+    };
+    rail.addEventListener('click', onPick);
+    return () => rail.removeEventListener('click', onPick);
+  }, [railOpen, deckStage, seekToSlide, deckCurrentSlide]);
+
   // The deck is heavy (single self-contained HTML). Wait for it to load before
   // starting — otherwise early navigation events are lost and slides appear to
   // skip. Show a loading state until then, then start audio + slide 1 together.
@@ -219,6 +273,7 @@ export const PresentationModal = ({
       });
       carouselCounts.current = counts;
       deckReady.current = true;
+      injectRailCss();
       setLoading(false);
       currentSlide.current = 1;
       currentImg.current = 0;
@@ -238,6 +293,7 @@ export const PresentationModal = ({
   // open, so handleIframeLoad will (re)start things once it has loaded.
   useEffect(() => {
     const audio = audioRef.current;
+    setRailOpen(false);
     if (open) {
       deckReady.current = false;
       currentSlide.current = 1;
@@ -338,6 +394,21 @@ export const PresentationModal = ({
               >
                 <X className="w-7 h-7" />
               </button>
+
+              {/* Slide-selection toggle — only below lg, where the rail is hidden
+                  by default. Opens the thumbnail rail as an overlay on the deck. */}
+              {!loading && (
+                <button
+                  onClick={() => setRailOpen((v) => !v)}
+                  className={`lg:hidden absolute top-3 sm:top-5 z-[60] text-white/80 flex items-center justify-center hover:text-white bg-black/60 rounded-full p-2 transition-[left] duration-200 ${
+                    railOpen ? 'left-[196px]' : 'left-3 sm:left-5'
+                  }`}
+                  aria-label={railOpen ? 'Hide slide list' : 'Show slide list'}
+                  aria-expanded={railOpen}
+                >
+                  {railOpen ? <PanelLeftClose className="w-6 h-6" /> : <PanelLeftOpen className="w-6 h-6" />}
+                </button>
+              )}
 
               {/* Playback controls — hidden until the deck has loaded */}
               {!loading && (
