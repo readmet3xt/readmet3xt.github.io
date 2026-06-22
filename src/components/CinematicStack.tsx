@@ -424,38 +424,8 @@ function CinematicCard({
             </span>
           </div>
 
-          {/* --- Bottom Section: pills, then (mobile) title/CTA --- */}
+          {/* --- Bottom Section: (mobile) title/CTA, then brand-coloured pills pinned to the bottom --- */}
           <div className="mt-auto flex flex-col gap-4">
-            {/* Pills — status + tags, anchored at the bottom of the card */}
-            <div className="flex flex-wrap items-center gap-2">
-              {project.pill && (
-                <div className="flex items-center gap-2 pl-3 pr-3.5 py-2 rounded-full bg-black/45 backdrop-blur-xl border border-white/[0.14]">
-                  <span className="relative flex w-1.5 h-1.5">
-                    {project.pill === 'ongoing' && (
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-60 animate-ping" />
-                    )}
-                    <span
-                      className={cn(
-                        'relative inline-flex w-1.5 h-1.5 rounded-full',
-                        project.pill === 'ongoing' ? 'bg-amber-400' : 'bg-emerald-400'
-                      )}
-                    />
-                  </span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white leading-none">
-                    {project.pill === 'ongoing' ? 'Ongoing' : 'Launched'}
-                  </span>
-                </div>
-              )}
-              {project.tags.map((tag, i) => (
-                <div
-                  key={i}
-                  className="px-3.5 py-2 rounded-full bg-white/[0.07] backdrop-blur-xl border border-white/[0.1] text-[10px] font-medium uppercase tracking-[0.18em] text-white/70 leading-none"
-                >
-                  {tag}
-                </div>
-              ))}
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
             {/* Left: Title Block — desktop shows this beside the card instead */}
             <div className="md:col-span-8 flex flex-col gap-2 lg:hidden">
@@ -507,6 +477,44 @@ function CinematicCard({
                 />
               </button>
             </div>
+            </div>
+
+            {/* Pills — brand-coloured, pinned to the very bottom of the card */}
+            <div className="flex flex-wrap items-center gap-2">
+              {project.pill && (
+                <div
+                  className="flex items-center gap-2 pl-3 pr-3.5 py-2 rounded-full backdrop-blur-xl border"
+                  style={{ backgroundColor: `${project.brandColor}29`, borderColor: `${project.brandColor}80` }}
+                >
+                  <span className="relative flex w-1.5 h-1.5">
+                    {project.pill === 'ongoing' && (
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-60 animate-ping" />
+                    )}
+                    <span
+                      className={cn(
+                        'relative inline-flex w-1.5 h-1.5 rounded-full',
+                        project.pill === 'ongoing' ? 'bg-amber-400' : 'bg-emerald-400'
+                      )}
+                    />
+                  </span>
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white leading-none">
+                    {project.pill === 'ongoing' ? 'Ongoing' : 'Launched'}
+                  </span>
+                </div>
+              )}
+              {project.tags.map((tag, i) => (
+                <div
+                  key={i}
+                  className="px-3.5 py-2 rounded-full backdrop-blur-xl border text-[10px] font-medium uppercase tracking-[0.18em] leading-none"
+                  style={{
+                    backgroundColor: `${project.brandColor}24`,
+                    borderColor: `${project.brandColor}66`,
+                    color: '#fff',
+                  }}
+                >
+                  {tag}
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
