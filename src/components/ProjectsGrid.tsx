@@ -18,13 +18,8 @@ export const ProjectsGrid = () => {
   const { isOpen } = useSidebar();
   const isMobile = useIsMobile();
   const sectionRef = useRef<HTMLElement>(null);
-  // Respect reduced-motion: the scroll-hijacking stack defaults off for those users
-  const [viewMode, setViewMode] = useState<ViewMode>(() =>
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      ? 'grid'
-      : 'cinematic'
-  );
+  // Default to grid view
+  const [viewMode, setViewMode] = useState<ViewMode>('grid');
 
   // On mobile, always force grid — no toggle shown
   const effectiveView = isMobile ? 'grid' : viewMode;
