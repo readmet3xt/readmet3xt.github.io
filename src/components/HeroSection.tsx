@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowDown, ArrowRight, Presentation } from 'lucide-react';
 import { useCardHoverEffect } from '@/hooks/useCardHoverEffect';
 import { PresentationModal } from '@/components/PresentationModal';
-import { DECK_URL, DECK_TITLE } from '@/data/presentation';
+import { DECK_URL, DECK_TITLE, DECK_AUDIO_URL, PRESENTATION_CUES } from '@/data/presentation';
 
 const istFormatter = new Intl.DateTimeFormat('en-GB', {
   hour: '2-digit',
@@ -117,7 +117,7 @@ export const HeroSection = () => {
               onClick={() => setDeckOpen(true)}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-text-primary font-semibold hover:border-accent-primary hover:text-accent-primary transition-all duration-300 hover:-translate-y-0.5"
             >
-              View presentation
+              Watch presentation
               <Presentation className="w-4 h-4" />
             </button>
             <Link
@@ -203,6 +203,8 @@ export const HeroSection = () => {
       open={deckOpen}
       onClose={() => setDeckOpen(false)}
       src={DECK_URL}
+      audioUrl={DECK_AUDIO_URL}
+      cues={PRESENTATION_CUES}
       title={DECK_TITLE}
     />
     </>

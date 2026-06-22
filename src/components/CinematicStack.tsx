@@ -415,10 +415,19 @@ function CinematicCard({
           style={{ y: contentY, opacity: contentOpacity }}
           className="absolute inset-0 z-10 p-6 md:p-10 lg:p-12 flex flex-col justify-between h-full select-none"
         >
-          {/* --- Top Row: Pills + Index Numeral --- */}
-          <div className="flex items-start justify-between gap-4">
+          {/* --- Top Row: Index Numeral --- */}
+          <div className="flex items-start justify-end gap-4">
+            {/* Index numeral */}
+            <span className="font-ibm-plex-mono text-xs tracking-[0.3em] text-white/40 flex-shrink-0 pt-1">
+              {String(index + 1).padStart(2, '0')}
+              <span className="text-white/20"> / {String(total).padStart(2, '0')}</span>
+            </span>
+          </div>
+
+          {/* --- Bottom Section: pills, then (mobile) title/CTA --- */}
+          <div className="mt-auto flex flex-col gap-4">
+            {/* Pills — status + tags, anchored at the bottom of the card */}
             <div className="flex flex-wrap items-center gap-2">
-              {/* Status pill — frosted glass with live dot */}
               {project.pill && (
                 <div className="flex items-center gap-2 pl-3 pr-3.5 py-2 rounded-full bg-black/45 backdrop-blur-xl border border-white/[0.14]">
                   <span className="relative flex w-1.5 h-1.5">
@@ -437,8 +446,6 @@ function CinematicCard({
                   </span>
                 </div>
               )}
-
-              {/* Tag pills — quiet frosted chips */}
               {project.tags.map((tag, i) => (
                 <div
                   key={i}
@@ -449,15 +456,7 @@ function CinematicCard({
               ))}
             </div>
 
-            {/* Index numeral */}
-            <span className="font-ibm-plex-mono text-xs tracking-[0.3em] text-white/40 flex-shrink-0 pt-1">
-              {String(index + 1).padStart(2, '0')}
-              <span className="text-white/20"> / {String(total).padStart(2, '0')}</span>
-            </span>
-          </div>
-
-          {/* --- Bottom Section --- */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end mt-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
             {/* Left: Title Block — desktop shows this beside the card instead */}
             <div className="md:col-span-8 flex flex-col gap-2 lg:hidden">
               <span className="text-xs text-neutral-400 tracking-[0.25em] font-medium font-ibm-plex-mono uppercase">
@@ -507,6 +506,7 @@ function CinematicCard({
                   className="transition-transform duration-200 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5"
                 />
               </button>
+            </div>
             </div>
           </div>
         </motion.div>
