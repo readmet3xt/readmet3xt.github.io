@@ -33,28 +33,31 @@ const PILL_STYLES = {
   },
 } as const;
 
-// Cascading top-to-bottom flip: the image flips down from the top edge
-// like a panel hinged at the top, revealing the new image underneath
-const flipVariants = {
+// Ken Burns + crossfade: the active image slowly zooms/pans to stay alive
+// between changes, and dissolves into the next one. Calm across a grid of
+// many cards advancing at once, unlike directional motion.
+const prefersReducedMotion =
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const kenBurnsVariants = {
   enter: {
-    clipPath: 'inset(0 0 100% 0)',
-    opacity: 1,
+    opacity: 0,
+    scale: prefersReducedMotion ? 1 : 1.04,
   },
   center: {
-    clipPath: 'inset(0 0 0% 0)',
     opacity: 1,
+    // Slow drift across the 5s the image is on screen
+    scale: prefersReducedMotion ? 1 : 1.1,
     transition: {
-      clipPath: {
-        duration: 0.35,
-      },
-      opacity: { duration: 0.2 },
+      opacity: { duration: 0.9, ease: 'easeInOut' },
+      scale: { duration: 6, ease: 'linear' },
     },
   },
   exit: {
-    clipPath: 'inset(0 0 0% 0)',
     opacity: 0,
     transition: {
-      opacity: { duration: 0.25, delay: 0.2 },
+      opacity: { duration: 0.9, ease: 'easeInOut' },
     },
   },
 };
@@ -180,7 +183,7 @@ export const AnimatedProjectCard = ({
             src={images[currentImageIndex]}
             alt={`${title} project preview ${currentImageIndex + 1} of ${images.length}`}
             className="absolute inset-0 w-full h-full object-cover object-top"
-            variants={flipVariants}
+            variants={kenBurnsVariants}
             initial="enter"
             animate="center"
             exit="exit"
