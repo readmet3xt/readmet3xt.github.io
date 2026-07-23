@@ -1,5 +1,6 @@
 import { memo, lazy, Suspense } from 'react';
 import { PageLayout } from '@/components/PageLayout';
+import { SEO } from '@/components/SEO';
 import { TypewriterAnimation } from '@/components/TypewriterAnimation';
 import { HeroSection } from '@/components/HeroSection';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
@@ -14,6 +15,7 @@ export const Portfolio = memo(() => {
 
   return (
     <PageLayout className="max-w-7xl mx-auto w-full">
+      <SEO />
       <div className="h-[100svh]">
         <TypewriterAnimation />
       </div>

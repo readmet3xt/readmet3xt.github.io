@@ -1,6 +1,7 @@
 import { useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageLayout } from '@/components/PageLayout';
+import { SEO } from '@/components/SEO';
 import { TimelineItem } from '@/components/TimelineItem';
 import { CopyToast } from '@/components/CopyToast';
 import { useScrollReveal } from '@/components/ScrollReveal';
@@ -30,6 +31,10 @@ export const About = () => {
 
   return (
     <>
+      <SEO
+        title="About"
+        description="Amaan Khan — RCA-trained product designer who ships production React. Founding designer behind a 70K-user fintech and solo builder of Otagon, an AI gaming companion."
+      />
       <PageLayout>
         {/* Overview Section */}
         <section id="overview" className="mb-24 scroll-mt-24 reveal-on-scroll">

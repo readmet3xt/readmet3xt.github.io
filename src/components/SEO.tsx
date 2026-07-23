@@ -1,4 +1,7 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+
+const SITE_ORIGIN = 'https://readmet3xt.github.io';
 
 interface SEOProps {
   title?: string;
@@ -12,8 +15,8 @@ interface SEOProps {
 const defaultMeta = {
   title: 'Amaan Khan — Product Designer & Engineer',
   description: 'Product Designer who ships code. RCA-trained (Royal College of Art), full-stack engineer. Solo-built Otagon, a production AI SaaS, in 6 months. Open to roles in Bangalore, Mumbai, or Remote.',
-  image: 'https://storage.googleapis.com/gpt-engineer-file-uploads/3DwcQ4iImQTnMy6jZLwBSnPzKM32/social-images/social-1758010556926-IMG_7524 1.png',
-  url: 'https://readmet3xt.github.io/',
+  image: `${SITE_ORIGIN}/social-card.png`,
+  url: `${SITE_ORIGIN}/`,
   type: 'website',
   keywords: 'Product Designer, Design Engineer, UX Designer, AI Product Designer, React Developer, TypeScript, Supabase, Full-Stack Designer, RCA, Royal College of Art, Service Design, Portfolio, Hyderabad, Bangalore, Remote, Otagon, KoinBasket',
 };
@@ -22,12 +25,15 @@ export const SEO = ({
   title,
   description = defaultMeta.description,
   image = defaultMeta.image,
-  url = defaultMeta.url,
+  url,
   type = defaultMeta.type,
   keywords = defaultMeta.keywords,
 }: SEOProps) => {
+  const { pathname } = useLocation();
   const fullTitle = title ? `${title} | Amaan Khan` : defaultMeta.title;
-  const canonicalUrl = url.endsWith('/') ? url : `${url}/`;
+  // Canonical follows the current route unless a caller overrides it, so every
+  // page is self-canonical instead of all pointing at the homepage.
+  const canonicalUrl = url ?? (pathname === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${pathname}`);
 
   // Structured Data (JSON-LD)
   const structuredData = {
