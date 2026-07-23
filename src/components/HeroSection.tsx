@@ -27,7 +27,7 @@ const LocalTime = () => {
 
 const proofPoints = [
   { value: '0 → 70K', label: 'users as founding designer' },
-  { value: 'Core77', label: 'Design Award winner' },
+  { value: 'Core77', label: 'Notable Honor, 2021' },
   { value: 'Web & PWA', label: 'shipped solo' },
   { value: 'VISA · BCG', label: 'adopted my concepts' },
 ];

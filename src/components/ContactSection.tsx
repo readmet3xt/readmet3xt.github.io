@@ -58,7 +58,7 @@ export const ContactSection = () => {
             LinkedIn
           </a>
           <a
-            href="https://drive.google.com/file/d/1YtQLJCELLWw8P2Djfzf0A0Xtt5VfrCqk/view?usp=sharing"
+            href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-text-primary font-semibold hover:border-accent-primary hover:text-accent-primary transition-all duration-300 hover:-translate-y-0.5"
