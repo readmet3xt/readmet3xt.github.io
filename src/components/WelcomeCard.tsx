@@ -67,7 +67,7 @@ export const WelcomeCard = () => {
         isOpen ? "h-48 sm:h-52" : "h-40 sm:h-44"
       )}>
         <img
-          src="/lovable-uploads/6bba6c1a-b7f8-404a-b8c3-367c42cbc2a0.png"
+          src="/media/6bba6c1a-b7f8-404a-b8c3-367c42cbc2a0.png"
           alt="Amaan Khan - Product Designer"
           className="w-full h-full object-cover"
         />

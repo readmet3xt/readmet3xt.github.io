@@ -17,21 +17,21 @@ export const IviProgram = () => {
     <div className="theme-ivi contents">
       <CaseStudyLayout
         title="Invisible Value Income Program"
-        description="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040 — A Core77-awarded speculative service that makes invisible domestic labour economically visible."
+        description="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040 — A Core77-recognised speculative service that makes invisible domestic labour economically visible."
       >
         <CaseStudyHero
-          eyebrow="Case Study · I.V.I. Program · RCA × BCG · Core77 Award 2021"
+          eyebrow="Case Study · I.V.I. Program · RCA × BCG · Core77 Student Notable 2021"
           title="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040"
-          subtitle="A Core77-awarded speculative service that makes invisible domestic labour economically visible"
+          subtitle="A speculative service that makes invisible domestic labour economically visible — Core77 Design Awards 2021 Student Notable"
           pills={[
             'Speculative Design',
             "Women's Wellbeing",
             'Invisible Labour',
             'Future of Work',
             'Systemic Design',
-            'Core77 Award Winner',
+            'Core77 Student Notable',
           ]}
-          intro="What if the invisible labour women perform at home could be economically valued? At the Royal College of Art I led a Core77-awarded speculative service set in 2040 — built on 26 in-depth interviews and 53 questionnaire responses across 12 countries, and validated with BCG. The Invisible Value Income Program makes unpaid domestic work visible, measurable, and compensated."
+          intro="What if the invisible labour women perform at home could be economically valued? At the Royal College of Art I led a Core77-recognised speculative service set in 2040 — built on 26 in-depth interviews and 53 questionnaire responses across 12 countries, and validated with BCG. The Invisible Value Income Program makes unpaid domestic work visible, measurable, and compensated."
           overview={{
             role: [
               'Project Lead & Design Strategist',
@@ -85,7 +85,7 @@ export const IviProgram = () => {
 
           <CaseStudyParagraph>
             Our research — 26 in-depth interviews and 53 questionnaire responses with working women
-            across 12 countries (UK, Germany, France, Japan, India, China and more), plus four wellbeing
+            across 12 countries (UK, Germany, France, Japan, India, China and more), plus 4 wellbeing
             specialists — mapped the systemic pressure clearly: workplace stress compounded by unpaid
             domestic workload, blurred boundaries between professional and personal life, and what we
             came to call the "Working Mom Penalty" — the systematic devaluation of contributions both
@@ -123,8 +123,8 @@ export const IviProgram = () => {
             <CaseStudyCard title="Phase 1 — Discovery">
               <CaseStudyParagraph>
                 26 in-depth interviews and 53 questionnaires with working women across 12 countries,
-                plus 4 wellbeing specialists.
-                <strong> Key findings:</strong> stress is both external (workload, societal pressure) and internal
+                plus 4 wellbeing specialists.{' '}
+                <strong>Key findings:</strong> stress is both external (workload, societal pressure) and internal
                 (self-doubt, fear of obsolescence). A sense of control significantly decreases stress.
                 Prevention is more effective than cure, yet chronically underfunded.
               </CaseStudyParagraph>
@@ -248,10 +248,10 @@ export const IviProgram = () => {
           <CaseStudyImageGrid
             columns={1}
             images={[
-              { src: '/images/casestudies/ivi/Term4_Final presentation.012.jpeg', alt: 'Validation 1' },
-              { src: '/images/casestudies/ivi/18.jpg', alt: 'Validation 2' },
-              { src: '/images/casestudies/ivi/20.jpg', alt: 'Validation 3' },
-              { src: '/images/casestudies/ivi/19.jpg', alt: 'Validation 4' }
+              { src: '/images/casestudies/ivi/Term4_Final presentation.012.jpeg', alt: 'Validation session slide summarising stakeholder feedback on the I.V.I. concept' },
+              { src: '/images/casestudies/ivi/18.jpg', alt: 'Stakeholder validation session with working parents and managers' },
+              { src: '/images/casestudies/ivi/20.jpg', alt: 'Participant feedback captured during concept validation' },
+              { src: '/images/casestudies/ivi/19.jpg', alt: 'Discussion of service safeguards raised during validation' }
             ]}
           />
         </CaseStudySection>
@@ -262,7 +262,7 @@ export const IviProgram = () => {
             stats={[
               { value: '79', label: 'Women', sublabel: 'Interviews + surveys, 12 countries' },
               { value: 'Core77', label: 'Award', sublabel: 'Notable Honor' },
-              { value: 'BCG', label: 'Framework Adopted' },
+              { value: 'BCG', label: 'Framework Adopted', sublabel: 'Internal wellbeing workshops' },
               { value: '9', label: 'Stakeholders', sublabel: 'Validated' },
             ]}
           />
@@ -277,8 +277,8 @@ export const IviProgram = () => {
           <CaseStudyImageGrid
             columns={1}
             images={[
-              { src: '/images/casestudies/ivi/29 (2).jpg', alt: 'Impact 1' },
-              { src: '/images/casestudies/ivi/Screenshot 2026-03-08 081421.png', alt: 'Impact 2' }
+              { src: '/images/casestudies/ivi/29 (2).jpg', alt: 'The 6 Dimensions of Workplace Wellbeing framework presented to stakeholders' },
+              { src: '/images/casestudies/ivi/Screenshot 2026-03-08 081421.png', alt: 'Core77 Design Awards 2021 Student Notable listing for the I.V.I. Program' }
             ]}
           />
         </CaseStudySection>
@@ -326,9 +326,9 @@ export const IviProgram = () => {
             <CaseStudyImageGrid
               columns={1}
               images={[
-                { src: '/images/casestudies/ivi/Term4_Final presentation.004.jpeg', alt: 'Learning 1' },
-                { src: '/images/casestudies/ivi/25 (2).jpg', alt: 'Learning 2' },
-                { src: '/images/casestudies/ivi/15 (2).jpg', alt: 'Learning 3' }
+                { src: '/images/casestudies/ivi/Term4_Final presentation.004.jpeg', alt: 'Reflection slide on what the 2040 framing unlocked in stakeholder conversations' },
+                { src: '/images/casestudies/ivi/25 (2).jpg', alt: 'Team synthesis wall mapping systemic drivers of the hidden workload' },
+                { src: '/images/casestudies/ivi/15 (2).jpg', alt: 'Service journey sketch for the I.V.I. Program' }
               ]}
             />
           </div>

@@ -147,9 +147,9 @@ export const TypewriterAnimation = () => {
   }, []);
 
   const scrollToNext = () => {
-    const intro = document.querySelector('[aria-label="Introduction"]');
-    if (intro) {
-      intro.scrollIntoView({ behavior: 'auto', block: 'start' });
+    const work = document.getElementById('work');
+    if (work) {
+      work.scrollIntoView({ behavior: 'auto', block: 'start' });
     } else {
       startNextQuestion();
     }

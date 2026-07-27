@@ -6,7 +6,7 @@ import { TimelineItem } from '@/components/TimelineItem';
 import { CopyToast } from '@/components/CopyToast';
 import { useScrollReveal } from '@/components/ScrollReveal';
 import { CertificatesCarousel } from '@/components/CertificatesCarousel';
-import amaanHero from '/lovable-uploads/22366376-40f2-492f-989a-067de0fdb01f.png';
+import amaanHero from '/media/22366376-40f2-492f-989a-067de0fdb01f.png';
 
 const TestimonialsCarousel = lazy(() => import('@/components/TestimonialsCarousel').then(m => ({ default: m.TestimonialsCarousel })));
 
@@ -171,7 +171,7 @@ export const About = () => {
           <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Professional Experience</h2>
           <div className="timeline-container relative">
             <TimelineItem
-              title="Founder & Product Designer"
+              title="Founder & Product Engineer"
               company="Otagon · Hyderabad, India"
               period="Aug 2025 - Present"
               actionLabel="View Case Study →"
@@ -185,7 +185,7 @@ export const About = () => {
             </TimelineItem>
 
             <TimelineItem
-              title="User Experience Consultant (Contract)"
+              title="Product Designer (Contract)"
               company="Law.X · 1-Month Contract"
               period="Mar 2025 - Apr 2025"
               actionLabel="View Case Study →"
@@ -229,7 +229,7 @@ export const About = () => {
             <TimelineItem
               title="Design Intern"
               company="Softwire | London, UK"
-              period="July 2022 - August 2022"
+              period="July 2022 - September 2022"
               actionLabel="View Case Study →"
               onAction={() => navigateToProject('/softwire')}
             >
@@ -280,7 +280,7 @@ export const About = () => {
               <ul className="list-disc list-inside space-y-2">
                 <li>Co-created a program aimed at addressing work-life balance disparities for women, utilizing design thinking methodologies.</li>
                 <li>Designed speculative service solutions that challenged existing societal norms and proposed innovative approaches to work-life balance.</li>
-                <li>Recognized with a Core 77 Design Award 2021 Student Notable for the innovative and impactful nature of the project.</li>
+                <li>Recognised with a Core77 Design Awards 2021 Student Notable for the innovative and impactful nature of the project.</li>
                 <li>Project research and findings were utilized by BCG for further analysis and implementation strategies.</li>
               </ul>
             </TimelineItem>

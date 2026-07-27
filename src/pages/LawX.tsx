@@ -30,7 +30,7 @@ export const LawX = () => {
                 intro="Legal professionals don't trust AI — and for good reason. When I took on this 1-month contract for early concept design, the brief was clear: design an AI assistant that lawyers would actually use. The answer wasn't better AI. It was better transparency."
                 overview={{
                     role: [
-                        'Concept Designer (Contract)',
+                        'Product Designer (Contract)',
                         'UX strategy, information architecture',
                         'Interface design, visual identity',
                         'Interaction design',
@@ -43,7 +43,7 @@ export const LawX = () => {
                         'Design Systems',
                     ],
                 }}
-                heroImage="/jollyai/jollyai1.png"
+                heroImage="/images/casestudies/lawx/lawx-1.png"
                 heroImageAlt="Law.X transparent legal assistant workspace"
             />
 
@@ -61,11 +61,6 @@ export const LawX = () => {
                     For a lawyer, that's not a tool — it's a liability.
                 </CaseStudyParagraph>
 
-                <CaseStudyImage
-                    src="/jollyai/jollyai2.png"
-                    alt="The challenge of trust in legal AI"
-                    caption="Standard chatbots offer no transparency into how they arrive at legal conclusions"
-                />
             </CaseStudySection>
 
             {/* The Key Insight */}
@@ -85,9 +80,9 @@ export const LawX = () => {
                 </CaseStudyQuote>
 
                 <CaseStudyImage
-                    src="/jollyai/jollyai3.png"
-                    alt="Glass Box UX concept"
-                    caption="Making AI reasoning visible transforms skepticism into trust"
+                    src="/images/casestudies/lawx/lawx-7.png"
+                    alt="Chat view with the yellow Thinking status pill active"
+                    caption="The yellow 'Thinking…' state is the first cue that answers can be supervised, not just consumed"
                 />
             </CaseStudySection>
 
@@ -105,9 +100,9 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/jollyai/jollyai4.png"
-                    alt="The Thinking Panel interface"
-                    caption="Real-time visibility into the AI's reasoning process"
+                    src="/images/casestudies/lawx/lawx-6.png"
+                    alt="The Thinking Panel — the reasoning chain streamed beside the answer"
+                    caption="The Thinking Panel streams the reasoning chain — query reframing, clarification, statute review — beside the answer"
                 />
             </CaseStudySection>
 
@@ -136,9 +131,15 @@ export const LawX = () => {
                 </CaseStudyCardGrid>
 
                 <CaseStudyImage
-                    src="/jollyai/jollyai5.png"
-                    alt="Context and customisation features"
-                    caption="Instruction modal and state-specific onboarding for precise legal control"
+                    src="/images/casestudies/lawx/lawx-5.png"
+                    alt="The instruction modal with saved tone and style instructions"
+                    caption="Persistent instructions travel with every query — set once, applied across sessions"
+                />
+
+                <CaseStudyImage
+                    src="/images/casestudies/lawx/lawx-2.png"
+                    alt="Mandatory state selection during onboarding"
+                    caption="Jurisdiction is locked before the first query — state-specific accuracy by default"
                 />
             </CaseStudySection>
 
@@ -152,9 +153,9 @@ export const LawX = () => {
                 <CaseStudyCardGrid columns={2}>
                     <CaseStudyCard title="Prompt Gallery">
                         <CaseStudyParagraph>
-                            The home screen leads with curated, legal-specific prompts: "Draft IT notice response,"
-                            "Outline M&A due diligence," "Summarize contract risks." No blank chat box, no cognitive
-                            load about where to start.
+                            The home screen leads with curated, legal-specific prompts: "Explain GST changes for
+                            Indian e-commerce," "Outline M&A due diligence: SEBI rules," "Draft IT notice response:
+                            80C deductions." No blank chat box, no cognitive load about where to start.
                         </CaseStudyParagraph>
                     </CaseStudyCard>
 
@@ -167,9 +168,9 @@ export const LawX = () => {
                 </CaseStudyCardGrid>
 
                 <CaseStudyImage
-                    src="/jollyai/jollyai6.png"
-                    alt="Prompt gallery and side panel navigation"
-                    caption="Reducing friction with curated prompts and efficient case management"
+                    src="/images/casestudies/lawx/lawx-3.png"
+                    alt="Home screen leading with curated legal prompt cards"
+                    caption="Curated legal prompts replace the blank chat box"
                 />
             </CaseStudySection>
 
@@ -183,8 +184,8 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/jollyai/jollyai7.png"
-                    alt="Law.X visual identity"
+                    src="/images/casestudies/lawx/lawx-4.png"
+                    alt="The stark black-and-white interface with the instructions modal open"
                     caption="Minimalist, high-contrast design conveying professionalism and authority"
                 />
             </CaseStudySection>
@@ -217,10 +218,10 @@ export const LawX = () => {
             <CaseStudySection title="What I Delivered">
                 <CaseStudyStatsGrid
                     stats={[
-                        { value: '1mo', label: 'Contract', sublabel: 'End-to-end concept design' },
-                        { value: '7', label: 'Core flows', sublabel: 'Designed in Figma' },
-                        { value: '2', label: 'Trust systems', sublabel: 'Thinking Panel + Glass Box' },
-                        { value: '1', label: 'Sole designer', sublabel: 'Strategy to interaction design' },
+                        { value: '4 wks', label: 'Brief to handoff', sublabel: 'Sole designer on the contract' },
+                        { value: '7', label: 'Core flows', sublabel: 'Onboarding, query, reasoning, instructions, gallery, cases, results' },
+                        { value: '3', label: 'Trust mechanisms', sublabel: 'Thinking Panel · statute citations · jurisdiction lock' },
+                        { value: '0', label: 'Hidden steps', sublabel: 'Every AI action surfaced before the answer' },
                     ]}
                 />
                 <CaseStudyParagraph>
@@ -246,9 +247,9 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/jollyai/jollyai8.png"
-                    alt="Law.X final prototype overview"
-                    caption="The complete Law.X design system — trust through transparency"
+                    src="/images/casestudies/lawx/lawx-8.png"
+                    alt="Collapsible sidebar with previous case conversations"
+                    caption="Case threads persist in a collapsible sidebar — the workspace lawyers return to"
                 />
             </CaseStudySection>
         </CaseStudyLayout>

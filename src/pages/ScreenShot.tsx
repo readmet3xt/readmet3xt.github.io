@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   CaseStudyLayout,
   CaseStudyHero,
@@ -61,9 +62,9 @@ export const ScreenShot = () => {
       <CaseStudySection title="The Problem">
         <CaseStudyParagraph lead>
           PC screenshots are useful exactly when you're not at your PC.
-          Sending them to your phone is a process: open Discord, attach,
-          send to yourself, switch device, download, save. Five steps for
-          something that should be one.
+          Sending one to your phone is a process: open Discord, attach the
+          file, send it to yourself, unlock your phone, and save it down.
+          Five steps for something that should be one keypress.
         </CaseStudyParagraph>
 
         <CaseStudyCardGrid columns={2}>
@@ -137,8 +138,8 @@ export const ScreenShot = () => {
 
         <CaseStudyImage
           src="/screenshot/3-connector-wifi.png"
-          alt="The desktop connector pairing with the web app over WiFi"
-          caption="Phase 1 in action: the connector pairs with the web app over WiFi"
+          alt="The desktop connector pairing with the web app over Wi-Fi"
+          caption="Phase 1 in action: the connector pairs with the web app over Wi-Fi"
           aspectRatio="aspect-auto"
         />
       </CaseStudySection>
@@ -149,8 +150,9 @@ export const ScreenShot = () => {
           <CaseStudyCard title="Reuse the Otagon Relay">
             <CaseStudyParagraph>
               Standing up a second WebSocket server would have doubled the infra and
-              halved the testing velocity. Reusing the existing relay let ScreenShot
-              ship in v0 with zero ops overhead, by piggybacking on a proven protocol.
+              halved the testing velocity. Reusing the relay I already run for{' '}
+              <Link to="/otagon" className="text-accent-primary hover:underline">Otagon</Link> let
+              ScreenShot ship in v0 with zero ops overhead, by piggybacking on a proven protocol.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -193,8 +195,8 @@ export const ScreenShot = () => {
             <CaseStudyParagraph>
               Deleting a folder needs to remove every screenshot inside <em>and</em> the
               associated storage objects. Solved by listing storage children first, then
-              relying on <code>ON DELETE CASCADE</code> at the row level.
-              <strong> Zero orphan files since launch.</strong>
+              relying on <code>ON DELETE CASCADE</code> at the row level — so the cascade
+              never leaves a file paying for storage with no record pointing at it.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -216,7 +218,7 @@ export const ScreenShot = () => {
 
           <CaseStudyCard title="Service Worker + Auth Tokens">
             <CaseStudyParagraph>
-              Pre-caching the app shell was a foot-gun for auth state. Solved by
+              Pre-caching the app shell was a hazard for auth state. Solved by
               scoping the SW to public assets only and letting Supabase auth handle
               its own session storage outside the cache.
             </CaseStudyParagraph>
@@ -229,9 +231,9 @@ export const ScreenShot = () => {
         <CaseStudyStatsGrid
           stats={[
             { value: '1 key', label: 'PC to phone', sublabel: 'F1 = upload + sync' },
-            { value: '< 2s', label: 'Capture to gallery', sublabel: 'Over a typical home WiFi' },
+            { value: '< 2s', label: 'Capture to gallery', sublabel: 'Over typical home Wi-Fi' },
             { value: '3', label: 'Install targets', sublabel: 'Android, iOS, Desktop PWA' },
-            { value: '2', label: 'Migrations', sublabel: 'Init + Folders, both RLS-protected' },
+            { value: '6 digits', label: 'To pair a device', sublabel: 'No account linking, nothing to install on the phone' },
           ]}
         />
 
@@ -248,9 +250,10 @@ export const ScreenShot = () => {
 
           <CaseStudyCard title="Status">
             <CaseStudyParagraph>
-              v0 shipped, end-to-end tested with the existing Otagon desktop client.
-              Live on GitHub Pages, ready to fold back into Otagon Pro once the
-              namespace decision is made.
+              v0 is live and tested end to end against the Otagon desktop client I
+              already ship. It runs on Otagon's existing WebSocket relay — which is
+              why it took two weeks instead of two months. The open decision is whether
+              it stays a standalone tool or becomes a feature inside Otagon Pro.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
@@ -275,8 +278,9 @@ export const ScreenShot = () => {
 
           <CaseStudyCard title="Confirmation is a feature, not friction">
             <CaseStudyParagraph>
-              Typed confirmation dialogs on destructive actions are slower — and
-              users immediately said they felt safer. Speed isn't always the goal.
+              Typed confirmation dialogs on destructive actions are slower — deliberately.
+              The dialog names the exact file count you're about to destroy, so the cost
+              is always visible before you pay it. Speed isn't always the goal.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -300,8 +304,7 @@ export const ScreenShot = () => {
       <CaseStudySection title="What's Next">
         <CaseStudyParagraph lead>
           Next milestones: drag-and-drop foldering, an F2 capture flow for region
-          selection, and a paywall path that lines up with the broader Otagon Pro
-          vision. The infra is built to scale once the product earns it.
+          selection, and a paid tier that lines up with the broader Otagon Pro vision.
         </CaseStudyParagraph>
 
         <CaseStudyQuote>

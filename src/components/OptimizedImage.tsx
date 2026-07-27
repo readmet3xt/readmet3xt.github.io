@@ -63,7 +63,7 @@ export const OptimizedImage = ({
 
   // Generate responsive image sources
   const generateSrcSet = (baseSrc: string) => {
-    if (baseSrc.includes('lovable-uploads')) {
+    if (baseSrc.includes('/media/')) {
       // For uploaded images, we can't generate different sizes on the fly
       return undefined;
     }

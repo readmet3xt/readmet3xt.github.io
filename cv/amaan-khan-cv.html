@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amaan Khan — Product Designer &amp; Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ Print setup — natural flow, breaks controlled per block ============ */
+  @page { size: A4; margin: 12mm 15mm 13mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #16181d;          /* primary text */
+    --ink-2: #3f4550;        /* secondary text */
+    --ink-3: #6b7280;        /* tertiary / meta */
+    --accent: #d6203c;       /* brand red, tuned darker for ≥4.5:1 on white */
+    --rule: #e5e7eb;
+    --chip: #f3f4f6;
+  }
+
+  html, body { background: #fff; }
+  body {
+    font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    font-size: 9.5pt;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+
+  /* ============ Header ============ */
+  .header { margin-bottom: 6mm; }
+  .name {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-size: 24pt;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .name .dot { color: var(--accent); }
+  .role-line {
+    font-size: 11pt;
+    font-weight: 500;
+    color: var(--ink-2);
+    margin-top: 1.2mm;
+  }
+  .contact {
+    margin-top: 2.4mm;
+    font-size: 8.4pt;
+    color: var(--ink-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1mm 2.6mm;
+  }
+  .contact span::after { content: "·"; margin-left: 2.6mm; color: var(--rule); }
+  .contact span:last-child::after { content: ""; }
+  .contact a { color: var(--ink-2); font-weight: 500; }
+
+  /* ============ Sections ============ */
+  .section { margin-bottom: 4.2mm; }
+  .section-title {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 0.35mm solid var(--rule);
+    padding-bottom: 1.4mm;
+    margin-bottom: 3mm;
+    break-after: avoid;
+  }
+
+  .profile { font-size: 9.8pt; color: var(--ink-2); line-height: 1.55; }
+  .profile strong { color: var(--ink); font-weight: 600; }
+
+  /* ============ Experience entries ============ */
+  .entry { margin-bottom: 3.6mm; break-inside: avoid; }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .entry-org {
+    font-family: 'DM Sans', 'Inter', sans-serif;
+    font-size: 10.6pt;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .entry-org .desc { font-weight: 500; color: var(--ink-3); font-size: 9.2pt; }
+  .entry-org .links { font-weight: 500; font-size: 8.2pt; }
+  .entry-org .links a { color: var(--ink-3); border-bottom: 0.25mm solid var(--rule); }
+  .entry-date { font-size: 8.4pt; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .entry-role {
+    font-size: 9.2pt;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 0.6mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4mm;
+  }
+  ul.bullets { margin: 1.6mm 0 0; padding-left: 4.2mm; }
+  ul.bullets li { margin-bottom: 1mm; color: var(--ink-2); }
+  ul.bullets li::marker { color: var(--accent); }
+  ul.bullets strong { color: var(--ink); font-weight: 600; }
+
+  .stack { margin-top: 1.6mm; display: flex; flex-wrap: wrap; gap: 1.2mm; }
+  .stack span {
+    font-size: 7.4pt;
+    font-weight: 500;
+    color: var(--ink-2);
+    background: var(--chip);
+    border-radius: 1mm;
+    padding: 0.6mm 1.8mm;
+  }
+
+  .subrole { margin-top: 2.4mm; break-inside: avoid; }
+
+  /* ============ Compact rows (builds, academic) ============ */
+  .row { margin-bottom: 2.4mm; break-inside: avoid; }
+  .row-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .row-title { font-size: 9.6pt; font-weight: 700; font-family: 'DM Sans', 'Inter', sans-serif; }
+  .row-title .tag { font-weight: 500; color: var(--ink-3); font-size: 8.4pt; }
+  .row p { color: var(--ink-2); margin-top: 0.4mm; }
+  .row p strong { color: var(--ink); font-weight: 600; }
+
+  /* ============ Two-column utility (education) ============ */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 8mm; }
+
+  .edu { margin-bottom: 2mm; }
+  .edu .school { font-weight: 700; font-size: 9.6pt; font-family: 'DM Sans', 'Inter', sans-serif; }
+  .edu .deg { color: var(--ink-2); }
+  .edu .meta { color: var(--ink-3); font-size: 8.4pt; }
+
+  .skills-line { margin-bottom: 1.6mm; display: flex; gap: 3mm; }
+  .skills-line .k {
+    font-weight: 700;
+    font-size: 8.2pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    flex: 0 0 26mm;
+    padding-top: 0.3mm;
+  }
+  .skills-line .v { color: var(--ink-2); }
+
+  .honour { display: flex; gap: 2mm; margin-bottom: 1.4mm; color: var(--ink-2); }
+  .honour::before { content: "◆"; color: var(--accent); font-size: 7pt; line-height: 1.9; }
+  .honour strong { color: var(--ink); font-weight: 600; }
+
+  .footnote { margin-top: 3mm; font-size: 7.8pt; color: var(--ink-3); }
+</style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="name">Amaan Khan<span class="dot">.</span></div>
+    <div class="role-line">Product Designer &amp; Engineer — I design products end-to-end, then build them.</div>
+    <div class="contact">
+      <span>Hyderabad, India (open to Bangalore · Mumbai · Remote)</span>
+      <span>+91 81216 02314</span>
+      <span><a href="mailto:mdamkhan.work@gmail.com">mdamkhan.work@gmail.com</a></span>
+      <span><a href="https://readmet3xt.github.io">readmet3xt.github.io</a></span>
+      <span><a href="https://www.linkedin.com/in/readmetxt/">linkedin.com/in/readmetxt</a></span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-title">Profile</div>
+    <p class="profile">
+      Product designer who ships the code too. RCA-trained service designer (M.A., Royal College of Art)
+      with a full-stack build background — I take products the whole way, from user research and service
+      blueprints to <strong>production React and AI integration</strong>. Founding designer behind a fintech
+      that grew to 70,000+ users; most recently I solo-designed, built, and launched
+      <strong>Otagon</strong>, a production AI gaming companion on web and PWA with paid tiers.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">Otagon <span class="desc">— AI gaming companion (solo product)</span> &nbsp;<span class="links"><a href="https://otagon.app">otagon.app</a> · <a href="https://readmet3xt.github.io/otagon">case study</a></span></div>
+        <div class="entry-date">Aug 2025 – Present</div>
+      </div>
+      <div class="entry-role">Founder &amp; Product Engineer</div>
+      <ul class="bullets">
+        <li>Spotted that gamers burn 3–5 minutes per question alt-tabbing to wikis — solo-designed and shipped a production PWA: <strong>30+ features, 3 subscription tiers, 150K+ game library</strong>.</li>
+        <li>Invented the <strong>OTAGON Tag system</strong>, a structured AI output format that reads game, location, and progress straight from screenshots — <strong>95%+ detection accuracy</strong>, with answers that stay spoiler-aware and progress-calibrated.</li>
+        <li>Designed <strong>8+ genre-specific AI personas</strong> and two interaction modes (Playing vs. Planning) from behavioural research, so guidance fits both the game and the moment.</li>
+        <li>Cut AI API costs <strong>~40%</strong> with a context summariser and shared game-knowledge cache that keep costs flat at any chat length — <strong>zero critical incidents</strong> since launch.</li>
+        <li>Hardened for production: payments through a secrets-scoped Supabase Edge Function, row-level security on every user-data table, and a full security audit.</li>
+      </ul>
+      <div class="stack"><span>React 18</span><span>TypeScript</span><span>Supabase</span><span>Gemini 2.5</span><span>Tailwind CSS</span><span>Framer Motion</span><span>Lemon Squeezy</span></div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">Law.X <span class="desc">— legal AI assistant</span> &nbsp;<span class="links"><a href="https://readmet3xt.github.io/lawx">case study</a></span></div>
+        <div class="entry-date">Mar 2025 – Apr 2025</div>
+      </div>
+      <div class="entry-role">Product Designer (Contract)</div>
+      <ul class="bullets">
+        <li>Reframed the brief from “make the AI smarter” to “make the AI <strong>verifiable</strong>” — a Glass Box interface that surfaces the model’s reasoning chain live, turning lawyer scepticism into trust.</li>
+        <li>Designed a cohesive legal workspace across seven flows: split-pane layout, persistent tone and jurisdiction controls, a curated prompt gallery, and multi-client navigation.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">KoinBasket <span class="desc">— crypto investment platform</span> &nbsp;<span class="links"><a href="https://readmet3xt.github.io/koinbasket">case study</a></span></div>
+        <div class="entry-date"></div>
+      </div>
+
+      <div class="entry-role">Senior UX Designer <span class="entry-date">Jun 2024 – Mar 2025</span></div>
+      <ul class="bullets">
+        <li>Led a cross-platform redesign unifying mobile and desktop, driving a <strong>42% lift in user engagement</strong>.</li>
+        <li>Created <strong>BitBuddy</strong>, a live-trading social layer where influencers broadcast strategies and users trade from the same screen — turning a utility into a content-commerce platform.</li>
+        <li>Hired and mentored the company’s first junior designer, scaling design beyond a team of one.</li>
+      </ul>
+
+      <div class="subrole">
+        <div class="entry-role">Founding Designer <span class="entry-date">Oct 2022 – Jun 2023</span></div>
+        <ul class="bullets">
+          <li>Sole founding designer: shipped the MVP in one week and built the design system that scaled to <strong>70,000+ users</strong>; led a full rebrand.</li>
+          <li>Streamlined onboarding and Binance/Coinbase payment flows, cutting transaction friction <strong>~20%</strong> with simpler authentication.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">Softwire <span class="desc">— LNER App Clip, London</span> &nbsp;<span class="links"><a href="https://readmet3xt.github.io/softwire">case study</a></span></div>
+        <div class="entry-date">Jul 2022 – Sep 2022</div>
+      </div>
+      <div class="entry-role">Designer (Internship)</div>
+      <ul class="bullets">
+        <li>Co-led UX for a 7-engineer build: ran a 13-stakeholder workshop, in-station field research, and usability testing with 9 users — cutting ticket checkout time <strong>40%</strong>.</li>
+        <li>Diagnosed two critical usability failures and rebuilt the booking flow into a single-screen interface with inline editing and Apple Pay — validated inside the 8-week internship.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-org">Think Design <span class="desc">— design research</span></div>
+        <div class="entry-date">Apr 2020 – May 2020</div>
+      </div>
+      <div class="entry-role">Design Research Intern</div>
+      <ul class="bullets">
+        <li>Qualitative research on how communication norms shifted during COVID-19, informing strategy on the “new normal” of user interaction.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="section">
+    <div class="section-title">Independent Builds — solo-designed, solo-built</div>
+
+    <div class="row">
+      <div class="row-head">
+        <div class="row-title">Versus <span class="tag">· real-time tournament tracker · <a href="https://readmet3xt.github.io/versus">case study</a></span></div>
+        <div class="entry-date">Ongoing</div>
+      </div>
+      <p>Leagues, knockouts, live scoring, and a spectator link friends open on their phones — a static SPA on Supabase + WebRTC, built for real game nights.</p>
+    </div>
+
+    <div class="row">
+      <div class="row-head">
+        <div class="row-title">ScreenShot <span class="tag">· PC → phone capture sync · <a href="https://readmet3xt.github.io/screenshot">case study</a></span></div>
+        <div class="entry-date">Ongoing</div>
+      </div>
+      <p>Press F1 on your PC, see it on your phone seconds later — pairing-code sync, gallery, and an installable PWA, <strong>shipped in two weeks</strong>.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Academic Projects — Royal College of Art</div>
+
+    <div class="row">
+      <div class="row-head">
+        <div class="row-title">Pebble <span class="tag">· service design · VISA Innovation Centre · <a href="https://readmet3xt.github.io/pebble">case study</a></span></div>
+        <div class="entry-date">2021</div>
+      </div>
+      <p>Led service design end-to-end (<strong>1,200+ surveys, 24 co-creation workshops</strong>, data-backed personas); the Virtual Café concept was adopted into <strong>VISA Innovation Centre’s</strong> collaboration roadmap.</p>
+    </div>
+
+    <div class="row">
+      <div class="row-head">
+        <div class="row-title">Soul at Work / I.V.I. Program <span class="tag">· speculative design · BCG · <a href="https://readmet3xt.github.io/iviprogram">case study</a></span></div>
+        <div class="entry-date">2020</div>
+      </div>
+      <p>Co-created a speculative service quantifying women’s unpaid labour (79 participants) — <strong>Core77 Student Notable</strong>, with the research framework adopted by <strong>BCG</strong>.</p>
+    </div>
+
+    <div class="row">
+      <div class="row-head">
+        <div class="row-title">Stampede <span class="tag">· service design · WWT × Airbnb · <a href="https://readmet3xt.github.io/stampede">case study</a></span></div>
+        <div class="entry-date">2019</div>
+      </div>
+      <p>Designed and ran the co-creation workshop that kicked off the <strong>WWT × Airbnb partnership</strong> — described by participants as “100× more productive” than standard meetings.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Education, Certificates &amp; Honours</div>
+    <div class="grid-2">
+      <div>
+        <div class="edu">
+          <div class="school">Royal College of Art</div>
+          <div class="deg">M.A. Service Design</div>
+          <div class="meta">London, UK</div>
+        </div>
+        <div class="edu">
+          <div class="school">Osmania University</div>
+          <div class="deg">B.E. Mechanical Engineering</div>
+          <div class="meta">Hyderabad, India</div>
+        </div>
+        <div class="edu">
+          <div class="school">London Business School</div>
+          <div class="deg">Brand Management — certificate</div>
+          <div class="meta">London, UK</div>
+        </div>
+      </div>
+      <div>
+        <div class="honour"><span><strong>Core77 Design Awards 2021</strong> — Student Notable, Speculative Design</span></div>
+        <div class="honour"><span><strong>Merit, Critical &amp; Historical Studies</strong> — Royal College of Art</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">Skills &amp; Tools</div>
+    <div class="skills-line"><span class="k">Design</span><span class="v">Service design · UX/UI · User research · Prototyping · Design systems · Information architecture · Usability testing · Journey mapping</span></div>
+    <div class="skills-line"><span class="k">Engineering</span><span class="v">React 18/19 · TypeScript · Supabase · AI integration (Gemini / OpenAI) · PWA · Performance optimisation · Database design</span></div>
+    <div class="skills-line"><span class="k">Tools</span><span class="v">Figma · Framer · Webflow · Cursor · Claude Code · VS Code · Vercel · Miro</span></div>
+    <div class="skills-line"><span class="k">Leadership</span><span class="v">Workshop facilitation · Stakeholder management · Hiring &amp; mentoring · Presentation</span></div>
+  </section>
+
+</body>
+</html>

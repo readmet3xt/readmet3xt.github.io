@@ -64,7 +64,7 @@ export const KoinBasket = () => {
               'Mentored and managed a junior designer',
               'Led the rebrand and later product initiatives',
             ],
-            timeline: 'Founding Designer (Oct 2022–May 2023) → Senior Design Lead (Jun 2024–Mar 2025)',
+            timeline: 'Founding Designer (Oct 2022–Jun 2023) → Senior UX Designer (Jun 2024–Mar 2025)',
             recognition: '0 → 70,000 users; Complete rebrand; Live trading ecosystem',
             tools: [
               'Figma',
@@ -81,7 +81,7 @@ export const KoinBasket = () => {
         {/* The Origin Story */}
         <CaseStudySection title="The Origin Story">
           <CaseStudyParagraph lead>
-            Crypto in 2020 was a labyrinth — complex terminology, overwhelming choices, legitimate
+            Crypto in 2022 was a labyrinth — complex terminology, overwhelming choices, legitimate
             security fears. New investors faced a steep learning curve just to make their first purchase,
             let alone build a diversified portfolio.
           </CaseStudyParagraph>
@@ -259,9 +259,9 @@ export const KoinBasket = () => {
             <CaseStudySection title="Results">
               <CaseStudyStatsGrid
                 stats={[
-                  { value: '70K+', label: 'Users', sublabel: 'From zero' },
-                  { value: '1→Lead', label: 'Team', sublabel: 'Solo → Design Lead' },
-                  { value: 'Web+Mobile', label: 'Platforms', sublabel: 'Cross-platform' },
+                  { value: '70K+', label: 'Users', sublabel: 'From zero, Oct 2022 → Mar 2025' },
+                  { value: '+42%', label: 'User engagement', sublabel: 'After the cross-platform redesign' },
+                  { value: '−20%', label: 'Transaction friction', sublabel: 'Simplified onboarding & payment flows' },
                 ]}
               />
 
@@ -277,12 +277,12 @@ export const KoinBasket = () => {
                   columns={3}
                   aspectRatio="aspect-auto"
                   images={[
-                    { src: '/images/casestudies/koinbasket/18-1-mobile-feature-highlight-1.png', alt: 'Mobile feature highlight 1' },
-                    { src: '/images/casestudies/koinbasket/18-2-mobile-feature-highlight-2.png', alt: 'Mobile feature highlight 2' },
-                    { src: '/images/casestudies/koinbasket/18-3-mobile-feature-highlight-3.png', alt: 'Mobile feature highlight 3' },
-                    { src: '/images/casestudies/koinbasket/18-4-mobile-feature-highlight-4.png', alt: 'Mobile feature highlight 4' },
-                    { src: '/images/casestudies/koinbasket/18-5-mobile-feature-highlight-5.png', alt: 'Mobile feature highlight 5' },
-                    { src: '/images/casestudies/koinbasket/18-6-mobile-feature-highlight-6.png', alt: 'Mobile feature highlight 6' }
+                    { src: '/images/casestudies/koinbasket/18-1-mobile-feature-highlight-1.png', alt: 'Rebranded mobile app — basket discovery screen' },
+                    { src: '/images/casestudies/koinbasket/18-2-mobile-feature-highlight-2.png', alt: 'Rebranded mobile app — portfolio overview' },
+                    { src: '/images/casestudies/koinbasket/18-3-mobile-feature-highlight-3.png', alt: 'Rebranded mobile app — basket detail view' },
+                    { src: '/images/casestudies/koinbasket/18-4-mobile-feature-highlight-4.png', alt: 'Rebranded mobile app — invest flow' },
+                    { src: '/images/casestudies/koinbasket/18-5-mobile-feature-highlight-5.png', alt: 'Rebranded mobile app — rewards and engagement' },
+                    { src: '/images/casestudies/koinbasket/18-6-mobile-feature-highlight-6.png', alt: 'Rebranded mobile app — account and settings' }
                   ]}
                 />
               </div>

@@ -95,8 +95,8 @@ export const Softwire = () => {
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            Fly-on-the-wall observations at St. Pancras told the real story. Users checking platform
-            boards repeatedly. Anxiety spiking when platforms weren't announced until the last minute.
+            Fly-on-the-wall observations at a mainline London station told the real story. Users checking
+            platform boards repeatedly. Anxiety spiking when platforms weren't announced until the last minute.
             Fumbling with paper tickets or slow apps under pressure. The stress wasn't hypothetical —
             it was visible and consistent.
           </CaseStudyParagraph>
@@ -273,14 +273,15 @@ export const Softwire = () => {
         {/* Outcome */}
         <CaseStudySection title="Outcome">
           <CaseStudyParagraph lead>
-            The core booking flow was validated through usability testing, handed off to engineering,
-            and met National Rail compliance — delivered within the 8-week internship timeline.
+            Testing cut ticket checkout time by <strong>40%</strong> across the nine usability sessions.
+            The core booking flow passed National Rail compliance review and was handed to the engineering
+            team — delivered within the 8-week internship timeline.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
             Two specific design failures — an overwhelming confirmation screen and a multi-step journey
-            flow — were caught early because we tested under realistic time pressure. Both fixes shipped
-            into the build.
+            flow — were caught early because we tested under realistic time pressure. Both iterations were
+            built into the spec that went to engineering.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>

@@ -164,7 +164,7 @@ export const HeroSection = () => {
             className="project-card rounded-xl overflow-hidden group bg-gradient-to-br from-accent-primary/10 via-accent-primary/5 to-card border border-accent-primary/20 w-full max-w-xs xl:max-w-sm lg:max-h-[55vh] aspect-[3/4] relative hover:border-accent-primary/40 cursor-pointer select-none transition-all duration-300 shadow-xl block"
           >
             <img
-              src="/lovable-uploads/6bba6c1a-b7f8-404a-b8c3-367c42cbc2a0.png"
+              src="/media/6bba6c1a-b7f8-404a-b8c3-367c42cbc2a0.png"
               alt="Amaan Khan - Product Designer"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             />

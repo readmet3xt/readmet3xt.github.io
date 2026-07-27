@@ -97,6 +97,11 @@ jspm_packages/
 tmp/
 temp/
 
+# Local audit/automation artifacts
+audit-screenshots/
+.playwright-mcp/
+.crawler-temp/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

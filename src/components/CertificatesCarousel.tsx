@@ -13,19 +13,19 @@ const certificates: Certificate[] = [
   {
     id: 1,
     title: "London Business School - Brand Management Certificate",
-    image: "/lovable-uploads/2a61f154-ffd9-4cf1-94c4-485003fa7bf7.png",
+    image: "/media/2a61f154-ffd9-4cf1-94c4-485003fa7bf7.png",
     alt: "London Business School Certificate of Attendance for Brand Management"
   },
   {
     id: 2,
     title: "Think Design - Design Research Internship Certificate",
-    image: "/lovable-uploads/5db3cc76-4297-4638-857d-e6c393a2301f.png",
+    image: "/media/5db3cc76-4297-4638-857d-e6c393a2301f.png",
     alt: "Think Design Certificate of Internship for Design Research"
   },
   {
     id: 3,
     title: "Core77 Design Awards - Student Notable",
-    image: "/lovable-uploads/656f68a3-f2e8-46d8-b948-1d4067ef6177.png",
+    image: "/media/656f68a3-f2e8-46d8-b948-1d4067ef6177.png",
     alt: "Core77 Design Awards 2021 Student Notable for Invisible Value Income Program"
   }
 ];

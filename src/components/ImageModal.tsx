@@ -3,13 +3,14 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 interface ImageModalProps {
   isOpen: boolean;
   images: string[];
+  alts?: string[];
   currentIndex: number;
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
 }
 
-export const ImageModal = ({ isOpen, images, currentIndex, onClose, onNext, onPrev }: ImageModalProps) => {
+export const ImageModal = ({ isOpen, images, alts, currentIndex, onClose, onNext, onPrev }: ImageModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [isResizing, setIsResizing] = useState(false);
@@ -168,7 +169,7 @@ export const ImageModal = ({ isOpen, images, currentIndex, onClose, onNext, onPr
         
         <img
           src={images[currentIndex]}
-          alt={`Artwork ${currentIndex + 1}`}
+          alt={alts?.[currentIndex] ?? `Artwork ${currentIndex + 1}`}
           className="modal-image-content"
         />
         

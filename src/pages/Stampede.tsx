@@ -41,7 +41,7 @@ export const Stampede = () => {
             ],
             team: 'Anahita Pradhan, Andrew Seetoh, Constance Chung (RCA Team 9)',
             timeline: 'January–March 2019, Royal College of Art',
-            recognition: 'WWT × Airbnb partnership initiated; "100x more productive" methodology',
+            recognition: 'WWT × Airbnb collaboration initiated from a single workshop — called "100x more productive than any partnership meeting" by WWT\'s Senior Partnerships Manager',
             tools: [
               'Service Design',
               'Systems Thinking',
@@ -239,7 +239,12 @@ export const Stampede = () => {
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            <strong>The result</strong> wasn't just a good meeting. It was a genuine partnership commitment.
+            <strong>The result</strong> was a live commitment to continue: Airbnb's Social Impact team left
+            with WWT's contacts, a named first project idea — an authentic wetlands experience — and a shared
+            understanding that the 25× pace gap had to be designed around, not discovered later. To be precise
+            about what this was and wasn't: three hours produced a warm handoff and an agreed next step between
+            two organisations that had never formally spoken — not a signed partnership. The methodology's claim
+            is that it compresses months of relationship-building into an afternoon, and on this prototype, it did.
           </CaseStudyParagraph>
 
           <CaseStudyQuote author="Holly Bland" role="Social Impact Experience Manager, Airbnb">
@@ -276,7 +281,6 @@ export const Stampede = () => {
 
           <CaseStudyCard title="Design Principles from the Prototype">
             <CaseStudyList items={[
-              'Government or neutral funding prevents power imbalances',
               'Go in with a hook idea but let the partnership evolve',
               'Third-party facilitation levels the playing field',
               'Only invite people who can actually make decisions',
@@ -289,17 +293,19 @@ export const Stampede = () => {
         <CaseStudySection title="Results">
           <CaseStudyStatsGrid
             stats={[
-              { value: '100x', label: 'More Productive', sublabel: 'Than standard meetings' },
-              { value: 'WWT × Airbnb', label: 'Partnership', sublabel: 'Initiated' },
+              { value: '2', label: 'Organisations', sublabel: 'WWT × Airbnb, first formal contact' },
+              { value: '3hrs', label: 'To a named next project', sublabel: 'vs. months of relationship-building' },
+              { value: '25×', label: 'Pace gap surfaced live', sublabel: 'Airbnb 7 days vs WWT 6 months' },
               { value: '7', label: 'Animal Archetypes', sublabel: 'Power/Pace profiles' },
-              { value: '3hrs', label: 'Workshop', sublabel: 'Sprint format' },
             ]}
           />
 
           <CaseStudyParagraph>
-            WWT × Airbnb partnership initiated from a single facilitated workshop. Stakeholders described
-            the methodology as "100x more productive" than standard partnership meetings. The framework was
-            adopted for ongoing partnership development within the conservation sector.
+            One workshop, one pair of organisations — a prototype, not a proof. What it produced: WWT and
+            Airbnb's first formal working session, a named candidate project, and a facilitation toolkit the
+            team could hand over. Nick Appleby, WWT's Senior Partnerships Manager, called it "100 times more
+            productive than any partnership meeting I've had" — his words, not a measurement, and the reason
+            we think the format is worth running at scale.
           </CaseStudyParagraph>
 
           <div className="flex flex-col gap-4 mt-8">

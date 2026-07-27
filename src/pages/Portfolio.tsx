@@ -16,12 +16,12 @@ export const Portfolio = memo(() => {
   return (
     <PageLayout className="max-w-7xl mx-auto w-full">
       <SEO />
-      <div className="h-[100svh]">
-        <TypewriterAnimation />
-      </div>
-
       <div className="lg:h-[100svh]">
         <HeroSection />
+      </div>
+
+      <div className="h-[100svh]">
+        <TypewriterAnimation />
       </div>
 
       <div>

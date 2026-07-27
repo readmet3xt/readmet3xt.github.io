@@ -16,12 +16,12 @@ export const Versus = () => {
   return (
     <CaseStudyLayout
       title="Versus"
-      description="A pro tournament tracker for FIFA/FC nights — leagues, knockouts, and groups with live scoring, brackets, and shareable spectator links."
+      description="A live tournament tracker for FIFA/FC nights — leagues, knockouts, and groups with live scoring, brackets, and a spectator link that opens with no signup."
       externalLink="https://otagon2.github.io/Versus/"
       externalLabel="Visit Versus"
     >
       <CaseStudyHero
-        eyebrow="Side Project · Versus · Solo Design + Build"
+        eyebrow="Side Project · Versus · Solo Design + Build · Ongoing"
         title="A Tournament Tracker Built for Couch Co-op"
         subtitle="Designing and shipping a live FIFA/FC tournament platform — leagues, knockouts, groups, and spectator links"
         pills={[
@@ -41,7 +41,7 @@ export const Versus = () => {
             'Realtime sync via PeerJS + Supabase',
           ],
           timeline: '~6 weeks, evenings & weekends',
-          recognition: 'Three formats, two-leg ties, live spectator mode, and a never-ending league mode',
+          recognition: 'Live and used at every FIFA night since launch — real tournaments, zero per-match server cost',
           tools: [
             'HTML / CSS / Vanilla JS',
             'Supabase (Auth + Postgres)',
@@ -125,9 +125,9 @@ export const Versus = () => {
 
           <CaseStudyCard title="Phase 3 — Share Live + Public Links">
             <CaseStudyParagraph>
-              Two ways to share: <strong>Share Live</strong> opens a WebRTC channel via PeerJS
-              for instant updates while the host is online; <strong>Share Public</strong> publishes
-              a read-only edge function snapshot that anyone can open, refreshed every 5s.
+              Two ways to share: <strong>Share Live</strong> streams goals as they happen while
+              the host is online; <strong>Share Public</strong> posts a read-only snapshot that
+              refreshes every five seconds and keeps working after the host closes their laptop.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -194,9 +194,9 @@ export const Versus = () => {
         <CaseStudyCardGrid columns={2}>
           <CaseStudyCard title="Live Sync Without a Backend Per Match">
             <CaseStudyParagraph>
-              Running a persistent WebSocket per tournament would explode hosting costs.
-              Solved with PeerJS over a single shared signaling server, plus a Supabase
-              edge function as the fallback read path.
+              A persistent WebSocket per tournament would have made hosting cost scale with
+              idle time, so I split the problem: PeerJS over one shared signaling server while
+              the host is online, and a Supabase edge function as the read-only fallback.
               <strong> Idle tournaments cost nothing.</strong>
             </CaseStudyParagraph>
           </CaseStudyCard>
@@ -232,10 +232,10 @@ export const Versus = () => {
       <CaseStudySection title="Results">
         <CaseStudyStatsGrid
           stats={[
-            { value: '3', label: 'Formats supported', sublabel: 'League, Knockout, Hybrid' },
-            { value: '2', label: 'Share modes', sublabel: 'Live (WebRTC) + Public read-only' },
-            { value: '0', label: 'Backend servers per match', sublabel: 'Static SPA + signaling' },
-            { value: '< 1s', label: 'Spectator load time', sublabel: 'Read-only edge function' },
+            { value: 'Live', label: 'Used every FIFA night', sublabel: 'Real tournaments since launch' },
+            { value: '3', label: 'Formats, one data model', sublabel: 'League, Knockout, Hybrid' },
+            { value: '0', label: 'Backend servers per match', sublabel: 'Static SPA + shared signaling' },
+            { value: '< 1s', label: 'Spectator load time', sublabel: 'Read-only snapshot, no signup' },
           ]}
         />
 
@@ -303,7 +303,7 @@ export const Versus = () => {
       <CaseStudySection title="What's Next">
         <CaseStudyParagraph lead>
           Next on deck: a season mode that strings tournaments together, a stats page
-          that finally answers "who's the best at FIFA in this group chat," and a
+          that finally answers "who's the best at FIFA in this group chat?", and a
           lightweight commentary layer so spectators can react in real time.
         </CaseStudyParagraph>
 

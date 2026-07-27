@@ -30,7 +30,7 @@ export const Pebble = () => {
             'RCA Group Project',
             'Virtual Companion',
           ]}
-          intro="Remote work promised freedom. It delivered isolation. As project lead at the Royal College of Art, I created Pebble — a virtual wellbeing companion born from 1,200+ worker interviews and 24 co-creation workshops. Our Virtual Café concept influenced VISA's internal collaboration roadmap, proving that proactive wellbeing design drives measurable business impact."
+          intro="Remote work promised freedom. It delivered isolation. Leading a three-person RCA team partnered with the VISA Innovation Centre, I created Pebble — a virtual wellbeing companion built on 1,200+ survey responses and 24 co-creation workshops. One concept from that work, the Virtual Café, was adopted into VISA Innovation Centre's collaboration roadmap."
           overview={{
             role: [
               'Project Lead & UX Researcher',
@@ -38,6 +38,7 @@ export const Pebble = () => {
               'Led research synthesis across 1,200+ responses',
               'Owned UI/UX design for the Pebble companion',
             ],
+            team: 'Jing Qian and Zhiyuan Zheng, Royal College of Art. Partner: VISA Innovation Centre',
             timeline: 'January–June 2021, RCA × VISA Innovation Centre',
             recognition: 'Virtual Café concept adopted into VISA roadmap',
             tools: [
@@ -78,9 +79,14 @@ export const Pebble = () => {
               { value: '43%', label: 'Poor Mental Health', sublabel: 'Employees surveyed' },
               { value: '13%', label: 'Completely Happy', sublabel: 'Down from 26%' },
               { value: '12%', label: 'More Productive', sublabel: 'With happy employees' },
-              { value: '147%', label: 'Higher Profitability', sublabel: 'With engaged teams' },
+              { value: '147%', label: 'Higher Earnings Per Share', sublabel: 'Engaged teams (Gallup)' },
             ]}
           />
+
+          <CaseStudyParagraph>
+            We used published engagement research (Gallup and academic wellbeing studies) to size the
+            problem for stakeholders, and our own 1,200-response survey to define it.
+          </CaseStudyParagraph>
 
           <CaseStudyQuote>
             How might we proactively design for workplace happiness rather than reactively treating burnout?
@@ -160,7 +166,7 @@ export const Pebble = () => {
         <CaseStudySection title="The Solution: Pebble">
           <CaseStudyParagraph lead>
             Pebble is a virtual assistant that promotes happiness and productivity through personalisation,
-            focus enhancement, and social connection. Four distinct Pebble personalities match different
+            focus enhancement, and social connection. Four distinct Pebble personalities fit different
             user needs — matched through an onboarding quiz that continues learning through daily check-ins.
           </CaseStudyParagraph>
 
@@ -181,9 +187,9 @@ export const Pebble = () => {
 
             <CaseStudyCard title="Virtual Café">
               <CaseStudyParagraph>
-                The feature that changed everything. Informal coffee chat rooms that recreate the spontaneous
-                social interactions remote work eliminates. Employees join or create rooms, conversations happen,
-                isolation decreases. This concept directly influenced VISA's internal collaboration roadmap.
+                Informal coffee chat rooms that recreate the spontaneous social interactions remote work
+                eliminates. Employees join or create rooms, conversations happen, isolation decreases.
+                This is the concept VISA Innovation Centre took into its collaboration roadmap.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
@@ -293,10 +299,11 @@ export const Pebble = () => {
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="The ROI of happiness is measurable">
+            <CaseStudyCard title="Frame wellbeing as a business question">
               <CaseStudyParagraph>
-                147% profit increase with engaged teams isn't a soft claim. Framing wellbeing as a
-                business outcome, not just an HR concern, was what got VISA's attention.
+                Leading stakeholder conversations with published engagement-to-performance data (Gallup),
+                rather than empathy language, is what got a wellbeing concept onto a product roadmap
+                instead of into a wellness newsletter.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>

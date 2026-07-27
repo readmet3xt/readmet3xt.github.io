@@ -38,7 +38,7 @@ export const Otagon = () => {
         externalLabel="otagon.app"
         overview={{
           role: [
-            'Product Manager & Solo Developer',
+            'Founder & Product Engineer',
             'Full ownership from research to launch',
             'Design, frontend engineering, AI integration',
             'Backend, billing, mobile packaging, GTM',
@@ -65,7 +65,7 @@ export const Otagon = () => {
       {/* The Problem */}
       <CaseStudySection title="The Problem">
         <CaseStudyParagraph lead>
-          Gamers constantly need help — boss strategies, lore context, build optimization — but
+          Gamers constantly need help — boss strategies, lore context, build optimisation — but
           every existing solution breaks immersion or risks spoilers.
         </CaseStudyParagraph>
 
@@ -152,7 +152,7 @@ export const Otagon = () => {
 
           <CaseStudyCard title="Phase 5 — PWA, Gamification & Hardening">
             <CaseStudyParagraph>
-              Optimized the PWA for responsive mobile/desktop layouts. Layered in a full gamification
+              Optimised the PWA for responsive mobile/desktop layouts. Layered in a full gamification
               system — achievements, XP, intent classification, Bronze → Pro tiers. Hardened RLS across
               every user-data table and ran a top-to-bottom security audit.
             </CaseStudyParagraph>
@@ -210,7 +210,7 @@ export const Otagon = () => {
             <CaseStudyParagraph>
               A simple mental model with real product impact. <strong>Playing Mode:</strong> concise, immediate
               tactical tips. <strong>Planning Mode:</strong> deeper strategy, auto-generates a session summary
-              when you switch. Clean modes map to real user behavior and reduce prompt engineering complexity.
+              when you switch. Clean modes map to real user behaviour and reduce prompt engineering complexity.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -337,7 +337,7 @@ export const Otagon = () => {
               '30+ features end-to-end',
               'Lemon Squeezy payment integration (Edge Function-secured)',
               'WebSocket-based PC-to-Mobile sync',
-              'PWA installation and mobile optimization',
+              'PWA installation and mobile optimisation',
               'Achievements, XP, and tiered progression',
               '~40% API cost reduction via caching',
               'Strict RLS on every user-data table',
@@ -381,7 +381,7 @@ export const Otagon = () => {
 
           <CaseStudyCard title="Freemium works when free genuinely delivers">
             <CaseStudyParagraph>
-              Feature gates feel punitive. Query limits feel fair. That framing changes conversion behavior.
+              Feature gates feel punitive. Query limits feel fair. That framing changes conversion behaviour.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -411,7 +411,7 @@ export const Otagon = () => {
       {/* What's Next */}
       <CaseStudySection title="What's Next">
         <CaseStudyParagraph lead>
-          Lemon Squeezy payments are live. The web and PWA builds are fully optimized and ready. In active
+          Lemon Squeezy payments are live. The web and PWA builds are fully optimised and ready. In active
           development: performance work, video capture, hands-free TTS conversations, and a ScreenShot
           spin-off that surfaces the same pairing flow as a focused utility. Community features —
           shared builds and strategy sharing — are on the next roadmap. The architecture is built to scale.

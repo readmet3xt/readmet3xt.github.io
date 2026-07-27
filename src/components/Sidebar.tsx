@@ -128,7 +128,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
               </div>
               <div className="min-w-0">
                 <h2 className="font-ibm-plex-mono font-semibold uppercase text-foreground text-xs sm:text-sm">Play</h2>
-                <p className="text-[10px] sm:text-xs text-text-secondary truncate">Fun projects</p>
+                <p className="text-[10px] sm:text-xs text-text-secondary truncate">Interface studies & art</p>
               </div>
             </Link>
 
@@ -139,7 +139,7 @@ export const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }: Sidebar
               aria-current={activeLink === 'about' ? 'page' : undefined}
             >
               <img
-                src="/lovable-uploads/22366376-40f2-492f-989a-067de0fdb01f.png"
+                src="/media/22366376-40f2-492f-989a-067de0fdb01f.png"
                 alt="Amaan Khan profile photo"
                 className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-md object-cover flex-shrink-0"
               />
