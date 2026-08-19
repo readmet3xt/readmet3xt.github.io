@@ -51,7 +51,7 @@
       <span class="mono" style="font-size:9px;letter-spacing:.08em;color:var(--ink3);">YOU CHOOSE</span>
     </div>
 
-    <a class="prop pick" href="02-home.html">
+    <div class="prop pick" data-cta="Start holding RM 12 a day" style="cursor:pointer;">
       <div class="ptop">
         <div style="min-width:0;">
           <div class="ptitle">Hold back RM 12 a day for 10 days</div>
@@ -62,9 +62,9 @@
       <div style="margin-top:9px;">
         <span class="pill ai"><span class="dot"></span>Fathom suggests</span>
       </div>
-    </a>
+    </div>
 
-    <a class="prop" href="02-home.html">
+    <div class="prop" data-cta="Ask my lender to move it" style="cursor:pointer;">
       <div class="ptop">
         <div style="min-width:0;">
           <div class="ptitle">Move the installment to Thu 18 Sep</div>
@@ -73,9 +73,9 @@
         </div>
         <span class="radio"></span>
       </div>
-    </a>
+    </div>
 
-    <a class="prop" href="02-home.html">
+    <div class="prop" data-cta="Move RM 120 from Bike service" style="cursor:pointer;">
       <div class="ptop">
         <div style="min-width:0;">
           <div class="ptitle">Take RM 120 from Bike service</div>
@@ -84,10 +84,10 @@
         </div>
         <span class="radio"></span>
       </div>
-    </a>
+    </div>
 
     <div style="margin-top:auto;padding-bottom:22px;display:flex;flex-direction:column;gap:9px;">
-      <a class="btn ai" href="02-home.html">Start holding RM 12 a day</a>
+      <a class="btn ai" href="02-home.html" id="fix-cta">Start holding RM 12 a day</a>
       <a class="btn ghost sm" href="02-home.html"
          style="border:0;background:none;color:var(--ink2);">Leave it — remind me on 9 Sep</a>
     </div>
@@ -95,5 +95,16 @@
   </div>
 
 </div>
+
+<script>
+  // choosing a proposal updates the action — the machine never chooses for her.
+  document.querySelectorAll('.prop').forEach(function (card) {
+    card.addEventListener('click', function () {
+      document.querySelectorAll('.prop').forEach(function (c) { c.classList.remove('pick'); });
+      card.classList.add('pick');
+      document.getElementById('fix-cta').textContent = card.dataset.cta;
+    });
+  });
+</script>
 </body>
 </html>
