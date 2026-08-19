@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fathom — Forecast</title>
+<link rel="stylesheet" href="fathom.css">
+</head>
+<body class="single">
+<div class="phone" id="forecast">
+
+  <div class="status">
+    <span class="mono">9:43</span>
+    <span class="sigs"><i></i><i></i><i></i><i></i><span class="batt"></span></span>
+  </div>
+
+  <div class="appbar nav">
+    <div class="backrow">
+      <a class="back" href="02-home.html" aria-label="Back">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M8 2.5l-4 4 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <span class="screen-title">Forecast</span>
+    </div>
+    <div class="seg">
+      <span>2W</span><span class="on">6W</span><span>3M</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ── the analytical zoom: where does it go short? ── -->
+    <div class="card flush">
+      <div class="rowline" style="margin-bottom:12px;">
+        <div class="eyebrow">Projected balance · to 29 Sep</div>
+        <span class="pill pinch"><span class="dot"></span>1 risk</span>
+      </div>
+
+      <svg viewBox="0 0 342 152" width="100%" style="display:block;">
+        <defs>
+          <pattern id="hatch2" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="5" height="5" fill="#EDF0FF"/>
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#2148FF" stroke-width="1" stroke-opacity=".5"/>
+          </pattern>
+        </defs>
+
+        <!-- scale -->
+        <line x1="32" y1="50.4" x2="320" y2="50.4" stroke="#101815" stroke-opacity=".14"
+              stroke-width="1" stroke-dasharray="2 4"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="7.5" font-weight="500"
+           letter-spacing=".05em" fill="#63706A">
+          <text x="26" y="53.2" text-anchor="end">1,000</text>
+          <text x="26" y="105.2" text-anchor="end">0</text>
+        </g>
+
+        <!-- the range Fathom thinks you'll land in -->
+        <path fill="url(#hatch2)" d="M32,35.63 L80,17.12 L128,50.92 L176,58.20 L224,77.96
+          L272,68.08 L320,55.60 L320,99.28 L272,104.48 L224,108.64 L176,82.64 L128,70.16 L80,32.20 Z"/>
+
+        <!-- headroom below the conservative floor -->
+        <path fill="#101815" fill-opacity=".09"
+              d="M32,35.63 L80,32.20 L128,70.16 L176,82.64 L212.5,102.4 L32,102.4 Z"/>
+        <path fill="#101815" fill-opacity=".09" d="M291.2,102.4 L320,99.28 L320,102.4 Z"/>
+
+        <!-- where the floor breaks through zero -->
+        <path fill="#DE3A18" fill-opacity=".92"
+              d="M212.5,102.4 L224,108.64 L272,104.48 L291.2,102.4 Z"/>
+
+        <!-- nothing may go below this -->
+        <line x1="32" y1="102.4" x2="320" y2="102.4" stroke="#101815" stroke-width="1"/>
+
+        <!-- most likely -->
+        <polyline fill="none" stroke="#2148FF" stroke-width="1.3" stroke-dasharray="3 2.5"
+          stroke-linejoin="round"
+          points="32,35.63 80,24.71 128,60.49 176,70.52 224,92.52 272,85.66 320,77.13"/>
+
+        <!-- the conservative floor — the line that decides -->
+        <polyline fill="none" stroke="#101815" stroke-width="2" stroke-linejoin="round"
+          points="32,35.63 80,32.20 128,70.16 176,82.64 224,108.64 272,104.48 320,99.28"/>
+
+        <!-- the pinch -->
+        <line x1="224" y1="14" x2="224" y2="118" stroke="#DE3A18" stroke-width="1" stroke-dasharray="2 3"/>
+        <circle cx="224" cy="108.64" r="3.4" fill="#DE3A18" stroke="#FFFFFF" stroke-width="1.3"/>
+
+        <!-- commitments on the scale -->
+        <line x1="32" y1="118" x2="320" y2="118" stroke="#101815" stroke-width="1"/>
+        <g fill="#101815">
+          <rect x="127" y="118" width="2" height="7"/>
+          <rect x="175" y="118" width="2" height="7"/>
+          <rect x="271" y="118" width="2" height="7"/>
+        </g>
+        <rect x="223" y="118" width="2" height="7" fill="#DE3A18"/>
+
+        <g font-family="IBM Plex Mono, monospace" font-size="8" font-weight="600"
+           letter-spacing=".02em" fill="#4E5A54">
+          <text x="128" y="136" text-anchor="middle">−750</text>
+          <text x="176" y="136" text-anchor="middle">−45</text>
+          <text x="224" y="136" text-anchor="middle" fill="#BA2B0F">−310</text>
+          <text x="272" y="136" text-anchor="middle">−76</text>
+        </g>
+        <g font-family="IBM Plex Mono, monospace" font-size="7.5" font-weight="500"
+           letter-spacing=".08em" fill="#63706A">
+          <text x="128" y="146" text-anchor="middle">1 SEP</text>
+          <text x="176" y="146" text-anchor="middle">7 SEP</text>
+          <text x="224" y="146" text-anchor="middle" fill="#BA2B0F">15 SEP</text>
+          <text x="272" y="146" text-anchor="middle">20 SEP</text>
+        </g>
+      </svg>
+
+      <div style="margin-top:8px;padding-top:10px;border-top:1px solid var(--hair-soft);">
+        <div class="legend">
+          <span class="li"><span class="sw line"></span>Floor</span>
+          <span class="li"><span class="sw dash"></span>Likely</span>
+          <span class="li"><span class="sw hatch"></span>Range</span>
+          <span class="li"><span class="sw bad"></span>Short</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── the commitments, each with its own verdict ── -->
+    <div class="card">
+      <div class="eyebrow" style="margin-bottom:2px;">Coming up</div>
+
+      <div class="lrow tight">
+        <span class="grow"><span class="lbl">Room rent</span><span class="meta mono">Mon 1 Sep</span></span>
+        <span style="display:flex;align-items:center;gap:10px;">
+          <span class="pill">Held</span><span class="amt">750.00</span>
+        </span>
+      </div>
+      <div class="lrow tight">
+        <span class="grow"><span class="lbl">Phone</span><span class="meta mono">Sun 7 Sep</span></span>
+        <span style="display:flex;align-items:center;gap:10px;">
+          <span class="pill">Covered</span><span class="amt">45.00</span>
+        </span>
+      </div>
+
+      <a class="lrow tight" href="05-pinch.html"
+         style="text-decoration:none;color:inherit;background:var(--pinch-wash);
+                margin:0 -16px;padding:11px 16px;border-top:1px solid rgba(222,58,24,.22);">
+        <span class="grow"><span class="lbl">Bike installment</span>
+          <span class="meta mono" style="color:var(--pinch-text);">Mon 15 Sep</span></span>
+        <span style="display:flex;align-items:center;gap:10px;">
+          <span class="pill pinch">Short 120</span><span class="amt">310.00</span>
+        </span>
+      </a>
+
+      <div class="lrow tight">
+        <span class="grow"><span class="lbl">Insurance</span><span class="meta mono">Sat 20 Sep</span></span>
+        <span style="display:flex;align-items:center;gap:10px;">
+          <span class="pill">Likely OK</span><span class="amt">76.00</span>
+        </span>
+      </div>
+    </div>
+
+    <p class="sub" style="padding:0 2px;">
+      The <strong>floor</strong> assumes your weakest weeks repeat. While it stays above zero you
+      are safe whatever happens — it breaks through on 15 Sep.
+    </p>
+
+    <div class="card" style="margin-top:auto;margin-bottom:12px;padding:12px 14px;">
+      <div class="rowline">
+        <span class="mono" style="font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+                     color:var(--ink3);">Rechecked nightly · last 02:04</span>
+        <a class="explain" href="03-why.html" style="font-size:11.5px;">How the floor is built</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tabbar">
+    <a class="tab" href="02-home.html">
+      <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="8.5" cy="8.5" r="6.2" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 4.8v3.7l2.6 1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <span>Today</span>
+    </a>
+    <a class="tab on" href="04-forecast.html">
+      <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M2 12.2l3.4-4.1 3 2.2L12 4.6l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>Forecast</span>
+    </a>
+    <a class="tab" href="06-check.html">
+      <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="2.4" y="2.4" width="12.2" height="12.2" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M5.6 8.5l2 2 3.8-4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>Check</span>
+    </a>
+    <a class="tab" href="02-home.html">
+      <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><rect x="2" y="4.4" width="13" height="9.2" rx="2.2" stroke="currentColor" stroke-width="1.6"/><path d="M2 7.8h13" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      <span>Money</span>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,417 @@
+/* ============================================================
+   FATHOM — design system
+   BJAK UI/UX assessment · Amaan Khan
+   Identity: field instrument / almanac. Light-first.
+   Rule: cobalt (--ai) is reserved EXCLUSIVELY for pixels the
+   machine authored — predictions, proposals, explanations.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ground */
+  --paper:    #F2F5F1;
+  --canvas:   #D9DFD8;
+  --card:     #FFFFFF;
+  --hair:     #CFD6CF;
+  --hair-soft:#E4E9E3;
+
+  /* ink */
+  --ink:      #101815;
+  --ink2:     #4E5A54;
+  --ink3:     #63706A;
+
+  /* the two signals */
+  --ai:       #2148FF;   /* machine-authored. nothing else. */
+  --ai-wash:  #EDF0FF;
+  --pinch:    #DE3A18;   /* risk — fills and graphics only (4.0:1) */
+  --pinch-text:#BA2B0F;  /* risk — any text (5.6:1 on paper) */
+  --pinch-wash:#FDEDE9;
+
+  /* geometry — 8pt grid */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 40px; --s8: 48px;
+  --r-card: 14px;
+  --r-ctl:  10px;
+  --r-pill: 999px;
+
+  --pad: 20px;           /* screen side gutter */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--canvas);
+  font-family: "Instrument Sans", -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- device ---------- */
+.phone {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  background: var(--paper);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+body.single { display: block; }
+body.single .phone { margin: 0; }
+
+/* ---------- status bar ---------- */
+.status {
+  height: 44px;
+  flex: 0 0 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.status .sigs { display: flex; gap: 5px; align-items: center; }
+.status .sigs i {
+  display: block; width: 3px; border-radius: 1px; background: var(--ink);
+}
+.status .sigs i:nth-child(1) { height: 5px; }
+.status .sigs i:nth-child(2) { height: 7px; }
+.status .sigs i:nth-child(3) { height: 9px; }
+.status .sigs i:nth-child(4) { height: 11px; }
+.status .batt {
+  width: 22px; height: 11px; border: 1.5px solid var(--ink);
+  border-radius: 3px; position: relative;
+}
+.status .batt::after {
+  content: ''; position: absolute; inset: 1.5px; right: 6px;
+  background: var(--ink); border-radius: 1px;
+}
+
+/* ---------- app header ---------- */
+.appbar {
+  flex: 0 0 auto;
+  padding: var(--s2) var(--pad) var(--s4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.wordmark {
+  font-family: "Archivo", sans-serif;
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.appbar .today {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink3);
+  margin-top: 3px;
+}
+.avatar {
+  width: 32px; height: 32px; border-radius: var(--r-pill);
+  background: var(--ink); color: var(--paper);
+  display: grid; place-items: center;
+  font-family: "Archivo", sans-serif; font-weight: 700; font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+/* back header variant */
+.appbar.nav { align-items: center; }
+.backrow { display: flex; align-items: center; gap: var(--s3); }
+.back {
+  width: 32px; height: 32px; border-radius: var(--r-pill);
+  border: 1px solid var(--hair); background: var(--card);
+  display: grid; place-items: center; color: var(--ink);
+  text-decoration: none;
+}
+.screen-title {
+  font-family: "Archivo", sans-serif;
+  font-stretch: 100%; font-weight: 600; font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- scroll body ---------- */
+.body {
+  flex: 1 1 auto;
+  padding: 0 var(--pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  overflow: hidden;
+}
+
+/* ---------- primitives ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--hair);
+  border-radius: var(--r-card);
+  padding: var(--s4);
+}
+.card.flush { padding: var(--s4) var(--s4) var(--s3); }
+
+.eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--ink3);
+}
+.eyebrow.ai { color: var(--ai); }
+
+.rowline {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--s3);
+}
+
+.num {
+  font-family: "Archivo", sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* the hero figure — Archivo Expanded, used once per screen at most */
+.hero-fig {
+  font-family: "Archivo", sans-serif;
+  font-stretch: 125%;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  font-variant-numeric: tabular-nums;
+  display: flex; align-items: baseline; gap: 6px;
+}
+.hero-fig .cur {
+  font-stretch: 100%; font-size: 22px; font-weight: 600;
+  letter-spacing: 0; color: var(--ink2); align-self: flex-start;
+  margin-top: 8px;
+}
+.hero-fig .per {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 15px; font-weight: 500; letter-spacing: 0;
+  color: var(--ink2);
+}
+
+.sub {
+  font-size: 13px; line-height: 1.45; color: var(--ink2);
+}
+.sub strong { color: var(--ink); font-weight: 600; }
+
+/* pills */
+.pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 9px; border-radius: var(--r-pill);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid var(--hair); color: var(--ink2);
+  background: var(--card);
+}
+.pill.ai     { color: var(--ai);    border-color: rgba(33,72,255,.28); background: var(--ai-wash); }
+.pill.pinch  { color: var(--pinch-text); border-color: rgba(222,58,24,.28); background: var(--pinch-wash); }
+.pill .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+/* the AI tick — marks a machine-authored block */
+.ai-mark {
+  border-left: 2px solid var(--ai);
+  padding-left: var(--s3);
+}
+
+/* explain affordance */
+.explain {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12.5px; font-weight: 600; color: var(--ai);
+  text-decoration: none;
+}
+.explain svg { flex: 0 0 auto; }
+
+/* buttons */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  height: 46px; border-radius: var(--r-ctl);
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 14.5px; font-weight: 600;
+  text-decoration: none; border: 1px solid transparent;
+  cursor: pointer; width: 100%;
+}
+.btn.primary   { background: var(--ink);  color: #F7FAF6; }
+.btn.ai        { background: var(--ai);   color: #fff; }
+.btn.ghost     { background: var(--card); color: var(--ink); border-color: var(--hair); }
+.btn.sm        { height: 38px; font-size: 13px; }
+
+/* list rows */
+.lrow {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 0; border-top: 1px solid var(--hair-soft);
+  gap: var(--s3);
+}
+.lrow:first-of-type { border-top: 0; }
+.lrow .lbl { font-size: 13.5px; font-weight: 500; }
+.lrow .meta {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ink3);
+  margin-top: 2px;
+}
+.lrow .amt {
+  font-family: "Archivo", sans-serif; font-stretch: 100%;
+  font-size: 14.5px; font-weight: 600;
+  font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* swatch for legend */
+.legend { display: flex; gap: var(--s4); flex-wrap: wrap; }
+.legend .li {
+  display: flex; align-items: center; gap: 6px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--ink2);
+}
+.legend .sw { width: 14px; height: 9px; border-radius: 2px; }
+.legend .sw.solid { background: var(--ink); }
+.legend .sw.hatch {
+  background: var(--ai-wash);
+  background-image: repeating-linear-gradient(45deg,
+    rgba(33,72,255,.55) 0 1px, transparent 1px 4px);
+  border: 1px solid rgba(33,72,255,.3);
+}
+
+/* ---------- bottom nav ---------- */
+.tabbar {
+  flex: 0 0 auto;
+  height: 74px;
+  border-top: 1px solid var(--hair);
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(8px);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  padding: 10px var(--s3) 0;
+}
+.tab {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  text-decoration: none; color: var(--ink3);
+}
+.tab span {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.tab.on { color: var(--ink); }
+.tab.on .tab-ico { background: var(--ink); color: var(--paper); }
+.tab-ico {
+  width: 30px; height: 26px; border-radius: 7px;
+  display: grid; place-items: center; color: var(--ink3);
+}
+
+/* ---------- sheet (modal) ---------- */
+.scrim { position: absolute; inset: 0; background: rgba(15,26,21,.42); }
+.sheet {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: var(--paper);
+  border-radius: 20px 20px 0 0;
+  border-top: 1px solid var(--hair);
+  padding: var(--s3) var(--pad) var(--s5);
+  display: flex; flex-direction: column; gap: var(--s3);
+}
+.grab {
+  width: 38px; height: 4px; border-radius: 2px; background: var(--hair);
+  margin: 0 auto var(--s2);
+}
+
+/* ---------- gallery (review page only) ---------- */
+.gallery {
+  padding: 56px 40px;
+  display: flex; flex-wrap: wrap; gap: 48px 36px;
+  justify-content: center; align-items: flex-start;
+}
+.slot { width: 390px; }
+.slot .cap {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #6C7A72;
+  margin-bottom: 10px; display: flex; gap: 8px;
+}
+.slot .cap b { color: var(--ink); font-weight: 600; }
+.slot .frame {
+  border-radius: 30px; overflow: hidden;
+  box-shadow: 0 1px 0 rgba(15,26,21,.06), 0 18px 40px -18px rgba(15,26,21,.28);
+  border: 1px solid rgba(15,26,21,.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* compact list row — label + date on one line */
+.lrow.tight { padding: 9px 0; }
+.lrow.tight .meta { margin: 0; }
+.lrow .grow { display: flex; align-items: baseline; gap: 8px; flex: 1; min-width: 0; }
+
+/* axis scale caption under the ribbon */
+.scale {
+  display: flex; justify-content: space-between;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px; font-weight: 500; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--ink3);
+}
+
+/* segmented control */
+.seg {
+  display: inline-flex; border: 1px solid var(--hair); background: var(--card);
+  border-radius: var(--r-pill); padding: 2px;
+}
+.seg span {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9.5px; font-weight: 600; letter-spacing: 0.07em;
+  padding: 4px 9px; border-radius: var(--r-pill); color: var(--ink3);
+}
+.seg span.on { background: var(--ink); color: var(--paper); }
+
+/* proposal card — a machine-authored option with its consequence */
+.prop {
+  background: var(--card); border: 1px solid var(--hair);
+  border-radius: var(--r-card); padding: 13px 14px;
+  display: block; text-decoration: none; color: inherit;
+}
+.prop.pick { border-color: var(--ai); box-shadow: 0 0 0 1px var(--ai); }
+.prop .ptop { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.prop .ptitle { font-size: 13.5px; font-weight: 650; line-height: 1.3; }
+.prop .pcost {
+  font-size: 12px; line-height: 1.4; color: var(--ink2); margin-top: 5px;
+}
+.prop .pcost b { color: var(--ink); font-weight: 650; }
+.radio {
+  width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid var(--hair);
+  flex: 0 0 auto; margin-top: 1px;
+}
+.prop.pick .radio {
+  border-color: var(--ai); background: var(--ai);
+  box-shadow: inset 0 0 0 3px var(--card);
+}
+
+/* before → after meter */
+.meter { display: flex; align-items: center; gap: 8px; }
+.meter .track {
+  flex: 1; height: 6px; border-radius: 3px; background: var(--hair-soft);
+  position: relative; overflow: hidden;
+}
+.meter .track i { position: absolute; inset: 0 auto 0 0; border-radius: 3px; background: var(--ink); }
+.meter .track i.was { background: var(--hair); }
+
+/* extra legend swatches */
+.legend .sw.line { background: var(--ink); height: 3px; }
+.legend .sw.dash { height: 0; background: none; border-top: 2px dashed var(--ai); border-radius: 0; }
+.legend .sw.bad  { background: var(--pinch); }
+
+/* a screen rendered on its own is exactly one device tall — never scrolls */
+body.single { overflow: hidden; }

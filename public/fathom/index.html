@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fathom — clickable prototype</title>
+<link rel="stylesheet" href="fathom.css">
+<style>
+  body {
+    background: var(--canvas); min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 24px;
+  }
+  .wrap {
+    display: flex; gap: 56px; align-items: center;
+    flex-wrap: wrap; justify-content: center; max-width: 1080px;
+  }
+  .side { max-width: 380px; }
+  .side h1 {
+    font-family: Archivo, sans-serif; font-stretch: 106%; font-weight: 700;
+    font-size: 30px; letter-spacing: -0.028em; line-height: 1.08;
+  }
+  .side .eyebrow { margin-bottom: 12px; }
+  .side p { font-size: 14px; line-height: 1.55; color: var(--ink2); margin-top: 12px; }
+  .side p strong { color: var(--ink); font-weight: 650; }
+  .try {
+    margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--hair);
+  }
+  .try h2 {
+    font-family: "IBM Plex Mono", monospace; font-size: 9.5px; font-weight: 600;
+    letter-spacing: .11em; text-transform: uppercase; color: var(--ink3); margin-bottom: 11px;
+  }
+  .try ol { list-style: none; display: flex; flex-direction: column; gap: 9px; counter-reset: t; }
+  .try li {
+    font-size: 13.5px; line-height: 1.4; color: var(--ink2);
+    padding-left: 26px; position: relative; counter-increment: t;
+  }
+  .try li::before {
+    content: counter(t); position: absolute; left: 0; top: 0;
+    width: 18px; height: 18px; border-radius: 50%; background: var(--ai); color: #fff;
+    display: grid; place-items: center;
+    font-family: "IBM Plex Mono", monospace; font-size: 9.5px; font-weight: 600;
+  }
+  .try li b { color: var(--ink); font-weight: 650; }
+
+  .device {
+    padding: 13px; background: #16201B; border-radius: 44px;
+    box-shadow: 0 30px 60px -28px rgba(16,24,21,.55), 0 0 0 1px rgba(16,24,21,.2);
+    flex: 0 0 auto;
+  }
+  .device .screenbox {
+    width: 390px; height: 844px; border-radius: 32px; overflow: hidden;
+    background: var(--paper); position: relative;
+  }
+  iframe { width: 390px; height: 844px; border: 0; display: block; }
+
+  .bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 16px; gap: 14px;
+  }
+  .bar a {
+    font-family: "IBM Plex Mono", monospace; font-size: 9.5px; font-weight: 600;
+    letter-spacing: .09em; text-transform: uppercase; color: var(--ink2);
+    text-decoration: none; border: 1px solid var(--hair); background: var(--card);
+    border-radius: 999px; padding: 7px 13px;
+  }
+  .bar a:hover { border-color: var(--ink); color: var(--ink); }
+  .jump { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .wrap { gap: 34px; }
+    .device { padding: 10px; border-radius: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="side">
+    <div class="eyebrow">Clickable prototype</div>
+    <h1>Fathom</h1>
+    <p>A cash-flow copilot for people whose income arrives in lumps. It replaces the balance with
+      one forward-looking number — <strong>what is safe to spend today</strong> — and shows how
+      sure it is.</p>
+    <p>Six screens, fully linked. Everything you can tap is real.</p>
+
+    <div class="try">
+      <h2>Worth trying</h2>
+      <ol>
+        <li>From the home screen, tap <b>“Why this number”</b> — every figure opens into its own
+          derivation, including what was deliberately left out.</li>
+        <li>Tap the <b>ribbon</b> to zoom from seventeen days to six weeks, and watch the
+          conservative floor break through zero on 15 Sep.</li>
+        <li>Tap the <b>15 Sep warning</b> for three fixes, each priced.</li>
+        <li>Open <b>Check</b> in the tab bar for the counter moment: RM 189, answered as a cost
+          rather than a yes or no.</li>
+      </ol>
+    </div>
+
+    <div class="bar">
+      <a href="01-shape.html" target="app">Restart from onboarding</a>
+      <div class="jump">
+        <a href="gallery.html" target="_blank">All screens</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="device">
+    <div class="screenbox">
+      <iframe name="app" src="02-home.html" title="Fathom prototype" scrolling="no"></iframe>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

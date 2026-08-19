@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fathom — all screens</title>
+<link rel="stylesheet" href="fathom.css">
+<style>
+  body { background: var(--canvas); }
+  .gwrap { padding: 44px 40px 56px; max-width: 1330px; margin: 0 auto; }
+  .ghead { margin-bottom: 34px; }
+  .ghead h1 {
+    font-family: Archivo, sans-serif; font-stretch: 108%; font-weight: 700;
+    font-size: 24px; letter-spacing: -0.02em;
+  }
+  .ghead p { font-size: 13px; color: var(--ink2); margin-top: 5px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 390px); gap: 44px 36px; }
+  .slot .cap { margin-bottom: 11px; align-items: baseline; }
+  iframe { width: 390px; height: 844px; border: 0; display: block; }
+</style>
+</head>
+<body>
+<div class="gwrap">
+  <div class="ghead">
+    <h1>Fathom — six screens</h1>
+    <p>Cash-flow copilot for irregular income · BJAK UI/UX assessment · Amaan Khan</p>
+  </div>
+  <div class="grid">
+    <div class="slot"><div class="cap"><b>01</b> Income shape</div>
+      <div class="frame"><iframe src="01-shape.html" scrolling="no"></iframe></div></div>
+    <div class="slot"><div class="cap"><b>02</b> Today</div>
+      <div class="frame"><iframe src="02-home.html" scrolling="no"></iframe></div></div>
+    <div class="slot"><div class="cap"><b>03</b> Why RM 64</div>
+      <div class="frame"><iframe src="03-why.html" scrolling="no"></iframe></div></div>
+    <div class="slot"><div class="cap"><b>04</b> Forecast</div>
+      <div class="frame"><iframe src="04-forecast.html" scrolling="no"></iframe></div></div>
+    <div class="slot"><div class="cap"><b>05</b> Shortfall + fixes</div>
+      <div class="frame"><iframe src="05-pinch.html" scrolling="no"></iframe></div></div>
+    <div class="slot"><div class="cap"><b>06</b> Check a spend</div>
+      <div class="frame"><iframe src="06-check.html" scrolling="no"></iframe></div></div>
+  </div>
+</div>
+</body>
+</html>
