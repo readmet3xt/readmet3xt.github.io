@@ -17,8 +17,8 @@ export const Otagon = () => {
     <CaseStudyLayout
       title="Otagon"
       description="Never Get Stuck Again — How I designed and built an AI gaming companion from zero to a live, multi-platform product, solo."
-      externalLink="https://otagon.app"
-      externalLabel="Visit otagon.app"
+      externalLink="https://otagon2.github.io/"
+      externalLabel="Visit Otagon"
     >
       <CaseStudyHero
         eyebrow="Case Study · Otagon · AI Gaming Companion · 2025 — Present"
@@ -34,8 +34,8 @@ export const Otagon = () => {
           'Lemon Squeezy',
         ]}
         intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Otagon went from concept to a production product — a PWA, a desktop pairing client, paid tiers, and an AI stack on Gemini and Supabase. This is the story of how it actually got here."
-        externalLink="https://otagon.app"
-        externalLabel="otagon.app"
+        externalLink="https://otagon2.github.io/"
+        externalLabel="otagon2.github.io"
         overview={{
           role: [
             'Founder & Product Engineer',
