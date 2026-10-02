@@ -1,9 +1,9 @@
 export { CaseStudyLayout } from './CaseStudyLayout';
 export { CaseStudyHero } from './CaseStudyHero';
-export { ReadingProgressBar } from './ReadingProgressBar';
 export {
   CaseStudySection,
   CaseStudyParagraph,
+  CaseStudyInsight,
   CaseStudyQuote,
   CaseStudyList,
   CaseStudyImage,
@@ -14,6 +14,7 @@ export {
   CaseStudyStatsGrid,
   // Short aliases for convenience
   CaseStudyParagraph as Paragraph,
+  CaseStudyInsight as Insight,
   CaseStudyQuote as Quote,
   CaseStudyList as List,
   CaseStudyImage as Image,

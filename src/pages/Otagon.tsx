@@ -16,14 +16,14 @@ export const Otagon = () => {
   return (
     <CaseStudyLayout
       title="Otagon"
-      description="Never Get Stuck Again — How I designed and built an AI gaming companion from zero to a live, multi-platform product, solo."
+      description="How I designed and built Otagon, an AI gaming companion, on my own: a phone app, a desktop connector and the backend."
       externalLink="https://otagon2.github.io/"
       externalLabel="Visit Otagon"
     >
       <CaseStudyHero
-        eyebrow="Case Study · Otagon · AI Gaming Companion · 2025 — Present"
+        eyebrow="Otalabs, 2025–present"
         title="Never Get Stuck Again"
-        subtitle="How I designed and built an AI gaming companion from zero to a live, multi-platform product — solo"
+        subtitle="How I designed and built an AI gaming companion on my own, from idea to a live product on phone and desktop"
         pills={[
           'Product Management',
           'React 18',
@@ -33,18 +33,18 @@ export const Otagon = () => {
           'Supabase',
           'Lemon Squeezy',
         ]}
-        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Otagon went from concept to a production product — a PWA, a desktop pairing client, paid tiers, and an AI stack on Gemini and Supabase. This is the story of how it actually got here."
+        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Otagon went from concept to a live product: a PWA, a desktop pairing client, free and paid tiers, and an AI stack on Gemini and Supabase. It launched publicly in July 2026 and is still early on users. This is the story of how it got here."
         externalLink="https://otagon2.github.io/"
         externalLabel="otagon2.github.io"
         overview={{
           role: [
-            'Founder & Product Engineer',
+            'Founder, Otalabs',
             'Full ownership from research to launch',
             'Design, frontend engineering, AI integration',
             'Backend, billing, mobile packaging, GTM',
           ],
           timeline: 'August 2025 – present',
-          recognition: '30+ shipped features, paid tier live on Lemon Squeezy, installable PWA with desktop pairing',
+          recognition: '30+ features, free and paid tiers, installable PWA with desktop pairing. Public launch July 2026.',
           tools: [
             'React 18',
             'TypeScript',
@@ -52,13 +52,14 @@ export const Otagon = () => {
             'PWA Development',
             'Supabase (Auth, DB, Edge Functions)',
             'Google Gemini 2.x',
+            'Electron (desktop connector)',
             'IGDB API',
             'Lemon Squeezy',
             'Tailwind CSS',
             'Framer Motion',
           ],
         }}
-        heroImage="/otagon/1-home-page-landing.png"
+        heroImage="/images/casestudies/otagon/1-home-page-landing.webp"
         heroImageAlt="Otagon landing page — Never Get Stuck Again"
       />
 
@@ -91,7 +92,7 @@ export const Otagon = () => {
         </CaseStudyQuote>
 
         <CaseStudyImage
-          src="/otagon/10-user-query-on-home-page.png"
+          src="/images/casestudies/otagon/10-user-query-on-home-page.webp"
           alt="Otagon home — a user asking a question about their game"
           caption="Instead of alt-tabbing to Google, the player asks Otagon in-context"
           aspectRatio="aspect-auto"
@@ -106,7 +107,7 @@ export const Otagon = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/otagon/11-ai-response.png"
+          src="/images/casestudies/otagon/11-ai-response.webp"
           alt="Otagon AI response with spoiler-aware, context-aware guidance"
           caption="Otagon reads your game context and responds without spoilers"
           aspectRatio="aspect-auto"
@@ -126,7 +127,7 @@ export const Otagon = () => {
 
           <CaseStudyCard title="Phase 2 — MVP">
             <CaseStudyParagraph>
-              I made a key early decision: PWA over native app. 2 weeks to launch versus 2 months.
+              I made a key early decision: a PWA instead of native apps, so one codebase reached every device.
               That call defined the product's trajectory. I shipped the core: screenshot analysis via
               Gemini 2.x, game detection, conversation history, Game Hub, and PC-to-Mobile sync
               via WebSocket relay.
@@ -160,14 +161,14 @@ export const Otagon = () => {
 
           <CaseStudyCard title="Phase 6 — Production & Live Ops">
             <CaseStudyParagraph>
-              Live in production with Lemon Squeezy checkout, a deployed Edge Function on the
-              production Supabase project, and a deploy pipeline I run end-to-end alone.
+              Live, with Lemon Squeezy checkout running through a server-side Edge Function and a
+              deploy pipeline I run end to end myself.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/otagon/8-pc-connector.png"
+          src="/images/casestudies/otagon/8-pc-connector.webp"
           alt="Otagon desktop PC connector — pairs your PC to the mobile app"
           caption="The desktop pairing client: hit F1 on PC and the capture syncs to mobile via WebSocket relay"
           aspectRatio="aspect-auto"
@@ -177,9 +178,9 @@ export const Otagon = () => {
           columns={3}
           aspectRatio="aspect-auto"
           images={[
-            { src: '/otagon/3-mobile-logged-in-home.png', alt: 'Otagon mobile home screen once logged in' },
-            { src: '/otagon/5-gaming-hq-home-page.png', alt: 'Gaming HQ home page', caption: 'Game Hub' },
-            { src: '/otagon/7-connected-to-pc.png', alt: 'Mobile app showing it is connected to the PC', caption: 'PC-to-mobile sync, live' },
+            { src: '/images/casestudies/otagon/3-mobile-logged-in-home.webp', alt: 'Otagon mobile home screen once logged in' },
+            { src: '/images/casestudies/otagon/5-gaming-hq-home-page.webp', alt: 'Gaming HQ home page', caption: 'Game Hub' },
+            { src: '/images/casestudies/otagon/7-connected-to-pc.webp', alt: 'Mobile app showing it is connected to the PC', caption: 'PC-to-mobile sync, live' },
           ]}
         />
       </CaseStudySection>
@@ -243,14 +244,14 @@ export const Otagon = () => {
           columns={3}
           aspectRatio="aspect-auto"
           images={[
-            { src: '/otagon/12-subtabs-1.png', alt: 'Subtabs surface — persistent game-specific panel' },
-            { src: '/otagon/13-subtabs-2.png', alt: 'A second subtabs view with more game-specific content' },
-            { src: '/otagon/18-ai-response-with-suggestion-tabs.png', alt: 'AI response with suggested subtabs to open', caption: 'AI answers spawn persistent, game-specific subtabs' },
+            { src: '/images/casestudies/otagon/12-subtabs-1.webp', alt: 'Subtabs surface — persistent game-specific panel' },
+            { src: '/images/casestudies/otagon/13-subtabs-2.webp', alt: 'A second subtabs view with more game-specific content' },
+            { src: '/images/casestudies/otagon/18-ai-response-with-suggestion-tabs.webp', alt: 'AI response with suggested subtabs to open', caption: 'AI answers spawn persistent, game-specific subtabs' },
           ]}
         />
 
         <CaseStudyImage
-          src="/otagon/17-subtabs-in-desktop.png"
+          src="/images/casestudies/otagon/17-subtabs-in-desktop.webp"
           alt="Subtabs as first-class surfaces in the desktop layout"
           caption="The same subtab workspace, laid out for desktop"
           aspectRatio="aspect-auto"
@@ -263,8 +264,8 @@ export const Otagon = () => {
           <CaseStudyCard title="Screenshot Misclassification">
             <CaseStudyParagraph>
               AI was creating new game tabs for desktop screenshots and launchers.
-              Fixed with IS_FULLSCREEN detection and confidence scoring.
-              <strong> 80% reduction in false tabs.</strong>
+              Fixed by combining detection signals and, when confidence is low, asking the player
+              which game they mean.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -287,8 +288,7 @@ export const Otagon = () => {
           <CaseStudyCard title="Race Conditions in Message Migration">
             <CaseStudyParagraph>
               Messages were occasionally lost when tab creation competed with message saving. Solved with
-              atomic migration — single transaction for tab creation and message move.
-              <strong> Zero data loss since.</strong>
+              atomic migration: one transaction for creating the tab and moving the messages.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -313,9 +313,9 @@ export const Otagon = () => {
           columns={3}
           aspectRatio="aspect-auto"
           images={[
-            { src: '/otagon/14-sidebar.png', alt: 'Otagon sidebar navigation' },
-            { src: '/otagon/4-control-sheet.png', alt: 'Control sheet giving users more controls', caption: 'Per-response controls' },
-            { src: '/otagon/15-game-info-modal.png', alt: 'Game info modal with IGDB-sourced details' },
+            { src: '/images/casestudies/otagon/14-sidebar.webp', alt: 'Otagon sidebar navigation' },
+            { src: '/images/casestudies/otagon/4-control-sheet.webp', alt: 'Control sheet giving users more controls', caption: 'Per-response controls' },
+            { src: '/images/casestudies/otagon/15-game-info-modal.webp', alt: 'Game info modal with IGDB-sourced details' },
           ]}
         />
       </CaseStudySection>
@@ -346,8 +346,8 @@ export const Otagon = () => {
 
           <CaseStudyCard title="Status">
             <CaseStudyParagraph>
-              Live in production with Lemon Squeezy payments, the Edge Function deployed to the
-              production Supabase project, web/PWA builds deployed, and the security audit closed out.
+              Live since the July 2026 public launch, still early on users. Payments run through
+              Lemon Squeezy and a server-side Edge Function, and a security audit is done.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
@@ -356,9 +356,9 @@ export const Otagon = () => {
           columns={3}
           aspectRatio="aspect-auto"
           images={[
-            { src: '/otagon/16b-game-library.png', alt: 'Game library of titles the user has played' },
-            { src: '/otagon/16-gallery.png', alt: 'Gallery of captured game screenshots', caption: 'Screenshot gallery' },
-            { src: '/otagon/9-pro-features.png', alt: 'Pro features overview' },
+            { src: '/images/casestudies/otagon/16b-game-library.webp', alt: 'Game library of titles the user has played' },
+            { src: '/images/casestudies/otagon/16-gallery.webp', alt: 'Gallery of captured game screenshots', caption: 'Screenshot gallery' },
+            { src: '/images/casestudies/otagon/9-pro-features.webp', alt: 'Pro features overview' },
           ]}
         />
       </CaseStudySection>
@@ -418,7 +418,7 @@ export const Otagon = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/otagon/6-credits-modal.png"
+          src="/images/casestudies/otagon/6-credits-modal.webp"
           alt="Otagon credits modal — query-based usage and Pro upgrade"
           caption="Query-based credits power the freemium model — fair limits over feature gates"
           aspectRatio="aspect-auto"

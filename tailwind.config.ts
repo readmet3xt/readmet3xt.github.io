@@ -18,20 +18,24 @@ export default {
 			}
 		},
 		extend: {
+			// Two families only. The legacy names are aliases so un-migrated classes
+			// render in the new system (display names → serif, everything else → sans).
 			fontFamily: {
-				'inter': ['Inter', 'sans-serif'],
-				'dm-sans': ['Bricolage Grotesque', 'DM Sans', 'sans-serif'],
-				'serif-accent': ['Instrument Serif', 'Georgia', 'serif'],
-				'ibm-plex-mono': ['IBM Plex Mono', 'monospace'],
-				'satoshi': ['Satoshi', 'sans-serif'],
-				'figtree': ['Figtree', 'sans-serif'],
-				'jetbrains-mono': ['JetBrains Mono', 'monospace'],
-				'urbanist': ['Urbanist', 'sans-serif'],
-				'outfit': ['Outfit', 'sans-serif'],
-				'playfair': ['Playfair Display', 'serif'],
-				'bricolage': ['Bricolage Grotesque', 'sans-serif'],
-				'syne': ['Syne', 'sans-serif'],
-				'instrument': ['Instrument Sans', 'sans-serif'],
+				'serif': ['Newsreader', 'Georgia', 'serif'],
+				'sans': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'dm-sans': ['Newsreader', 'Georgia', 'serif'],
+				'serif-accent': ['Newsreader', 'Georgia', 'serif'],
+				'playfair': ['Newsreader', 'Georgia', 'serif'],
+				'bricolage': ['Newsreader', 'Georgia', 'serif'],
+				'syne': ['Newsreader', 'Georgia', 'serif'],
+				'inter': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'ibm-plex-mono': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'jetbrains-mono': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'satoshi': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'figtree': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'urbanist': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'outfit': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'instrument': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
 			},
 			fontSize: {
 				'xs': 'var(--text-xs)',
@@ -111,6 +115,7 @@ export default {
 				// Portfolio specific colors
 				'bg-primary': 'hsl(var(--bg-primary))',
 				'bg-secondary': 'hsl(var(--bg-secondary))',
+				'bg-tertiary': 'hsl(var(--bg-tertiary))',
 				'text-primary': 'hsl(var(--text-primary))',
 				'text-secondary': 'hsl(var(--text-secondary))',
 				'text-tertiary': 'hsl(var(--text-tertiary))',

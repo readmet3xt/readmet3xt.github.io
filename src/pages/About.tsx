@@ -1,403 +1,212 @@
-import { useState, lazy, Suspense } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { PageLayout } from '@/components/PageLayout';
 import { SEO } from '@/components/SEO';
 import { TimelineItem } from '@/components/TimelineItem';
-import { CopyToast } from '@/components/CopyToast';
-import { useScrollReveal } from '@/components/ScrollReveal';
 import { CertificatesCarousel } from '@/components/CertificatesCarousel';
-import amaanHero from '/media/22366376-40f2-492f-989a-067de0fdb01f.png';
+import { Recommendations } from '@/components/Recommendations';
+import { imageSize } from '@/lib/imageSize';
 
-const TestimonialsCarousel = lazy(() => import('@/components/TestimonialsCarousel').then(m => ({ default: m.TestimonialsCarousel })));
+const SectionTitle = ({ children }: { children: React.ReactNode }) => (
+  <h2 className="text-3xl sm:text-4xl mb-8">{children}</h2>
+);
 
-export const About = () => {
-  const [toastVisible, setToastVisible] = useState(false);
-  const navigate = useNavigate();
+export const About = () => (
+  <PageLayout>
+    <SEO title="About" />
 
-  useScrollReveal();
+    {/* Overview */}
+    <section id="overview" className="pb-16 scroll-mt-24">
+      <div className="grid gap-10 md:grid-cols-5 items-start">
+        <div className="md:col-span-3">
+          <h1 className="text-5xl mb-8">About</h1>
 
-  const navigateToProject = (projectPath: string) => {
-    navigate(projectPath);
-  };
-
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText('mdamkhan.work@gmail.com');
-      setToastVisible(true);
-    } catch {
-      // Silently ignore clipboard failures (e.g., insecure context)
-    }
-  };
-
-  return (
-    <>
-      <SEO
-        title="About"
-        description="Amaan Khan — RCA-trained product designer who ships production React. Founding designer behind a 70K-user fintech and solo builder of Otagon, an AI gaming companion."
-      />
-      <PageLayout>
-        {/* Overview Section */}
-        <section id="overview" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <div className="grid md:grid-cols-5 gap-8 items-start">
-            <div className="md:col-span-3">
-              <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Who I Am</p>
-              <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">About Me</h2>
-
-              {/* Introduction */}
-              <div className="mb-8">
-                <h3 className="font-ibm-plex-mono text-xl md:text-2xl font-semibold text-text-primary mb-4">Product Designer & Engineer</h3>
-                <p className="text-lg md:text-xl mb-4 leading-relaxed">
-                  Based in <span className="font-medium">Hyderabad</span>, open to Bangalore / Mumbai / Remote. M.A. Service Design from the <span className="font-medium">Royal College of Art (RCA), London</span> — ranked #1 art & design school globally.
-                </p>
-                <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                  I design and build products end-to-end — from user research and service blueprinting to React architecture and AI integration. Most recently I solo-shipped Otagon, an AI gaming companion live on web and PWA, with 30+ features built end-to-end.
-                </p>
-              </div>
-
-              {/* Philosophy & Recognition */}
-              <div className="mb-8">
-                <h3 className="font-ibm-plex-mono text-xl md:text-2xl font-semibold text-text-primary mb-4">Design Philosophy & Recognition</h3>
-                <p className="text-base md:text-lg text-text-secondary mb-4 leading-[1.8]">
-                  I'm passionate about building products that encourage people to lead more creative, curious, and thoughtful lives.
-                </p>
-                <div className="bg-accent-primary/5 border border-accent-primary/20 rounded-lg p-4 mb-4">
-                  <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                    <span className="text-accent-primary font-semibold">Core77 Design Awards 2021</span> — Notable Honor in Speculative Design for the I.V.I. (Invisible Value Income) Program, an exploration of how we might better value and support women's work-life balance in the future.
-                  </p>
-                </div>
-              </div>
-
-              {/* Experience Highlight */}
-              <div className="mb-8">
-                <h3 className="font-ibm-plex-mono text-xl md:text-2xl font-semibold text-text-primary mb-4">Experience Highlights</h3>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      Solo-shipped <span className="font-semibold text-text-primary">Otagon</span> — a production AI companion on web and PWA: 30+ features, paid tiers, and a ~40% API cost reduction through smart caching
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      Founding designer at KoinBasket — scaled from a one-week MVP to <span className="font-semibold text-text-primary">70,000+ users</span>, led the full rebrand, and hired &amp; mentored the company's first junior designer
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-accent-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-base md:text-lg text-text-secondary leading-[1.8]">
-                      Academic partnerships with <span className="font-semibold text-text-primary">VISA Innovation Centre, BCG, and Airbnb × WWT</span> — all three outcomes adopted or implemented
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Testimonials Section */}
-              <div className="mb-12 reveal-on-scroll">
-                <Suspense fallback={
-                  <div className="min-h-[200px] flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                  </div>
-                }>
-                  <TestimonialsCarousel showTitle={false} />
-                </Suspense>
-              </div>
-
-              {/* Desktop Contact Buttons */}
-              <div className="hidden md:flex flex-wrap gap-4">
-                <button
-                  onClick={copyEmail}
-                  className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  Email
-                </button>
-                <a
-                  href="https://www.linkedin.com/in/readmetxt/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  Resume
-                </a>
-              </div>
-            </div>
-            <div className="md:col-span-2">
-              <img
-                src={amaanHero}
-                alt="Amaan Khan - Product Designer"
-                className="w-full h-auto rounded-lg object-cover max-w-sm mx-auto md:mx-0"
-              />
-              
-              {/* Mobile Contact Buttons */}
-              <div className="flex md:hidden flex-wrap gap-4 mt-8">
-                <button
-                  onClick={copyEmail}
-                  className="flex-1 min-w-[120px] border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center"
-                >
-                  Email
-                </button>
-                <a
-                  href="https://www.linkedin.com/in/readmetxt/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 min-w-[120px] border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full border border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 text-center"
-                >
-                  Resume
-                </a>
-              </div>
-            </div>
+          <div className="max-w-[62ch] space-y-5 text-lg leading-relaxed">
+            <p className="text-text-primary">
+              I'm a service and product designer based in Hyderabad, open to roles across India. I studied M.A. Service
+              Design at the Royal College of Art in London, ranked first in the world for art and design (QS World
+              University Rankings).
+            </p>
+            <p className="text-text-secondary">
+              I design end-to-end services and products, from user research and service blueprints to working
+              software. Since 2025 I also build what I design in React and TypeScript; most recently Otagon, an AI
+              gaming companion with 30+ features.
+            </p>
+            <p className="text-text-secondary">
+              I'm passionate about building products that encourage people to lead more creative, curious and
+              thoughtful lives.
+            </p>
+            <p className="text-text-secondary">
+              <span className="text-text-primary font-medium">Core77 Design Awards 2021, Student Notable</span> in
+              Speculative Design for the I.V.I. (Invisible Value Income) Program, an exploration of how we might better
+              value and support women's work in the future.
+            </p>
           </div>
-        </section>
 
-        {/* Professional Experience */}
-        <section id="experience" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Career</p>
-          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Professional Experience</h2>
-          <div className="timeline-container relative">
-            <TimelineItem
-              title="Founder & Product Engineer"
-              company="Otagon · Hyderabad, India"
-              period="Aug 2025 - Present"
-              actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/otagon')}
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>Building Otagon, an AI-powered gaming companion that provides real-time screenshot analysis and context-aware gaming assistance.</li>
-                <li>Architected the full-stack solution using React 18, TypeScript, Supabase, and Google Gemini, with a structured OTAGON tag system for reliable AI output.</li>
-                <li>Designed and developed comprehensive design system with 40+ reusable components and PWA capabilities.</li>
-              </ul>
-            </TimelineItem>
+          <h2 className="text-2xl mt-12 mb-4">Highlights</h2>
+          <ul className="max-w-[62ch] list-disc pl-5 space-y-3 text-text-secondary marker:text-text-tertiary">
+            <li>
+              Designed and built <span className="text-text-primary font-medium">Otagon</span>, an AI companion on web
+              and PWA: 30+ features and a ~40% cut in AI API costs.
+            </li>
+            <li>
+              Founding designer at KoinBasket, from a one-week MVP to a platform that grew past{' '}
+              <span className="text-text-primary font-medium">70,000 users</span>. Later led the rebrand and mentored the
+              company's first junior designer.
+            </li>
+            <li>
+              Research partnerships with{' '}
+              <span className="text-text-primary font-medium">VISA Innovation Centre, BCG and WWT × Airbnb</span> during
+              my time at the RCA.
+            </li>
+          </ul>
 
-            <TimelineItem
-              title="Product Designer (Contract)"
-              company="Law.X · 1-Month Contract"
-              period="Mar 2025 - Apr 2025"
-              actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/lawx')}
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>Independently drove the UX design process, from initial concepts to interactive prototypes, for a generative AI tool</li>
-              </ul>
-            </TimelineItem>
+          <p className="mt-10 flex flex-wrap gap-x-6 gap-y-2">
+            <a href="mailto:mdamkhan.work@gmail.com" className="link-ink">mdamkhan.work@gmail.com</a>
+            <a href="https://www.linkedin.com/in/readmetxt/" target="_blank" rel="noopener noreferrer" className="link-ink">LinkedIn</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-ink">Résumé</a>
+          </p>
+        </div>
 
-            <TimelineItem
-              title="Senior UX Designer"
-              company="KoinBasket | Remote, India"
-              period="June 2024 - Mar 2025"
-              actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/koinbasket')}
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>Led the strategic rebrand and UI rework for web and mobile, transitioning to a cleaner, more professional aesthetic to enhance user trust.</li>
-                <li>Hired and managed the company's first Junior UX Designer, scaling the design process for more complex initiatives.</li>
-                <li>Designed the "BitBuddy" influencer ecosystem, a two-sided platform for experts to curate content and users to follow their insights.</li>
-                <li>Architected the immersive Live Trading Experience, a flagship dashboard integrating live video streams with real-time market data and trade execution.</li>
-              </ul>
-            </TimelineItem>
+        <figure className="md:col-span-2">
+          <img
+            src="/images/amaan-portrait.webp"
+            {...imageSize('/images/amaan-portrait.webp')}
+            alt="Amaan Khan"
+            className="w-full max-w-sm h-auto rounded-sm object-cover"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </section>
 
-            <TimelineItem
-              title="Founding Designer"
-              company="KoinBasket | Remote, India"
-              period="October 2022 - June 2023"
-              actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/koinbasket')}
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>As the solo designer, led the strategy and design of the MVP in a one-week sprint, growing the user base from 0 to 70,000.</li>
-                <li>Owned the end-to-end design process, from wireframes to high-fidelity responsive UI for web and mobile apps.</li>
-                <li>Established the core user-centric value proposition: simplified crypto investing through curated "baskets" and a secure, non-custodial model.</li>
-                <li>Designed key engagement features, including a Crypto Fantasy League and a multi-tiered rewards system, to drive user adoption and education.</li>
-              </ul>
-            </TimelineItem>
+    {/* Experience */}
+    <section id="experience" className="border-t border-border py-16 scroll-mt-24">
+      <SectionTitle>Experience</SectionTitle>
+      <div className="timeline-container">
+        <TimelineItem title="Product Builder" company="Esberi, AI startup · Remote" period="Jul 2026 – Present">
+          <p>I own design through to front-end code at an early-stage AI startup. Product details are under NDA.</p>
+        </TimelineItem>
 
-            <TimelineItem
-              title="Design Intern"
-              company="Softwire | London, UK"
-              period="July 2022 - September 2022"
-              actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/softwire')}
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>Conducted foundational user research and usability testing for an LNER App Clip, uncovering key insights that directly informed the final UI design.</li>
-              </ul>
-            </TimelineItem>
+        <TimelineItem title="Founder" company="Otalabs · Hyderabad, India" period="Aug 2025 – Present" href="/otagon">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Designing and building Otagon, an AI gaming companion that reads a screenshot and gives context-aware, spoiler-free help.</li>
+            <li>Built with React 18, TypeScript, Supabase and Google Gemini, using a structured output format so the AI's answers are reliable to work with.</li>
+            <li>Designed and built a design system with 40+ reusable components, and an installable PWA.</li>
+          </ul>
+        </TimelineItem>
 
-            <TimelineItem
-              title="Design Research Intern"
-              company="Think Design | Remote, India"
-              period="April 2020 - May 2020"
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>Conducted in-depth design research utilizing various qualitative methods to understand the shift in communication norms during the COVID-19 pandemic.</li>
-                <li>Analyzed research findings to inform strategic insights on the "new normal" of user interaction, providing valuable data for future design strategies.</li>
-              </ul>
-            </TimelineItem>
+        <TimelineItem title="Product Designer (Contract)" company="Pixel+Form · Law.X" period="Mar 2025 – Apr 2025" href="/lawx">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Independently drove the UX design process, from first concepts to interactive prototypes, for a generative AI legal tool.</li>
+          </ul>
+        </TimelineItem>
+
+        <TimelineItem title="Senior UX Designer (Part-time)" company="KoinBasket · Remote, India" period="Jun 2024 – Mar 2025" href="/koinbasket">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Led the rebrand and UI rework for web and mobile, moving to a cleaner look that read as more trustworthy.</li>
+            <li>Managed and mentored the company's first junior UX designer.</li>
+            <li>Designed BitBuddy, a two-sided platform where experts curate content and users follow their insights.</li>
+            <li>Designed the Live Trading Experience, a dashboard combining live video with real-time market data and trade execution.</li>
+          </ul>
+        </TimelineItem>
+
+        <TimelineItem title="Founding Designer" company="KoinBasket · Remote, India" period="Oct 2022 – Jun 2023" href="/koinbasket">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>As the only designer, led the strategy and design of the MVP in a one-week sprint, on a product that grew past 70,000 users.</li>
+            <li>Owned the design process end to end, from wireframes to responsive UI for web and mobile.</li>
+            <li>Shaped the core idea: simple crypto investing through curated "baskets" in a non-custodial model.</li>
+            <li>Designed engagement features, including a Crypto Fantasy League and a tiered rewards system.</li>
+          </ul>
+        </TimelineItem>
+
+        <TimelineItem title="Design Intern" company="Softwire · London, UK" period="Jul 2022 – Aug 2022" href="/softwire">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Co-led UX with another design intern on an LNER App Clip: user research and usability testing that shaped the final design.</li>
+          </ul>
+        </TimelineItem>
+
+        <TimelineItem title="Design Research Intern" company="Think Design · Remote, India" period="2020">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Qualitative research on how communication norms changed during the COVID-19 pandemic.</li>
+          </ul>
+        </TimelineItem>
+      </div>
+    </section>
+
+    {/* Academic projects */}
+    <section id="academic-experience" className="border-t border-border py-16 scroll-mt-24">
+      <SectionTitle>Projects at the Royal College of Art</SectionTitle>
+      <div className="timeline-container">
+        <TimelineItem title="Pebble, with VISA Innovation Centre" company="RCA · London, UK" period="Jan – Jun 2021" href="/pebble">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Led a service design project on employee wellbeing with the VISA Innovation Centre.</li>
+            <li>Used user research, co-creation workshops and iterative design to shape the service.</li>
+            <li>The Virtual Café concept went into VISA Innovation Centre's collaboration roadmap.</li>
+          </ul>
+        </TimelineItem>
+
+        <TimelineItem title="Invisible Value Income Program" company="RCA × Fuzzy Studio × BCG Platinion × Royal Society of Medicine" period="Oct – Dec 2020" href="/iviprogram">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Co-created a speculative service addressing the work-life balance gap for women.</li>
+            <li>Core77 Design Awards 2021, Student Notable.</li>
+            <li>BCG used the research framework in its own workshops.</li>
+          </ul>
+        </TimelineItem>
+
+        <TimelineItem title="Stampede" company="RCA · London, UK" period="Jan – Mar 2019" href="/stampede">
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Developed the Stampede workshop method for forming conservation partnerships.</li>
+            <li>Its first workshop started the WWT × Airbnb collaboration.</li>
+          </ul>
+        </TimelineItem>
+      </div>
+    </section>
+
+    {/* Education */}
+    <section id="education" className="border-t border-border py-16 scroll-mt-24">
+      <SectionTitle>Education</SectionTitle>
+      <div className="timeline-container">
+        <TimelineItem title="M.A. Service Design" company="Royal College of Art · London, UK" period="2021">
+          <p>Including a Brand Management elective with London Business School.</p>
+        </TimelineItem>
+        <TimelineItem title="B.E. Mechanical Engineering" company="Osmania University · Hyderabad, India" />
+      </div>
+    </section>
+
+    {/* Skills */}
+    <section id="skills" className="border-t border-border py-16 scroll-mt-24">
+      <SectionTitle>Skills</SectionTitle>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          ['Service design', ['User research', 'Co-creation workshops', 'Service blueprints', 'Journey mapping', 'Facilitation', 'Usability testing']],
+          ['Product design', ['UI/UX design', 'Interaction design', 'Prototyping', 'Design systems', 'Information architecture']],
+          ['Build', ['React and TypeScript', 'Supabase', 'AI integration (Gemini)', 'PWA development']],
+          ['Tools', ['Figma', 'Miro', 'Framer', 'Webflow', 'Claude Code', 'Cursor']],
+        ].map(([group, items]) => (
+          <div key={group as string}>
+            <h3 className="heading-4 mb-3">{group as string}</h3>
+            <ul className="space-y-1.5 body-base">
+              {(items as string[]).map((item) => <li key={item}>{item}</li>)}
+            </ul>
           </div>
-        </section>
+        ))}
+      </div>
+    </section>
 
-        {/* Academic Experience */}
-        <section id="academic-experience" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Academia</p>
-          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Academic Experience</h2>
-          <div className="timeline-container relative">
-            <TimelineItem
-              title="Pebble (VISA Innovation Centre Project)"
-              company="RCA | London, U.K"
-              period="January 2021 – June 2021"
-              actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/pebble')}
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>Led a service design project focused on enhancing employee well-being and productivity through innovative digital solutions within the VISA Innovation Centre.</li>
-                <li>Employed user research, workshops, and iterative design processes to develop a solution that addressed key employee challenges.</li>
-                <li>Developed a well-received digital service concept focused on improving focus, communication, and overall support within the workplace.</li>
-              </ul>
-            </TimelineItem>
+    {/* Recommendations */}
+    <section className="border-t border-border py-16">
+      <SectionTitle>Recommendations</SectionTitle>
+      <Recommendations variant="full" showTitle={false} />
+    </section>
 
-            <TimelineItem
-              title="Invisible Value Income Program (Fuzzy Design x BCG x RSM Collaboration)"
-              company="RCA | London, U.K"
-              period="October 2020 – December 2020"
-              actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/iviprogram')}
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>Co-created a program aimed at addressing work-life balance disparities for women, utilizing design thinking methodologies.</li>
-                <li>Designed speculative service solutions that challenged existing societal norms and proposed innovative approaches to work-life balance.</li>
-                <li>Recognised with a Core77 Design Awards 2021 Student Notable for the innovative and impactful nature of the project.</li>
-                <li>Project research and findings were utilized by BCG for further analysis and implementation strategies.</li>
-              </ul>
-            </TimelineItem>
+    {/* Certificates */}
+    <section id="certificates" className="border-t border-border py-16 scroll-mt-24">
+      <CertificatesCarousel />
+    </section>
 
-            <TimelineItem
-              title="Stampede"
-              company="RCA | London, U.K"
-              period="January 2019 – March 2019"
-              actionLabel="View Case Study →"
-              onAction={() => navigateToProject('/stampede')}
-            >
-              <ul className="list-disc list-inside space-y-2">
-                <li>Developed the 'Stampede' workshop methodology, aimed at creating impactful conservation partnerships using core design principles.</li>
-                <li>Created inclusive design solutions for an Airbnb-WWT collaboration, driving tangible environmental impact through strategic partnerships.</li>
-              </ul>
-            </TimelineItem>
-          </div>
-        </section>
-
-        {/* Education */}
-        <section id="education" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Foundations</p>
-          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Education</h2>
-          <div className="timeline-container relative">
-            <TimelineItem title="M.A in Service Design" company="Royal College of Art | London, U.K" />
-            <TimelineItem title="Brand Management" company="London Business School | London, U.K" />
-            <TimelineItem title="B.E in Mechanical Engineering" company="Osmania University | Hyderabad, India" />
-          </div>
-        </section>
-
-        {/* Skills */}
-        <section id="skills" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Toolkit</p>
-          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Skills</h2>
-          <div className="grid lg:grid-cols-4 gap-8 mb-16">
-            <div>
-              <h3 className="heading-4 mb-4">Design</h3>
-              <ul className="space-y-2 body-base">
-                <li>Service Design</li>
-                <li>UI/UX Design</li>
-                <li>User Research</li>
-                <li>Interaction Design</li>
-                <li>Prototyping</li>
-                <li>Design Systems</li>
-                <li>Info Architecture</li>
-                <li>Usability Testing</li>
-                <li>Journey Mapping</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="heading-4 mb-4">Engineering</h3>
-              <ul className="space-y-2 body-base">
-                <li>React 18 / 19</li>
-                <li>TypeScript</li>
-                <li>Supabase</li>
-                <li>AI Integration</li>
-                <li>Gemini / OpenAI APIs</li>
-                <li>PWA Development</li>
-                <li>Full-Stack Dev</li>
-                <li>Performance Optimisation</li>
-                <li>Database Design</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="heading-4 mb-4">Tools</h3>
-              <ul className="space-y-2 body-base">
-                <li>Figma</li>
-                <li>Framer</li>
-                <li>Webflow</li>
-                <li>Pencil.dev</li>
-                <li>Miro</li>
-                <li>VS Code</li>
-                <li>Cursor</li>
-                <li>Claude Code CLI</li>
-                <li>Vercel</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="heading-4 mb-4">Leadership</h3>
-              <ul className="space-y-2 body-base">
-                <li>Facilitation</li>
-                <li>Stakeholder Management</li>
-                <li>Team Leadership</li>
-                <li>Project Management</li>
-                <li>Hiring & Mentoring</li>
-                <li>Workshop Design</li>
-                <li>Presentation</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Certificates & Awards */}
-        <section id="certificates" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <CertificatesCarousel />
-        </section>
-
-        {/* Interests */}
-        <section id="interests" className="mb-24 scroll-mt-24 reveal-on-scroll">
-          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-2">Beyond Work</p>
-          <h2 className="font-dm-sans font-bold text-2xl sm:text-3xl text-foreground tracking-tight mb-8">Interests</h2>
-          <div className="flex flex-wrap gap-4">
-            {['Football', 'Travelling', 'Stargazing', 'Indie Music', 'Casual Gaming', 'Photography'].map((interest) => (
-              <span key={interest} className="bg-accent-primary/10 text-accent-primary px-4 py-2 rounded-lg font-medium">
-                {interest}
-              </span>
-            ))}
-          </div>
-        </section>
-      </PageLayout>
-
-      {/* Copy Toast */}
-      <CopyToast
-        message="Email Copied!"
-        isVisible={toastVisible}
-        onHide={() => setToastVisible(false)}
-      />
-    </>
-  );
-};
+    {/* Interests */}
+    <section id="interests" className="border-t border-border py-16 scroll-mt-24">
+      <SectionTitle>Outside work</SectionTitle>
+      <p className="text-lg text-text-secondary">Football, travelling, stargazing, indie music, casual gaming and photography.</p>
+    </section>
+  </PageLayout>
+);

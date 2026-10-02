@@ -111,3 +111,6 @@ audit-screenshots/
 *.njsproj
 *.sln
 *.sw?
+# Bundle report (ANALYZE=1 npm run build)
+stats.html
+__pycache__/

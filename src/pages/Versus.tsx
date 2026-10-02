@@ -21,7 +21,7 @@ export const Versus = () => {
       externalLabel="Visit Versus"
     >
       <CaseStudyHero
-        eyebrow="Side Project · Versus · Solo Design + Build · Ongoing"
+        eyebrow="Side project, 2026"
         title="A Tournament Tracker Built for Couch Co-op"
         subtitle="Designing and shipping a live FIFA/FC tournament platform — leagues, knockouts, groups, and spectator links"
         pills={[
@@ -53,7 +53,7 @@ export const Versus = () => {
         }}
         externalLink="https://otagon2.github.io/Versus/"
         externalLabel="Visit Versus"
-        heroImage="/versus/1-landing-page-desktop.png"
+        heroImage="/images/casestudies/versus/1-landing-page-desktop.webp"
         heroImageAlt="Versus landing page on desktop"
       />
 
@@ -97,9 +97,9 @@ export const Versus = () => {
           columns={3}
           aspectRatio="aspect-auto"
           images={[
-            { src: '/versus/2-tournament-creator-mobile.png', alt: 'Tournament creator on mobile' },
-            { src: '/versus/3-loading-tournament.png', alt: 'Loading a tournament on mobile' },
-            { src: '/versus/4-tournament-page.png', alt: 'Tournament page on mobile', caption: 'Create a tournament, load it, and play — the full setup flow on a phone' },
+            { src: '/images/casestudies/versus/2-tournament-creator-mobile.webp', alt: 'Tournament creator on mobile' },
+            { src: '/images/casestudies/versus/3-loading-tournament.webp', alt: 'Loading a tournament on mobile' },
+            { src: '/images/casestudies/versus/4-tournament-page.webp', alt: 'Tournament page on mobile', caption: 'Create a tournament, load it, and play — the full setup flow on a phone' },
           ]}
         />
       </CaseStudySection>
@@ -140,7 +140,7 @@ export const Versus = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/versus/6-match-started-admin.png"
+          src="/images/casestudies/versus/6-match-started-admin.webp"
           alt="A match started in the admin view"
           caption="The live Match Hub — scoring an in-progress match from the host's admin view"
           aspectRatio="aspect-auto"
@@ -182,7 +182,7 @@ export const Versus = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/versus/5-spectator-view-mobile.png"
+          src="/images/casestudies/versus/5-spectator-view-mobile.webp"
           alt="Spectator view on mobile"
           caption="The read-only spectator view — what someone sees when they open the share link on their phone"
           aspectRatio="aspect-auto"
@@ -259,7 +259,7 @@ export const Versus = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/versus/7-tournament-home-page-admin.png"
+          src="/images/casestudies/versus/7-tournament-home-page-admin.webp"
           alt="Tournament home page in the admin view"
           caption="The admin tournament home — live standings and fixtures during a tournament night"
           aspectRatio="aspect-auto"

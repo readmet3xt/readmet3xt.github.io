@@ -1,5 +1,11 @@
 import { ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { imageSize } from '@/lib/imageSize';
+
+/* Case-study building blocks. Prose stays at a readable measure (68ch);
+   images run the full article width. No motion: everything is visible on load. */
+
+const openLightbox = (src: string) =>
+  window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src } }));
 
 interface CaseStudySectionProps {
   children: ReactNode;
@@ -9,81 +15,33 @@ interface CaseStudySectionProps {
   id?: string;
 }
 
-const sectionVariants = {
-  initial: {
-    opacity: 0,
-    y: 40,
-  },
-  whileInView: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94] as const,
-    },
-  },
-};
-
-export const CaseStudySection = ({
-  children,
-  title,
-  subtitle,
-  className = '',
-  id,
-}: CaseStudySectionProps) => {
-  return (
-    <motion.section
-      id={id}
-      className={`space-y-4 ${className}`}
-      variants={sectionVariants}
-      initial="initial"
-      whileInView="whileInView"
-      viewport={{ once: true, margin: '-100px' }}
-    >
-      {(title || subtitle) && (
-        <div className="space-y-2">
-          {title && (
-            <h2 className="flex items-baseline gap-3 text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
-              <span
-                aria-hidden="true"
-                className="self-stretch w-1 rounded-full bg-accent-primary flex-shrink-0"
-              />
-              <span className="flex-1">{title}</span>
-            </h2>
-          )}
-          {subtitle && (
-            <p className="text-base sm:text-lg text-text-secondary pl-4">
-              {subtitle}
-            </p>
-          )}
-        </div>
-      )}
-      <div className="space-y-4 text-text-primary">
-        {children}
+export const CaseStudySection = ({ children, title, subtitle, className = '', id }: CaseStudySectionProps) => (
+  <section id={id} className={`case-study-section space-y-5 ${className}`}>
+    {(title || subtitle) && (
+      <div className="max-w-[68ch] space-y-2">
+        {title && <h2 className="text-3xl">{title}</h2>}
+        {subtitle && <p className="text-lg text-text-secondary">{subtitle}</p>}
       </div>
-    </motion.section>
-  );
-};
+    )}
+    <div className="space-y-5">{children}</div>
+  </section>
+);
 
-// Sub-components for common patterns
 interface CaseStudyParagraphProps {
   children: ReactNode;
   className?: string;
   lead?: boolean;
 }
 
-export const CaseStudyParagraph = ({
-  children,
-  className = '',
-  lead = false,
-}: CaseStudyParagraphProps) => (
-  <p className={`
-    ${lead ? 'text-base sm:text-lg leading-relaxed' : 'text-sm sm:text-base leading-relaxed'}
-    text-text-primary
-    ${className}
-  `}>
+export const CaseStudyParagraph = ({ children, className = '', lead = false }: CaseStudyParagraphProps) => (
+  <p className={`max-w-[68ch] leading-relaxed ${lead ? 'text-lg text-text-primary' : 'text-text-secondary'} ${className}`}>
     {children}
   </p>
+);
+
+/** One sentence that carries the section's insight. */
+export const CaseStudyInsight = ({ children, className = '' }: { children: ReactNode; className?: string }) => (
+  <p className={`max-w-[40ch] font-serif text-2xl leading-snug text-text-primary ${className}`}>{children}</p>
 );
 
 interface CaseStudyQuoteProps {
@@ -93,24 +51,14 @@ interface CaseStudyQuoteProps {
 }
 
 export const CaseStudyQuote = ({ children, author, role }: CaseStudyQuoteProps) => (
-  <motion.blockquote
-    className="border-l-4 border-accent-primary pl-4 sm:pl-6 py-2 bg-card/50 rounded-r-lg"
-    initial={{ opacity: 0, x: -20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-  >
-    <p className="font-playfair text-lg sm:text-xl italic text-text-primary leading-relaxed">
-      "{children}"
-    </p>
+  <blockquote className="max-w-[60ch] border-l-2 border-text-primary pl-5 py-1">
+    <p className="font-serif text-xl leading-snug text-text-primary">"{children}"</p>
     {(author || role) && (
       <footer className="mt-2 text-sm text-text-secondary">
-        {author && <span className="font-medium">{author}</span>}
-        {author && role && <span className="mx-1">—</span>}
-        {role && <span>{role}</span>}
+        {[author, role].filter(Boolean).join(', ')}
       </footer>
     )}
-  </motion.blockquote>
+  </blockquote>
 );
 
 interface CaseStudyListProps {
@@ -121,32 +69,16 @@ interface CaseStudyListProps {
 
 export const CaseStudyList = ({ items, ordered = false, className = '' }: CaseStudyListProps) => {
   const ListTag = ordered ? 'ol' : 'ul';
-
   return (
-    <ListTag className={`space-y-2 ${ordered ? 'list-decimal' : ''} ${className}`}>
+    <ListTag className={`max-w-[68ch] pl-5 space-y-2 text-text-secondary ${ordered ? 'list-decimal' : 'list-disc'} marker:text-text-tertiary ${className}`}>
       {items.map((item, i) => (
-        <motion.li
-          key={i}
-          className="flex gap-3 text-sm sm:text-base text-text-primary"
-          initial={{ opacity: 0, x: -10 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.05, duration: 0.3 }}
-        >
-          {!ordered && (
-            <span className="text-accent-primary mt-1.5 flex-shrink-0">•</span>
+        <li key={i} className="pl-1">
+          {typeof item === 'string' ? item : (
+            <>
+              <strong className="font-semibold text-text-primary">{item.title}:</strong> {item.description}
+            </>
           )}
-          <span className="flex-1">
-            {typeof item === 'string' ? (
-              item
-            ) : (
-              <>
-                <strong className="text-foreground">{item.title}:</strong>{' '}
-                <span className="text-text-secondary">{item.description}</span>
-              </>
-            )}
-          </span>
-        </motion.li>
+        </li>
       ))}
     </ListTag>
   );
@@ -160,6 +92,8 @@ interface CaseStudyImageProps {
   priority?: boolean;
   aspectRatio?: string;
   objectPosition?: string;
+  /** column = text width; wide (default) = full article width. */
+  size?: 'column' | 'wide';
 }
 
 export const CaseStudyImage = ({
@@ -170,89 +104,48 @@ export const CaseStudyImage = ({
   priority = false,
   aspectRatio = 'aspect-auto',
   objectPosition = 'object-top',
-}: CaseStudyImageProps) => {
-  return (
-    <motion.figure
-      className={`group my-10 ${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5 }}
-    >
-      <div
-        className={`relative overflow-hidden rounded-2xl w-full h-full min-h-[320px] ${aspectRatio} flex items-center justify-center bg-gradient-to-br from-card via-card to-bg-secondary shadow-[0_18px_48px_hsl(var(--bg-primary)/0.22)]`}
-      >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_hsl(var(--accent-primary)/0.16),_transparent_58%)]" />
-        <motion.img
-          src={src}
-          alt={alt}
-          data-lightbox-caption={caption || alt}
-          className={`w-full ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[72vh] md:max-h-[80vh] object-contain relative p-3 sm:p-4' : `h-full absolute inset-0 object-cover ${objectPosition}`} z-10 lightbox-image cursor-zoom-in transition-transform duration-500 group-hover:scale-[1.015]`}
-          loading={priority ? 'eager' : 'lazy'}
-          onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src } }))}
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.display = 'none';
-          }}
-          whileTap={{ scale: 0.96, transition: { type: 'spring', stiffness: 400, damping: 15 } }}
-        />
-      </div>
-      {caption && (
-        <figcaption className="mt-3 text-sm text-text-tertiary text-center leading-relaxed">
-          {caption}
-        </figcaption>
-      )}
-    </motion.figure>
-  );
-};
+  size = 'wide',
+}: CaseStudyImageProps) => (
+  <figure className={`my-10 ${size === 'column' ? 'max-w-[68ch]' : ''} ${className}`}>
+    <img
+      src={src}
+      alt={alt}
+      {...imageSize(src)}
+      data-lightbox-caption={caption || alt}
+      className={`w-full rounded-sm lightbox-image cursor-zoom-in ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[85vh] object-contain object-left' : `${aspectRatio} object-cover ${objectPosition}`}`}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+      onClick={() => openLightbox(src)}
+    />
+    {caption && <figcaption className="mt-3 max-w-[68ch] text-sm text-text-tertiary leading-relaxed">{caption}</figcaption>}
+  </figure>
+);
+
+interface GridImage { src: string; alt: string; caption?: string }
+
+const GridImageCard = ({ image, aspectRatio, objectPosition }: { image: GridImage; aspectRatio: string; objectPosition: string }) => (
+  <figure className="h-full">
+    <img
+      src={image.src}
+      alt={image.alt}
+      {...imageSize(image.src)}
+      data-lightbox-caption={image.caption || image.alt}
+      className={`w-full rounded-sm lightbox-image cursor-zoom-in ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[75vh] object-contain' : `${aspectRatio} object-cover ${objectPosition}`}`}
+      loading="lazy"
+      decoding="async"
+      onClick={() => openLightbox(image.src)}
+    />
+    {image.caption && <figcaption className="mt-2 text-sm text-text-tertiary leading-relaxed">{image.caption}</figcaption>}
+  </figure>
+);
 
 interface CaseStudyImageGridProps {
-  images: { src: string; alt: string; caption?: string }[];
+  images: GridImage[];
   columns?: 1 | 2 | 3 | 4;
   className?: string;
-}
-
-interface GridImageCardProps {
-  image: { src: string; alt: string; caption?: string };
-  index: number;
   aspectRatio?: string;
   objectPosition?: string;
 }
-
-const GridImageCard = ({ image, index, aspectRatio = 'aspect-auto', objectPosition = 'object-top' }: GridImageCardProps) => {
-  return (
-    <motion.figure
-      className="group relative overflow-hidden rounded-2xl bg-gradient-to-b from-card to-bg-secondary h-full shadow-[0_14px_32px_hsl(var(--bg-primary)/0.18)]"
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.4 }}
-      whileHover={{ y: -4 }}
-    >
-      <div
-        className={`w-full h-full min-h-[280px] ${aspectRatio} flex items-center justify-center overflow-hidden relative`}
-      >
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_hsl(var(--accent-primary)/0.14),_transparent_58%)]" />
-        <motion.img
-          src={image.src}
-          alt={image.alt}
-          data-lightbox-caption={image.caption || image.alt}
-          className={`w-full ${aspectRatio === 'aspect-auto' ? 'h-auto max-h-[62vh] md:max-h-[74vh] object-contain relative p-3 sm:p-4' : `h-full absolute inset-0 object-cover ${objectPosition}`} z-10 lightbox-image cursor-zoom-in transition-transform duration-500 group-hover:scale-[1.015]`}
-          loading="lazy"
-          onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: image.src } }))}
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.display = 'none';
-          }}
-          whileTap={{ scale: 0.96, transition: { type: 'spring', stiffness: 400, damping: 15 } }}
-        />
-      </div>
-      {image.caption && (
-        <figcaption className="px-3 pb-3 pt-2 text-xs text-text-tertiary text-center leading-relaxed">
-          {image.caption}
-        </figcaption>
-      )}
-    </motion.figure>
-  );
-};
 
 export const CaseStudyImageGrid = ({
   images,
@@ -260,7 +153,7 @@ export const CaseStudyImageGrid = ({
   className = '',
   aspectRatio = 'aspect-auto',
   objectPosition = 'object-top',
-}: CaseStudyImageGridProps & { aspectRatio?: string; objectPosition?: string }) => {
+}: CaseStudyImageGridProps) => {
   const colClass = {
     1: 'grid-cols-1',
     2: 'grid-cols-1 sm:grid-cols-2',
@@ -269,9 +162,9 @@ export const CaseStudyImageGrid = ({
   }[columns];
 
   return (
-    <div className={`my-10 grid ${colClass} gap-6 ${className}`}>
+    <div className={`my-10 grid ${colClass} gap-6 items-start ${className}`}>
       {images.map((image, i) => (
-        <GridImageCard key={i} image={image} index={i} aspectRatio={aspectRatio} objectPosition={objectPosition} />
+        <GridImageCard key={i} image={image} aspectRatio={aspectRatio} objectPosition={objectPosition} />
       ))}
     </div>
   );
@@ -280,37 +173,17 @@ export const CaseStudyImageGrid = ({
 interface CaseStudyCardProps {
   children: ReactNode;
   title?: string;
+  /** @deprecated icons are no longer rendered. */
   icon?: ReactNode;
   className?: string;
 }
 
-export const CaseStudyCard = ({
-  children,
-  title,
-  icon,
-  className = '',
-}: CaseStudyCardProps) => (
-  <motion.div
-    className={`bg-card p-4 sm:p-6 rounded-lg border border-border ${className}`}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.4 }}
-  >
-    {(title || icon) && (
-      <div className="flex items-center gap-3 mb-3">
-        {icon && <span className="text-accent-primary">{icon}</span>}
-        {title && (
-          <h3 className="text-base sm:text-lg font-semibold text-foreground">
-            {title}
-          </h3>
-        )}
-      </div>
-    )}
-    <div className="text-sm sm:text-base text-text-secondary">
-      {children}
-    </div>
-  </motion.div>
+/** A titled sub-section (formerly a boxed card). */
+export const CaseStudyCard = ({ children, title, className = '' }: CaseStudyCardProps) => (
+  <div className={className}>
+    {title && <h3 className="text-xl mb-2">{title}</h3>}
+    <div className="text-text-secondary leading-relaxed">{children}</div>
+  </div>
 );
 
 interface CaseStudyCardGridProps {
@@ -319,22 +192,14 @@ interface CaseStudyCardGridProps {
   className?: string;
 }
 
-export const CaseStudyCardGrid = ({
-  children,
-  columns = 2,
-  className = '',
-}: CaseStudyCardGridProps) => {
+export const CaseStudyCardGrid = ({ children, columns = 2, className = '' }: CaseStudyCardGridProps) => {
   const colClass = {
     2: 'grid-cols-1 md:grid-cols-2',
     3: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
     4: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
   }[columns];
 
-  return (
-    <div className={`grid ${colClass} gap-4 ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`grid ${colClass} gap-x-10 gap-y-8 ${className}`}>{children}</div>;
 };
 
 interface CaseStudyStatProps {
@@ -343,23 +208,13 @@ interface CaseStudyStatProps {
   sublabel?: string;
 }
 
+/** A single fact: the number, what it measures, and its source or scope. */
 export const CaseStudyStat = ({ value, label, sublabel }: CaseStudyStatProps) => (
-  <motion.div
-    className="text-center p-4 sm:p-6 bg-card rounded-lg border border-border"
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.4 }}
-    whileHover={{ scale: 1.02 }}
-  >
-    <div className="text-2xl sm:text-3xl font-bold text-accent-primary mb-1 sm:mb-2 break-words">
-      {value}
-    </div>
-    <div className="text-xs sm:text-sm text-text-secondary">{label}</div>
-    {sublabel && (
-      <div className="text-xs text-text-tertiary mt-1">{sublabel}</div>
-    )}
-  </motion.div>
+  <div>
+    <dt className="text-sm text-text-secondary">{label}</dt>
+    <dd className="mt-1 font-serif text-3xl text-text-primary">{value}</dd>
+    {sublabel && <dd className="mt-1 text-sm text-text-tertiary">{sublabel}</dd>}
+  </div>
 );
 
 interface CaseStudyStatsGridProps {
@@ -367,13 +222,8 @@ interface CaseStudyStatsGridProps {
   className?: string;
 }
 
-export const CaseStudyStatsGrid = ({ stats, className = '' }: CaseStudyStatsGridProps) => {
-  const mdCols = stats.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4';
-  return (
-    <div className={`grid grid-cols-2 ${mdCols} gap-4 ${className}`}>
-      {stats.map((stat, i) => (
-        <CaseStudyStat key={i} {...stat} />
-      ))}
-    </div>
-  );
-};
+export const CaseStudyStatsGrid = ({ stats, className = '' }: CaseStudyStatsGridProps) => (
+  <dl className={`grid grid-cols-2 ${stats.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-4'} gap-x-8 gap-y-6 border-y border-border py-6 ${className}`}>
+    {stats.map((stat, i) => <CaseStudyStat key={i} {...stat} />)}
+  </dl>
+);

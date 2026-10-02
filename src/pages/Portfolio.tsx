@@ -1,52 +1,16 @@
-import { memo, lazy, Suspense } from 'react';
 import { PageLayout } from '@/components/PageLayout';
 import { SEO } from '@/components/SEO';
-import { TypewriterAnimation } from '@/components/TypewriterAnimation';
 import { HeroSection } from '@/components/HeroSection';
 import { ProjectsGrid } from '@/components/ProjectsGrid';
+import { Recommendations } from '@/components/Recommendations';
 import { ContactSection } from '@/components/ContactSection';
-import { useScrollReveal } from '@/components/ScrollReveal';
 
-// Lazy load testimonials carousel for better performance  
-const TestimonialsCarousel = lazy(() => import('@/components/TestimonialsCarousel').then(m => ({ default: m.TestimonialsCarousel })));
-
-export const Portfolio = memo(() => {
-  useScrollReveal();
-
-  return (
-    <PageLayout className="max-w-7xl mx-auto w-full">
-      <SEO />
-      <div className="lg:h-[100svh]">
-        <HeroSection />
-      </div>
-
-      <div className="h-[100svh]">
-        <TypewriterAnimation />
-      </div>
-
-      <div>
-        <div className="pt-8 sm:pt-10 lg:pt-12">
-          <ProjectsGrid />
-        </div>
-
-        {/* Testimonials Section */}
-        <section className="mb-16 lg:mb-20 reveal-on-scroll" aria-label="Client testimonials">
-          <Suspense fallback={
-            <div className="min-h-[200px] flex items-center justify-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-            </div>
-          }>
-            <TestimonialsCarousel />
-          </Suspense>
-        </section>
-
-        {/* Contact Section */}
-        <section className="mb-16 lg:mb-20" aria-label="Contact">
-          <ContactSection />
-        </section>
-      </div>
-    </PageLayout>
-  );
-});
-
-Portfolio.displayName = 'Portfolio';
+export const Portfolio = () => (
+  <PageLayout>
+    <SEO />
+    <HeroSection />
+    <ProjectsGrid />
+    <Recommendations variant="excerpts" />
+    <ContactSection />
+  </PageLayout>
+);

@@ -17,7 +17,7 @@ export const LawX = () => {
             description="Designing Transparency into Legal AI — How I turned a 'black box' chatbot into a workspace lawyers actually trust."
         >
             <CaseStudyHero
-                eyebrow="Case Study · Law.X · Legal AI · 2025"
+                eyebrow="Pixel+Form, 2025"
                 title="Designing Transparency into Legal AI"
                 subtitle="How I turned a 'black box' chatbot into a workspace lawyers actually trust"
                 pills={[
@@ -43,7 +43,7 @@ export const LawX = () => {
                         'Design Systems',
                     ],
                 }}
-                heroImage="/images/casestudies/lawx/lawx-1.png"
+                heroImage="/images/casestudies/lawx/lawx-1.webp"
                 heroImageAlt="Law.X transparent legal assistant workspace"
             />
 
@@ -80,7 +80,7 @@ export const LawX = () => {
                 </CaseStudyQuote>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-7.png"
+                    src="/images/casestudies/lawx/lawx-7.webp"
                     alt="Chat view with the yellow Thinking status pill active"
                     caption="The yellow 'Thinking…' state is the first cue that answers can be supervised, not just consumed"
                 />
@@ -100,7 +100,7 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-6.png"
+                    src="/images/casestudies/lawx/lawx-6.webp"
                     alt="The Thinking Panel — the reasoning chain streamed beside the answer"
                     caption="The Thinking Panel streams the reasoning chain — query reframing, clarification, statute review — beside the answer"
                 />
@@ -131,13 +131,13 @@ export const LawX = () => {
                 </CaseStudyCardGrid>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-5.png"
+                    src="/images/casestudies/lawx/lawx-5.webp"
                     alt="The instruction modal with saved tone and style instructions"
                     caption="Persistent instructions travel with every query — set once, applied across sessions"
                 />
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-2.png"
+                    src="/images/casestudies/lawx/lawx-2.webp"
                     alt="Mandatory state selection during onboarding"
                     caption="Jurisdiction is locked before the first query — state-specific accuracy by default"
                 />
@@ -168,7 +168,7 @@ export const LawX = () => {
                 </CaseStudyCardGrid>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-3.png"
+                    src="/images/casestudies/lawx/lawx-3.webp"
                     alt="Home screen leading with curated legal prompt cards"
                     caption="Curated legal prompts replace the blank chat box"
                 />
@@ -184,7 +184,7 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-4.png"
+                    src="/images/casestudies/lawx/lawx-4.webp"
                     alt="The stark black-and-white interface with the instructions modal open"
                     caption="Minimalist, high-contrast design conveying professionalism and authority"
                 />
@@ -247,7 +247,7 @@ export const LawX = () => {
                 </CaseStudyParagraph>
 
                 <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-8.png"
+                    src="/images/casestudies/lawx/lawx-8.webp"
                     alt="Collapsible sidebar with previous case conversations"
                     caption="Case threads persist in a collapsible sidebar — the workspace lawyers return to"
                 />

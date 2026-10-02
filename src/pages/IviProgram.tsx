@@ -14,13 +14,13 @@ import {
 
 export const IviProgram = () => {
   return (
-    <div className="theme-ivi contents">
+    <>
       <CaseStudyLayout
         title="Invisible Value Income Program"
         description="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040 — A Core77-recognised speculative service that makes invisible domestic labour economically visible."
       >
         <CaseStudyHero
-          eyebrow="Case Study · I.V.I. Program · RCA × BCG · Core77 Student Notable 2021"
+          eyebrow="RCA × BCG Platinion, 2020"
           title="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040"
           subtitle="A speculative service that makes invisible domestic labour economically visible — Core77 Design Awards 2021 Student Notable"
           pills={[
@@ -41,7 +41,7 @@ export const IviProgram = () => {
             ],
             team: 'Guoxing Song, Jing Qian, Kotoko Kimura, Zhiyuan Zheng. Partners: Fuzzy Design Studio, Royal Society of Medicine, BCG',
             timeline: 'October–December 2020, Royal College of Art',
-            recognition: 'Core77 Design Awards 2021 — Notable Honor, Speculative Design. Research framework adopted internally by BCG.',
+            recognition: 'Core77 Design Awards 2021, Student Notable, Speculative Design. BCG adopted the research framework for internal workshops.',
             tools: [
               'Speculative Design',
               'Service Design',
@@ -50,13 +50,14 @@ export const IviProgram = () => {
               'Figma',
             ],
           }}
-          heroImage="/images/casestudies/ivi/1-bad-health.jpg"
+          heroImage="/images/casestudies/ivi/1-bad-health.webp"
         />
 
         <CaseStudySection>
           <div className="flex flex-col gap-4 mt-8">
-            <div className="relative overflow-hidden rounded-lg bg-white border border-border aspect-video shadow-sm">
+            <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
               <iframe
+                loading="lazy"
                 src="https://player.vimeo.com/video/502127128?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
@@ -70,7 +71,7 @@ export const IviProgram = () => {
               columns={1}
               aspectRatio="aspect-auto"
               images={[
-                { src: '/images/casestudies/ivi/2-good-mental-health.jpg', alt: 'What good mental health looks like for working women', caption: 'Good mental health' }
+                { src: '/images/casestudies/ivi/2-good-mental-health.webp', alt: 'What good mental health looks like for working women', caption: 'Good mental health' }
               ]}
             />
           </div>
@@ -105,9 +106,9 @@ export const IviProgram = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/1-bad-health.jpg', alt: 'The toll of poor mental and physical health on working women', caption: 'Bad health' },
-              { src: '/images/casestudies/ivi/3-initial-hmw.jpg', alt: 'Our initial How Might We framing of the problem', caption: 'Initial how-might-we' },
-              { src: '/images/casestudies/ivi/4-why-this-happens.jpg', alt: 'Mapping the systemic reasons why this happens', caption: 'Why this happens' }
+              { src: '/images/casestudies/ivi/1-bad-health.webp', alt: 'The toll of poor mental and physical health on working women', caption: 'Bad health' },
+              { src: '/images/casestudies/ivi/3-initial-hmw.webp', alt: 'Our initial How Might We framing of the problem', caption: 'Initial how-might-we' },
+              { src: '/images/casestudies/ivi/4-why-this-happens.webp', alt: 'Mapping the systemic reasons why this happens', caption: 'Why this happens' }
             ]}
           />
         </CaseStudySection>
@@ -152,7 +153,7 @@ export const IviProgram = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/5-research-findings.jpeg', alt: 'Key research findings from interviews and surveys across 12 countries', caption: 'Research findings' }
+              { src: '/images/casestudies/ivi/5-research-findings.webp', alt: 'Key research findings from interviews and surveys across 12 countries', caption: 'Research findings' }
             ]}
           />
         </CaseStudySection>
@@ -200,7 +201,7 @@ export const IviProgram = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/7-sensei.jpeg', alt: 'The Sensei platform — the central touchpoint of the I.V.I. Program', caption: 'The Sensei platform' }
+              { src: '/images/casestudies/ivi/7-sensei.webp', alt: 'The Sensei platform — the central touchpoint of the I.V.I. Program', caption: 'The Sensei platform' }
             ]}
           />
           <div className="mt-8">
@@ -208,8 +209,8 @@ export const IviProgram = () => {
               columns={1}
               aspectRatio="aspect-auto"
               images={[
-                { src: '/images/casestudies/ivi/6-1-journey-map-1.jpeg', alt: 'Service journey map — part one', caption: 'Journey map' },
-                { src: '/images/casestudies/ivi/6-2-journey-map-2.jpeg', alt: 'Service journey map — how the system will look in practice', caption: 'Journey map — how the system will look' }
+                { src: '/images/casestudies/ivi/6-1-journey-map-1.webp', alt: 'Service journey map — part one', caption: 'Journey map' },
+                { src: '/images/casestudies/ivi/6-2-journey-map-2.webp', alt: 'Service journey map — how the system will look in practice', caption: 'Journey map — how the system will look' }
               ]}
             />
           </div>
@@ -248,10 +249,10 @@ export const IviProgram = () => {
           <CaseStudyImageGrid
             columns={1}
             images={[
-              { src: '/images/casestudies/ivi/Term4_Final presentation.012.jpeg', alt: 'Validation session slide summarising stakeholder feedback on the I.V.I. concept' },
-              { src: '/images/casestudies/ivi/18.jpg', alt: 'Stakeholder validation session with working parents and managers' },
-              { src: '/images/casestudies/ivi/20.jpg', alt: 'Participant feedback captured during concept validation' },
-              { src: '/images/casestudies/ivi/19.jpg', alt: 'Discussion of service safeguards raised during validation' }
+              { src: '/images/casestudies/ivi/term4-final-presentation-012.webp', alt: 'Validation session slide summarising stakeholder feedback on the I.V.I. concept' },
+              { src: '/images/casestudies/ivi/18.webp', alt: 'Stakeholder validation session with working parents and managers' },
+              { src: '/images/casestudies/ivi/20.webp', alt: 'Participant feedback captured during concept validation' },
+              { src: '/images/casestudies/ivi/19.webp', alt: 'Discussion of service safeguards raised during validation' }
             ]}
           />
         </CaseStudySection>
@@ -261,14 +262,14 @@ export const IviProgram = () => {
           <CaseStudyStatsGrid
             stats={[
               { value: '79', label: 'Women', sublabel: 'Interviews + surveys, 12 countries' },
-              { value: 'Core77', label: 'Award', sublabel: 'Notable Honor' },
+              { value: 'Core77', label: 'Award', sublabel: 'Student Notable, 2021' },
               { value: 'BCG', label: 'Framework Adopted', sublabel: 'Internal wellbeing workshops' },
               { value: '9', label: 'Stakeholders', sublabel: 'Validated' },
             ]}
           />
 
           <CaseStudyParagraph>
-            Core77 Design Awards 2021 — Notable Honor in Speculative Design. The "6 Dimensions of
+            Core77 Design Awards 2021, Student Notable in Speculative Design. The "6 Dimensions of
             Workplace Wellbeing" framework developed during this project was adopted by BCG for their
             internal employee affiliation workshops — demonstrating that speculative design, done rigorously,
             produces frameworks with immediate real-world applicability.
@@ -277,8 +278,8 @@ export const IviProgram = () => {
           <CaseStudyImageGrid
             columns={1}
             images={[
-              { src: '/images/casestudies/ivi/29 (2).jpg', alt: 'The 6 Dimensions of Workplace Wellbeing framework presented to stakeholders' },
-              { src: '/images/casestudies/ivi/Screenshot 2026-03-08 081421.png', alt: 'Core77 Design Awards 2021 Student Notable listing for the I.V.I. Program' }
+              { src: '/images/casestudies/ivi/29-2.webp', alt: 'The 6 Dimensions of Workplace Wellbeing framework presented to stakeholders' },
+              { src: '/images/casestudies/ivi/core77-student-notable-listing.webp', alt: 'Core77 Design Awards 2021 Student Notable listing for the I.V.I. Program' }
             ]}
           />
         </CaseStudySection>
@@ -311,8 +312,9 @@ export const IviProgram = () => {
           </CaseStudyCardGrid>
 
           <div className="flex flex-col gap-4 mt-8">
-            <div className="relative overflow-hidden rounded-lg bg-white border border-border aspect-video shadow-sm">
+            <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
               <iframe
+                loading="lazy"
                 src="https://player.vimeo.com/video/500506619?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
@@ -326,14 +328,14 @@ export const IviProgram = () => {
             <CaseStudyImageGrid
               columns={1}
               images={[
-                { src: '/images/casestudies/ivi/Term4_Final presentation.004.jpeg', alt: 'Reflection slide on what the 2040 framing unlocked in stakeholder conversations' },
-                { src: '/images/casestudies/ivi/25 (2).jpg', alt: 'Team synthesis wall mapping systemic drivers of the hidden workload' },
-                { src: '/images/casestudies/ivi/15 (2).jpg', alt: 'Service journey sketch for the I.V.I. Program' }
+                { src: '/images/casestudies/ivi/term4-final-presentation-004.webp', alt: 'Reflection slide on what the 2040 framing unlocked in stakeholder conversations' },
+                { src: '/images/casestudies/ivi/25-2.webp', alt: 'Team synthesis wall mapping systemic drivers of the hidden workload' },
+                { src: '/images/casestudies/ivi/15-2.webp', alt: 'Service journey sketch for the I.V.I. Program' }
               ]}
             />
           </div>
         </CaseStudySection>
       </CaseStudyLayout>
-    </div>
+    </>
   );
 };

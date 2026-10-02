@@ -1,10 +1,8 @@
-import { useState, useEffect, ReactNode, useRef } from 'react';
+import { useState, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { Sidebar } from '@/components/Sidebar';
 import { SidebarToggle } from '@/components/SidebarToggle';
 import { cn } from '@/lib/utils';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { Mouse } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { SidebarProvider } from './SidebarContext';
 
 interface PageLayoutProps {
@@ -14,148 +12,62 @@ interface PageLayoutProps {
 
 export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const isMobile = useIsMobile();
-  const autoCloseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const toggleSidebar = () => {
-    if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
-    const newState = !sidebarOpen;
-    setSidebarOpen(newState);
-    if (newState) {
-      document.body.classList.add('sidebar-open');
-    } else {
-      document.body.classList.remove('sidebar-open');
-    }
+  const setOpen = (open: boolean) => {
+    setSidebarOpen(open);
+    document.body.classList.toggle('sidebar-open', open);
   };
-
-  const closeSidebar = () => {
-    if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
-    setSidebarOpen(false);
-    document.body.classList.remove('sidebar-open');
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Use functional update to avoid dependency on isScrolling
-      setIsScrolling(prev => {
-        if (!prev) return true;
-        return prev;
-      });
-
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-      scrollTimeoutRef.current = setTimeout(() => {
-        setIsScrolling(false);
-      }, 300);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-    };
-  }, []);
 
   return (
-    <SidebarProvider isOpen={sidebarOpen} isScrolling={isScrolling}>
-      <div className="antialiased font-inter text-text-primary bg-bg-primary">
-        {/* Film grain — above content, below modals (z-1000) so lightbox images stay clean */}
-        <div
-          aria-hidden="true"
-          className="grain-overlay pointer-events-none fixed inset-0 z-[60] opacity-[0.05] mix-blend-overlay"
-        />
-
-        {/* Sidebar Status Area (Toggle or Scroll Icon) */}
-        <div
-          className={cn(
-            "fixed z-50 transition-all duration-500 ease-in-out",
-            sidebarOpen
-              ? "left-[260px] top-6"
-              : "left-4 lg:left-6 top-0 h-20 lg:h-auto lg:top-6 flex items-center"
-          )}
-        >
-          <AnimatePresence mode="wait">
-            {!isScrolling ? (
-              <motion.div
-                key="toggle"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-              >
-                <SidebarToggle
-                  isOpen={sidebarOpen}
-                  onClick={toggleSidebar}
-                  minimal={isMobile}
-                  isVisible={true}
-                  className={cn(sidebarOpen ? "hidden lg:flex" : "")}
-                />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="mouse"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 0.6, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
-                className="p-2.5 rounded-xl border border-white/10 flex items-center justify-center min-h-[44px] min-w-[44px] bg-transparent backdrop-blur-sm"
-              >
-                <Mouse className="w-5 h-5 text-accent-primary animate-bounce-subtle" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Brand header — name top-right. Translucent bar on mobile; on desktop
-            it's just the name (no bar) so it reads as a corner mark. */}
-        <header className="mobile-header fixed top-0 left-0 right-0 h-20 flex flex-row items-center justify-end px-6 lg:px-12 xl:px-16 z-20 pointer-events-none bg-bg-primary/80 backdrop-blur-sm lg:bg-transparent lg:backdrop-blur-none">
-          <h1 className="font-dm-sans text-lg sm:text-xl font-bold tracking-wider text-foreground pointer-events-auto [text-shadow:0_1px_3px_rgba(0,0,0,0.6)] lg:[text-shadow:0_1px_10px_rgba(0,0,0,0.55)]">
-            <a href="/" className="hover:text-accent-primary focus:text-accent-primary transition-colors duration-300">
-              amaan
-            </a>
-          </h1>
+    <SidebarProvider isOpen={sidebarOpen}>
+      <div className="text-text-primary bg-bg-primary">
+        {/* Top bar: menu toggle on the left, name on the right. */}
+        <header className="fixed top-0 inset-x-0 z-20 h-16 flex items-center justify-between px-4 lg:px-6 bg-bg-primary/95 border-b border-border lg:bg-transparent lg:border-0 pointer-events-none">
+          <SidebarToggle
+            isOpen={sidebarOpen}
+            onClick={() => setOpen(!sidebarOpen)}
+            className={cn('pointer-events-auto', sidebarOpen && 'lg:invisible')}
+          />
+          <Link
+            to="/"
+            className="pointer-events-auto font-serif text-lg font-medium text-text-primary hover:text-accent-primary transition-colors lg:pr-6"
+          >
+            Amaan Khan
+          </Link>
         </header>
 
-        {/* Sidebar Overlay (Mobile) */}
         {sidebarOpen && (
           <div
-            className="lg:hidden fixed inset-0 bg-black/50 z-30 backdrop-blur-sm transition-opacity duration-300"
-            onClick={closeSidebar}
+            className="lg:hidden fixed inset-0 bg-black/30 z-30"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
           />
         )}
 
         <div className="w-full max-w-full overflow-clip min-h-screen relative">
-          {/* Ambient glow anchored to the top of the page so the hero has a focal point */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-[120vh]"
-            style={{
-              background:
-                'radial-gradient(ellipse 80% 55% at 50% -10%, hsl(var(--accent-primary) / 0.07), transparent 70%)',
-            }}
-          />
+          <Sidebar isOpen={sidebarOpen} onClose={() => setOpen(false)} />
 
-          <Sidebar
-            isOpen={sidebarOpen}
-            onClose={closeSidebar}
-            onMouseEnter={() => {
-              if (autoCloseTimeoutRef.current) clearTimeout(autoCloseTimeoutRef.current);
-            }}
-          />
-
-          {/* Main Content Area */}
-          <div className={cn(
-            "w-full min-h-screen transition-all duration-300 ease-in-out",
-            sidebarOpen ? "lg:pl-80" : "lg:pl-0"
-          )}>
-            <main className={cn(
-              "px-3 sm:px-4 md:px-6 lg:px-12 xl:px-16 pt-20 pb-16 sm:pb-20 md:pb-24 lg:pt-12 lg:pb-12 max-w-7xl mx-auto",
-              className
-            )}>
+          <div className={cn("w-full min-h-screen transition-[padding] duration-200", sidebarOpen ? "lg:pl-80" : "lg:pl-0")}>
+            <main
+              className={cn(
+                "px-4 sm:px-6 lg:px-12 xl:px-16 pt-24 pb-16 lg:pt-20 max-w-7xl mx-auto",
+                className
+              )}
+            >
               {children}
             </main>
+
+            <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 pb-10">
+              <div className="border-t border-border pt-6 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-sm text-text-secondary">
+                <nav aria-label="Contact and links" className="flex flex-wrap gap-x-6 gap-y-2">
+                  <a className="link-ink" href="mailto:mdamkhan.work@gmail.com">mdamkhan.work@gmail.com</a>
+                  <a className="link-ink" href="https://www.linkedin.com/in/readmetxt/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                  <a className="link-ink" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
+                  <Link className="link-ink" to="/play">Play</Link>
+                </nav>
+                <p className="text-text-tertiary">© 2026 Amaan Khan</p>
+              </div>
+            </footer>
           </div>
         </div>
       </div>

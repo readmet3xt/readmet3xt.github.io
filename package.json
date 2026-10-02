@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node -e \"require('fs').writeFileSync('public/version.json', JSON.stringify({version: Date.now().toString(), timestamp: new Date().toISOString()}))\" && vite build",
+    "build": "vite build",
+    "check:assets": "node scripts/check-assets.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"

@@ -14,15 +14,15 @@ import {
 
 export const Softwire = () => {
   return (
-    <div className="theme-softwire contents">
+    <>
       <CaseStudyLayout
         title="LNER App Clip"
-        description="Designing for Users Running to Catch Trains — How I led UX design for LNER's instant ticket booking experience."
+        description="Designing for people running to catch a train: how I co-led UX for LNER's instant ticket booking App Clip."
       >
         <CaseStudyHero
-          eyebrow="Case Study · Softwire × LNER · App Clip · 2022"
+          eyebrow="Softwire × LNER, London, 2022"
           title="Designing for Users Running to Catch Trains"
-          subtitle="How I led UX design for LNER's instant ticket booking experience"
+          subtitle="How I co-led UX design for LNER's instant ticket booking experience"
           pills={[
             'App Clip',
             'Mobile Design',
@@ -192,7 +192,7 @@ export const Softwire = () => {
             images={[
               { src: '/images/casestudies/softwire/14-4-product-initial.webp', alt: 'Initial product design before iteration', caption: 'The initial design — before testing surfaced the issues.' },
               { src: '/images/casestudies/softwire/16-feedback-form.webp', alt: 'Feedback form used to capture usability findings', caption: 'Capturing structured feedback from each test session.' },
-              { src: '/images/casestudies/softwire/14-9-product-final-ticket.webp', alt: 'Final confirmation screen — platform number and QR code visible immediately', caption: 'The reworked confirmation screen: platform number and QR code front and centre.' },
+              { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Final confirmation screen — platform number and QR code visible immediately', caption: 'The reworked confirmation screen: platform number and QR code front and centre.' },
               { src: '/images/casestudies/softwire/18-notifications.webp', alt: 'Live journey notifications design', caption: 'Live, demonstrably up-to-date journey notifications.' }
             ]}
           />
@@ -219,7 +219,7 @@ export const Softwire = () => {
               { src: '/images/casestudies/softwire/14-6-product-ticket-selection.webp', alt: 'Final product — ticket selection screen', caption: 'Ticket selection' },
               { src: '/images/casestudies/softwire/14-7-product-selecting-train.webp', alt: 'Final product — selecting a train', caption: 'Selecting a train' },
               { src: '/images/casestudies/softwire/14-8-product-checkout-page.webp', alt: 'Final product — checkout page', caption: 'Checkout' },
-              { src: '/images/casestudies/softwire/14-9-product-final-ticket.webp', alt: 'Final product — final ticket screen', caption: 'Final ticket' },
+              { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Final product — final ticket screen', caption: 'Final ticket' },
               { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Final product screen', caption: 'Final UI' },
               { src: '/images/casestudies/softwire/14-2-product-final.webp', alt: 'Final product screen', caption: 'Final UI' },
               { src: '/images/casestudies/softwire/14-3-product-final.webp', alt: 'Final product screen', caption: 'Final UI' }
@@ -317,6 +317,6 @@ export const Softwire = () => {
           </CaseStudyCardGrid>
         </CaseStudySection>
       </CaseStudyLayout>
-    </div>
+    </>
   );
 };

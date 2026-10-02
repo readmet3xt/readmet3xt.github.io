@@ -14,13 +14,13 @@ import {
 
 export const Pebble = () => {
   return (
-    <div className="theme-pebble contents">
+    <>
       <CaseStudyLayout
         title="Pebble"
         description="What If Workplace Happiness Was Designed, Not Hoped For? A VISA-backed virtual companion that transforms how remote teams combat isolation."
       >
         <CaseStudyHero
-          eyebrow="Case Study · Pebble · RCA × VISA Innovation Centre · 2021"
+          eyebrow="RCA × VISA Innovation Centre, 2021"
           title="What If Workplace Happiness Was Designed, Not Hoped For?"
           subtitle="A VISA-backed virtual companion that transforms how remote teams combat isolation"
           pills={[
@@ -48,14 +48,15 @@ export const Pebble = () => {
               'User Testing',
             ],
           }}
-          heroImage="/images/casestudies/pebble/1-cover-pic.jpg"
+          heroImage="/images/casestudies/pebble/1-cover-pic.webp"
           heroImageAlt="Pebble virtual wellbeing companion"
         />
 
         <CaseStudySection>
           <div className="flex flex-col gap-4 mt-8">
-            <div className="relative overflow-hidden rounded-lg bg-white border border-border aspect-video shadow-sm">
+            <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
               <iframe
+                loading="lazy"
                 src="https://player.vimeo.com/video/561000617?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
@@ -97,7 +98,7 @@ export const Pebble = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/2-problem.jpg', alt: 'The problem: workplace wellbeing in decline', caption: 'The problem' }
+              { src: '/images/casestudies/pebble/2-problem.webp', alt: 'The problem: workplace wellbeing in decline', caption: 'The problem' }
             ]}
           />
         </CaseStudySection>
@@ -125,9 +126,9 @@ export const Pebble = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/3-workshop.jpg', alt: 'Co-creation workshop overview', caption: 'Workshop' },
-              { src: '/images/casestudies/pebble/6-research.jpg', alt: 'Research synthesis across 1,200+ responses', caption: 'Research' },
-              { src: '/images/casestudies/pebble/7-co-creation-workshop.jpg', alt: 'Co-creation workshop with participants', caption: 'Co-creation workshop' }
+              { src: '/images/casestudies/pebble/3-workshop.webp', alt: 'Co-creation workshop overview', caption: 'Workshop' },
+              { src: '/images/casestudies/pebble/6-research.webp', alt: 'Research synthesis across 1,200+ responses', caption: 'Research' },
+              { src: '/images/casestudies/pebble/7-co-creation-workshop.webp', alt: 'Co-creation workshop with participants', caption: 'Co-creation workshop' }
             ]}
           />
         </CaseStudySection>
@@ -156,8 +157,8 @@ export const Pebble = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/4-why-explorer.jpg', alt: 'Why we focused on the Explorer', caption: 'Why the Explorer' },
-              { src: '/images/casestudies/pebble/5-persona.jpg', alt: 'The Explorer persona: meet James', caption: 'Persona' }
+              { src: '/images/casestudies/pebble/4-why-explorer.webp', alt: 'Why we focused on the Explorer', caption: 'Why the Explorer' },
+              { src: '/images/casestudies/pebble/5-persona.webp', alt: 'The Explorer persona: meet James', caption: 'Persona' }
             ]}
           />
         </CaseStudySection>
@@ -204,9 +205,9 @@ export const Pebble = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/8-how-deep-work-works.jpg', alt: 'How deep work and flow features work', caption: 'How deep work works' },
-              { src: '/images/casestudies/pebble/9-cafe.jpg', alt: 'The Virtual Café concept', caption: 'Virtual Café' },
-              { src: '/images/casestudies/pebble/10-how-it-works.jpg', alt: 'How Pebble works end to end', caption: 'How it works' }
+              { src: '/images/casestudies/pebble/8-how-deep-work-works.webp', alt: 'How deep work and flow features work', caption: 'How deep work works' },
+              { src: '/images/casestudies/pebble/9-cafe.webp', alt: 'The Virtual Café concept', caption: 'Virtual Café' },
+              { src: '/images/casestudies/pebble/10-how-it-works.webp', alt: 'How Pebble works end to end', caption: 'How it works' }
             ]}
           />
         </CaseStudySection>
@@ -245,8 +246,8 @@ export const Pebble = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/11-feedback.jpg', alt: 'User testing feedback', caption: 'Feedback' },
-              { src: '/images/casestudies/pebble/12-iterate-again.jpg', alt: 'Iterating again on the prototype', caption: 'Iterate again' }
+              { src: '/images/casestudies/pebble/11-feedback.webp', alt: 'User testing feedback', caption: 'Feedback' },
+              { src: '/images/casestudies/pebble/12-iterate-again.webp', alt: 'Iterating again on the prototype', caption: 'Iterate again' }
             ]}
           />
         </CaseStudySection>
@@ -269,7 +270,7 @@ export const Pebble = () => {
             columns={1}
             aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/pebble/13-highlight-of-workshops-in-total.jpeg', alt: 'Highlights from all workshops in total', caption: 'Workshop highlights' }
+              { src: '/images/casestudies/pebble/13-highlight-of-workshops-in-total.webp', alt: 'Highlights from all workshops in total', caption: 'Workshop highlights' }
             ]}
           />
         </CaseStudySection>
@@ -318,6 +319,6 @@ export const Pebble = () => {
           </CaseStudyParagraph>
         </CaseStudySection>
       </CaseStudyLayout>
-    </div>
+    </>
   );
 };

@@ -90,7 +90,9 @@ export const PresentationModal = ({
       if (delta === 0) return;
       const key = delta > 0 ? 'ArrowRight' : 'ArrowLeft';
       try {
-        win.document.dispatchEvent(new win.KeyboardEvent('keydown', { key, code: key, bubbles: true }));
+        // The iframe's own constructor, so the event belongs to the deck's realm.
+        const FrameKeyboardEvent = (win as Window & typeof globalThis).KeyboardEvent;
+        win.document.dispatchEvent(new FrameKeyboardEvent('keydown', { key, code: key, bubbles: true }));
       } catch {
         return;
       }

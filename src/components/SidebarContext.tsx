@@ -2,7 +2,6 @@ import { createContext, useContext, ReactNode } from 'react';
 
 interface SidebarContextType {
     isOpen: boolean;
-    isScrolling: boolean;
 }
 
 export const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
@@ -15,16 +14,8 @@ export const useSidebar = () => {
     return context;
 };
 
-interface SidebarProviderProps {
-    children: ReactNode;
-    isOpen: boolean;
-    isScrolling: boolean;
-}
-
-export const SidebarProvider = ({ children, isOpen, isScrolling }: SidebarProviderProps) => {
-    return (
-        <SidebarContext.Provider value={{ isOpen, isScrolling }}>
-            {children}
-        </SidebarContext.Provider>
-    );
-};
+export const SidebarProvider = ({ children, isOpen }: { children: ReactNode; isOpen: boolean }) => (
+    <SidebarContext.Provider value={{ isOpen }}>
+        {children}
+    </SidebarContext.Provider>
+);

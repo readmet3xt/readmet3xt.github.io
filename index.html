@@ -4,73 +4,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Single Page Apps for GitHub Pages -->
-  <!-- https://github.com/rafgraph/spa-github-pages -->
-  <script type="text/javascript">
-    (function (l) {
-      if (l.search[1] === '/') {
-        var decoded = l.search.slice(1).split('&').map(function (s) {
-          return s.replace(/~and~/g, '&')
-        }).join('?');
-        window.history.replaceState(null, null,
-          l.pathname.slice(0, -1) + decoded + l.hash
-        );
-      }
-    }(window.location))
-  </script>
-
-  <!-- Performance & SEO optimizations -->
-  <!-- Canonical is managed per-route by react-helmet (see src/components/SEO.tsx) -->
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#ff4757" />
-
-  <!-- Critical SEO -->
-  <title>Amaan Khan — Product Designer & Engineer</title>
-  <meta name="description"
-    content="Product Designer who ships code. RCA-trained (Royal College of Art), full-stack engineer. Solo-built Otagon, an AI gaming companion live on web and PWA. Open to Bangalore, Mumbai, or Remote roles.">
-  <meta name="keywords"
-    content="Product Designer, Design Engineer, UX Designer, AI Product Designer, React Developer, TypeScript, Full-Stack Designer, RCA, Royal College of Art, Service Design, Hyderabad, Bangalore, Remote">
+  <meta name="theme-color" content="#F5F1EA" />
+  <meta name="color-scheme" content="light" />
   <meta name="author" content="Amaan Khan" />
 
-  <!-- Enhanced Open Graph -->
-  <meta property="og:title" content="Amaan Khan — Product Designer & Engineer" />
-  <meta property="og:description"
-    content="Product Designer who ships code. RCA-trained, full-stack engineer. Solo-built the Otagon AI gaming companion. Open to Bangalore / Mumbai / Remote." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://readmet3xt.github.io/" />
-  <meta property="og:image" content="https://readmet3xt.github.io/social-card.png">
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <!-- Per-route values are written into a copy of this file for every page at build time
+       (staticRoutes in vite.config.ts); react-helmet takes over the data-rh tags at runtime. -->
+  <title>Amaan Khan, Service &amp; Product Designer</title>
+  <meta name="description" content="Service and product designer trained at the Royal College of Art. I design end-to-end services and build them: research with VISA, BCG and WWT × Airbnb, founding designer at KoinBasket, and products I designed and built myself." data-rh="true" />
+  <link rel="canonical" href="https://readmet3xt.github.io/" data-rh="true" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Amaan Khan — Product Designer & Engineer" />
-  <meta name="twitter:description" content="RCA-trained designer who ships React. Solo-built Otagon AI SaaS. Open to work." />
-  <meta name="twitter:image" content="https://readmet3xt.github.io/social-card.png">
+  <meta property="og:title" content="Amaan Khan, Service &amp; Product Designer" data-rh="true" />
+  <meta property="og:description" content="Service and product designer trained at the Royal College of Art. I design end-to-end services and build them: research with VISA, BCG and WWT × Airbnb, founding designer at KoinBasket, and products I designed and built myself." data-rh="true" />
+  <meta property="og:type" content="website" data-rh="true" />
+  <meta property="og:url" content="https://readmet3xt.github.io/" data-rh="true" />
+  <meta property="og:image" content="https://readmet3xt.github.io/social-card.png" data-rh="true" />
+  <meta property="og:image:width" content="1200" data-rh="true" />
+  <meta property="og:image:height" content="630" data-rh="true" />
 
-  <!-- Optimized Google Fonts - Critical fonts only -->
+  <meta name="twitter:card" content="summary_large_image" data-rh="true" />
+  <meta name="twitter:title" content="Amaan Khan, Service &amp; Product Designer" data-rh="true" />
+  <meta name="twitter:description" content="Service and product designer trained at the Royal College of Art. I design end-to-end services and build them: research with VISA, BCG and WWT × Airbnb, founding designer at KoinBasket, and products I designed and built myself." data-rh="true" />
+  <meta name="twitter:image" content="https://readmet3xt.github.io/social-card.png" data-rh="true" />
+
+  <!-- Two families: Newsreader (headings) + Schibsted Grotesk (text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Only load essential fonts initially -->
-  <link rel="preload"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Bricolage+Grotesque:wght@400;700;800&family=Syne:wght@700;800&family=Instrument+Sans:wght@600;700&family=Instrument+Serif:ital@0;1&display=swap"
-    as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Bricolage+Grotesque:wght@400;700;800&family=Syne:wght@700;800&family=Instrument+Sans:wght@600;700&family=Instrument+Serif:ital@0;1&display=swap"
-      rel="stylesheet">
-  </noscript>
-  <!-- Load additional fonts after initial render -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript>
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap"
-      rel="stylesheet">
-  </noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
+  <!-- Paper on first paint, before the stylesheet arrives -->
+  <style>html{background:#F5F1EA;color:#1A1916}</style>
   <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 
 <body>

@@ -1,175 +1,82 @@
-/* Component-Specific Styles */
+/* Component styles. Quiet by design: no glow, lift or tilt. */
 
 @layer components {
-  /* Legacy cursor styles - removed, now handled in CustomCursor component */
-
   /* Sidebar */
   .sidebar {
-    background-color: hsl(var(--bg-secondary));
+    background-color: hsl(var(--bg-primary));
     border-right: 1px solid hsl(var(--border));
-    box-shadow: 2px 0px 15px hsl(var(--bg-primary) / 0.2);
   }
 
-  /* Sidebar links - Optimized with pseudo-element */
   .sidebar-link {
     position: relative;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, border-color 0.3s ease;
-    border: 1px solid transparent;
-  }
-  
-  .sidebar-link::before {
-    content: '';
-    position: absolute;
-    inset: -5px;
-    border-radius: inherit;
-    box-shadow: 0 4px 12px hsl(var(--bg-primary) / 0.3);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-    pointer-events: none;
-  }
-  
-  .sidebar-link:hover {
-    background-color: hsl(var(--bg-primary));
-    border-color: hsl(var(--border));
-    transform: translateX(8px);
-  }
-  
-  .sidebar-link:hover::before {
-    opacity: 1;
-  }
-  
-  .sidebar-link.active {
-    background-color: hsl(var(--bg-primary));
-    border-color: hsl(var(--accent-primary));
-    box-shadow: 0 0 20px hsl(var(--accent-primary) / 0.4);
-  }
-  
-  .sidebar-link img {
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .sidebar-link:hover img {
-    transform: scale(1.1);
-  }
-  
-  /* Sidebar footer links */
-  .footer-link {
-    transition: all 0.3s ease;
-    position: relative;
-  }
-  
-  .footer-link:hover {
-    color: hsl(var(--accent-hover));
-    transform: translateY(-2px);
+    border-radius: var(--radius);
+    transition: background-color 0.15s ease, color 0.15s ease;
   }
 
-  /* Project Cards - Optimized with pseudo-element for GPU acceleration */
+  .sidebar-link:hover {
+    background-color: hsl(var(--bg-secondary));
+  }
+
+  .sidebar-link.active {
+    background-color: hsl(var(--bg-tertiary));
+    color: hsl(var(--text-primary));
+  }
+
+  .footer-link {
+    transition: color 0.15s ease;
+  }
+
+  .footer-link:hover {
+    color: hsl(var(--accent-primary));
+  }
+
+  /* Project cards */
   .project-card {
     position: relative;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
-    border: 1px solid hsl(var(--border));
-    will-change: transform;
-  }
-  
-  /* Shadow on pseudo-element - can be opacity animated (GPU accelerated) */
-  .project-card::before {
-    content: '';
-    position: absolute;
-    inset: -10px;
-    border-radius: inherit;
-    box-shadow: 0 20px 40px hsl(var(--bg-primary) / 0.15), 0 0 30px hsl(var(--accent-primary) / 0.3);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-    pointer-events: none;
-  }
-  
-  .project-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: hsl(var(--accent-primary) / 0.5);
-  }
-  
-  .project-card:hover::before {
-    opacity: 1;
-  }
-  
-  .project-card img {
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .project-card:hover img {
-    transform: scale(1.05);
   }
 
-  /* Image Grid Items for Play page - Optimized */
+  /* Play page grid */
   .image-grid-item {
     position: relative;
-    will-change: transform;
-    transition: transform 0.2s ease;
-    background-color: transparent;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
     cursor: pointer;
   }
-  
-  .image-grid-item::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: inherit;
-    box-shadow: 0 10px 25px hsl(var(--bg-primary) / 0.2), 0 0 20px hsl(var(--accent-primary) / 0.5);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-    pointer-events: none;
-  }
-  
-  .image-grid-item:hover {
-    transform: translateY(-8px);
-  }
-  
-  .image-grid-item:hover::before {
-    opacity: 1;
-  }
-  
+
   .image-grid-item img {
     width: 100%;
     height: 300px;
     object-fit: contain;
   }
 
-  /* Timeline Styles for About page */
+  /* About page timeline */
   .timeline-container {
-    border-left: 2px solid hsl(var(--border));
-    margin-left: 8px;
+    border-left: 1px solid hsl(var(--border));
+    margin-left: 6px;
     padding-left: 2rem;
   }
-  
+
   .timeline-item {
     position: relative;
     padding-bottom: 2.5rem;
     margin-bottom: 1.5rem;
   }
-  
+
   .timeline-item:last-child {
     padding-bottom: 0;
     margin-bottom: 0;
   }
-  
+
   .timeline-item::before {
     content: '';
     position: absolute;
-    left: -2.5rem;
-    top: 5px;
-    width: 12px;
-    height: 12px;
+    left: calc(-2rem - 6px);
+    top: 0.55rem;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
-    background-color: hsl(var(--accent-primary));
+    background-color: hsl(var(--text-primary));
     border: 2px solid hsl(var(--bg-primary));
-    z-index: 10;
   }
 
   .timeline-item ul {
@@ -185,7 +92,6 @@
     margin-bottom: 0;
   }
 
-  /* Chart Container */
   .chart-container {
     position: relative;
     width: 100%;
@@ -197,54 +103,42 @@
     border: 1px solid hsl(var(--border));
   }
 
-  /* Theme Toggle */
-  .theme-toggle-btn {
-    color: hsl(var(--text-tertiary));
-    transition: color 0.2s ease;
-  }
-  
-  .theme-toggle-btn.active, .theme-toggle-btn:hover {
-    color: hsl(var(--text-primary));
-  }
-  
-  /* Hamburger Menu Icon Styling */
+  /* Hamburger icon */
   #hamburger-btn span {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
-  
+
   #hamburger-btn.open span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
-  
+
   #hamburger-btn.open span:nth-child(2) {
     opacity: 0;
   }
-  
+
   #hamburger-btn.open span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
-  
+
   .mobile-header {
     background-color: hsl(var(--bg-primary));
   }
 
-  /* Copy Toast */
+  /* Copy confirmation (About page) */
   .copy-toast {
     position: fixed;
     bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: hsl(var(--accent-primary));
-    color: white;
+    background-color: hsl(var(--text-primary));
+    color: hsl(var(--bg-primary));
     padding: 10px 20px;
-    border-radius: 20px;
-    font-family: 'Inter', sans-serif;
+    border-radius: var(--radius);
     font-size: 0.9rem;
     z-index: 101;
-    transition: bottom 0.5s ease-in-out;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.3s ease-in-out;
   }
-  
+
   .copy-toast.show {
     bottom: 2rem;
   }

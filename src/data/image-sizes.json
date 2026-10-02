@@ -1,0 +1,622 @@
+{
+"/images/amaan-portrait.webp": [
+1080,
+1080
+],
+"/images/casestudies/ivi/1-bad-health-960w.webp": [
+960,
+540
+],
+"/images/casestudies/ivi/1-bad-health.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/15-2.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/18.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/19.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/2-good-mental-health.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/20.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/25-2.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/29-2.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/3-initial-hmw.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/4-why-this-happens.webp": [
+2000,
+1125
+],
+"/images/casestudies/ivi/5-research-findings.webp": [
+1920,
+1080
+],
+"/images/casestudies/ivi/6-1-journey-map-1.webp": [
+1920,
+1080
+],
+"/images/casestudies/ivi/6-2-journey-map-2.webp": [
+1920,
+1080
+],
+"/images/casestudies/ivi/7-sensei.webp": [
+1920,
+1080
+],
+"/images/casestudies/ivi/core77-student-notable-listing.webp": [
+2000,
+1306
+],
+"/images/casestudies/ivi/term4-final-presentation-004.webp": [
+1920,
+1080
+],
+"/images/casestudies/ivi/term4-final-presentation-012.webp": [
+1920,
+1080
+],
+"/images/casestudies/koinbasket/1-login.webp": [
+2000,
+1425
+],
+"/images/casestudies/koinbasket/10-fantasy-league-home.webp": [
+2000,
+1578
+],
+"/images/casestudies/koinbasket/10-mobile-home.webp": [
+1560,
+3804
+],
+"/images/casestudies/koinbasket/11-email-template.webp": [
+646,
+1393
+],
+"/images/casestudies/koinbasket/11-mobile-onboarding.webp": [
+2000,
+4453
+],
+"/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.webp": [
+1440,
+1373
+],
+"/images/casestudies/koinbasket/13-bitbuddy-create-a-basket-influencer.webp": [
+1440,
+1821
+],
+"/images/casestudies/koinbasket/14-checkout-successful-page.webp": [
+2000,
+1500
+],
+"/images/casestudies/koinbasket/15-mobile-new-design.webp": [
+430,
+885
+],
+"/images/casestudies/koinbasket/16-new-homescreen.webp": [
+1440,
+1532
+],
+"/images/casestudies/koinbasket/17-new-product-live-trading.webp": [
+2000,
+1907
+],
+"/images/casestudies/koinbasket/18-1-mobile-feature-highlight-1.webp": [
+1290,
+2796
+],
+"/images/casestudies/koinbasket/18-3-mobile-feature-highlight-3.webp": [
+1290,
+2796
+],
+"/images/casestudies/koinbasket/18-4-mobile-feature-highlight-4.webp": [
+1290,
+2796
+],
+"/images/casestudies/koinbasket/18-5-mobile-feature-highlight-5.webp": [
+1290,
+2796
+],
+"/images/casestudies/koinbasket/18-6-mobile-feature-highlight-6.webp": [
+1290,
+2796
+],
+"/images/casestudies/koinbasket/2-home-page-960w.webp": [
+960,
+683
+],
+"/images/casestudies/koinbasket/2-home-page.webp": [
+1440,
+1024
+],
+"/images/casestudies/koinbasket/3-lofi-home.webp": [
+2000,
+1662
+],
+"/images/casestudies/koinbasket/4-lofi-2.webp": [
+2000,
+1500
+],
+"/images/casestudies/koinbasket/5-login-verification.webp": [
+1440,
+1024
+],
+"/images/casestudies/koinbasket/6-mobile-basket-page.webp": [
+780,
+2486
+],
+"/images/casestudies/koinbasket/7-checkout.webp": [
+1440,
+1024
+],
+"/images/casestudies/koinbasket/8-basket-management.webp": [
+1440,
+1024
+],
+"/images/casestudies/koinbasket/9-fantasy-league-team-creator.webp": [
+2000,
+1402
+],
+"/images/casestudies/lawx/lawx-1.webp": [
+2000,
+1497
+],
+"/images/casestudies/lawx/lawx-2.webp": [
+2000,
+1462
+],
+"/images/casestudies/lawx/lawx-3.webp": [
+2000,
+1297
+],
+"/images/casestudies/lawx/lawx-4.webp": [
+2000,
+1381
+],
+"/images/casestudies/lawx/lawx-5.webp": [
+2000,
+1375
+],
+"/images/casestudies/lawx/lawx-6-960w.webp": [
+960,
+701
+],
+"/images/casestudies/lawx/lawx-6.webp": [
+2000,
+1461
+],
+"/images/casestudies/lawx/lawx-7.webp": [
+2000,
+1447
+],
+"/images/casestudies/lawx/lawx-8.webp": [
+2000,
+1444
+],
+"/images/casestudies/otagon/1-home-page-landing-960w.webp": [
+960,
+520
+],
+"/images/casestudies/otagon/1-home-page-landing.webp": [
+1618,
+877
+],
+"/images/casestudies/otagon/10-user-query-on-home-page.webp": [
+543,
+1045
+],
+"/images/casestudies/otagon/11-ai-response.webp": [
+545,
+1042
+],
+"/images/casestudies/otagon/12-subtabs-1.webp": [
+541,
+1056
+],
+"/images/casestudies/otagon/13-subtabs-2.webp": [
+543,
+848
+],
+"/images/casestudies/otagon/14-sidebar.webp": [
+548,
+1047
+],
+"/images/casestudies/otagon/15-game-info-modal.webp": [
+536,
+1047
+],
+"/images/casestudies/otagon/16-gallery.webp": [
+539,
+1052
+],
+"/images/casestudies/otagon/16b-game-library.webp": [
+541,
+1051
+],
+"/images/casestudies/otagon/17-subtabs-in-desktop.webp": [
+1628,
+1029
+],
+"/images/casestudies/otagon/18-ai-response-with-suggestion-tabs.webp": [
+524,
+1045
+],
+"/images/casestudies/otagon/3-mobile-logged-in-home.webp": [
+539,
+1048
+],
+"/images/casestudies/otagon/4-control-sheet.webp": [
+549,
+1054
+],
+"/images/casestudies/otagon/5-gaming-hq-home-page.webp": [
+550,
+1052
+],
+"/images/casestudies/otagon/6-credits-modal.webp": [
+547,
+1049
+],
+"/images/casestudies/otagon/7-connected-to-pc.webp": [
+543,
+1045
+],
+"/images/casestudies/otagon/8-pc-connector.webp": [
+888,
+686
+],
+"/images/casestudies/otagon/9-pro-features.webp": [
+531,
+589
+],
+"/images/casestudies/pebble/1-cover-pic-960w.webp": [
+960,
+540
+],
+"/images/casestudies/pebble/1-cover-pic.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/10-how-it-works.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/11-feedback.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/12-iterate-again.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/13-highlight-of-workshops-in-total.webp": [
+1600,
+900
+],
+"/images/casestudies/pebble/2-problem.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/3-workshop.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/4-why-explorer.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/5-persona.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/6-research.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/7-co-creation-workshop.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/8-how-deep-work-works.webp": [
+2000,
+1125
+],
+"/images/casestudies/pebble/9-cafe.webp": [
+2000,
+1125
+],
+"/images/casestudies/screenshot/1-landing-page-hero-960w.webp": [
+960,
+580
+],
+"/images/casestudies/screenshot/1-landing-page-hero.webp": [
+1671,
+1010
+],
+"/images/casestudies/screenshot/2-after-login-gallery.webp": [
+1433,
+981
+],
+"/images/casestudies/screenshot/3-connector-wifi.webp": [
+1870,
+964
+],
+"/images/casestudies/screenshot/4-gallery-websocket.webp": [
+1417,
+1101
+],
+"/images/casestudies/screenshot/5-mobile-pwa-install.webp": [
+513,
+1047
+],
+"/images/casestudies/softwire/1-problem-960w.webp": [
+960,
+640
+],
+"/images/casestudies/softwire/1-problem.webp": [
+1536,
+1024
+],
+"/images/casestudies/softwire/10-opportunity.webp": [
+1874,
+750
+],
+"/images/casestudies/softwire/11-app-clip-flow-chart.webp": [
+2048,
+1448
+],
+"/images/casestudies/softwire/12-lofi-wireframe.webp": [
+1536,
+1024
+],
+"/images/casestudies/softwire/13-usability-testing.webp": [
+2048,
+958
+],
+"/images/casestudies/softwire/14-1-product-final.webp": [
+638,
+1115
+],
+"/images/casestudies/softwire/14-2-product-final.webp": [
+390,
+844
+],
+"/images/casestudies/softwire/14-3-product-final.webp": [
+638,
+1115
+],
+"/images/casestudies/softwire/14-4-product-initial.webp": [
+390,
+844
+],
+"/images/casestudies/softwire/14-5-product-final-landing.webp": [
+638,
+1115
+],
+"/images/casestudies/softwire/14-6-product-ticket-selection.webp": [
+638,
+1115
+],
+"/images/casestudies/softwire/14-7-product-selecting-train.webp": [
+638,
+1115
+],
+"/images/casestudies/softwire/14-8-product-checkout-page.webp": [
+638,
+1115
+],
+"/images/casestudies/softwire/15-seat-finder.webp": [
+1920,
+1080
+],
+"/images/casestudies/softwire/16-feedback-form.webp": [
+1920,
+1080
+],
+"/images/casestudies/softwire/17-seat-finder-2.webp": [
+1920,
+1080
+],
+"/images/casestudies/softwire/18-notifications.webp": [
+1013,
+2048
+],
+"/images/casestudies/softwire/2-solution.webp": [
+1024,
+1024
+],
+"/images/casestudies/softwire/3-1-ideation-workshop.webp": [
+1536,
+1024
+],
+"/images/casestudies/softwire/3-2-workshop-crazy-8.webp": [
+1456,
+1068
+],
+"/images/casestudies/softwire/4-results-of-workshop.webp": [
+1345,
+991
+],
+"/images/casestudies/softwire/5-results-of-workshop-activity-2.webp": [
+1471,
+1052
+],
+"/images/casestudies/softwire/6-fly-on-the-wall.webp": [
+1024,
+1024
+],
+"/images/casestudies/softwire/7-fly-on-the-wall-results.webp": [
+1024,
+1536
+],
+"/images/casestudies/softwire/8-problems-found.webp": [
+2000,
+1125
+],
+"/images/casestudies/softwire/9-fly-on-the-wall-pics.webp": [
+1941,
+425
+],
+"/images/casestudies/stampede/1-problem-statement-960w.webp": [
+960,
+540
+],
+"/images/casestudies/stampede/1-problem-statement.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/10-workshop-in-progress.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/11-results.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/12-team.webp": [
+1500,
+1000
+],
+"/images/casestudies/stampede/2-how-the-service-works.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/3-all-animals.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/4-how-they-match.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/5-how-the-workshop-works.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/6-workshop-1.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/7-workshop-2.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/8-workshop-3.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/9-1-workshop-activity-1.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/9-2-workshop-activity-2.webp": [
+2000,
+1125
+],
+"/images/casestudies/stampede/9-3-workshop-activity-3.webp": [
+2000,
+1125
+],
+"/images/casestudies/versus/1-landing-page-desktop-960w.webp": [
+960,
+611
+],
+"/images/casestudies/versus/1-landing-page-desktop.webp": [
+1494,
+951
+],
+"/images/casestudies/versus/2-tournament-creator-mobile.webp": [
+513,
+1052
+],
+"/images/casestudies/versus/3-loading-tournament.webp": [
+514,
+1076
+],
+"/images/casestudies/versus/4-tournament-page.webp": [
+573,
+1054
+],
+"/images/casestudies/versus/5-spectator-view-mobile.webp": [
+565,
+1056
+],
+"/images/casestudies/versus/6-match-started-admin.webp": [
+777,
+970
+],
+"/images/casestudies/versus/7-tournament-home-page-admin.webp": [
+1728,
+1045
+],
+"/media/01629ecc-44e7-4071-9ee4-a06eb02513e6.webp": [
+1920,
+1080
+],
+"/media/0736d768-e432-4e8f-9f40-63d5ed1184d9.webp": [
+1600,
+1200
+],
+"/media/2a61f154-ffd9-4cf1-94c4-485003fa7bf7.webp": [
+1111,
+786
+],
+"/media/5725b438-c77c-4083-8262-28762f4edd6b.webp": [
+1200,
+1186
+],
+"/media/5db3cc76-4297-4638-857d-e6c393a2301f.webp": [
+793,
+475
+],
+"/media/5eac971a-d6da-497c-802d-9a8fe988101d.webp": [
+1920,
+1123
+],
+"/media/6480d52d-bda6-4ccd-822f-09f8ccb52719.webp": [
+1853,
+965
+],
+"/media/656f68a3-f2e8-46d8-b948-1d4067ef6177.webp": [
+1115,
+786
+],
+"/media/65bad7d1-8b06-4cb4-be16-272191a6ca5e.webp": [
+1920,
+768
+],
+"/media/6cf04e87-7fbf-42b6-a3e1-d4ece5d92936.webp": [
+1600,
+1200
+],
+"/media/985a3494-cd3e-4ecc-b5cb-9cd85f42ae41.webp": [
+1187,
+1114
+],
+"/media/cbc6c741-57a8-4b3e-be19-fce8a11350a8.webp": [
+1400,
+1279
+],
+"/media/cdea7fd2-c477-4821-966c-da2e1bfc4eeb.webp": [
+1920,
+1088
+]
+}

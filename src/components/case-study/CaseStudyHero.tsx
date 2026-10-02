@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
-import { ProjectOverviewCard } from '@/components/ProjectOverviewCard';
+import { imageSize } from '@/lib/imageSize';
 
 interface CaseStudyHeroProps {
   title: string;
   subtitle?: string;
+  /** Plain context line above the title, e.g. "RCA × VISA Innovation Centre, 2021". */
   eyebrow?: string;
-  pills: string[];
+  /** @deprecated no longer rendered; kept so existing pages compile. */
+  pills?: string[];
   intro: string;
   externalLink?: string;
   externalLabel?: string;
@@ -22,35 +22,17 @@ interface CaseStudyHeroProps {
   heroImageAlt?: string;
 }
 
-const heroVariants = {
-  initial: { opacity: 0, y: 30 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94] as const,
-    },
-  },
-};
-
-const pillVariants = {
-  initial: { opacity: 0, scale: 0.8 },
-  animate: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 0.3 + i * 0.05,
-      duration: 0.3,
-    },
-  }),
-};
+const Fact = ({ term, children }: { term: string; children: ReactNode }) => (
+  <div>
+    <dt className="text-sm text-text-tertiary">{term}</dt>
+    <dd className="mt-1 text-text-primary">{children}</dd>
+  </div>
+);
 
 export const CaseStudyHero = ({
   title,
   subtitle,
   eyebrow,
-  pills,
   intro,
   externalLink,
   externalLabel,
@@ -58,112 +40,55 @@ export const CaseStudyHero = ({
   heroImage,
   heroImageAlt,
 }: CaseStudyHeroProps) => {
-  return (
-    <header className="space-y-6">
-      {/* Title & Subtitle */}
-      <motion.div variants={heroVariants}>
-        {eyebrow && (
-          <p className="font-ibm-plex-mono text-[11px] sm:text-xs uppercase tracking-widest text-accent-primary mb-3">
-            {eyebrow}
-          </p>
-        )}
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight text-balance">
-          {title}
-        </h1>
-        {subtitle && (
-          <p className="text-lg sm:text-xl text-text-secondary font-medium">
-            {subtitle}
-          </p>
-        )}
-      </motion.div>
+  const [role, ...whatIDid] = overview.role;
 
-      {/* External Link */}
+  return (
+    <header className="space-y-8">
+      <div className="max-w-[68ch]">
+        {eyebrow && <p className="text-sm text-text-tertiary mb-4">{eyebrow}</p>}
+        <h1 className="text-4xl sm:text-5xl">{title}</h1>
+        {subtitle && <p className="mt-4 text-xl text-text-secondary leading-snug">{subtitle}</p>}
+      </div>
+
       {externalLink && (
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.4 }}
-        >
-          <a
-            href={externalLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[hsl(var(--accent-primary)/0.1)] text-[hsl(var(--accent-primary))] hover:bg-[hsl(var(--accent-primary)/0.2)] transition-colors text-sm font-semibold uppercase tracking-wide"
-          >
-            <ExternalLink className="w-4 h-4" />
-            {externalLabel || externalLink.replace(/^https?:\/\//, '')}
+        <p>
+          <a href={externalLink} target="_blank" rel="noopener noreferrer" className="link-ink">
+            {externalLabel || externalLink.replace(/^https?:\/\//, '')} ↗
           </a>
-        </motion.div>
+        </p>
       )}
 
-      {/* Pills */}
-      <motion.div
-        className="flex flex-wrap gap-2"
-        initial="initial"
-        animate="animate"
-      >
-        {pills.map((pill, i) => (
-          <motion.span
-            key={pill}
-            className="case-study-pill"
-            variants={pillVariants}
-            custom={i}
-          >
-            {pill}
-          </motion.span>
-        ))}
-      </motion.div>
+      <p className="max-w-[68ch] text-lg leading-relaxed text-text-primary">{intro}</p>
 
-      {/* Introduction */}
-      <motion.p
-        className="text-base sm:text-lg leading-relaxed text-text-primary"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-      >
-        {intro}
-      </motion.p>
+      <dl className="grid gap-x-12 gap-y-6 sm:grid-cols-2 border-t border-border pt-6">
+        {role && <Fact term="Role">{role}</Fact>}
+        <Fact term="When">{overview.timeline}</Fact>
+        {whatIDid.length > 0 && (
+          <Fact term="What I did">
+            <ul className="list-disc pl-5 space-y-1 text-text-secondary">
+              {whatIDid.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </Fact>
+        )}
+        {overview.team && <Fact term="Team">{overview.team}</Fact>}
+        {overview.recognition && <Fact term="Recognition">{overview.recognition}</Fact>}
+        {overview.tools.length > 0 && <Fact term="Methods and tools">{overview.tools.join(', ')}</Fact>}
+      </dl>
 
-      {/* Project Overview Card */}
-      <motion.div
-        className="pt-2"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.5 }}
-      >
-        <ProjectOverviewCard
-          role={overview.role}
-          team={overview.team}
-          timeline={overview.timeline}
-          recognition={overview.recognition}
-          tools={overview.tools}
-        />
-      </motion.div>
-
-      {/* Hero Image */}
       {heroImage && (
-        <motion.figure
-          className="group relative overflow-hidden rounded-xl pt-2"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }}
-        >
-          <div className="w-full aspect-[16/9] rounded-xl flex items-center justify-center overflow-hidden shadow-[0_18px_48px_hsl(var(--bg-primary)/0.2)] relative bg-gradient-to-br from-card via-card to-bg-secondary">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_hsl(var(--accent-primary)/0.16),_transparent_60%)]" />
-            <motion.img
-              src={heroImage}
-              alt={heroImageAlt || title}
-              data-lightbox-caption={heroImageAlt || title}
-              className="w-full h-full object-cover object-top absolute inset-0 z-10 lightbox-image cursor-zoom-in transition-transform duration-500 group-hover:scale-[1.015]"
-              loading="eager"
-              onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: heroImage } }))}
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).style.display = 'none';
-              }}
-              whileTap={{ scale: 0.96, transition: { type: 'spring', stiffness: 400, damping: 15 } }}
-            />
-          </div>
-        </motion.figure>
+        <figure>
+          <img
+            src={heroImage}
+            {...imageSize(heroImage)}
+            alt={heroImageAlt || title}
+            data-lightbox-caption={heroImageAlt || title}
+            className="w-full aspect-[16/9] object-cover object-top rounded-sm lightbox-image cursor-zoom-in"
+            loading="eager"
+            {...({ fetchpriority: 'high' } as Record<string, string>)}
+            decoding="async"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src: heroImage } }))}
+          />
+        </figure>
       )}
     </header>
   );

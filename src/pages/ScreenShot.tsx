@@ -22,7 +22,7 @@ export const ScreenShot = () => {
       externalLabel="Visit ScreenShot"
     >
       <CaseStudyHero
-        eyebrow="Side Project · ScreenShot · Solo Design + Build · 2 Weeks"
+        eyebrow="Side project, 2026"
         title="Hotkey to Cloud, in One Step"
         subtitle="A pairing-code screenshot grabber that pipes from PC to web in a single tap"
         pills={[
@@ -54,7 +54,7 @@ export const ScreenShot = () => {
         }}
         externalLink="https://otagon2.github.io/ScreenShot/"
         externalLabel="Visit ScreenShot"
-        heroImage="/screenshot/1-landing-page-hero.png"
+        heroImage="/images/casestudies/screenshot/1-landing-page-hero.webp"
         heroImageAlt="ScreenShot landing page hero section"
       />
 
@@ -94,7 +94,7 @@ export const ScreenShot = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImage
-          src="/screenshot/2-after-login-gallery.png"
+          src="/images/casestudies/screenshot/2-after-login-gallery.webp"
           alt="The gallery page right after logging in"
           caption="After login: a clean gallery wall, ready for incoming screenshots"
           aspectRatio="aspect-auto"
@@ -137,7 +137,7 @@ export const ScreenShot = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/screenshot/3-connector-wifi.png"
+          src="/images/casestudies/screenshot/3-connector-wifi.webp"
           alt="The desktop connector pairing with the web app over Wi-Fi"
           caption="Phase 1 in action: the connector pairs with the web app over Wi-Fi"
           aspectRatio="aspect-auto"
@@ -181,7 +181,7 @@ export const ScreenShot = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/screenshot/4-gallery-websocket.png"
+          src="/images/casestudies/screenshot/4-gallery-websocket.webp"
           alt="Gallery populated live with images arriving over the WebSocket relay"
           caption="Inbox-by-default gallery filling up live as screenshots stream in over the WebSocket relay"
           aspectRatio="aspect-auto"
@@ -259,7 +259,7 @@ export const ScreenShot = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImage
-          src="/screenshot/5-mobile-pwa-install.png"
+          src="/images/casestudies/screenshot/5-mobile-pwa-install.webp"
           alt="Mobile gallery view with the PWA install prompt"
           caption="The payoff on mobile: the gallery as an installable PWA on your phone"
           aspectRatio="aspect-auto"
