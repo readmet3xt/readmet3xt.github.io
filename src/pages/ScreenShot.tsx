@@ -4,313 +4,166 @@ import {
   CaseStudyHero,
   CaseStudySection,
   CaseStudyParagraph,
-  CaseStudyQuote,
+  CaseStudyInsight,
   CaseStudyList,
   CaseStudyImage,
-  CaseStudyImageGrid,
   CaseStudyCard,
   CaseStudyCardGrid,
-  CaseStudyStatsGrid,
 } from '@/components/case-study';
 
 export const ScreenShot = () => {
   return (
-    <CaseStudyLayout
-      title="ScreenShot"
-      description="Press F1 on your PC, see it on your phone — a universal hotkey-driven screenshot grabber with per-user folders, lightbox, and PWA install."
-      externalLink="https://otagon2.github.io/ScreenShot/"
-      externalLabel="Visit ScreenShot"
-    >
+    <CaseStudyLayout title="ScreenShot" externalLink="https://otagon2.github.io/ScreenShot/" externalLabel="Try ScreenShot">
       <CaseStudyHero
         eyebrow="Side project, 2026"
-        title="Hotkey to Cloud, in One Step"
-        subtitle="A pairing-code screenshot grabber that pipes from PC to web in a single tap"
-        pills={[
-          'Product Design',
-          'React + TypeScript',
-          'Vite',
-          'Supabase',
-          'WebSocket',
-          'PWA',
-        ]}
-        intro="A spin-off from the Otagon platform: a focused, standalone web app that pairs with the Otagon PC client over a 6-digit code, lets you press a single hotkey, and drops the screenshot into a cloud gallery — organised by folder, viewable anywhere, installable as a PWA."
+        title="ScreenShot: from your PC to your phone with one key"
+        subtitle="A pairing-code screenshot tool that sends what's on your PC screen to a gallery on your phone"
+        intro="A spin-off from Otagon. ScreenShot pairs with a small Windows app using a 6-digit code. Press one key on the PC and the screenshot lands in a gallery on your phone, sorted into folders and installable as an app."
         overview={{
           role: [
-            'Solo Designer & Developer',
-            'Product scope, UX, and visual identity',
-            'Frontend engineering (Vite + React + TS)',
-            'Supabase storage + RLS + auth',
+            'Designer and developer, on my own',
+            'Product scope, UX and visual identity',
+            'Front end in React and TypeScript',
+            'Supabase storage, security rules and sign-in',
           ],
-          timeline: '2 weeks — v0 release',
-          recognition: 'Per-user folders, batch select/move/delete, PWA install on iOS/Android/Desktop',
-          tools: [
-            'Vite + React + TypeScript',
-            'Tailwind CSS',
-            'Supabase (Auth + Storage + Postgres)',
-            'WebSocket relay (shared with Otagon)',
-            'vite-plugin-pwa',
-            'GitHub Pages',
-          ],
+          timeline: 'May to June 2026; first version (v0) in about two weeks',
+          recognition: 'Folders, batch select, move and delete, installable on Android, iOS and desktop',
+          tools: ['Vite, React and TypeScript', 'Tailwind CSS', 'Supabase (Auth, Storage, Postgres)', 'WebSocket relay shared with Otagon', 'Electron desktop app', 'PWA'],
         }}
         externalLink="https://otagon2.github.io/ScreenShot/"
-        externalLabel="Visit ScreenShot"
+        externalLabel="otagon2.github.io/ScreenShot"
         heroImage="/images/casestudies/screenshot/1-landing-page-hero.webp"
-        heroImageAlt="ScreenShot landing page hero section"
+        heroImageAlt="ScreenShot landing page"
       />
 
-      {/* The Problem */}
-      <CaseStudySection title="The Problem">
+      <CaseStudySection title="Context">
         <CaseStudyParagraph lead>
-          PC screenshots are useful exactly when you're not at your PC.
-          Sending one to your phone is a process: open Discord, attach the
-          file, send it to yourself, unlock your phone, and save it down.
-          Five steps for something that should be one keypress.
+          You often need a PC screenshot when you're away from the PC. Getting one to your phone takes five steps:
+          open Discord, attach the file, send it to yourself, unlock your phone and save it.
         </CaseStudyParagraph>
 
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Current Pain Points">
-            <CaseStudyList items={[
-              { title: 'Self-DMs in Discord', description: 'Cluttered, compressed, not searchable' },
-              { title: 'Cloud sync folders', description: 'Sync is slow, files end up everywhere' },
-              { title: 'Snipping Tool', description: 'Stays on the PC, doesn\'t leave the device' },
-              { title: 'No mobile pickup', description: 'Nothing optimised for grabbing screens on the go' },
-            ]} />
-          </CaseStudyCard>
+        <CaseStudyList items={[
+          { title: 'Messaging yourself', description: 'is cluttered and compresses the image' },
+          { title: 'Cloud sync folders', description: 'are slow, and files end up everywhere' },
+          { title: 'The Snipping Tool', description: 'keeps the image on the PC' },
+        ]} />
 
-          <CaseStudyCard title="The Core Insight">
-            <CaseStudyParagraph>
-              The hotkey is the magic. Everything else — pairing, uploading, organising —
-              should melt into one button on the PC and one gallery on the phone.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
+        <CaseStudyInsight>
+          It should take one key. Pairing, uploading and sorting should stay out of the way.
+        </CaseStudyInsight>
       </CaseStudySection>
 
-      {/* The Vision */}
-      <CaseStudySection title="The Vision">
-        <CaseStudyParagraph lead>
-          Press <strong>F1</strong>. The screenshot appears in your phone gallery within seconds —
-          organised, searchable, deletable, and shareable.
-        </CaseStudyParagraph>
-
+      <CaseStudySection title="What I made">
         <CaseStudyImage
           src="/images/casestudies/screenshot/2-after-login-gallery.webp"
-          alt="The gallery page right after logging in"
-          caption="After login: a clean gallery wall, ready for incoming screenshots"
-          aspectRatio="aspect-auto"
+          alt="The gallery after signing in"
+          caption="The gallery after signing in, ready for new screenshots."
         />
-      </CaseStudySection>
 
-      {/* How It Was Built */}
-      <CaseStudySection title="How It Was Built">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Phase 1 — Pairing Flow">
+          <CaseStudyCard title="Pairing">
             <CaseStudyParagraph>
-              Reused Otagon's 6-digit pairing-code pattern: the desktop client generates
-              the code; the web app enters it; both join the same WebSocket relay room.
-              No accounts to link, no servers to install.
+              I reused Otagon's 6-digit pairing: the desktop app shows a code, you type it into the web app, and
+              both join the same relay room. No accounts to link and nothing to install on the phone.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 2 — Gallery & Folders">
+          <CaseStudyCard title="Gallery and folders">
             <CaseStudyParagraph>
-              Inbox + named folders, hover-to-reveal selection checkboxes, and a top
-              action bar that only appears when you have something selected. Designed
-              around the muscle memory of Mail and Photos apps.
+              Everything lands in an inbox unless you file it. Folders are there when you want them. Selection
+              checkboxes and an action bar appear only when you need them, like in Mail or Photos.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 3 — Lightbox & Destructive Actions">
+          <CaseStudyCard title="Careful deleting">
             <CaseStudyParagraph>
-              Click a thumb to open full-size; arrow keys to navigate; Esc to close.
-              Every destructive action — delete, cascade-delete folder — runs through
-              a typed confirmation dialog that surfaces the exact count.
+              Deleting a file or a whole folder goes through a confirmation that shows exactly how many screenshots
+              will go. It's slower on purpose.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 4 — PWA & GH Pages Deploy">
+          <CaseStudyCard title="Installable everywhere">
             <CaseStudyParagraph>
-              Installable PWA via vite-plugin-pwa, auto-deployed on every push to main
-              with the SPA-on-Pages 404 redirect trick so deep links survive a hard refresh.
+              It installs as a PWA on Android, iOS and desktop. iOS Safari has no install prompt, so iPhone users
+              get a short "Share, then Add to Home Screen" guide instead of a broken button.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyImage
           src="/images/casestudies/screenshot/3-connector-wifi.webp"
-          alt="The desktop connector pairing with the web app over Wi-Fi"
-          caption="Phase 1 in action: the connector pairs with the web app over Wi-Fi"
-          aspectRatio="aspect-auto"
+          alt="The desktop app pairing with the web app"
+          caption="The desktop app pairing with the web app."
         />
-      </CaseStudySection>
-
-      {/* Key Design Decisions */}
-      <CaseStudySection title="Key Design Decisions">
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Reuse the Otagon Relay">
-            <CaseStudyParagraph>
-              Standing up a second WebSocket server would have doubled the infra and
-              halved the testing velocity. Reusing the relay I already run for{' '}
-              <Link to="/otagon" className="text-accent-primary hover:underline">Otagon</Link> let
-              ScreenShot ship in v0 with zero ops overhead, by piggybacking on a proven protocol.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Folders Optional, Inbox by Default">
-            <CaseStudyParagraph>
-              Every screenshot lands in Inbox unless filed. Power users get folders;
-              new users get a single, scrollable wall of recent grabs. The same UI
-              works for both.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Selection Mode, Not Right-Click">
-            <CaseStudyParagraph>
-              Mobile-first means no right-click. Hover-to-reveal checkboxes promote into
-              a persistent selection bar — the same gesture works on touch and on desktop.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Storage RLS by User Prefix">
-            <CaseStudyParagraph>
-              Every file lives at <code>&lt;user_id&gt;/…</code>, with bucket-level RLS
-              policies enforcing that prefix. No way to leak a screenshot to another user,
-              even if the client-side check breaks.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
 
         <CaseStudyImage
           src="/images/casestudies/screenshot/4-gallery-websocket.webp"
-          alt="Gallery populated live with images arriving over the WebSocket relay"
-          caption="Inbox-by-default gallery filling up live as screenshots stream in over the WebSocket relay"
-          aspectRatio="aspect-auto"
+          alt="The gallery filling up as screenshots arrive"
+          caption="The gallery filling up as screenshots arrive through the relay."
         />
       </CaseStudySection>
 
-      {/* The Hard Problems */}
-      <CaseStudySection title="The Hard Problems">
+      <CaseStudySection title="Decisions and hard parts">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Cascade Deletes Without Orphan Files">
+          <CaseStudyCard title="Reuse the Otagon relay">
             <CaseStudyParagraph>
-              Deleting a folder needs to remove every screenshot inside <em>and</em> the
-              associated storage objects. Solved by listing storage children first, then
-              relying on <code>ON DELETE CASCADE</code> at the row level — so the cascade
-              never leaves a file paying for storage with no record pointing at it.
+              A second WebSocket server would have doubled the infrastructure. Reusing the relay I already run for{' '}
+              <Link to="/otagon" className="link-ink">Otagon</Link> meant the first version needed no new
+              operations work.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Deep Links on GitHub Pages">
+          <CaseStudyCard title="Storage that can't leak">
             <CaseStudyParagraph>
-              GH Pages doesn't know about SPA routes. The site uses the canonical
-              404 → query-string → history.replaceState trick so <code>/gallery</code>
-              survives a hard refresh.
+              Every file is stored under the owner's user ID, and storage rules enforce it. Even if a check in the
+              app failed, one person's screenshots couldn't reach another.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="iOS Install Hint UX">
+          <CaseStudyCard title="No orphaned files">
             <CaseStudyParagraph>
-              iOS Safari doesn't expose the install prompt. ScreenShot detects the
-              platform and shows a dedicated Share → Add to Home Screen hint dialog
-              instead of a broken install button.
+              Deleting a folder removes the stored files first, then the database rows cascade, so no file is left
+              taking up storage with nothing pointing at it.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Service Worker + Auth Tokens">
+          <CaseStudyCard title="Offline shell, live sign-in">
             <CaseStudyParagraph>
-              Pre-caching the app shell was a hazard for auth state. Solved by
-              scoping the SW to public assets only and letting Supabase auth handle
-              its own session storage outside the cache.
+              Caching the app for offline use risked caching sign-in state. The service worker only caches public
+              files and leaves sessions to Supabase.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
       </CaseStudySection>
 
-      {/* Results */}
-      <CaseStudySection title="Results">
-        <CaseStudyStatsGrid
-          stats={[
-            { value: '1 key', label: 'PC to phone', sublabel: 'F1 = upload + sync' },
-            { value: '< 2s', label: 'Capture to gallery', sublabel: 'Over typical home Wi-Fi' },
-            { value: '3', label: 'Install targets', sublabel: 'Android, iOS, Desktop PWA' },
-            { value: '6 digits', label: 'To pair a device', sublabel: 'No account linking, nothing to install on the phone' },
-          ]}
-        />
-
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Shipped">
-            <CaseStudyList items={[
-              'Pairing-code flow shared with Otagon desktop client',
-              'Per-user folders with cascade delete',
-              'Multi-select with batch move + batch delete',
-              'Lightbox with keyboard navigation',
-              'Installable PWA with offline app shell',
-            ]} />
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Status">
-            <CaseStudyParagraph>
-              v0 is live and tested end to end against the Otagon desktop client I
-              already ship. It runs on Otagon's existing WebSocket relay — which is
-              why it took two weeks instead of two months. The open decision is whether
-              it stays a standalone tool or becomes a feature inside Otagon Pro.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
+      <CaseStudySection title="Where it is now">
+        <CaseStudyParagraph>
+          The first version is live and tested end to end with the Otagon desktop client. The open question is
+          whether it stays a separate tool or becomes part of Otagon Pro.
+        </CaseStudyParagraph>
 
         <CaseStudyImage
           src="/images/casestudies/screenshot/5-mobile-pwa-install.webp"
-          alt="Mobile gallery view with the PWA install prompt"
-          caption="The payoff on mobile: the gallery as an installable PWA on your phone"
-          aspectRatio="aspect-auto"
+          alt="The gallery installed as an app on a phone"
+          caption="The gallery installed on a phone."
         />
       </CaseStudySection>
 
-      {/* What I Learned */}
-      <CaseStudySection title="What I Learned">
+      <CaseStudySection title="What I learned">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Piggyback before you platform">
+          <CaseStudyCard title="Reuse before you build a platform">
             <CaseStudyParagraph>
-              Reusing Otagon's relay made v0 possible in a fortnight. The "right" answer
-              of namespacing or splitting infra can come once usage justifies it.
+              Borrowing Otagon's relay made a quick first version possible. Splitting the infrastructure can wait
+              until usage calls for it.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Confirmation is a feature, not friction">
+          <CaseStudyCard title="Good defaults beat options">
             <CaseStudyParagraph>
-              Typed confirmation dialogs on destructive actions are slower — deliberately.
-              The dialog names the exact file count you're about to destroy, so the cost
-              is always visible before you pay it. Speed isn't always the goal.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Defaults beat customisation">
-            <CaseStudyParagraph>
-              Inbox-by-default meant folders never felt mandatory. The first-run
-              experience stayed empty-state friendly without sacrificing power users.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="PWAs still pay off">
-            <CaseStudyParagraph>
-              Installable, offline shell, and a real icon on the home screen — without
-              an app-store submission. For a tool like this, native would have been overkill.
+              With the inbox as the default, folders never felt compulsory, and the first visit stayed simple.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
-      </CaseStudySection>
-
-      {/* What's Next */}
-      <CaseStudySection title="What's Next">
-        <CaseStudyParagraph lead>
-          Next milestones: drag-and-drop foldering, an F2 capture flow for region
-          selection, and a paid tier that lines up with the broader Otagon Pro vision.
-        </CaseStudyParagraph>
-
-        <CaseStudyQuote>
-          The win was making the hotkey feel like magic — everything else is just
-          plumbing that should stay out of the way.
-        </CaseStudyQuote>
       </CaseStudySection>
     </CaseStudyLayout>
   );

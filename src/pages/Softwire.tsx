@@ -3,9 +3,8 @@ import {
   CaseStudyHero,
   CaseStudySection,
   CaseStudyParagraph,
-  CaseStudyQuote,
+  CaseStudyInsight,
   CaseStudyList,
-  CaseStudyImage,
   CaseStudyImageGrid,
   CaseStudyCard,
   CaseStudyCardGrid,
@@ -15,303 +14,265 @@ import {
 export const Softwire = () => {
   return (
     <>
-      <CaseStudyLayout
-        title="LNER App Clip"
-        description="Designing for people running to catch a train: how I co-led UX for LNER's instant ticket booking App Clip."
-      >
+      <CaseStudyLayout title="LNER App Clip">
         <CaseStudyHero
           eyebrow="Softwire × LNER, London, 2022"
-          title="Designing for Users Running to Catch Trains"
-          subtitle="How I co-led UX design for LNER's instant ticket booking experience"
-          pills={[
-            'App Clip',
-            'Mobile Design',
-            'Usability Testing',
-            'LNER',
-            'Internship',
-          ]}
-          intro="You're sprinting through the station, dodging crowds, watching platform boards nervously. You reach the ticket kiosk — there's a queue. You try downloading the app — it's 200MB. The departure countdown ticks. During my Softwire internship I co-led UX design — one of two design interns driving the project — for LNER's App Clip: a sub-10MB, instant-launch solution for exactly this situation."
+          title="Designing for people running for a train"
+          subtitle="An instant-ticket App Clip for LNER, co-led during my Softwire design internship"
+          intro="Picture yourself hurrying through the station, checking the departure boards. There's a queue at the ticket machine, and the full app is a 200 MB download. During my internship at Softwire, another design intern and I co-led UX for LNER's App Clip: an under-10 MB experience that opens instantly, for exactly this moment."
           overview={{
             role: [
-              'UX/UI Designer — co-led the project with one other design intern',
-              'Drove the design process for a 7-strong developer team',
+              'UX/UI designer, co-leading the project with one other design intern',
+              'Drove the design process for a team of 7 developers',
               'Co-facilitated a 13-person ideation workshop',
               'Ran usability testing with 9 participants',
             ],
-            timeline: '8-week summer internship, July–August 2022',
-            recognition: 'Core booking flow validated and handed to engineering within the internship timeline',
-            tools: [
-              'Figma',
-              'Usability Testing',
-              'Apple App Clip',
-              'National Rail Guidelines',
-            ],
+            timeline: '8-week summer internship, July to August 2022',
+            recognition: 'Core booking flow tested and handed to engineering within the internship',
+            tools: ['Ideation workshop', 'Field observation', 'Flow mapping', 'Usability testing', 'Figma', 'Apple App Clips', 'National Rail guidelines'],
           }}
           heroImage="/images/casestudies/softwire/14-5-product-final-landing.webp"
-          heroImageAlt="LNER App Clip landing screen — final product design"
+          heroImageAlt="LNER App Clip landing screen, final design"
         />
 
-        {/* The Challenge */}
-        <CaseStudySection title="The Challenge">
+        <CaseStudySection title="Context">
           <CaseStudyParagraph lead>
-            App Clips are Apple's answer to instant-launch experiences: sub-10MB, no installation,
-            focused on a single task. Perfect for time-pressured contexts in theory. But designing
-            for users literally running to catch trains is a different problem entirely.
+            App Clips are Apple's instant experiences: under 10 MB, nothing to install, one task. That suits
+            people in a hurry, but designing for someone running for a train is its own problem.
           </CaseStudyParagraph>
 
           <CaseStudyList items={[
-            { title: '10MB size limit', description: 'Demanded ruthless prioritisation' },
-            { title: 'Instant launch', description: 'Meant zero onboarding' },
-            { title: 'National Rail compliance', description: 'Added a layer of industry requirements on top' },
+            { title: 'A 10 MB limit', description: 'meant hard choices about what to include' },
+            { title: 'Instant launch', description: 'meant no onboarding at all' },
+            { title: 'National Rail rules', description: 'added industry requirements on top' },
           ]} />
 
-          <CaseStudyQuote>
-            What information is essential versus overwhelming? How do you build trust for payment in 30 seconds?
-          </CaseStudyQuote>
+          <CaseStudyParagraph>
+            Two questions shaped the work: what information is essential, and what's too much? And how do you
+            earn enough trust for someone to pay in 30 seconds?
+          </CaseStudyParagraph>
 
           <CaseStudyImageGrid
             columns={1}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/1-problem.webp', alt: 'The problem — passengers running to catch trains with no fast way to buy a ticket', caption: 'The problem: time-pressured passengers with no fast, lightweight way to buy a ticket.' },
-              { src: '/images/casestudies/softwire/2-solution.webp', alt: 'The solution — an instant-launch, sub-10MB App Clip', caption: 'The solution: a sub-10MB, instant-launch App Clip focused on a single task.' },
-              { src: '/images/casestudies/softwire/10-opportunity.webp', alt: 'The opportunity space for an App Clip ticket experience', caption: 'The opportunity: an instant ticketing experience tailored to the station context.' }
+              { src: '/images/casestudies/softwire/10-opportunity.webp', alt: 'Journey map showing where the App Clip fits', caption: 'Where an App Clip could help in the station journey.' },
             ]}
           />
         </CaseStudySection>
 
-        {/* Research & Discovery */}
-        <CaseStudySection title="Research & Discovery">
+        <CaseStudySection title="Research">
           <CaseStudyParagraph lead>
-            We started with an ideation workshop — 13 participants across LNER stakeholders, designers,
-            developers, and project managers — then took the research to the field.
-          </CaseStudyParagraph>
-
-          <CaseStudyParagraph>
-            Desk research set the baseline: travellers already rated the ease of buying a ticket
-            positively at <strong>82%</strong> (Department for Transport / TfL). So the real gap wasn't
-            the transaction — it was getting <em>live, trustworthy</em> journey information under pressure.
-            The recurring demand from passengers was that information should feel "demonstrably live."
-          </CaseStudyParagraph>
-
-          <CaseStudyParagraph>
-            Fly-on-the-wall observations at a mainline London station told the real story. Users checking
-            platform boards repeatedly. Anxiety spiking when platforms weren't announced until the last minute.
-            Fumbling with paper tickets or slow apps under pressure. The stress wasn't hypothetical —
-            it was visible and consistent.
-          </CaseStudyParagraph>
-
-          <CaseStudyParagraph>
-            From research, five priorities emerged that users consistently named as non-negotiable:
-            <strong> live times, delays, platform details, prices, and journey duration</strong>. Everything else was noise.
+            We started with an ideation workshop for 13 people: LNER stakeholders, designers, developers and
+            project managers. Then we went to the station.
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
             columns={1}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/3-1-ideation-workshop.webp', alt: 'The 13-person ideation workshop in session', caption: 'Co-facilitating a 13-person ideation workshop with LNER stakeholders, designers and developers.' },
-              { src: '/images/casestudies/softwire/3-2-workshop-crazy-8.webp', alt: 'Workshop in progress — Crazy 8s sketching exercise', caption: 'Workshop in progress: a Crazy 8s rapid-sketching exercise.' },
-              { src: '/images/casestudies/softwire/4-results-of-workshop.webp', alt: 'Results of the workshop — clustered ideas', caption: 'Results of the workshop: clustered ideas and emerging directions.' },
-              { src: '/images/casestudies/softwire/5-results-of-workshop-activity-2.webp', alt: 'Results of workshop activity 2', caption: 'Outputs from the second workshop activity.' },
-              { src: '/images/casestudies/softwire/6-fly-on-the-wall.webp', alt: 'Fly-on-the-wall observation method at the station', caption: 'Fly-on-the-wall observations at St. Pancras to see real passenger behaviour.' },
-              { src: '/images/casestudies/softwire/9-fly-on-the-wall-pics.webp', alt: 'Photographs from fly-on-the-wall station observations', caption: 'Field photographs captured during station observations.' },
-              { src: '/images/casestudies/softwire/7-fly-on-the-wall-results.webp', alt: 'Synthesised results from fly-on-the-wall observations', caption: 'Synthesised observation findings: anxiety spikes around platform announcements.' },
-              { src: '/images/casestudies/softwire/8-problems-found.webp', alt: 'Key problems found through research', caption: 'The core problems found: the gap was live, trustworthy journey information under pressure.' }
+              { src: '/images/casestudies/softwire/3-2-workshop-crazy-8.webp', alt: 'Crazy 8s sketching in the ideation workshop', caption: 'Crazy 8s in the ideation workshop.' },
+            ]}
+          />
+
+          <CaseStudyImageGrid
+            columns={2}
+            images={[
+              { src: '/images/casestudies/softwire/4-results-of-workshop.webp', alt: 'Sketches from the workshop on the wall', caption: 'The sketches that came out of it.' },
+              { src: '/images/casestudies/softwire/5-results-of-workshop-activity-2.webp', alt: 'Sticky notes sorting what information is useful', caption: 'Sorting what information people find useful, and what they would do with it.' },
+            ]}
+          />
+
+          <CaseStudyParagraph>
+            Desk research gave us a baseline: travellers already rated buying a ticket as easy, at{' '}
+            <strong>82%</strong> (Department for Transport / TfL). So the gap wasn't paying. It was getting live
+            journey information you can trust while under pressure. Passengers kept asking for information that
+            was "demonstrably live".
+          </CaseStudyParagraph>
+
+          <CaseStudyParagraph>
+            Watching people at a London mainline station confirmed it. They checked the departure boards again
+            and again, got anxious when the platform wasn't announced until the last minute, and fumbled with
+            paper tickets or slow apps.
+          </CaseStudyParagraph>
+
+          <CaseStudyImageGrid
+            columns={1}
+            images={[
+              { src: '/images/casestudies/softwire/9-fly-on-the-wall-pics.webp', alt: 'Photos from our station observations', caption: 'Photos from our observations at the station.' },
+              { src: '/images/casestudies/softwire/8-problems-found.webp', alt: 'What users prioritised: live updates, disruptions, platform, prices and checkout', caption: 'What people told us mattered most.' },
             ]}
           />
         </CaseStudySection>
 
-        {/* Design Process */}
-        <CaseStudySection title="Design Process">
+        <CaseStudySection title="Insight">
+          <CaseStudyInsight>
+            On the platform, people need five things: live times, delays, the platform, the price and the journey length.
+          </CaseStudyInsight>
+          <CaseStudyParagraph>
+            Everything else could wait, so the design started from those five.
+          </CaseStudyParagraph>
+        </CaseStudySection>
+
+        <CaseStudySection title="What we made">
           <CaseStudyStatsGrid
             stats={[
-              { value: '8', label: 'Weeks', sublabel: 'Total timeline' },
-              { value: '13', label: 'Stakeholders', sublabel: 'In workshop' },
-              { value: '9', label: 'Users', sublabel: 'Tested with' },
-              { value: '7', label: 'Developers', sublabel: 'Collaborated' },
+              { value: '8', label: 'Weeks', sublabel: 'The whole project' },
+              { value: '13', label: 'People', sublabel: 'In the ideation workshop' },
+              { value: '9', label: 'Participants', sublabel: 'In usability testing' },
+              { value: '7', label: 'Developers', sublabel: 'On the build team' },
             ]}
           />
 
           <CaseStudyCardGrid columns={2}>
-            <CaseStudyCard title="Weeks 1–2: Understanding">
+            <CaseStudyCard title="Weeks 1 and 2: understanding">
               <CaseStudyParagraph>
-                Ideation workshop, affinity mapping, sketching. One clear direction: a minimal interface
-                showing only essential journey information with a single, fast purchase path.
+                The workshop, affinity mapping and sketching gave one clear direction: a minimal screen with only
+                the essential journey information and one fast way to buy.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Weeks 3–4: Prototyping & Testing">
+            <CaseStudyCard title="Weeks 3 and 4: prototyping and testing">
               <CaseStudyParagraph>
-                Interactive Figma prototypes tested with 9 participants (4 friends and family, 5 Softwire
-                colleagues). The set task: book a return ticket to Birmingham for 1 adult and 1 child on a
-                16–25 Railcard, as if standing on the platform. Two critical failures surfaced immediately.
+                We tested interactive Figma prototypes with 9 people (4 friends and family, 5 Softwire
+                colleagues). The task: book a return to Birmingham for one adult and one child on a 16–25
+                Railcard, as if standing on the platform. Two serious problems showed up straight away.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
           <CaseStudyImageGrid
             columns={1}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/11-app-clip-flow-chart.webp', alt: 'App Clip flow chart mapping the booking journey', caption: 'Mapping the App Clip booking flow end to end.' },
-              { src: '/images/casestudies/softwire/12-lofi-wireframe.webp', alt: 'Low-fidelity wireframes of the booking screens', caption: 'Low-fidelity wireframes exploring screen layout and hierarchy.' },
-              { src: '/images/casestudies/softwire/13-usability-testing.webp', alt: 'Usability testing setup and findings', caption: 'Usability testing with 9 participants under realistic time pressure.' }
+              { src: '/images/casestudies/softwire/11-app-clip-flow-chart.webp', alt: 'App Clip booking flow chart', caption: 'Mapping the booking flow end to end.' },
+              { src: '/images/casestudies/softwire/12-lofi-wireframe.webp', alt: 'Low-fidelity wireframes of the booking screens', caption: 'Low-fidelity wireframes.' },
+              { src: '/images/casestudies/softwire/13-usability-testing.webp', alt: 'A remote usability testing session with the prototype', caption: 'A usability test session with the prototype.' },
             ]}
           />
         </CaseStudySection>
 
-        {/* Key Iterations */}
-        <CaseStudySection title="Key Iterations">
+        <CaseStudySection title="What changed after testing">
           <CaseStudyCardGrid columns={2}>
-            <CaseStudyCard title="Ticket Confirmation Screen">
+            <CaseStudyCard title="The ticket confirmation screen">
               <CaseStudyParagraph>
-                Users found the initial design overwhelming. Too much information at once, unclear hierarchy,
-                confusing ticket-saving options. I stripped it back, clarified the primary action, and
-                restructured the information hierarchy around what users actually needed in that moment:
-                platform number and QR code, visible immediately.
+                People found the first version overwhelming: too much at once, an unclear hierarchy and
+                confusing options for saving the ticket. I cut it back and rebuilt it around what people need at
+                that moment, the platform number and the QR code, both visible straight away.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Journey Planning Flow">
+            <CaseStudyCard title="The journey planning flow">
               <CaseStudyParagraph>
-                The original multi-step flow felt too long for an App Clip context. Users couldn't easily
-                edit journey details mid-flow. Redesigned to a single-overview approach with inline editing —
-                fewer taps, less backtracking, faster to purchase.
+                The multi-step flow felt too long for an App Clip, and people couldn't easily change journey
+                details halfway through. We redesigned it as one overview with inline editing: fewer taps and
+                less going back.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
           <CaseStudyParagraph>
-            Both issues only surfaced through testing. Neither was visible from the inside.
+            We only found both problems by testing. From inside the team, neither was visible.
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
             columns={2}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/14-4-product-initial.webp', alt: 'Initial product design before iteration', caption: 'The initial design — before testing surfaced the issues.' },
-              { src: '/images/casestudies/softwire/16-feedback-form.webp', alt: 'Feedback form used to capture usability findings', caption: 'Capturing structured feedback from each test session.' },
-              { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Final confirmation screen — platform number and QR code visible immediately', caption: 'The reworked confirmation screen: platform number and QR code front and centre.' },
-              { src: '/images/casestudies/softwire/18-notifications.webp', alt: 'Live journey notifications design', caption: 'Live, demonstrably up-to-date journey notifications.' }
+              { src: '/images/casestudies/softwire/14-4-product-initial.webp', alt: 'The first design, before testing', caption: 'The first design, before testing.' },
+              { src: '/images/casestudies/softwire/16-feedback-form.webp', alt: 'The feedback form used in each session', caption: 'How we captured feedback in each session.' },
+              { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Reworked confirmation screen with platform number and QR code', caption: 'The reworked confirmation screen.' },
+              { src: '/images/casestudies/softwire/18-notifications.webp', alt: 'Live journey notifications', caption: 'Live journey notifications.' },
             ]}
           />
-        </CaseStudySection>
 
-        {/* The Solution */}
-        <CaseStudySection title="The Solution">
-          <CaseStudyParagraph lead>
-            A streamlined booking flow built around four principles:
+          <CaseStudyParagraph>
+            The final flow follows four principles:
           </CaseStudyParagraph>
 
           <CaseStudyList items={[
-            { title: 'Instant Access', description: 'Launch via NFC tag or QR code at the station. No download, no account creation to start.' },
-            { title: 'Radical Simplification', description: 'Upcoming trains shown with only the five things users asked for: time, price, duration, changes, and delay status.' },
-            { title: 'Frictionless Payment', description: 'Apple Pay integration. One confirmation tap to purchase.' },
-            { title: 'Accessible Ticket', description: 'Prominent QR code, platform number, and Apple Wallet integration on the confirmation screen.' },
+            { title: 'Open instantly', description: 'from an NFC tag or QR code at the station, with no download and no account' },
+            { title: 'Show only the essentials', description: 'upcoming trains with time, price, duration, changes and delay status' },
+            { title: 'Pay in one step', description: 'with Apple Pay and a single confirmation' },
+            { title: 'Make the ticket easy to find', description: 'a large QR code, the platform number and Apple Wallet on the confirmation screen' },
           ]} />
 
           <CaseStudyImageGrid
             columns={3}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/14-5-product-final-landing.webp', alt: 'Final product — landing screen', caption: 'Landing' },
-              { src: '/images/casestudies/softwire/14-6-product-ticket-selection.webp', alt: 'Final product — ticket selection screen', caption: 'Ticket selection' },
-              { src: '/images/casestudies/softwire/14-7-product-selecting-train.webp', alt: 'Final product — selecting a train', caption: 'Selecting a train' },
-              { src: '/images/casestudies/softwire/14-8-product-checkout-page.webp', alt: 'Final product — checkout page', caption: 'Checkout' },
-              { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Final product — final ticket screen', caption: 'Final ticket' },
-              { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Final product screen', caption: 'Final UI' },
-              { src: '/images/casestudies/softwire/14-2-product-final.webp', alt: 'Final product screen', caption: 'Final UI' },
-              { src: '/images/casestudies/softwire/14-3-product-final.webp', alt: 'Final product screen', caption: 'Final UI' }
+              { src: '/images/casestudies/softwire/14-6-product-ticket-selection.webp', alt: 'Ticket selection screen', caption: 'Ticket selection' },
+              { src: '/images/casestudies/softwire/14-7-product-selecting-train.webp', alt: 'Choosing a train', caption: 'Choosing a train' },
+              { src: '/images/casestudies/softwire/14-8-product-checkout-page.webp', alt: 'Checkout screen with Apple Pay', caption: 'Checkout' },
+              { src: '/images/casestudies/softwire/14-2-product-final.webp', alt: 'Ticket screen after purchase', caption: 'Your ticket' },
+              { src: '/images/casestudies/softwire/14-3-product-final.webp', alt: 'Plan your journey screen', caption: 'Planning a journey' },
             ]}
           />
+
+          <CaseStudyParagraph>
+            In the usability sessions, the changes cut ticket checkout time by <strong>40%</strong>. The core
+            booking flow passed National Rail compliance review and went to the engineering team within the
+            8 weeks.
+          </CaseStudyParagraph>
+
+          <CaseStudyParagraph>
+            The deadline also forced honest cuts. Multiple payment methods, editing the journey from the review
+            screen, and the onboarding and Seat Finder ideas were scoped out and written up as next steps. A
+            tested core was worth more than an unfinished everything.
+          </CaseStudyParagraph>
         </CaseStudySection>
 
-        {/* Seat Finder Concept */}
-        <CaseStudySection title="Beyond Booking: The Seat Finder Concept">
+        <CaseStudySection title="An idea for later: the Seat Finder">
           <CaseStudyParagraph lead>
-            Last-minute buyers often have no reserved seat. Finding a free seat on a busy train adds
-            a final layer of stress. I explored a Seat Finder feature as part of the onboarding experience.
+            People buying at the last minute often have no reserved seat, and finding one on a busy train is
+            one more stress. I explored a Seat Finder as part of onboarding.
           </CaseStudyParagraph>
 
           <CaseStudyCardGrid columns={2}>
-            <CaseStudyCard title="Side Profile View">
+            <CaseStudyCard title="Side view">
               <CaseStudyParagraph>
-                Mimics standing on the platform looking at the train. Horizontal scrolling,
-                potentially easier spatial orientation in context.
+                Like standing on the platform looking at the train, scrolling sideways. Possibly easier to orient
+                yourself in the moment.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Plan View">
+            <CaseStudyCard title="Plan view">
               <CaseStudyParagraph>
-                Industry-standard carriage layout. More information visible at once, vertical scrolling.
+                The standard carriage layout, scrolling down. More information visible at once.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
-          <CaseStudyQuote>
-            This was a perfect A/B testing opportunity — which representation would users interpret faster
-            under real-world pressure?
-          </CaseStudyQuote>
-
           <CaseStudyParagraph>
-            The feature was parked for future development, but the question it raised — how small visual
-            decisions change usability under stress — became one of the most important things I took from
-            the project.
+            This was set up for an A/B test: which view would people read faster under pressure? The feature was
+            parked, but the question stayed with me. Small visual decisions change how usable something is when
+            people are stressed.
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
             columns={2}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/softwire/15-seat-finder.webp', alt: 'Seat Finder concept — first representation', caption: 'Seat Finder concept: one representation of the carriage.' },
-              { src: '/images/casestudies/softwire/17-seat-finder-2.webp', alt: 'Seat Finder concept — alternative representation', caption: 'Seat Finder concept: an alternative view for A/B comparison.' }
+              { src: '/images/casestudies/softwire/15-seat-finder.webp', alt: 'Seat Finder, first version', caption: 'Seat Finder, one version.' },
+              { src: '/images/casestudies/softwire/17-seat-finder-2.webp', alt: 'Seat Finder, alternative version', caption: 'Seat Finder, the alternative.' },
             ]}
           />
         </CaseStudySection>
 
-        {/* Outcome */}
-        <CaseStudySection title="Outcome">
-          <CaseStudyParagraph lead>
-            Testing cut ticket checkout time by <strong>40%</strong> across the nine usability sessions.
-            The core booking flow passed National Rail compliance review and was handed to the engineering
-            team — delivered within the 8-week internship timeline.
-          </CaseStudyParagraph>
-
-          <CaseStudyParagraph>
-            Two specific design failures — an overwhelming confirmation screen and a multi-step journey
-            flow — were caught early because we tested under realistic time pressure. Both iterations were
-            built into the spec that went to engineering.
-          </CaseStudyParagraph>
-
-          <CaseStudyParagraph>
-            The 8-week clock also forced honest cuts. Multiple payment methods, editing journey details
-            from the review screen, and the onboarding/Seat Finder experiences were scoped out and
-            documented as next steps — better to ship a validated core than a half-finished everything.
-          </CaseStudyParagraph>
-        </CaseStudySection>
-
-        {/* What I Learned */}
-        <CaseStudySection title="What I Learned">
-          <CaseStudyCardGrid columns={2}>
-            <CaseStudyCard title="Context changes everything">
+        <CaseStudySection title="What I learned">
+          <CaseStudyCardGrid columns={3}>
+            <CaseStudyCard title="Context changes the design">
               <CaseStudyParagraph>
-                What works in a calm setting fails under pressure. Designing for stressed,
-                time-constrained users requires fundamentally different thinking, not just simplified UI.
+                What works when people are calm fails under pressure. Designing for people in a hurry needs
+                different thinking, and simplifying the screens is only part of it.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Constraints are clarifying">
+            <CaseStudyCard title="Constraints help">
               <CaseStudyParagraph>
-                The 10MB limit forced decisions I wouldn't have made otherwise. Every screen had to
-                justify its existence. That discipline made the product better.
+                The 10 MB limit forced decisions I wouldn't otherwise have made. Every screen had to earn its
+                place, and the product was better for it.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Test your assumptions in context">
+            <CaseStudyCard title="Test in context">
               <CaseStudyParagraph>
-                The confirmation screen and journey flow failures were invisible until real users tried
-                them under realistic task conditions. No amount of internal review would have caught either.
+                Both failures stayed hidden until people tried the prototype under realistic conditions. Internal
+                review wouldn't have caught either.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>

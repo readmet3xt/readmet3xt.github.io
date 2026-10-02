@@ -3,7 +3,7 @@ import {
   CaseStudyHero,
   CaseStudySection,
   CaseStudyParagraph,
-  CaseStudyQuote,
+  CaseStudyInsight,
   CaseStudyList,
   CaseStudyImage,
   CaseStudyImageGrid,
@@ -17,288 +17,228 @@ export const KoinBasket = () => {
     <>
       <CaseStudyLayout
         title="KoinBasket"
-        description="From a One-Week MVP Contract to 70,000 Users — How I built a crypto investing platform that democratized portfolio diversification."
         externalLink="https://otagon2.github.io/Koinbasket/"
-        externalLabel="KoinBasket"
+        externalLabel="See the KoinBasket landing page"
       >
         <CaseStudyHero
           eyebrow="Founding and senior designer, 2022–2025"
-          title="From a One-Week MVP Contract to 70,000 Users"
-          subtitle="How I built a crypto investing platform that democratized portfolio diversification"
-          pills={[
-            'Fintech',
-            'Founding Designer',
-            'MVP Design',
-            'Design Leadership',
-            'Rebranding',
-          ]}
-          intro="When I joined KoinBasket as founding designer, crypto felt like an exclusive club for the tech-savvy. My brief: make diversified investing so intuitive that a first-timer could participate confidently in minutes. A one-week MVP contract became a full-time lead role — and the product scaled to 70,000 users."
-          externalLink="https://otagon2.github.io/Koinbasket/"
-          externalLabel="KoinBasket"
+          title="KoinBasket: making crypto investing simple enough to trust"
+          subtitle="Founding designer from a one-week MVP, then senior designer for the redesign, the rebrand and a social trading layer"
+          intro="When I joined KoinBasket as founding designer in 2022, crypto investing felt like a club for experts. The brief was to make diversified investing simple enough that a first-timer could start with confidence in minutes. A one-week MVP contract became a full-time role, and the platform grew past 70,000 users. I came back in 2024, part-time, as senior UX designer."
           overview={{
             role: [
-              'Founding Designer → returned as Senior UX Designer',
-              'Designed the MVP solo, end-to-end',
-              'Mentored and managed a junior designer',
-              'Led the rebrand and later product initiatives',
+              'Founding designer, then senior UX designer (part-time)',
+              'Designed the MVP on my own, end to end',
+              'Managed and mentored the company’s first junior designer',
+              'Led the rebrand and later product work, including BitBuddy',
             ],
-            timeline: 'Founding Designer (Oct 2022–Jun 2023) → Senior UX Designer (Jun 2024–Mar 2025)',
-            recognition: 'Platform grew past 70,000 users; full rebrand; live trading ecosystem',
-            tools: [
-              'Figma',
-              'Balsamiq',
-              'iOS/Android Design',
-              'Design Systems',
-              'Brand Design',
-            ],
+            timeline: 'Founding designer Oct 2022 to Jun 2023; senior UX designer Jun 2024 to Mar 2025',
+            recognition: 'Platform grew past 70,000 users; full rebrand; live trading layer',
+            tools: ['Figma', 'Balsamiq', 'iOS and Android design', 'Design systems', 'Brand design'],
           }}
           heroImage="/images/casestudies/koinbasket/2-home-page.webp"
           heroImageAlt="KoinBasket home page"
         />
 
-        {/* The Origin Story */}
-        <CaseStudySection title="The Origin Story">
+        <CaseStudySection title="Context">
           <CaseStudyParagraph lead>
-            Crypto in 2022 was a labyrinth — complex terminology, overwhelming choices, legitimate
-            security fears. New investors faced a steep learning curve just to make their first purchase,
-            let alone build a diversified portfolio.
+            In 2022, crypto was confusing: unfamiliar terms, too many choices and real worries about security.
+            New investors had a lot to learn before their first purchase, let alone a diversified portfolio.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            The breakthrough insight was radical simplification: curated crypto "baskets." Instead of
-            forcing users to research hundreds of coins individually, we offered thematic portfolios —
-            the G.O.A.T. Basket (top 5 coins), NFT Basket, DeFi Basket — that users could invest in
-            with one click.
+            Our answer was curated crypto "baskets". Instead of researching hundreds of coins, people could
+            invest in a themed portfolio with one click: the G.O.A.T. Basket (the top 5 coins), an NFT Basket or a
+            DeFi Basket.
           </CaseStudyParagraph>
+        </CaseStudySection>
+
+        <CaseStudySection title="Insight">
+          <CaseStudyInsight>
+            In fintech, the product is trust. People needed to stay in control of their money.
+          </CaseStudyInsight>
 
           <CaseStudyParagraph>
-            Trust was the other non-negotiable. We adopted a non-custodial model — users traded through
-            their own Binance or Coinbase accounts, never surrendering control of funds to us. That
-            architecture became our competitive moat.
+            So KoinBasket was non-custodial: people traded through their own Binance or Coinbase accounts and
+            never handed their funds to us. That decision shaped the rest of the design.
           </CaseStudyParagraph>
-
-          <CaseStudyQuote>
-            Trust is the ultimate currency in fintech. Non-custodial wasn't just a technical decision —
-            it was the design principle that shaped everything.
-          </CaseStudyQuote>
 
           <CaseStudyImage
             src="/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.webp"
-            alt="KoinBasket product dashboard with live trading"
-            caption="The product dashboard — curated baskets and live trading in one view."
-            aspectRatio="aspect-auto"
+            alt="KoinBasket dashboard with baskets and live trading"
+            caption="The dashboard: curated baskets and live trading in one view."
           />
         </CaseStudySection>
 
-        {/* Chapter 1: The One-Week MVP */}
-        <CaseStudySection title="Chapter 1: The One-Week MVP">
+        <CaseStudySection title="What I made, part one: the one-week MVP">
           <CaseStudyParagraph lead>
-            As the sole founding designer, I had one week to design a fully functional MVP. No time
-            for perfection — just relentless focus on one question: can we make crypto investing accessible?
+            As the only designer, I had one week to design a working MVP. The question was simple: can we make
+            crypto investing accessible?
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            I moved from Balsamiq wireframes to high-fidelity UI in days. The dark theme with vibrant
-            accents established the visual language immediately. Beyond UI, I owned everything — custom
-            basket icons, email templates, marketing content, onboarding flows. Cross-platform from day
-            one: responsive web plus foundational iOS and Android designs.
+            I went from Balsamiq wireframes to high-fidelity UI in days, with a dark theme and bright accents.
+            I also did the basket icons, email templates, marketing content and onboarding, and designed for
+            responsive web plus early iOS and Android from the start.
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
             columns={2}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/koinbasket/3-lofi-home.webp', alt: 'Low-fidelity home page concept' },
-              { src: '/images/casestudies/koinbasket/4-lofi-2.webp', alt: 'Low-fidelity layout concept' }
+              { src: '/images/casestudies/koinbasket/3-lofi-home.webp', alt: 'Low-fidelity home page sketch', caption: 'Low-fidelity home page.' },
+              { src: '/images/casestudies/koinbasket/4-lofi-2.webp', alt: 'Low-fidelity layout sketch', caption: 'An early layout.' },
             ]}
           />
 
-          <CaseStudyCard title="Core Features Shipped in One-Week Sprint">
+          <CaseStudyCard title="What shipped in the one-week sprint">
             <CaseStudyList items={[
-              'Curated baskets with one-click investing and transparent coin breakdowns',
-              'Non-custodial Coinbase and Binance account connection',
+              'Curated baskets with one-click investing and a clear breakdown of the coins inside',
+              'Non-custodial connection to Coinbase and Binance accounts',
               'Portfolio tracking with full transaction history',
-              'Gamification layer — a Crypto Fantasy League where users competed by building their own baskets',
+              'A Crypto Fantasy League where people competed by building their own baskets',
             ]} />
           </CaseStudyCard>
 
           <CaseStudyParagraph>
-            <strong>The result:</strong> The hypothesis was validated. That one-week contract turned into a full-time offer, eventually scaling to 70,000 users.
+            The idea held up. The one-week contract turned into a full-time role, and the platform went on to
+            grow past 70,000 users.
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
-            columns={1}
-            aspectRatio="aspect-auto"
+            columns={2}
             images={[
-              { src: '/images/casestudies/koinbasket/1-login.webp', alt: 'Login screen' },
-              { src: '/images/casestudies/koinbasket/5-login-verification.webp', alt: 'Login verification screen' },
-              { src: '/images/casestudies/koinbasket/7-checkout.webp', alt: 'Checkout flow' },
-              { src: '/images/casestudies/koinbasket/8-basket-management.webp', alt: 'Basket management dashboard' },
-              { src: '/images/casestudies/koinbasket/9-fantasy-league-team-creator.webp', alt: 'Crypto Fantasy League team creator' },
-              { src: '/images/casestudies/koinbasket/10-fantasy-league-home.webp', alt: 'Crypto Fantasy League home' }
+              { src: '/images/casestudies/koinbasket/1-login.webp', alt: 'Login screen', caption: 'Login' },
+              { src: '/images/casestudies/koinbasket/5-login-verification.webp', alt: 'Login verification screen', caption: 'Verification' },
+              { src: '/images/casestudies/koinbasket/7-checkout.webp', alt: 'Checkout flow', caption: 'Checkout' },
+              { src: '/images/casestudies/koinbasket/8-basket-management.webp', alt: 'Basket management dashboard', caption: 'Managing baskets' },
+              { src: '/images/casestudies/koinbasket/9-fantasy-league-team-creator.webp', alt: 'Crypto Fantasy League team creator', caption: 'Fantasy League: building a team' },
+              { src: '/images/casestudies/koinbasket/10-fantasy-league-home.webp', alt: 'Crypto Fantasy League home', caption: 'Fantasy League home' },
             ]}
           />
 
-          <div className="mt-8">
-            <CaseStudyImageGrid
-              columns={3}
-              aspectRatio="aspect-auto"
-              images={[
-                { src: '/images/casestudies/koinbasket/6-mobile-basket-page.webp', alt: 'Mobile basket page' },
-                { src: '/images/casestudies/koinbasket/10-mobile-home.webp', alt: 'Mobile home screen' },
-                { src: '/images/casestudies/koinbasket/11-mobile-onboarding.webp', alt: 'Mobile onboarding flow' }
-              ]}
-            />
-          </div>
+          <CaseStudyImageGrid
+            columns={3}
+            images={[
+              { src: '/images/casestudies/koinbasket/6-mobile-basket-page.webp', alt: 'Mobile basket page', caption: 'A basket on mobile' },
+              { src: '/images/casestudies/koinbasket/10-mobile-home.webp', alt: 'Mobile home screen', caption: 'Mobile home' },
+              { src: '/images/casestudies/koinbasket/11-mobile-onboarding.webp', alt: 'Mobile onboarding flow', caption: 'Mobile onboarding' },
+            ]}
+          />
 
-          <div className="mt-8">
-            <CaseStudyImage
-              src="/images/casestudies/koinbasket/11-email-template.webp"
-              alt="KoinBasket email template"
-              caption="One of the custom email templates I designed as part of owning the full brand experience."
-              aspectRatio="aspect-auto"
-            />
-          </div>
+          <CaseStudyImage
+            src="/images/casestudies/koinbasket/11-email-template.webp"
+            alt="KoinBasket email template"
+            caption="One of the email templates I designed."
+          />
         </CaseStudySection>
 
-        {/* Light Theme Section */}
-        <div>
-          <div className="space-y-16">
+        <CaseStudySection id="chapter-2" title="What I made, part two: growing up">
+          <CaseStudyParagraph lead>
+            70,000 users brought new problems. The MVP had done its job, and the product now needed to look and
+            feel like a platform people could trust with their savings.
+          </CaseStudyParagraph>
 
-            {/* Chapter 2: Scaling */}
-            <CaseStudySection id="chapter-2" title="Chapter 2: Scaling to Market Leadership">
-              <CaseStudyParagraph lead>
-                70,000 users created new problems. The MVP had done its job — now we needed to evolve from
-                promising startup to mature, trusted platform. My role evolved with it.
+          <CaseStudyCard title="The rebrand">
+            <CaseStudyParagraph>
+              I led a visual overhaul across web and mobile. We moved from the dark MVP look to a lighter
+              interface with green accents, which read as more professional and trustworthy to the mainstream
+              investors we were now trying to reach.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+
+          <CaseStudyImageGrid
+            columns={1}
+            images={[
+              { src: '/images/casestudies/koinbasket/16-new-homescreen.webp', alt: 'Rebranded home screen', caption: 'The rebranded home screen.' },
+              { src: '/images/casestudies/koinbasket/17-new-product-live-trading.webp', alt: 'Rebranded product with live trading', caption: 'The rebranded product with live trading.' },
+              { src: '/images/casestudies/koinbasket/14-checkout-successful-page.webp', alt: 'Successful checkout confirmation', caption: 'Checkout confirmation.' },
+            ]}
+          />
+
+          <CaseStudyCard title="BitBuddy">
+            <CaseStudyParagraph>
+              Our biggest bet was community. I designed BitBuddy as a two-sided platform: influencers
+              ("Bitpals") share content and baskets, and users discover them and invest alongside them. The main
+              feature was live video, where users could watch an influencer trade in real time and buy from the
+              same screen, with live market data alongside.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+
+          <CaseStudyImageGrid
+            columns={2}
+            images={[
+              { src: '/images/casestudies/koinbasket/13-bitbuddy-create-a-basket-influencer.webp', alt: 'BitBuddy: an influencer creating a basket', caption: 'An influencer creating a basket.' },
+              { src: '/images/casestudies/koinbasket/15-mobile-new-design.webp', alt: 'Rebranded mobile design', caption: 'The rebranded mobile design.' },
+            ]}
+          />
+
+          <CaseStudyCard title="Building the team">
+            <CaseStudyParagraph>
+              This phase also meant growing design beyond one person. I managed and mentored a junior designer,
+              built our design system from scratch and led design decisions across product, marketing and
+              engineering. The recommendation my junior designer wrote when I left is something I'm proud of.
+            </CaseStudyParagraph>
+          </CaseStudyCard>
+        </CaseStudySection>
+
+        <CaseStudySection title="What changed">
+          <CaseStudyStatsGrid
+            stats={[
+              { value: '70K+', label: 'Users', sublabel: 'Platform users, 2022–2025' },
+              { value: '+42%', label: 'User engagement', sublabel: 'After the cross-platform redesign' },
+              { value: '−20%', label: 'Transaction friction', sublabel: 'Simpler onboarding and payments' },
+            ]}
+          />
+
+          <CaseStudyImage
+            src="/images/casestudies/koinbasket/17-new-product-live-trading.webp"
+            alt="Live trading dashboard in the rebranded product"
+            caption="The mature product: live trading, market data and community in one dashboard."
+          />
+
+          <CaseStudyImageGrid
+            columns={3}
+            images={[
+              { src: '/images/casestudies/koinbasket/18-1-mobile-feature-highlight-1.webp', alt: 'The rebranded mobile app', caption: 'The rebranded app' },
+              { src: '/images/casestudies/koinbasket/18-3-mobile-feature-highlight-3.webp', alt: 'Rebranded mobile app, basket detail', caption: 'Basket detail' },
+              { src: '/images/casestudies/koinbasket/18-4-mobile-feature-highlight-4.webp', alt: 'Rebranded mobile app, investing', caption: 'Investing' },
+              { src: '/images/casestudies/koinbasket/18-5-mobile-feature-highlight-5.webp', alt: 'Rebranded mobile app, rewards', caption: 'Rewards' },
+              { src: '/images/casestudies/koinbasket/18-6-mobile-feature-highlight-6.webp', alt: 'Rebranded mobile app, account and settings', caption: 'Account and settings' },
+            ]}
+          />
+        </CaseStudySection>
+
+        <CaseStudySection title="What I learned">
+          <CaseStudyCardGrid columns={3}>
+            <CaseStudyCard title="Speed and structure are different modes">
+              <CaseStudyParagraph>
+                A one-week sprint is right for testing an idea. Growing a product needs process, systems and
+                delegation. Knowing which mode you're in changes every decision.
               </CaseStudyParagraph>
+            </CaseStudyCard>
 
-              <CaseStudyCard title="The Rebrand">
-                <CaseStudyParagraph>
-                  I led a complete visual overhaul across web and mobile. We moved away from the dark MVP
-                  aesthetic to a cleaner, lighter interface with green accents — more professional, more
-                  trustworthy, more inviting to the mainstream investor we were now targeting. Not just a
-                  cosmetic change — the rebrand signalled a new chapter of the company.
-                </CaseStudyParagraph>
-              </CaseStudyCard>
+            <CaseStudyCard title="Trust is a design decision">
+              <CaseStudyParagraph>
+                From the non-custodial model to the rebrand, the big calls all came back to one question: does
+                this make people feel safer?
+              </CaseStudyParagraph>
+            </CaseStudyCard>
 
-              <CaseStudyImageGrid
-                columns={1}
-                aspectRatio="aspect-auto"
-                images={[
-                  { src: '/images/casestudies/koinbasket/16-new-homescreen.webp', alt: 'Rebranded home screen' },
-                  { src: '/images/casestudies/koinbasket/17-new-product-live-trading.webp', alt: 'Rebranded product with live trading' },
-                  { src: '/images/casestudies/koinbasket/14-checkout-successful-page.webp', alt: 'Successful checkout confirmation page' }
-                ]}
-              />
+            <CaseStudyCard title="People last longer than screens">
+              <CaseStudyParagraph>
+                The thing I'm proudest of from KoinBasket is a designer who grew with my mentoring and went on to
+                do great work.
+              </CaseStudyParagraph>
+            </CaseStudyCard>
+          </CaseStudyCardGrid>
 
-              <CaseStudyCard title="BitBuddy: Building an Ecosystem">
-                <CaseStudyParagraph>
-                  Our major strategic move was community. I designed BitBuddy as a two-sided platform —
-                  influencers ("Bitpals") create content, users discover and invest alongside them.
-                  The flagship feature: live video streams where users could watch influencers trade in
-                  real time and execute their own purchases directly from the same screen. Live video,
-                  real-time market data, and seamless trade execution in one dashboard.
-                </CaseStudyParagraph>
-                <CaseStudyParagraph>
-                  This transformed KoinBasket from a tool into an ecosystem — content, community, and
-                  commerce in one place.
-                </CaseStudyParagraph>
-              </CaseStudyCard>
-
-              <CaseStudyImageGrid
-                columns={2}
-                aspectRatio="aspect-auto"
-                images={[
-                  {
-                    src: '/images/casestudies/koinbasket/13-bitbuddy-create-a-basket-influencer.webp',
-                    alt: 'BitBuddy influencer creating a basket',
-                  },
-                  {
-                    src: '/images/casestudies/koinbasket/15-mobile-new-design.webp',
-                    alt: 'Rebranded mobile design',
-                  },
-                ]}
-              />
-
-              <CaseStudyCard title="Design Leadership">
-                <CaseStudyParagraph>
-                  This phase also meant building a team. I mentored and managed a junior designer, built our
-                  design system from scratch, and led cross-functional design decisions across product,
-                  marketing, and engineering. The recommendation my junior left when I moved on is something
-                  I'm genuinely proud of.
-                </CaseStudyParagraph>
-              </CaseStudyCard>
-            </CaseStudySection>
-
-            {/* Results */}
-            <CaseStudySection title="Results">
-              <CaseStudyStatsGrid
-                stats={[
-                  { value: '70K+', label: 'Users', sublabel: 'Platform users, 2022–2025' },
-                  { value: '+42%', label: 'User engagement', sublabel: 'After the cross-platform redesign' },
-                  { value: '−20%', label: 'Transaction friction', sublabel: 'Simplified onboarding & payment flows' },
-                ]}
-              />
-
-              <CaseStudyImage
-                src="/images/casestudies/koinbasket/17-new-product-live-trading.webp"
-                alt="Live trading dashboard in the rebranded product"
-                caption="The mature platform — live trading, real-time market data, and community in one dashboard."
-                aspectRatio="aspect-auto"
-              />
-
-              <div className="mt-8">
-                <CaseStudyImageGrid
-                  columns={3}
-                  aspectRatio="aspect-auto"
-                  images={[
-                    { src: '/images/casestudies/koinbasket/18-1-mobile-feature-highlight-1.webp', alt: 'Rebranded mobile app — basket discovery screen' },
-                    { src: '/images/casestudies/koinbasket/18-1-mobile-feature-highlight-1.webp', alt: 'Rebranded mobile app — portfolio overview' },
-                    { src: '/images/casestudies/koinbasket/18-3-mobile-feature-highlight-3.webp', alt: 'Rebranded mobile app — basket detail view' },
-                    { src: '/images/casestudies/koinbasket/18-4-mobile-feature-highlight-4.webp', alt: 'Rebranded mobile app — invest flow' },
-                    { src: '/images/casestudies/koinbasket/18-5-mobile-feature-highlight-5.webp', alt: 'Rebranded mobile app — rewards and engagement' },
-                    { src: '/images/casestudies/koinbasket/18-6-mobile-feature-highlight-6.webp', alt: 'Rebranded mobile app — account and settings' }
-                  ]}
-                />
-              </div>
-            </CaseStudySection>
-
-            {/* What I Learned */}
-            <CaseStudySection title="What I Learned">
-              <CaseStudyCardGrid columns={2}>
-                <CaseStudyCard title="Speed vs. Structure">
-                  <CaseStudyParagraph>
-                    A one-week sprint is perfect for validation. Scaling requires process, systems, and
-                    delegation. Knowing which mode you're in changes every decision you make.
-                  </CaseStudyParagraph>
-                </CaseStudyCard>
-
-                <CaseStudyCard title="Trust is a design decision">
-                  <CaseStudyParagraph>
-                    From non-custodial architecture to the rebrand, every major call anchored in one question:
-                    does this make users feel safer? In fintech, trust isn't a feature. It's the foundation.
-                  </CaseStudyParagraph>
-                </CaseStudyCard>
-
-                <CaseStudyCard title="Leadership is about people, not just products">
-                  <CaseStudyParagraph>
-                    My most lasting output from this company wasn't a screen. It was a designer who grew
-                    under my mentorship and went on to do great work.
-                  </CaseStudyParagraph>
-                </CaseStudyCard>
-              </CaseStudyCardGrid>
-
-              <CaseStudyImageGrid
-                columns={1}
-                aspectRatio="aspect-auto"
-                images={[
-                  { src: '/images/casestudies/koinbasket/2-home-page.webp', alt: 'KoinBasket home page' },
-                  { src: '/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.webp', alt: 'Product dashboard with live trading' }
-                ]}
-              />
-            </CaseStudySection>
-          </div>
-        </div>
+          <CaseStudyImageGrid
+            columns={1}
+            images={[
+              { src: '/images/casestudies/koinbasket/2-home-page.webp', alt: 'KoinBasket home page', caption: 'The KoinBasket home page.' },
+            ]}
+          />
+        </CaseStudySection>
       </CaseStudyLayout>
     </>
   );

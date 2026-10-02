@@ -43,15 +43,16 @@ REPLACEMENTS = [
     ('a design system from scratch, and our first junior hire.',
      'a design system from scratch, and mentoring our first junior designer.'),
     ('and mentoring our first junior hire.', 'and mentoring our first junior designer.'),
+    ('>8+ genre-specific AI personas<', '>5 companion personas<'),
     ('The result: thirty-plus features, paid tiers live, and zero data loss or critical incidents since launch.',
      'The result: thirty-plus features and a public launch in July 2026, with every payment path kept server-side.'),
 ]
 REGEX_REPLACEMENTS = [
-    (r'(>Live</div><div style="[^"]*">)paid tiers(<)', r'\g<1>since July 2026\g<2>'),
+    (r'(>Live</div><div style="[^"]*">)paid tiers(<)', r'\g<1>since July 2026\g<2>', '>since July 2026<'),
     (r'(>)0(</div><div style="[^"]*">)incidents(</div><div style="[^"]*">)since Aug 2025 launch(<)',
-     r'\g<1>1\g<2>builder\g<3>design, code and ops\g<4>'),
+     r'\g<1>1\g<2>builder\g<3>design, code and ops\g<4>', '>design, code and ops<'),
 ]
-MUST_BE_GONE = ['Notable Honor', 'users from zero', 'users, from zero', '2 weeks, not 2 months', 'Aug 2025 launch',
+MUST_BE_GONE = ['8+ genre', 'Notable Honor', 'users from zero', 'users, from zero', '2 weeks, not 2 months', 'Aug 2025 launch',
                 '80% fewer', 'eighty percent', 'zero data loss', 'scaled 0 →', 'junior hire']
 
 
@@ -65,14 +66,21 @@ def main():
     if json.dumps(tpl, ensure_ascii=False).replace("</", SLASH) != core:
         sys.exit("Cannot reproduce the deck's JSON encoding; refusing to write.")
 
+    applied = 0
     for old, new in REPLACEMENTS:
         n = tpl.count(old)
-        if n != 1:
+        if n == 1:
+            tpl = tpl.replace(old, new)
+            applied += 1
+        elif n == 0 and new in tpl:
+            continue  # already fixed on an earlier run
+        else:
             sys.exit(f"Expected 1 match, found {n}: {old[:70]}")
-        tpl = tpl.replace(old, new)
-    for pattern, repl in REGEX_REPLACEMENTS:
+    for pattern, repl, done_marker in REGEX_REPLACEMENTS:
         tpl, n = re.subn(pattern, repl, tpl)
-        if n != 1:
+        if n == 1:
+            applied += 1
+        elif not (n == 0 and done_marker in tpl):
             sys.exit(f"Expected 1 regex match, found {n}: {pattern[:60]}")
     left = [b for b in MUST_BE_GONE if b in tpl]
     if left:
@@ -81,7 +89,7 @@ def main():
     new_raw = lead + json.dumps(tpl, ensure_ascii=False).replace("</", SLASH) + trail
     s = scripts[3]
     DECK.write_text(html[: s.start(2)] + new_raw + html[s.end(2):], encoding="utf-8", newline="")
-    print(f"Deck fixed: {len(REPLACEMENTS) + len(REGEX_REPLACEMENTS)} replacements.")
+    print(f"Deck fixed: {applied} new replacements ({len(REPLACEMENTS) + len(REGEX_REPLACEMENTS)} rules).")
 
 
 if __name__ == "__main__":

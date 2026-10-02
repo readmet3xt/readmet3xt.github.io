@@ -3,9 +3,9 @@ import {
   CaseStudyHero,
   CaseStudySection,
   CaseStudyParagraph,
+  CaseStudyInsight,
   CaseStudyQuote,
   CaseStudyList,
-  CaseStudyImage,
   CaseStudyImageGrid,
   CaseStudyCard,
   CaseStudyCardGrid,
@@ -15,218 +15,194 @@ import {
 export const IviProgram = () => {
   return (
     <>
-      <CaseStudyLayout
-        title="Invisible Value Income Program"
-        description="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040 — A Core77-recognised speculative service that makes invisible domestic labour economically visible."
-      >
+      <CaseStudyLayout title="Invisible Value Income Program">
         <CaseStudyHero
           eyebrow="RCA × BCG Platinion, 2020"
-          title="The Hidden Workload: Reimagining Women's Work-Life Balance for 2040"
-          subtitle="A speculative service that makes invisible domestic labour economically visible — Core77 Design Awards 2021 Student Notable"
-          pills={[
-            'Speculative Design',
-            "Women's Wellbeing",
-            'Invisible Labour',
-            'Future of Work',
-            'Systemic Design',
-            'Core77 Student Notable',
-          ]}
-          intro="What if the invisible labour women perform at home could be economically valued? At the Royal College of Art I led a Core77-recognised speculative service set in 2040 — built on 26 in-depth interviews and 53 questionnaire responses across 12 countries, and validated with BCG. The Invisible Value Income Program makes unpaid domestic work visible, measurable, and compensated."
+          title="The hidden workload: valuing women's unpaid work in 2040"
+          subtitle="A speculative public service that makes unpaid domestic work economically visible. Core77 Design Awards 2021, Student Notable."
+          intro="What if the unpaid work women do at home had an economic value? At the Royal College of Art, with four classmates, I led a speculative service set in 2040. We built it on 26 in-depth interviews and 53 questionnaire responses from working women in 12 countries, then tested it with working parents, managers and HR specialists. The Invisible Value Income (I.V.I.) Program makes unpaid domestic work visible, measurable and paid for."
           overview={{
             role: [
-              'Project Lead & Design Strategist',
-              'Led research design and synthesis (26 interviews + 53 surveys, 12 countries)',
-              'Facilitated co-creation workshops with BCG stakeholders',
-              'Designed speculative service system and Sensei platform UI',
+              'Project lead and design strategist',
+              'Led research design and synthesis (26 interviews and 53 questionnaires, 12 countries)',
+              'Facilitated co-creation and prototyping sessions',
+              'Designed the service system and the Sensei platform UI',
             ],
-            team: 'Guoxing Song, Jing Qian, Kotoko Kimura, Zhiyuan Zheng. Partners: Fuzzy Design Studio, Royal Society of Medicine, BCG',
-            timeline: 'October–December 2020, Royal College of Art',
-            recognition: 'Core77 Design Awards 2021, Student Notable, Speculative Design. BCG adopted the research framework for internal workshops.',
-            tools: [
-              'Speculative Design',
-              'Service Design',
-              'Systems Thinking',
-              'Ethnographic Research',
-              'Figma',
-            ],
+            team: 'Guoxing Song, Jing Qian, Kotoko Kimura and Zhiyuan Zheng. Partners: Fuzzy Studio, Royal Society of Medicine, BCG Platinion',
+            timeline: 'October to December 2020, Royal College of Art',
+            recognition: 'Core77 Design Awards 2021, Student Notable, Speculative Design. BCG used the wellbeing framework in internal workshops.',
+            tools: ['In-depth interviews', 'Questionnaires', 'Persona from real schedules', 'Speculative scenario', 'Service blueprint', 'Prototype testing', 'Figma'],
           }}
           heroImage="/images/casestudies/ivi/1-bad-health.webp"
+          heroImageAlt="What drives poor mental health for working women"
         />
 
         <CaseStudySection>
-          <div className="flex flex-col gap-4 mt-8">
-            <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
-              <iframe
-                loading="lazy"
-                src="https://player.vimeo.com/video/502127128?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                className="absolute inset-0 w-full h-full"
-                title="I.V.I program"
-                allowFullScreen>
-              </iframe>
-            </div>
-            <CaseStudyImageGrid
-              columns={1}
-              aspectRatio="aspect-auto"
-              images={[
-                { src: '/images/casestudies/ivi/2-good-mental-health.webp', alt: 'What good mental health looks like for working women', caption: 'Good mental health' }
-              ]}
-            />
+          <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
+            <iframe
+              loading="lazy"
+              src="https://player.vimeo.com/video/502127128?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="absolute inset-0 w-full h-full"
+              title="I.V.I. Program film"
+              allowFullScreen>
+            </iframe>
           </div>
         </CaseStudySection>
 
-        {/* The Problem */}
-        <CaseStudySection title="The Problem">
+        <CaseStudySection title="Context">
           <CaseStudyParagraph lead>
-            The modern working woman carries two jobs. One is paid and visible. The other — childcare,
-            domestic management, emotional labour — is invisible to every economic system that exists today.
+            Many working women have two jobs. One is paid and visible. The other, childcare, running the home
+            and emotional labour, doesn't show up in any economic system.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            Our research — 26 in-depth interviews and 53 questionnaire responses with working women
-            across 12 countries (UK, Germany, France, Japan, India, China and more), plus 4 wellbeing
-            specialists — mapped the systemic pressure clearly: workplace stress compounded by unpaid
-            domestic workload, blurred boundaries between professional and personal life, and what we
-            came to call the "Working Mom Penalty" — the systematic devaluation of contributions both
-            at home and at work.
+            We spoke with working women in 12 countries, including the UK, Germany, France, Japan, India and
+            China, and with 4 wellbeing specialists. The same pressures kept coming up: work stress on top of
+            unpaid work at home, no clear line between work and personal life, and what we called the "working
+            mom penalty", where women's contributions are undervalued both at home and at work.
           </CaseStudyParagraph>
 
           <CaseStudyQuote author="Interview participant" role="Working mother">
-            Married men with children still work overtime, but women with children find it hard to —
-            which makes it difficult to compete and get promoted.
-          </CaseStudyQuote>
-
-          <CaseStudyQuote>
-            What if invisible value could be evaluated economically?
+            Married men with children still work overtime, but women with children find it hard to, which makes
+            it difficult to compete and get promoted.
           </CaseStudyQuote>
 
           <CaseStudyImageGrid
             columns={1}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/1-bad-health.webp', alt: 'The toll of poor mental and physical health on working women', caption: 'Bad health' },
-              { src: '/images/casestudies/ivi/3-initial-hmw.webp', alt: 'Our initial How Might We framing of the problem', caption: 'Initial how-might-we' },
-              { src: '/images/casestudies/ivi/4-why-this-happens.webp', alt: 'Mapping the systemic reasons why this happens', caption: 'Why this happens' }
+              { src: '/images/casestudies/ivi/2-good-mental-health.webp', alt: 'What good mental health looks like for working women', caption: 'What good mental health looks like, from our background research.' },
+              { src: '/images/casestudies/ivi/4-why-this-happens.webp', alt: 'Why this happens: inequality between parents', caption: 'Why it happens: the inequality between parents.' },
             ]}
           />
         </CaseStudySection>
 
-        {/* Our Approach */}
-        <CaseStudySection title="Our Approach">
+        <CaseStudySection title="Research">
           <CaseStudyParagraph lead>
-            We believed designing for systemic inequality required understanding it at a human level first.
-            So before any solution work, we built a genuine research foundation.
+            To design for a systemic inequality, we first had to understand it at a human level, so the research
+            came before any solution work.
           </CaseStudyParagraph>
 
+          <CaseStudyImageGrid
+            columns={1}
+            images={[
+              { src: '/images/casestudies/ivi/5-research-findings.webp', alt: 'Research findings from 26 interviews and 53 questionnaires', caption: 'What 26 interviews and 53 questionnaire responses told us.' },
+            ]}
+          />
+
           <CaseStudyCardGrid columns={3}>
-            <CaseStudyCard title="Phase 1 — Discovery">
+            <CaseStudyCard title="Discovery">
               <CaseStudyParagraph>
-                26 in-depth interviews and 53 questionnaires with working women across 12 countries,
-                plus 4 wellbeing specialists.{' '}
-                <strong>Key findings:</strong> stress is both external (workload, societal pressure) and internal
-                (self-doubt, fear of obsolescence). A sense of control significantly decreases stress.
-                Prevention is more effective than cure, yet chronically underfunded.
+                26 in-depth interviews and 53 questionnaires with working women in 12 countries, plus 4 wellbeing
+                specialists. Stress came from outside (workload, social pressure) and inside (self-doubt, fear of
+                falling behind). Feeling in control reduced it. Prevention works better than cure, and it's
+                rarely funded.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Phase 2 — Persona & Problem">
+            <CaseStudyCard title="Persona">
               <CaseStudyParagraph>
-                We built Johanna from six mothers' real daily schedules — 36, a one-year-old daughter,
-                just back from maternity leave. <em>"I don't have one minute to myself. I'm 100% productive
-                at work in back-to-back meetings, and when the meetings stop, it's 100% parenting time."</em>
-                Her root problem wasn't time management. It was that her domestic work had no recognised value.
+                We built Johanna from six mothers' real daily schedules: 36, a one-year-old daughter, just back
+                from maternity leave. <em>"I don't have one minute to myself. I'm 100% productive at work in
+                back-to-back meetings, and when the meetings stop, it's 100% parenting time."</em> Her problem
+                wasn't time management. Her work at home had no recognised value.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Phase 3 — Future Speculation">
+            <CaseStudyCard title="Speculation">
               <CaseStudyParagraph>
-                We projected Johanna's needs into a 2040 scenario — accounting for advances in AI, IoT,
-                evolving family structures, and shifting work cultures. The question became: if technology
-                can measure almost anything, why are we choosing not to measure this?
+                We moved Johanna's needs into a 2040 scenario that accounts for AI, connected devices, new family
+                structures and changing work cultures. If technology can measure almost anything by then, why
+                would we choose not to measure this?
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
           <CaseStudyImageGrid
             columns={1}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/5-research-findings.webp', alt: 'Key research findings from interviews and surveys across 12 countries', caption: 'Research findings' }
+              { src: '/images/casestudies/ivi/3-initial-hmw.webp', alt: 'Our first how-might-we question', caption: 'Our first how-might-we question.' },
+              { src: '/images/casestudies/ivi/15-2.webp', alt: 'Future prediction from policy, company and individual signals', caption: 'Building the 2040 scenario from real signals in policy, companies and individuals.' },
             ]}
           />
         </CaseStudySection>
 
-        {/* The Solution */}
-        <CaseStudySection title="The Solution: The I.V.I. Program">
+        <CaseStudySection title="Insight">
+          <CaseStudyInsight>
+            Measuring unpaid work changes how it's seen, before any money changes hands.
+          </CaseStudyInsight>
+
+          <CaseStudyImageGrid
+            columns={1}
+            images={[
+              { src: '/images/casestudies/ivi/term4-final-presentation-004.webp', alt: 'The question: why is this invisible value not paid for?', caption: 'The question at the centre of the project.' },
+            ]}
+          />
+        </CaseStudySection>
+
+        <CaseStudySection title="What we made">
           <CaseStudyParagraph lead>
-            The Invisible Value Income Program is a speculative governmental service for 2040. It recognises,
-            measures, and compensates for the invisible value created by individuals — primarily women —
-            outside of formal employment.
+            The Invisible Value Income Program is a speculative government service for 2040. It recognises,
+            measures and pays for the value people, mostly women, create outside formal employment.
           </CaseStudyParagraph>
 
           <CaseStudyCardGrid columns={3}>
-            <CaseStudyCard title="Makes invisible value visible">
+            <CaseStudyCard title="Making the work visible">
               <CaseStudyParagraph>
-                IoT devices collect data on domestic contributions, the Sensei platform visualises that work,
-                and it translates into potential income. The act of measurement alone shifts perception.
+                Connected devices record contributions at home, the Sensei platform shows that work, and it
+                turns into potential income.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Enhances sense of control">
+            <CaseStudyCard title="More control">
               <CaseStudyParagraph>
-                Users gain data and insight into their full life-work landscape, enabling better planning
-                and genuine decision-making autonomy.
+                People see their whole picture of work and life, which makes planning and real choices easier.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Promotes systemic equity">
+            <CaseStudyCard title="Paid by government">
               <CaseStudyParagraph>
-                By compensating unpaid work at a governmental level (not employer level — a critical design
-                decision from stakeholder validation), the program avoids creating new workplace discrimination
-                while addressing the structural inequality directly.
+                The payment comes from government, not employers. That decision came from testing: employer
+                funding would have created new discrimination at work.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
           <CaseStudyParagraph>
-            <strong>The Sensei Platform</strong> is the central touchpoint: a digital interface that collects
-            invisible value data via IoT, facilitates self-monitoring of physical and mental health,
-            connects users to professional support pathways, and facilitates planning conversations with
-            managers, HR, and family members.
+            The <strong>Sensei platform</strong> is the main touchpoint. It collects the data, helps people keep
+            track of their physical and mental health, connects them to professional support, and supports
+            planning conversations with managers, HR and family.
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
             columns={1}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/ivi/7-sensei.webp', alt: 'The Sensei platform — the central touchpoint of the I.V.I. Program', caption: 'The Sensei platform' }
+              { src: '/images/casestudies/ivi/7-sensei.webp', alt: 'The Sensei platform', caption: 'The Sensei platform.' },
+              { src: '/images/casestudies/ivi/6-1-journey-map-1.webp', alt: 'User journey, part one: collecting invisible value, self-check and planning', caption: 'The user journey, part one.' },
+              { src: '/images/casestudies/ivi/6-2-journey-map-2.webp', alt: 'User journey, part two: workplace conversations and invisible value income', caption: 'The user journey, part two.' },
             ]}
           />
-          <div className="mt-8">
-            <CaseStudyImageGrid
-              columns={1}
-              aspectRatio="aspect-auto"
-              images={[
-                { src: '/images/casestudies/ivi/6-1-journey-map-1.webp', alt: 'Service journey map — part one', caption: 'Journey map' },
-                { src: '/images/casestudies/ivi/6-2-journey-map-2.webp', alt: 'Service journey map — how the system will look in practice', caption: 'Journey map — how the system will look' }
-              ]}
-            />
-          </div>
         </CaseStudySection>
 
-        {/* Validation with Stakeholders */}
-        <CaseStudySection title="Validation with Stakeholders">
+        <CaseStudySection title="Testing">
           <CaseStudyParagraph lead>
-            We prototyped the I.V.I. Program and tested it with 9 stakeholders — working mothers and
-            fathers, managers, and HR specialists across multiple countries. The feedback sharpened our
-            thinking significantly.
+            We prototyped the service in 9 sessions covering 5 perspectives: HR, a manager and her team, a
+            working dad, a working mom and a woman in employment. The feedback changed the design.
           </CaseStudyParagraph>
 
-          <CaseStudyQuote author="Miao" role="Working Mother, China">
-            The invisible value should be paid for by the government, not companies — women are
-            discriminated against more if the company pays for it.
+          <CaseStudyImageGrid
+            columns={1}
+            images={[
+              { src: '/images/casestudies/ivi/term4-final-presentation-012.webp', alt: 'Validation sessions: 9 prototypes, 5 perspectives', caption: 'The validation sessions.' },
+              { src: '/images/casestudies/ivi/18.webp', alt: 'Prototyping with stakeholders and the topics we covered', caption: 'What we talked about in the sessions.' },
+            ]}
+          />
+
+          <CaseStudyQuote author="Miao" role="Working mother, China">
+            The invisible value should be paid for by the government, not companies. Women are discriminated
+            against more if the company pays for it.
           </CaseStudyQuote>
 
           <CaseStudyQuote author="Saanya" role="Manager, India">
@@ -237,103 +213,92 @@ export const IviProgram = () => {
             It would need to be very easy to access, otherwise only educated women would benefit.
           </CaseStudyQuote>
 
-          <CaseStudyCard title="Design Principles from Validation">
+          <CaseStudyCard title="What testing changed">
             <CaseStudyList items={[
-              'Government funding only — to prevent workplace discrimination',
-              'Partial employer data access with user consent',
-              'Trust-based service design with minimal tracking',
-              'Careful consideration of unintended consequences — particularly domestic work becoming transactional',
+              'Funding comes from government only, to avoid discrimination at work',
+              'Employers see only some data, and only with consent',
+              'A trust-based service with as little tracking as possible',
+              'A watch for unintended effects, especially care starting to feel transactional',
             ]} />
           </CaseStudyCard>
 
           <CaseStudyImageGrid
             columns={1}
             images={[
-              { src: '/images/casestudies/ivi/term4-final-presentation-012.webp', alt: 'Validation session slide summarising stakeholder feedback on the I.V.I. concept' },
-              { src: '/images/casestudies/ivi/18.webp', alt: 'Stakeholder validation session with working parents and managers' },
-              { src: '/images/casestudies/ivi/20.webp', alt: 'Participant feedback captured during concept validation' },
-              { src: '/images/casestudies/ivi/19.webp', alt: 'Discussion of service safeguards raised during validation' }
+              { src: '/images/casestudies/ivi/20.webp', alt: 'Quotes from the prototyping sessions', caption: 'Quotes from the sessions.' },
+              { src: '/images/casestudies/ivi/19.webp', alt: 'More quotes from the prototyping sessions', caption: 'More quotes from the sessions.' },
             ]}
           />
         </CaseStudySection>
 
-        {/* Impact & Recognition */}
-        <CaseStudySection title="Impact & Recognition">
+        <CaseStudySection title="What changed">
           <CaseStudyStatsGrid
             stats={[
-              { value: '79', label: 'Women', sublabel: 'Interviews + surveys, 12 countries' },
+              { value: '79', label: 'Women', sublabel: 'Interviews and questionnaires, 12 countries' },
               { value: 'Core77', label: 'Award', sublabel: 'Student Notable, 2021' },
-              { value: 'BCG', label: 'Framework Adopted', sublabel: 'Internal wellbeing workshops' },
-              { value: '9', label: 'Stakeholders', sublabel: 'Validated' },
+              { value: 'BCG', label: 'Used the framework', sublabel: 'Internal affiliation workshops' },
+              { value: '9', label: 'Prototype sessions', sublabel: '5 perspectives' },
             ]}
           />
 
           <CaseStudyParagraph>
-            Core77 Design Awards 2021, Student Notable in Speculative Design. The "6 Dimensions of
-            Workplace Wellbeing" framework developed during this project was adopted by BCG for their
-            internal employee affiliation workshops — demonstrating that speculative design, done rigorously,
-            produces frameworks with immediate real-world applicability.
+            The project received a Core77 Design Awards 2021 Student Notable in Speculative Design. BCG later used
+            the "6 dimensions of workplace wellbeing" framework from this project in its internal employee
+            affiliation workshops, to look at changes before and after the pandemic.
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
             columns={1}
             images={[
-              { src: '/images/casestudies/ivi/29-2.webp', alt: 'The 6 Dimensions of Workplace Wellbeing framework presented to stakeholders' },
-              { src: '/images/casestudies/ivi/core77-student-notable-listing.webp', alt: 'Core77 Design Awards 2021 Student Notable listing for the I.V.I. Program' }
+              { src: '/images/casestudies/ivi/29-2.webp', alt: 'The 6 dimensions of workplace wellbeing, used in BCG’s affiliation workshop', caption: 'The framework BCG used.' },
+              { src: '/images/casestudies/ivi/core77-student-notable-listing.webp', alt: 'Core77 Design Awards 2021 Student Notable listing for the I.V.I. Program', caption: 'The Core77 listing.' },
             ]}
           />
         </CaseStudySection>
 
-        {/* What I Learned */}
-        <CaseStudySection title="What I Learned">
-          <CaseStudyCardGrid columns={2}>
-            <CaseStudyCard title="Speculative design is a tool for real dialogue">
+        <CaseStudySection title="What I learned">
+          <CaseStudyCardGrid columns={3}>
+            <CaseStudyCard title="Speculation makes conversations honest">
               <CaseStudyParagraph>
-                Designing a 2040 scenario didn't make the work abstract. It made the conversations about
-                current inequality sharper and more honest. People engage differently when you remove
-                the constraints of "what's feasible now."
+                Setting the service in 2040 made the conversations about today's inequality sharper. People talk
+                differently once "what's feasible now" is off the table.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Wellbeing is systemic, not individual">
+            <CaseStudyCard title="Look at the system">
               <CaseStudyParagraph>
-                The instinct in most wellness products is to help individuals cope better. The harder,
-                more important question is: what systemic conditions are producing the stress in the first place?
+                Most wellness products help individuals cope. The harder question is what in the system is
+                producing the stress in the first place.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Making the invisible visible is itself an act of design">
+            <CaseStudyCard title="Measurement is a design choice">
               <CaseStudyParagraph>
-                The most powerful thing the I.V.I. Program does isn't the income. It's the measurement.
-                Quantifying domestic labour changes how it's perceived, discussed, and valued — by institutions,
-                by families, and by women themselves.
+                The income matters less than the measurement. Counting domestic work changes how institutions,
+                families and women themselves see it.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
-          <div className="flex flex-col gap-4 mt-8">
-            <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
-              <iframe
-                loading="lazy"
-                src="https://player.vimeo.com/video/500506619?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                className="absolute inset-0 w-full h-full"
-                title="How do participants feel about the I.V.I program so far"
-                allowFullScreen>
-              </iframe>
-            </div>
-
-            <CaseStudyImageGrid
-              columns={1}
-              images={[
-                { src: '/images/casestudies/ivi/term4-final-presentation-004.webp', alt: 'Reflection slide on what the 2040 framing unlocked in stakeholder conversations' },
-                { src: '/images/casestudies/ivi/25-2.webp', alt: 'Team synthesis wall mapping systemic drivers of the hidden workload' },
-                { src: '/images/casestudies/ivi/15-2.webp', alt: 'Service journey sketch for the I.V.I. Program' }
-              ]}
-            />
+          <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
+            <iframe
+              loading="lazy"
+              src="https://player.vimeo.com/video/500506619?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="absolute inset-0 w-full h-full"
+              title="How participants feel about the I.V.I. Program"
+              allowFullScreen>
+            </iframe>
           </div>
+
+          <CaseStudyImageGrid
+            columns={1}
+            images={[
+              { src: '/images/casestudies/ivi/25-2.webp', alt: 'Conclusion: prototyping interviews and the public showcase workshop', caption: 'The conclusion: prototyping interviews and a public showcase workshop.' },
+            ]}
+          />
         </CaseStudySection>
       </CaseStudyLayout>
     </>

@@ -3,7 +3,7 @@ import {
   CaseStudyHero,
   CaseStudySection,
   CaseStudyParagraph,
-  CaseStudyQuote,
+  CaseStudyInsight,
   CaseStudyList,
   CaseStudyImage,
   CaseStudyImageGrid,
@@ -14,415 +14,337 @@ import {
 
 export const Otagon = () => {
   return (
-    <CaseStudyLayout
-      title="Otagon"
-      description="How I designed and built Otagon, an AI gaming companion, on my own: a phone app, a desktop connector and the backend."
-      externalLink="https://otagon2.github.io/"
-      externalLabel="Visit Otagon"
-    >
+    <CaseStudyLayout title="Otagon" externalLink="https://otagon2.github.io/" externalLabel="Try Otagon">
       <CaseStudyHero
         eyebrow="Otalabs, 2025–present"
-        title="Never Get Stuck Again"
+        title="Otagon: help for gamers that doesn't spoil the game"
         subtitle="How I designed and built an AI gaming companion on my own, from idea to a live product on phone and desktop"
-        pills={[
-          'Product Management',
-          'React 18',
-          'TypeScript',
-          'AI / Gemini',
-          'Web + PWA',
-          'Supabase',
-          'Lemon Squeezy',
-        ]}
-        intro="I had an idea, no co-founder, and a decision to make: design it or build it. I chose both. Otagon went from concept to a live product: a PWA, a desktop pairing client, free and paid tiers, and an AI stack on Gemini and Supabase. It launched publicly in July 2026 and is still early on users. This is the story of how it got here."
+        intro="I had an idea, no co-founder, and a choice: design it or build it. I did both. Otagon is a phone app (PWA), a Windows desktop connector and a backend on Supabase, with Gemini reading your screenshots. It launched publicly in July 2026 and is still early on users. This is how it got here, including what broke."
         externalLink="https://otagon2.github.io/"
         externalLabel="otagon2.github.io"
         overview={{
           role: [
             'Founder, Otalabs',
-            'Full ownership from research to launch',
-            'Design, frontend engineering, AI integration',
-            'Backend, billing, mobile packaging, GTM',
+            'Everything from research to launch',
+            'Design, front-end engineering and AI integration',
+            'Backend, billing, packaging and go-to-market',
           ],
-          timeline: 'August 2025 – present',
-          recognition: '30+ features, free and paid tiers, installable PWA with desktop pairing. Public launch July 2026.',
+          timeline: 'August 2025 to now; public launch July 2026',
+          recognition: '30+ features, free and paid tiers, installable PWA with desktop pairing',
           tools: [
             'React 18',
             'TypeScript',
             'Vite',
-            'PWA Development',
-            'Supabase (Auth, DB, Edge Functions)',
+            'PWA',
+            'Supabase (Auth, Postgres, Edge Functions)',
             'Google Gemini 2.x',
             'Electron (desktop connector)',
             'IGDB API',
             'Lemon Squeezy',
             'Tailwind CSS',
-            'Framer Motion',
           ],
         }}
         heroImage="/images/casestudies/otagon/1-home-page-landing.webp"
-        heroImageAlt="Otagon landing page — Never Get Stuck Again"
+        heroImageAlt="Otagon landing page"
       />
 
-      {/* The Problem */}
-      <CaseStudySection title="The Problem">
+      <CaseStudySection title="Context">
         <CaseStudyParagraph lead>
-          Gamers constantly need help — boss strategies, lore context, build optimisation — but
-          every existing solution breaks immersion or risks spoilers.
+          Players often need help with a boss, a puzzle or a bit of lore, and every way of getting it either pulls
+          them out of the game or risks spoilers.
         </CaseStudyParagraph>
 
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Current Pain Points">
-            <CaseStudyList items={[
-              { title: 'Alt-tabbing to Google', description: 'Re-explaining your context every time' },
-              { title: 'YouTube walkthroughs', description: 'Linear and spoiler-heavy' },
-              { title: 'ChatGPT and Claude', description: 'No idea where you are in a game' },
-            ]} />
-          </CaseStudyCard>
+        <CaseStudyList items={[
+          { title: 'Searching the web', description: 'means alt-tabbing out and explaining where you are every time' },
+          { title: 'Video walkthroughs', description: 'are long, linear and full of spoilers' },
+          { title: 'General AI chatbots', description: 'have no idea where you are in the game' },
+        ]} />
 
-          <CaseStudyCard title="The Core Insight">
-            <CaseStudyParagraph>
-              Gamers don't need more information — they need <strong>contextual help that knows where they are</strong>.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
-
-        <CaseStudyQuote>
-          Nearly every gamer I interviewed alt-tabbed mid-game to look something up — and a striking number
-          avoided seeking help at all, for fear of spoilers. Either way, the flow of play breaks.
-        </CaseStudyQuote>
+        <CaseStudyParagraph>
+          Nearly every player I interviewed alt-tabbed mid-game to look something up, and a lot of them avoided
+          asking for help at all because they were afraid of spoilers. Either way, the game stops.
+        </CaseStudyParagraph>
 
         <CaseStudyImage
           src="/images/casestudies/otagon/10-user-query-on-home-page.webp"
-          alt="Otagon home — a user asking a question about their game"
-          caption="Instead of alt-tabbing to Google, the player asks Otagon in-context"
-          aspectRatio="aspect-auto"
+          alt="A player asking Otagon a question about their game"
+          caption="The player asks Otagon instead of leaving the game."
         />
       </CaseStudySection>
 
-      {/* The Vision */}
-      <CaseStudySection title="The Vision">
-        <CaseStudyParagraph lead>
-          An AI companion that sees what you see. Upload a screenshot, or hit F1 on your PC,
-          and Otagon instantly knows your game, your location, your progress — and responds without spoilers.
+      <CaseStudySection title="Insight">
+        <CaseStudyInsight>
+          Players don't need more information. They need help that knows where they are, and stops there.
+        </CaseStudyInsight>
+
+        <CaseStudyParagraph>
+          So Otagon looks at what you see. Upload a screenshot, or press F1 on your PC, and it works out the game,
+          where you are and how far you've got, then answers without going past that point.
         </CaseStudyParagraph>
 
         <CaseStudyImage
           src="/images/casestudies/otagon/11-ai-response.webp"
-          alt="Otagon AI response with spoiler-aware, context-aware guidance"
-          caption="Otagon reads your game context and responds without spoilers"
-          aspectRatio="aspect-auto"
+          alt="Otagon answering with a hint that matches the player's progress"
+          caption="A hint matched to the player's progress."
         />
       </CaseStudySection>
 
-      {/* How It Was Built */}
-      <CaseStudySection title="How It Was Built">
+      <CaseStudySection title="What I made">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Phase 1 — Research & Direction">
+          <CaseStudyCard title="1. Research and direction">
             <CaseStudyParagraph>
-              I interviewed gamers across play styles and mapped the competitive landscape.
-              Three distinct personas emerged — the Casual Gamer, the Story Seeker, and the Completionist —
-              which directly shaped the tiered product strategy and every feature prioritization decision after.
+              I interviewed players with different play styles and looked at the existing tools. Three personas
+              came out of it, the Casual Gamer, the Story Seeker and the Completionist, and they shaped the tiers
+              and what I built first.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 2 — MVP">
+          <CaseStudyCard title="2. MVP">
             <CaseStudyParagraph>
-              I made a key early decision: a PWA instead of native apps, so one codebase reached every device.
-              That call defined the product's trajectory. I shipped the core: screenshot analysis via
-              Gemini 2.x, game detection, conversation history, Game Hub, and PC-to-Mobile sync
-              via WebSocket relay.
+              An early decision: a PWA instead of native apps, so one codebase reached every device. I built the
+              core: screenshot analysis with Gemini, game detection, conversation history, a game hub, and PC-to-phone
+              sync through a WebSocket relay.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 3 — Pro Features & Monetization">
+          <CaseStudyCard title="3. Pro features and pricing">
             <CaseStudyParagraph>
-              Usage patterns revealed the right pricing model: query-based limits, not arbitrary feature gates.
-              I built Pro-tier features — Lore & Insights Subtabs, Google Search Grounding for real-time
-              meta strategies, Playing vs Planning modes with session summaries — and shipped Lemon Squeezy
-              checkout through a hardened Supabase Edge Function.
+              I chose query-based limits instead of locked features. Pro adds Lore and Insights subtabs, Google
+              Search grounding for current strategies, and Playing and Planning modes with session summaries.
+              Checkout runs through a Supabase Edge Function.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 4 — Polish & Advanced Systems">
+          <CaseStudyCard title="4. Polish and cost">
             <CaseStudyParagraph>
-              AI Behavior Training — users teach Otagon correct responses when it gets something wrong.
-              Hands-Free Mode with TTS for console players. Smart caching that reduced API costs by ~40%.
-              A shared <code>game_knowledge_cache</code> that deduplicates IGDB and grounding lookups across users.
+              Players can correct Otagon when it gets something wrong. A hands-free mode reads hints aloud for
+              console players. Caching cut AI API costs by about 40%, and a shared game-knowledge cache stops the
+              same IGDB and search lookups being repeated across players.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 5 — PWA, Gamification & Hardening">
+          <CaseStudyCard title="5. PWA, gamification and hardening">
             <CaseStudyParagraph>
-              Optimised the PWA for responsive mobile/desktop layouts. Layered in a full gamification
-              system — achievements, XP, intent classification, Bronze → Pro tiers. Hardened RLS across
-              every user-data table and ran a top-to-bottom security audit.
+              Responsive layouts for phone and desktop, achievements and XP tied to how you actually play,
+              row-level security on every user-data table, and a full security audit.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 6 — Production & Live Ops">
+          <CaseStudyCard title="6. Launch">
             <CaseStudyParagraph>
-              Live, with Lemon Squeezy checkout running through a server-side Edge Function and a
-              deploy pipeline I run end to end myself.
+              Public launch in July 2026, with Lemon Squeezy checkout through a server-side Edge Function and a
+              deploy pipeline I run myself.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyImage
           src="/images/casestudies/otagon/8-pc-connector.webp"
-          alt="Otagon desktop PC connector — pairs your PC to the mobile app"
-          caption="The desktop pairing client: hit F1 on PC and the capture syncs to mobile via WebSocket relay"
-          aspectRatio="aspect-auto"
+          alt="The Otagon desktop connector that pairs a PC with the phone app"
+          caption="The desktop connector: press F1 on your PC and the screenshot reaches your phone through the relay."
         />
 
         <CaseStudyImageGrid
           columns={3}
-          aspectRatio="aspect-auto"
           images={[
-            { src: '/images/casestudies/otagon/3-mobile-logged-in-home.webp', alt: 'Otagon mobile home screen once logged in' },
-            { src: '/images/casestudies/otagon/5-gaming-hq-home-page.webp', alt: 'Gaming HQ home page', caption: 'Game Hub' },
-            { src: '/images/casestudies/otagon/7-connected-to-pc.webp', alt: 'Mobile app showing it is connected to the PC', caption: 'PC-to-mobile sync, live' },
+            { src: '/images/casestudies/otagon/3-mobile-logged-in-home.webp', alt: 'Otagon home on a phone after signing in', caption: 'Home on a phone' },
+            { src: '/images/casestudies/otagon/5-gaming-hq-home-page.webp', alt: 'The game hub', caption: 'The game hub' },
+            { src: '/images/casestudies/otagon/7-connected-to-pc.webp', alt: 'The phone app connected to the PC', caption: 'Connected to the PC' },
           ]}
         />
       </CaseStudySection>
 
-      {/* Key Design Decisions */}
-      <CaseStudySection title="Key Design Decisions">
+      <CaseStudySection title="Design decisions">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="The OTAGON Tag System">
+          <CaseStudyCard title="A structured output format for the AI">
             <CaseStudyParagraph>
-              Early on, AI responses were generic and unreliable to parse. I designed a structured output format —
-              OTAGON tags — that extract game title, location, progress estimate, spoiler risk, and confidence
-              level from every screenshot. This made AI output predictable and the entire product more stable.
-            </CaseStudyParagraph>
-            <CaseStudyParagraph>
-              <strong>Before:</strong> free-form text, unparseable. <strong>After:</strong> structured, reliable, product-grade.
+              Early on, the AI's answers were free-form text that the app couldn't rely on. I designed a structured
+              format, the OTAGON tags, that pulls the game, location, progress, spoiler risk and confidence out of
+              every screenshot. The app reads the tags, not the prose, which made the whole product more stable.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Spoiler-Aware Responses">
+          <CaseStudyCard title="Spoiler-aware answers">
             <CaseStudyParagraph>
-              The most emotionally important feature. Progress-aware AI calibrated to how far you are
-              in the game, with user-configurable spoiler tolerance. This was the insight that made Otagon
-              feel different from just "ChatGPT for games."
+              Answers are matched to how far you've got, and you choose how much you're willing to see. This is
+              what makes Otagon different from a general chatbot for games.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Playing vs Planning Mode">
+          <CaseStudyCard title="Playing and Planning modes">
             <CaseStudyParagraph>
-              A simple mental model with real product impact. <strong>Playing Mode:</strong> concise, immediate
-              tactical tips. <strong>Planning Mode:</strong> deeper strategy, auto-generates a session summary
-              when you switch. Clean modes map to real user behaviour and reduce prompt engineering complexity.
+              <strong>Playing</strong> gives short, immediate tips. <strong>Planning</strong> goes deeper and writes
+              a session summary when you switch. Two clear modes match how people actually use it.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Genre-Specific Personas">
+          <CaseStudyCard title="Companion personas">
             <CaseStudyParagraph>
-              Generic AI responses were the first major failure point. I built 8+ genre-specific tone profiles —
-              the AI feels different helping you with a Soulslike versus an open-world RPG. This single
-              change drove a qualitative improvement in perceived response relevance.
+              Generic answers were the first big problem. Players can pick one of five companion personas (Lore
+              Scholar, Strategist, Hype Friend, Minimalist or Balanced) to set how Otagon talks to them.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Subtabs as First-Class Surfaces">
+          <CaseStudyCard title="Subtabs that last">
             <CaseStudyParagraph>
-              The AI doesn't just answer — it builds persistent, game-specific panels (Build Guide,
-              Collectible Map, Boss Strategy). Subtabs turn one-off answers into a long-lived workspace
-              the user keeps returning to.
+              The AI builds lasting panels for each game, such as a build guide, a collectibles map or a boss
+              strategy, so one-off answers become a workspace you come back to.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Gamification That Tracks Intent">
+          <CaseStudyCard title="Progress that reflects how you play">
             <CaseStudyParagraph>
-              Achievements aren't arbitrary — they're tied to AI intent classification. Ask lore-heavy
-              questions and you progress toward "Lore Seeker." This makes XP feel like a reflection of
-              your real play style, not a checklist.
+              Achievements follow the kind of questions you ask. Ask a lot about lore and you move towards "Lore
+              Seeker", so XP reflects your play style.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyImageGrid
           columns={3}
-          aspectRatio="aspect-auto"
           images={[
-            { src: '/images/casestudies/otagon/12-subtabs-1.webp', alt: 'Subtabs surface — persistent game-specific panel' },
-            { src: '/images/casestudies/otagon/13-subtabs-2.webp', alt: 'A second subtabs view with more game-specific content' },
-            { src: '/images/casestudies/otagon/18-ai-response-with-suggestion-tabs.webp', alt: 'AI response with suggested subtabs to open', caption: 'AI answers spawn persistent, game-specific subtabs' },
+            { src: '/images/casestudies/otagon/12-subtabs-1.webp', alt: 'A game-specific subtab', caption: 'A subtab' },
+            { src: '/images/casestudies/otagon/13-subtabs-2.webp', alt: 'Another game-specific subtab', caption: 'Another subtab' },
+            { src: '/images/casestudies/otagon/18-ai-response-with-suggestion-tabs.webp', alt: 'An answer with suggested subtabs', caption: 'An answer that suggests subtabs' },
           ]}
         />
 
         <CaseStudyImage
           src="/images/casestudies/otagon/17-subtabs-in-desktop.webp"
-          alt="Subtabs as first-class surfaces in the desktop layout"
-          caption="The same subtab workspace, laid out for desktop"
-          aspectRatio="aspect-auto"
+          alt="Subtabs in the desktop layout"
+          caption="The same subtabs on desktop."
         />
       </CaseStudySection>
 
-      {/* The Hard Problems */}
-      <CaseStudySection title="The Hard Problems">
+      <CaseStudySection title="How I built it with AI tools">
+        <CaseStudyParagraph lead>
+          I built Otagon with AI coding tools, mostly Claude Code. Of the 920 commits in the repository, 259 were
+          written or co-written by Claude. My part was deciding what to build, writing the specs, reviewing every
+          change and testing it on real games.
+        </CaseStudyParagraph>
+
+        <CaseStudyParagraph>
+          The tools made me fast at writing code. They didn't notice what was wrong. Each of these fixes started
+          with me watching a real session:
+        </CaseStudyParagraph>
+
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Screenshot Misclassification">
+          <CaseStudyCard title="Wrong game tabs">
             <CaseStudyParagraph>
-              AI was creating new game tabs for desktop screenshots and launchers.
-              Fixed by combining detection signals and, when confidence is low, asking the player
-              which game they mean.
+              Screenshots of the desktop or a game launcher were opening new game tabs. I combined several
+              detection signals into one decision, and when confidence is low, Otagon now asks the player which
+              game they mean instead of guessing.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Context Loss in Long Conversations">
+          <CaseStudyCard title="Long chats breaking">
             <CaseStudyParagraph>
-              Long sessions caused token overflow and cost spikes. Built a context summarization service:
-              AI condenses history to 300 words, preserves the last 8 messages, triggers before overflow.
-              <strong> Consistent costs regardless of session length.</strong>
+              Long sessions ran past the model's context limit and costs climbed. I added a summariser that
+              condenses older history to 300 words and keeps the last 8 messages as they are, so cost stays flat
+              however long you play.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Empty Subtabs">
+          <CaseStudyCard title="Messages vanishing">
             <CaseStudyParagraph>
-              Async AI generation meant Pro users saw blank panels on first load. Switched to a template-first
-              approach: subtabs appear immediately in a loading state, populate in the background.
-              <strong> Eliminated the complaint entirely.</strong>
+              Moving messages into a new tab could lose them if tab creation and saving raced each other. I rewrote
+              the move as one atomic transaction, so each message ends up in exactly one place.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Race Conditions in Message Migration">
+          <CaseStudyCard title="Empty panels">
             <CaseStudyParagraph>
-              Messages were occasionally lost when tab creation competed with message saving. Solved with
-              atomic migration: one transaction for creating the tab and moving the messages.
+              Pro panels were generated in the background, so they first appeared blank. Now they appear straight
+              away in a loading state and fill in as the content arrives.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Secure Lemon Squeezy Checkout">
+          <CaseStudyCard title="Keeping secrets off the browser">
             <CaseStudyParagraph>
-              Checkout could not happen client-side without leaking the API key. Routed every checkout
-              through a Supabase Edge Function with secrets-scoped env vars and strict origin allow-lists.
-              <strong> No secret ever ships to the browser.</strong>
+              Checkout couldn't run in the browser without exposing the payment API key. Every checkout goes
+              through a Supabase Edge Function with server-side secrets and a strict list of allowed origins.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="RLS on Every User-Data Table">
+          <CaseStudyCard title="Row-level security everywhere">
             <CaseStudyParagraph>
-              Audited the schema and added <code>auth_user_id</code>-scoped policies on every user-data
-              table — conversations, messages, subtabs, gamification, achievements. A client-side leak
-              can no longer turn into a cross-account data leak.
+              I audited the schema and added policies scoped to the signed-in user on every user-data table:
+              conversations, messages, subtabs and achievements. A front-end bug can't expose one player's data
+              to another.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyImageGrid
           columns={3}
-          aspectRatio="aspect-auto"
           images={[
-            { src: '/images/casestudies/otagon/14-sidebar.webp', alt: 'Otagon sidebar navigation' },
-            { src: '/images/casestudies/otagon/4-control-sheet.webp', alt: 'Control sheet giving users more controls', caption: 'Per-response controls' },
-            { src: '/images/casestudies/otagon/15-game-info-modal.webp', alt: 'Game info modal with IGDB-sourced details' },
+            { src: '/images/casestudies/otagon/14-sidebar.webp', alt: 'Otagon sidebar navigation', caption: 'Navigation' },
+            { src: '/images/casestudies/otagon/4-control-sheet.webp', alt: 'Controls for each answer', caption: 'Controls for each answer' },
+            { src: '/images/casestudies/otagon/15-game-info-modal.webp', alt: 'Game details from IGDB', caption: 'Game details from IGDB' },
           ]}
         />
       </CaseStudySection>
 
-      {/* Results */}
-      <CaseStudySection title="Results">
+      <CaseStudySection title="Where it is now">
         <CaseStudyStatsGrid
           stats={[
-            { value: '30+', label: 'Features shipped', sublabel: 'End-to-end, solo' },
-            { value: 'Web & PWA', label: 'Platform coverage', sublabel: 'Desktop, Mobile, PWA' },
-            { value: '~40%', label: 'API cost reduction', sublabel: 'Caching + shared knowledge' },
-            { value: '8+', label: 'Genre personas', sublabel: 'Souls, RPG, FPS, more' },
+            { value: '30+', label: 'Features', sublabel: 'Designed and built by me' },
+            { value: '3', label: 'Parts', sublabel: 'Phone PWA, desktop connector, backend' },
+            { value: '~40%', label: 'AI API cost cut', sublabel: 'Caching and shared knowledge' },
+            { value: 'Jul 2026', label: 'Public launch', sublabel: 'Early on users' },
           ]}
         />
 
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Shipped">
-            <CaseStudyList items={[
-              '30+ features end-to-end',
-              'Lemon Squeezy payment integration (Edge Function-secured)',
-              'WebSocket-based PC-to-Mobile sync',
-              'PWA installation and mobile optimisation',
-              'Achievements, XP, and tiered progression',
-              '~40% API cost reduction via caching',
-              'Strict RLS on every user-data table',
-            ]} />
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Status">
-            <CaseStudyParagraph>
-              Live since the July 2026 public launch, still early on users. Payments run through
-              Lemon Squeezy and a server-side Edge Function, and a security audit is done.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
+        <CaseStudyParagraph>
+          Otagon is live and still early on users, so I don't claim results from usage yet. The next work is
+          growing the player base, community features such as shared builds and strategies, and performance.
+        </CaseStudyParagraph>
 
         <CaseStudyImageGrid
           columns={3}
-          aspectRatio="aspect-auto"
           images={[
-            { src: '/images/casestudies/otagon/16b-game-library.webp', alt: 'Game library of titles the user has played' },
-            { src: '/images/casestudies/otagon/16-gallery.webp', alt: 'Gallery of captured game screenshots', caption: 'Screenshot gallery' },
-            { src: '/images/casestudies/otagon/9-pro-features.webp', alt: 'Pro features overview' },
+            { src: '/images/casestudies/otagon/16b-game-library.webp', alt: 'The library of games a player has played', caption: 'Game library' },
+            { src: '/images/casestudies/otagon/16-gallery.webp', alt: 'Gallery of captured screenshots', caption: 'Screenshot gallery' },
+            { src: '/images/casestudies/otagon/9-pro-features.webp', alt: 'Overview of the Pro features', caption: 'Pro features' },
           ]}
+        />
+
+        <CaseStudyImage
+          src="/images/casestudies/otagon/6-credits-modal.webp"
+          alt="Query-based credits and the Pro upgrade"
+          caption="Query-based credits: limits on use instead of locked features."
         />
       </CaseStudySection>
 
-      {/* What I Learned */}
-      <CaseStudySection title="What I Learned">
+      <CaseStudySection title="What I learned">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Structure beats intelligence">
+          <CaseStudyCard title="Structure beats cleverness">
             <CaseStudyParagraph>
-              Free-form AI output is unpredictable at scale. The OTAGON tag system was the single
-              most important technical decision I made.
+              Free-form AI output is unpredictable. The structured tags were the most important technical
+              decision I made.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Speed is emotional, not just functional">
+          <CaseStudyCard title="Speed is a feeling">
             <CaseStudyParagraph>
-              Even 5 seconds feels broken for gamers. {"<"}3 seconds feels magic.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Freemium works when free genuinely delivers">
-            <CaseStudyParagraph>
-              Feature gates feel punitive. Query limits feel fair. That framing changes conversion behaviour.
+              For a player mid-game, five seconds feels broken and under three feels instant.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
           <CaseStudyCard title="Early database shortcuts compound">
             <CaseStudyParagraph>
-              I built dual-write subtabs (JSONB + normalized tables) because of an early schema decision.
-              It worked, but added complexity I'd avoid next time by starting normalized.
+              An early schema decision forced me to write subtabs in two places (JSON and normalised tables). It
+              works, but next time I'd start normalised.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Secrets belong on the server, always">
+          <CaseStudyCard title="Secrets belong on the server">
             <CaseStudyParagraph>
-              Moving checkout into an Edge Function was the moment Otagon stopped being a side project
-              and became a real product. Treat every API key like it's already leaking.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="PWA-first builds cross-platform leverage">
-            <CaseStudyParagraph>
-              The PWA-first decision paid back twice: it bought me a year of iteration, and allowed
-              delivering a near-native experience on both mobile and desktop without a rewrite.
+              Moving checkout into an Edge Function was when Otagon stopped feeling like a side project. I treat
+              every API key as if it's already leaking.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
-      </CaseStudySection>
-
-      {/* What's Next */}
-      <CaseStudySection title="What's Next">
-        <CaseStudyParagraph lead>
-          Lemon Squeezy payments are live. The web and PWA builds are fully optimised and ready. In active
-          development: performance work, video capture, hands-free TTS conversations, and a ScreenShot
-          spin-off that surfaces the same pairing flow as a focused utility. Community features —
-          shared builds and strategy sharing — are on the next roadmap. The architecture is built to scale.
-        </CaseStudyParagraph>
-
-        <CaseStudyImage
-          src="/images/casestudies/otagon/6-credits-modal.webp"
-          alt="Otagon credits modal — query-based usage and Pro upgrade"
-          caption="Query-based credits power the freemium model — fair limits over feature gates"
-          aspectRatio="aspect-auto"
-        />
       </CaseStudySection>
     </CaseStudyLayout>
   );

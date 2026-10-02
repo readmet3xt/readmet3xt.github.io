@@ -3,6 +3,7 @@ import {
   CaseStudyHero,
   CaseStudySection,
   CaseStudyParagraph,
+  CaseStudyInsight,
   CaseStudyQuote,
   CaseStudyList,
   CaseStudyImage,
@@ -12,361 +13,283 @@ import {
   CaseStudyStatsGrid,
 } from '@/components/case-study';
 
+const ARCHETYPES: [string, string][] = [
+  ['Walrus (e.g. WWF)', 'Large and globally influential, careful about its brand, slow because of layers of approval.'],
+  ['Tiger (e.g. Apple)', 'A large tech company: fast, inventive and well resourced.'],
+  ['Sheep (e.g. Thames Water)', 'A large traditional company that follows others and decides slowly.'],
+  ['Bumblebee (e.g. Giki)', 'A small conservation startup: inventive and quick, with limited reach.'],
+  ['Worm (e.g. WWT)', 'A grassroots organisation with vital work on the ground and very little money.'],
+  ['Octopus (e.g. EY)', 'A large multinational with arms everywhere, analytical, quick to act on data.'],
+  ['Giant tortoise (e.g. Dept of Education)', 'A government body with huge reach and long-term impact, slowed by hierarchy and regulation.'],
+];
+
 export const Stampede = () => {
   return (
     <>
-      <CaseStudyLayout
-        title="Stampede"
-        description="Designing Strategic Partnerships for Conservation Impact — A facilitation methodology that turned 'happy accidents' into designed collaborations."
-      >
+      <CaseStudyLayout title="Stampede">
         <CaseStudyHero
           eyebrow="RCA × WWT × Airbnb, 2019"
-          title="Designing Strategic Partnerships for Conservation Impact"
-          subtitle="A facilitation methodology that turned 'happy accidents' into designed collaborations"
-          pills={[
-            'Conservation',
-            'Strategic Partnerships',
-            'Design Thinking',
-            'Workshop Facilitation',
-            'Systems Design',
-            'Royal College of Art',
-          ]}
-          intro={`"This was 100 times more productive than any partnership meeting I've had." — Nick Appleby, Senior Partnerships Manager, WWT. That quote came at the end of a 3-hour workshop we designed and facilitated between WWT and Airbnb — two organisations that had never formally collaborated. It's the best summary of what Stampede does: transforms conservation partnerships from happy accidents into designed outcomes.`}
+          title="Stampede: designing partnerships for conservation"
+          subtitle="A method for matching organisations that would otherwise meet by accident, tested live with WWT and Airbnb"
+          intro={`Conservation partnerships tend to form by luck and fall apart when one person leaves. With three RCA classmates I designed Stampede, a way to match organisations by how they work and a facilitated workshop to start the partnership. We tested it with WWT and Airbnb, two organisations that had never formally worked together. At the end, WWT's Senior Partnerships Manager, Nick Appleby, said it was "100 times more productive than any partnership meeting I've had."`}
           overview={{
             role: [
-              'Project Lead & Service Designer',
-              'Led stakeholder research with WWF, WWT, and Imperial College',
-              'Designed the Stampede methodology including Power/Pace matrix and animal archetypes',
-              'Facilitated live WWT × Airbnb co-creation workshop',
+              'Project lead and service designer',
+              'Led stakeholder research with WWF, WWT and Imperial College',
+              'Designed the method, including the Power/Pace matrix and the animal archetypes',
+              'Facilitated the live WWT × Airbnb workshop',
             ],
-            team: 'Anahita Pradhan, Andrew Seetoh, Constance Chung (RCA Team 9)',
-            timeline: 'January–March 2019, Royal College of Art',
-            recognition: 'WWT × Airbnb collaboration initiated from a single workshop — called "100x more productive than any partnership meeting" by WWT\'s Senior Partnerships Manager',
-            tools: [
-              'Service Design',
-              'Systems Thinking',
-              'Workshop Facilitation',
-              'Stakeholder Research',
-              'Co-creation Methods',
-            ],
+            team: 'Anahita Pradhan, Andrew Seetoh and Constance Chung (RCA Team 9)',
+            timeline: 'January to March 2019, Royal College of Art',
+            recognition: 'The first workshop started the WWT × Airbnb collaboration',
+            tools: ['Stakeholder research', 'Journey mapping', 'Workshop design', 'Facilitation', 'Co-creation'],
           }}
           heroImage="/images/casestudies/stampede/1-problem-statement.webp"
-          heroImageAlt="Stampede problem statement — the conservation partnership crisis"
+          heroImageAlt="Stampede problem statement for conservation partnerships"
         />
 
-        {/* The Problem */}
-        <CaseStudySection title="The Problem">
+        <CaseStudySection title="Context">
           <CaseStudyParagraph lead>
-            Wildlife conservation has a hidden crisis. It's not lack of funding — it's lack of connection.
+            Conservation has a connection problem as much as a money problem.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            Our research with leaders from WWF, WWT, and Imperial College revealed three systemic failures
-            happening simultaneously:
+            Our interviews with people at WWF, WWT and Imperial College kept returning to the same three issues:
           </CaseStudyParagraph>
 
           <CaseStudyList items={[
-            { title: 'Only 3% of charitable giving', description: 'Wildlife conservation receives a sliver of total giving (Imperial College) — so every pound and every partnership has to work disproportionately hard' },
-            { title: 'Partnerships by "happy accident"', description: 'A WWT interviewee literally described their HSBC collaboration as a lucky encounter, not a designed outcome' },
-            { title: 'Fragile, advocate-dependent', description: '"When that person left the organisation, we lost the advocate and support" — years of relationship-building gone with one resignation' },
+            { title: 'Only 3% of charitable giving', description: 'goes to wildlife conservation (Imperial College), so every partnership has to work hard' },
+            { title: 'Partnerships by luck', description: 'one WWT interviewee described their HSBC collaboration as a lucky encounter' },
+            { title: 'One advocate away from collapse', description: '"When that person left the organisation, we lost the advocate and support." Years of relationship-building can go with one resignation.' },
           ]} />
 
-          <CaseStudyQuote author="Wildlife Biologist" role="Founder of Key Conservation">
+          <CaseStudyQuote author="Wildlife biologist" role="Founder of Key Conservation">
             There are so many people out there who have similar interests, but connecting them is tough.
           </CaseStudyQuote>
 
           <CaseStudyParagraph>
-            The sector is passionate and driven. It's systematically inefficient at connecting resources
-            to impact. That's a design problem.
+            The people in this sector are committed. What's missing is a reliable way to connect resources to
+            the work, and that's something you can design.
           </CaseStudyParagraph>
-
-          <CaseStudyImage
-            src="/images/casestudies/stampede/1-problem-statement.webp"
-            alt="Problem statement — wildlife conservation's connection crisis"
-            caption="The problem: conservation partnerships form by happy accident, not design"
-            aspectRatio="aspect-auto"
-          />
 
           <CaseStudyImage
             src="/images/casestudies/stampede/2-how-the-service-works.webp"
             alt="How the Stampede service works"
-            caption="How the service works — designing connection into the conservation ecosystem"
-            aspectRatio="aspect-auto"
+            caption="How the service works across the partnership journey."
           />
         </CaseStudySection>
 
-        {/* The Insight */}
-        <CaseStudySection title="The Insight: Collaboration Can Be Designed">
-          <CaseStudyParagraph lead>
-            The breakthrough was recognising that organisations don't just differ in mission — they differ
-            in how they operate. Power (influence, resources) and Pace (speed of decision-making) vary
-            enormously across the conservation ecosystem.
+        <CaseStudySection title="Insight">
+          <CaseStudyInsight>
+            Organisations differ in how they work as much as in what they want. The best partners complement each other.
+          </CaseStudyInsight>
+
+          <CaseStudyParagraph>
+            We described this with two measures: Power (influence and resources) and Pace (how fast decisions get
+            made). WWF moves slowly and carefully. A startup like Giki moves fast with limited reach. Pairing
+            organisations at random creates friction; pairing them on purpose lets each cover what the other lacks.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            A WWF moves slowly and carefully. A startup like Giki moves fast with limited reach.
-            Matching them randomly produces friction. Matching them strategically produces leverage.
-          </CaseStudyParagraph>
-
-          <CaseStudyParagraph>
-            To make this tangible, we developed <strong>animal archetypes</strong> — a tool for quickly
-            mapping an organisation's operational character before attempting to partner them.
+            To make the idea easy to use, we gave each profile an animal archetype. A chart of Power and Pace
+            would have been accurate; the animals were what people actually picked up and talked about.
           </CaseStudyParagraph>
 
           <CaseStudyCardGrid columns={3}>
-            <CaseStudyCard title="🦭 Walrus (e.g., WWF)">
-              <CaseStudyParagraph>
-                Large, globally influential, brand-cautious, slow due to layers of approval.
-              </CaseStudyParagraph>
-            </CaseStudyCard>
-
-            <CaseStudyCard title="🐅 Tiger (e.g., Apple)">
-              <CaseStudyParagraph>
-                Large tech company, fast-moving, innovative, resource-rich.
-              </CaseStudyParagraph>
-            </CaseStudyCard>
-
-            <CaseStudyCard title="🐑 Sheep (e.g., Thames Water)">
-              <CaseStudyParagraph>
-                Large traditional corporate, follows others, slower decision-making.
-              </CaseStudyParagraph>
-            </CaseStudyCard>
-
-            <CaseStudyCard title="🐝 Bumblebee (e.g., Giki)">
-              <CaseStudyParagraph>
-                Small conservation startup, innovative and agile, limited reach.
-              </CaseStudyParagraph>
-            </CaseStudyCard>
-
-            <CaseStudyCard title="🪱 Worm (e.g., WWT)">
-              <CaseStudyParagraph>
-                Grassroots organisation, vital on-the-ground impact, cash-strapped.
-              </CaseStudyParagraph>
-            </CaseStudyCard>
-
-            <CaseStudyCard title="🐙 Octopus (e.g., EY)">
-              <CaseStudyParagraph>
-                Large multinational, analytical, many arms everywhere, moves fast on data.
-              </CaseStudyParagraph>
-            </CaseStudyCard>
-
-            <CaseStudyCard title="🐢 Giant Tortoise (e.g., Dept of Education)">
-              <CaseStudyParagraph>
-                Government body — enormous reach and long-term impact, but slowed by hierarchy,
-                regulation, and red tape.
-              </CaseStudyParagraph>
-            </CaseStudyCard>
+            {ARCHETYPES.map(([name, text]) => (
+              <CaseStudyCard key={name} title={name}>
+                <CaseStudyParagraph>{text}</CaseStudyParagraph>
+              </CaseStudyCard>
+            ))}
           </CaseStudyCardGrid>
 
           <CaseStudyParagraph>
-            <strong>The key insight:</strong> the most powerful partnerships connect organisations with
-            complementary Power/Pace profiles — not similar ones. A Walrus and a Bumblebee achieve
-            together what neither can alone.
+            The strongest pairs have different Power and Pace profiles. A Walrus and a Bumblebee can do together
+            what neither can do alone.
           </CaseStudyParagraph>
 
           <CaseStudyImage
             src="/images/casestudies/stampede/3-all-animals.webp"
-            alt="The seven animal archetypes mapped on the Power/Pace matrix"
-            caption="The animal archetypes — mapping every organisation's operational character"
-            aspectRatio="aspect-auto"
+            alt="The seven animal archetypes on the Power/Pace matrix"
+            caption="The seven archetypes on the Power/Pace matrix."
           />
 
           <CaseStudyImage
             src="/images/casestudies/stampede/4-how-they-match.webp"
             alt="How organisations are matched by complementary Power/Pace profiles"
-            caption="How they match — pairing complementary archetypes for maximum leverage"
-            aspectRatio="aspect-auto"
+            caption="How complementary archetypes are matched."
           />
         </CaseStudySection>
 
-        {/* The Stampede Methodology */}
-        <CaseStudySection title="The Stampede Methodology">
+        <CaseStudySection title="What we made">
           <CaseStudyParagraph lead>
-            Stampede maps the whole partnership journey as six stages — Purpose Finding, Match-Making,
-            Connecting, Kicking-Off (running a "Stampede"), Project Execution, and Measuring Outcome —
-            because our interviews showed no single entry point fits everyone. Different organisations
-            want help at different moments.
+            Stampede covers the whole partnership journey in six stages: purpose finding, matchmaking,
+            connecting, the kick-off, delivery and measuring the outcome. Our interviews showed organisations want
+            help at different moments, so there isn't one way in.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            The centrepiece is the Kick-Off: a facilitated workshop with five steps — Unpacking,
-            Sketching, Solutioning, Prototyping, and Validating. It's not a one-off event. It's
-            designed relationship infrastructure, wrapped in a toolkit so momentum survives after
+            The centre of it is the kick-off, a facilitated workshop in five steps: unpacking, sketching,
+            solutioning, prototyping and validating. It comes with a toolkit, so the momentum lasts after
             everyone leaves the room.
           </CaseStudyParagraph>
 
           <CaseStudyImage
             src="/images/casestudies/stampede/5-how-the-workshop-works.webp"
-            alt="How the Stampede kick-off workshop works — the five-step format"
-            caption="How the workshop works — the Kick-Off broken into five facilitated steps"
-            aspectRatio="aspect-auto"
+            alt="The five steps of the Stampede kick-off workshop"
+            caption="The kick-off workshop, step by step."
           />
         </CaseStudySection>
 
-        {/* WWT × Airbnb Workshop */}
-        <CaseStudySection title="Prototyping in Action: The WWT × Airbnb Workshop">
+        <CaseStudySection title="Testing it: the WWT × Airbnb workshop">
           <CaseStudyParagraph lead>
-            WWT had described Airbnb as a "dream partner." We designed a 3-hour Stampede workshop to
-            test whether the methodology could turn that aspiration into a real working relationship.
+            WWT had called Airbnb a "dream partner". We ran a 3-hour Stampede workshop to see whether the method
+            could turn that hope into a working relationship.
           </CaseStudyParagraph>
 
+          <CaseStudyImageGrid
+            columns={3}
+            images={[
+              { src: '/images/casestudies/stampede/6-workshop-1.webp', alt: 'Co-creation notes on memorable experiences with animals', caption: 'Co-creation: memorable experiences with animals.' },
+              { src: '/images/casestudies/stampede/7-workshop-2.webp', alt: 'A participant holding up a 30 Circles sheet', caption: '30 Circles warm-up.' },
+              { src: '/images/casestudies/stampede/8-workshop-3.webp', alt: 'Another participant holding up a 30 Circles sheet', caption: '30 Circles warm-up.' },
+            ]}
+          />
+
           <CaseStudyCardGrid columns={3}>
-            <CaseStudyCard title="Unpacking (40 mins)">
+            <CaseStudyCard title="Unpacking, 40 minutes">
               <CaseStudyParagraph>
-                Introductions, trust-building, goal setting, and mapping each organisation's strengths honestly.
+                Introductions, building trust, setting goals and an honest look at each organisation's strengths.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Sketching (60 mins)">
+            <CaseStudyCard title="Sketching, 60 minutes">
               <CaseStudyParagraph>
-                Crazy 8s ideation around a single question: "How might Airbnb and WWT create an authentic
-                wetlands experience?"
+                Crazy 8s around one question: how might Airbnb and WWT create an authentic wetlands experience?
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Solutioning (70 mins)">
+            <CaseStudyCard title="Solutioning, 70 minutes">
               <CaseStudyParagraph>
-                Developing an action plan, identifying practical constraints, and agreeing next steps.
+                An action plan, the practical constraints and agreed next steps.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
           <CaseStudyParagraph>
-            The Power/Pace gap stopped being theory and surfaced live. Asked how long a first project
-            would take to ship, Airbnb said <strong>"7 days"</strong>; WWT said <strong>"6 months."</strong>
-            Same room, same goal, a 25× difference in pace. Naming it openly was exactly what let them
-            design around the gap instead of colliding with it months later.
+            The Power/Pace gap showed up in the room. Asked how long a first project would take, Airbnb said{' '}
+            <strong>"7 days"</strong> and WWT said <strong>"6 months"</strong>: the same goal, at roughly 25 times
+            the pace. Saying it out loud let them plan around the gap instead of hitting it months later.
           </CaseStudyParagraph>
 
           <CaseStudyParagraph>
-            <strong>The result</strong> was a live commitment to continue: Airbnb's Social Impact team left
-            with WWT's contacts, a named first project idea — an authentic wetlands experience — and a shared
-            understanding that the 25× pace gap had to be designed around, not discovered later. To be precise
-            about what this was and wasn't: three hours produced a warm handoff and an agreed next step between
-            two organisations that had never formally spoken — not a signed partnership. The methodology's claim
-            is that it compresses months of relationship-building into an afternoon, and on this prototype, it did.
+            Airbnb's Social Impact team left with WWT's contacts, a named first project idea (an authentic wetlands
+            experience) and an agreement that the pace gap had to be planned for. To be precise about what this
+            was: three hours produced a warm handover and an agreed next step between two organisations that had
+            never formally met. It wasn't a signed partnership. The method claims to compress months of
+            relationship-building into an afternoon, and in this test it did.
           </CaseStudyParagraph>
 
           <CaseStudyQuote author="Holly Bland" role="Social Impact Experience Manager, Airbnb">
             This has been an opportunity for me to think of the different things we do and could do.
-            We will be following up — I have your details.
+            We will be following up. I have your details.
           </CaseStudyQuote>
 
           <CaseStudyImageGrid
             columns={3}
-            aspectRatio="aspect-auto"
             images={[
-              { src: '/images/casestudies/stampede/6-workshop-1.webp', alt: 'WWT × Airbnb workshop — Unpacking step', caption: 'Unpacking' },
-              { src: '/images/casestudies/stampede/7-workshop-2.webp', alt: 'WWT × Airbnb workshop — Sketching step', caption: 'Sketching' },
-              { src: '/images/casestudies/stampede/8-workshop-3.webp', alt: 'WWT × Airbnb workshop — Solutioning step', caption: 'Solutioning' }
-            ]}
-          />
-
-          <CaseStudyImageGrid
-            columns={3}
-            aspectRatio="aspect-auto"
-            images={[
-              { src: '/images/casestudies/stampede/9-1-workshop-activity-1.webp', alt: 'Workshop activity 1', caption: 'Workshop activity 1' },
-              { src: '/images/casestudies/stampede/9-2-workshop-activity-2.webp', alt: 'Workshop activity 2', caption: 'Workshop activity 2' },
-              { src: '/images/casestudies/stampede/9-3-workshop-activity-3.webp', alt: 'Workshop activity 3', caption: 'Workshop activity 3' }
+              { src: '/images/casestudies/stampede/9-1-workshop-activity-1.webp', alt: 'Unpacking: reflecting on each organisation’s strengths', caption: 'Unpacking: each organisation’s strengths.' },
+              { src: '/images/casestudies/stampede/9-2-workshop-activity-2.webp', alt: 'Sketching: Crazy 8s sheets on the wall', caption: 'Sketching: Crazy 8s, with two more designers joining.' },
+              { src: '/images/casestudies/stampede/9-3-workshop-activity-3.webp', alt: 'Solutioning: both organisations’ methods side by side', caption: 'Solutioning: methods side by side, with prompts for marketing and KPIs.' },
             ]}
           />
 
           <CaseStudyImage
             src="/images/casestudies/stampede/10-workshop-in-progress.webp"
             alt="The WWT × Airbnb workshop in progress"
-            caption="The workshop in progress — WWT and Airbnb co-creating live"
-            aspectRatio="aspect-auto"
+            caption="The drawing warm-up at the start of the workshop."
           />
 
-          <CaseStudyCard title="Design Principles from the Prototype">
+          <CaseStudyCard title="What the test taught us about the format">
             <CaseStudyList items={[
-              'Go in with a hook idea but let the partnership evolve',
-              'Third-party facilitation levels the playing field',
-              'Only invite people who can actually make decisions',
-              'Always build a shorter "power hour" version for time-constrained stakeholders',
+              'Bring a starting idea, then let the partnership change it',
+              'A neutral facilitator puts both organisations on an equal footing',
+              'Only invite people who can make decisions',
+              'Have a shorter "power hour" version for people who can’t give three hours',
             ]} />
           </CaseStudyCard>
         </CaseStudySection>
 
-        {/* Results */}
-        <CaseStudySection title="Results">
+        <CaseStudySection title="What changed">
           <CaseStudyStatsGrid
             stats={[
-              { value: '2', label: 'Organisations', sublabel: 'WWT × Airbnb, first formal contact' },
-              { value: '3hrs', label: 'To a named next project', sublabel: 'vs. months of relationship-building' },
-              { value: '25×', label: 'Pace gap surfaced live', sublabel: 'Airbnb 7 days vs WWT 6 months' },
-              { value: '7', label: 'Animal Archetypes', sublabel: 'Power/Pace profiles' },
+              { value: '2', label: 'Organisations', sublabel: 'WWT and Airbnb, first formal contact' },
+              { value: '3 hrs', label: 'To a named next project', sublabel: 'Instead of months of relationship-building' },
+              { value: '25×', label: 'Pace gap, named in the room', sublabel: 'Airbnb 7 days, WWT 6 months' },
+              { value: '7', label: 'Animal archetypes', sublabel: 'Power/Pace profiles' },
             ]}
           />
 
           <CaseStudyParagraph>
-            One workshop, one pair of organisations — a prototype, not a proof. What it produced: WWT and
-            Airbnb's first formal working session, a named candidate project, and a facilitation toolkit the
-            team could hand over. Nick Appleby, WWT's Senior Partnerships Manager, called it "100 times more
-            productive than any partnership meeting I've had" — his words, not a measurement, and the reason
-            we think the format is worth running at scale.
+            One workshop with one pair of organisations is a prototype, not proof. It produced WWT and Airbnb's
+            first formal working session, a named candidate project and a toolkit the team could hand over. Nick
+            Appleby's "100 times more productive" is an opinion, not a measurement, and it's why we think the
+            format is worth running more widely.
           </CaseStudyParagraph>
 
-          <div className="flex flex-col gap-4 mt-8">
-            <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
-              <iframe
-                loading="lazy"
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/RnNxUVHPOA4"
-                title="Stampede Results Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen>
-              </iframe>
-            </div>
-            <CaseStudyImage
-              src="/images/casestudies/stampede/11-results.webp"
-              alt="Stampede results — outcomes and impact of the methodology"
-              caption="Results — the impact of the Stampede methodology"
-              aspectRatio="aspect-auto"
-            />
+          <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
+            <iframe
+              loading="lazy"
+              className="absolute inset-0 w-full h-full"
+              src="https://www.youtube.com/embed/RnNxUVHPOA4"
+              title="Stampede results video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen>
+            </iframe>
           </div>
+
+          <CaseStudyImage
+            src="/images/casestudies/stampede/11-results.webp"
+            alt="Key moments and quotes from the WWT × Airbnb workshop"
+            caption="Key moments from the workshop, in the participants’ words."
+          />
         </CaseStudySection>
 
-        {/* What I Learned */}
-        <CaseStudySection title="What I Learned">
+        <CaseStudySection title="What I learned">
           <CaseStudyCardGrid columns={2}>
-            <CaseStudyCard title="Collaboration is a design problem">
+            <CaseStudyCard title="Collaboration can be designed">
               <CaseStudyParagraph>
-                The reason conservation partnerships form by accident isn't that people lack goodwill.
-                It's that no one has designed the infrastructure for strategic connection. Stampede is
-                that infrastructure.
+                Conservation partnerships form by accident because nobody has designed a way for the right
+                organisations to find each other. People have plenty of goodwill.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="Archetypes beat analysis">
+            <CaseStudyCard title="Give abstract ideas a handle">
               <CaseStudyParagraph>
-                The Power/Pace matrix could have been a dry quadrant chart. Making it animal archetypes
-                changed how stakeholders engaged with it. Abstract concepts need tangible handles.
+                The Power/Pace matrix could have stayed a chart. Turning it into animals changed how people
+                engaged with it.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="The facilitator changes the dynamic">
+            <CaseStudyCard title="A neutral facilitator matters">
               <CaseStudyParagraph>
-                A neutral third party levels the playing field in ways that neither organisation can do
-                for themselves. The Walrus and the Worm can only have an honest conversation if someone
-                else is holding the space.
+                A third party in the room lets both sides speak honestly. The Walrus and the Worm can only have
+                that conversation if someone else is holding the space.
               </CaseStudyParagraph>
             </CaseStudyCard>
 
-            <CaseStudyCard title="From happy accidents to designed impact">
+            <CaseStudyCard title="Matchmaking is the gap">
               <CaseStudyParagraph>
-                That shift is the entire value of service design applied to systemic problems. The sector
-                doesn't need more passion. It needs better matchmaking.
+                Applied to a system like this, service design moves partnerships from luck to intent. The sector
+                has enough passion; it needs better matchmaking.
               </CaseStudyParagraph>
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
           <CaseStudyImage
             src="/images/casestudies/stampede/12-team.webp"
-            alt="The Stampede team — RCA Team 9"
-            caption="The team — RCA Team 9: Amaan, Anahita Pradhan, Andrew Seetoh, Constance Chung"
-            aspectRatio="aspect-auto"
+            alt="The Stampede team, RCA Team 9"
+            caption="RCA Team 9: Amaan Khan, Anahita Pradhan, Andrew Seetoh and Constance Chung."
           />
         </CaseStudySection>
       </CaseStudyLayout>

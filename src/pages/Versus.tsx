@@ -3,314 +3,161 @@ import {
   CaseStudyHero,
   CaseStudySection,
   CaseStudyParagraph,
-  CaseStudyQuote,
+  CaseStudyInsight,
   CaseStudyList,
   CaseStudyImage,
   CaseStudyImageGrid,
   CaseStudyCard,
   CaseStudyCardGrid,
-  CaseStudyStatsGrid,
 } from '@/components/case-study';
 
 export const Versus = () => {
   return (
-    <CaseStudyLayout
-      title="Versus"
-      description="A live tournament tracker for FIFA/FC nights — leagues, knockouts, and groups with live scoring, brackets, and a spectator link that opens with no signup."
-      externalLink="https://otagon2.github.io/Versus/"
-      externalLabel="Visit Versus"
-    >
+    <CaseStudyLayout title="Versus" externalLink="https://otagon2.github.io/Versus/" externalLabel="Try Versus">
       <CaseStudyHero
         eyebrow="Side project, 2026"
-        title="A Tournament Tracker Built for Couch Co-op"
-        subtitle="Designing and shipping a live FIFA/FC tournament platform — leagues, knockouts, groups, and spectator links"
-        pills={[
-          'Product Design',
-          'Vanilla JS',
-          'WebRTC',
-          'Supabase',
-          'PWA',
-          'Real-time',
-        ]}
-        intro="Every FIFA night ended the same way: a paper bracket, a forgotten scoreline, and a debate over who actually advanced. I built Versus so my friends and I could stop arguing about standings and just play — auto-generated fixtures, live scoring, and a share link spectators could open on their phones."
+        title="Versus: a tournament tracker for game nights"
+        subtitle="Leagues, knockouts and groups with live scoring, and a link friends can open on their phones"
+        intro="Our FIFA nights always ended the same way: a paper bracket, a forgotten score and an argument about who went through. I designed and built Versus so we could stop arguing and play. It generates the fixtures, keeps the score live and gives spectators a link to follow along."
         overview={{
           role: [
-            'Solo Designer & Developer',
-            'Product, UX, and visual identity',
-            'Frontend engineering (vanilla JS)',
-            'Realtime sync via PeerJS + Supabase',
+            'Designer and developer, on my own',
+            'Product, UX and visual identity',
+            'Front end in plain JavaScript',
+            'Live sync with PeerJS and Supabase',
           ],
-          timeline: '~6 weeks, evenings & weekends',
-          recognition: 'Live and used at every FIFA night since launch — real tournaments, zero per-match server cost',
-          tools: [
-            'HTML / CSS / Vanilla JS',
-            'Supabase (Auth + Postgres)',
-            'PeerJS (WebRTC signaling)',
-            'Google OAuth',
-            'Render (signaling server)',
-            'Lucide icons',
-          ],
+          timeline: 'About five weeks, May to June 2026, evenings and weekends',
+          recognition: 'Live, with no per-match server cost',
+          tools: ['HTML, CSS and JavaScript', 'Supabase (Auth and Postgres)', 'PeerJS (WebRTC)', 'Google OAuth', 'Render (signalling server)'],
         }}
         externalLink="https://otagon2.github.io/Versus/"
-        externalLabel="Visit Versus"
+        externalLabel="otagon2.github.io/Versus"
         heroImage="/images/casestudies/versus/1-landing-page-desktop.webp"
         heroImageAlt="Versus landing page on desktop"
       />
 
-      {/* The Problem */}
-      <CaseStudySection title="The Problem">
+      <CaseStudySection title="Context">
         <CaseStudyParagraph lead>
-          Group FIFA nights have always lived on paper, group chats, and memory.
-          Brackets get smudged, group-stage tiebreakers spark arguments, and nobody
-          ever agrees on whose turn it is next.
+          Group game nights run on paper, group chats and memory. Brackets get lost, tiebreakers start
+          arguments, and adding a late player breaks everything.
         </CaseStudyParagraph>
 
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="The Friction">
-            <CaseStudyList items={[
-              { title: 'Paper brackets', description: 'Lost between matches, illegible halfway through' },
-              { title: 'Manual standings', description: 'GD, head-to-head, and points all done by hand' },
-              { title: 'No spectator view', description: 'People in the room had no way to follow along on their phones' },
-              { title: 'Restarting is painful', description: 'Add a late player and the entire bracket falls apart' },
-            ]} />
-          </CaseStudyCard>
+        <CaseStudyList items={[
+          { title: 'Paper brackets', description: 'get lost between matches' },
+          { title: 'Standings by hand', description: 'goal difference, head-to-head and points all worked out manually' },
+          { title: 'No way to follow along', description: 'for the people in the room' },
+          { title: 'Late players', description: 'mean rebuilding the bracket' },
+        ]} />
 
-          <CaseStudyCard title="The Core Insight">
-            <CaseStudyParagraph>
-              The fun is in the matches. Everything around them — fixtures, scoring,
-              standings, share links — should disappear into the background.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
+        <CaseStudyInsight>
+          The fun is in the matches. Fixtures, scores and standings should look after themselves.
+        </CaseStudyInsight>
       </CaseStudySection>
 
-      {/* The Vision */}
-      <CaseStudySection title="The Vision">
+      <CaseStudySection title="What I made">
         <CaseStudyParagraph lead>
-          A tournament tracker that feels closer to a broadcast graphic than a
-          spreadsheet. Pick a format, drop in players, and the rest takes care
-          of itself — fixtures, standings, knockouts, and a public share link
-          spectators can open instantly.
+          Pick a format, add players, and Versus handles the fixtures, standings and knockouts, with a public link
+          spectators can open straight away.
         </CaseStudyParagraph>
 
         <CaseStudyImageGrid
           columns={3}
-          aspectRatio="aspect-auto"
           images={[
-            { src: '/images/casestudies/versus/2-tournament-creator-mobile.webp', alt: 'Tournament creator on mobile' },
-            { src: '/images/casestudies/versus/3-loading-tournament.webp', alt: 'Loading a tournament on mobile' },
-            { src: '/images/casestudies/versus/4-tournament-page.webp', alt: 'Tournament page on mobile', caption: 'Create a tournament, load it, and play — the full setup flow on a phone' },
+            { src: '/images/casestudies/versus/2-tournament-creator-mobile.webp', alt: 'Creating a tournament on a phone', caption: 'Create' },
+            { src: '/images/casestudies/versus/3-loading-tournament.webp', alt: 'Loading a tournament on a phone', caption: 'Load' },
+            { src: '/images/casestudies/versus/4-tournament-page.webp', alt: 'The tournament page on a phone', caption: 'Play' },
           ]}
         />
-      </CaseStudySection>
 
-      {/* How It Was Built */}
-      <CaseStudySection title="How It Was Built">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Phase 1 — Setup & Formats">
+          <CaseStudyCard title="Three formats, one match model">
             <CaseStudyParagraph>
-              The first call: support three formats without three separate codebases.
-              League (round robin), Knockout, and Hybrid (groups + KO) all share a
-              single match state machine, with format-specific generators sitting on top.
+              League, knockout and groups-plus-knockout all use the same match record with different details, so
+              standings, sharing and archives only had to be built once.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 2 — Live Match Hub">
+          <CaseStudyCard title="A live match hub">
             <CaseStudyParagraph>
-              The Match Hub is the moment-to-moment surface — active matches, pending
-              fixtures, and live standings side-by-side. Designed so the host can score
-              a goal in one tap without losing the bracket.
+              Active matches, upcoming fixtures and the table side by side. The host scores a goal in one tap.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 3 — Share Live + Public Links">
+          <CaseStudyCard title="Two ways to share">
             <CaseStudyParagraph>
-              Two ways to share: <strong>Share Live</strong> streams goals as they happen while
-              the host is online; <strong>Share Public</strong> posts a read-only snapshot that
-              refreshes every five seconds and keeps working after the host closes their laptop.
+              <strong>Share Live</strong> streams goals as they happen while the host is online.{' '}
+              <strong>Share Public</strong> posts a read-only snapshot that refreshes every five seconds and keeps
+              working after the host closes their laptop.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Phase 4 — Archives & Hardening">
+          <CaseStudyCard title="Casual-night details">
             <CaseStudyParagraph>
-              Owner-scoped RLS on every tournament, hardened OAuth redirects, and an
-              Archives view so completed seasons stop cluttering the active list.
+              A never-ending league that adds the next fixtures when the current ones finish, two-legged ties, and
+              walkovers when someone leaves halfway, without rebuilding the bracket.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyImage
           src="/images/casestudies/versus/6-match-started-admin.webp"
-          alt="A match started in the admin view"
-          caption="The live Match Hub — scoring an in-progress match from the host's admin view"
-          aspectRatio="aspect-auto"
+          alt="Scoring a match from the host's view"
+          caption="Scoring a match from the host's view."
         />
-      </CaseStudySection>
-
-      {/* Key Design Decisions */}
-      <CaseStudySection title="Key Design Decisions">
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Single Match State, Three Formats">
-            <CaseStudyParagraph>
-              Instead of branching the data model per format, every fixture — group game,
-              league round, KO leg — is the same record with different metadata.
-              This made standings, share links, and archives trivial to build once.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Never-Ending League Mode">
-            <CaseStudyParagraph>
-              Casual nights rarely follow a fixed table. Never-Ending League auto-generates
-              the next set of fixtures the moment the current ones finish — the table just
-              keeps updating until the host ends it manually.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Two-Leg Ties, First-Class">
-            <CaseStudyParagraph>
-              Home/Away matters for the people who care. The knockout engine handles
-              aggregate scoring as a built-in option, not an afterthought.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Spectator-First Sharing">
-            <CaseStudyParagraph>
-              Spectators are mostly on phones, in the same room. The share-link viewer
-              is read-only, requires no signup, and loads in under a second.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
 
         <CaseStudyImage
           src="/images/casestudies/versus/5-spectator-view-mobile.webp"
-          alt="Spectator view on mobile"
-          caption="The read-only spectator view — what someone sees when they open the share link on their phone"
-          aspectRatio="aspect-auto"
+          alt="The read-only spectator view on a phone"
+          caption="What spectators see when they open the link: read-only, no sign-up."
         />
       </CaseStudySection>
 
-      {/* The Hard Problems */}
-      <CaseStudySection title="The Hard Problems">
+      <CaseStudySection title="Hard parts">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Live Sync Without a Backend Per Match">
+          <CaseStudyCard title="Live sync without a server per match">
             <CaseStudyParagraph>
-              A persistent WebSocket per tournament would have made hosting cost scale with
-              idle time, so I split the problem: PeerJS over one shared signaling server while
-              the host is online, and a Supabase edge function as the read-only fallback.
-              <strong> Idle tournaments cost nothing.</strong>
+              A WebSocket per tournament would have meant paying for idle time. Instead, PeerJS runs over one
+              shared signalling server while the host is online, and a Supabase function serves the read-only
+              snapshot. Idle tournaments cost nothing.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Tiebreakers That Match FIFA Conventions">
+          <CaseStudyCard title="FIFA-style tiebreakers">
             <CaseStudyParagraph>
-              Points → GD → goals scored → head-to-head — encoded as a deterministic
-              comparator that runs client-side after every score change.
-              <strong> No more arguments at 2am.</strong>
+              Points, then goal difference, then goals scored, then head-to-head, recalculated after every score.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Mid-Tournament Player Drops">
+          <CaseStudyCard title="Sign-in on a static site">
             <CaseStudyParagraph>
-              Someone always rage-quits. Versus handles drops by marking remaining
-              fixtures as walkovers without rebuilding the bracket — standings update,
-              the rest of the night continues.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="OAuth on a Static Site">
-            <CaseStudyParagraph>
-              Versus is a static SPA, no Node backend. Supabase + Google OAuth was wired
-              up with strict redirect allow-lists, so production and preview deploys can
-              share an auth project without leaking sessions.
+              Versus has no server of its own. Google sign-in through Supabase uses strict redirect allow-lists,
+              and row-level security means each tournament belongs to its owner.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
-
       </CaseStudySection>
 
-      {/* Results */}
-      <CaseStudySection title="Results">
-        <CaseStudyStatsGrid
-          stats={[
-            { value: 'Live', label: 'Used every FIFA night', sublabel: 'Real tournaments since launch' },
-            { value: '3', label: 'Formats, one data model', sublabel: 'League, Knockout, Hybrid' },
-            { value: '0', label: 'Backend servers per match', sublabel: 'Static SPA + shared signaling' },
-            { value: '< 1s', label: 'Spectator load time', sublabel: 'Read-only snapshot, no signup' },
-          ]}
-        />
-
+      <CaseStudySection title="What I learned">
         <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="Shipped">
-            <CaseStudyList items={[
-              'Three tournament formats with shared match model',
-              'Google OAuth + Supabase RLS on every tournament',
-              'PeerJS live sharing + public read-only viewer',
-              'Never-ending league + two-leg ties',
-              'Archives view for completed tournaments',
-            ]} />
+          <CaseStudyCard title="One model beats three">
+            <CaseStudyParagraph>
+              Avoiding separate code for each format paid off in standings, sharing and archives.
+            </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyCard title="Status">
+          <CaseStudyCard title="Sharing is the product">
             <CaseStudyParagraph>
-              Live and used at every FIFA night since. The architecture stays cheap
-              even as the number of tournaments grows — most of the cost is just static hosting.
+              The most useful feedback was "Can I just send my mate the link?" That's why the share buttons sit at
+              the top of the page.
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
         <CaseStudyImage
           src="/images/casestudies/versus/7-tournament-home-page-admin.webp"
-          alt="Tournament home page in the admin view"
-          caption="The admin tournament home — live standings and fixtures during a tournament night"
-          aspectRatio="aspect-auto"
+          alt="The tournament home in the host's view"
+          caption="The host's tournament home during a game night."
         />
-      </CaseStudySection>
-
-      {/* What I Learned */}
-      <CaseStudySection title="What I Learned">
-        <CaseStudyCardGrid columns={2}>
-          <CaseStudyCard title="One match model beats three">
-            <CaseStudyParagraph>
-              Resisting per-format code paths paid off everywhere — standings, sharing,
-              archives, and analytics all became one implementation.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Real-time doesn't have to mean expensive">
-            <CaseStudyParagraph>
-              WebRTC for the host-online case, edge function snapshots for everyone else.
-              Cheap, fast, and the spectator never sees a spinner.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Social products live or die on share friction">
-            <CaseStudyParagraph>
-              The single most important UI feedback I got: "Can I just send my mate the link?"
-              The Share buttons sit at the top of the page for a reason.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-
-          <CaseStudyCard title="Static SPAs are still underrated">
-            <CaseStudyParagraph>
-              Vanilla JS, no build, no framework lock-in. Versus loads on a cold cache
-              in under a second on 4G — and there's no Node server to keep alive.
-            </CaseStudyParagraph>
-          </CaseStudyCard>
-        </CaseStudyCardGrid>
-      </CaseStudySection>
-
-      {/* What's Next */}
-      <CaseStudySection title="What's Next">
-        <CaseStudyParagraph lead>
-          Next on deck: a season mode that strings tournaments together, a stats page
-          that finally answers "who's the best at FIFA in this group chat?", and a
-          lightweight commentary layer so spectators can react in real time.
-        </CaseStudyParagraph>
-
-        <CaseStudyQuote>
-          The goal was never a perfect tournament app — it was a tournament night
-          where no one has to fetch a pen.
-        </CaseStudyQuote>
       </CaseStudySection>
     </CaseStudyLayout>
   );

@@ -3,7 +3,7 @@
 // unlike a flat slide-image export. The modal embeds it in an iframe.
 
 export const DECK_URL = '/deck/index.html';
-export const DECK_TITLE = 'Amaan Khan — Portfolio Presentation';
+export const DECK_TITLE = 'Amaan Khan, portfolio presentation';
 
 // Narrated walk-through: the full-script narration audio, plus the start time
 // (seconds) of each of the 33 slides within it. Times were derived by aligning
