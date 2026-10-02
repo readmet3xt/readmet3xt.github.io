@@ -20,12 +20,12 @@ export const Pebble = () => {
           eyebrow="RCA × VISA Innovation Centre, 2021"
           title="Pebble: designing for wellbeing in remote teams"
           subtitle="A wellbeing companion for remote workers, designed with the people who would use it"
-          intro="Remote work gave people more freedom and, for many, more isolation. With two RCA classmates and the VISA Innovation Centre, I led a project to design a service that helps remote teams look after their wellbeing. We built it on 1,200+ survey responses and 24 co-creation workshops. One concept from that work, the Virtual Café, went into VISA Innovation Centre's collaboration roadmap."
+          intro="Remote work gave people more freedom and, for many, more isolation. With two RCA classmates and the VISA Innovation Centre, I led a project to design a service that helps remote teams look after their wellbeing. We built it on 70 survey responses and 18 co-creation workshops with 55+ participants. One concept from that work, the Virtual Café, went into VISA Innovation Centre's collaboration roadmap."
           overview={{
             role: [
               'Project lead and UX researcher',
-              'Designed and facilitated 24 co-creation workshops',
-              'Led research synthesis across 1,200+ responses',
+              'Designed and facilitated 18 co-creation workshops (55+ participants)',
+              'Led the research synthesis',
               'Owned the UI/UX design of the Pebble companion',
             ],
             team: 'Jing Qian and Zhiyuan Zheng, Royal College of Art. Partner: VISA Innovation Centre',
@@ -68,7 +68,7 @@ export const Pebble = () => {
 
           <CaseStudyParagraph>
             We used published engagement research (Gallup and academic wellbeing studies) to show
-            stakeholders how big the problem was, and our own survey of 1,200+ people to understand what it
+            stakeholders how big the problem was, and our own survey of 70 people to understand what it
             felt like from the inside.
           </CaseStudyParagraph>
 
@@ -95,8 +95,8 @@ export const Pebble = () => {
           />
 
           <CaseStudyList items={[
-            { title: '1,200+ survey responses', description: 'about emotional ups and downs and what people needed' },
-            { title: '24 co-creation workshops', description: 'with members of the public and VISA Innovation Centre employees' },
+            { title: '70 survey responses', description: 'about emotional ups and downs and what people needed' },
+            { title: '18 co-creation workshops', description: 'with 55+ participants: members of the public and VISA Innovation Centre employees' },
             { title: 'Emotional journey mapping', description: '"How was your week?" exercises that showed the weekly rhythm of remote-work stress' },
             { title: 'Personas', description: 'built from the synthesis of all of the research' },
           ]} />
@@ -257,7 +257,7 @@ export const Pebble = () => {
 
             <CaseStudyCard title="Co-creation changes the result">
               <CaseStudyParagraph>
-                24 workshops sounds like a lot. The output was much better because people shaped the solution
+                18 workshops sounds like a lot. The output was much better because people shaped the solution
                 with us instead of reacting to it afterwards.
               </CaseStudyParagraph>
             </CaseStudyCard>

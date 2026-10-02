@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react';
+import { useEffect, useState, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Sidebar } from '@/components/Sidebar';
 import { SidebarToggle } from '@/components/SidebarToggle';
@@ -17,6 +17,18 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
     setSidebarOpen(open);
     document.body.classList.toggle('sidebar-open', open);
   };
+
+  // Escape closes the sidebar; leaving the page never leaves the body scroll-locked.
+  useEffect(() => {
+    if (!sidebarOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [sidebarOpen]);
+
+  useEffect(() => () => document.body.classList.remove('sidebar-open'), []);
 
   return (
     <SidebarProvider isOpen={sidebarOpen}>

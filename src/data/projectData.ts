@@ -30,12 +30,12 @@ export const PROJECTS: ProjectData[] = [
     category: 'service',
     context: 'RCA × VISA Innovation Centre, 2021',
     summary:
-      "A wellbeing service for remote teams, shaped by 1,200+ survey responses and 24 co-creation workshops. The Virtual Café concept went into VISA Innovation Centre's collaboration roadmap.",
+      "A wellbeing service for remote teams, shaped by 70 survey responses and 18 co-creation workshops with 55+ participants. The Virtual Café concept went into VISA Innovation Centre's collaboration roadmap.",
     thumbnail: '/images/casestudies/pebble/1-cover-pic-960w.webp',
     thumbnailAlt: 'Pebble, a wellbeing companion for remote teams',
     seoTitle: 'Pebble',
     seoDescription:
-      'A wellbeing service for remote teams, designed with VISA Innovation Centre through 24 co-creation workshops and 1,200+ survey responses.',
+      'A wellbeing service for remote teams, designed with VISA Innovation Centre through 18 co-creation workshops with 55+ participants and a 70-person survey.',
   },
   {
     href: '/stampede',
