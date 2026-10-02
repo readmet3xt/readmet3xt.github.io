@@ -83,6 +83,7 @@ export const KoinBasket = () => {
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
+            layout="row"
             columns={2}
             images={[
               { src: '/images/casestudies/koinbasket/3-lofi-home.webp', alt: 'Low-fidelity home page sketch', caption: 'Low-fidelity home page.' },
@@ -105,6 +106,7 @@ export const KoinBasket = () => {
           </CaseStudyParagraph>
 
           <CaseStudyImageGrid
+            layout="row"
             columns={2}
             images={[
               { src: '/images/casestudies/koinbasket/1-login.webp', alt: 'Login screen', caption: 'Login' },
@@ -117,6 +119,7 @@ export const KoinBasket = () => {
           />
 
           <CaseStudyImageGrid
+            layout="row"
             columns={3}
             images={[
               { src: '/images/casestudies/koinbasket/6-mobile-basket-page.webp', alt: 'Mobile basket page', caption: 'A basket on mobile' },
@@ -165,6 +168,7 @@ export const KoinBasket = () => {
           </CaseStudyCard>
 
           <CaseStudyImageGrid
+            layout="row"
             columns={2}
             images={[
               { src: '/images/casestudies/koinbasket/13-bitbuddy-create-a-basket-influencer.webp', alt: 'BitBuddy: an influencer creating a basket', caption: 'An influencer creating a basket.' },

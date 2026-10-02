@@ -20,6 +20,8 @@ interface CaseStudyHeroProps {
   };
   heroImage?: string;
   heroImageAlt?: string;
+  /** Which part of the image the 16:9 crop keeps (a Tailwind object-position class). */
+  heroImagePosition?: string;
 }
 
 const Fact = ({ term, children }: { term: string; children: ReactNode }) => (
@@ -39,6 +41,7 @@ export const CaseStudyHero = ({
   overview,
   heroImage,
   heroImageAlt,
+  heroImagePosition = 'object-top',
 }: CaseStudyHeroProps) => {
   const [role, ...whatIDid] = overview.role;
 
@@ -82,7 +85,7 @@ export const CaseStudyHero = ({
             {...imageSize(heroImage)}
             alt={heroImageAlt || title}
             data-lightbox-caption={heroImageAlt || title}
-            className="w-full aspect-[16/9] object-cover object-top rounded-sm lightbox-image cursor-zoom-in"
+            className={`w-full aspect-[16/9] object-cover ${heroImagePosition} rounded-sm lightbox-image cursor-zoom-in`}
             loading="eager"
             {...({ fetchpriority: 'high' } as Record<string, string>)}
             decoding="async"

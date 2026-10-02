@@ -5,6 +5,7 @@ import {
   CaseStudyParagraph,
   CaseStudyInsight,
   CaseStudyList,
+  CaseStudyImage,
   CaseStudyImageGrid,
   CaseStudyCard,
   CaseStudyCardGrid,
@@ -33,6 +34,7 @@ export const Softwire = () => {
           }}
           heroImage="/images/casestudies/softwire/14-5-product-final-landing.webp"
           heroImageAlt="LNER App Clip landing screen, final design"
+          heroImagePosition="object-[50%_75%]"
         />
 
         <CaseStudySection title="Context">
@@ -74,7 +76,7 @@ export const Softwire = () => {
           />
 
           <CaseStudyImageGrid
-            columns={2}
+            layout="row"
             images={[
               { src: '/images/casestudies/softwire/4-results-of-workshop.webp', alt: 'Sketches from the workshop on the wall', caption: 'The sketches that came out of it.' },
               { src: '/images/casestudies/softwire/5-results-of-workshop-activity-2.webp', alt: 'Sticky notes sorting what information is useful', caption: 'Sorting what information people find useful, and what they would do with it.' },
@@ -172,11 +174,16 @@ export const Softwire = () => {
             We only found both problems by testing. From inside the team, neither was visible.
           </CaseStudyParagraph>
 
+          <CaseStudyImage
+            src="/images/casestudies/softwire/16-feedback-form.webp"
+            alt="The feedback form used in each session"
+            caption="How we captured feedback in each session."
+          />
+
           <CaseStudyImageGrid
-            columns={2}
+            layout="row"
             images={[
               { src: '/images/casestudies/softwire/14-4-product-initial.webp', alt: 'The first design, before testing', caption: 'The first design, before testing.' },
-              { src: '/images/casestudies/softwire/16-feedback-form.webp', alt: 'The feedback form used in each session', caption: 'How we captured feedback in each session.' },
               { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Reworked confirmation screen with platform number and QR code', caption: 'The reworked confirmation screen.' },
               { src: '/images/casestudies/softwire/18-notifications.webp', alt: 'Live journey notifications', caption: 'Live journey notifications.' },
             ]}
@@ -194,6 +201,7 @@ export const Softwire = () => {
           ]} />
 
           <CaseStudyImageGrid
+            layout="row"
             columns={3}
             images={[
               { src: '/images/casestudies/softwire/14-6-product-ticket-selection.webp', alt: 'Ticket selection screen', caption: 'Ticket selection' },

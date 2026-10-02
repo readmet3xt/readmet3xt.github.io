@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { imageSize } from '@/lib/imageSize';
 // Certificates and awards, shown as plain figures (formerly an auto-advancing carousel).
 
@@ -19,10 +20,16 @@ const CERTIFICATES = [
   },
 ];
 
+// Column widths follow each certificate's aspect ratio, so all three share one height.
+const ROW_COLS = CERTIFICATES.map(({ image }) => {
+  const { width, height } = imageSize(image);
+  return `minmax(0, ${width && height ? ((width / height) * 1000).toFixed(1) : 1000}fr)`;
+}).join(' ');
+
 export const CertificatesCarousel = () => (
   <div>
     <h2 className="text-3xl sm:text-4xl mb-8">Certificates and awards</h2>
-    <div className="grid gap-8 md:grid-cols-3 items-start">
+    <div className="grid gap-8 md:[grid-template-columns:var(--row-cols)] items-start" style={{ '--row-cols': ROW_COLS } as CSSProperties}>
       {CERTIFICATES.map((c) => (
         <figure key={c.title}>
           <img src={c.image} {...imageSize(c.image)} alt={c.alt} className="w-full h-auto rounded-sm border border-border" loading="lazy" decoding="async" />

@@ -145,6 +145,7 @@ export const Otagon = () => {
         />
 
         <CaseStudyImageGrid
+          layout="row"
           columns={3}
           images={[
             { src: '/images/casestudies/otagon/3-mobile-logged-in-home.webp', alt: 'Otagon home on a phone after signing in', caption: 'Home on a phone' },
@@ -201,6 +202,7 @@ export const Otagon = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImageGrid
+          layout="row"
           columns={3}
           images={[
             { src: '/images/casestudies/otagon/12-subtabs-1.webp', alt: 'A game-specific subtab', caption: 'A subtab' },
@@ -276,6 +278,7 @@ export const Otagon = () => {
         </CaseStudyCardGrid>
 
         <CaseStudyImageGrid
+          layout="row"
           columns={3}
           images={[
             { src: '/images/casestudies/otagon/14-sidebar.webp', alt: 'Otagon sidebar navigation', caption: 'Navigation' },
@@ -301,6 +304,7 @@ export const Otagon = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImageGrid
+          layout="row"
           columns={3}
           images={[
             { src: '/images/casestudies/otagon/16b-game-library.webp', alt: 'The library of games a player has played', caption: 'Game library' },

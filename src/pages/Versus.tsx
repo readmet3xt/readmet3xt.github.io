@@ -61,7 +61,7 @@ export const Versus = () => {
         </CaseStudyParagraph>
 
         <CaseStudyImageGrid
-          columns={3}
+          layout="row"
           images={[
             { src: '/images/casestudies/versus/2-tournament-creator-mobile.webp', alt: 'Creating a tournament on a phone', caption: 'Create' },
             { src: '/images/casestudies/versus/3-loading-tournament.webp', alt: 'Loading a tournament on a phone', caption: 'Load' },
@@ -99,16 +99,12 @@ export const Versus = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImage
-          src="/images/casestudies/versus/6-match-started-admin.webp"
-          alt="Scoring a match from the host's view"
-          caption="Scoring a match from the host's view."
-        />
-
-        <CaseStudyImage
-          src="/images/casestudies/versus/5-spectator-view-mobile.webp"
-          alt="The read-only spectator view on a phone"
-          caption="What spectators see when they open the link: read-only, no sign-up."
+        <CaseStudyImageGrid
+          layout="row"
+          images={[
+            { src: '/images/casestudies/versus/6-match-started-admin.webp', alt: "Scoring a match from the host's view", caption: "Scoring a match from the host's view." },
+            { src: '/images/casestudies/versus/5-spectator-view-mobile.webp', alt: 'The read-only spectator view on a phone', caption: 'What spectators see when they open the link: read-only, no sign-up.' },
+          ]}
         />
       </CaseStudySection>
 
