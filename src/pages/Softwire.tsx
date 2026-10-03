@@ -10,7 +10,9 @@ import {
   CaseStudyCard,
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
+  CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/lner';
 
 export const Softwire = () => {
   return (
@@ -54,11 +56,10 @@ export const Softwire = () => {
             earn enough trust for someone to pay in 30 seconds?
           </CaseStudyParagraph>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/softwire/10-opportunity.webp', alt: 'Journey map showing where the App Clip fits', caption: 'Where an App Clip could help in the station journey.' },
-            ]}
+          <CaseStudyMotion
+            figure={FIGURES.journey}
+            caption="From our journey map: how Dotty feels from the station queue to the train exit, and where the App Clip fits."
+            original={{ src: '/images/casestudies/softwire/10-opportunity.webp', alt: 'Journey map showing where the App Clip fits' }}
           />
         </CaseStudySection>
 
@@ -100,7 +101,6 @@ export const Softwire = () => {
             columns={1}
             images={[
               { src: '/images/casestudies/softwire/9-fly-on-the-wall-pics.webp', alt: 'Photos from our station observations', caption: 'Photos from our observations at the station.' },
-              { src: '/images/casestudies/softwire/8-problems-found.webp', alt: 'What users prioritised: live updates, disruptions, platform, prices and checkout', caption: 'What people told us mattered most.' },
             ]}
           />
         </CaseStudySection>
@@ -112,6 +112,12 @@ export const Softwire = () => {
           <CaseStudyParagraph>
             Everything else could wait, so the design started from those five.
           </CaseStudyParagraph>
+
+          <CaseStudyMotion
+            figure={FIGURES.five}
+            caption="From the workshop notes to the five things on one train card."
+            original={{ src: '/images/casestudies/softwire/8-problems-found.webp', alt: 'What users prioritised: live updates, disruptions, platform, prices and checkout' }}
+          />
         </CaseStudySection>
 
         <CaseStudySection title="What we made">
@@ -174,16 +180,15 @@ export const Softwire = () => {
             We only found both problems by testing. From inside the team, neither was visible.
           </CaseStudyParagraph>
 
-          <CaseStudyImage
-            src="/images/casestudies/softwire/16-feedback-form.webp"
-            alt="Three screens of an in-app feedback form for the Seat Finder"
-            caption="An in-app feedback form we designed for the Seat Finder: a rating, quick reasons, then thanks."
+          <CaseStudyMotion
+            figure={FIGURES.planning}
+            caption="Journey planning before and after testing: from one question per card to one overview you edit in place."
+            original={{ src: '/images/casestudies/softwire/14-4-product-initial.webp', alt: 'The first design, before testing' }}
           />
 
           <CaseStudyImageGrid
             layout="row"
             images={[
-              { src: '/images/casestudies/softwire/14-4-product-initial.webp', alt: 'The first design, before testing', caption: 'The first design, before testing.' },
               { src: '/images/casestudies/softwire/14-1-product-final.webp', alt: 'Reworked confirmation screen with platform number and QR code', caption: 'The reworked confirmation screen.' },
               { src: '/images/casestudies/softwire/18-notifications.webp', alt: 'Live journey notifications', caption: 'Live journey notifications.' },
             ]}
@@ -204,11 +209,11 @@ export const Softwire = () => {
             layout="row"
             columns={3}
             images={[
+              { src: '/images/casestudies/softwire/14-3-product-final.webp', alt: 'Plan your journey screen', caption: 'Planning a journey' },
               { src: '/images/casestudies/softwire/14-6-product-ticket-selection.webp', alt: 'Ticket selection screen', caption: 'Ticket selection' },
               { src: '/images/casestudies/softwire/14-7-product-selecting-train.webp', alt: 'Choosing a train', caption: 'Choosing a train' },
               { src: '/images/casestudies/softwire/14-8-product-checkout-page.webp', alt: 'Checkout screen with Apple Pay', caption: 'Checkout' },
               { src: '/images/casestudies/softwire/14-2-product-final.webp', alt: 'Ticket screen after purchase', caption: 'Your ticket' },
-              { src: '/images/casestudies/softwire/14-3-product-final.webp', alt: 'Plan your journey screen', caption: 'Planning a journey' },
             ]}
           />
 
@@ -255,9 +260,15 @@ export const Softwire = () => {
           <CaseStudyImageGrid
             columns={2}
             images={[
-              { src: '/images/casestudies/softwire/15-seat-finder.webp', alt: 'Seat Finder, first version', caption: 'Seat Finder, one version.' },
-              { src: '/images/casestudies/softwire/17-seat-finder-2.webp', alt: 'Seat Finder, alternative version', caption: 'Seat Finder, the alternative.' },
+              { src: '/images/casestudies/softwire/17-seat-finder-2.webp', alt: 'Seat Finder, side view', caption: 'Side view, like standing on the platform.' },
+              { src: '/images/casestudies/softwire/15-seat-finder.webp', alt: 'Seat Finder, plan view', caption: 'Plan view, scrolling down.' },
             ]}
+          />
+
+          <CaseStudyImage
+            src="/images/casestudies/softwire/16-feedback-form.webp"
+            alt="Three screens of an in-app feedback form for the Seat Finder"
+            caption="An in-app feedback form we designed for the Seat Finder: a rating, quick reasons, then thanks."
           />
         </CaseStudySection>
 
