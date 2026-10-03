@@ -15,7 +15,7 @@ const MAIN_LINKS = [
   { to: '/play', label: 'Play' },
 ];
 
-const CATEGORIES: ProjectCategory[] = ['service', 'product'];
+const CATEGORIES: ProjectCategory[] = ['product', 'service'];
 
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const { pathname } = useLocation();

@@ -49,8 +49,8 @@ const ProjectSection = ({ category }: { category: ProjectCategory }) => {
 
 export const ProjectsGrid = () => (
   <div id="work" className="scroll-mt-24 border-t border-border">
-    <ProjectSection category="service" />
-    <div className="border-t border-border" />
     <ProjectSection category="product" />
+    <div className="border-t border-border" />
+    <ProjectSection category="service" />
   </div>
 );

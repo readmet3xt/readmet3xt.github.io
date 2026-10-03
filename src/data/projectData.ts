@@ -23,19 +23,72 @@ export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
   product: "Products I've designed and built",
 };
 
+// Products first, then service design; each group in date order, oldest first.
 export const PROJECTS: ProjectData[] = [
   {
-    href: '/pebble',
-    title: 'Pebble',
-    category: 'service',
-    context: 'RCA × VISA Innovation Centre, 2021',
+    href: '/koinbasket',
+    title: 'KoinBasket',
+    category: 'product',
+    context: 'Founding and senior designer, 2022–2025',
     summary:
-      "A wellbeing service for remote teams, shaped by 70 survey responses and 18 co-creation workshops with 55+ participants. The Virtual Café concept went into VISA Innovation Centre's collaboration roadmap.",
-    thumbnail: '/images/casestudies/pebble/1-cover-pic-960w.webp',
-    thumbnailAlt: 'Pebble, a wellbeing companion for remote teams',
-    seoTitle: 'Pebble',
+      'Founding designer from a one-week MVP, on a crypto investing platform that grew past 70,000 users. I came back later as senior designer for a redesign and rebrand.',
+    thumbnail: '/images/casestudies/koinbasket/2-home-page-960w.webp',
+    thumbnailAlt: 'KoinBasket home page',
+    seoTitle: 'KoinBasket',
     seoDescription:
-      'A wellbeing service for remote teams, designed with VISA Innovation Centre through 18 co-creation workshops with 55+ participants and a 70-person survey.',
+      'Founding and senior designer at KoinBasket, a non-custodial crypto investing platform that grew past 70,000 users.',
+  },
+  {
+    href: '/lawx',
+    title: 'Law.X',
+    category: 'product',
+    context: 'Pixel+Form, 2025',
+    summary:
+      "Turned a black-box legal chatbot into a workspace lawyers can supervise, by showing the AI's reasoning instead of hiding it. One-month design contract.",
+    thumbnail: '/images/casestudies/lawx/lawx-6-960w.webp',
+    thumbnailAlt: 'Law.X legal workspace',
+    seoTitle: 'Law.X',
+    seoDescription:
+      "Designing transparency into legal AI: a workspace that shows lawyers the model's reasoning so they can check it.",
+  },
+  {
+    href: '/otagon',
+    title: 'Otagon',
+    category: 'product',
+    context: 'Otalabs, 2025–present',
+    summary:
+      'An AI companion that reads a game screenshot and gives a hint that stops before spoilers. I designed and built it: phone app, desktop connector and backend.',
+    thumbnail: '/images/casestudies/otagon/1-home-page-landing-960w.webp',
+    thumbnailAlt: 'Otagon landing page',
+    seoTitle: 'Otagon',
+    seoDescription:
+      'Otagon, an AI gaming companion that reads a screenshot and gives a spoiler-free hint. Designed and built solo; public launch July 2026.',
+    status: 'Live',
+  },
+  {
+    href: '/versus',
+    title: 'Versus',
+    category: 'product',
+    context: 'Side project, 2026',
+    summary:
+      'A live tournament tracker for game nights: leagues, knockouts, live scores and a spectator link friends open on their phones.',
+    thumbnail: '/images/casestudies/versus/1-landing-page-desktop-960w.webp',
+    thumbnailAlt: 'Versus landing page',
+    seoTitle: 'Versus',
+    seoDescription: 'Versus, a live tournament tracker for game nights with live scoring and a spectator link.',
+    status: 'Live',
+  },
+  {
+    href: '/screenshot',
+    title: 'ScreenShot',
+    category: 'product',
+    context: 'Side project, 2026',
+    summary:
+      'Press F1 on your PC and the screenshot appears on your phone a moment later. A Windows app, a relay and a phone gallery.',
+    thumbnail: '/images/casestudies/screenshot/1-landing-page-hero-960w.webp',
+    thumbnailAlt: 'ScreenShot landing page',
+    seoTitle: 'ScreenShot',
+    seoDescription: 'ScreenShot: press F1 on a Windows PC and the screenshot appears on your phone.',
   },
   {
     href: '/stampede',
@@ -64,6 +117,19 @@ export const PROJECTS: ProjectData[] = [
       "A speculative service that makes women's unpaid domestic work economically visible. Core77 Design Awards 2021, Student Notable.",
   },
   {
+    href: '/pebble',
+    title: 'Pebble',
+    category: 'service',
+    context: 'RCA × VISA Innovation Centre, 2021',
+    summary:
+      "A wellbeing service for remote teams, shaped by 70 survey responses and 18 co-creation workshops with 55+ participants. The Virtual Café concept went into VISA Innovation Centre's collaboration roadmap.",
+    thumbnail: '/images/casestudies/pebble/1-cover-pic-960w.webp',
+    thumbnailAlt: 'Pebble, a wellbeing companion for remote teams',
+    seoTitle: 'Pebble',
+    seoDescription:
+      'A wellbeing service for remote teams, designed with VISA Innovation Centre through 18 co-creation workshops with 55+ participants and a 70-person survey.',
+  },
+  {
     href: '/softwire',
     title: 'LNER App Clip',
     category: 'service',
@@ -75,71 +141,6 @@ export const PROJECTS: ProjectData[] = [
     seoTitle: 'LNER App Clip',
     seoDescription:
       'An App Clip for instant LNER train tickets, co-led during a Softwire design internship. Usability testing under time pressure cut checkout time 40%.',
-  },
-  {
-    href: '/koinbasket',
-    title: 'KoinBasket',
-    category: 'product',
-    context: 'Founding and senior designer, 2022–2025',
-    summary:
-      'Founding designer from a one-week MVP, on a crypto investing platform that grew past 70,000 users. I came back later as senior designer for a redesign and rebrand.',
-    thumbnail: '/images/casestudies/koinbasket/2-home-page-960w.webp',
-    thumbnailAlt: 'KoinBasket home page',
-    seoTitle: 'KoinBasket',
-    seoDescription:
-      'Founding and senior designer at KoinBasket, a non-custodial crypto investing platform that grew past 70,000 users.',
-  },
-  {
-    href: '/otagon',
-    title: 'Otagon',
-    category: 'product',
-    context: 'Otalabs, 2025–present',
-    summary:
-      'An AI companion that reads a game screenshot and gives a hint that stops before spoilers. I designed and built it: phone app, desktop connector and backend.',
-    thumbnail: '/images/casestudies/otagon/1-home-page-landing-960w.webp',
-    thumbnailAlt: 'Otagon landing page',
-    seoTitle: 'Otagon',
-    seoDescription:
-      'Otagon, an AI gaming companion that reads a screenshot and gives a spoiler-free hint. Designed and built solo; public launch July 2026.',
-    status: 'Live',
-  },
-  {
-    href: '/lawx',
-    title: 'Law.X',
-    category: 'product',
-    context: 'Pixel+Form, 2025',
-    summary:
-      "Turned a black-box legal chatbot into a workspace lawyers can supervise, by showing the AI's reasoning instead of hiding it. One-month design contract.",
-    thumbnail: '/images/casestudies/lawx/lawx-6-960w.webp',
-    thumbnailAlt: 'Law.X legal workspace',
-    seoTitle: 'Law.X',
-    seoDescription:
-      "Designing transparency into legal AI: a workspace that shows lawyers the model's reasoning so they can check it.",
-  },
-  {
-    href: '/versus',
-    title: 'Versus',
-    category: 'product',
-    context: 'Side project, 2026',
-    summary:
-      'A live tournament tracker for game nights: leagues, knockouts, live scores and a spectator link friends open on their phones.',
-    thumbnail: '/images/casestudies/versus/1-landing-page-desktop-960w.webp',
-    thumbnailAlt: 'Versus landing page',
-    seoTitle: 'Versus',
-    seoDescription: 'Versus, a live tournament tracker for game nights with live scoring and a spectator link.',
-    status: 'Live',
-  },
-  {
-    href: '/screenshot',
-    title: 'ScreenShot',
-    category: 'product',
-    context: 'Side project, 2026',
-    summary:
-      'Press F1 on your PC and the screenshot appears on your phone a moment later. A Windows app, a relay and a phone gallery.',
-    thumbnail: '/images/casestudies/screenshot/1-landing-page-hero-960w.webp',
-    thumbnailAlt: 'ScreenShot landing page',
-    seoTitle: 'ScreenShot',
-    seoDescription: 'ScreenShot: press F1 on a Windows PC and the screenshot appears on your phone.',
   },
 ];
 
