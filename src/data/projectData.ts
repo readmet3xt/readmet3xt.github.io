@@ -23,34 +23,8 @@ export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
   product: "Products I've designed and built",
 };
 
-// Products first, then service design; each group in date order, oldest first.
+// Products first, then service design; each group newest first (ongoing work first, then by end date).
 export const PROJECTS: ProjectData[] = [
-  {
-    href: '/koinbasket',
-    title: 'KoinBasket',
-    category: 'product',
-    context: 'Founding and senior designer, 2022–2025',
-    summary:
-      'Founding designer from a one-week MVP, on a crypto investing platform that grew past 70,000 users. I came back later as senior designer for a redesign and rebrand.',
-    thumbnail: '/images/casestudies/koinbasket/2-home-page-960w.webp',
-    thumbnailAlt: 'KoinBasket home page',
-    seoTitle: 'KoinBasket',
-    seoDescription:
-      'Founding and senior designer at KoinBasket, a non-custodial crypto investing platform that grew past 70,000 users.',
-  },
-  {
-    href: '/lawx',
-    title: 'Law.X',
-    category: 'product',
-    context: 'Pixel+Form, 2025',
-    summary:
-      "Turned a black-box legal chatbot into a workspace lawyers can supervise, by showing the AI's reasoning instead of hiding it. One-month design contract.",
-    thumbnail: '/images/casestudies/lawx/lawx-6-960w.webp',
-    thumbnailAlt: 'Law.X legal workspace',
-    seoTitle: 'Law.X',
-    seoDescription:
-      "Designing transparency into legal AI: a workspace that shows lawyers the model's reasoning so they can check it.",
-  },
   {
     href: '/otagon',
     title: 'Otagon',
@@ -66,6 +40,18 @@ export const PROJECTS: ProjectData[] = [
     status: 'Live',
   },
   {
+    href: '/screenshot',
+    title: 'ScreenShot',
+    category: 'product',
+    context: 'Side project, 2026',
+    summary:
+      'Press F1 on your PC and the screenshot appears on your phone a moment later. A Windows app, a relay and a phone gallery.',
+    thumbnail: '/images/casestudies/screenshot/1-landing-page-hero-960w.webp',
+    thumbnailAlt: 'ScreenShot landing page',
+    seoTitle: 'ScreenShot',
+    seoDescription: 'ScreenShot: press F1 on a Windows PC and the screenshot appears on your phone.',
+  },
+  {
     href: '/versus',
     title: 'Versus',
     category: 'product',
@@ -79,42 +65,43 @@ export const PROJECTS: ProjectData[] = [
     status: 'Live',
   },
   {
-    href: '/screenshot',
-    title: 'ScreenShot',
+    href: '/lawx',
+    title: 'Law.X',
     category: 'product',
-    context: 'Side project, 2026',
+    context: 'Pixel+Form, 2025',
     summary:
-      'Press F1 on your PC and the screenshot appears on your phone a moment later. A Windows app, a relay and a phone gallery.',
-    thumbnail: '/images/casestudies/screenshot/1-landing-page-hero-960w.webp',
-    thumbnailAlt: 'ScreenShot landing page',
-    seoTitle: 'ScreenShot',
-    seoDescription: 'ScreenShot: press F1 on a Windows PC and the screenshot appears on your phone.',
+      "Turned a black-box legal chatbot into a workspace lawyers can supervise, by showing the AI's reasoning instead of hiding it. One-month design contract.",
+    thumbnail: '/images/casestudies/lawx/lawx-6-960w.webp',
+    thumbnailAlt: 'Law.X legal workspace',
+    seoTitle: 'Law.X',
+    seoDescription:
+      "Designing transparency into legal AI: a workspace that shows lawyers the model's reasoning so they can check it.",
   },
   {
-    href: '/stampede',
-    title: 'Stampede',
-    category: 'service',
-    context: 'RCA × WWT × Airbnb, 2019',
+    href: '/koinbasket',
+    title: 'KoinBasket',
+    category: 'product',
+    context: 'Founding and senior designer, 2022–2025',
     summary:
-      'A method for matching conservation organisations by Power and Pace. Its first 3-hour workshop started the WWT × Airbnb collaboration.',
-    thumbnail: '/images/casestudies/stampede/6-workshop-1.webp',
-    thumbnailAlt: 'Stampede co-creation workshop with WWT and Airbnb',
-    seoTitle: 'Stampede',
+      'Founding designer from a one-week MVP, on a crypto investing platform that grew past 70,000 users. I came back later as senior designer for a redesign and rebrand.',
+    thumbnail: '/images/casestudies/koinbasket/2-home-page-960w.webp',
+    thumbnailAlt: 'KoinBasket home page',
+    seoTitle: 'KoinBasket',
     seoDescription:
-      'A partnership matchmaking method for conservation organisations. Its first facilitated workshop started the WWT × Airbnb collaboration.',
+      'Founding and senior designer at KoinBasket, a non-custodial crypto investing platform that grew past 70,000 users.',
   },
   {
-    href: '/iviprogram',
-    title: 'Invisible Value Income Program',
-    category: 'service',
-    context: 'RCA × BCG Platinion, 2020',
+    href: '/softwire',
+    title: 'LNER App Clip',
+    category: 'product',
+    context: 'Softwire × LNER, London, 2022',
     summary:
-      "A speculative service that makes women's unpaid domestic work economically visible. Core77 Student Notable 2021; BCG adopted the research framework.",
-    thumbnail: '/images/casestudies/ivi/1-bad-health-960w.webp',
-    thumbnailAlt: 'I.V.I. Program research on the working mother penalty',
-    seoTitle: 'Invisible Value Income Program',
+      'Instant train tickets for people running for a train. I co-led UX with another design intern; testing under time pressure cut checkout time 40%.',
+    thumbnail: '/images/casestudies/softwire/3-2-workshop-crazy-8.webp',
+    thumbnailAlt: 'Crazy 8s ideation workshop for the LNER App Clip',
+    seoTitle: 'LNER App Clip',
     seoDescription:
-      "A speculative service that makes women's unpaid domestic work economically visible. Core77 Design Awards 2021, Student Notable.",
+      'An App Clip for instant LNER train tickets, co-led during a Softwire design internship. Usability testing under time pressure cut checkout time 40%.',
   },
   {
     href: '/pebble',
@@ -130,17 +117,30 @@ export const PROJECTS: ProjectData[] = [
       'A wellbeing service for remote teams, designed with VISA Innovation Centre through 18 co-creation workshops with 55+ participants and a 70-person survey.',
   },
   {
-    href: '/softwire',
-    title: 'LNER App Clip',
+    href: '/iviprogram',
+    title: 'Invisible Value Income Program',
     category: 'service',
-    context: 'Softwire × LNER, London, 2022',
+    context: 'RCA × BCG Platinion, 2020',
     summary:
-      'Instant train tickets for people running for a train. I co-led UX with another design intern; testing under time pressure cut checkout time 40%.',
-    thumbnail: '/images/casestudies/softwire/3-2-workshop-crazy-8.webp',
-    thumbnailAlt: 'Crazy 8s ideation workshop for the LNER App Clip',
-    seoTitle: 'LNER App Clip',
+      "A speculative service that makes women's unpaid domestic work economically visible. Core77 Student Notable 2021; BCG adopted the research framework.",
+    thumbnail: '/images/casestudies/ivi/1-bad-health-960w.webp',
+    thumbnailAlt: 'I.V.I. Program research on the working mother penalty',
+    seoTitle: 'Invisible Value Income Program',
     seoDescription:
-      'An App Clip for instant LNER train tickets, co-led during a Softwire design internship. Usability testing under time pressure cut checkout time 40%.',
+      "A speculative service that makes women's unpaid domestic work economically visible. Core77 Design Awards 2021, Student Notable.",
+  },
+  {
+    href: '/stampede',
+    title: 'Stampede',
+    category: 'service',
+    context: 'RCA × WWT × Airbnb, 2019',
+    summary:
+      'A method for matching conservation organisations by Power and Pace. Its first 3-hour workshop started the WWT × Airbnb collaboration.',
+    thumbnail: '/images/casestudies/stampede/6-workshop-1.webp',
+    thumbnailAlt: 'Stampede co-creation workshop with WWT and Airbnb',
+    seoTitle: 'Stampede',
+    seoDescription:
+      'A partnership matchmaking method for conservation organisations. Its first facilitated workshop started the WWT × Airbnb collaboration.',
   },
 ];
 

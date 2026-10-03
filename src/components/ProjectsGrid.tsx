@@ -4,7 +4,7 @@ import { CATEGORY_LABELS, projectsByCategory, type ProjectCategory } from '@/dat
 
 const INTROS: Record<ProjectCategory, string> = {
   service: 'Research-led projects where I worked with the people the service was for: workshops, interviews, prototypes and testing.',
-  product: 'Products I designed, and from 2025 also built, from fintech to AI tools.',
+  product: 'Products I designed, and from 2025 also built, from rail tickets to AI tools.',
 };
 
 /** A soft highlight that slides between tiles under the pointer (computers only). */

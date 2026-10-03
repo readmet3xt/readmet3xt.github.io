@@ -200,7 +200,8 @@ export const TileIvi: React.FC<LookProps> = (look) => {
   );
 };
 
-/* LNER App Clip: scan the QR at the station → the clip opens, no download → booked in one tap. */
+/* LNER App Clip: scan the QR at the station → the clip opens, no download → booked in one tap.
+   Once the code is read, the sign leaves and the phone moves to the centre; a train runs along the platform. */
 const ESSENTIALS = ['time', 'price', 'duration', 'changes', 'delay'];
 const qrRand = seeded(23);
 const QR_CELLS = Array.from({ length: 81 }, () => qrRand() > 0.5);
@@ -232,12 +233,17 @@ const Qr: React.FC<{ size: number; ink: string; ground: string }> = ({ size, ink
 export const TileLner: React.FC<LookProps> = (look) => {
   const { palette: p } = look;
   const f = useCurrentFrame();
-  const S = { x: 362, y: 52, w: 146, h: 300 }; // the phone's screen
+  // the phone moves from beside the sign to the centre once the code is read, and back for the next loop
+  const centre = tween(f, 54, 22, 0, 1, TRAVEL) * (1 - tween(f, END, 12, 0, 1, TRAVEL));
+  const S = { x: mix(362, 227, centre), y: 40, w: 146, h: 270 }; // the phone's screen
+  const sign = { x: 60, y: 53, w: 172, h: 244 };
+  const signOut = tween(f, 48, 14) * (1 - tween(f, END, 12));
+  const trainX = mix(-150, 630, f / TILE_FRAMES);
   const camera = opening(f, 56);
   const lock = tween(f, 20, 16, 0, 1, TRAVEL); // the frame snaps onto the code
   const found = span(f, 38, 58, 6);
-  const clip = span(f, 60, 118, 8);
-  const slide = tween(f, 60, 16, 0, 1, TRAVEL);
+  const clip = span(f, 62, 118, 8);
+  const slide = tween(f, 62, 16, 0, 1, TRAVEL);
   const pay = Math.sin(Math.PI * tween(f, 108, 8));
   const ticket = span(f, 118, END, 10);
   const scanY = (f % 24) / 24;
@@ -247,8 +253,8 @@ export const TileLner: React.FC<LookProps> = (look) => {
 
   return (
     <Tile {...look}>
-      {/* the sign at the station */}
-      <div style={{ position: 'absolute', left: 60, top: 64, width: 172, height: 244, borderRadius: 14, background: p.bg, border: `1.5px solid ${p.line}`, opacity: 1 - ticket * 0.45 }}>
+      {/* the sign at the station; it leaves once the code is read */}
+      <div style={{ position: 'absolute', left: sign.x, top: sign.y, width: sign.w, height: sign.h, borderRadius: 14, background: p.bg, border: `1.5px solid ${p.line}`, opacity: 1 - signOut, transform: `translateX(${-signOut * 36}px)` }}>
         <div style={{ margin: '18px 0 0 18px', width: 64, height: 8, borderRadius: 4, background: p.accent }} />
         <div style={{ margin: '18px auto 0', width: 116 }}>
           <Qr size={116} ink={p.ink} ground={p.bg} />
@@ -256,8 +262,17 @@ export const TileLner: React.FC<LookProps> = (look) => {
         <div style={{ marginTop: 14, textAlign: 'center', ...mono(look, 14, p.muted) }}>scan for tickets</div>
       </div>
       <svg width={600} height={450} style={{ position: 'absolute', inset: 0 }}>
-        {[[232, 120], [232, 250]].map(([x, y], i) => (
-          <line key={y} x1={x} y1={y} x2={S.x + qr.x + (i ? 0 : 0)} y2={S.y + qr.y + (i ? qr.s : 0)} stroke={p.accent} strokeWidth={1.25} strokeDasharray="3 6" opacity={camera * span(f, 10, 46, 8) * 0.8} />
+        {[sign.y + 50, sign.y + 156].map((y, i) => (
+          <line key={y} x1={sign.x + sign.w} y1={y} x2={S.x + qr.x} y2={S.y + qr.y + (i ? qr.s : 0)} stroke={p.accent} strokeWidth={1.25} strokeDasharray="3 6" opacity={camera * span(f, 10, 46, 8) * 0.8} />
+        ))}
+        {/* the platform: track, sleepers and a train passing through the whole loop */}
+        <line x1={0} x2={600} y1={372} y2={372} stroke={p.line} strokeWidth={1.5} />
+        {Array.from({ length: 26 }, (_, i) => (
+          <line key={i} x1={i * 24 + 6} x2={i * 24 + 6} y1={372} y2={379} stroke={p.line} strokeWidth={1.5} />
+        ))}
+        <rect x={trainX} y={342} width={136} height={26} rx={13} fill={p.bg} stroke={p.ink} strokeWidth={1.5} />
+        {[0, 1, 2].map((w) => (
+          <rect key={w} x={trainX + 24 + w * 32} y={350} width={22} height={8} rx={3} fill={p.line} />
         ))}
       </svg>
 
