@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 type Chapter = { id: string; title: string };
 
@@ -8,8 +8,13 @@ const slug = (s: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 
-/** Sticky chapter navigation for a case study: shows where you are and jumps to any section. */
-export const ChapterBar = ({ article }: { article: RefObject<HTMLElement> }) => {
+/**
+ * Sticky chapter navigation for a case study, placed right after the hero:
+ * shows where you are and jumps to any section. Its height is reserved from
+ * the first paint, so the page never shifts when the chapters fill in.
+ */
+export const ChapterBar = () => {
+  const nav = useRef<HTMLElement>(null);
   const [chapters, setChapters] = useState<Chapter[]>([]);
   const [active, setActive] = useState(-1);
   const strip = useRef<HTMLDivElement>(null);
@@ -18,9 +23,9 @@ export const ChapterBar = ({ article }: { article: RefObject<HTMLElement> }) => 
 
   // Read the chapters from the article's section headings.
   useEffect(() => {
-    const el = article.current;
-    if (!el) return;
-    const sections = [...el.querySelectorAll<HTMLElement>(':scope > section.case-study-section')].filter((s) => s.querySelector('h2'));
+    const article = nav.current?.closest('article');
+    if (!article) return;
+    const sections = [...article.querySelectorAll<HTMLElement>(':scope > section.case-study-section')].filter((s) => s.querySelector('h2'));
     setChapters(
       sections.map((s, i) => {
         const title = s.querySelector('h2')!.textContent!.trim();
@@ -28,7 +33,7 @@ export const ChapterBar = ({ article }: { article: RefObject<HTMLElement> }) => 
         return { id: s.id, title };
       }),
     );
-  }, [article]);
+  }, []);
 
   // Track the chapter being read.
   useEffect(() => {
@@ -74,8 +79,6 @@ export const ChapterBar = ({ article }: { article: RefObject<HTMLElement> }) => 
     }
   }, [active, chapters]);
 
-  if (chapters.length < 2) return null;
-
   const jump = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -84,7 +87,7 @@ export const ChapterBar = ({ article }: { article: RefObject<HTMLElement> }) => 
   };
 
   return (
-    <nav aria-label="Chapters" className="sticky top-16 z-10 -mx-4 sm:mx-0 mb-12 border-b border-border bg-bg-primary/85 backdrop-blur-md">
+    <nav ref={nav} aria-label="Chapters" className="sticky top-16 z-10 -mx-4 sm:mx-0 min-h-[46px] border-b border-border bg-bg-primary/85 backdrop-blur-md">
       <div ref={strip} className="relative flex gap-1 overflow-x-auto px-2 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {chapters.map((c, i) => (
           <button

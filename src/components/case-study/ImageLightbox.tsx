@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ImageLightbox = () => {
@@ -69,13 +68,13 @@ export const ImageLightbox = () => {
     }, [isOpen]);
 
     return (
-        <AnimatePresence>
+        <>
             {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8"
+                <div
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Image viewer"
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8 animate-[lightbox-fade_0.25s_ease-out]"
                     onClick={handleClose}
                 >
                     <button
@@ -106,15 +105,11 @@ export const ImageLightbox = () => {
                         </button>
                     )}
 
-                    <motion.img
+                    <img
                         key={currentIndex}
                         src={images[currentIndex].src}
                         alt={images[currentIndex].alt}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className="max-w-full max-h-[90vh] object-contain rounded-md"
+                        className="max-w-full max-h-[90vh] object-contain rounded-md animate-[lightbox-in_0.35s_cubic-bezier(0.23,1,0.32,1)]"
                         onClick={(e) => e.stopPropagation()}
                     />
 
@@ -130,8 +125,8 @@ export const ImageLightbox = () => {
                     <div className="absolute bottom-4 left-0 right-0 text-center text-white/70 text-sm font-medium">
                         {currentIndex + 1} / {images.length}
                     </div>
-                </motion.div>
+                </div>
             )}
-        </AnimatePresence>
+        </>
     );
 };

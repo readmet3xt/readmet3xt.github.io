@@ -23,7 +23,7 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
             aria-hidden={writing}
           >
             <h1 className="text-6xl sm:text-7xl leading-[1.02]" aria-label="hi, I'm Amaan">
-              <span aria-hidden="true"><RotatingGreeting />.<br />i’m amaan.</span>
+              <span aria-hidden="true"><RotatingGreeting /><br />i’m amaan<span className="text-accent-primary">.</span></span>
             </h1>
             <p className="mt-5 font-mono text-sm text-text-tertiary">Amaan Khan · Service &amp; Product Designer</p>
 

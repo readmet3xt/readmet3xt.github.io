@@ -24,7 +24,7 @@ export const DARK: Palette = {
   faint: '#6B6B70',
   line: 'rgba(242, 242, 243, 0.16)',
   accent: '#FF4757',
-  onAccent: '#FFFFFF',
+  onAccent: '#0B0B0C',
 };
 
 export const LIGHT: Palette = {
@@ -36,7 +36,7 @@ export const LIGHT: Palette = {
   faint: '#9A9A9F',
   line: 'rgba(29, 29, 31, 0.16)',
   accent: '#FF4757',
-  onAccent: '#FFFFFF',
+  onAccent: '#0B0B0C',
 };
 
 export type Fonts = { display: string; text: string; mono: string; displayWeight: number; displayTracking: number };

@@ -29,11 +29,9 @@
   <meta name="twitter:description" content="Service and product designer trained at the Royal College of Art. I design end-to-end services and build them: research with VISA, BCG and WWT × Airbnb, founding designer at KoinBasket, and products I designed and built myself." data-rh="true" />
   <meta name="twitter:image" content="https://readmet3xt.github.io/social-card.png" data-rh="true" />
 
-  <!-- Geist (headings and text) + Geist Mono (labels) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <!-- Geist and Geist Mono are served from this site; preloading them avoids a late swap. -->
+  <link rel="preload" href="/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
   <!-- The right ground on first paint, before the stylesheet arrives -->
   <style>html{background:#0B0B0C;color:#F2F2F3}html[data-theme="light"]{background:#FAFAF9;color:#1D1D1F}</style>
   <link rel="icon" href="/favicon.ico" sizes="48x48">

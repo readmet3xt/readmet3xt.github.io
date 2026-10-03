@@ -12,6 +12,7 @@ import {
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
 } from '@/components/case-study';
+import { VideoEmbed } from '@/components/case-study/VideoEmbed';
 
 const ARCHETYPES: [string, string][] = [
   ['Walrus (e.g. WWF)', 'Large and globally influential, careful about its brand, slow because of layers of approval.'],
@@ -237,16 +238,7 @@ export const Stampede = () => {
             format is worth running more widely.
           </CaseStudyParagraph>
 
-          <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
-            <iframe
-              loading="lazy"
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/RnNxUVHPOA4"
-              title="Stampede results video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen>
-            </iframe>
-          </div>
+          <VideoEmbed provider="youtube" id="RnNxUVHPOA4" title="Stampede results video" />
 
           <CaseStudyImage
             src="/images/casestudies/stampede/11-results.webp"

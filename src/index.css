@@ -3,6 +3,24 @@
 @import './styles/animations.css';
 @import './styles/components.css';
 
+/* Geist and Geist Mono, served from this site (SIL Open Font License, public/fonts).
+   Variable fonts: one file each covers every weight. */
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/geist-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/geist-mono-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,7 +82,7 @@
     --bg-tertiary: 60 4% 89%;       /* #E5E5E2 */
     --text-primary: 240 3% 12%;     /* #1D1D1F */
     --text-secondary: 240 3% 38%;   /* #5F5F64 */
-    --text-tertiary: 240 2% 44%;    /* #6F6F74, 5.0:1 on the ground */
+    --text-tertiary: 240 3% 39%;    /* #616166, 5.6:1 on the ground, 4.9:1 on cards */
     --accent-primary: 355 100% 45%; /* #E50014, the deck red deepened to 4.5:1 for text */
     --accent-hover: 355 100% 39%;
     --border-tone: 240 3% 12%;

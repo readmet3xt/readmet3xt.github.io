@@ -8,7 +8,6 @@ import { MotionStage } from '@/motion/MotionStage';
 import { TILES, TILE_SIZE } from '@/motion/registry';
 import { PROJECT_COLORS } from '@/motion/colors';
 import { useProjectAccent } from '@/hooks/use-project-accent';
-import { ChapterBar } from './ChapterBar';
 import { ImageLightbox } from './ImageLightbox';
 
 interface CaseStudyLayoutProps {
@@ -57,8 +56,6 @@ export const CaseStudyLayout = ({
             <span>{backLabel}</span>
           </Link>
         </nav>
-
-        <ChapterBar article={article} />
 
         <article ref={article} className="case-study-article space-y-16">{children}</article>
 

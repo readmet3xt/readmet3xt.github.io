@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
-import { imageSize } from '@/lib/imageSize';
+import { SIZES_WIDE, imageSize, responsive } from '@/lib/imageSize';
 import { MotionStage } from '@/motion/MotionStage';
 import { TILES, TILE_SIZE } from '@/motion/registry';
 import { PROJECT_COLORS } from '@/motion/colors';
+import { ChapterBar } from './ChapterBar';
 
 interface CaseStudyHeroProps {
   title: string;
@@ -52,6 +53,7 @@ export const CaseStudyHero = ({
   const tile = TILES[pathname];
 
   return (
+    <>
     <header className="space-y-8">
       {tile && (
         <div className="flex justify-center overflow-hidden rounded-2xl bg-bg-secondary aspect-[4/3] sm:aspect-[21/9]">
@@ -106,6 +108,7 @@ export const CaseStudyHero = ({
           <img
             src={heroImage}
             {...imageSize(heroImage)}
+            {...responsive(heroImage, SIZES_WIDE)}
             alt={heroImageAlt || title}
             data-lightbox-caption={heroImageAlt || title}
             className={`w-full aspect-[16/9] object-cover ${heroImagePosition} rounded-sm lightbox-image cursor-zoom-in`}
@@ -117,5 +120,7 @@ export const CaseStudyHero = ({
         </figure>
       )}
     </header>
+    <ChapterBar />
+    </>
   );
 };

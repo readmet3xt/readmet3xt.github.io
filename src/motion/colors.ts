@@ -70,6 +70,9 @@ export const readableOn = (hex: string, ground: string, ratio: number) => {
   return out;
 };
 
+/** Text colour for a label sitting on `fill`: near-black or white, whichever reads better. */
+export const inkOn = (fill: string) => (contrast('#0B0B0C', fill) >= contrast('#FFFFFF', fill) ? '#0B0B0C' : '#FFFFFF');
+
 /** "h s% l%" for the site's hsl(var(--token)) colour tokens. */
 export const hslToken = (hex: string) => {
   const [h, s, l] = toHsl(hex);

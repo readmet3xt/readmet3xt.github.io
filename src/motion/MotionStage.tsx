@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type FC } from 'react';
 import { useSitePrefs } from '@/lib/sitePrefs';
-import { readableOn } from './colors';
+import { inkOn, readableOn } from './colors';
 import { FrameProvider } from './core';
 import type { LookProps } from './theme';
 import { getWelcomeActive, subscribeTick, subscribeWelcome } from './ticker';
@@ -55,7 +55,11 @@ export const MotionStage = ({
 }: Props) => {
   const { look: siteLook, motion } = useSitePrefs();
   const look = useMemo(
-    () => (accent ? { ...siteLook, palette: { ...siteLook.palette, accent: readableOn(accent, siteLook.palette.panel, 3) } } : siteLook),
+    () => {
+      if (!accent) return siteLook;
+      const fill = readableOn(accent, siteLook.palette.panel, 3);
+      return { ...siteLook, palette: { ...siteLook.palette, accent: fill, onAccent: inkOn(fill) } };
+    },
     [siteLook, accent],
   );
   const welcome = useSyncExternalStore(subscribeWelcome, getWelcomeActive, () => false);

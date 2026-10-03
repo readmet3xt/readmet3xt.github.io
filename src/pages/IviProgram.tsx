@@ -11,6 +11,7 @@ import {
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
 } from '@/components/case-study';
+import { VideoEmbed } from '@/components/case-study/VideoEmbed';
 
 export const IviProgram = () => {
   return (
@@ -38,18 +39,7 @@ export const IviProgram = () => {
         />
 
         <CaseStudySection>
-          <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
-            <iframe
-              loading="lazy"
-              src="https://player.vimeo.com/video/502127128?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              className="absolute inset-0 w-full h-full"
-              title="I.V.I. Program film"
-              allowFullScreen>
-            </iframe>
-          </div>
+          <VideoEmbed provider="vimeo" id="502127128" title="I.V.I. Program film" />
         </CaseStudySection>
 
         <CaseStudySection title="Context">
@@ -280,18 +270,7 @@ export const IviProgram = () => {
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
-          <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
-            <iframe
-              loading="lazy"
-              src="https://player.vimeo.com/video/500506619?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              className="absolute inset-0 w-full h-full"
-              title="How participants feel about the I.V.I. Program"
-              allowFullScreen>
-            </iframe>
-          </div>
+          <VideoEmbed provider="vimeo" id="500506619" title="How participants feel about the I.V.I. Program" />
 
           <CaseStudyImageGrid
             columns={1}

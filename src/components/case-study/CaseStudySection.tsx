@@ -1,5 +1,5 @@
 import { CSSProperties, ReactNode } from 'react';
-import { imageSize } from '@/lib/imageSize';
+import { SIZES_HALF, SIZES_WIDE, imageSize, responsive } from '@/lib/imageSize';
 
 /* Case-study building blocks. Prose stays at a readable measure (68ch);
    images run the full article width. No motion: everything is visible on load. */
@@ -122,6 +122,7 @@ export const CaseStudyImage = ({
       src={src}
       alt={alt}
       {...imageSize(src)}
+      {...responsive(src, size === 'column' ? '(min-width: 768px) 680px, 100vw' : SIZES_WIDE)}
       data-lightbox-caption={caption || alt}
       className={`w-full rounded-sm lightbox-image cursor-zoom-in ${aspectRatio === 'aspect-auto' ? 'h-auto' : `${aspectRatio} object-cover ${objectPosition}`}`}
       style={aspectRatio === 'aspect-auto' ? fitHeight(src, '85vh') : undefined}
@@ -141,6 +142,7 @@ const GridImageCard = ({ image, aspectRatio, objectPosition, maxHeight }: { imag
       src={image.src}
       alt={image.alt}
       {...imageSize(image.src)}
+      {...responsive(image.src, SIZES_HALF)}
       data-lightbox-caption={image.caption || image.alt}
       className={`w-full rounded-sm lightbox-image cursor-zoom-in ${aspectRatio === 'aspect-auto' ? 'h-auto' : `${aspectRatio} object-cover ${objectPosition}`}`}
       style={aspectRatio === 'aspect-auto' ? fitHeight(image.src, maxHeight) : undefined}
@@ -181,6 +183,7 @@ const ImageRow = ({ images, reference }: { images: GridImage[]; reference?: numb
             src={image.src}
             alt={image.alt}
             {...imageSize(image.src)}
+            {...responsive(image.src, SIZES_HALF)}
             data-lightbox-caption={image.caption || image.alt}
             className="w-full h-auto rounded-sm lightbox-image cursor-zoom-in"
             style={fitHeight(image.src, ROW_MAX_HEIGHT)}

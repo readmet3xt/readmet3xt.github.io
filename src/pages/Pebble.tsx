@@ -11,6 +11,7 @@ import {
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
 } from '@/components/case-study';
+import { VideoEmbed } from '@/components/case-study/VideoEmbed';
 
 export const Pebble = () => {
   return (
@@ -38,18 +39,7 @@ export const Pebble = () => {
         />
 
         <CaseStudySection>
-          <div className="relative overflow-hidden rounded-sm bg-bg-secondary aspect-video">
-            <iframe
-              loading="lazy"
-              src="https://player.vimeo.com/video/561000617?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              className="absolute inset-0 w-full h-full"
-              title="Pebble project film"
-              allowFullScreen>
-            </iframe>
-          </div>
+          <VideoEmbed provider="vimeo" id="561000617" title="Pebble project film" />
         </CaseStudySection>
 
         <CaseStudySection title="Context">
