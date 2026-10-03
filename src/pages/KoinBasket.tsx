@@ -10,7 +10,9 @@ import {
   CaseStudyCard,
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
+  CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/koinbasket';
 
 export const KoinBasket = () => {
   return (
@@ -62,6 +64,8 @@ export const KoinBasket = () => {
             So KoinBasket was non-custodial: people traded through their own Binance or Coinbase accounts and
             never handed their funds to us. That decision shaped the rest of the design.
           </CaseStudyParagraph>
+
+          <CaseStudyMotion figure={FIGURES.custody} caption="Non-custodial: KoinBasket sends the order, and the money stays in the person's own exchange account." />
 
           <CaseStudyImage
             src="/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.webp"
@@ -149,6 +153,8 @@ export const KoinBasket = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
 
+          <CaseStudyMotion figure={FIGURES.rebrand} caption="From the dark MVP to the lighter, green design, with the security message given its own place." />
+
           <CaseStudyImageGrid
             columns={1}
             images={[
@@ -167,13 +173,17 @@ export const KoinBasket = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
 
-          <CaseStudyImageGrid
-            layout="row"
-            columns={2}
-            images={[
-              { src: '/images/casestudies/koinbasket/13-bitbuddy-create-a-basket-influencer.webp', alt: 'BitBuddy: an influencer creating a basket', caption: 'An influencer creating a basket.' },
-              { src: '/images/casestudies/koinbasket/15-mobile-new-design.webp', alt: 'Rebranded mobile design', caption: 'The rebranded mobile design.' },
-            ]}
+          <CaseStudyMotion
+            figure={FIGURES.bitbuddy}
+            caption="BitBuddy's two sides: a Bitpal builds a basket and trades live; users watching buy from the same screen."
+            original={{ src: '/images/casestudies/koinbasket/13-bitbuddy-create-a-basket-influencer.webp', alt: 'BitBuddy: an influencer creating a basket' }}
+          />
+
+          <CaseStudyImage
+            src="/images/casestudies/koinbasket/15-mobile-new-design.webp"
+            alt="Rebranded mobile design"
+            caption="The rebranded mobile design."
+            size="column"
           />
 
           <CaseStudyCard title="Building the team">
