@@ -9,7 +9,9 @@ import {
   CaseStudyImageGrid,
   CaseStudyCard,
   CaseStudyCardGrid,
+  CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/versus';
 
 export const Versus = () => {
   return (
@@ -109,6 +111,8 @@ export const Versus = () => {
       </CaseStudySection>
 
       <CaseStudySection title="Hard parts">
+        <CaseStudyMotion figure={FIGURES.sharing} caption="Share Live needs the host online; Share Public keeps working after they close the laptop, at no cost while idle." />
+
         <CaseStudyCardGrid columns={2}>
           <CaseStudyCard title="Live sync without a server per match">
             <CaseStudyParagraph>
@@ -131,6 +135,8 @@ export const Versus = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
+
+        <CaseStudyMotion figure={FIGURES.tiebreak} caption="The tiebreakers at work after Safi 4–1 Amaan: three players on 0 points, separated by goal difference." />
       </CaseStudySection>
 
       <CaseStudySection title="What I learned">
