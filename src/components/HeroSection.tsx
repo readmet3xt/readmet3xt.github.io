@@ -42,7 +42,8 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
               <a href="#work" className="btn-ink justify-center">See the work</a>
               <button type="button" onClick={() => setWriting(true)} className="btn-outline justify-center">Say hi</button>
             </div>
-            <nav aria-label="More about me" className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+            {/* On phones the links span the button pair, so both rows share the same left and right edges. */}
+            <nav aria-label="More about me" className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-sm sm:justify-start sm:gap-x-6">
               <Link to="/about" className="link-ink">About me</Link>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-ink">Résumé</a>
               <button type="button" onClick={() => setDeckOpen(true)} className="link-ink">Watch the presentation</button>

@@ -4,7 +4,7 @@
   /* Sidebar */
   .sidebar {
     background-color: hsl(var(--bg-primary));
-    border-right: 1px solid hsl(var(--border));
+    border-left: 1px solid hsl(var(--border));
   }
 
   .sidebar-link {

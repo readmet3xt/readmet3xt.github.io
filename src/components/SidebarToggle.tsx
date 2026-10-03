@@ -1,4 +1,4 @@
-import { PanelLeft, X } from 'lucide-react';
+import { PanelRight, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SidebarToggleProps {
@@ -18,6 +18,6 @@ export const SidebarToggle = ({ isOpen, onClick, className }: SidebarToggleProps
         aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
         aria-expanded={isOpen}
     >
-        {isOpen ? <X className="w-5 h-5" /> : <PanelLeft className="w-5 h-5" />}
+        {isOpen ? <X className="w-5 h-5" /> : <PanelRight className="w-5 h-5" />}
     </button>
 );

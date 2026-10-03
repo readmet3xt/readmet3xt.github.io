@@ -44,22 +44,65 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
 
   useEffect(() => () => document.body.classList.remove('sidebar-open'), []);
 
+  // The header stays out of the way at the top of a page and slides in once the
+  // visitor scrolls. Pages too short to scroll keep it visible, so the menu is
+  // always reachable; keyboard focus (not a tap or click) also brings it in.
+  const [showHeader, setShowHeader] = useState(false);
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const scrollable = document.documentElement.scrollHeight > window.innerHeight + 24;
+      setShowHeader(window.scrollY > 16 || !scrollable);
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    const late = setTimeout(update, 600);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    return () => {
+      clearTimeout(late);
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [pathname]);
+  const headerVisible = showHeader || sidebarOpen;
+
   return (
     <SidebarProvider isOpen={sidebarOpen}>
       <div className="text-text-primary bg-bg-primary">
-        {/* Top bar: menu toggle on the left, name on the right. */}
-        <header className="fixed top-0 inset-x-0 z-20 h-16 flex items-center justify-between px-4 lg:px-6 bg-bg-primary/95 border-b border-border lg:bg-transparent lg:border-0 pointer-events-none">
+        {/* Top bar: name on the left, menu toggle on the right (the sidebar opens from the right). */}
+        <header
+          className={cn(
+            'fixed top-0 inset-x-0 z-20 h-16 flex items-center justify-between px-4 lg:px-6 bg-bg-primary/80 backdrop-blur-md border-b border-border',
+            'transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]',
+            headerVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none has-[:focus-visible]:translate-y-0 has-[:focus-visible]:opacity-100 has-[:focus-visible]:pointer-events-auto',
+          )}
+        >
+          {/* The whole bar, up to the menu button, goes home; on the home page it goes back to the top. */}
+          <Link
+            to="/"
+            aria-label="Amaan Khan, home"
+            onClick={(e) => {
+              if (pathname !== '/') return;
+              e.preventDefault();
+              const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+              window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+            }}
+            className="group flex-1 self-stretch flex items-center lg:pl-6"
+          >
+            <span className="text-lg font-semibold tracking-tight text-text-primary group-hover:text-accent-primary transition-colors">
+              Amaan Khan
+            </span>
+          </Link>
           <SidebarToggle
             isOpen={sidebarOpen}
             onClick={() => setOpen(!sidebarOpen)}
-            className={cn('pointer-events-auto', sidebarOpen && 'lg:invisible')}
+            className={cn(sidebarOpen && 'lg:invisible')}
           />
-          <Link
-            to="/"
-            className="pointer-events-auto text-lg font-semibold tracking-tight text-text-primary hover:text-accent-primary transition-colors lg:pr-6"
-          >
-            Amaan Khan
-          </Link>
         </header>
 
         {sidebarOpen && (
@@ -73,7 +116,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
         <div className="w-full max-w-full overflow-clip min-h-screen relative">
           <Sidebar isOpen={sidebarOpen} onClose={() => setOpen(false)} />
 
-          <div className={cn("w-full min-h-screen transition-[padding] duration-200", sidebarOpen ? "lg:pl-80" : "lg:pl-0")}>
+          <div className={cn("w-full min-h-screen transition-[padding] duration-200", sidebarOpen ? "lg:pr-80" : "lg:pr-0")}>
             <main
               className={cn(
                 "px-4 sm:px-6 lg:px-12 xl:px-16 pt-24 pb-16 lg:pt-20 max-w-7xl mx-auto",

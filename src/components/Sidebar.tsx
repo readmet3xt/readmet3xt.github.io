@@ -32,7 +32,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   // order; it transitions with transform, so the slide-out still plays.
   return (
     <aside
-      className={`sidebar w-[85vw] max-w-72 sm:w-80 sm:max-w-80 fixed inset-y-0 left-0 z-40 flex flex-col transform ${isOpen ? 'translate-x-0 visible' : '-translate-x-full invisible'} transition-[transform,visibility] duration-200 ease-out`}
+      className={`sidebar w-[85vw] max-w-72 sm:w-80 sm:max-w-80 fixed inset-y-0 right-0 z-40 flex flex-col transform ${isOpen ? 'translate-x-0 visible' : 'translate-x-full invisible'} transition-[transform,visibility] duration-200 ease-out`}
     >
       <div className="flex-1 overflow-y-auto px-4 lg:px-6 pt-5 pb-4">
         <div className="flex items-start justify-between gap-4 mb-6">
