@@ -9,7 +9,9 @@ import {
   CaseStudyImage,
   CaseStudyCard,
   CaseStudyCardGrid,
+  CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/screenshot';
 
 export const ScreenShot = () => {
   return (
@@ -51,6 +53,8 @@ export const ScreenShot = () => {
         <CaseStudyInsight>
           It should take one key. Pairing, uploading and sorting should stay out of the way.
         </CaseStudyInsight>
+
+        <CaseStudyMotion figure={FIGURES.oneKey} caption="Five steps to move one screenshot, replaced by one key." />
       </CaseStudySection>
 
       <CaseStudySection title="What I made">
@@ -92,10 +96,10 @@ export const ScreenShot = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImage
-          src="/images/casestudies/screenshot/3-connector-wifi.webp"
-          alt="The desktop app pairing with the web app"
-          caption="The desktop app pairing with the web app."
+        <CaseStudyMotion
+          figure={FIGURES.pairing}
+          caption="Pair once with the code, then press F1. On the same Wi-Fi the screenshot goes direct and free; anywhere else it goes through the relay."
+          original={{ src: '/images/casestudies/screenshot/3-connector-wifi.webp', alt: 'The desktop app pairing with the web app' }}
         />
 
         <CaseStudyImage
