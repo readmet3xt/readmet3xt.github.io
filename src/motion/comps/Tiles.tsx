@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { AbsoluteFill, useCurrentFrame } from '../core';
+import { Beats as SharedBeats } from '../beats';
 import { TRAVEL, fadeUp, mix, seeded, span, tween } from '../helpers';
 import type { LookProps } from '../theme';
 
@@ -22,26 +23,7 @@ const Tile: React.FC<LookProps & { children: ReactNode }> = ({ palette: p, child
 const mono = (look: LookProps, size: number, color: string) => ({ fontFamily: look.fonts.mono, fontSize: size, color });
 
 /** The beat's caption (bottom left) and three progress marks (bottom right). */
-const Beats: React.FC<LookProps & { beats: [string, string, string] }> = ({ palette: p, fonts, beats }) => {
-  const f = useCurrentFrame();
-  const starts = [0, B2, B3];
-  const ends = [B2 - 6, B3 - 6, END];
-  return (
-    <>
-      {beats.map((text, i) => (
-        <div key={i} style={{ position: 'absolute', left: 32, bottom: 26, whiteSpace: 'nowrap', ...mono({ palette: p, fonts }, 21, p.ink), ...fadeUp(f, starts[i] + 4, { dur: 12, dist: 8, outAt: ends[i], outDur: 8 }) }}>
-          {text}
-        </div>
-      ))}
-      <div style={{ position: 'absolute', right: 32, bottom: 35, display: 'flex', gap: 6 }}>
-        {starts.map((s, i) => {
-          const on = tween(f, s, 8) * (1 - tween(f, ends[i] + 2, 8));
-          return <div key={i} style={{ width: 6 + 14 * on, height: 6, borderRadius: 3, background: on > 0.5 ? p.accent : p.line }} />;
-        })}
-      </div>
-    </>
-  );
-};
+const Beats: React.FC<LookProps & { beats: [string, string, string] }> = (props) => <SharedBeats {...props} starts={[0, B2, B3]} end={END} />;
 
 /** 1 at the start of the loop, fades out at `out`, and fades back in for the next loop. */
 const opening = (f: number, out: number) => Math.min(1, 1 - tween(f, out, 10) + tween(f, END, 12));
@@ -208,7 +190,7 @@ const QR_CELLS = Array.from({ length: 81 }, () => qrRand() > 0.5);
 const FINDERS = [[0, 0], [6, 0], [0, 6]];
 
 /** A small QR code: three finder squares around a seeded pattern. */
-const Qr: React.FC<{ size: number; ink: string; ground: string }> = ({ size, ink, ground }) => {
+export const Qr: React.FC<{ size: number; ink: string; ground: string }> = ({ size, ink, ground }) => {
   const c = size / 9;
   const inFinder = (x: number, y: number) => FINDERS.some(([fx, fy]) => x >= fx && x < fx + 3 && y >= fy && y < fy + 3);
   return (

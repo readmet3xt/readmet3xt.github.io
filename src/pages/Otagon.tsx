@@ -10,7 +10,9 @@ import {
   CaseStudyCard,
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
+  CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/otagon';
 
 export const Otagon = () => {
   return (
@@ -138,10 +140,10 @@ export const Otagon = () => {
           </CaseStudyCard>
         </CaseStudyCardGrid>
 
-        <CaseStudyImage
-          src="/images/casestudies/otagon/8-pc-connector.webp"
-          alt="The Otagon desktop connector that pairs a PC with the phone app"
-          caption="The desktop connector: press F1 on your PC and the screenshot reaches your phone through the relay."
+        <CaseStudyMotion
+          figure={FIGURES.threeParts}
+          caption="The three parts at work: press F1 on your PC and the desktop connector sends the screenshot through the relay to your phone, where Gemini reads it."
+          original={{ src: '/images/casestudies/otagon/8-pc-connector.webp', alt: 'The Otagon desktop connector that pairs a PC with the phone app' }}
         />
 
         <CaseStudyImageGrid
@@ -156,6 +158,8 @@ export const Otagon = () => {
       </CaseStudySection>
 
       <CaseStudySection title="Design decisions">
+        <CaseStudyMotion figure={FIGURES.tags} caption="The app reads the tags, not the prose: game, location and progress fill the game tab." />
+
         <CaseStudyCardGrid columns={2}>
           <CaseStudyCard title="A structured output format for the AI">
             <CaseStudyParagraph>
@@ -276,6 +280,8 @@ export const Otagon = () => {
             </CaseStudyParagraph>
           </CaseStudyCard>
         </CaseStudyCardGrid>
+
+        <CaseStudyMotion figure={FIGURES.summariser} caption="Long chats: older history becomes a 300-word summary, the last 8 messages stay, and cost stays flat." />
 
         <CaseStudyImageGrid
           layout="row"

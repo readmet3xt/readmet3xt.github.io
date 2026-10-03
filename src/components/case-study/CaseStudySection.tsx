@@ -4,7 +4,7 @@ import { SIZES_HALF, SIZES_WIDE, imageSize, responsive } from '@/lib/imageSize';
 /* Case-study building blocks. Prose stays at a readable measure (68ch);
    images run the full article width. No motion: everything is visible on load. */
 
-const openLightbox = (src: string) =>
+export const openLightbox = (src: string) =>
   window.dispatchEvent(new CustomEvent('open-lightbox', { detail: { src } }));
 
 interface CaseStudySectionProps {

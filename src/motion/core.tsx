@@ -16,6 +16,9 @@ export const FrameProvider = ({ frame, config, children }: { frame: number; conf
 );
 
 export const useCurrentFrame = () => useContext(FrameContext);
+
+/** A file in the site's public folder (Remotion swaps in its own staticFile). */
+export const assetUrl = (path: string) => path;
 export const useVideoConfig = () => useContext(ConfigContext);
 
 export const AbsoluteFill = forwardRef<HTMLDivElement, { style?: CSSProperties; className?: string; children?: ReactNode }>(

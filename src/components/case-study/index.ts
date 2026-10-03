@@ -1,5 +1,6 @@
 export { CaseStudyLayout } from './CaseStudyLayout';
 export { CaseStudyHero } from './CaseStudyHero';
+export { CaseStudyMotion } from './CaseStudyMotion';
 export {
   CaseStudySection,
   CaseStudyParagraph,
