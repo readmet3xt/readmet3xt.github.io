@@ -11,7 +11,9 @@ import {
   CaseStudyCard,
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
+  CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/stampede';
 import { VideoEmbed } from '@/components/case-study/VideoEmbed';
 
 const ARCHETYPES: [string, string][] = [
@@ -72,12 +74,6 @@ export const Stampede = () => {
             The people in this sector are committed. What's missing is a reliable way to connect resources to
             the work, and that's something you can design.
           </CaseStudyParagraph>
-
-          <CaseStudyImage
-            src="/images/casestudies/stampede/2-how-the-service-works.webp"
-            alt="How the Stampede service works"
-            caption="How the service works across the partnership journey."
-          />
         </CaseStudySection>
 
         <CaseStudySection title="Insight">
@@ -109,16 +105,16 @@ export const Stampede = () => {
             what neither can do alone.
           </CaseStudyParagraph>
 
-          <CaseStudyImage
-            src="/images/casestudies/stampede/3-all-animals.webp"
-            alt="The seven animal archetypes on the Power/Pace matrix"
-            caption="The seven archetypes on the Power/Pace matrix."
+          <CaseStudyMotion
+            figure={FIGURES.matrix}
+            caption="The seven archetypes on the Power/Pace matrix, and how complementary ones are matched."
+            original={{ src: '/images/casestudies/stampede/4-how-they-match.webp', alt: 'How organisations are matched by complementary Power/Pace profiles' }}
           />
 
           <CaseStudyImage
-            src="/images/casestudies/stampede/4-how-they-match.webp"
-            alt="How organisations are matched by complementary Power/Pace profiles"
-            caption="How complementary archetypes are matched."
+            src="/images/casestudies/stampede/3-all-animals.webp"
+            alt="The seven animal archetypes compared by reach, decision-making, working styles and partnership goals"
+            caption="The seven archetypes compared: reach, decision-making, working styles and partnership goals."
           />
         </CaseStudySection>
 
@@ -135,10 +131,13 @@ export const Stampede = () => {
             everyone leaves the room.
           </CaseStudyParagraph>
 
-          <CaseStudyImage
-            src="/images/casestudies/stampede/5-how-the-workshop-works.webp"
-            alt="The five steps of the Stampede kick-off workshop"
-            caption="The kick-off workshop, step by step."
+          <CaseStudyMotion
+            figure={FIGURES.kickoff}
+            caption="The six stages of the partnership journey, and the kick-off workshop at their centre: five steps, three of them tested in a 3-hour session."
+            original={[
+              { src: '/images/casestudies/stampede/2-how-the-service-works.webp', alt: 'How the Stampede service works' },
+              { src: '/images/casestudies/stampede/5-how-the-workshop-works.webp', alt: 'The steps of the Stampede kick-off workshop' },
+            ]}
           />
         </CaseStudySection>
 
@@ -182,6 +181,8 @@ export const Stampede = () => {
             <strong>"7 days"</strong> and WWT said <strong>"6 months"</strong>: the same goal, at roughly 25 times
             the pace. Saying it out loud let them plan around the gap instead of hitting it months later.
           </CaseStudyParagraph>
+
+          <CaseStudyMotion figure={FIGURES.pace} caption="The same goal, at roughly 25 times the pace, said out loud in the room." />
 
           <CaseStudyParagraph>
             Airbnb's Social Impact team left with WWT's contacts, a named first project idea (an authentic wetlands

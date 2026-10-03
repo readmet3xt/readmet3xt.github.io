@@ -7,6 +7,7 @@ import { FIGURES as koinbasket } from './koinbasket';
 import { FIGURES as lawx } from './lawx';
 import { FIGURES as lner } from './lner';
 import { FIGURES as screenshot } from './screenshot';
+import { FIGURES as stampede } from './stampede';
 import { FIGURES as versus } from './versus';
 
-export const ALL_FIGURES = { otagon, screenshot, versus, lawx, koinbasket, lner, pebble, ivi };
+export const ALL_FIGURES = { otagon, screenshot, versus, lawx, koinbasket, lner, pebble, ivi, stampede };
