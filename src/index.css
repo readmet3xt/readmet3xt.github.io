@@ -140,6 +140,23 @@
     background-color: hsl(var(--text-primary) / 0.82);
   }
 
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.125rem;
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--text-primary) / 0.28);
+    color: hsl(var(--text-primary));
+    font-weight: 500;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-outline:hover {
+    background-color: hsl(var(--bg-secondary));
+    border-color: hsl(var(--text-primary) / 0.5);
+  }
+
   .link-ink {
     color: hsl(var(--text-primary));
     text-decoration: underline;

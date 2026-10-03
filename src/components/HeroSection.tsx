@@ -38,9 +38,11 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
               </p>
             </div>
 
-            <nav aria-label="Quick links" className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href="#work" className="btn-ink">See the work</a>
-              <button type="button" onClick={() => setWriting(true)} className="link-ink">→ say hi</button>
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+              <a href="#work" className="btn-ink justify-center">See the work</a>
+              <button type="button" onClick={() => setWriting(true)} className="btn-outline justify-center">Say hi</button>
+            </div>
+            <nav aria-label="More about me" className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
               <Link to="/about" className="link-ink">About me</Link>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-ink">Résumé</a>
               <button type="button" onClick={() => setDeckOpen(true)} className="link-ink">Watch the presentation</button>
