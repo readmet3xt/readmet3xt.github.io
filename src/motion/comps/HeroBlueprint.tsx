@@ -23,9 +23,9 @@ const layoutFor = (W: number, H: number) =>
     ? {
         portrait: true,
         captionX: 40, captionY: 56, captionSize: 40,
-        labelX: 40, labelSize: 19,
-        XL: 40, X1: 560,
-        cols: [92, 196, 300, 404, 508],
+        labelX: 40, labelSize: 16,
+        XL: 222, X1: 568,
+        cols: [250, 324, 398, 472, 546],
         lanes: [260, 360, 460, 560],
         dividers: [310, 410],
         phone: { x: 176, y: 180, w: 248, h: 540, r: 40 },
@@ -85,7 +85,7 @@ export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
 
   // The insight from story 1 shrinks into the key touchpoint.
   const card = insightCard(W, H);
-  const settle = tween(f, 4, 32, 0, 1, TRAVEL);
+  const settle = tween(f, 2, 22, 0, 1, TRAVEL);
   const seed = {
     x: mix(card.x, node.x, settle),
     y: mix(card.y, node.y, settle),
@@ -117,7 +117,7 @@ export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
 
       <svg width={W} height={H} style={{ position: 'absolute', inset: 0, opacity: backdrop * testBack }}>
         {L.lanes.map((y, i) => (
-          <line key={y} x1={L.XL} x2={mix(L.XL, L.X1, tween(f, 6 + i * 5, 26))} y1={y} y2={y} stroke={p.line} strokeWidth={1.25} />
+          <line key={y} x1={L.XL} x2={mix(L.XL, L.X1, tween(f, 14 + i * 5, 24))} y1={y} y2={y} stroke={p.line} strokeWidth={1.25} />
         ))}
         {L.dividers.map((y) => (
           <line key={y} x1={L.XL} x2={L.X1} y1={y} y2={y} stroke={p.line} strokeWidth={1} strokeDasharray="4 6" opacity={tween(f, 28, 18)} />
@@ -134,7 +134,7 @@ export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
               <circle cx={x} cy={L.lanes[0]} r={8 * tween(f, at, 10)} fill={p.bg} stroke={stroke} strokeWidth={1.75} />
               {L.lanes.slice(1, DEPTH[c] + 1).map((y, k) => {
                 const s = 12 * tween(f, at + 8 + k * 3, 8);
-                const hide = isKey && k === 0 ? (f < 36 ? 0 : 1 - tween(f, 148, 4)) : 1; // this one arrives as the insight and becomes the phone
+                const hide = isKey && k === 0 ? (f < 64 ? 0 : 1 - tween(f, 148, 4)) : 1; // this one arrives as the insight and becomes the phone
                 return <rect key={y} x={x - s / 2} y={y - s / 2} width={s} height={s} rx={3} fill={p.bg} stroke={stroke} strokeWidth={1.5} opacity={hide} />;
               })}
             </g>
@@ -149,10 +149,10 @@ export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
           style={{
             position: 'absolute',
             left: L.labelX,
-            top: L.portrait ? L.lanes[i] - 32 : L.lanes[i] - 11,
+            top: L.lanes[i] - 11,
             fontFamily: fonts.mono,
             fontSize: L.labelSize,
-            lineHeight: L.portrait ? '24px' : '20px',
+            lineHeight: '20px',
             color: p.muted,
             ...fadeUp(f, 14 + i * 4, { dur: 14, dist: 6 }),
             opacity: tween(f, 14 + i * 4, 14) * backdrop,
@@ -168,7 +168,7 @@ export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
           </div>
         ))}
 
-      {f < 40 && (
+      {f < 64 && (
         <div style={{ position: 'absolute', left: seed.x, top: seed.y, width: seed.w, height: seed.h, borderRadius: seed.r, background: settle < 0.9 ? p.panel : p.bg, border: `2px solid ${p.accent}`, overflow: 'hidden' }}>
           <div style={{ padding: '22px 26px', opacity: 1 - tween(f, 2, 10) }}>
             <div style={{ fontFamily: fonts.mono, fontSize: 18, color: p.accent }}>insight</div>
