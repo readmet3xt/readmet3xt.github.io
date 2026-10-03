@@ -16,7 +16,7 @@ interface CaseStudySectionProps {
 }
 
 export const CaseStudySection = ({ children, title, subtitle, className = '', id }: CaseStudySectionProps) => (
-  <section id={id} className={`case-study-section space-y-5 ${className}`}>
+  <section id={id} className={`case-study-section scroll-mt-32 space-y-5 ${className}`}>
     {(title || subtitle) && (
       <div className="max-w-[68ch] space-y-2">
         {title && <h2 className="text-3xl">{title}</h2>}
@@ -41,7 +41,7 @@ export const CaseStudyParagraph = ({ children, className = '', lead = false }: C
 
 /** One sentence that carries the section's insight. */
 export const CaseStudyInsight = ({ children, className = '' }: { children: ReactNode; className?: string }) => (
-  <p className={`max-w-[40ch] font-serif text-2xl leading-snug text-text-primary ${className}`}>{children}</p>
+  <p className={`max-w-[40ch] text-2xl font-medium tracking-tight leading-snug text-text-primary ${className}`}>{children}</p>
 );
 
 interface CaseStudyQuoteProps {
@@ -52,7 +52,7 @@ interface CaseStudyQuoteProps {
 
 export const CaseStudyQuote = ({ children, author, role }: CaseStudyQuoteProps) => (
   <blockquote className="max-w-[60ch] border-l-2 border-text-primary pl-5 py-1">
-    <p className="font-serif text-xl leading-snug text-text-primary">"{children}"</p>
+    <p className="text-xl font-medium tracking-tight leading-snug text-text-primary">"{children}"</p>
     {(author || role) && (
       <footer className="mt-2 text-sm text-text-secondary">
         {[author, role].filter(Boolean).join(', ')}

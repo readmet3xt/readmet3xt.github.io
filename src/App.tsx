@@ -2,6 +2,7 @@ import React, { lazy, Suspense, Component, ErrorInfo } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { SitePrefsProvider } from "@/lib/sitePrefs";
 
 const Index = lazy(() => import("./pages/Index"));
 const Play = lazy(() => import("./pages/Play").then(m => ({ default: m.Play })));
@@ -74,6 +75,7 @@ class GlobalErrorBoundary extends Component<{ children: React.ReactNode }, { has
 
 const App = () => (
   <GlobalErrorBoundary>
+    <SitePrefsProvider>
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
@@ -96,6 +98,7 @@ const App = () => (
         </Suspense>
       </BrowserRouter>
     </HelmetProvider>
+    </SitePrefsProvider>
   </GlobalErrorBoundary>
 );
 

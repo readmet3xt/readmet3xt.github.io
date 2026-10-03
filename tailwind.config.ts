@@ -18,24 +18,25 @@ export default {
 			}
 		},
 		extend: {
-			// Two families only. The legacy names are aliases so un-migrated classes
-			// render in the new system (display names → serif, everything else → sans).
+			// Geist for everything, Geist Mono for small labels. Legacy names are aliases
+			// so older classes render in the current system.
 			fontFamily: {
-				'serif': ['Newsreader', 'Georgia', 'serif'],
-				'sans': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-				'dm-sans': ['Newsreader', 'Georgia', 'serif'],
-				'serif-accent': ['Newsreader', 'Georgia', 'serif'],
-				'playfair': ['Newsreader', 'Georgia', 'serif'],
-				'bricolage': ['Newsreader', 'Georgia', 'serif'],
-				'syne': ['Newsreader', 'Georgia', 'serif'],
-				'inter': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-				'ibm-plex-mono': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-				'jetbrains-mono': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-				'satoshi': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-				'figtree': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-				'urbanist': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-				'outfit': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-				'instrument': ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
+				'serif': ['Geist', 'system-ui', 'sans-serif'],
+				'sans': ['Geist', 'system-ui', 'sans-serif'],
+				'mono': ['"Geist Mono"', 'ui-monospace', 'monospace'],
+				'dm-sans': ['Geist', 'system-ui', 'sans-serif'],
+				'serif-accent': ['Geist', 'system-ui', 'sans-serif'],
+				'playfair': ['Geist', 'system-ui', 'sans-serif'],
+				'bricolage': ['Geist', 'system-ui', 'sans-serif'],
+				'syne': ['Geist', 'system-ui', 'sans-serif'],
+				'inter': ['Geist', 'system-ui', 'sans-serif'],
+				'ibm-plex-mono': ['"Geist Mono"', 'ui-monospace', 'monospace'],
+				'jetbrains-mono': ['"Geist Mono"', 'ui-monospace', 'monospace'],
+				'satoshi': ['Geist', 'system-ui', 'sans-serif'],
+				'figtree': ['Geist', 'system-ui', 'sans-serif'],
+				'urbanist': ['Geist', 'system-ui', 'sans-serif'],
+				'outfit': ['Geist', 'system-ui', 'sans-serif'],
+				'instrument': ['Geist', 'system-ui', 'sans-serif'],
 			},
 			fontSize: {
 				'xs': 'var(--text-xs)',

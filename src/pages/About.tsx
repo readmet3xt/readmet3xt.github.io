@@ -4,6 +4,7 @@ import { TimelineItem } from '@/components/TimelineItem';
 import { CertificatesCarousel } from '@/components/CertificatesCarousel';
 import { Recommendations } from '@/components/Recommendations';
 import { imageSize } from '@/lib/imageSize';
+import { PathStory } from '@/components/PathStory';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h2 className="text-3xl sm:text-4xl mb-8">{children}</h2>
@@ -76,6 +77,13 @@ export const About = () => (
           />
         </figure>
       </div>
+    </section>
+
+    {/* The short version, in motion */}
+    <section id="path" aria-labelledby="path-title" className="border-t border-border py-16 scroll-mt-24">
+      <h2 id="path-title" className="text-3xl sm:text-4xl mb-3">The short version</h2>
+      <p className="mb-8 max-w-[60ch] text-text-secondary">From mechanical engineering to service and product design, station by station. The full detail follows below.</p>
+      <PathStory />
     </section>
 
     {/* Experience */}

@@ -1,4 +1,4 @@
-/* Typography: Newsreader for headings, Schibsted Grotesk for everything else. */
+/* Typography: Geist for headings and text, Geist Mono for small labels. */
 
 @layer base {
   :root {
@@ -31,16 +31,20 @@
   }
 
   h1, h2, h3 {
-    font-family: 'Newsreader', Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-family: 'Geist', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.035em;
     line-height: var(--leading-tight);
     color: hsl(var(--text-primary));
     text-wrap: balance;
   }
 
+  h3 {
+    letter-spacing: -0.02em;
+  }
+
   h4, h5, h6 {
-    font-family: 'Schibsted Grotesk', system-ui, sans-serif;
+    font-family: 'Geist', system-ui, sans-serif;
     font-weight: 600;
     color: hsl(var(--text-primary));
   }
@@ -48,7 +52,7 @@
 
 @layer components {
   .heading-4 {
-    font-family: 'Schibsted Grotesk', system-ui, sans-serif;
+    font-family: 'Geist', system-ui, sans-serif;
     font-size: var(--text-lg);
     line-height: var(--leading-snug);
     font-weight: 600;

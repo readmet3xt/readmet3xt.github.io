@@ -1,5 +1,5 @@
 import { useEffect, useState, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Sidebar } from '@/components/Sidebar';
 import { SidebarToggle } from '@/components/SidebarToggle';
 import { cn } from '@/lib/utils';
@@ -12,6 +12,19 @@ interface PageLayoutProps {
 
 export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const replayIntro = () => {
+    try {
+      localStorage.removeItem('welcomed');
+    } catch {
+      // storage blocked
+    }
+    window.scrollTo(0, 0);
+    if (pathname === '/') window.dispatchEvent(new Event('replay-intro'));
+    else navigate('/', { state: { replayIntro: true } });
+  };
 
   const setOpen = (open: boolean) => {
     setSidebarOpen(open);
@@ -42,7 +55,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
           />
           <Link
             to="/"
-            className="pointer-events-auto font-serif text-lg font-medium text-text-primary hover:text-accent-primary transition-colors lg:pr-6"
+            className="pointer-events-auto text-lg font-semibold tracking-tight text-text-primary hover:text-accent-primary transition-colors lg:pr-6"
           >
             Amaan Khan
           </Link>
@@ -76,6 +89,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
                   <a className="link-ink" href="https://www.linkedin.com/in/readmetxt/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                   <a className="link-ink" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
                   <Link className="link-ink" to="/play">Play</Link>
+                  <button type="button" className="link-ink" onClick={replayIntro}>Replay the intro</button>
                 </nav>
                 <p className="text-text-tertiary">© 2026 Amaan Khan</p>
               </div>

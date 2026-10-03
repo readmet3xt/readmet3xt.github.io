@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#F5F1EA" />
-  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#0B0B0C" />
+  <meta name="color-scheme" content="dark light" />
+  <!-- Dark by default; the sidebar switch saves "light". Set before first paint. -->
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='light'?'light':'dark'}catch(e){document.documentElement.dataset.theme='dark'}</script>
   <meta name="author" content="Amaan Khan" />
 
   <!-- Per-route values are written into a copy of this file for every page at build time
@@ -27,13 +29,13 @@
   <meta name="twitter:description" content="Service and product designer trained at the Royal College of Art. I design end-to-end services and build them: research with VISA, BCG and WWT × Airbnb, founding designer at KoinBasket, and products I designed and built myself." data-rh="true" />
   <meta name="twitter:image" content="https://readmet3xt.github.io/social-card.png" data-rh="true" />
 
-  <!-- Two families: Newsreader (headings) + Schibsted Grotesk (text) -->
+  <!-- Geist (headings and text) + Geist Mono (labels) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap">
-  <!-- Paper on first paint, before the stylesheet arrives -->
-  <style>html{background:#F5F1EA;color:#1A1916}</style>
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <!-- The right ground on first paint, before the stylesheet arrives -->
+  <style>html{background:#0B0B0C;color:#F2F2F3}html[data-theme="light"]{background:#FAFAF9;color:#1D1D1F}</style>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
