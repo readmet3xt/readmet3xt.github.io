@@ -44,8 +44,8 @@ export const Otagon = () => {
             'Tailwind CSS',
           ],
         }}
-        heroImage="/images/casestudies/otagon/1-home-page-landing.webp"
-        heroImageAlt="Otagon landing page"
+        heroImage="/images/casestudies/otagon/1-landing-page.webp"
+        heroImageAlt="Otagon landing page: one key between you and the answer, with a hint demo"
       />
 
       <CaseStudySection title="Context">
@@ -207,7 +207,7 @@ export const Otagon = () => {
           images={[
             { src: '/images/casestudies/otagon/12-subtabs-1.webp', alt: 'A game-specific subtab', caption: 'A subtab' },
             { src: '/images/casestudies/otagon/13-subtabs-2.webp', alt: 'Another game-specific subtab', caption: 'Another subtab' },
-            { src: '/images/casestudies/otagon/18-ai-response-with-suggestion-tabs.webp', alt: 'An answer with suggested subtabs', caption: 'An answer that suggests subtabs' },
+            { src: '/images/casestudies/otagon/18-ai-response-with-suggestion-tabs.webp', alt: 'An answer with suggested follow-up questions', caption: 'An answer that suggests follow-up questions' },
           ]}
         />
 
@@ -282,7 +282,7 @@ export const Otagon = () => {
           columns={3}
           images={[
             { src: '/images/casestudies/otagon/14-sidebar.webp', alt: 'Otagon sidebar navigation', caption: 'Navigation' },
-            { src: '/images/casestudies/otagon/4-control-sheet.webp', alt: 'Controls for each answer', caption: 'Controls for each answer' },
+            { src: '/images/casestudies/otagon/4-control-sheet.webp', alt: 'The composer controls: upload, web search and screen capture', caption: 'The composer controls: upload, web search and screen capture' },
             { src: '/images/casestudies/otagon/15-game-info-modal.webp', alt: 'Game details from IGDB', caption: 'Game details from IGDB' },
           ]}
         />

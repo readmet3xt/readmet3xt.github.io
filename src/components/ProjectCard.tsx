@@ -32,7 +32,8 @@ export const ProjectCard = ({ project, onTileEnter }: ProjectCardProps) => {
             durationInFrames={tile.durationInFrames}
             poster={tile.poster}
             accent={color}
-            loop
+            endAt={tile.poster}
+            initialFrame={0}
             label={tile.label}
           />
         ) : (

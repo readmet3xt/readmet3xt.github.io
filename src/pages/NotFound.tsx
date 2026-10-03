@@ -34,7 +34,8 @@ const NotFound = () => {
             height={TILE_SIZE.height}
             durationInFrames={LOST_TILE.durationInFrames}
             poster={LOST_TILE.poster}
-            loop
+            endAt={LOST_TILE.poster}
+            initialFrame={0}
             label={LOST_TILE.label}
           />
         </div>

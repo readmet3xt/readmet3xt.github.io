@@ -65,7 +65,8 @@ export const CaseStudyHero = ({
               durationInFrames={tile.durationInFrames}
               poster={tile.poster}
               accent={PROJECT_COLORS[pathname]}
-              loop
+              endAt={tile.poster}
+              initialFrame={0}
               label={tile.label}
             />
           </div>

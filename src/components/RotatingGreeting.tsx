@@ -1,7 +1,9 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useSitePrefs } from '@/lib/sitePrefs';
+import { getWelcomeActive, subscribeWelcome } from '@/motion/ticker';
 
 const WORDS = ['hi', 'aadab', 'namaste'];
+const PASS = [1, 2, 0]; // one pass: aadab, namaste, then back to hi
 const HOLD = 3200; // ms each word stays
 const OUT = 360; // ms for a letter to leave
 const OUT_STAGGER = 26;
@@ -57,9 +59,10 @@ const Word = ({ text, mode, onDone }: { text: string; mode: 'still' | 'in' | 'ou
 };
 
 /**
- * The first line of "hi / i'm amaan.", turning through hi, aadab and namaste:
- * the old word lifts away letter by letter while the new one flips up in the
- * accent colour and settles. Static ("hi") when the visitor prefers less motion.
+ * The first line of "hi / i'm amaan.". Once, when it comes into view, it turns
+ * through aadab and namaste and back to hi: the old word lifts away letter by
+ * letter while the new one flips up in the accent colour and settles. Static
+ * ("hi") when the visitor prefers less motion.
  */
 export const RotatingGreeting = () => {
   const { motion } = useSitePrefs();
@@ -67,6 +70,9 @@ export const RotatingGreeting = () => {
   const [leaving, setLeaving] = useState<number | null>(null);
   const [turn, setTurn] = useState(0);
   const current = useRef(0);
+  const played = useRef(false);
+  const root = useRef<HTMLSpanElement>(null);
+  const welcome = useSyncExternalStore(subscribeWelcome, getWelcomeActive, () => false);
 
   useEffect(() => {
     if (!motion) {
@@ -75,18 +81,37 @@ export const RotatingGreeting = () => {
       setLeaving(null);
       return;
     }
-    const timer = setInterval(() => {
-      const previous = current.current;
-      current.current = (previous + 1) % WORDS.length;
-      setLeaving(previous);
-      setI(current.current);
-      setTurn((t) => t + 1);
-    }, HOLD);
-    return () => clearInterval(timer);
-  }, [motion]);
+    const el = root.current;
+    if (welcome || played.current || !el) return;
+    const timers: number[] = [];
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        played.current = true;
+        PASS.forEach((next, k) => {
+          timers.push(
+            window.setTimeout(() => {
+              const previous = current.current;
+              current.current = next;
+              setLeaving(previous);
+              setI(next);
+              setTurn((t) => t + 1);
+            }, HOLD * (k + 1)),
+          );
+        });
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      timers.forEach(clearTimeout);
+    };
+  }, [motion, welcome]);
 
   return (
-    <span className="inline-grid align-baseline [perspective:700px]">
+    <span ref={root} className="inline-grid align-baseline [perspective:700px]">
       {leaving !== null && <Word key={`out-${turn}`} text={WORDS[leaving]} mode="out" onDone={() => setLeaving(null)} />}
       <Word key={`in-${turn}`} text={WORDS[i]} mode={turn === 0 ? 'still' : 'in'} />
     </span>

@@ -32,7 +32,7 @@ export const PROJECTS: ProjectData[] = [
     context: 'Otalabs, 2025–present',
     summary:
       'An AI companion that reads a game screenshot and gives a hint that stops before spoilers. I designed and built it: phone app, desktop connector and backend.',
-    thumbnail: '/images/casestudies/otagon/1-home-page-landing-960w.webp',
+    thumbnail: '/images/casestudies/otagon/1-landing-page-960w.webp',
     thumbnailAlt: 'Otagon landing page',
     seoTitle: 'Otagon',
     seoDescription:

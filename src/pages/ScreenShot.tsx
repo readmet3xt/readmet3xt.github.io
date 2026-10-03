@@ -18,7 +18,7 @@ export const ScreenShot = () => {
         eyebrow="Side project, 2026"
         title="ScreenShot: from your PC to your phone with one key"
         subtitle="A pairing-code screenshot tool that sends what's on your PC screen to a gallery on your phone"
-        intro="A spin-off from Otagon. ScreenShot pairs with a small Windows app using a 6-digit code. Press one key on the PC and the screenshot lands in a gallery on your phone, sorted into folders and installable as an app."
+        intro="A spin-off from Otagon. ScreenShot pairs with a small Windows app using a 6-character code. Press one key on the PC and the screenshot lands in a gallery on your phone, sorted into folders and installable as an app."
         overview={{
           role: [
             'Designer and developer, on my own',
@@ -63,8 +63,10 @@ export const ScreenShot = () => {
         <CaseStudyCardGrid columns={2}>
           <CaseStudyCard title="Pairing">
             <CaseStudyParagraph>
-              I reused Otagon's 6-digit pairing: the desktop app shows a code, you type it into the web app, and
-              both join the same relay room. No accounts to link and nothing to install on the phone.
+              I reused Otagon's 6-character pairing: the desktop app shows a code, you type it into the web app, and
+              both join the same relay room. No accounts to link and nothing to install on the phone. On the same
+              Wi-Fi, screenshots go straight to the phone for free; anywhere else they travel through the relay, which
+              needs the $1 subscription.
             </CaseStudyParagraph>
           </CaseStudyCard>
 
@@ -99,7 +101,7 @@ export const ScreenShot = () => {
         <CaseStudyImage
           src="/images/casestudies/screenshot/4-gallery-websocket.webp"
           alt="The gallery filling up as screenshots arrive"
-          caption="The gallery filling up as screenshots arrive through the relay."
+          caption="The gallery filling up as screenshots arrive, here on the same Wi-Fi, so direct and free."
         />
       </CaseStudySection>
 

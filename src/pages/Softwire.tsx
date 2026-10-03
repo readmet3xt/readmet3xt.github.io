@@ -176,8 +176,8 @@ export const Softwire = () => {
 
           <CaseStudyImage
             src="/images/casestudies/softwire/16-feedback-form.webp"
-            alt="The feedback form used in each session"
-            caption="How we captured feedback in each session."
+            alt="Three screens of an in-app feedback form for the Seat Finder"
+            caption="An in-app feedback form we designed for the Seat Finder: a rating, quick reasons, then thanks."
           />
 
           <CaseStudyImageGrid

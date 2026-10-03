@@ -80,44 +80,56 @@ export const TileKoinBasket: React.FC<LookProps> = (look) => {
   );
 };
 
-/* Law.X: each line of the AI's answer links to the source that backs it. */
-const SOURCES = ['clause 4.2', 'case note', 'statute'];
+/* Law.X: the question goes in, the Thinking Panel shows each step (reframe,
+   clarify, review the statutes), and the answer cites the section it rests on. */
+const STEPS = ['reframe query', 'clarify', 'review statutes'];
 
 export const TileLawx: React.FC<LookProps> = (look) => {
   const { palette: p } = look;
   const f = useCurrentFrame();
   const reset = tween(f, 124, 22);
-  const lineY = [96, 132, 168, 204, 240, 276];
-  const links: [number, number][] = [[1, 0], [3, 1], [5, 2]];
-  const srcY = [104, 196, 288];
+  const vis = (at: number) => tween(f, at, 10) * (1 - reset);
+  const thinking = f < 88;
+  const cite = tween(f, 96, 18, 0, 1, TRAVEL) * (1 - reset);
 
   return (
     <Tile {...look}>
-      <div style={{ position: 'absolute', left: 60, top: 54, width: 250, height: 284, borderRadius: 16, background: p.bg, border: `1.5px solid ${p.line}` }} />
-      <div style={{ position: 'absolute', left: 80, top: 66, opacity: 1 - reset, ...mono(look, 15, p.faint) }}>answer</div>
-      {lineY.map((y, i) => (
-        <div key={y} style={{ position: 'absolute', left: 80, top: y, height: 7, borderRadius: 4, background: links.some(([l]) => l === i) && tween(f, 40 + i * 9, 10) > 0.5 ? p.ink : p.muted, width: [180, 150, 196, 132, 170, 120][i] * tween(f, 8 + i * 8, 12, 0, 1, (x) => x) * (1 - reset) }} />
+      {/* the chat: question, the Thinking pill, then the answer */}
+      <div style={{ position: 'absolute', left: 48, top: 48, width: 250, height: 318, borderRadius: 16, background: p.bg, border: `1.5px solid ${p.line}` }} />
+      <div style={{ position: 'absolute', left: 126, top: 66, width: 152, height: 58, borderRadius: 12, background: p.panel, border: `1.5px solid ${p.line}`, opacity: vis(4) }}>
+        <div style={{ margin: '16px 0 0 14px', width: 116, height: 7, borderRadius: 4, background: p.muted }} />
+        <div style={{ margin: '10px 0 0 14px', width: 82, height: 7, borderRadius: 4, background: p.muted }} />
+      </div>
+      <div style={{ position: 'absolute', left: 66, top: 142, height: 30, borderRadius: 15, padding: '0 14px', display: 'flex', alignItems: 'center', background: p.accent, color: p.onAccent, ...mono(look, 14, p.onAccent), opacity: vis(14) }}>
+        {thinking ? 'thinking…' : 'thought for 42.2 secs'}
+      </div>
+      {[150, 186, 128, 170].map((w, i) => (
+        <div key={i} style={{ position: 'absolute', left: 66, top: 196 + i * 26, height: 7, borderRadius: 4, background: p.ink, opacity: 0.85, width: w * tween(f, 90 + i * 6, 10, 0, 1, (x) => x) * (1 - reset) }} />
       ))}
-      <svg width={600} height={450} style={{ position: 'absolute', inset: 0 }}>
-        {links.map(([l, s]) => {
-          const t = tween(f, 40 + l * 9, 16, 0, 1, TRAVEL) * (1 - reset);
-          const x1 = 290;
-          const y1 = lineY[l] + 4;
-          const x2 = mix(x1, 386, t);
-          const y2 = mix(y1, srcY[s] + 22, t);
-          return <path key={l} d={`M ${x1} ${y1} C ${x1 + 40} ${y1}, ${x2 - 40} ${y2}, ${x2} ${y2}`} fill="none" stroke={p.accent} strokeWidth={1.75} opacity={t > 0 ? 1 : 0} />;
-        })}
-      </svg>
-      {SOURCES.map((s, i) => {
-        const at = 48 + links[i][0] * 9;
-        const ok = tween(f, at + 12, 10) * (1 - reset);
+      <div style={{ position: 'absolute', left: 66, top: 310, height: 28, borderRadius: 8, padding: '0 10px', display: 'flex', alignItems: 'center', border: `1.5px solid ${p.accent}`, ...mono(look, 14, p.ink), opacity: tween(f, 108, 8) * (1 - reset) }}>
+        Sec 56(2)(x)
+      </div>
+
+      {/* the Thinking Panel */}
+      <div style={{ position: 'absolute', left: 320, top: 48, width: 232, height: 318, borderRadius: 16, background: p.bg, border: `1.5px solid ${p.line}`, opacity: vis(18) }} />
+      <div style={{ position: 'absolute', left: 340, top: 64, opacity: vis(18), ...mono(look, 15, p.faint) }}>thinking panel</div>
+      {STEPS.map((step, i) => {
+        const at = 26 + i * 18;
+        const done = tween(f, at + 14, 8) * (1 - reset);
         return (
-          <div key={s} style={{ position: 'absolute', left: 386, top: srcY[i], width: 160, height: 44, borderRadius: 12, background: p.bg, border: `1.5px solid ${ok > 0.5 ? p.accent : p.line}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 14px', boxSizing: 'border-box', opacity: tween(f, at - 10, 12) * (1 - reset) }}>
-            <span style={mono(look, 15, p.ink)}>{s}</span>
-            <span style={{ ...mono(look, 15, p.accent), opacity: ok }}>✓</span>
+          <div key={step} style={{ position: 'absolute', left: 340, top: 104 + i * 48, width: 192, height: 36, borderRadius: 10, border: `1.5px solid ${done > 0.5 ? p.ink : p.line}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 12px', boxSizing: 'border-box', opacity: vis(at) }}>
+            <span style={mono(look, 14, p.ink)}>{`${i + 1} ${step}`}</span>
+            <span style={{ ...mono(look, 14, p.accent), opacity: done }}>✓</span>
           </div>
         );
       })}
+      <div style={{ position: 'absolute', left: 340, top: 260, height: 28, borderRadius: 8, padding: '0 10px', display: 'flex', alignItems: 'center', background: p.accent, ...mono(look, 14, p.onAccent), opacity: vis(70) }}>
+        Sec 56(2)(x)
+      </div>
+      <div style={{ position: 'absolute', left: 340, top: 300, opacity: vis(74), ...mono(look, 13, p.muted) }}>Income Tax Act, 1961</div>
+      <svg width={600} height={450} style={{ position: 'absolute', inset: 0 }}>
+        <path d={`M 340 274 C 300 274, ${mix(330, 240, cite)} 324, ${mix(330, 196, cite)} 324`} fill="none" stroke={p.accent} strokeWidth={1.75} strokeDasharray="3 5" opacity={cite > 0 ? 1 : 0} />
+      </svg>
     </Tile>
   );
 };

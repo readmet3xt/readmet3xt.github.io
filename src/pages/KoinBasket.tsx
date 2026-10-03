@@ -65,8 +65,8 @@ export const KoinBasket = () => {
 
           <CaseStudyImage
             src="/images/casestudies/koinbasket/12-new-product-dashboard-live-trading.webp"
-            alt="KoinBasket dashboard with baskets and live trading"
-            caption="The dashboard: curated baskets and live trading in one view."
+            alt="KoinBasket dashboard with live trading"
+            caption="The dashboard: live trading, market data and news in one view."
           />
         </CaseStudySection>
 
@@ -204,10 +204,10 @@ export const KoinBasket = () => {
             columns={3}
             images={[
               { src: '/images/casestudies/koinbasket/18-1-mobile-feature-highlight-1.webp', alt: 'The rebranded mobile app', caption: 'The rebranded app' },
-              { src: '/images/casestudies/koinbasket/18-3-mobile-feature-highlight-3.webp', alt: 'Rebranded mobile app, basket detail', caption: 'Basket detail' },
-              { src: '/images/casestudies/koinbasket/18-4-mobile-feature-highlight-4.webp', alt: 'Rebranded mobile app, investing', caption: 'Investing' },
-              { src: '/images/casestudies/koinbasket/18-5-mobile-feature-highlight-5.webp', alt: 'Rebranded mobile app, rewards', caption: 'Rewards' },
-              { src: '/images/casestudies/koinbasket/18-6-mobile-feature-highlight-6.webp', alt: 'Rebranded mobile app, account and settings', caption: 'Account and settings' },
+              { src: '/images/casestudies/koinbasket/18-3-mobile-feature-highlight-3.webp', alt: 'Rebranded mobile app, rewards', caption: 'Rewards' },
+              { src: '/images/casestudies/koinbasket/18-4-mobile-feature-highlight-4.webp', alt: 'Rebranded mobile app, coin screeners', caption: 'Screeners' },
+              { src: '/images/casestudies/koinbasket/18-5-mobile-feature-highlight-5.webp', alt: 'Rebranded mobile app, basket orders', caption: 'Basket orders: several coins in one click' },
+              { src: '/images/casestudies/koinbasket/18-6-mobile-feature-highlight-6.webp', alt: 'Rebranded mobile app, portfolio health check', caption: 'Health check' },
             ]}
           />
         </CaseStudySection>

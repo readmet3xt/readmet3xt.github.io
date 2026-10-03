@@ -7,7 +7,9 @@ import { getWelcomeActive, subscribeTick, subscribeWelcome } from './ticker';
 
 /* Plays one composition, scaled to fit its box. It starts when it comes into
    view (or on mount), pauses off screen, and rests on `poster` when animations
-   are off. Text inside is real DOM text, so it stays sharp at any size. */
+   are off. Without `loop` it plays once, up to `endAt`, and rests there;
+   changing `replayKey` plays it again from the start. Text inside is real DOM
+   text, so it stays sharp at any size. */
 
 type Props = {
   component: FC<LookProps>;
@@ -22,6 +24,10 @@ type Props = {
   poster?: number;
   /** frame shown before playback starts (default: the poster) */
   initialFrame?: number;
+  /** without `loop`: the frame playback stops and rests on (default: the last) */
+  endAt?: number;
+  /** change to play again from the start */
+  replayKey?: number;
   /** cover the parent instead of keeping the composition's aspect ratio */
   fill?: boolean;
   /** a project's own colour, used in place of the site accent (adjusted to read on the tile) */
@@ -45,6 +51,8 @@ export const MotionStage = ({
   paused = false,
   poster,
   initialFrame,
+  endAt,
+  replayKey = 0,
   fill = false,
   accent,
   onEnded,
@@ -65,6 +73,7 @@ export const MotionStage = ({
   const welcome = useSyncExternalStore(subscribeWelcome, getWelcomeActive, () => false);
   const last = durationInFrames - 1;
   const rest = poster ?? last;
+  const stopAt = Math.min(endAt ?? last, last);
 
   const box = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0);
@@ -104,6 +113,17 @@ export const MotionStage = ({
   const wantsPlay =
     motion && !paused && !(welcome && autoPlay !== 'mount') && (autoPlay === 'mount' || (autoPlay === 'visible' && visible));
 
+  // Replay: start over from the first frame.
+  const lastReplay = useRef(replayKey);
+  useEffect(() => {
+    if (replayKey === lastReplay.current) return;
+    lastReplay.current = replayKey;
+    started.current = false;
+    ended.current = false;
+    frameRef.current = 0;
+    setFrame(0);
+  }, [replayKey]);
+
   useEffect(() => {
     if (!wantsPlay || (!loop && ended.current)) return;
     if (!started.current) {
@@ -118,16 +138,14 @@ export const MotionStage = ({
     stop = subscribeTick((now) => {
       if (origin < 0) origin = now - (frameRef.current * 1000) / fps;
       let f = Math.floor(((now - origin) * fps) / 1000);
-      if (f > last) {
-        if (loop) f %= durationInFrames;
-        else {
-          ended.current = true;
-          frameRef.current = last;
-          setFrame(last);
-          stop();
-          callbacks.current.onEnded?.();
-          return;
-        }
+      if (loop && f > last) f %= durationInFrames;
+      else if (!loop && f >= stopAt) {
+        ended.current = true;
+        frameRef.current = stopAt;
+        setFrame(stopAt);
+        stop();
+        callbacks.current.onEnded?.();
+        return;
       }
       if (f !== frameRef.current) {
         frameRef.current = f;
@@ -136,7 +154,7 @@ export const MotionStage = ({
       }
     });
     return stop;
-  }, [wantsPlay, loop, fps, last, durationInFrames]);
+  }, [wantsPlay, loop, fps, last, stopAt, durationInFrames, replayKey]);
 
   return (
     <div

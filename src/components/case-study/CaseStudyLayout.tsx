@@ -78,7 +78,8 @@ export const CaseStudyLayout = ({
                   durationInFrames={nextTile.durationInFrames}
                   poster={nextTile.poster}
                   accent={PROJECT_COLORS[nextProject.href]}
-                  loop
+                  endAt={nextTile.poster}
+                  initialFrame={0}
                   label={nextTile.label}
                 />
               </div>

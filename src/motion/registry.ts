@@ -50,7 +50,7 @@ export const TILES: Record<string, MotionEntry> = {
   '/softwire': { component: TileLner, durationInFrames: TILE_FRAMES, poster: 150, label: 'At the station a phone scans a QR code, the App Clip opens with no download, and the ticket is booked in one tap.' },
   '/koinbasket': { component: TileKoinBasket, durationInFrames: PRODUCT_TILE_FRAMES, poster: 112, label: 'Coins drop into a curated basket while the funds stay with the person.' },
   '/otagon': { component: TileOtagon, durationInFrames: PRODUCT_TILE_FRAMES, poster: 114, label: 'Pressing F1 sends a screenshot to the phone, and a hint arrives that stops before spoilers.' },
-  '/lawx': { component: TileLawx, durationInFrames: PRODUCT_TILE_FRAMES, poster: 118, label: 'Each line of an AI answer links to the source that backs it, and each source is checked.' },
+  '/lawx': { component: TileLawx, durationInFrames: PRODUCT_TILE_FRAMES, poster: 118, label: 'A legal question goes in; the Thinking Panel reframes it, clarifies it and reviews the statutes; the answer cites Section 56(2)(x) of the Income Tax Act.' },
   '/versus': { component: TileVersus, durationInFrames: PRODUCT_TILE_FRAMES, poster: 124, label: 'A live tournament bracket fills in during a game night.' },
   '/screenshot': { component: TileScreenshot, durationInFrames: PRODUCT_TILE_FRAMES, poster: 118, label: 'Screenshots fly from a PC into a phone gallery.' },
 };
