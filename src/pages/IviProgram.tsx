@@ -10,7 +10,9 @@ import {
   CaseStudyCard,
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
+  CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/ivi';
 import { VideoEmbed } from '@/components/case-study/VideoEmbed';
 
 export const IviProgram = () => {
@@ -64,7 +66,6 @@ export const IviProgram = () => {
             columns={1}
             images={[
               { src: '/images/casestudies/ivi/2-good-mental-health.webp', alt: 'What good mental health looks like for working women', caption: 'What good mental health looks like, from our background research.' },
-              { src: '/images/casestudies/ivi/4-why-this-happens.webp', alt: 'Why this happens: inequality between parents', caption: 'Why it happens: the inequality between parents.' },
             ]}
           />
         </CaseStudySection>
@@ -75,11 +76,10 @@ export const IviProgram = () => {
             came before any solution work.
           </CaseStudyParagraph>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/ivi/5-research-findings.webp', alt: 'Research findings from 26 interviews and 53 questionnaires', caption: 'What 26 interviews and 53 questionnaire responses told us.' },
-            ]}
+          <CaseStudyMotion
+            figure={FIGURES.needs}
+            caption="What 26 interviews and 53 questionnaire responses told us: six needs, which BCG later reused as the 6 dimensions of workplace wellbeing."
+            original={{ src: '/images/casestudies/ivi/5-research-findings.webp', alt: 'Research findings from 26 interviews and 53 questionnaires' }}
           />
 
           <CaseStudyCardGrid columns={3}>
@@ -124,10 +124,12 @@ export const IviProgram = () => {
             Measuring unpaid work changes how it's seen, before any money changes hands.
           </CaseStudyInsight>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/ivi/term4-final-presentation-004.webp', alt: 'The question: why is this invisible value not paid for?', caption: 'The question at the centre of the project.' },
+          <CaseStudyMotion
+            figure={FIGURES.hours}
+            caption="Why it happens, and the question at the centre of the project: why is this invisible value not paid for?"
+            original={[
+              { src: '/images/casestudies/ivi/4-why-this-happens.webp', alt: 'Why this happens: inequality between parents' },
+              { src: '/images/casestudies/ivi/term4-final-presentation-004.webp', alt: 'The question: why is this invisible value not paid for?' },
             ]}
           />
         </CaseStudySection>
@@ -170,8 +172,15 @@ export const IviProgram = () => {
             columns={1}
             images={[
               { src: '/images/casestudies/ivi/7-sensei.webp', alt: 'The Sensei platform', caption: 'The Sensei platform.' },
-              { src: '/images/casestudies/ivi/6-1-journey-map-1.webp', alt: 'User journey, part one: collecting invisible value, self-check and planning', caption: 'The user journey, part one.' },
-              { src: '/images/casestudies/ivi/6-2-journey-map-2.webp', alt: 'User journey, part two: workplace conversations and invisible value income', caption: 'The user journey, part two.' },
+            ]}
+          />
+
+          <CaseStudyMotion
+            figure={FIGURES.journey}
+            caption="Johanna's journey through the program: four stages and seven touchpoints, from recording work at home to invisible value income."
+            original={[
+              { src: '/images/casestudies/ivi/6-1-journey-map-1.webp', alt: 'User journey, part one: collecting invisible value, self-check and planning' },
+              { src: '/images/casestudies/ivi/6-2-journey-map-2.webp', alt: 'User journey, part two: workplace conversations and invisible value income' },
             ]}
           />
         </CaseStudySection>
