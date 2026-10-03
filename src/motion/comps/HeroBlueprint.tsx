@@ -3,13 +3,15 @@ import { TRAVEL, fadeUp, mix, tween } from '../helpers';
 import type { LookProps } from '../theme';
 import { insightCard } from './HeroResearch';
 
-// Story 2, "Design and build" (10 s). It opens on story 1's insight card,
+// Story 2, "Design and build" (12 s). It opens on story 1's insight card,
 // which shrinks into the key touchpoint of a service blueprint. A person (the
-// accent dot) walks the service, the moment that matters is singled out, that
-// touchpoint becomes a working app the person uses, and people test it.
+// accent dot) walks the service, the moment that matters is singled out, and
+// that touchpoint becomes a working app. Then a test round: one of three testers
+// gets through, two get stuck on the same card; the card is fixed; in round two
+// all three get through.
 // Landscape 1280×720; portrait 600×800 for phones.
 
-export const BLUEPRINT_FRAMES = 300;
+export const BLUEPRINT_FRAMES = 372;
 
 const LANE_LABELS = ['customer actions', 'frontstage', 'backstage', 'support'];
 const DIVIDER_LABELS = ['line of interaction', 'line of visibility'];
@@ -43,8 +45,14 @@ const CAPTIONS: [string, number, number | undefined][] = [
   ['Map the whole service', 12, 98],
   ['Find the moment that matters', 108, 150],
   ['Design it, then build it', 160, 236],
-  ['Test it with people', 244, undefined],
+  ['Test it with people', 244, 296],
+  ['Fix what they trip on', 304, 330],
+  ['Test again until it works', 338, undefined],
 ];
+
+// Test rounds: when each tester taps, and whether they get through.
+const ROUND1: [number, boolean][] = [[256, true], [270, false], [284, false]];
+const ROUND2: [number, boolean][] = [[334, true], [342, true], [350, true]];
 
 export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const f = useCurrentFrame();
@@ -86,10 +94,15 @@ export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
     r: mix(20, node.r, settle),
   };
 
-  // People try the app.
-  const testerXs = L.portrait ? [200, 300, 400] : [400, 540, 680];
-  const testerY = L.portrait ? 764 : 630;
+  // Usability test: taps land on the screen, a counter sits under the phone.
   const testBack = L.portrait ? 1 : 1 - tween(f, 240, 16) * 0.55;
+  const tripCard = { x: PHONE.x + PHONE.w / 2, y: PHONE.y + 132 + 76 }; // the card people trip on
+  const fix = tween(f, 304, 16); // the card is redesigned
+  const round2 = f >= 326;
+  const attempts = round2 ? ROUND2 : ROUND1;
+  const passed = attempts.filter(([at, ok]) => ok && f >= at + 6).length;
+  const counter = { x: PHONE.x + PHONE.w / 2, y: PHONE.y + PHONE.h + 18 };
+  const taps = [...ROUND1, ...ROUND2].map(([at, ok]) => ({ at, ok, t: tween(f, at - 4, 20, 0, 1, (x) => x) }));
 
   return (
     <AbsoluteFill style={{ background: p.bg, fontFamily: fonts.text, color: p.ink }}>
@@ -180,15 +193,18 @@ export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
           <div style={{ width: 132, height: 14, borderRadius: 4, background: p.ink }} />
           <div style={{ marginTop: 8, width: 92, height: 8, borderRadius: 4, background: p.faint }} />
         </div>
-        {[0, 1, 2].map((i) => (
-          <div key={i} style={{ height: 64, borderRadius: 14, background: p.bg, border: `1px solid ${i === 1 ? p.accent : p.line}`, display: 'flex', alignItems: 'center', gap: 12, padding: '0 14px', ...ui(2 + i) }}>
-            <div style={{ width: 26, height: 26, borderRadius: 13, background: i === 1 ? p.accent : p.line }} />
-            <div>
-              <div style={{ width: 96 - i * 14, height: 8, borderRadius: 4, background: p.muted }} />
-              <div style={{ marginTop: 7, width: 60 + i * 8, height: 6, borderRadius: 3, background: p.line }} />
+        {[0, 1, 2].map((i) => {
+          const fixed = i === 1 ? fix : 0;
+          return (
+            <div key={i} style={{ height: 64, borderRadius: 14, background: p.bg, border: `${1 + fixed}px solid ${fixed > 0.5 ? p.accent : p.line}`, display: 'flex', alignItems: 'center', gap: 12, padding: '0 14px', ...ui(2 + i) }}>
+              <div style={{ width: 26, height: 26, borderRadius: 13, background: fixed > 0.5 ? p.accent : p.line }} />
+              <div>
+                <div style={{ width: (96 - i * 14) + 40 * fixed, height: 8 + 2 * fixed, borderRadius: 5, background: fixed > 0.5 ? p.ink : p.muted }} />
+                <div style={{ marginTop: 7, width: 60 + i * 8, height: 6, borderRadius: 3, background: p.line }} />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div
         style={{
@@ -212,19 +228,39 @@ export const HeroBlueprint: React.FC<LookProps> = ({ palette: p, fonts }) => {
         Continue
       </div>
 
-      {testerXs.map((x, i) => {
-        const at = 248 + i * 12;
-        const ok = tween(f, at + 14, 10);
+      {/* taps from testers: accent where they get through, grey where they get stuck */}
+      {taps.map(({ at, ok, t }) => {
+        const at0 = ok ? button : tripCard;
+        if (t <= 0 || t >= 1) return null;
+        const color = p.ink; // the fingertip shows on the red button and on cards alike
+        const ring = ok ? p.accent : p.muted;
         return (
-          <div key={x}>
-            <svg width={W} height={H} style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-              <path d={`M ${x} ${testerY - 18} Q ${(x + button.x) / 2} ${testerY - 120} ${button.x} ${button.y + 22}`} fill="none" stroke={p.accent} strokeWidth={1.5} strokeDasharray="3 7" opacity={tween(f, at + 4, 10) * (1 - tween(f, at + 22, 12)) * 0.9} />
-            </svg>
-            <div style={{ position: 'absolute', left: x - 13, top: testerY - 13, width: 26, height: 26, borderRadius: 13, background: p.bg, border: `2px solid ${p.ink}`, ...fadeUp(f, at, { dur: 12, dist: 10 }) }} />
-            <div style={{ position: 'absolute', left: x + 18, top: testerY - 30, width: 26, height: 26, borderRadius: 13, background: p.accent, color: p.onAccent, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 15, fontWeight: 700, opacity: ok, transform: `scale(${0.6 + 0.4 * ok})` }}>✓</div>
+          <div key={at}>
+            {/* the fingertip */}
+            <div style={{ position: 'absolute', left: at0.x - 14, top: at0.y - 14, width: 28, height: 28, borderRadius: 14, background: color, opacity: 0.55 * (1 - tween(t, 0.45, 0.4)), transform: `scale(${1 - 0.25 * Math.sin(Math.PI * Math.min(1, t * 2))})` }} />
+            {/* the ripple */}
+            <div style={{ position: 'absolute', left: at0.x - 34, top: at0.y - 34, width: 68, height: 68, borderRadius: 34, border: `2px solid ${ring}`, opacity: 0.9 * (1 - t), transform: `scale(${0.35 + 0.65 * t})` }} />
           </div>
         );
       })}
+      {/* where people got stuck */}
+      <div style={{ position: 'absolute', left: PHONE.x + PHONE.w - 46, top: tripCard.y - 44, width: 28, height: 28, borderRadius: 14, background: p.bg, border: `1.5px solid ${p.muted}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: fonts.mono, fontSize: 16, color: p.ink, opacity: tween(f, 272, 8) * (1 - tween(f, 300, 8)), transform: `scale(${0.7 + 0.3 * tween(f, 272, 8)})` }}>?</div>
+
+      {/* the round and how many testers got through */}
+      <div style={{ position: 'absolute', left: counter.x - 128, top: counter.y, width: 256, height: 40, borderRadius: 20, border: `1px solid ${p.line}`, background: p.panel, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 14px', boxSizing: 'border-box', fontFamily: fonts.mono, fontSize: 15, color: p.muted, ...fadeUp(f, 246, { dur: 12, dist: 8 }) }}>
+        <span style={{ color: p.ink }}>{round2 ? 'round 2' : 'round 1'}</span>
+        <span style={{ display: 'flex', gap: 6 }}>
+          {attempts.map(([at, ok], i) => {
+            const done = f >= at + 6;
+            return (
+              <span key={i} style={{ width: 22, height: 22, borderRadius: 11, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, border: `1.5px solid ${done ? (ok ? p.accent : p.muted) : p.line}`, background: done && ok ? p.accent : 'transparent', color: done && ok ? p.onAccent : p.muted }}>
+                {done ? (ok ? '✓' : '?') : ''}
+              </span>
+            );
+          })}
+        </span>
+        <span style={{ color: passed === 3 ? p.accent : p.ink, fontVariantNumeric: 'tabular-nums' }}>{passed}/3</span>
+      </div>
 
       <div
         style={{
