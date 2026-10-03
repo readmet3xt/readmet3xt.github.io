@@ -8,7 +8,9 @@ import {
     CaseStudyCard,
     CaseStudyCardGrid,
     CaseStudyStatsGrid,
+    CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/lawx';
 
 export const LawX = () => {
     return (
@@ -79,10 +81,10 @@ export const LawX = () => {
                     they happened — their skepticism transformed into genuine interest.
                 </CaseStudyQuote>
 
-                <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-7.webp"
-                    alt="Chat view with the yellow Thinking status pill active"
-                    caption="The yellow 'Thinking…' state is the first cue that answers can be supervised, not just consumed"
+                <CaseStudyMotion
+                    figure={FIGURES.glassBox}
+                    caption="A chatbot is a closed box. Law.X shows its working, so a lawyer can check the statute before trusting the answer."
+                    original={{ src: '/images/casestudies/lawx/lawx-7.webp', alt: 'Chat view with the yellow Thinking status pill active' }}
                 />
             </CaseStudySection>
 
@@ -130,16 +132,13 @@ export const LawX = () => {
                     </CaseStudyCard>
                 </CaseStudyCardGrid>
 
-                <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-5.webp"
-                    alt="The instruction modal with saved tone and style instructions"
-                    caption="Persistent instructions travel with every query — set once, applied across sessions"
-                />
-
-                <CaseStudyImage
-                    src="/images/casestudies/lawx/lawx-2.webp"
-                    alt="Mandatory state selection during onboarding"
-                    caption="Jurisdiction is locked before the first query — state-specific accuracy by default"
+                <CaseStudyMotion
+                    figure={FIGURES.context}
+                    caption="Jurisdiction is set before the first query, and instructions are saved once; every query carries both."
+                    original={[
+                        { src: '/images/casestudies/lawx/lawx-2.webp', alt: 'Mandatory state selection during onboarding' },
+                        { src: '/images/casestudies/lawx/lawx-5.webp', alt: 'The instruction modal with saved tone and style instructions' },
+                    ]}
                 />
             </CaseStudySection>
 
