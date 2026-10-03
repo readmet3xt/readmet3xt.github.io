@@ -10,7 +10,9 @@ import {
   CaseStudyCard,
   CaseStudyCardGrid,
   CaseStudyStatsGrid,
+  CaseStudyMotion,
 } from '@/components/case-study';
+import { FIGURES } from '@/motion/figures/pebble';
 import { VideoEmbed } from '@/components/case-study/VideoEmbed';
 
 export const Pebble = () => {
@@ -126,10 +128,15 @@ export const Pebble = () => {
             the idea of different Pebbles, companions with their own personalities.
           </CaseStudyParagraph>
 
+          <CaseStudyMotion
+            figure={FIGURES.explorer}
+            caption="The segmentation workshop that pointed us to the Explorer: people move between phases, and every other group had once been an Explorer."
+            original={{ src: '/images/casestudies/pebble/4-why-explorer.webp', alt: 'Why we focused on the Explorer' }}
+          />
+
           <CaseStudyImageGrid
             columns={1}
             images={[
-              { src: '/images/casestudies/pebble/4-why-explorer.webp', alt: 'Why we focused on the Explorer', caption: 'The segmentation workshop that pointed us to the Explorer.' },
               { src: '/images/casestudies/pebble/5-persona.webp', alt: 'The Explorer persona, James', caption: 'James, our Explorer persona.' },
             ]}
           />
@@ -171,11 +178,16 @@ export const Pebble = () => {
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
+          <CaseStudyMotion
+            figure={FIGURES.deepWork}
+            caption="How deep work connects individual and workplace happiness."
+            original={{ src: '/images/casestudies/pebble/8-how-deep-work-works.webp', alt: 'How deep work connects individual and workplace happiness' }}
+          />
+
           <CaseStudyImageGrid
             columns={1}
             images={[
               { src: '/images/casestudies/pebble/9-cafe.webp', alt: 'The Virtual Café concept', caption: 'The Virtual Café.' },
-              { src: '/images/casestudies/pebble/8-how-deep-work-works.webp', alt: 'How deep work connects individual and workplace happiness', caption: 'How deep work connects individual and workplace happiness.' },
               { src: '/images/casestudies/pebble/10-how-it-works.webp', alt: 'The three ways Pebble supports people', caption: 'Three ways Pebble helps: deep work, the Virtual Café and work-life boundaries.' },
             ]}
           />
@@ -209,11 +221,12 @@ export const Pebble = () => {
             </CaseStudyCard>
           </CaseStudyCardGrid>
 
-          <CaseStudyImageGrid
-            columns={1}
-            images={[
-              { src: '/images/casestudies/pebble/11-feedback.webp', alt: 'Prototype takeaways from testing', caption: 'Prototype takeaways: what testers liked, wished for and wondered about.' },
-              { src: '/images/casestudies/pebble/12-iterate-again.webp', alt: 'Iterating towards Microsoft Teams and Slack integrations', caption: 'The next iteration: working inside Microsoft Teams and Slack.' },
+          <CaseStudyMotion
+            figure={FIGURES.testing}
+            caption="What five testers liked, wished for and wondered about, and the next iteration: working inside Microsoft Teams and Slack."
+            original={[
+              { src: '/images/casestudies/pebble/11-feedback.webp', alt: 'Prototype takeaways from testing' },
+              { src: '/images/casestudies/pebble/12-iterate-again.webp', alt: 'Iterating towards Microsoft Teams and Slack integrations' },
             ]}
           />
 
