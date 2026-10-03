@@ -19,7 +19,7 @@ const CATEGORIES: ProjectCategory[] = ['service', 'product'];
 
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const { pathname } = useLocation();
-  const { theme, setTheme, motion, setMotion } = useSitePrefs();
+  const { theme, setTheme } = useSitePrefs();
 
   const closeOnMobile = () => {
     if (window.innerWidth < 1024) onClose();
@@ -77,7 +77,6 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       <footer className="flex-shrink-0 border-t border-border px-4 lg:px-6 py-4 text-sm">
         <div className="mb-3">
           <PrefSwitch label="Dark mode" checked={theme === 'dark'} onChange={(on) => setTheme(on ? 'dark' : 'light')} />
-          <PrefSwitch label="Animations" checked={motion} onChange={setMotion} />
         </div>
         <nav aria-label="Contact links" className="flex flex-wrap gap-x-5 gap-y-1">
           <a className="link-ink" href="mailto:mdamkhan.work@gmail.com">Email</a>

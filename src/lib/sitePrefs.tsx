@@ -1,9 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { DARK, FONTS, LIGHT, type LookProps } from '@/motion/theme';
 
-/* Visitor preferences: dark (default) or light theme, and whether animations
-   play. Both are remembered on the device; animations start off for anyone who
-   has asked their system for reduced motion. */
+/* Visitor preferences: dark (default) or light theme, remembered on the device,
+   and whether animations play, which follows the system's reduced-motion setting. */
 
 export type Theme = 'dark' | 'light';
 
@@ -19,15 +18,10 @@ const THEME_COLOR: Record<Theme, string> = { dark: '#0B0B0C', light: '#FAFAF9' }
 
 const readTheme = (): Theme => (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
 
-const readMotion = () => {
-  try {
-    const saved = localStorage.getItem('motion');
-    if (saved === 'on' || saved === 'off') return saved === 'on';
-  } catch {
-    // storage blocked: fall back to the system setting
-  }
-  return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-};
+const REDUCE = '(prefers-reduced-motion: reduce)';
+
+/** Animations follow the visitor's system setting (there is no on-site switch). */
+const readMotion = () => !window.matchMedia(REDUCE).matches;
 
 const save = (key: string, value: string) => {
   try {
@@ -50,9 +44,19 @@ export const SitePrefsProvider = ({ children }: { children: ReactNode }) => {
     save('theme', next);
   }, []);
 
-  const setMotion = useCallback((on: boolean) => {
-    setMotionState(on);
-    save('motion', on ? 'on' : 'off');
+  const setMotion = useCallback((on: boolean) => setMotionState(on), []);
+
+  // Follow the system setting if it changes, and drop the choice the old on-site switch saved.
+  useEffect(() => {
+    try {
+      localStorage.removeItem('motion');
+    } catch {
+      // storage blocked
+    }
+    const mq = window.matchMedia(REDUCE);
+    const update = () => setMotionState(!mq.matches);
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
   }, []);
 
   useEffect(() => {

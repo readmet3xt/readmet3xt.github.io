@@ -8,9 +8,10 @@
 @tailwind utilities;
 
 /* Portfolio design system: dark by default, light from the sidebar switch.
-   One accent (a location blue) for links, focus, the active nav item and the
-   "you are here" dot in the motion graphics. Motion colours mirror these tokens
-   in src/motion/theme.ts. */
+   One accent, the presentation deck's red (#FF4757), for links, focus, the active
+   nav item and the "you are here" dot in the motion graphics. Case-study pages
+   swap in their own colour (src/motion/colors.ts). Motion colours mirror these
+   tokens in src/motion/theme.ts. */
 
 @layer base {
   :root {
@@ -20,8 +21,8 @@
     --text-primary: 240 6% 95%;     /* #F2F2F3 */
     --text-secondary: 240 3% 65%;   /* #A3A3A8 */
     --text-tertiary: 240 2% 56%;    /* #8D8D92, 5.9:1 on the ground */
-    --accent-primary: 216 100% 62%; /* #3E8BFF, 5.9:1 on the ground */
-    --accent-hover: 216 100% 72%;
+    --accent-primary: 355 100% 64%; /* #FF4757, the deck's accent, 5.9:1 on the ground */
+    --accent-hover: 355 100% 68%;   /* #FF5C69 */
     --border-tone: 240 6% 95%;
     color-scheme: dark;
 
@@ -64,8 +65,8 @@
     --text-primary: 240 3% 12%;     /* #1D1D1F */
     --text-secondary: 240 3% 38%;   /* #5F5F64 */
     --text-tertiary: 240 2% 44%;    /* #6F6F74, 5.0:1 on the ground */
-    --accent-primary: 213 91% 44%;  /* #0A66D8, 5.4:1 on the ground */
-    --accent-hover: 213 91% 36%;
+    --accent-primary: 355 100% 45%; /* #E50014, the deck red deepened to 4.5:1 for text */
+    --accent-hover: 355 100% 39%;
     --border-tone: 240 3% 12%;
     color-scheme: light;
   }

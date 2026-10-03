@@ -11,7 +11,7 @@ const INTROS: Record<ProjectCategory, string> = {
 const usePointerHighlight = () => {
   const grid = useRef<HTMLDivElement>(null);
   const glow = useRef<HTMLDivElement>(null);
-  const moveTo = (tile: HTMLElement) => {
+  const moveTo = (tile: HTMLElement, color?: string) => {
     const g = grid.current?.getBoundingClientRect();
     const t = tile.getBoundingClientRect();
     const el = glow.current;
@@ -19,6 +19,7 @@ const usePointerHighlight = () => {
     el.style.transform = `translate(${t.left - g.left - 8}px, ${t.top - g.top - 8}px)`;
     el.style.width = `${t.width + 16}px`;
     el.style.height = `${t.height + 16}px`;
+    el.style.backgroundColor = color ? `${color}2E` : '';
     el.style.opacity = '1';
   };
   const hide = () => {

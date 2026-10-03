@@ -18,6 +18,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
   const replayIntro = () => {
     try {
       localStorage.removeItem('welcomed');
+      localStorage.removeItem('storiesPlayed');
     } catch {
       // storage blocked
     }

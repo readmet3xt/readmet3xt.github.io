@@ -3,21 +3,25 @@ import type { ProjectData } from '@/data/projectData';
 import { imageSize } from '@/lib/imageSize';
 import { MotionStage } from '@/motion/MotionStage';
 import { TILES, TILE_SIZE } from '@/motion/registry';
+import { PROJECT_COLORS } from '@/motion/colors';
+import { useProjectAccent } from '@/hooks/use-project-accent';
 
 interface ProjectCardProps {
   project: ProjectData;
-  /** lets the grid move its pointer highlight to this card's tile */
-  onTileEnter?: (tile: HTMLElement) => void;
+  /** lets the grid move its pointer highlight, in the project's colour, to this card's tile */
+  onTileEnter?: (tile: HTMLElement, color?: string) => void;
 }
 
 export const ProjectCard = ({ project, onTileEnter }: ProjectCardProps) => {
   const tile = TILES[project.href];
+  const color = PROJECT_COLORS[project.href];
+  const accent = useProjectAccent(project.href);
 
   return (
-    <Link to={project.href} className="project-card group block">
+    <Link to={project.href} className="project-card group block" style={accent}>
       <div
         data-tile-frame
-        onPointerEnter={(e) => onTileEnter?.(e.currentTarget)}
+        onPointerEnter={(e) => onTileEnter?.(e.currentTarget, color)}
         className="relative overflow-hidden rounded-2xl bg-bg-secondary aspect-[4/3]"
       >
         {tile ? (
@@ -27,6 +31,7 @@ export const ProjectCard = ({ project, onTileEnter }: ProjectCardProps) => {
             height={TILE_SIZE.height}
             durationInFrames={tile.durationInFrames}
             poster={tile.poster}
+            accent={color}
             loop
             label={tile.label}
           />

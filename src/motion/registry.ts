@@ -35,12 +35,12 @@ export const STORY_SIZE = { wide: { width: 1280, height: 720 }, tall: { width: 6
 
 export const HERO_STORIES: (MotionEntry & { title: string })[] = [
   { title: 'How I work', component: HeroBlueprint, durationInFrames: BLUEPRINT_FRAMES, label: 'A service blueprint draws itself; a person reaches the moment that matters, and that touchpoint becomes an app they use.' },
-  { title: 'Who I design for', component: HeroWho, durationInFrames: WHO_FRAMES, label: 'I design services for remote teams, rail passengers, conservation partners, first-time crypto investors and players stuck in a game. And then I build them.' },
   { title: 'People to product', component: HeroProcess, durationInFrames: PROCESS_FRAMES, label: 'Research notes cluster into patterns, become the steps of a journey, and fold into an app.' },
-  { title: 'My path so far', component: HeroPath, durationInFrames: PATH_FRAMES, label: 'Mechanical engineering in Hyderabad, the Royal College of Art, research with VISA, BCG and WWT × Airbnb, Softwire, KoinBasket, Otagon, and now service and product design.' },
+  { title: 'Who I design for', component: HeroWho, durationInFrames: WHO_FRAMES, label: 'I design services for remote teams, rail passengers, conservation partners, first-time crypto investors and players stuck in a game. And then I build them.' },
 ];
 
-export const PATH_STORY = HERO_STORIES[3];
+/** "My path so far" plays on its own at the top of the About page. */
+export const PATH_STORY: MotionEntry & { title: string } = { title: 'My path so far', component: HeroPath, durationInFrames: PATH_FRAMES, label: 'Mechanical engineering in Hyderabad, the Royal College of Art, research with VISA, BCG and WWT × Airbnb, Softwire, KoinBasket, Otagon, and now service and product design.' };
 
 export const TILE_SIZE = { width: TILE_W, height: TILE_H };
 

@@ -14,6 +14,11 @@ export const About = () => (
   <PageLayout>
     <SEO title="About" />
 
+    {/* My path so far, in motion */}
+    <div className="mb-14">
+      <PathStory />
+    </div>
+
     {/* Overview */}
     <section id="overview" className="pb-16 scroll-mt-24">
       <div className="grid gap-10 md:grid-cols-5 items-start">
@@ -77,13 +82,6 @@ export const About = () => (
           />
         </figure>
       </div>
-    </section>
-
-    {/* The short version, in motion */}
-    <section id="path" aria-labelledby="path-title" className="border-t border-border py-16 scroll-mt-24">
-      <h2 id="path-title" className="text-3xl sm:text-4xl mb-3">The short version</h2>
-      <p className="mb-8 max-w-[60ch] text-text-secondary">From mechanical engineering to service and product design, station by station. The full detail follows below.</p>
-      <PathStory />
     </section>
 
     {/* Experience */}
@@ -203,7 +201,7 @@ export const About = () => (
     {/* Recommendations */}
     <section className="border-t border-border py-16">
       <SectionTitle>Recommendations</SectionTitle>
-      <Recommendations variant="full" showTitle={false} />
+      <Recommendations showTitle={false} />
     </section>
 
     {/* Certificates */}

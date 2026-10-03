@@ -1,5 +1,6 @@
-import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore, type CSSProperties, type FC } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type FC } from 'react';
 import { useSitePrefs } from '@/lib/sitePrefs';
+import { readableOn } from './colors';
 import { FrameProvider } from './core';
 import type { LookProps } from './theme';
 import { getWelcomeActive, subscribeTick, subscribeWelcome } from './ticker';
@@ -23,6 +24,8 @@ type Props = {
   initialFrame?: number;
   /** cover the parent instead of keeping the composition's aspect ratio */
   fill?: boolean;
+  /** a project's own colour, used in place of the site accent (adjusted to read on the tile) */
+  accent?: string;
   onEnded?: () => void;
   onFrame?: (frame: number) => void;
   /** what the animation shows, for screen readers */
@@ -43,13 +46,18 @@ export const MotionStage = ({
   poster,
   initialFrame,
   fill = false,
+  accent,
   onEnded,
   onFrame,
   label,
   className,
   style,
 }: Props) => {
-  const { look, motion } = useSitePrefs();
+  const { look: siteLook, motion } = useSitePrefs();
+  const look = useMemo(
+    () => (accent ? { ...siteLook, palette: { ...siteLook.palette, accent: readableOn(accent, siteLook.palette.panel, 3) } } : siteLook),
+    [siteLook, accent],
+  );
   const welcome = useSyncExternalStore(subscribeWelcome, getWelcomeActive, () => false);
   const last = durationInFrames - 1;
   const rest = poster ?? last;

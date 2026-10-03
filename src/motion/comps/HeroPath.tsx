@@ -1,5 +1,6 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from '../core';
 import { TRAVEL, fadeUp, mix, tween } from '../helpers';
+import { PROJECT_COLORS, readableOn } from '../colors';
 import type { LookProps } from '../theme';
 
 // Story 4, "My path so far" (11 s). One line, station by station, with the
@@ -8,13 +9,14 @@ import type { LookProps } from '../theme';
 
 export const PATH_FRAMES = 330;
 
-const STATIONS: [string, string, string][] = [
+// Stations that are case studies carry their project's colour; the rest use the accent.
+const STATIONS: [string, string, string, string?][] = [
   ['2017', 'Mechanical engineering', 'B.E., Osmania University, Hyderabad'],
   ['2018', 'Royal College of Art', 'M.A. Service Design, London'],
   ['2019–21', 'Research with partners', 'VISA Innovation Centre · BCG · WWT × Airbnb'],
-  ['2022', 'Softwire, London', 'LNER App Clip'],
-  ['2022–25', 'KoinBasket', 'Founding designer · grew past 70,000 users'],
-  ['2025', 'Otagon', 'Designed and built it, for players like me'],
+  ['2022', 'Softwire, London', 'LNER App Clip', PROJECT_COLORS['/softwire']],
+  ['2022–25', 'KoinBasket', 'Founding designer · grew past 70,000 users', PROJECT_COLORS['/koinbasket']],
+  ['2025', 'Otagon', 'Designed and built it, for players like me', PROJECT_COLORS['/otagon']],
   ['Now', 'Service & Product Designer', 'Designing services, and building them'],
 ];
 const SEG = 42;
@@ -57,15 +59,16 @@ export const HeroPath: React.FC<LookProps> = ({ palette: p, fonts }) => {
             const b = portrait ? { x: 64, y: a.y + 14 + 420 * future } : { x: a.x + 14 + 546 * future, y: 318 };
             return <line x1={portrait ? 64 : a.x + 14} y1={portrait ? a.y + 14 : 318} x2={b.x} y2={b.y} stroke={p.ink} strokeWidth={3} strokeDasharray="2 12" strokeLinecap="round" opacity={0.45} />;
           })()}
-          {STATIONS.map((_, i) => {
+          {STATIONS.map(([, , , color], i) => {
             const at = START + i * SEG + 18;
             const pop = tween(f, at, 12);
             const newest = f < START + (i + 1) * SEG + 18 || i === LAST;
             const { x, y } = along(i);
+            const hue = color ? readableOn(color, p.bg, 3) : p.accent;
             return (
               <g key={i}>
                 {i === LAST && <circle cx={x} cy={y} r={mix(12, 42, tween(f, at + 6, 30))} fill="none" stroke={p.accent} strokeWidth={1.5} opacity={tween(f, at + 6, 3) * (1 - tween(f, at + 6, 30))} />}
-                <circle cx={x} cy={y} r={10 * pop} fill={newest ? p.accent : p.bg} stroke={newest ? p.accent : p.ink} strokeWidth={3} opacity={pop} />
+                <circle cx={x} cy={y} r={10 * pop} fill={newest || color ? hue : p.bg} stroke={newest || color ? hue : p.ink} strokeWidth={3} opacity={pop} />
               </g>
             );
           })}

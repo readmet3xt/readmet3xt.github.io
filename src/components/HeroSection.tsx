@@ -10,13 +10,13 @@ import { SayHi } from '@/components/SayHi';
 const PresentationModal = lazy(() => import('@/components/PresentationModal').then((m) => ({ default: m.PresentationModal })));
 
 /** The intro: greeting, who I am, the ways in, and the portrait. "say hi" swaps it for a message box. */
-export const HeroSection = () => {
+export const HeroSection = ({ first = false }: { first?: boolean }) => {
   const [deckOpen, setDeckOpen] = useState(false);
   const [writing, setWriting] = useState(false);
 
   return (
     <>
-      <section aria-label="Introduction" className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start border-t border-border pt-14 pb-16 lg:pt-20 lg:pb-24">
+      <section aria-label="Introduction" className={cn('grid gap-10 lg:grid-cols-12 lg:gap-12 items-start pb-16 lg:pb-24', first ? 'pt-6 lg:pt-12' : 'border-t border-border pt-14 lg:pt-20')}>
         <div className="relative lg:col-span-7">
           <div
             className={cn('transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]', writing && 'pointer-events-none -translate-y-2 opacity-0')}
@@ -60,7 +60,7 @@ export const HeroSection = () => {
             {...imageSize('/images/amaan-portrait.webp')}
             alt="Amaan Khan"
             className="w-full aspect-[4/5] object-cover rounded-xl"
-            loading="lazy"
+            loading={first ? 'eager' : 'lazy'}
             decoding="async"
           />
           <figcaption className="mt-2 font-mono text-xs text-text-tertiary">Hyderabad, India. Open to roles across India.</figcaption>

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { imageSize } from '@/lib/imageSize';
 import { MotionStage } from '@/motion/MotionStage';
 import { TILES, TILE_SIZE } from '@/motion/registry';
+import { PROJECT_COLORS } from '@/motion/colors';
 
 interface CaseStudyHeroProps {
   title: string;
@@ -61,6 +62,7 @@ export const CaseStudyHero = ({
               height={TILE_SIZE.height}
               durationInFrames={tile.durationInFrames}
               poster={tile.poster}
+              accent={PROJECT_COLORS[pathname]}
               loop
               label={tile.label}
             />

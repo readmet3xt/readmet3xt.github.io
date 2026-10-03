@@ -85,9 +85,9 @@ export const TileStampede: React.FC<LookProps> = (look) => {
         const drift = Math.sin((f / TILE_FRAMES) * Math.PI * 2 + i * 1.7) * 3;
         const lit = paired && on > 0.05;
         return (
-          <div key={name} style={{ position: 'absolute', left: ax(pace) - 7, top: ay(power) - 7 + drift, display: 'flex', alignItems: 'center', gap: 9, opacity: paired ? 1 : 1 - on * 0.6 }}>
-            <div style={{ width: 14, height: 14, borderRadius: 7, background: lit ? p.accent : p.ink }} />
-            <div style={mono(look, 17, lit ? p.ink : p.muted)}>{name}</div>
+          <div key={name} style={{ position: 'absolute', left: ax(pace) - 7, top: ay(power) - 7 + drift, display: 'flex', alignItems: 'center', gap: 9, opacity: paired ? 1 : 1 - on * 0.65 }}>
+            <div style={{ width: 14, height: 14, borderRadius: 7, background: lit ? p.accent : p.ink, boxShadow: lit ? `0 0 0 ${4 * on}px ${p.panel}, 0 0 0 ${5.5 * on}px ${p.accent}` : 'none' }} />
+            <div style={{ ...mono(look, 17, lit ? p.ink : p.muted), fontWeight: lit ? 500 : 400 }}>{name}</div>
           </div>
         );
       })}

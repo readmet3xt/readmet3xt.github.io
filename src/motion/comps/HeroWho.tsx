@@ -1,5 +1,6 @@
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from '../core';
 import { EASE, fadeUp, tween } from '../helpers';
+import { PROJECT_COLORS, readableOn } from '../colors';
 import type { LookProps } from '../theme';
 
 // Story 2, "Who I design for" (8 s). One sentence, with the audience rotating
@@ -8,12 +9,13 @@ import type { LookProps } from '../theme';
 
 export const WHO_FRAMES = 240;
 
-const AUDIENCES: [string, string][] = [
-  ['remote teams.', 'pebble · rca × visa innovation centre'],
-  ['rail passengers.', 'lner app clip · softwire, london'],
-  ['conservation partners.', 'stampede · wwt × airbnb'],
-  ['first-time crypto investors.', 'koinbasket · founding designer'],
-  ['players stuck in a game.', 'otagon · designed and built'],
+// Each audience is set in its project's colour.
+const AUDIENCES: [string, string, string][] = [
+  ['remote teams.', 'pebble · rca × visa innovation centre', PROJECT_COLORS['/pebble']],
+  ['rail passengers.', 'lner app clip · softwire, london', PROJECT_COLORS['/softwire']],
+  ['conservation partners.', 'stampede · wwt × airbnb', PROJECT_COLORS['/stampede']],
+  ['first-time crypto investors.', 'koinbasket · founding designer', PROJECT_COLORS['/koinbasket']],
+  ['players stuck in a game.', 'otagon · designed and built', PROJECT_COLORS['/otagon']],
 ];
 const START = 22;
 const STEP = 34;
@@ -34,7 +36,7 @@ export const HeroWho: React.FC<LookProps> = ({ palette: p, fonts }) => {
       <div style={{ ...display, ...fadeUp(f, 4, { dur: 18, dist: 14 }) }}>I design services for</div>
 
       <div style={{ position: 'relative', height: lineH * rows + 8, overflow: 'hidden', marginTop: 4 }}>
-        {AUDIENCES.map(([text], i) => {
+        {AUDIENCES.map(([text, , color], i) => {
           const at = START + i * STEP;
           const last = i === AUDIENCES.length - 1;
           const inn = tween(f, at, IN);
@@ -49,7 +51,7 @@ export const HeroWho: React.FC<LookProps> = ({ palette: p, fonts }) => {
                 top: 0,
                 right: 0,
                 whiteSpace: portrait ? 'normal' : 'nowrap',
-                color: p.accent,
+                color: readableOn(color, p.bg, 3),
                 opacity: inn * (1 - out),
                 transform: `translateY(${(1 - inn) * size * 0.8 - out * size * 0.7}px)`,
                 filter: `blur(${(1 - inn) * 6 + out * 5}px)`,
@@ -74,9 +76,9 @@ export const HeroWho: React.FC<LookProps> = ({ palette: p, fonts }) => {
       </div>
 
       <div style={{ display: 'flex', gap: 8, marginTop: portrait ? 32 : 40 }}>
-        {AUDIENCES.map(([text], i) => (
+        {AUDIENCES.map(([text, , color], i) => (
           <div key={text} style={{ width: portrait ? 40 : 28, height: 3, borderRadius: 2, background: p.line, overflow: 'hidden' }}>
-            <div style={{ width: `${tween(f, START + i * STEP, STEP, 0, 1, (x) => x) * 100}%`, height: '100%', background: p.ink, opacity: 0.85 }} />
+            <div style={{ width: `${tween(f, START + i * STEP, STEP, 0, 1, (x) => x) * 100}%`, height: '100%', background: readableOn(color, p.bg, 3) }} />
           </div>
         ))}
       </div>

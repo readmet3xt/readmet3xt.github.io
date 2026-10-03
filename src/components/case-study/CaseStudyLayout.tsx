@@ -6,6 +6,8 @@ import { SEO } from '@/components/SEO';
 import { getNextProject, getProject } from '@/data/projectData';
 import { MotionStage } from '@/motion/MotionStage';
 import { TILES, TILE_SIZE } from '@/motion/registry';
+import { PROJECT_COLORS } from '@/motion/colors';
+import { useProjectAccent } from '@/hooks/use-project-accent';
 import { ChapterBar } from './ChapterBar';
 import { ImageLightbox } from './ImageLightbox';
 
@@ -37,6 +39,8 @@ export const CaseStudyLayout = ({
   const nextProject = getNextProject(pathname);
   const nextTile = nextProject ? TILES[nextProject.href] : undefined;
   const article = useRef<HTMLElement>(null);
+  const accent = useProjectAccent(pathname);
+  const nextAccent = useProjectAccent(nextProject?.href);
 
   return (
     <PageLayout>
@@ -46,7 +50,7 @@ export const CaseStudyLayout = ({
         image={image}
       />
 
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto" style={accent}>
         <nav className="mb-6">
           <Link to={backLink} className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent-primary transition-colors">
             <ArrowLeft className="w-4 h-4" />
@@ -67,7 +71,7 @@ export const CaseStudyLayout = ({
         )}
 
         {nextProject && (
-          <Link to={nextProject.href} className="group mt-20 pt-8 border-t border-border grid gap-6 sm:grid-cols-[minmax(0,280px)_1fr] sm:items-center">
+          <Link to={nextProject.href} style={nextAccent} className="group mt-20 pt-8 border-t border-border grid gap-6 sm:grid-cols-[minmax(0,280px)_1fr] sm:items-center">
             {nextTile && (
               <div className="overflow-hidden rounded-2xl bg-bg-secondary">
                 <MotionStage
@@ -76,6 +80,7 @@ export const CaseStudyLayout = ({
                   height={TILE_SIZE.height}
                   durationInFrames={nextTile.durationInFrames}
                   poster={nextTile.poster}
+                  accent={PROJECT_COLORS[nextProject.href]}
                   loop
                   label={nextTile.label}
                 />
