@@ -57,7 +57,8 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
           )}
         </div>
 
-        <figure className="lg:col-span-5 lg:justify-self-end w-full max-w-[260px] sm:max-w-sm">
+        {/* Phones: the portrait spans the text column above it, same left and right edges. */}
+        <figure className="lg:col-span-5 lg:justify-self-end w-full sm:max-w-sm">
           <img
             src="/images/amaan-portrait.webp"
             {...imageSize('/images/amaan-portrait.webp')}
