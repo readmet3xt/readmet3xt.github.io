@@ -16,7 +16,7 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
 
   return (
     <>
-      <section aria-label="Introduction" className={cn('grid gap-10 lg:grid-cols-12 lg:gap-12 items-start pb-16 lg:pb-24', first ? 'pt-6 lg:pt-12' : 'border-t border-border pt-14 lg:pt-20')}>
+      <section aria-label="Introduction" className={cn('grid gap-10 lg:grid-cols-12 lg:gap-12 items-start lg:items-center pb-16 lg:pb-24', first ? 'pt-6 lg:pt-12' : 'border-t border-border pt-14 lg:pt-20')}>
         <div className="relative lg:col-span-7">
           <div
             className={cn('transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]', writing && 'pointer-events-none -translate-y-2 opacity-0')}

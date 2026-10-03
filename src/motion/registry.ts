@@ -1,9 +1,10 @@
 import type { FC } from 'react';
 import { BLUEPRINT_FRAMES, HeroBlueprint } from './comps/HeroBlueprint';
 import { HeroPath, PATH_FRAMES } from './comps/HeroPath';
-import { HeroProcess, PROCESS_FRAMES } from './comps/HeroProcess';
+import { HeroResearch, RESEARCH_FRAMES } from './comps/HeroResearch';
 import { HeroWho, WHO_FRAMES } from './comps/HeroWho';
 import {
+  LOST_FRAMES,
   TILE_FRAMES,
   TILE_H,
   TILE_W,
@@ -33,9 +34,10 @@ export type MotionEntry = {
 /** Landscape on wide screens, portrait on phones. */
 export const STORY_SIZE = { wide: { width: 1280, height: 720 }, tall: { width: 600, height: 800 } };
 
+/** One design process, start to end: each story ends where the next begins. */
 export const HERO_STORIES: (MotionEntry & { title: string })[] = [
-  { title: 'How I work', component: HeroBlueprint, durationInFrames: BLUEPRINT_FRAMES, label: 'A service blueprint draws itself; a person reaches the moment that matters, and that touchpoint becomes an app they use.' },
-  { title: 'People to product', component: HeroProcess, durationInFrames: PROCESS_FRAMES, label: 'Research notes cluster into patterns, become the steps of a journey, and fold into an app.' },
+  { title: 'Understand people', component: HeroResearch, durationInFrames: RESEARCH_FRAMES, label: 'People talk; what they say becomes notes; the notes cluster into patterns; one pattern becomes the insight.' },
+  { title: 'Design and build', component: HeroBlueprint, durationInFrames: BLUEPRINT_FRAMES, label: 'The insight becomes the key touchpoint in a service blueprint; a person walks the service; that touchpoint becomes an app they use, and people test it.' },
   { title: 'Who I design for', component: HeroWho, durationInFrames: WHO_FRAMES, label: 'I design services for remote teams, rail passengers, conservation partners, first-time crypto investors and players stuck in a game. And then I build them.' },
 ];
 
@@ -46,17 +48,17 @@ export const TILE_SIZE = { width: TILE_W, height: TILE_H };
 
 /** One looping tile per case study, keyed by route. */
 export const TILES: Record<string, MotionEntry> = {
-  '/pebble': { component: TilePebble, durationInFrames: TILE_FRAMES, poster: 92, label: 'Six remote workers drift apart, then gather round a virtual café.' },
-  '/stampede': { component: TileStampede, durationInFrames: TILE_FRAMES, poster: 70, label: 'Seven animal archetypes on a Power and Pace chart; a walrus and a bumblebee pair up.' },
-  '/iviprogram': { component: TileIvi, durationInFrames: TILE_FRAMES, poster: 112, label: 'Unpaid care tasks on a 24-hour clock turn from invisible to visible.' },
-  '/softwire': { component: TileLner, durationInFrames: TILE_FRAMES, poster: 114, label: 'A rail ticket clip shows five essentials, then one tap to pay, while a train passes.' },
-  '/koinbasket': { component: TileKoinBasket, durationInFrames: TILE_FRAMES, poster: 112, label: 'Coins drop into a curated basket while the funds stay with the person.' },
-  '/otagon': { component: TileOtagon, durationInFrames: TILE_FRAMES, poster: 114, label: 'Pressing F1 sends a screenshot to the phone, and a hint arrives that stops before spoilers.' },
-  '/lawx': { component: TileLawx, durationInFrames: TILE_FRAMES, poster: 118, label: 'Each line of an AI answer links to the source that backs it, and each source is checked.' },
-  '/versus': { component: TileVersus, durationInFrames: TILE_FRAMES, poster: 124, label: 'A live tournament bracket fills in during a game night.' },
-  '/screenshot': { component: TileScreenshot, durationInFrames: TILE_FRAMES, poster: 118, label: 'Screenshots fly from a PC into a phone gallery.' },
+  '/pebble': { component: TilePebble, durationInFrames: TILE_FRAMES, poster: 150, label: 'Six remote workers drift apart, then gather round a virtual café.' },
+  '/stampede': { component: TileStampede, durationInFrames: TILE_FRAMES, poster: 150, label: 'Seven animal archetypes on a Power and Pace chart; a walrus and a bumblebee pair up.' },
+  '/iviprogram': { component: TileIvi, durationInFrames: TILE_FRAMES, poster: 150, label: 'Unpaid care tasks on a 24-hour clock turn from invisible to visible.' },
+  '/softwire': { component: TileLner, durationInFrames: TILE_FRAMES, poster: 150, label: 'A rail ticket clip shows five essentials, then one tap to pay, while a train passes.' },
+  '/koinbasket': { component: TileKoinBasket, durationInFrames: TILE_FRAMES, poster: 150, label: 'Coins drop into a curated basket while the funds stay with the person.' },
+  '/otagon': { component: TileOtagon, durationInFrames: TILE_FRAMES, poster: 150, label: 'Pressing F1 sends a screenshot to the phone, and a hint arrives that stops before spoilers.' },
+  '/lawx': { component: TileLawx, durationInFrames: TILE_FRAMES, poster: 150, label: 'Each line of an AI answer links to the source that backs it, and each source is checked.' },
+  '/versus': { component: TileVersus, durationInFrames: TILE_FRAMES, poster: 150, label: 'A live tournament bracket fills in during a game night.' },
+  '/screenshot': { component: TileScreenshot, durationInFrames: TILE_FRAMES, poster: 150, label: 'Screenshots fly from a PC into a phone gallery.' },
 };
 
-export const LOST_TILE: MotionEntry = { component: TileLost, durationInFrames: TILE_FRAMES, poster: 100, label: 'A person walks off the service map and finds their way back.' };
+export const LOST_TILE: MotionEntry = { component: TileLost, durationInFrames: LOST_FRAMES, poster: 100, label: 'A person walks off the service map and finds their way back.' };
 
 export const WELCOME: MotionEntry = { component: Welcome, durationInFrames: WELCOME_FRAMES, label: 'hi. i’m amaan.' };
