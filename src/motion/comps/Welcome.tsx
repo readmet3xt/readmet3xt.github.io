@@ -46,6 +46,10 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const laneRight = W - laneLeft;
   const laneGap = portrait ? 46 * (W / 390) * 0.9 : 58 * u;
   const laneY = (i: number) => H * 0.5 + (i - 1.5) * laneGap;
+  // Lane labels sit clear above their line, and the touchpoints start after
+  // the longest label ("frontstage"), so nothing crosses the words.
+  const labelSize = Math.max(11, 13 * u);
+  const tickLeft = laneLeft + labelSize * 0.62 * 10 + 16;
 
   // Lanes fold onto the baseline between frames 58 and 82.
   const fold = tween(f, 58, 24);
@@ -56,12 +60,13 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const walk = tween(f, 24, 36, 0, 1, TRAVEL);
   const drop = tween(f, 60, 18);
   const write = tween(f, 78, 34, 0, 1, TRAVEL);
-  const dotX = f < 78 ? mix(laneLeft - 6, m.nameLeft, walk) : mix(m.nameLeft, m.stopX, write);
+  const dotX = f < 78 ? mix(laneLeft - dot - 4, m.nameLeft, walk) : mix(m.nameLeft, m.stopX, write);
   const dotY = mix(laneY(0), m.baseY - dot / 2, drop);
   const settle = 1 + 0.18 * Math.sin(Math.PI * tween(f, 112, 10));
 
-  const revealed = f < 78 ? 0 : Math.max(0, dotX - m.nameLeft - dot * 0.2);
-  const clipRight = Math.max(0, m.nameW - revealed);
+  // Letters appear behind the dot's trailing edge, so the dot never covers them.
+  const revealed = f < 78 ? 0 : Math.max(0, dotX - dot / 2 - 2 - m.nameLeft);
+  const clipRight = write >= 1 ? 0 : Math.max(0, m.nameW - revealed);
 
   return (
     <AbsoluteFill style={{ background: p.bg, overflow: 'hidden' }}>
@@ -84,7 +89,7 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
           );
         })}
         {Array.from({ length: TICKS }, (_, k) => {
-          const x = laneLeft + ((k + 0.5) * (laneRight - laneLeft)) / TICKS;
+          const x = tickLeft + ((k + 0.5) * (laneRight - tickLeft)) / TICKS;
           const grow = tween(f, 20 + k * 6, 12);
           const out = 1 - tween(f, 56, 14);
           return (
@@ -102,9 +107,10 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
           style={{
             position: 'absolute',
             left: laneLeft,
-            top: laneY(i) - 22 * Math.max(u, 0.7),
+            top: laneY(i) - dot / 2 - 6 - labelSize * 1.25,
             fontFamily: fonts.mono,
-            fontSize: Math.max(11, 13 * u),
+            fontSize: labelSize,
+            lineHeight: 1.25,
             color: p.muted,
             ...fadeUp(f, 12 + i * 2, { dur: 14, dist: 6, outAt: 52, outDur: 10 }),
           }}
