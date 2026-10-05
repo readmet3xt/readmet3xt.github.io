@@ -193,15 +193,15 @@ export const About = () => (
       </div>
     </section>
 
+    {/* Certificates */}
+    <section id="certificates" className="border-t border-border py-16 scroll-mt-24">
+      <CertificatesCarousel />
+    </section>
+
     {/* Recommendations */}
     <section className="border-t border-border py-16">
       <SectionTitle>Recommendations</SectionTitle>
       <Recommendations showTitle={false} />
-    </section>
-
-    {/* Certificates */}
-    <section id="certificates" className="border-t border-border py-16 scroll-mt-24">
-      <CertificatesCarousel />
     </section>
 
     {/* Interests */}
