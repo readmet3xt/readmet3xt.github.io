@@ -15,16 +15,15 @@ const MORE_ICON = 'h-4 w-4 shrink-0 text-text-tertiary sm:hidden';
 const PresentationModal = lazy(() => import('@/components/PresentationModal').then((m) => ({ default: m.PresentationModal })));
 
 /** The intro: greeting, who I am, the ways in, and the portrait. "say hi" swaps it for a message box. */
-export const HeroSection = ({ first = false }: { first?: boolean }) => {
+export const HeroSection = ({ first = false, writing, setWriting }: { first?: boolean; writing: boolean; setWriting: (on: boolean) => void }) => {
   const [deckOpen, setDeckOpen] = useState(false);
-  const [writing, setWriting] = useState(false);
 
   return (
     <>
       <section aria-label="Introduction" className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start lg:items-center lg:pt-12 pb-16 lg:pb-24">
         <div className="relative lg:col-span-7">
           <div
-            className={cn('transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]', writing && 'pointer-events-none -translate-y-2 opacity-0')}
+            className={cn('transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]', writing && 'pointer-events-none -translate-y-2 opacity-0 max-lg:hidden')}
             aria-hidden={writing}
           >
             <h1 className="text-[clamp(3rem,15.5vw,3.75rem)] sm:text-7xl leading-[1.02]" aria-label="hi, I'm Amaan">
@@ -63,8 +62,9 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
             </nav>
           </div>
 
+          {/* Phones: the message box takes the intro's place in the flow, at its own height. Larger screens: it covers the intro. */}
           {writing && (
-            <div className="absolute inset-0 animate-fade-in">
+            <div className="animate-fade-in lg:absolute lg:inset-0">
               <SayHi onClose={() => setWriting(false)} />
             </div>
           )}

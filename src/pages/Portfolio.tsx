@@ -24,6 +24,7 @@ export const Portfolio = () => {
   const replay = !!(location.state as { replayIntro?: boolean } | null)?.replayIntro;
   // The stories play once per visitor; after that the intro sits on top.
   const [showStories, setShowStories] = useState(() => replay || !storiesPlayed());
+  const [writing, setWriting] = useState(false);
   const scrollBack = useRef(0);
 
   useEffect(() => {
@@ -47,13 +48,14 @@ export const Portfolio = () => {
 
   const stories = showStories && motion;
 
-  // With the stories gone the heading leads, so the menu button sits on its first line.
+  // With the stories gone the heading leads, so the menu button sits on its first line
+  // (the message box's first line is a small label, level with the button already).
   return (
-    <PageLayout menuAlign={stories ? undefined : 'max-sm:translate-y-[22px] sm:max-lg:translate-y-[25px]'}>
+    <PageLayout menuAlign={stories || writing ? undefined : 'max-sm:translate-y-[22px] sm:max-lg:translate-y-[25px]'}>
       <SEO />
       <WelcomeIntro />
       {stories && <HeroStories onDone={onDone} />}
-      <HeroSection first={!stories} />
+      <HeroSection first={!stories} writing={writing} setWriting={setWriting} />
       <ProjectsGrid />
       <Recommendations />
       <ContactSection />

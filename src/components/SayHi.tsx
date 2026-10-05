@@ -6,9 +6,13 @@ const EMAIL = 'mdamkhan.work@gmail.com';
 export const SayHi = ({ onClose }: { onClose: () => void }) => {
   const [message, setMessage] = useState('');
   const box = useRef<HTMLTextAreaElement>(null);
+  const form = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    const t = setTimeout(() => box.current?.focus(), 200);
+    // If the box opens above the screen (the visitor had scrolled to the button), bring it into view first.
+    const top = form.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) form.current?.scrollIntoView({ block: 'start' });
+    const t = setTimeout(() => box.current?.focus({ preventScroll: true }), 200);
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     document.addEventListener('keydown', onKey);
     return () => {
@@ -25,7 +29,7 @@ export const SayHi = ({ onClose }: { onClose: () => void }) => {
   };
 
   return (
-    <form onSubmit={send} className="flex h-full min-h-[320px] flex-col" aria-label="Write to Amaan">
+    <form ref={form} onSubmit={send} className="flex scroll-mt-6 flex-col lg:h-full lg:min-h-[320px]" aria-label="Write to Amaan">
       <label htmlFor="say-hi-message" className="font-mono text-sm text-text-tertiary">Write to Amaan</label>
       <textarea
         id="say-hi-message"
@@ -33,7 +37,7 @@ export const SayHi = ({ onClose }: { onClose: () => void }) => {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Type your message…"
-        className="mt-4 flex-1 min-h-[180px] w-full resize-none bg-transparent font-mono text-lg leading-relaxed text-text-primary placeholder:text-text-tertiary outline-none"
+        className="mt-4 h-40 w-full resize-none bg-transparent lg:h-auto lg:min-h-[180px] lg:flex-1 font-mono text-lg leading-relaxed text-text-primary placeholder:text-text-tertiary outline-none"
       />
       <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
         <button type="submit" className="btn-ink" disabled={!message.trim()}>Send with email</button>
