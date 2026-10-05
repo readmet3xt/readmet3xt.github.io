@@ -2,10 +2,10 @@ import { lazy, Suspense, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, Play } from 'lucide-react';
 import { DECK_URL, DECK_TITLE, DECK_AUDIO_URL, PRESENTATION_CUES } from '@/data/presentation';
-import { imageSize } from '@/lib/imageSize';
 import { cn } from '@/lib/utils';
 import { RotatingGreeting } from '@/components/RotatingGreeting';
 import { SayHi } from '@/components/SayHi';
+import { PortraitSwap } from '@/components/PortraitSwap';
 
 // Phones: full-width rows under the buttons. Larger screens: a line of links.
 const MORE_LINK = 'link-ink max-sm:flex max-sm:w-full max-sm:min-h-[48px] max-sm:items-center max-sm:justify-between max-sm:gap-4 max-sm:border-b max-sm:border-border max-sm:no-underline';
@@ -21,7 +21,7 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
 
   return (
     <>
-      <section aria-label="Introduction" className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start lg:items-center pt-6 lg:pt-12 pb-16 lg:pb-24">
+      <section aria-label="Introduction" className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start lg:items-center lg:pt-12 pb-16 lg:pb-24">
         <div className="relative lg:col-span-7">
           <div
             className={cn('transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]', writing && 'pointer-events-none -translate-y-2 opacity-0')}
@@ -51,6 +51,9 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
               <Link to="/about" className={MORE_LINK}>
                 About me<ArrowRight className={MORE_ICON} aria-hidden="true" />
               </Link>
+              <Link to="/play" className={MORE_LINK}>
+                Play<ArrowRight className={MORE_ICON} aria-hidden="true" />
+              </Link>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className={MORE_LINK}>
                 Résumé<ArrowUpRight className={MORE_ICON} aria-hidden="true" />
               </a>
@@ -69,14 +72,7 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
 
         {/* Phones: the portrait spans the text column above it, same left and right edges. */}
         <figure className="lg:col-span-5 lg:justify-self-end w-full sm:max-w-sm">
-          <img
-            src="/images/amaan-portrait.webp"
-            {...imageSize('/images/amaan-portrait.webp')}
-            alt="Amaan Khan"
-            className="w-full aspect-[4/5] object-cover rounded-xl"
-            loading={first ? 'eager' : 'lazy'}
-            decoding="async"
-          />
+          <PortraitSwap className="aspect-[4/5] rounded-xl" eager={first} />
           <figcaption className="mt-2 font-mono text-xs text-text-tertiary">Hyderabad, India. Open to roles across India.</figcaption>
         </figure>
       </section>

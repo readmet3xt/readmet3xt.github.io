@@ -76,7 +76,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
     <SidebarProvider isOpen={sidebarOpen}>
       <div className="text-text-primary bg-bg-primary">
         {/* Top bar: name on the left, menu toggle on the right (the sidebar opens from the right). */}
-        <header className="group/header fixed top-0 inset-x-0 z-20 h-16 flex items-center justify-between px-4 lg:px-6 pointer-events-none">
+        <header className="group/header fixed top-0 inset-x-0 z-20 h-16 flex items-center justify-between px-4 sm:px-6 pointer-events-none">
           <div
             aria-hidden="true"
             className={cn(
@@ -107,7 +107,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
           <SidebarToggle
             isOpen={sidebarOpen}
             onClick={() => setOpen(!sidebarOpen)}
-            className={cn('relative pointer-events-auto', sidebarOpen && 'lg:invisible')}
+            className={cn('relative pointer-events-auto max-lg:-mr-3', sidebarOpen && 'lg:invisible')}
           />
         </header>
 
@@ -125,7 +125,9 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
           <div className={cn("w-full min-h-screen transition-[padding] duration-200", sidebarOpen ? "lg:pr-80" : "lg:pr-0")}>
             <main
               className={cn(
-                "px-4 sm:px-6 lg:px-12 xl:px-16 pt-24 pb-16 lg:pt-20 max-w-7xl mx-auto",
+                // Below lg the first line of a page shares the menu button's row (centred on its 32px
+                // midline); a page that opens with a full-width box adds TOP_BOX (lib/layout).
+                "px-4 sm:px-6 lg:px-12 xl:px-16 pt-[22px] pb-16 lg:pt-20 max-w-7xl mx-auto",
                 className
               )}
             >

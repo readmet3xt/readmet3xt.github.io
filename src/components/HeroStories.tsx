@@ -3,6 +3,7 @@ import { Pause, Play } from 'lucide-react';
 import { usePhone } from '@/hooks/use-phone';
 import { MotionStage } from '@/motion/MotionStage';
 import { HERO_STORIES, STORY_SIZE } from '@/motion/registry';
+import { TOP_BOX } from '@/lib/layout';
 
 export const STORIES_KEY = 'storiesPlayed';
 
@@ -73,7 +74,7 @@ export const HeroStories = ({ onDone }: { onDone: (done: StoriesDone) => void })
       style={{ gridTemplateRows: closing ? '0fr' : '1fr', opacity: closing ? 0 : 1 }}
     >
       <section ref={section} aria-label="Three short stories about my work" className="min-h-0 overflow-hidden">
-        <div className="pb-14 lg:pb-20">
+        <div className={`${TOP_BOX} pb-14 lg:pb-20`}>
           <div className="overflow-hidden rounded-2xl border border-border bg-bg-primary">
             <MotionStage
               key={`${index}-${run}-${phone ? 'tall' : 'wide'}`}
@@ -130,7 +131,7 @@ export const HeroStories = ({ onDone }: { onDone: (done: StoriesDone) => void })
           <p className="mt-1 font-mono text-xs text-text-tertiary sm:hidden">{story.title}</p>
         </div>
         {/* The divider above the intro, and the extra space it needs below the stories, fold away with them. */}
-        <div className="border-t border-border pt-8" aria-hidden="true" />
+        <div className="border-t border-border pt-14 lg:pt-8" aria-hidden="true" />
       </section>
     </div>
   );

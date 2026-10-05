@@ -3,8 +3,9 @@ import { SEO } from '@/components/SEO';
 import { TimelineItem } from '@/components/TimelineItem';
 import { CertificatesCarousel } from '@/components/CertificatesCarousel';
 import { Recommendations } from '@/components/Recommendations';
-import { imageSize } from '@/lib/imageSize';
 import { PathStory } from '@/components/PathStory';
+import { PortraitSwap } from '@/components/PortraitSwap';
+import { TOP_BOX } from '@/lib/layout';
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
   <h2 className="text-3xl sm:text-4xl mb-8">{children}</h2>
@@ -15,7 +16,7 @@ export const About = () => (
     <SEO title="About" />
 
     {/* My path so far, in motion */}
-    <div className="mb-14">
+    <div className={`${TOP_BOX} mb-14`}>
       <PathStory />
     </div>
 
@@ -73,13 +74,7 @@ export const About = () => (
         </div>
 
         <figure className="md:col-span-2">
-          <img
-            src="/images/amaan-portrait.webp"
-            {...imageSize('/images/amaan-portrait.webp')}
-            alt="Amaan Khan"
-            className="w-full max-w-sm h-auto rounded-sm object-cover"
-            decoding="async"
-          />
+          <PortraitSwap className="aspect-square max-w-sm rounded-sm" />
         </figure>
       </div>
     </section>

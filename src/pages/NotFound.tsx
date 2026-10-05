@@ -15,7 +15,7 @@ const NotFound = () => {
   return (
     <PageLayout>
       <SEO title="Page not found" description="This page doesn't exist. The work is all still here." />
-      <div className="min-h-[50vh] grid gap-10 py-12 lg:grid-cols-2 lg:items-center">
+      <div className="min-h-[50vh] grid gap-10 pb-12 lg:pt-12 lg:grid-cols-2 lg:items-center">
         <div className="max-w-[50ch] lg:order-2">
         <p className="font-mono text-xs text-text-tertiary mb-3">404 · not on the map</p>
         <h1 className="text-5xl mb-4">This page doesn't exist</h1>
