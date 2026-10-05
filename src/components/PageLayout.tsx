@@ -47,6 +47,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
   // At the top of a page only the menu button shows; the bar and the name slide
   // in once the visitor scrolls. Pages too short to scroll show the whole bar,
   // and keyboard focus on the name (not a tap or click) also brings it in.
+  // While the sidebar is open the bar and name hide: the sidebar carries the name.
   const [showHeader, setShowHeader] = useState(false);
   useEffect(() => {
     let raf = 0;
@@ -69,7 +70,7 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
       if (raf) cancelAnimationFrame(raf);
     };
   }, [pathname]);
-  const headerVisible = showHeader || sidebarOpen;
+  const headerVisible = showHeader && !sidebarOpen;
 
   return (
     <SidebarProvider isOpen={sidebarOpen}>
