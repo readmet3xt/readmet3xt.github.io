@@ -129,6 +129,8 @@ export const HeroStories = ({ onDone }: { onDone: (done: StoriesDone) => void })
           </div>
           <p className="mt-1 font-mono text-xs text-text-tertiary sm:hidden">{story.title}</p>
         </div>
+        {/* The divider above the intro, and the extra space it needs below the stories, fold away with them. */}
+        <div className="border-t border-border pt-8" aria-hidden="true" />
       </section>
     </div>
   );

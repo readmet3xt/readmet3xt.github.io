@@ -1,10 +1,15 @@
 import { lazy, Suspense, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, ArrowUpRight, Play } from 'lucide-react';
 import { DECK_URL, DECK_TITLE, DECK_AUDIO_URL, PRESENTATION_CUES } from '@/data/presentation';
 import { imageSize } from '@/lib/imageSize';
 import { cn } from '@/lib/utils';
 import { RotatingGreeting } from '@/components/RotatingGreeting';
 import { SayHi } from '@/components/SayHi';
+
+// Phones: full-width rows under the buttons. Larger screens: a line of links.
+const MORE_LINK = 'link-ink max-sm:flex max-sm:w-full max-sm:min-h-[48px] max-sm:items-center max-sm:justify-between max-sm:gap-4 max-sm:border-b max-sm:border-border max-sm:no-underline';
+const MORE_ICON = 'h-4 w-4 shrink-0 text-text-tertiary sm:hidden';
 
 // The deck viewer only loads when someone asks for it.
 const PresentationModal = lazy(() => import('@/components/PresentationModal').then((m) => ({ default: m.PresentationModal })));
@@ -16,7 +21,7 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
 
   return (
     <>
-      <section aria-label="Introduction" className={cn('grid gap-10 lg:grid-cols-12 lg:gap-12 items-start lg:items-center pb-16 lg:pb-24', first ? 'pt-6 lg:pt-12' : 'border-t border-border pt-14 lg:pt-20')}>
+      <section aria-label="Introduction" className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start lg:items-center pt-6 lg:pt-12 pb-16 lg:pb-24">
         <div className="relative lg:col-span-7">
           <div
             className={cn('transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]', writing && 'pointer-events-none -translate-y-2 opacity-0')}
@@ -42,11 +47,16 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
               <a href="#work" className="btn-ink justify-center">See the work</a>
               <button type="button" onClick={() => setWriting(true)} className="btn-outline justify-center">Say hi</button>
             </div>
-            {/* On phones the links span the button pair, so both rows share the same left and right edges. */}
-            <nav aria-label="More about me" className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-sm sm:justify-start sm:gap-x-6">
-              <Link to="/about" className="link-ink">About me</Link>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="link-ink">Résumé</a>
-              <button type="button" onClick={() => setDeckOpen(true)} className="link-ink">Watch the presentation</button>
+            <nav aria-label="More about me" className="mt-6 flex flex-col border-t border-border sm:mt-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2 sm:border-0 sm:text-sm">
+              <Link to="/about" className={MORE_LINK}>
+                About me<ArrowRight className={MORE_ICON} aria-hidden="true" />
+              </Link>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className={MORE_LINK}>
+                Résumé<ArrowUpRight className={MORE_ICON} aria-hidden="true" />
+              </a>
+              <button type="button" onClick={() => setDeckOpen(true)} className={`${MORE_LINK} text-left`}>
+                Watch the presentation<Play className={MORE_ICON} aria-hidden="true" />
+              </button>
             </nav>
           </div>
 

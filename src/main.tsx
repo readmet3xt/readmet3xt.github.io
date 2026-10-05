@@ -14,4 +14,10 @@ window.addEventListener('vite:preloadError', () => {
   window.location.reload();
 });
 
+// A reload starts at the top of the page: the browser doesn't restore the old
+// scroll position, and a #section left in the URL (from "See the work") is dropped.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+if (navigation?.type === 'reload' && location.hash) history.replaceState(history.state, '', location.pathname + location.search);
+
 createRoot(document.getElementById("root")!).render(<App />);
