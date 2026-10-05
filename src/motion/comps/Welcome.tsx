@@ -1,17 +1,19 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from '../core';
-import { TRAVEL, fadeUp, mix, tween } from '../helpers';
+import { TRAVEL, mix, span, tween } from '../helpers';
 import type { LookProps } from '../theme';
 
-// First-visit welcome (5 s). A service blueprint draws itself, a blue "you are
-// here" dot walks the customer lane, the lanes fold into one baseline, and the
-// dot writes "i'm amaan" along it before settling as the full stop.
-// Works at any size: pass the visitor's screen as the composition size.
+// First-visit welcome (about 3.7 s): sketch to built. The greeting is drawn
+// first as a wireframe (layout grid, outline type, grey placeholder bars,
+// button outlines, spacing redlines). Then a build line sweeps across with the
+// red "you are here" dot riding it; behind it everything becomes real. The dot
+// lands as the full stop of "i'm amaan". Works at any size: pass the visitor's
+// screen as the composition size.
 
-export const WELCOME_FRAMES = 150;
+export const WELCOME_FRAMES = 112;
 
-const LANES = ['customer', 'frontstage', 'backstage', 'support'];
-const TICKS = 5;
+const ROLE = 'Service & Product Designer';
+const BUTTONS = ['See the work', 'Say hi'];
 
 export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const f = useCurrentFrame();
@@ -20,116 +22,150 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const u = Math.min(W / 1280, H / 800);
   const size = portrait ? W * 0.15 : Math.min(118 * u, W * 0.1);
   const dot = Math.max(8, size * 0.17);
+  const lead = size * 1.04;
+  const roleSize = Math.max(12, size * 0.19);
+  const btnH = Math.max(34, size * 0.52);
+  const btnText = Math.max(12, size * 0.16);
+  const label = Math.max(10, size * 0.12);
 
-  // Measure where the name and its full stop land, so the dot can travel to them.
-  const block = useRef<HTMLDivElement>(null);
-  const name = useRef<HTMLSpanElement>(null);
-  const stop = useRef<HTMLSpanElement>(null);
-  const [m, setM] = useState({ nameLeft: W * 0.35, nameW: W * 0.3, stopX: W * 0.66, baseY: H * 0.55 });
+  // Measure the name so the block can be centred and the full stop placed.
+  const nameRef = useRef<SVGTextElement>(null);
+  const [nameW, setNameW] = useState(size * 4.6);
   useLayoutEffect(() => {
     const measure = () => {
-      if (!block.current || !name.current || !stop.current) return;
-      const bx = block.current.offsetLeft;
-      const by = block.current.offsetTop;
-      setM({
-        nameLeft: bx + name.current.offsetLeft,
-        nameW: name.current.offsetWidth,
-        stopX: bx + stop.current.offsetLeft + dot / 2,
-        baseY: by + stop.current.offsetTop + dot,
-      });
+      if (nameRef.current) setNameW(nameRef.current.getComputedTextLength());
     };
     measure();
     document.fonts?.ready.then(measure);
-  }, [fonts.display, size, dot, W, H]);
+  }, [size, fonts.display]);
 
-  const laneLeft = portrait ? W * 0.08 : W * 0.16;
-  const laneRight = W - laneLeft;
-  const laneGap = portrait ? 46 * (W / 390) * 0.9 : 58 * u;
-  const laneY = (i: number) => H * 0.5 + (i - 1.5) * laneGap;
-  // Lane labels sit clear above their line, and the touchpoints start after
-  // the longest label ("frontstage"), so nothing crosses the words.
-  const labelSize = Math.max(11, 13 * u);
-  const tickLeft = laneLeft + labelSize * 0.62 * 10 + 16;
+  // Layout of the greeting block, relative to its top-left corner.
+  const btnPad = btnH * 0.62;
+  const btnW = BUTTONS.map((b) => b.length * btnText * 0.56 + btnPad * 2);
+  const btnGap = btnH * 0.3;
+  const stopX = nameW + dot * 0.35 + dot / 2;
+  const blockW = Math.max(stopX + dot / 2, btnW[0] + btnGap + btnW[1]);
+  const base1 = size * 0.9;
+  const base2 = base1 + lead;
+  const roleBase = base2 + size * 0.6;
+  const btnTop = roleBase + size * 0.42;
+  const blockH = btnTop + btnH;
+  const left = (W - blockW) / 2;
+  const top = (H - blockH) / 2;
+  const X = (x: number) => left + x;
+  const Y = (y: number) => top + y;
 
-  // Lanes fold onto the baseline between frames 58 and 82.
-  const fold = tween(f, 58, 24);
-  const baselineOut = tween(f, 112, 18);
+  // Timing.
+  const guides = tween(f, 0, 16);
+  const draw = tween(f, 6, 34, 0, 1, (t) => t);
+  const marks = tween(f, 24, 12);
+  const sweep = tween(f, 42, 40, 0, 1, TRAVEL);
+  const out = tween(f, 80, 14);
+  const sx = mix(X(-size * 0.45), X(blockW + size * 0.45), sweep);
+  const sweepOn = span(f, 40, 84, 6);
 
-  // The dot: walk the customer lane, drop to the baseline, write the name.
-  const appear = tween(f, 22, 10);
-  const walk = tween(f, 24, 36, 0, 1, TRAVEL);
-  const drop = tween(f, 60, 18);
-  const write = tween(f, 78, 34, 0, 1, TRAVEL);
-  const dotX = f < 78 ? mix(laneLeft - dot - 4, m.nameLeft, walk) : mix(m.nameLeft, m.stopX, write);
-  const dotY = mix(laneY(0), m.baseY - dot / 2, drop);
-  const settle = 1 + 0.18 * Math.sin(Math.PI * tween(f, 112, 10));
+  // The dot rides the top of the build line, then drops into the full stop.
+  const lineTop = Y(-size * 0.55);
+  const land = tween(f, 84, 14, 0, 1, TRAVEL);
+  const stop = { x: X(stopX), y: Y(base2 - dot / 2) };
+  const dotX = f < 84 ? sx : mix(sx, stop.x, land);
+  const dotY = f < 84 ? lineTop : mix(lineTop, stop.y, land) - Math.sin(Math.PI * land) * size * 0.35;
+  const settle = 1 + 0.2 * Math.sin(Math.PI * tween(f, 98, 10));
+  const dotOn = tween(f, 38, 8);
 
-  // Letters appear behind the dot's trailing edge, so the dot never covers them.
-  const revealed = f < 78 ? 0 : Math.max(0, dotX - dot / 2 - 2 - m.nameLeft);
-  const clipRight = write >= 1 ? 0 : Math.max(0, m.nameW - revealed);
+  const D = size * 3.2; // dash length for drawing each glyph's outline
+  const heading = { fontFamily: fonts.display, fontWeight: fonts.displayWeight, fontSize: size, letterSpacing: `${fonts.displayTracking}em` };
+  const roleW = ROLE.length * roleSize * 0.6;
+  const columns = [0, 1 / 3, 2 / 3, 1];
+
+  // One copy of the greeting: as a sketch, or as built.
+  const greeting = (built: boolean) => (
+    <g>
+      <text x={X(0)} y={Y(base1)} style={heading} fill={built ? p.muted : 'none'} stroke={built ? 'none' : p.muted} strokeWidth={1.2} strokeDasharray={built ? undefined : D} strokeDashoffset={built ? undefined : D * (1 - draw)}>
+        hi.
+      </text>
+      <text ref={built ? nameRef : undefined} x={X(0)} y={Y(base2)} style={heading} fill={built ? p.ink : 'none'} stroke={built ? 'none' : p.muted} strokeWidth={1.2} strokeDasharray={built ? undefined : D} strokeDashoffset={built ? undefined : D * (1 - draw)}>
+        i’m amaan
+      </text>
+      {built ? (
+        <text x={X(0)} y={Y(roleBase)} style={{ fontFamily: fonts.mono, fontSize: roleSize }} fill={p.muted}>
+          {ROLE}
+        </text>
+      ) : (
+        <rect x={X(0)} y={Y(roleBase - roleSize * 0.78)} width={roleW * draw} height={roleSize * 0.9} rx={3} fill={p.line} />
+      )}
+      {BUTTONS.map((b, i) => {
+        const bx = X(i ? btnW[0] + btnGap : 0);
+        const solid = built && i === 0;
+        return (
+          <g key={b}>
+            <rect
+              x={bx}
+              y={Y(btnTop)}
+              width={btnW[i]}
+              height={btnH}
+              rx={btnH / 2}
+              fill={solid ? p.ink : 'none'}
+              stroke={solid ? 'none' : built ? p.line : p.muted}
+              strokeWidth={1.2}
+              strokeDasharray={built ? undefined : btnW[i] * 3}
+              strokeDashoffset={built ? undefined : btnW[i] * 3 * (1 - draw)}
+            />
+            {built ? (
+              <text x={bx + btnW[i] / 2} y={Y(btnTop + btnH / 2 + btnText * 0.36)} textAnchor="middle" style={{ fontFamily: fonts.text, fontSize: btnText, fontWeight: 600 }} fill={solid ? p.bg : p.ink}>
+                {b}
+              </text>
+            ) : (
+              <rect x={bx + btnPad} y={Y(btnTop + btnH / 2 - 3)} width={(btnW[i] - btnPad * 2) * draw} height={6} rx={3} fill={p.line} />
+            )}
+          </g>
+        );
+      })}
+    </g>
+  );
 
   return (
     <AbsoluteFill style={{ background: p.bg, overflow: 'hidden' }}>
       <svg width={W} height={H} style={{ position: 'absolute', inset: 0 }}>
-        {LANES.map((_, i) => {
-          const draw = tween(f, 4 + i * 4, 26);
-          const y = mix(laneY(i), m.baseY, fold);
-          const opacity = i === 0 ? 1 - baselineOut : 1 - fold;
-          return (
-            <line
-              key={i}
-              x1={laneLeft}
-              x2={mix(laneLeft, laneRight, draw)}
-              y1={y}
-              y2={y}
-              stroke={p.faint}
-              strokeWidth={1}
-              opacity={opacity}
-            />
-          );
-        })}
-        {Array.from({ length: TICKS }, (_, k) => {
-          const x = tickLeft + ((k + 0.5) * (laneRight - tickLeft)) / TICKS;
-          const grow = tween(f, 20 + k * 6, 12);
-          const out = 1 - tween(f, 56, 14);
-          return (
-            <g key={k} opacity={out}>
-              <line x1={x} x2={x} y1={laneY(0)} y2={mix(laneY(0), laneY(3), grow)} stroke={p.faint} strokeWidth={1} opacity={0.7} />
-              <circle cx={x} cy={laneY(0)} r={4 * Math.max(u, 0.6) * grow} fill={p.bg} stroke={p.ink} strokeWidth={1.25} />
-            </g>
-          );
-        })}
+        <defs>
+          <clipPath id="welcome-built">
+            <rect x={0} y={0} width={Math.max(0, sx)} height={H} />
+          </clipPath>
+          <clipPath id="welcome-sketch">
+            <rect x={sx} y={0} width={Math.max(0, W - sx)} height={H} />
+          </clipPath>
+        </defs>
+
+        {/* the layout grid and baselines */}
+        <g opacity={guides * (1 - out)}>
+          {columns.map((c) => (
+            <line key={c} x1={X(blockW * c)} x2={X(blockW * c)} y1={Y(-size * 0.7)} y2={mix(Y(-size * 0.7), Y(blockH + size * 0.7), guides)} stroke={p.line} strokeWidth={1} strokeDasharray="2 6" />
+          ))}
+          {[base1, base2].map((b) => (
+            <line key={b} x1={W * 0.06} x2={mix(W * 0.06, W * 0.94, guides)} y1={Y(b)} y2={Y(b)} stroke={p.line} strokeWidth={1} />
+          ))}
+        </g>
+
+        {/* spacing redlines */}
+        <g opacity={marks * (1 - out)} stroke={p.accent} strokeWidth={1}>
+          <line x1={X(-size * 0.3)} x2={X(-size * 0.3)} y1={Y(base2 + size * 0.14)} y2={Y(roleBase - roleSize * 0.8)} />
+          <line x1={X(-size * 0.38)} x2={X(-size * 0.22)} y1={Y(base2 + size * 0.14)} y2={Y(base2 + size * 0.14)} />
+          <line x1={X(-size * 0.38)} x2={X(-size * 0.22)} y1={Y(roleBase - roleSize * 0.8)} y2={Y(roleBase - roleSize * 0.8)} />
+          <line x1={X(btnW[0])} x2={X(btnW[0] + btnGap)} y1={Y(blockH + size * 0.22)} y2={Y(blockH + size * 0.22)} />
+          <line x1={X(btnW[0])} x2={X(btnW[0])} y1={Y(blockH + size * 0.16)} y2={Y(blockH + size * 0.28)} />
+          <line x1={X(btnW[0] + btnGap)} x2={X(btnW[0] + btnGap)} y1={Y(blockH + size * 0.16)} y2={Y(blockH + size * 0.28)} />
+        </g>
+        <g opacity={marks * (1 - out)} style={{ fontFamily: fonts.mono, fontSize: label }} fill={p.muted}>
+          <text x={X(-size * 0.46)} y={Y((base2 + roleBase) / 2 - roleSize * 0.1)} textAnchor="end">24</text>
+          <text x={X(btnW[0] + btnGap / 2)} y={Y(blockH + size * 0.28 + label * 1.3)} textAnchor="middle">12</text>
+        </g>
+
+        <g clipPath="url(#welcome-sketch)">{greeting(false)}</g>
+        <g clipPath="url(#welcome-built)">{greeting(true)}</g>
+
+        {/* the build line */}
+        <line x1={sx} x2={sx} y1={lineTop} y2={Y(blockH + size * 0.55)} stroke={p.accent} strokeWidth={1.5} opacity={sweepOn} />
       </svg>
-
-      {LANES.map((label, i) => (
-        <div
-          key={label}
-          style={{
-            position: 'absolute',
-            left: laneLeft,
-            top: laneY(i) - dot / 2 - 6 - labelSize * 1.25,
-            fontFamily: fonts.mono,
-            fontSize: labelSize,
-            lineHeight: 1.25,
-            color: p.muted,
-            ...fadeUp(f, 12 + i * 2, { dur: 14, dist: 6, outAt: 52, outDur: 10 }),
-          }}
-        >
-          {label}
-        </div>
-      ))}
-
-      <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <div ref={block} style={{ position: 'relative', fontFamily: fonts.display, fontWeight: fonts.displayWeight, fontSize: size, lineHeight: 1.04, letterSpacing: `${fonts.displayTracking}em` }}>
-          <div style={{ color: p.muted, ...fadeUp(f, 104, { dur: 20, dist: 10 }) }}>hi.</div>
-          <div style={{ whiteSpace: 'nowrap', color: p.ink }}>
-            <span ref={name} style={{ display: 'inline-block', clipPath: `inset(-25% ${clipRight}px -25% 0)` }}>
-              i’m amaan
-            </span>
-            <span ref={stop} style={{ display: 'inline-block', width: dot, height: dot, marginLeft: dot * 0.35 }} />
-          </div>
-        </div>
-      </AbsoluteFill>
 
       <div
         style={{
@@ -140,12 +176,10 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
           height: dot,
           borderRadius: dot,
           background: p.accent,
-          opacity: appear,
-          transform: `scale(${appear * settle})`,
-          boxShadow: `0 0 0 ${tween(f, 22, 30, 0, dot * 1.6)}px ${p.accent}${Math.round((1 - tween(f, 22, 30)) * 60).toString(16).padStart(2, '0')}`,
+          opacity: dotOn,
+          transform: `scale(${dotOn * settle})`,
         }}
       />
     </AbsoluteFill>
   );
 };
-
