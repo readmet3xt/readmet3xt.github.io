@@ -48,7 +48,7 @@ export const CaseStudyMotion = ({ figure, caption, original, size = 'column', cl
         />
       </div>
       <div className="mt-2 flex items-start justify-between gap-4">
-        <figcaption className="pt-1 text-sm text-text-tertiary leading-relaxed">
+        <figcaption className="pt-1 max-w-[60ch] text-sm text-text-tertiary leading-relaxed">
           {caption}
           {originals.length > 0 && (
             <>

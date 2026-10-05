@@ -34,7 +34,7 @@ export const PortraitSwap = ({ className, eager = false }: { className?: string;
       ref={frame}
       type="button"
       aria-label="Portrait of Amaan Khan: show the photo"
-      aria-pressed={shown}
+      aria-pressed={pinned}
       onPointerEnter={(e) => {
         if (e.pointerType !== 'mouse') return;
         if (!pinned) aim(e);

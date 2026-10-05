@@ -53,19 +53,20 @@ export const HeroNumbers: React.FC<LookProps> = ({ palette: p, fonts }) => {
 
   // Layout: side by side on wide screens, stacked on phones.
   const A = portrait
-    ? { x: 40, w: 520, kick: 40, mvp: 82, num: 116, numSize: 88, users: 212, fLabel: 264, fLine: 316, cut: 352, cutSize: 44, cutCap: { x: 170, y: 362 } }
+    ? { x: 40, w: 520, kick: 36, mvp: 76, num: 112, numSize: 88, users: 204, fLabel: 250, fLine: 298, cut: 330, cutSize: 44, cutCap: { x: 178, y: 340 } }
     : { x: 96, w: 480, kick: 96, mvp: 146, num: 186, numSize: 104, users: 300, fLabel: 380, fLine: 438, cut: 482, cutSize: 56, cutCap: { x: 96, y: 548 } };
   const B = portrait
-    ? { x: 40, w: 520, kick: 446, cap: 486, l1: 530, b1: 558, l2: 598, b2: 626, num: 670, numSize: 88, notes: { x: 286, y: 680 } }
+    ? { x: 40, w: 520, kick: 424, cap: 464, l1: 508, b1: 540, l2: 578, b2: 610, num: 650, numSize: 88, notes: { x: 40, y: 746 } }
     : { x: 704, w: 480, kick: 96, cap: 146, l1: 206, b1: 238, l2: 290, b2: 322, num: 386, numSize: 104, notes: { x: 704, y: 506 } };
-  const fz = portrait ? { kick: 20, label: 20, cap: 22, note: 21 } : { kick: 19, label: 19, cap: 24, note: 22 };
+  // Phones show the 600×800 cut at about 0.6, so its text starts at 24 (about 14px on screen).
+  const fz = portrait ? { kick: 24, label: 24, cap: 26, note: 24 } : { kick: 19, label: 19, cap: 24, note: 22 };
   const friction = frictionPath(A.x, A.fLine, A.w, straighten, 0.2, portrait ? 14 : 18);
   const barH = portrait ? 24 : 28;
 
   return (
     <AbsoluteFill style={{ background: p.bg, color: p.ink, fontFamily: fonts.text }}>
       {/* KoinBasket */}
-      {kicker('koinbasket · founding designer', kb, 0, A.x, A.kick, fz.kick)}
+      {kicker('KoinBasket · founding designer', kb, 0, A.x, A.kick, fz.kick)}
       <div style={{ position: 'absolute', left: A.x, top: A.mvp, ...body(fz.cap), ...fadeUp(f, 6, { dur: 14, dist: 8 }) }}>from a one-week MVP</div>
       <div style={{ position: 'absolute', left: A.x - 4, top: A.num, ...display(A.numSize, kb), opacity: tween(f, 14, 8) }}>{users}</div>
       <div style={{ position: 'absolute', left: A.x, top: A.users, ...body(fz.cap + 2), ...fadeUp(f, 24, { dur: 14, dist: 8 }) }}>users</div>
@@ -80,20 +81,20 @@ export const HeroNumbers: React.FC<LookProps> = ({ palette: p, fonts }) => {
         </g>
       </svg>
       <div style={{ position: 'absolute', left: A.x - 2, top: A.cut, ...display(A.cutSize, kb), ...fadeUp(f, 112, { dur: 14, dist: 8 }) }}>−20%</div>
-      <div style={{ position: 'absolute', left: A.cutCap.x, top: A.cutCap.y, width: portrait ? 390 : A.w, ...body(fz.note), ...fadeUp(f, 118, { dur: 14, dist: 8 }) }}>simpler onboarding and payments</div>
+      <div style={{ position: 'absolute', left: A.cutCap.x, top: A.cutCap.y, width: portrait ? 382 : A.w, ...body(fz.note), ...fadeUp(f, 118, { dur: 14, dist: 8 }) }}>simpler onboarding and payments</div>
 
       {/* between the two */}
       <svg width={W} height={H} style={{ position: 'absolute', inset: 0 }}>
         {portrait ? (
-          <line x1={40} x2={mix(40, 560, tween(f, 112, 18))} y1={420} y2={420} stroke={p.line} strokeWidth={1} />
+          <line x1={40} x2={mix(40, 560, tween(f, 112, 18))} y1={398} y2={398} stroke={p.line} strokeWidth={1} />
         ) : (
           <line x1={640} x2={640} y1={96} y2={mix(96, 600, tween(f, 112, 18))} stroke={p.line} strokeWidth={1} />
         )}
       </svg>
 
       {/* LNER App Clip */}
-      {kicker('lner app clip · softwire', lner, 118, B.x, B.kick, fz.kick)}
-      <div style={{ position: 'absolute', left: B.x, top: B.cap, ...body(fz.cap), ...fadeUp(f, 120, { dur: 14, dist: 8 }) }}>checkout time in testing</div>
+      {kicker('LNER App Clip · Softwire', lner, 118, B.x, B.kick, fz.kick)}
+      <div style={{ position: 'absolute', left: B.x, top: B.cap, ...body(fz.cap), ...fadeUp(f, 120, { dur: 14, dist: 8 }) }}>{portrait ? 'checkout time, 9 people tested' : 'checkout time in testing'}</div>
       <div style={{ position: 'absolute', left: B.x, top: B.l1, ...mono(fz.label), ...fadeUp(f, 124, { dur: 12, dist: 6 }) }}>before</div>
       <div style={{ position: 'absolute', left: B.x, top: B.l2, ...mono(fz.label), ...fadeUp(f, 150, { dur: 12, dist: 6 }) }}>after</div>
       <svg width={W} height={H} style={{ position: 'absolute', inset: 0 }}>
@@ -105,8 +106,8 @@ export const HeroNumbers: React.FC<LookProps> = ({ palette: p, fonts }) => {
         </g>
       </svg>
       <div style={{ position: 'absolute', left: B.x - 4, top: B.num, ...display(B.numSize, lner), ...fadeUp(f, 176, { dur: 14, dist: 10 }) }}>−40%</div>
-      <div style={{ position: 'absolute', left: B.notes.x, top: B.notes.y, ...body(fz.note), ...fadeUp(f, 186, { dur: 14, dist: 8 }) }}>9 people tested</div>
-      <div style={{ position: 'absolute', left: B.notes.x, top: B.notes.y + (portrait ? 32 : 34), ...body(fz.note), ...fadeUp(f, 196, { dur: 14, dist: 8 }) }}>passed National Rail review</div>
+      {!portrait && <div style={{ position: 'absolute', left: B.notes.x, top: B.notes.y, ...body(fz.note), ...fadeUp(f, 186, { dur: 14, dist: 8 }) }}>9 people tested</div>}
+      <div style={{ position: 'absolute', left: B.notes.x, top: B.notes.y + (portrait ? 0 : 34), ...body(fz.note), ...fadeUp(f, 190, { dur: 14, dist: 8 }) }}>passed National Rail review</div>
     </AbsoluteFill>
   );
 };

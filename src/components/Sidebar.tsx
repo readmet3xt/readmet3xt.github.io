@@ -28,7 +28,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   };
 
   const linkClass = (active: boolean) =>
-    `sidebar-link block px-3 py-2 min-h-[40px] text-sm ${active ? 'active font-medium text-text-primary' : 'text-text-secondary'}`;
+    `sidebar-link flex items-center px-3 py-2 min-h-[44px] text-sm ${active ? 'active font-medium text-text-primary' : 'text-text-secondary'}`;
 
   // visibility (not aria-hidden) takes a closed sidebar's links out of the tab
   // order; it transitions with transform, so the slide-out still plays.

@@ -27,7 +27,7 @@ export const HeroSection = ({ first = false }: { first?: boolean }) => {
             className={cn('transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]', writing && 'pointer-events-none -translate-y-2 opacity-0')}
             aria-hidden={writing}
           >
-            <h1 className="text-6xl sm:text-7xl leading-[1.02]" aria-label="hi, I'm Amaan">
+            <h1 className="text-[clamp(3rem,15.5vw,3.75rem)] sm:text-7xl leading-[1.02]" aria-label="hi, I'm Amaan">
               <span aria-hidden="true"><RotatingGreeting /><br />i’m amaan<span className="text-accent-primary">.</span></span>
             </h1>
             <p className="mt-5 font-mono text-sm text-text-tertiary">Amaan Khan · Service &amp; Product Designer</p>

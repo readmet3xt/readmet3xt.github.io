@@ -60,12 +60,12 @@ export const Play = () => {
   return (
     <PageLayout>
       <SEO
-        title="Playground"
+        title="Play"
         description="Side projects, interface studies and drawings by Amaan Khan."
       />
       <BackLink to="/#work" label="All work" />
       <header className="mb-12 max-w-[60ch]">
-        <h1 className="text-5xl mb-4">Playground</h1>
+        <h1 className="text-5xl mb-4">Play</h1>
         <p className="text-lg text-text-secondary">
           What I make with no client and no brief: side projects I design and build, interface studies,
           and the drawing I do when I'm not designing.

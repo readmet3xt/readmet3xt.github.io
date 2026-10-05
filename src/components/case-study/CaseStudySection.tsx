@@ -18,7 +18,7 @@ interface CaseStudySectionProps {
 export const CaseStudySection = ({ children, title, subtitle, className = '', id }: CaseStudySectionProps) => (
   <section id={id} className={`case-study-section scroll-mt-32 space-y-5 ${className}`}>
     {(title || subtitle) && (
-      <div className="max-w-[68ch] space-y-2">
+      <div className="max-w-[60ch] space-y-2">
         {title && <h2 className="text-3xl">{title}</h2>}
         {subtitle && <p className="text-lg text-text-secondary">{subtitle}</p>}
       </div>
@@ -34,7 +34,7 @@ interface CaseStudyParagraphProps {
 }
 
 export const CaseStudyParagraph = ({ children, className = '', lead = false }: CaseStudyParagraphProps) => (
-  <p className={`max-w-[68ch] leading-relaxed ${lead ? 'text-lg text-text-primary' : 'text-text-secondary'} ${className}`}>
+  <p className={`max-w-[60ch] leading-relaxed ${lead ? 'text-lg text-text-primary' : 'text-text-secondary'} ${className}`}>
     {children}
   </p>
 );
@@ -70,7 +70,7 @@ interface CaseStudyListProps {
 export const CaseStudyList = ({ items, ordered = false, className = '' }: CaseStudyListProps) => {
   const ListTag = ordered ? 'ol' : 'ul';
   return (
-    <ListTag className={`max-w-[68ch] pl-5 space-y-2 text-text-secondary ${ordered ? 'list-decimal' : 'list-disc'} marker:text-text-tertiary ${className}`}>
+    <ListTag className={`max-w-[60ch] pl-5 space-y-2 text-text-secondary ${ordered ? 'list-decimal' : 'list-disc'} marker:text-text-tertiary ${className}`}>
       {items.map((item, i) => (
         <li key={i} className="pl-1">
           {typeof item === 'string' ? item : (
@@ -130,7 +130,7 @@ export const CaseStudyImage = ({
       decoding="async"
       onClick={() => openLightbox(src)}
     />
-    {caption && <figcaption className="mt-3 max-w-[68ch] text-sm text-text-tertiary leading-relaxed">{caption}</figcaption>}
+    {caption && <figcaption className="mt-3 max-w-[60ch] text-sm text-text-tertiary leading-relaxed">{caption}</figcaption>}
   </figure>
 );
 

@@ -82,7 +82,7 @@ export const PageLayout = ({ children, className = '', menuAlign }: PageLayoutPr
     <SidebarProvider isOpen={sidebarOpen}>
       <div className="text-text-primary bg-bg-primary">
         {/* Top bar: name on the left, menu toggle on the right (the sidebar opens from the right). */}
-        <header className="group/header fixed top-0 inset-x-0 z-20 h-16 flex items-center justify-between px-4 sm:px-6 pointer-events-none">
+        <header className="group/header fixed top-0 inset-x-0 z-20 h-16 pointer-events-none">
           <div
             aria-hidden="true"
             className={cn(
@@ -91,34 +91,37 @@ export const PageLayout = ({ children, className = '', menuAlign }: PageLayoutPr
               headerVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 group-has-[a:focus-visible]/header:translate-y-0 group-has-[a:focus-visible]/header:opacity-100',
             )}
           />
-          {/* The whole bar, up to the menu button, goes home; on the home page it goes back to the top. */}
-          <Link
-            to="/"
-            aria-label="Amaan Khan, home"
-            onClick={(e) => {
-              if (pathname !== '/') return;
-              e.preventDefault();
-              const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-              window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-            }}
-            className={cn(
-              'group relative flex-1 self-stretch flex items-center lg:pl-6 transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]',
-              headerVisible ? 'pointer-events-auto' : '-translate-y-1 opacity-0 focus-visible:translate-y-0 focus-visible:opacity-100',
-            )}
-          >
-            <span className="text-lg font-semibold tracking-tight text-text-primary group-hover:text-accent-primary transition-colors">
-              Amaan Khan
-            </span>
-          </Link>
-          <SidebarToggle
-            isOpen={sidebarOpen}
-            onClick={() => setOpen(!sidebarOpen)}
-            className={cn(
-              'relative pointer-events-auto max-lg:-mr-3 transition-[transform,background-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-has-[a:focus-visible]/header:translate-y-0',
-              !headerVisible && !sidebarOpen && menuAlign,
-              sidebarOpen && 'lg:invisible',
-            )}
-          />
+          {/* The name and the menu button sit on the page's own container, so they line up with its content. */}
+          <div className="relative mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-16">
+            {/* The whole bar, up to the menu button, goes home; on the home page it goes back to the top. */}
+            <Link
+              to="/"
+              aria-label="Amaan Khan, home"
+              onClick={(e) => {
+                if (pathname !== '/') return;
+                e.preventDefault();
+                const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+              }}
+              className={cn(
+                'group relative flex-1 self-stretch flex items-center transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]',
+                headerVisible ? 'pointer-events-auto' : '-translate-y-1 opacity-0 focus-visible:translate-y-0 focus-visible:opacity-100',
+              )}
+            >
+              <span className="text-lg font-semibold tracking-tight text-text-primary group-hover:text-accent-primary transition-colors">
+                Amaan Khan
+              </span>
+            </Link>
+            <SidebarToggle
+              isOpen={sidebarOpen}
+              onClick={() => setOpen(!sidebarOpen)}
+              className={cn(
+                'relative pointer-events-auto -mr-3 transition-[transform,background-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-has-[a:focus-visible]/header:translate-y-0',
+                !headerVisible && !sidebarOpen && menuAlign,
+                sidebarOpen && 'lg:invisible',
+              )}
+            />
+          </div>
         </header>
 
         {sidebarOpen && (

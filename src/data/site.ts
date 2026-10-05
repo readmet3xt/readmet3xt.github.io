@@ -34,7 +34,7 @@ export const ROUTES: RouteMeta[] = [
   },
   {
     path: '/play',
-    title: 'Playground',
+    title: 'Play',
     description: 'Side projects, interface studies and drawings by Amaan Khan.',
   },
   ...PROJECTS.map((p) => ({ path: p.href, title: p.seoTitle, description: p.seoDescription, noindex: p.hidden })),

@@ -29,7 +29,7 @@ export const HeroOrgs: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const body = (size: number) => ({ fontFamily: fonts.text, fontSize: size, color: p.muted, lineHeight: 1.3 });
 
   const L = portrait
-    ? { left: 40, head: 48, headSize: 34, headW: 520, top: 176, step: 200, nameSize: 26, evSize: 20, outSize: 21 }
+    ? { left: 40, head: 40, headSize: 34, headW: 520, top: 140, step: 216, nameSize: 30, evSize: 24, outSize: 24 }
     : { left: 96, head: 76, headSize: 44, headW: 1000, top: 212, step: 156, nameSize: 30, evSize: 19, outSize: 22 };
 
   return (
@@ -46,25 +46,27 @@ export const HeroOrgs: React.FC<LookProps> = ({ palette: p, fonts }) => {
         const top = L.top + i * L.step;
 
         if (portrait) {
-          // project above, a short drop, then the organisation
-          const y1 = top + 74;
-          const y2 = top + 108;
+          // one card per project: the research above a hairline, the organisation below it
+          const lineY = top + 100;
+          const x1 = L.left + 8;
+          const x2 = 552;
           return (
             <div key={r.project}>
-              <div style={{ position: 'absolute', left: L.left, top, display: 'flex', alignItems: 'center', gap: 12, ...fadeUp(f, at, { dur: 14, dist: 10 }) }}>
+              <div style={{ position: 'absolute', left: 24, top, width: 552, height: 200, borderRadius: 18, background: p.panel, border: `1px solid ${p.line}`, boxSizing: 'border-box', ...fadeUp(f, at, { dur: 14, dist: 10 }) }} />
+              <div style={{ position: 'absolute', left: L.left + 8, top: top + 18, display: 'flex', alignItems: 'center', gap: 12, ...fadeUp(f, at, { dur: 14, dist: 10 }) }}>
                 <span style={{ width: 12, height: 12, borderRadius: 6, background: color }} />
                 <span style={name(L.nameSize)}>{r.project}</span>
               </div>
-              <div style={{ position: 'absolute', left: L.left, top: top + 38, ...mono(L.evSize), ...fadeUp(f, at + 4, { dur: 14, dist: 8 }) }}>{r.evidence}</div>
+              <div style={{ position: 'absolute', left: L.left + 8, top: top + 56, ...mono(L.evSize), ...fadeUp(f, at + 4, { dur: 14, dist: 8 }) }}>{r.evidence}</div>
               <svg width={W} height={H} style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-                <line x1={L.left + 6} x2={L.left + 6} y1={y1} y2={mix(y1, y2, travel)} stroke={color} strokeWidth={2} />
-                <circle cx={L.left + 6} cy={mix(y1, y2, travel)} r={6} fill={color} opacity={travel > 0 ? 1 - arrived : 0} />
+                <line x1={x1} x2={mix(x1, x2, travel)} y1={lineY} y2={lineY} stroke={color} strokeWidth={2} />
+                <circle cx={mix(x1, x2, travel)} cy={lineY} r={6} fill={color} opacity={travel > 0 ? 1 - arrived : 0} />
               </svg>
-              <div style={{ position: 'absolute', left: L.left, top: top + 118, display: 'flex', alignItems: 'center', gap: 14, ...fadeUp(f, at + 28, { dur: 14, dist: 10 }) }}>
+              <div style={{ position: 'absolute', left: L.left + 8, top: top + 114, display: 'flex', alignItems: 'center', gap: 14, ...fadeUp(f, at + 28, { dur: 14, dist: 10 }) }}>
                 <span style={name(L.nameSize)}>{r.org}</span>
-                {r.badge && <span style={{ ...mono(18, p.ink), border: `1px solid ${p.line}`, borderRadius: 999, padding: '4px 12px', ...fadeUp(f, at + 40, { dur: 12, dist: 6 }) }}>{r.badge}</span>}
+                {r.badge && <span style={{ ...mono(21, p.ink), border: `1px solid ${p.line}`, borderRadius: 999, padding: '3px 10px', ...fadeUp(f, at + 40, { dur: 12, dist: 6 }) }}>{r.badge}</span>}
               </div>
-              <div style={{ position: 'absolute', left: L.left, top: top + 154, width: 520, ...body(L.outSize), ...fadeUp(f, at + 32, { dur: 14, dist: 8 }) }}>{r.outcome}</div>
+              <div style={{ position: 'absolute', left: L.left + 8, top: top + 152, width: 504, ...body(L.outSize), ...fadeUp(f, at + 32, { dur: 14, dist: 8 }) }}>{r.outcome}</div>
             </div>
           );
         }

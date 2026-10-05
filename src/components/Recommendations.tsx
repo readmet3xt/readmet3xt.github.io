@@ -55,8 +55,8 @@ export const Recommendations = ({ showTitle = true }: RecommendationsProps) => (
         </figure>
       ))}
     </div>
-    <p className="mt-8 text-sm">
-      <a href="https://www.linkedin.com/in/readmetxt/details/recommendations/" target="_blank" rel="noopener noreferrer" className="link-ink">
+    <p className="mt-6 text-sm">
+      <a href="https://www.linkedin.com/in/readmetxt/details/recommendations/" target="_blank" rel="noopener noreferrer" className="link-ink inline-flex min-h-[44px] items-center">
         Read them on LinkedIn ↗
       </a>
     </p>

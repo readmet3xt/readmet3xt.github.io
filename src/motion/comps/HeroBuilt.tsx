@@ -33,6 +33,9 @@ export const HeroBuilt: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const { width: W, height: H } = useVideoConfig();
   const portrait = H > W;
   const accent = readableOn(PROJECT_COLORS['/otagon'], p.bg, 3);
+  // Phones show the 600×800 cut at about 0.6, so its text starts at 24 (about 14px on screen).
+  const ls = portrait ? 24 : 20;
+  const chip = portrait ? 22 : 18;
 
   const sketch = tween(f, 2, 40);
   const solid = tween(f, 56, 18);
@@ -80,7 +83,7 @@ export const HeroBuilt: React.FC<LookProps> = ({ palette: p, fonts }) => {
         <rect x={MONITOR.x + 18} y={MONITOR.y + 22} width={110} height={10} rx={5} fill={p.line} />
         <rect x={MONITOR.x + 18} y={MONITOR.y + 44} width={150} height={10} rx={5} fill={p.line} />
         <rect x={MONITOR.x + MONITOR.w - 66} y={MONITOR.y + MONITOR.h - 50} width={48} height={32} rx={6} fill={p.bg} stroke={accent} strokeWidth={1.5} />
-        <text x={MONITOR.x + MONITOR.w - 42} y={MONITOR.y + MONITOR.h - 27} textAnchor="middle" style={{ fontFamily: fonts.mono, fontSize: 18 }} fill={p.ink}>F1</text>
+        <text x={MONITOR.x + MONITOR.w - 42} y={MONITOR.y + MONITOR.h - 27} textAnchor="middle" style={{ fontFamily: fonts.mono, fontSize: chip }} fill={p.ink}>F1</text>
       </g>
       <rect x={MONITOR.x + MONITOR.w / 2 - 20} y={MONITOR.y + MONITOR.h} width={40} height={22} fill={p.panel} stroke={p.line} strokeWidth={1.5} opacity={solid} />
       <rect x={MONITOR.x + MONITOR.w / 2 - 45} y={MONITOR.y + MONITOR.h + 22} width={90} height={8} rx={4} fill={p.panel} stroke={p.line} strokeWidth={1.5} opacity={solid} />
@@ -119,37 +122,37 @@ export const HeroBuilt: React.FC<LookProps> = ({ palette: p, fonts }) => {
 
       {/* it goes live */}
       <g opacity={live}>
-        <rect x={screen.x + 8} y={screen.y + 12} width={78} height={30} rx={15} fill={p.bg} stroke={p.line} strokeWidth={1} />
+        <rect x={screen.x + 8} y={screen.y + 12} width={portrait ? 90 : 78} height={30} rx={15} fill={p.bg} stroke={p.line} strokeWidth={1} />
         <circle cx={screen.x + 26} cy={screen.y + 27} r={5} fill={accent} />
         <circle cx={screen.x + 26} cy={screen.y + 27} r={mix(5, 18, ring)} fill="none" stroke={accent} strokeWidth={1.5} opacity={ring > 0 && ring < 1 ? 1 - ring : 0} />
-        <text x={screen.x + 38} y={screen.y + 33} style={{ fontFamily: fonts.mono, fontSize: 18 }} fill={p.ink}>live</text>
+        <text x={screen.x + 38} y={screen.y + (portrait ? 34 : 33)} style={{ fontFamily: fonts.mono, fontSize: chip }} fill={p.ink}>live</text>
       </g>
 
       {/* data flowing: desktop → backend → phone */}
       {[d1, d2].map((d, i) => d.on && <circle key={i} cx={d.x} cy={d.y} r={7} fill={accent} />)}
 
       {/* part labels */}
-      <g style={{ fontFamily: fonts.text, fontSize: 20 }} fill={p.muted} opacity={tween(f, 64, 14)}>
+      <g style={{ fontFamily: fonts.text, fontSize: ls }} fill={p.muted} opacity={tween(f, 64, 14)}>
         <text x={MONITOR.x} y={MONITOR.y + MONITOR.h + 64}>desktop connector</text>
         <text x={C_PHONE.x} y={PHONE.y + PHONE.h + 30} textAnchor="middle">phone app</text>
       </g>
-      <text x={C_BACK.x} y={C_BACK.y + 7} textAnchor="middle" style={{ fontFamily: fonts.text, fontSize: 20 }} fill={p.ink} opacity={tween(f, 64, 14)}>backend</text>
+      <text x={C_BACK.x} y={C_BACK.y + ls * 0.36} textAnchor="middle" style={{ fontFamily: fonts.text, fontSize: ls }} fill={p.ink} opacity={tween(f, 64, 14)}>backend</text>
     </svg>
   );
 
   // the timeline beside (or under) the drawing
   const T = portrait
-    ? { x: 40, top: 486, step: 48, label: 20, text: 22, labelW: 120, close: 698, closeSize: 30 }
+    ? { x: 40, top: 556, step: 46, label: 24, text: 24, labelW: 130, close: 748, closeSize: 30 }
     : { x: 700, top: 150, step: 92, label: 19, text: 24, labelW: 110, close: 560, closeSize: 40 };
   const current = STEPS.reduce((n, s, i) => (f >= s.at ? i : n), 0);
   const prevAt = current > 0 ? STEPS[current].at : 0;
-  const lineY = (i: number) => T.top + i * T.step + (portrait ? 12 : 14);
+  const lineY = (i: number) => T.top + i * T.step + (portrait ? 15 : 14);
   const dotY = mix(lineY(Math.max(0, current - 1)), lineY(current), tween(f, prevAt, 14, 0, 1, TRAVEL));
   const featureCount = `${Math.round(30 * features)}${features >= 1 ? '+' : ''}`;
 
   return (
     <AbsoluteFill style={{ background: p.bg, color: p.ink, fontFamily: fonts.text }}>
-      <div style={{ position: 'absolute', ...(portrait ? { left: 70, top: 20, transform: 'scale(0.85)', transformOrigin: 'top left' } : { left: 96, top: 110 }) }}>{drawing}</div>
+      <div style={{ position: 'absolute', ...(portrait ? { left: 30, top: 12 } : { left: 96, top: 110 }) }}>{drawing}</div>
 
       <svg width={W} height={H} style={{ position: 'absolute', inset: 0 }}>
         <line x1={T.x + 5} x2={T.x + 5} y1={lineY(0)} y2={lineY(STEPS.length - 1)} stroke={p.line} strokeWidth={2} opacity={tween(f, 4, 12)} />

@@ -73,7 +73,7 @@ export const CaseStudyHero = ({
         </div>
       )}
 
-      <div className="max-w-[68ch]">
+      <div className="max-w-[60ch]">
         {eyebrow && <p className="font-mono text-xs text-text-tertiary mb-4">{eyebrow}</p>}
         <h1 className="text-4xl sm:text-5xl">{title}</h1>
         {subtitle && <p className="mt-4 text-xl text-text-secondary leading-snug">{subtitle}</p>}
@@ -87,7 +87,7 @@ export const CaseStudyHero = ({
         </p>
       )}
 
-      <p className="max-w-[68ch] text-lg leading-relaxed text-text-primary">{intro}</p>
+      <p className="max-w-[60ch] text-lg leading-relaxed text-text-primary">{intro}</p>
 
       <dl className="grid gap-x-12 gap-y-6 sm:grid-cols-2 border-t border-border pt-6">
         {role && <Fact term="Role">{role}</Fact>}

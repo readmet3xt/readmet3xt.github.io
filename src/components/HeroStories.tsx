@@ -36,7 +36,11 @@ export const HeroStories = ({ onDone }: { onDone: (done: StoriesDone) => void })
   const story = HERO_STORIES[index];
   const lastIndex = HERO_STORIES.length - 1;
 
-  useEffect(() => () => timers.current.forEach(clearTimeout), []);
+  // Leaving the home page counts as seen, so a visitor coming back from a case study isn't shown them again.
+  useEffect(() => () => {
+    timers.current.forEach(clearTimeout);
+    markPlayed();
+  }, []);
 
   const go = (i: number) => {
     setIndex(i);
@@ -99,7 +103,7 @@ export const HeroStories = ({ onDone }: { onDone: (done: StoriesDone) => void })
                     type="button"
                     onClick={() => go(i)}
                     aria-current={i === index ? 'step' : undefined}
-                    className="group block w-full text-left py-2"
+                    className="group flex min-h-[44px] w-full flex-col justify-center text-left sm:block sm:min-h-0 sm:py-2"
                   >
                     <span className={`hidden sm:block font-mono text-xs mb-2 transition-colors ${i === index ? 'text-text-primary' : 'text-text-tertiary group-hover:text-text-secondary'}`}>
                       {s.title}
@@ -115,7 +119,7 @@ export const HeroStories = ({ onDone }: { onDone: (done: StoriesDone) => void })
             <button
               type="button"
               onClick={() => setPaused((p) => !p)}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-text-primary hover:bg-bg-secondary transition-colors"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border text-text-primary hover:bg-bg-secondary transition-colors"
               aria-label={paused ? 'Play the stories' : 'Pause the stories'}
             >
               {paused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
@@ -123,7 +127,7 @@ export const HeroStories = ({ onDone }: { onDone: (done: StoriesDone) => void })
             <button
               type="button"
               onClick={close}
-              className="h-10 shrink-0 rounded-full border border-border px-4 font-mono text-xs text-text-secondary hover:text-text-primary hover:bg-bg-secondary transition-colors"
+              className="h-11 shrink-0 rounded-full border border-border px-4 font-mono text-xs text-text-secondary hover:text-text-primary hover:bg-bg-secondary transition-colors"
             >
               Skip
             </button>

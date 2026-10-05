@@ -23,7 +23,7 @@ export const ImageGridItem = ({ src, alt, onClick, className = "" }: ImageGridIt
     const item = itemRef.current;
     if (!item || !isPressing.current) return;
     isPressing.current = false;
-    item.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    item.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
     item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
   }, []);
 
@@ -47,7 +47,7 @@ export const ImageGridItem = ({ src, alt, onClick, className = "" }: ImageGridIt
       if (isPressing.current) {
         isPressing.current = false;
       }
-      item.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      item.style.transition = 'transform 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
       item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
     };
 
