@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import { PageLayout } from '@/components/PageLayout';
 import { BackLink } from '@/components/BackLink';
 import { SEO } from '@/components/SEO';
-import { ImageModal } from '@/components/ImageModal';
 import { ImageGridItem } from '@/components/ImageGridItem';
+import { ImageLightbox } from '@/components/case-study/ImageLightbox';
+import { openLightbox } from '@/components/case-study/CaseStudySection';
 import { ProjectTiles } from '@/components/ProjectsGrid';
 import { projectsByCategory } from '@/data/projectData';
 
@@ -34,29 +34,7 @@ const drawings = [
   { src: image11, alt: 'Night sky observatory landscape' },
 ];
 
-const allImages = [...interfaceStudies, ...drawings];
-
 export const Play = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const openModal = (index: number) => {
-    setCurrentImageIndex(index);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
-  };
-
   return (
     <PageLayout>
       <SEO
@@ -88,7 +66,7 @@ export const Play = () => {
               key={image.src}
               src={image.src}
               alt={image.alt}
-              onClick={() => openModal(index)}
+              onClick={() => openLightbox(image.src)}
             />
           ))}
         </div>
@@ -102,22 +80,13 @@ export const Play = () => {
               key={image.src}
               src={image.src}
               alt={image.alt}
-              onClick={() => openModal(interfaceStudies.length + index)}
+              onClick={() => openLightbox(image.src)}
             />
           ))}
         </div>
       </section>
 
-      {/* Image Modal */}
-      <ImageModal
-        isOpen={modalOpen}
-        images={allImages.map(img => img.src)}
-        alts={allImages.map(img => img.alt)}
-        currentIndex={currentImageIndex}
-        onClose={closeModal}
-        onNext={nextImage}
-        onPrev={prevImage}
-      />
+      <ImageLightbox />
     </PageLayout>
   );
 };

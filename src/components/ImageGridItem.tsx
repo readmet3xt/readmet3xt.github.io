@@ -8,7 +8,7 @@ interface ImageGridItemProps {
 }
 
 export const ImageGridItem = ({ src, alt, onClick, className = "" }: ImageGridItemProps) => {
-  const itemRef = useRef<HTMLDivElement>(null);
+  const itemRef = useRef<HTMLButtonElement>(null);
   const isPressing = useRef(false);
 
   const handlePressStart = useCallback(() => {
@@ -69,17 +69,21 @@ export const ImageGridItem = ({ src, alt, onClick, className = "" }: ImageGridIt
   }, [handlePressStart, handlePressEnd]);
 
   return (
-    <div
+    <button
+      type="button"
       ref={itemRef}
-      className={`image-grid-item ${className}`}
+      className={`image-grid-item block w-full cursor-zoom-in ${className}`}
       onClick={onClick}
-      style={{ cursor: 'pointer' }}
+      aria-label={`View full size: ${alt}`}
     >
       <img
         src={src}
         alt={alt}
-        className="w-full h-full object-contain"
+        data-lightbox-caption={alt}
+        className="lightbox-image w-full h-full object-contain"
+        loading="lazy"
+        decoding="async"
       />
-    </div>
+    </button>
   );
 };

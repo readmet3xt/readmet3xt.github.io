@@ -4,6 +4,7 @@ import { TimelineItem } from '@/components/TimelineItem';
 import { CertificatesCarousel } from '@/components/CertificatesCarousel';
 import { Recommendations } from '@/components/Recommendations';
 import { PathStory } from '@/components/PathStory';
+import { ImageLightbox } from '@/components/case-study/ImageLightbox';
 import { PortraitSwap } from '@/components/PortraitSwap';
 import { TOP_BOX } from '@/lib/layout';
 
@@ -209,5 +210,6 @@ export const About = () => (
       <SectionTitle>Outside work</SectionTitle>
       <p className="text-lg text-text-secondary">Football, travelling, stargazing, indie music, casual gaming and photography.</p>
     </section>
+    <ImageLightbox />
   </PageLayout>
 );

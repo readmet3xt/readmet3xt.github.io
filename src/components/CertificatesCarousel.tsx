@@ -1,6 +1,9 @@
 import type { CSSProperties } from 'react';
+import { Expand } from 'lucide-react';
 import { imageSize } from '@/lib/imageSize';
-// Certificates and awards, shown as plain figures (formerly an auto-advancing carousel).
+import { openLightbox } from '@/components/case-study/CaseStudySection';
+// Certificates and awards, shown as figures; each opens full size in the image viewer
+// (the page mounts <ImageLightbox />), where the visitor can step through all three.
 
 const CERTIFICATES = [
   {
@@ -32,7 +35,25 @@ export const CertificatesCarousel = () => (
     <div className="grid gap-8 md:[grid-template-columns:var(--row-cols)] items-start" style={{ '--row-cols': ROW_COLS } as CSSProperties}>
       {CERTIFICATES.map((c) => (
         <figure key={c.title}>
-          <img src={c.image} {...imageSize(c.image)} alt={c.alt} className="w-full h-auto rounded-sm border border-border" loading="lazy" decoding="async" />
+          <button
+            type="button"
+            onClick={() => openLightbox(c.image)}
+            aria-label={`View full size: ${c.title}`}
+            className="group relative block w-full cursor-zoom-in overflow-hidden rounded-sm"
+          >
+            <img
+              src={c.image}
+              {...imageSize(c.image)}
+              alt={c.alt}
+              data-lightbox-caption={c.title}
+              className="lightbox-image w-full h-auto rounded-sm border border-border transition-[transform,border-color] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.015] group-hover:border-text-tertiary"
+              loading="lazy"
+              decoding="async"
+            />
+            <span aria-hidden="true" className="absolute bottom-2 right-2 flex h-8 w-8 items-center justify-center rounded-full bg-bg-primary/85 text-text-primary backdrop-blur transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-visible:opacity-100">
+              <Expand className="h-4 w-4" />
+            </span>
+          </button>
           <figcaption className="mt-2 text-sm text-text-secondary">{c.title}</figcaption>
         </figure>
       ))}

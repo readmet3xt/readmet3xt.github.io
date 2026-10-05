@@ -1,10 +1,14 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const ImageLightbox = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [images, setImages] = useState<{ src: string, alt: string, caption?: string }[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const closeButton = useRef<HTMLButtonElement>(null);
+    const opener = useRef<HTMLElement | null>(null);
+    const swipeStart = useRef<{ x: number; y: number } | null>(null);
+    const swiped = useRef(false);
 
     useEffect(() => {
         const handleOpen = (e: Event) => {
@@ -27,6 +31,7 @@ export const ImageLightbox = () => {
             });
 
             if (imgArray.length > 0) {
+                opener.current = document.activeElement as HTMLElement | null;
                 setImages(imgArray);
                 setCurrentIndex(index >= 0 ? index : 0);
                 setIsOpen(true);
@@ -41,13 +46,14 @@ export const ImageLightbox = () => {
 
     const handleNext = useCallback((e?: React.MouseEvent) => {
         e?.stopPropagation();
-        setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : prev));
+        // the viewer loops, so the arrows (and keyboard focus on them) never disappear
+        setCurrentIndex((prev) => (prev + 1) % images.length);
     }, [images.length]);
 
     const handlePrev = useCallback((e?: React.MouseEvent) => {
         e?.stopPropagation();
-        setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
-    }, []);
+        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    }, [images.length]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -59,6 +65,30 @@ export const ImageLightbox = () => {
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [isOpen, handleNext, handlePrev]);
+
+    // Focus moves into the viewer, and back to whatever opened it when it closes.
+    useEffect(() => {
+        if (isOpen) closeButton.current?.focus();
+        else opener.current?.focus();
+    }, [isOpen]);
+
+    // Swipe left or right on touch screens to move between images.
+    const onPointerDown = (e: React.PointerEvent) => {
+        swipeStart.current = { x: e.clientX, y: e.clientY };
+        swiped.current = false;
+    };
+    const onPointerUp = (e: React.PointerEvent) => {
+        const start = swipeStart.current;
+        swipeStart.current = null;
+        if (!start) return;
+        const dx = e.clientX - start.x;
+        const dy = e.clientY - start.y;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+            swiped.current = true;
+            if (dx < 0) handleNext();
+            else handlePrev();
+        }
+    };
 
     // lock body scroll
     useEffect(() => {
@@ -75,9 +105,17 @@ export const ImageLightbox = () => {
                     aria-modal="true"
                     aria-label="Image viewer"
                     className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8 animate-[lightbox-fade_0.25s_ease-out]"
-                    onClick={handleClose}
+                    style={{ touchAction: 'pan-y' }}
+                    onPointerDown={onPointerDown}
+                    onPointerUp={onPointerUp}
+                    onClick={() => {
+                        // a swipe ends in a click; it moves between images rather than closing
+                        if (swiped.current) swiped.current = false;
+                        else handleClose();
+                    }}
                 >
                     <button
+                        ref={closeButton}
                         onClick={handleClose}
                         className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 flex items-center justify-center hover:text-white bg-black/50 rounded-full z-50 p-2"
                         aria-label="Close image lightbox"
@@ -85,7 +123,7 @@ export const ImageLightbox = () => {
                         <X className="w-8 h-8" />
                     </button>
 
-                    {images.length > 1 && currentIndex > 0 && (
+                    {images.length > 1 && (
                         <button
                             onClick={handlePrev}
                             className="absolute left-2 sm:left-4 text-white/70 hover:text-white bg-black/50 rounded-full z-50 p-2"
@@ -95,7 +133,7 @@ export const ImageLightbox = () => {
                         </button>
                     )}
 
-                    {images.length > 1 && currentIndex < images.length - 1 && (
+                    {images.length > 1 && (
                         <button
                             onClick={handleNext}
                             className="absolute right-2 sm:right-4 text-white/70 hover:text-white bg-black/50 rounded-full z-50 p-2"
@@ -107,6 +145,7 @@ export const ImageLightbox = () => {
 
                     <img
                         key={currentIndex}
+                        draggable={false}
                         src={images[currentIndex].src}
                         alt={images[currentIndex].alt}
                         className="max-w-full max-h-[90vh] object-contain rounded-md animate-[lightbox-in_0.35s_cubic-bezier(0.23,1,0.32,1)]"
