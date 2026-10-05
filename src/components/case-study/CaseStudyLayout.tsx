@@ -1,7 +1,8 @@
 import { ReactNode, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { PageLayout } from '@/components/PageLayout';
+import { BackLink } from '@/components/BackLink';
 import { SEO } from '@/components/SEO';
 import { getNextProject, getProject } from '@/data/projectData';
 import { MotionStage } from '@/motion/MotionStage';
@@ -53,12 +54,7 @@ export const CaseStudyLayout = ({
       />
 
       <div className="max-w-5xl mx-auto" style={accent}>
-        <nav className="mb-6">
-          <Link to={backLink ?? (side ? '/play' : '/#work')} className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent-primary transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            <span>{backLabel ?? (side ? 'Play' : 'All work')}</span>
-          </Link>
-        </nav>
+        <BackLink to={backLink ?? (side ? '/play' : '/#work')} label={backLabel ?? (side ? 'Play' : 'All work')} />
 
         <article ref={article} className="case-study-article space-y-16">{children}</article>
 

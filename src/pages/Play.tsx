@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PageLayout } from '@/components/PageLayout';
+import { BackLink } from '@/components/BackLink';
 import { SEO } from '@/components/SEO';
 import { ImageModal } from '@/components/ImageModal';
 import { ImageGridItem } from '@/components/ImageGridItem';
@@ -62,6 +63,7 @@ export const Play = () => {
         title="Playground"
         description="Side projects, interface studies and drawings by Amaan Khan."
       />
+      <BackLink to="/#work" label="All work" />
       <header className="mb-12 max-w-[60ch]">
         <h1 className="text-5xl mb-4">Playground</h1>
         <p className="text-lg text-text-secondary">

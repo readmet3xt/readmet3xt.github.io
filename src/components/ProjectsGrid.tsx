@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ProjectCard } from '@/components/ProjectCard';
 import { CATEGORY_LABELS, projectsByCategory, type ProjectCategory, type ProjectData } from '@/data/projectData';
 
@@ -44,6 +45,22 @@ export const ProjectTiles = ({ projects }: { projects: ProjectData[] }) => {
   );
 };
 
+/** Under the products: the side projects, which are listed on the Play page. */
+const SideProjectsLink = () => {
+  const titles = projectsByCategory('side').map((p) => p.title);
+  return (
+    <div className="mt-14 flex flex-col gap-5 rounded-2xl border border-border p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+      <div className="max-w-[60ch]">
+        <h3 className="text-2xl">Side projects</h3>
+        <p className="mt-2 text-text-secondary">
+          {titles.join(' and ')}: small tools I designed and built on my own in 2026.
+        </p>
+      </div>
+      <Link to="/play" className="btn-outline justify-center shrink-0">See side projects</Link>
+    </div>
+  );
+};
+
 const ProjectSection = ({ category }: { category: WorkCategory }) => (
   <section aria-labelledby={`work-${category}`} className="py-12">
     <div className="max-w-[60ch] mb-10">
@@ -51,6 +68,7 @@ const ProjectSection = ({ category }: { category: WorkCategory }) => (
       <p className="mt-3 text-text-secondary">{INTROS[category]}</p>
     </div>
     <ProjectTiles projects={projectsByCategory(category)} />
+    {category === 'product' && <SideProjectsLink />}
   </section>
 );
 
