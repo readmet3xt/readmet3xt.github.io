@@ -50,8 +50,10 @@ export const Portfolio = () => {
 
   // With the stories gone the heading leads, so the menu button sits on its first line
   // (the message box's first line is a small label, level with the button already).
+  // The line's centre is 0.485 × the heading's size below its top (22px on phones and
+  // tablets, 128px on desktop); the button's centre is 32px. Phones scale the heading with the width.
   return (
-    <PageLayout menuAlign={stories || writing ? undefined : 'max-sm:translate-y-[22px] sm:max-lg:translate-y-[25px]'}>
+    <PageLayout menuAlign={stories || writing ? undefined : 'max-sm:translate-y-[calc(min(15.5vw,3.75rem)*0.485_-_10px)] sm:max-lg:translate-y-[25px] lg:translate-y-[131px]'}>
       <SEO />
       <WelcomeIntro />
       {stories && <HeroStories onDone={onDone} />}

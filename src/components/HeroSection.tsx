@@ -20,7 +20,7 @@ export const HeroSection = ({ first = false, writing, setWriting }: { first?: bo
 
   return (
     <>
-      <section aria-label="Introduction" className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start lg:items-center lg:pt-12 pb-16 lg:pb-24">
+      <section aria-label="Introduction" className="grid gap-10 lg:grid-cols-12 lg:gap-12 items-start lg:pt-12 pb-16 lg:pb-24">
         <div className="relative lg:col-span-7">
           <div
             className={cn('transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]', writing && 'pointer-events-none -translate-y-2 opacity-0 max-lg:hidden')}
@@ -70,8 +70,10 @@ export const HeroSection = ({ first = false, writing, setWriting }: { first?: bo
           )}
         </div>
 
-        {/* Phones: the portrait spans the text column above it, same left and right edges. */}
-        <figure className="lg:col-span-5 lg:justify-self-end w-full sm:max-w-sm">
+        {/* Phones: the portrait spans the text column above it, same left and right edges.
+            Desktop: the menu button sits on the greeting's line at the right edge (Portfolio's
+            menuAlign), so the portrait starts 24px below it. */}
+        <figure className="lg:col-span-5 lg:justify-self-end lg:mt-[82px] w-full sm:max-w-sm">
           <PortraitSwap className="aspect-[4/5] rounded-xl" eager={first} />
           <figcaption className="mt-2 font-mono text-xs text-text-tertiary">Hyderabad, India. Open to roles across India.</figcaption>
         </figure>
