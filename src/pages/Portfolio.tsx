@@ -47,8 +47,9 @@ export const Portfolio = () => {
 
   const stories = showStories && motion;
 
+  // With the stories gone the heading leads, so the menu button sits on its first line.
   return (
-    <PageLayout>
+    <PageLayout menuAlign={stories ? undefined : 'max-sm:translate-y-[22px] sm:max-lg:translate-y-[25px]'}>
       <SEO />
       <WelcomeIntro />
       {stories && <HeroStories onDone={onDone} />}

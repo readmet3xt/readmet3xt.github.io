@@ -8,9 +8,15 @@ import { SidebarProvider } from './SidebarContext';
 interface PageLayoutProps {
   children: ReactNode;
   className?: string;
+  /**
+   * Classes that move the menu button, while the bar is hidden, onto the centre
+   * of a page's first line when that line is taller than the button's row
+   * (the home page's heading). It docks back into the bar on scroll.
+   */
+  menuAlign?: string;
 }
 
-export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
+export const PageLayout = ({ children, className = '', menuAlign }: PageLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -107,7 +113,11 @@ export const PageLayout = ({ children, className = '' }: PageLayoutProps) => {
           <SidebarToggle
             isOpen={sidebarOpen}
             onClick={() => setOpen(!sidebarOpen)}
-            className={cn('relative pointer-events-auto max-lg:-mr-3', sidebarOpen && 'lg:invisible')}
+            className={cn(
+              'relative pointer-events-auto max-lg:-mr-3 transition-[transform,background-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-has-[a:focus-visible]/header:translate-y-0',
+              !headerVisible && !sidebarOpen && menuAlign,
+              sidebarOpen && 'lg:invisible',
+            )}
           />
         </header>
 
