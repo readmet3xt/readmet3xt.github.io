@@ -28,14 +28,16 @@ export const CaseStudyLayout = ({
   title,
   description,
   image,
-  backLink = '/#work',
-  backLabel = 'All work',
+  backLink,
+  backLabel,
   externalLink,
   externalLabel,
 }: CaseStudyLayoutProps) => {
   const { pathname } = useLocation();
   const project = getProject(pathname);
   const nextProject = getNextProject(pathname);
+  // Side projects live on the Play page, so they lead back there and on to each other.
+  const side = project?.category === 'side';
   const nextTile = nextProject ? TILES[nextProject.href] : undefined;
   const article = useRef<HTMLElement>(null);
   const accent = useProjectAccent(pathname);
@@ -47,13 +49,14 @@ export const CaseStudyLayout = ({
         title={title ?? project?.seoTitle}
         description={description ?? project?.seoDescription}
         image={image}
+        noindex={project?.hidden}
       />
 
       <div className="max-w-5xl mx-auto" style={accent}>
         <nav className="mb-6">
-          <Link to={backLink} className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent-primary transition-colors">
+          <Link to={backLink ?? (side ? '/play' : '/#work')} className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent-primary transition-colors">
             <ArrowLeft className="w-4 h-4" />
-            <span>{backLabel}</span>
+            <span>{backLabel ?? (side ? 'Play' : 'All work')}</span>
           </Link>
         </nav>
 
@@ -85,7 +88,7 @@ export const CaseStudyLayout = ({
               </div>
             )}
             <div>
-              <p className="font-mono text-xs text-text-tertiary mb-2">Next case study</p>
+              <p className="font-mono text-xs text-text-tertiary mb-2">{side ? 'Next side project' : 'Next case study'}</p>
               <span className="inline-flex items-center gap-3">
                 <span className="text-3xl sm:text-4xl font-semibold tracking-tight text-text-primary group-hover:text-accent-primary transition-colors">
                   {nextProject.title}

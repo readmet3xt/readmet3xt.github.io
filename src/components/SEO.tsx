@@ -8,6 +8,7 @@ interface SEOProps {
   image?: string;
   url?: string;
   type?: string;
+  noindex?: boolean;
 }
 
 export const SEO = ({
@@ -16,6 +17,7 @@ export const SEO = ({
   image = DEFAULT_META.image,
   url,
   type = 'website',
+  noindex,
 }: SEOProps) => {
   const { pathname } = useLocation();
   const fullTitle = pageTitle(title);
@@ -59,6 +61,7 @@ export const SEO = ({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
+      {noindex && <meta name="robots" content="noindex" />}
 
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />

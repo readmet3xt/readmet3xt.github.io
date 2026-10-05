@@ -3,6 +3,8 @@ import { PageLayout } from '@/components/PageLayout';
 import { SEO } from '@/components/SEO';
 import { ImageModal } from '@/components/ImageModal';
 import { ImageGridItem } from '@/components/ImageGridItem';
+import { ProjectTiles } from '@/components/ProjectsGrid';
+import { projectsByCategory } from '@/data/projectData';
 
 const image1 = '/media/cbc6c741-57a8-4b3e-be19-fce8a11350a8.webp';
 const image2 = '/media/6cf04e87-7fbf-42b6-a3e1-d4ece5d92936.webp';
@@ -58,15 +60,23 @@ export const Play = () => {
     <PageLayout>
       <SEO
         title="Playground"
-        description="Interface studies and drawings by Amaan Khan."
+        description="Side projects, interface studies and drawings by Amaan Khan."
       />
       <header className="mb-12 max-w-[60ch]">
         <h1 className="text-5xl mb-4">Playground</h1>
         <p className="text-lg text-text-secondary">
-          Self-initiated interface studies, unbriefed concepts, and the drawing I do when I'm not designing.
-          No clients and no constraints: this is where I keep my visual skills sharp.
+          What I make with no client and no brief: side projects I design and build, interface studies,
+          and the drawing I do when I'm not designing.
         </p>
       </header>
+
+      <section aria-labelledby="side-projects" className="mb-14">
+        <h2 id="side-projects" className="text-3xl mb-3">Side projects</h2>
+        <p className="mb-8 max-w-[60ch] text-text-secondary">
+          Two small tools I designed and built on my own in 2026: one for game nights, one for PC screenshots.
+        </p>
+        <ProjectTiles projects={projectsByCategory('side')} />
+      </section>
 
       <section aria-label="Interface studies" className="mb-14">
         <h2 className="text-3xl mb-6">Interface studies</h2>

@@ -100,7 +100,7 @@ export const About = () => (
           </ul>
         </TimelineItem>
 
-        <TimelineItem title="Product Designer (Contract)" company="Pixel+Form · Law.X" period="Mar 2025 – Apr 2025" href="/lawx">
+        <TimelineItem title="Product Designer (Contract)" company="Pixel+Form · Law.X" period="Mar 2025 – Apr 2025">
           <ul className="list-disc pl-5 space-y-2">
             <li>Independently drove the UX design process, from first concepts to interactive prototypes, for a generative AI legal tool.</li>
           </ul>

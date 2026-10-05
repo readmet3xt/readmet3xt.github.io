@@ -1,8 +1,8 @@
-// Single source for every list of case studies: the home grid, the sidebar,
-// the "next case study" link and per-route SEO. No `@/` imports, so the
-// build config can read it too.
+// Single source for every list of case studies: the home grid, the Play page's
+// side projects, the sidebar, the "next case study" link and per-route SEO.
+// No `@/` imports, so the build config can read it too.
 
-export type ProjectCategory = 'service' | 'product';
+export type ProjectCategory = 'service' | 'product' | 'side';
 
 export interface ProjectData {
   href: string;
@@ -16,14 +16,18 @@ export interface ProjectData {
   seoTitle: string;
   seoDescription: string;
   status?: 'Live';
+  /** Unlisted: left out of every list and the sitemap, and noindexed; the page still opens at its URL. */
+  hidden?: boolean;
 }
 
 export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
   service: 'Service design',
   product: "Products I've designed and built",
+  side: 'Side projects',
 };
 
-// Products first, then service design; each group newest first (ongoing work first, then by end date).
+// Products first, then service design, then side projects (listed on the Play
+// page); each group newest first (ongoing work first, then by end date).
 export const PROJECTS: ProjectData[] = [
   {
     href: '/otagon',
@@ -40,31 +44,6 @@ export const PROJECTS: ProjectData[] = [
     status: 'Live',
   },
   {
-    href: '/screenshot',
-    title: 'ScreenShot',
-    category: 'product',
-    context: 'Side project, 2026',
-    summary:
-      'Press F1 on your PC and the screenshot appears on your phone a moment later. A Windows app, a relay and a phone gallery.',
-    thumbnail: '/images/casestudies/screenshot/1-landing-page-hero-960w.webp',
-    thumbnailAlt: 'ScreenShot landing page',
-    seoTitle: 'ScreenShot',
-    seoDescription: 'ScreenShot: press F1 on a Windows PC and the screenshot appears on your phone.',
-  },
-  {
-    href: '/versus',
-    title: 'Versus',
-    category: 'product',
-    context: 'Side project, 2026',
-    summary:
-      'A live tournament tracker for game nights: leagues, knockouts, live scores and a spectator link friends open on their phones.',
-    thumbnail: '/images/casestudies/versus/1-landing-page-desktop-960w.webp',
-    thumbnailAlt: 'Versus landing page',
-    seoTitle: 'Versus',
-    seoDescription: 'Versus, a live tournament tracker for game nights with live scoring and a spectator link.',
-    status: 'Live',
-  },
-  {
     href: '/lawx',
     title: 'Law.X',
     category: 'product',
@@ -76,6 +55,7 @@ export const PROJECTS: ProjectData[] = [
     seoTitle: 'Law.X',
     seoDescription:
       "Designing transparency into legal AI: a workspace that shows lawyers the model's reasoning so they can check it.",
+    hidden: true,
   },
   {
     href: '/koinbasket',
@@ -142,14 +122,47 @@ export const PROJECTS: ProjectData[] = [
     seoDescription:
       'A partnership matchmaking method for conservation organisations. Its first facilitated workshop started the WWT × Airbnb collaboration.',
   },
+  {
+    href: '/screenshot',
+    title: 'ScreenShot',
+    category: 'side',
+    context: 'Side project, 2026',
+    summary:
+      'Press F1 on your PC and the screenshot appears on your phone a moment later. A Windows app, a relay and a phone gallery.',
+    thumbnail: '/images/casestudies/screenshot/1-landing-page-hero-960w.webp',
+    thumbnailAlt: 'ScreenShot landing page',
+    seoTitle: 'ScreenShot',
+    seoDescription: 'ScreenShot: press F1 on a Windows PC and the screenshot appears on your phone.',
+  },
+  {
+    href: '/versus',
+    title: 'Versus',
+    category: 'side',
+    context: 'Side project, 2026',
+    summary:
+      'A live tournament tracker for game nights: leagues, knockouts, live scores and a spectator link friends open on their phones.',
+    thumbnail: '/images/casestudies/versus/1-landing-page-desktop-960w.webp',
+    thumbnailAlt: 'Versus landing page',
+    seoTitle: 'Versus',
+    seoDescription: 'Versus, a live tournament tracker for game nights with live scoring and a spectator link.',
+    status: 'Live',
+  },
 ];
 
 export const getProject = (href: string) => PROJECTS.find((p) => p.href === href);
 
+const group = (p: ProjectData) => (p.category === 'side' ? 'side' : 'work');
+
+/** The next listed project in this one's group (work or side projects), wrapping round. */
 export const getNextProject = (href: string) => {
   const i = PROJECTS.findIndex((p) => p.href === href);
-  return i < 0 ? null : PROJECTS[(i + 1) % PROJECTS.length];
+  if (i < 0) return null;
+  for (let step = 1; step < PROJECTS.length; step++) {
+    const next = PROJECTS[(i + step) % PROJECTS.length];
+    if (!next.hidden && group(next) === group(PROJECTS[i])) return next;
+  }
+  return null;
 };
 
 export const projectsByCategory = (category: ProjectCategory) =>
-  PROJECTS.filter((p) => p.category === category);
+  PROJECTS.filter((p) => p.category === category && !p.hidden);

@@ -20,6 +20,8 @@ export interface RouteMeta {
   /** Page title without the " | Amaan Khan" suffix; undefined = site default. */
   title?: string;
   description: string;
+  /** Kept out of the sitemap and search results. */
+  noindex?: boolean;
 }
 
 export const ROUTES: RouteMeta[] = [
@@ -33,9 +35,9 @@ export const ROUTES: RouteMeta[] = [
   {
     path: '/play',
     title: 'Playground',
-    description: 'Interface studies and drawings by Amaan Khan.',
+    description: 'Side projects, interface studies and drawings by Amaan Khan.',
   },
-  ...PROJECTS.map((p) => ({ path: p.href, title: p.seoTitle, description: p.seoDescription })),
+  ...PROJECTS.map((p) => ({ path: p.href, title: p.seoTitle, description: p.seoDescription, noindex: p.hidden })),
 ];
 
 export const pageTitle = (title?: string) => (title ? `${title} | ${SITE_NAME}` : DEFAULT_META.title);

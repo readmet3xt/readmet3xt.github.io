@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { X } from 'lucide-react';
-import { CATEGORY_LABELS, projectsByCategory, type ProjectCategory } from '@/data/projectData';
+import { CATEGORY_LABELS, getProject, projectsByCategory, type ProjectCategory } from '@/data/projectData';
 import { useSitePrefs } from '@/lib/sitePrefs';
 import { PrefSwitch } from '@/components/PrefSwitch';
 
@@ -20,6 +20,8 @@ const CATEGORIES: ProjectCategory[] = ['product', 'service'];
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const { pathname } = useLocation();
   const { theme, setTheme } = useSitePrefs();
+  // Side projects are listed on the Play page, so Play stays marked while one is open.
+  const isCurrent = (to: string) => pathname === to || (to === '/play' && getProject(pathname)?.category === 'side');
 
   const closeOnMobile = () => {
     if (window.innerWidth < 1024) onClose();
@@ -54,7 +56,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
         <nav aria-label="Main navigation" className="space-y-0.5 mb-8">
           {MAIN_LINKS.map(({ to, label }) => (
-            <Link key={to} to={to} onClick={closeOnMobile} className={linkClass(pathname === to)} aria-current={pathname === to ? 'page' : undefined}>
+            <Link key={to} to={to} onClick={closeOnMobile} className={linkClass(isCurrent(to))} aria-current={pathname === to ? 'page' : isCurrent(to) ? 'true' : undefined}>
               {label}
             </Link>
           ))}

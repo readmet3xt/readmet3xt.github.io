@@ -15,7 +15,7 @@ const replaceOnce = (html: string, pattern: RegExp, value: string, label: string
   return html.replace(pattern, value);
 };
 
-const withMeta = (template: string, route: { path: string; title?: string; description: string }) => {
+const withMeta = (template: string, route: { path: string; title?: string; description: string; noindex?: boolean }) => {
   const title = escapeHtml(pageTitle(route.title));
   const description = escapeHtml(route.description);
   const url = route.path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${route.path}`;
@@ -28,6 +28,7 @@ const withMeta = (template: string, route: { path: string; title?: string; descr
   html = replaceOnce(html, /<meta property="og:url" content="[^"]*"/, `<meta property="og:url" content="${url}"`, 'og:url');
   html = replaceOnce(html, /<meta name="twitter:title" content="[^"]*"/, `<meta name="twitter:title" content="${title}"`, 'twitter:title');
   html = replaceOnce(html, /<meta name="twitter:description" content="[^"]*"/, `<meta name="twitter:description" content="${description}"`, 'twitter:description');
+  if (route.noindex) html = replaceOnce(html, /<meta name="theme-color"/, '<meta name="robots" content="noindex" />\n  <meta name="theme-color"', 'theme-color');
   return html;
 };
 
@@ -54,13 +55,12 @@ const staticRoutes = (): Plugin => ({
       const file = route.path === '/' ? 'index.html' : `${route.path.slice(1)}.html`;
       fs.writeFileSync(path.join(dist, file), withMeta(template, route));
     }
-    const notFound = withMeta(template, { path: '/404', title: 'Page not found', description: DEFAULT_META.description })
-      .replace('<meta name="theme-color"', '<meta name="robots" content="noindex" />\n  <meta name="theme-color"');
+    const notFound = withMeta(template, { path: '/404', title: 'Page not found', description: DEFAULT_META.description, noindex: true });
     fs.writeFileSync(path.join(dist, '404.html'), notFound);
     const sitemap = [
       '<?xml version="1.0" encoding="UTF-8"?>',
       '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-      ...ROUTES.map((r) => `  <url><loc>${r.path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${r.path}`}</loc></url>`),
+      ...ROUTES.filter((r) => !r.noindex).map((r) => `  <url><loc>${r.path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${r.path}`}</loc></url>`),
       '</urlset>',
       '',
     ].join('\n');
