@@ -1,8 +1,8 @@
 import type { FC } from 'react';
-import { BLUEPRINT_FRAMES, HeroBlueprint } from './comps/HeroBlueprint';
+import { BUILT_FRAMES, HeroBuilt } from './comps/HeroBuilt';
+import { HeroNumbers, NUMBERS_FRAMES } from './comps/HeroNumbers';
+import { HeroOrgs, ORGS_FRAMES } from './comps/HeroOrgs';
 import { HeroPath, PATH_FRAMES } from './comps/HeroPath';
-import { HeroResearch, RESEARCH_FRAMES } from './comps/HeroResearch';
-import { HeroWho, WHO_FRAMES } from './comps/HeroWho';
 import {
   LOST_FRAMES,
   TILE_FRAMES,
@@ -30,11 +30,11 @@ export type MotionEntry = {
 /** Landscape on wide screens, portrait on phones. */
 export const STORY_SIZE = { wide: { width: 1280, height: 720 }, tall: { width: 600, height: 800 } };
 
-/** One design process, start to end: each story ends where the next begins. */
+/** Three results in the order of my path: research that organisations put to work, products whose numbers moved, and one I built myself. */
 export const HERO_STORIES: (MotionEntry & { title: string })[] = [
-  { title: 'Understand people', component: HeroResearch, durationInFrames: RESEARCH_FRAMES, label: 'People talk; what they say becomes notes; the notes cluster into patterns; one pattern becomes the insight.' },
-  { title: 'Design and build', component: HeroBlueprint, durationInFrames: BLUEPRINT_FRAMES, label: 'The insight becomes the key touchpoint in a service blueprint; a person walks the service; that touchpoint becomes an app they use, and people test it.' },
-  { title: 'Who I design for', component: HeroWho, durationInFrames: WHO_FRAMES, label: 'I design services for remote teams, rail passengers, conservation partners, first-time crypto investors and players stuck in a game. And then I build them.' },
+  { title: 'Changed organisations', component: HeroOrgs, durationInFrames: ORGS_FRAMES, label: "Research that organisations put to work. Pebble, from 70 surveyed and 18 workshops: the Virtual Café went into VISA Innovation Centre's roadmap. I.V.I., from 79 women in 12 countries: BCG used our six needs in internal workshops, and it was a Core77 Student Notable. Stampede, matching on Power and Pace: WWT and Airbnb started working together in 3 hours." },
+  { title: 'Moved the numbers', component: HeroNumbers, durationInFrames: NUMBERS_FRAMES, label: "KoinBasket grew from a one-week MVP to more than 70,000 users, and simpler onboarding and payments cut transaction friction by 20%. The LNER App Clip's checkout time fell 40% in testing with 9 people, and it passed National Rail review." },
+  { title: 'Built it myself', component: HeroBuilt, durationInFrames: BUILT_FRAMES, label: 'Otagon: an idea in August 2025 becomes three working parts, a phone app, a desktop connector and a backend, then 30+ features, and goes live in July 2026. Designed and built on my own.' },
 ];
 
 /** "My path so far" plays on its own at the top of the About page. */
