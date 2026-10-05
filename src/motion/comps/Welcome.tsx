@@ -4,8 +4,8 @@ import { TRAVEL, mix, span, tween } from '../helpers';
 import type { LookProps } from '../theme';
 
 // First-visit welcome (about 3.7 s): sketch to built. The greeting is drawn
-// first as a wireframe (layout grid, outline type, grey placeholder bars,
-// button outlines, spacing redlines). Then a build line sweeps across with the
+// first as a wireframe (layout grid, outline type drawn stroke by stroke, a
+// grey placeholder bar, a spacing redline, type notes). Then a build line sweeps across with the
 // red "you are here" dot riding it; behind it everything becomes real. The dot
 // lands as the full stop of "i'm amaan". Works at any size: pass the visitor's
 // screen as the composition size.
@@ -13,7 +13,6 @@ import type { LookProps } from '../theme';
 export const WELCOME_FRAMES = 112;
 
 const ROLE = 'Service & Product Designer';
-const BUTTONS = ['See the work', 'Say hi'];
 
 export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const f = useCurrentFrame();
@@ -24,8 +23,6 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const dot = Math.max(8, size * 0.17);
   const lead = size * 1.04;
   const roleSize = Math.max(12, size * 0.19);
-  const btnH = Math.max(34, size * 0.52);
-  const btnText = Math.max(12, size * 0.16);
   const label = Math.max(10, size * 0.12);
 
   // Measure the name so the block can be centred and the full stop placed.
@@ -40,16 +37,13 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
   }, [size, fonts.display]);
 
   // Layout of the greeting block, relative to its top-left corner.
-  const btnPad = btnH * 0.62;
-  const btnW = BUTTONS.map((b) => b.length * btnText * 0.56 + btnPad * 2);
-  const btnGap = btnH * 0.3;
+  const roleW = ROLE.length * roleSize * 0.6;
   const stopX = nameW + dot * 0.35 + dot / 2;
-  const blockW = Math.max(stopX + dot / 2, btnW[0] + btnGap + btnW[1]);
+  const blockW = Math.max(stopX + dot / 2, roleW);
   const base1 = size * 0.9;
   const base2 = base1 + lead;
   const roleBase = base2 + size * 0.6;
-  const btnTop = roleBase + size * 0.42;
-  const blockH = btnTop + btnH;
+  const blockH = roleBase + roleSize * 0.3;
   const left = (W - blockW) / 2;
   const top = (H - blockH) / 2;
   const X = (x: number) => left + x;
@@ -57,7 +51,10 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
 
   // Timing.
   const guides = tween(f, 0, 16);
-  const draw = tween(f, 6, 34, 0, 1, (t) => t);
+  // "hi." draws first, then the name, then the role's placeholder.
+  const draw1 = tween(f, 2, 26, 0, 1, TRAVEL);
+  const draw2 = tween(f, 10, 32, 0, 1, TRAVEL);
+  const drawRole = tween(f, 22, 18);
   const marks = tween(f, 24, 12);
   const sweep = tween(f, 42, 40, 0, 1, TRAVEL);
   const out = tween(f, 80, 14);
@@ -72,19 +69,23 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
   const dotY = f < 84 ? lineTop : mix(lineTop, stop.y, land) - Math.sin(Math.PI * land) * size * 0.35;
   const settle = 1 + 0.2 * Math.sin(Math.PI * tween(f, 98, 10));
   const dotOn = tween(f, 38, 8);
+  const ring = tween(f, 97, 16);
 
-  const D = size * 3.2; // dash length for drawing each glyph's outline
+  // Each letter's outline draws in one stroke at a steady pace: the visible dash
+  // grows to the longest outline (P); once drawn, the dash is dropped.
+  const D = size * 9;
+  const P = size * 4.2;
+  const outline = (t: number) => (t >= 1 ? {} : { strokeDasharray: `${D} ${D}`, strokeDashoffset: D - P * t });
   const heading = { fontFamily: fonts.display, fontWeight: fonts.displayWeight, fontSize: size, letterSpacing: `${fonts.displayTracking}em` };
-  const roleW = ROLE.length * roleSize * 0.6;
   const columns = [0, 1 / 3, 2 / 3, 1];
 
   // One copy of the greeting: as a sketch, or as built.
   const greeting = (built: boolean) => (
     <g>
-      <text x={X(0)} y={Y(base1)} style={heading} fill={built ? p.muted : 'none'} stroke={built ? 'none' : p.muted} strokeWidth={1.2} strokeDasharray={built ? undefined : D} strokeDashoffset={built ? undefined : D * (1 - draw)}>
+      <text x={X(0)} y={Y(base1)} style={{ ...heading, ...(built ? {} : outline(draw1)) }} fill={built ? p.muted : 'none'} stroke={built ? 'none' : p.muted} strokeWidth={1.2}>
         hi.
       </text>
-      <text ref={built ? nameRef : undefined} x={X(0)} y={Y(base2)} style={heading} fill={built ? p.ink : 'none'} stroke={built ? 'none' : p.muted} strokeWidth={1.2} strokeDasharray={built ? undefined : D} strokeDashoffset={built ? undefined : D * (1 - draw)}>
+      <text ref={built ? nameRef : undefined} x={X(0)} y={Y(base2)} style={{ ...heading, ...(built ? {} : outline(draw2)) }} fill={built ? p.ink : 'none'} stroke={built ? 'none' : p.muted} strokeWidth={1.2}>
         i’m amaan
       </text>
       {built ? (
@@ -92,35 +93,8 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
           {ROLE}
         </text>
       ) : (
-        <rect x={X(0)} y={Y(roleBase - roleSize * 0.78)} width={roleW * draw} height={roleSize * 0.9} rx={3} fill={p.line} />
+        <rect x={X(0)} y={Y(roleBase - roleSize * 0.78)} width={roleW * drawRole} height={roleSize * 0.9} rx={3} fill={p.line} />
       )}
-      {BUTTONS.map((b, i) => {
-        const bx = X(i ? btnW[0] + btnGap : 0);
-        const solid = built && i === 0;
-        return (
-          <g key={b}>
-            <rect
-              x={bx}
-              y={Y(btnTop)}
-              width={btnW[i]}
-              height={btnH}
-              rx={btnH / 2}
-              fill={solid ? p.ink : 'none'}
-              stroke={solid ? 'none' : built ? p.line : p.muted}
-              strokeWidth={1.2}
-              strokeDasharray={built ? undefined : btnW[i] * 3}
-              strokeDashoffset={built ? undefined : btnW[i] * 3 * (1 - draw)}
-            />
-            {built ? (
-              <text x={bx + btnW[i] / 2} y={Y(btnTop + btnH / 2 + btnText * 0.36)} textAnchor="middle" style={{ fontFamily: fonts.text, fontSize: btnText, fontWeight: 600 }} fill={solid ? p.bg : p.ink}>
-                {b}
-              </text>
-            ) : (
-              <rect x={bx + btnPad} y={Y(btnTop + btnH / 2 - 3)} width={(btnW[i] - btnPad * 2) * draw} height={6} rx={3} fill={p.line} />
-            )}
-          </g>
-        );
-      })}
     </g>
   );
 
@@ -134,6 +108,10 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
           <clipPath id="welcome-sketch">
             <rect x={sx} y={0} width={Math.max(0, W - sx)} height={H} />
           </clipPath>
+          <linearGradient id="welcome-glow" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stopColor={p.accent} stopOpacity={0} />
+            <stop offset="1" stopColor={p.accent} stopOpacity={0.1} />
+          </linearGradient>
         </defs>
 
         {/* the layout grid and baselines */}
@@ -146,25 +124,35 @@ export const Welcome: React.FC<LookProps> = ({ palette: p, fonts }) => {
           ))}
         </g>
 
-        {/* spacing redlines */}
+        {/* the spacing redline */}
         <g opacity={marks * (1 - out)} stroke={p.accent} strokeWidth={1}>
           <line x1={X(-size * 0.3)} x2={X(-size * 0.3)} y1={Y(base2 + size * 0.14)} y2={Y(roleBase - roleSize * 0.8)} />
           <line x1={X(-size * 0.38)} x2={X(-size * 0.22)} y1={Y(base2 + size * 0.14)} y2={Y(base2 + size * 0.14)} />
           <line x1={X(-size * 0.38)} x2={X(-size * 0.22)} y1={Y(roleBase - roleSize * 0.8)} y2={Y(roleBase - roleSize * 0.8)} />
-          <line x1={X(btnW[0])} x2={X(btnW[0] + btnGap)} y1={Y(blockH + size * 0.22)} y2={Y(blockH + size * 0.22)} />
-          <line x1={X(btnW[0])} x2={X(btnW[0])} y1={Y(blockH + size * 0.16)} y2={Y(blockH + size * 0.28)} />
-          <line x1={X(btnW[0] + btnGap)} x2={X(btnW[0] + btnGap)} y1={Y(blockH + size * 0.16)} y2={Y(blockH + size * 0.28)} />
         </g>
         <g opacity={marks * (1 - out)} style={{ fontFamily: fonts.mono, fontSize: label }} fill={p.muted}>
           <text x={X(-size * 0.46)} y={Y((base2 + roleBase) / 2 - roleSize * 0.1)} textAnchor="end">24</text>
-          <text x={X(btnW[0] + btnGap / 2)} y={Y(blockH + size * 0.28 + label * 1.3)} textAnchor="middle">12</text>
+        </g>
+
+        {/* type notes, as on a design spec */}
+        <g opacity={tween(f, 30, 12) * (1 - out)}>
+          <line x1={X(size * 1.5)} x2={X(blockW) - label * 6.4} y1={Y(base1 - size * 0.32)} y2={Y(base1 - size * 0.32)} stroke={p.accent} strokeWidth={1} strokeDasharray="2 4" />
+          <line x1={X(roleW + size * 0.15)} x2={X(blockW) - label * 6.9} y1={Y(roleBase - roleSize * 0.35)} y2={Y(roleBase - roleSize * 0.35)} stroke={p.accent} strokeWidth={1} strokeDasharray="2 4" />
+          <g style={{ fontFamily: fonts.mono, fontSize: label }} fill={p.muted}>
+            <text x={X(blockW)} y={Y(base1 - size * 0.32 + label * 0.35)} textAnchor="end">Geist 600</text>
+            <text x={X(blockW)} y={Y(roleBase - roleSize * 0.35 + label * 0.35)} textAnchor="end">Geist Mono</text>
+          </g>
         </g>
 
         <g clipPath="url(#welcome-sketch)">{greeting(false)}</g>
         <g clipPath="url(#welcome-built)">{greeting(true)}</g>
 
-        {/* the build line */}
+        {/* the build line, with a faint glow over what it has just built */}
+        <rect x={sx - size * 0.5} y={lineTop} width={size * 0.5} height={Y(blockH + size * 0.55) - lineTop} fill="url(#welcome-glow)" opacity={sweepOn} />
         <line x1={sx} x2={sx} y1={lineTop} y2={Y(blockH + size * 0.55)} stroke={p.accent} strokeWidth={1.5} opacity={sweepOn} />
+
+        {/* the full stop lands */}
+        <circle cx={stop.x} cy={stop.y} r={mix(dot / 2, dot * 2.2, ring)} fill="none" stroke={p.accent} strokeWidth={1.5} opacity={ring > 0 && ring < 1 ? (1 - ring) * 0.7 : 0} />
       </svg>
 
       <div
